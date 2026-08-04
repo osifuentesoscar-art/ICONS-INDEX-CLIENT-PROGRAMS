@@ -1,0 +1,15 @@
+{
+  "name": "icons-index-client-programs",
+  "version": "1.0.0",
+  "description": "Brace Life Studios ICONS document generation engine",
+  "main": "icons_template.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
+}
