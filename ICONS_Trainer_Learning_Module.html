@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICONS Trainer Learning Module — Brace Life Studios</title>
+<style>
+  /* ── TOKENS ────────────────────────────────────────────────────────────── */
+  :root {
+    --onyx:    #0D0D0D;
+    --ink:     #1C1C1C;
+    --slate:   #3A3A3A;
+    --mid:     #787878;
+    --rule:    #E6E2DC;
+    --cream:   #FAF8F5;
+    --parch:   #F4F0EA;
+    --gold:    #C9A227;
+    --gold-d:  #8B6914;
+    --gold-p:  #FAF5E8;
+    --teal:    #00695C;
+    --teal-p:  #EAF5F2;
+    --green:   #2A6B2E;
+    --green-p: #EDF6ED;
+    --red:     #7A1515;
+    --red-p:   #FDF0F0;
+    --blue:    #1A3560;
+    --blue-p:  #EEF2F9;
+    --amber:   #9A4E00;
+    --amber-p: #FDF4EC;
+    --purp:    #471570;
+    --purp-p:  #F3EEF9;
+    --flagr:   #B71C1C;
+    --flagg:   #1B5E20;
+  }
+
+  /* ── RESET ─────────────────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR NAV ───────────────────────────────────────────────────────── */
+  .shell { display: flex; min-height: 100vh; }
+
+  nav {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--onyx);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid var(--gold);
+  }
+
+  .nav-brand {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .nav-brand-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .nav-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.3;
+  }
+  .nav-subtitle {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .nav-items { padding: 16px 0; flex: 1; }
+
+  .nav-module {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .nav-module:hover { background: #1a1a1a; }
+  .nav-module.active { border-left-color: var(--gold); background: #1a1a1a; }
+
+  .nav-module-num {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .nav-module-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ccc;
+    line-height: 1.3;
+  }
+  .nav-module.active .nav-module-name { color: white; }
+
+  .nav-progress {
+    padding: 16px 20px;
+    border-top: 1px solid #2a2a2a;
+  }
+  .progress-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 8px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .progress-bar {
+    height: 3px;
+    background: #2a2a2a;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .progress-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    color: var(--gold);
+    margin-top: 5px;
+  }
+
+  /* ── MAIN CONTENT ──────────────────────────────────────────────────────── */
+  main { flex: 1; max-width: 820px; padding: 0 0 80px; }
+
+  .module { display: none; }
+  .module.visible { display: block; }
+
+  /* ── MODULE HERO ───────────────────────────────────────────────────────── */
+  .module-hero {
+    padding: 48px 52px 36px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .module-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .module-eyebrow {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .module-title {
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.2;
+    color: var(--onyx);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .module-lead {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.7;
+    max-width: 600px;
+    border-left: 3px solid;
+    padding-left: 16px;
+    margin-top: 16px;
+  }
+  .module-meta {
+    font-family: 'Arial', sans-serif;
+    font-size: 10px;
+    color: var(--mid);
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+  }
+  .module-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* ── CONTENT AREA ──────────────────────────────────────────────────────── */
+  .content { padding: 36px 52px; }
+
+  /* ── SECTION BLOCK ─────────────────────────────────────────────────────── */
+  .section-block { margin-bottom: 40px; }
+
+  .section-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .section-heading {
+    font-size: 22px;
+    font-weight: normal;
+    color: var(--onyx);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  p { margin-bottom: 14px; font-size: 15px; color: var(--slate); line-height: 1.72; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ── CALLOUT CARDS ─────────────────────────────────────────────────────── */
+  .callout {
+    border-radius: 4px;
+    padding: 20px 22px;
+    margin: 20px 0;
+    border-left: 4px solid;
+  }
+  .callout-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .callout p { font-size: 14px; margin-bottom: 8px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout.gold  { background: var(--gold-p);  border-color: var(--gold);  }
+  .callout.gold  .callout-label { color: var(--gold-d); }
+  .callout.teal  { background: var(--teal-p);  border-color: var(--teal);  }
+  .callout.teal  .callout-label { color: var(--teal); }
+  .callout.green { background: var(--green-p); border-color: var(--green); }
+  .callout.green .callout-label { color: var(--green); }
+  .callout.red   { background: var(--red-p);   border-color: var(--red);   }
+  .callout.red   .callout-label { color: var(--red); }
+  .callout.blue  { background: var(--blue-p);  border-color: var(--blue);  }
+  .callout.blue  .callout-label { color: var(--blue); }
+  .callout.amber { background: var(--amber-p); border-color: var(--amber); }
+  .callout.amber .callout-label { color: var(--amber); }
+
+  /* ── SCIENCE CARDS (horizontal data display) ───────────────────────────── */
+  .science-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .science-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 16px;
+    border-top: 3px solid;
+  }
+  .science-card-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .science-card-value {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .science-card-note {
+    font-family: 'Arial', sans-serif;
+    font-size: 10px;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+
+  /* ── THRESHOLD TABLE ───────────────────────────────────────────────────── */
+  .threshold-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-family: 'Arial', sans-serif; }
+  .threshold-table th {
+    background: var(--onyx);
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .threshold-table td {
+    padding: 10px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .threshold-table tr:nth-child(even) td { background: var(--parch); }
+  .threshold-table tr:last-child td { border-bottom: none; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag-red    { background: var(--red-p);   color: var(--flagr); }
+  .tag-amber  { background: var(--amber-p); color: var(--amber); }
+  .tag-green  { background: var(--green-p); color: var(--flagg); }
+  .tag-teal   { background: var(--teal-p);  color: var(--teal);  }
+  .tag-blue   { background: var(--blue-p);  color: var(--blue);  }
+  .tag-gold   { background: var(--gold-p);  color: var(--gold-d);}
+
+  /* ── INTENSITY SYSTEM ──────────────────────────────────────────────────── */
+  .intensity-row {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .intensity-badge {
+    width: 72px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    font-family: 'Arial', sans-serif;
+  }
+  .intensity-badge .pct {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+  .intensity-badge .day-label {
+    font-size: 8px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .intensity-content {
+    flex: 1;
+    padding: 14px 18px;
+    background: white;
+  }
+  .intensity-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .intensity-desc {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+  .intensity-coaching {
+    margin-top: 6px;
+    font-family: 'Arial', sans-serif;
+    font-size: 10px;
+    color: var(--mid);
+    font-style: italic;
+  }
+
+  /* ── PROTOCOL STEPS ────────────────────────────────────────────────────── */
+  .steps { margin: 20px 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .step-body { font-size: 14px; color: var(--slate); }
+
+  /* ── REFLECTION BLOCK ──────────────────────────────────────────────────── */
+  .reflection {
+    background: var(--onyx);
+    border-radius: 4px;
+    padding: 28px 28px 20px;
+    margin: 32px 0 20px;
+    border-top: 3px solid var(--gold);
+  }
+  .reflection-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .reflection-eyebrow {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .reflection-title {
+    font-size: 16px;
+    color: white;
+    font-weight: normal;
+  }
+  .reflection-qs { list-style: none; }
+  .reflection-qs li {
+    color: #ccc;
+    font-size: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #2a2a2a;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    line-height: 1.55;
+  }
+  .reflection-qs li:last-child { border-bottom: none; }
+  .reflection-qs li::before {
+    content: '→';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .reflection textarea {
+    width: 100%;
+    min-height: 80px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 12px;
+    color: #ddd;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    line-height: 1.6;
+    resize: vertical;
+    margin-top: 12px;
+  }
+  .reflection textarea:focus { outline: none; border-color: var(--gold); }
+  .reflection textarea::placeholder { color: #444; font-style: italic; }
+
+  /* ── QUOTE / INSIGHT ───────────────────────────────────────────────────── */
+  .key-insight {
+    background: var(--parch);
+    border: none;
+    border-left: 4px solid var(--gold);
+    padding: 18px 20px;
+    margin: 20px 0;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .key-insight cite {
+    display: block;
+    font-style: normal;
+    font-family: 'Arial', sans-serif;
+    font-size: 10px;
+    color: var(--mid);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── APPLY-IT BOX ──────────────────────────────────────────────────────── */
+  .apply-it {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+  .apply-it-header {
+    background: var(--ink);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .apply-it-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .apply-it-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+  }
+  .apply-it-body {
+    padding: 18px;
+    background: white;
+  }
+  .apply-it-body p { font-size: 14px; }
+
+  /* ── CHECKLIST ─────────────────────────────────────────────────────────── */
+  .checklist { list-style: none; margin: 16px 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--rule);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+  .check-box:hover { border-color: var(--gold); }
+  .check-box.checked {
+    background: var(--gold);
+    border-color: var(--gold);
+    position: relative;
+  }
+  .check-box.checked::after {
+    content: '✓';
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    position: absolute;
+    top: -1px;
+    left: 2px;
+  }
+
+  /* ── NAVIGATION FOOTER ─────────────────────────────────────────────────── */
+  .module-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 52px;
+    border-top: 1px solid var(--rule);
+    margin-top: 20px;
+    background: white;
+  }
+  .nav-btn {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .btn-next {
+    background: var(--onyx);
+    color: var(--gold);
+  }
+  .btn-next:hover { background: #1a1a1a; }
+  .btn-prev {
+    background: transparent;
+    color: var(--mid);
+    border: 1px solid var(--rule);
+  }
+  .btn-prev:hover { color: var(--ink); border-color: var(--ink); }
+  .module-position {
+    font-family: 'Arial', sans-serif;
+    font-size: 10px;
+    color: var(--mid);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
+  @media (max-width: 760px) {
+    nav { display: none; }
+    .module-hero { padding: 28px 24px 24px; }
+    .content { padding: 24px; }
+    .module-footer { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ── SIDEBAR ──────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-name">B R A C E   L I F E   S T U D I O S</span>
+    <div class="nav-title">ICONS Trainer<br>Learning Module</div>
+    <div class="nav-subtitle">5 modules · Self-paced</div>
+  </div>
+
+  <div class="nav-items">
+    <a class="nav-module active" onclick="goTo(0)" data-module="0">
+      <div class="nav-module-num" style="color:var(--teal)">Module 01</div>
+      <div class="nav-module-name">The ICONS Method — What It Is & Why It Exists</div>
+    </a>
+    <a class="nav-module" onclick="goTo(1)" data-module="1">
+      <div class="nav-module-num" style="color:var(--green)">Module 02</div>
+      <div class="nav-module-name">Reading a Client Plan — Every Section Decoded</div>
+    </a>
+    <a class="nav-module" onclick="goTo(2)" data-module="2">
+      <div class="nav-module-num" style="color:var(--gold)">Module 03</div>
+      <div class="nav-module-name">The Science Behind the Programming</div>
+    </a>
+    <a class="nav-module" onclick="goTo(3)" data-module="3">
+      <div class="nav-module-num" style="color:var(--red)">Module 04</div>
+      <div class="nav-module-name">Styku Data & Clinical Decision Making</div>
+    </a>
+    <a class="nav-module" onclick="goTo(4)" data-module="4">
+      <div class="nav-module-num" style="color:var(--blue)">Module 05</div>
+      <div class="nav-module-name">Delivering the Session — Standards in Action</div>
+    </a>
+  </div>
+
+  <div class="nav-progress">
+    <div class="progress-label">Your progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+    <div class="progress-text" id="progressText">Module 1 of 5</div>
+  </div>
+</nav>
+
+<!-- ── MAIN ──────────────────────────────────────────────────────────────── -->
+<main>
+
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<!-- MODULE 1 — THE ICONS METHOD -->
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<div class="module visible" id="module-0">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--teal-p),var(--cream))">
+    <div class="module-hero::before" style="background:var(--teal)"></div>
+    <div class="module-eyebrow" style="color:var(--teal)">Module 01 · Foundation</div>
+    <h1 class="module-title">The ICONS Method —<br>What It Is & Why It Exists</h1>
+    <p class="module-lead" style="border-color:var(--teal);color:var(--slate)">
+      Before you can deliver an ICONS session, you need to understand what you're delivering and why every decision in it was made. This module covers the method from the ground up.
+    </p>
+    <div class="module-meta">
+      <span>⏱ 15 min read</span>
+      <span>📖 Core concept</span>
+      <span>✍ 1 reflection exercise</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">What ICONS stands for</div>
+      <h2 class="section-heading">Five pillars. One framework.</h2>
+      <p>ICONS is not an acronym that was retrofitted to a good name. Each letter represents a genuine assessment category — a pillar of how Brace Life Studios evaluates every client and builds every program.</p>
+
+      <div class="science-grid">
+        <div class="science-card" style="border-top-color:var(--teal)">
+          <div class="science-card-label" style="color:var(--teal)">I</div>
+          <div class="science-card-value" style="color:var(--teal);font-size:18px;font-weight:700">Identity & Intention</div>
+          <div class="science-card-note">Who the client is, what they're training for, and what success looks like for them specifically.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--blue)">
+          <div class="science-card-label" style="color:var(--blue)">C</div>
+          <div class="science-card-value" style="color:var(--blue);font-size:18px;font-weight:700">Capacity & Composition</div>
+          <div class="science-card-note">What the client's body is made of and what it can currently do. Styku scan, lean mass, body fat, asymmetry.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--gold)">
+          <div class="science-card-label" style="color:var(--gold-d)">O</div>
+          <div class="science-card-value" style="color:var(--gold-d);font-size:18px;font-weight:700">Output & Objectives</div>
+          <div class="science-card-note">Performance data. Strength baselines from the 11-movement ICONS battery. Load targets. 8-week goals.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--green)">
+          <div class="science-card-label" style="color:var(--green)">N</div>
+          <div class="science-card-value" style="color:var(--green);font-size:18px;font-weight:700">Nutrition & Recovery</div>
+          <div class="science-card-note">BMR, protein targets, creatine protocol, collagen timing. Coaching-level framework, not a full diet plan.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--purp)">
+          <div class="science-card-label" style="color:var(--purp)">S</div>
+          <div class="science-card-value" style="color:var(--purp);font-size:18px;font-weight:700">Strategy & Sustainability</div>
+          <div class="science-card-note">The 8-week programming structure, session frequency, intensity framework, and what the next cycle looks like.</div>
+        </div>
+      </div>
+
+      <p>When a trainer delivers an ICONS session, they are delivering all five pillars simultaneously — not just executing a workout. The exercise table is the most visible part of the plan. The five pillars are what made every decision in that table.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">The core distinction</div>
+      <h2 class="section-heading">A prescription, not a template.</h2>
+
+      <blockquote class="key-insight">
+        "Every element — the load, the sets, the rest periods, the corrective protocol, the coaching cues — was built specifically for this client based on their assessment. Trainers do not improvise around the plan. They deliver it."
+        <cite>ICONS Trainer Staff Guide — Brace Life Studios</cite>
+      </blockquote>
+
+      <p>This is the single most important thing to understand about your role. The difference between a great ICONS trainer and a mediocre one is not creativity or fitness knowledge. It is <strong>fidelity to the plan</strong>.</p>
+      <p>When you improvise — when you swap an exercise because you prefer a different one, or skip a corrective block because you think the client doesn't need it — you are not improving the session. You are overriding a clinical decision that was made from the client's assessment data, strength baselines, and body composition scan.</p>
+
+      <div class="callout red">
+        <div class="callout-label">What an ICONS plan is not</div>
+        <p>Not a generic template. Not a suggestion. Not something that can be modified without a documented reason. Not a reflection of the trainer's own programming preferences.</p>
+      </div>
+      <div class="callout green">
+        <div class="callout-label">What an ICONS plan is</div>
+        <p>Built from the client's specific data. Updated after every assessment cycle. The single source of truth for how that client trains at Brace Life Studios. Consistent across every trainer who works with that client.</p>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">The intensity framework</div>
+      <h2 class="section-heading">Five colors. Five intentions.</h2>
+      <p>Every training day in an ICONS plan carries an intensity marker — a color and a percentage that tells you the philosophical goal of that session before you read a single exercise.</p>
+
+      <div class="intensity-row">
+        <div class="intensity-badge" style="background:var(--teal)">
+          <div class="pct">60%</div>
+          <div class="day-label">Teal</div>
+        </div>
+        <div class="intensity-content">
+          <div class="intensity-title" style="color:var(--teal)">Technique Day</div>
+          <div class="intensity-desc">Form is the only goal. No PRs. No grinding. Loads are light enough that perfect movement is achievable on every rep.</div>
+          <div class="intensity-coaching">Your coaching cue: "How does that feel? Can you feel where the load is?" — not "Push harder."</div>
+        </div>
+      </div>
+      <div class="intensity-row">
+        <div class="intensity-badge" style="background:var(--green)">
+          <div class="pct">70%</div>
+          <div class="day-label">Green</div>
+        </div>
+        <div class="intensity-content">
+          <div class="intensity-title" style="color:var(--green)">Moderate Strength</div>
+          <div class="intensity-desc">Building volume without peak CNS demand. Loads are challenging but not near-maximal. Protects output for heavier days.</div>
+          <div class="intensity-coaching">Your coaching cue: "That looked controlled — add 2.5 lbs for your next set." Not: "Push to failure."</div>
+        </div>
+      </div>
+      <div class="intensity-row">
+        <div class="intensity-badge" style="background:var(--gold)">
+          <div class="pct">80%</div>
+          <div class="day-label">Gold</div>
+        </div>
+        <div class="intensity-content">
+          <div class="intensity-title" style="color:var(--gold-d)">Primary Strength</div>
+          <div class="intensity-desc">The last 1–2 reps are hard but achievable with clean form. This is the primary stimulus day. Where most strength gains happen.</div>
+          <div class="intensity-coaching">Your coaching cue: "One more — keep that back flat." Watch carefully. This is where form breaks first.</div>
+        </div>
+      </div>
+      <div class="intensity-row">
+        <div class="intensity-badge" style="background:var(--red)">
+          <div class="pct">90%</div>
+          <div class="day-label">Red</div>
+        </div>
+        <div class="intensity-content">
+          <div class="intensity-title" style="color:var(--red)">Peak Intensity</div>
+          <div class="intensity-desc">Near-maximal effort. Full rest between sets. CNS output is the priority. This is where bone density is built and athletic capacity is tested.</div>
+          <div class="intensity-coaching">Your coaching cue: "Take your full rest. The next set matters more than saving 30 seconds."</div>
+        </div>
+      </div>
+      <div class="intensity-row">
+        <div class="intensity-badge" style="background:var(--blue)">
+          <div class="pct">AR</div>
+          <div class="day-label">Blue</div>
+        </div>
+        <div class="intensity-content">
+          <div class="intensity-title" style="color:var(--blue)">Active Recovery</div>
+          <div class="intensity-desc">No PRs. No AMRAP. No grinding. The client should feel better leaving than when they arrived. This is not a light training day — it is a recovery day with intentional movement.</div>
+          <div class="intensity-coaching">Your coaching cue: "This is your recovery session. We move intentionally, not intensely."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection">
+      <div class="reflection-header">
+        <span class="reflection-eyebrow">Reflect</span>
+        <span class="reflection-title">Before moving to Module 2</span>
+      </div>
+      <ul class="reflection-qs">
+        <li>Think of a session you recently delivered. Which ICONS intensity level was it? Did the load selection match that intention?</li>
+        <li>Have you ever modified a plan during a session without documenting it? What was your reason — and would it hold up to lead coach review?</li>
+        <li>Of the five ICONS pillars, which one do you know the least about for your current clients? What would you need to find out?</li>
+      </ul>
+      <textarea placeholder="Write your reflections here — these are private notes for your own development..."></textarea>
+    </div>
+
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" disabled>← Previous</button>
+    <span class="module-position">Module 1 of 5</span>
+    <button class="nav-btn btn-next" onclick="goTo(1)">Module 2: Reading a Plan →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<!-- MODULE 2 — READING A CLIENT PLAN -->
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<div class="module" id="module-1">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--green-p),var(--cream))">
+    <div class="module-eyebrow" style="color:var(--green)">Module 02 · Plan Literacy</div>
+    <h1 class="module-title">Reading a Client Plan —<br>Every Section Decoded</h1>
+    <p class="module-lead" style="border-color:var(--green)">
+      Every element of an ICONS plan means something specific. This module teaches you to read it like a clinical document — because that's what it is.
+    </p>
+    <div class="module-meta">
+      <span>⏱ 20 min read</span>
+      <span>📋 Applied learning</span>
+      <span>✍ 2 reflection exercises</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Where to start</div>
+      <h2 class="section-heading">Three minutes before every session.</h2>
+      <p>You should never need to read a plan front-to-back before delivering a session. It is designed so each day is self-contained. Here is the correct reading sequence before any ICONS session:</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" style="background:var(--green)">1</div>
+          <div class="step-content">
+            <div class="step-title">Cover page — check the callout boxes first</div>
+            <div class="step-body">Red callout = active restriction or corrective priority. Read it fully. If it says "overhead loading suspended" — that applies to today's session regardless of what the exercise table says. Red always overrides the table.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--green)">2</div>
+          <div class="step-content">
+            <div class="step-title">Confirm the week number</div>
+            <div class="step-body">The LOAD column changes week over week. A client in Week 3 is not using Week 1 loads. Check the baselines table and confirm which week you're in. This is the most common error trainers make.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--green)">3</div>
+          <div class="step-content">
+            <div class="step-title">Go to today's training day only</div>
+            <div class="step-body">Read the warm-up. Read the coaching cue for the first exercise in each block. That's your prep. The rest is delivered in the moment.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--green)">4</div>
+          <div class="step-content">
+            <div class="step-title">For virtual sessions: confirm equipment before starting</div>
+            <div class="step-body">If a piece of equipment isn't available, you need a substitution from the lead coach — not an improvised alternative. Confirm before the warm-up begins, not 20 minutes in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">The callout color system</div>
+      <h2 class="section-heading">Color is clinical information.</h2>
+      <p>Every callout box in an ICONS plan is a specific color for a specific reason. Learning to read color at a glance tells you what to do with the information before you read a word.</p>
+
+      <table class="threshold-table">
+        <thead><tr><th>Color</th><th>Meaning</th><th>Action Required</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag tag-gold">Gold</span></td><td>Warm-up, general coaching note, ICONS Note</td><td>Read and follow — this is guidance, not restriction</td></tr>
+          <tr><td><span class="tag tag-green">Green</span></td><td>Baseline note, positive performance data, PR, cleared status</td><td>Reference for load selection and progress tracking</td></tr>
+          <tr><td><span class="tag tag-red">Red</span></td><td>Corrective priority, clinical flag, overhead restriction, emergency protocol</td><td>Read first. Red overrides everything. No exceptions.</td></tr>
+          <tr><td><span class="tag tag-teal">Teal</span></td><td>Styku scan data, assessment findings, asymmetry protocol</td><td>Apply to exercise selection and side-leading decisions</td></tr>
+          <tr><td><span class="tag tag-blue">Blue</span></td><td>Cool-down, recovery, mobility</td><td>Deliver as written — not optional for clients with joint or spinal considerations</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout red">
+        <div class="callout-label">The rule you must never break</div>
+        <p>If you see a red callout on the cover page that says a movement is suspended or restricted — that restriction applies regardless of what the exercise table says for today. The table was written before the restriction was added. Red wins.</p>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">The exercise table</div>
+      <h2 class="section-heading">Seven columns. Zero improvisation.</h2>
+      <p>Every exercise in an ICONS plan appears in a standardized seven-column table. Each column is a coaching instruction, not a suggestion.</p>
+
+      <table class="threshold-table">
+        <thead><tr><th>Column</th><th>What It Tells You</th><th>Common Mistake</th></tr></thead>
+        <tbody>
+          <tr><td><strong>EXERCISE</strong></td><td>The exact movement and variation. If it says "Split Stance Hex DL" — that is not the same as a regular deadlift.</td><td>Swapping for a preferred exercise without documenting it.</td></tr>
+          <tr><td><strong>SETS</strong></td><td>Number of working sets. Does not include warm-up sets.</td><td>Counting warm-up sets as working sets.</td></tr>
+          <tr><td><strong>REPS</strong></td><td>Rep target range for this week. A range means hit the top before adding weight.</td><td>Stopping at the low end of the range when the client could do more.</td></tr>
+          <tr><td><strong>LOAD</strong></td><td>The weight for the current week, often with a progression note. This is the clinical prescription.</td><td>Using the baseline number instead of the current-week load. Or guessing.</td></tr>
+          <tr><td><strong>TEMPO</strong></td><td>e.g. 3-1-1 = 3 sec lower · 1 sec pause · 1 sec lift. The eccentric is where adaptation happens.</td><td>Allowing clients to rush the descent. "Controlled" is not a tempo.</td></tr>
+          <tr><td><strong>REST</strong></td><td>The programmed recovery period. Rest is part of the design — too short or too long both change the stimulus.</td><td>Letting clients skip rest because they "feel fine."</td></tr>
+          <tr><td><strong>COACHING CUE</strong></td><td>The 1–2 most important form points, written specifically for this client. Deliver it before or during the set, not after.</td><td>Using a generic cue instead of the plan's cue. Or not delivering it at all.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="apply-it">
+      <div class="apply-it-header">
+        <span class="apply-it-label">Apply It</span>
+        <span class="apply-it-title">Before your next session with a client</span>
+      </div>
+      <div class="apply-it-body">
+        <p>Pull out that client's ICONS plan. Practice the three-minute read: cover page → red callouts → week number → today's warm-up → first cue of each block. Time yourself. It should take under three minutes. If it takes longer, you're not yet fluent in the document format.</p>
+        <p>Then answer: what is the Week 1 load vs the current-week load for their primary lift? Are those the same? If yes — are you sure you're using the right number?</p>
+      </div>
+    </div>
+
+    <div class="reflection">
+      <div class="reflection-header">
+        <span class="reflection-eyebrow">Reflect</span>
+        <span class="reflection-title">Plan literacy</span>
+      </div>
+      <ul class="reflection-qs">
+        <li>Have you ever delivered a coaching cue that was different from what the plan said? What did you say instead — and why?</li>
+        <li>Which column in the exercise table do you find hardest to enforce consistently — and what's the reason?</li>
+        <li>If you saw a red callout that said "No overhead loading" but the exercise table had an Overhead Press — what exactly would you do, step by step?</li>
+      </ul>
+      <textarea placeholder="Write your reflections here..."></textarea>
+    </div>
+
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(0)">← Module 1</button>
+    <span class="module-position">Module 2 of 5</span>
+    <button class="nav-btn btn-next" onclick="goTo(2)">Module 3: The Science →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<!-- MODULE 3 — THE SCIENCE -->
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<div class="module" id="module-2">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--gold-p),var(--cream))">
+    <div class="module-eyebrow" style="color:var(--gold-d)">Module 03 · Evidence Base</div>
+    <h1 class="module-title">The Science Behind<br>the Programming</h1>
+    <p class="module-lead" style="border-color:var(--gold)">
+      Every decision in an ICONS plan has a research basis. This module teaches you the most important science — so you coach from knowledge, not from habit.
+    </p>
+    <div class="module-meta">
+      <span>⏱ 25 min read</span>
+      <span>🔬 Evidence-based</span>
+      <span>✍ 2 reflection exercises</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">Progressive overload</div>
+      <h2 class="section-heading">Why we use RIR — not failure.</h2>
+
+      <blockquote class="key-insight">
+        "Training to momentary failure does not consistently improve strength or hypertrophy and increases injury and recovery cost."
+        <cite>ACSM 2026 Position Stand — Resistance Training Prescription</cite>
+      </blockquote>
+
+      <p>This surprises most trainers the first time they hear it. The idea that "you have to push to failure to grow" is pervasive in fitness culture — and it is not supported by the strongest current evidence. The ICONS system uses <strong>RIR (Reps In Reserve)</strong> for every working set.</p>
+
+      <div class="science-grid">
+        <div class="science-card" style="border-top-color:var(--teal)">
+          <div class="science-card-label" style="color:var(--teal)">3+ RIR</div>
+          <div class="science-card-value" style="color:var(--teal)">Warm-up</div>
+          <div class="science-card-note">Pattern rehearsal. Not a stimulus. Never misread as a working set.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--green)">
+          <div class="science-card-label" style="color:var(--green)">2 RIR</div>
+          <div class="science-card-value" style="color:var(--green)">Working set</div>
+          <div class="science-card-note">The default standard. Could do 2 more with perfect form. Doesn't.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--gold)">
+          <div class="science-card-label" style="color:var(--gold-d)">1 RIR</div>
+          <div class="science-card-value" style="color:var(--gold-d)">Hard set</div>
+          <div class="science-card-note">Used on primary strength sets at 80–90% intensity. One rep left in the tank.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--red)">
+          <div class="science-card-label" style="color:var(--red)">0 RIR</div>
+          <div class="science-card-value" style="color:var(--red)">Near-failure</div>
+          <div class="science-card-note">Used sparingly. Only on documented peak sessions. Never the default.</div>
+        </div>
+      </div>
+
+      <div class="callout gold">
+        <div class="callout-label">How to add weight — the RIR rule</div>
+        <p><strong>Add weight when:</strong> client hits the top of the rep range + 2 RIR + clean form on all sets.</p>
+        <p><strong>Same weight when:</strong> form degraded on any set, even if the reps were completed.</p>
+        <p><strong>Drop weight when:</strong> missed reps / joint pain / unusual fatigue. Document it and flag the lead coach.</p>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">Women & strength training</div>
+      <h2 class="section-heading">What the research actually says.</h2>
+      <p>ICONS is built for women. Most of what popular fitness culture says about training women is wrong. Here is what the evidence shows:</p>
+
+      <table class="threshold-table">
+        <thead><tr><th>Myth</th><th>Evidence</th><th>ICONS Application</th></tr></thead>
+        <tbody>
+          <tr><td>"Women can't build strength like men"</td><td>Roberts, Nuckols & Krieger 2020: women show equal or greater relative strength gains than men. Upper-body strength gains favored females significantly (ES=−0.60).</td><td>Never under-load a client. Women adapt at least as well as men to heavy loading.</td></tr>
+          <tr><td>"Women need lighter weights, more reps"</td><td>No evidence supporting a different optimal rep range for women vs men. Hypertrophy response shows no sex difference (ES=0.07).</td><td>Load by performance data, not by gender assumptions. The plan's loads are correct.</td></tr>
+          <tr><td>"Women need more rest"</td><td>Women actually fatigue less than men at equivalent relative loads and recover faster between sets (Sandra Hunter, Acta Physiologica 2014).</td><td>Shorter rest is valid for women. The plan's rest periods are minimum — not maximum.</td></tr>
+          <tr><td>"Train lighter during the luteal phase"</td><td>Colenso-Semple, Phillips et al. 2023 (umbrella review): NO reliable influence of cycle phase on strength adaptations.</td><td>Train hard year-round. Autoregulate around individual symptoms over ≥3 cycles — not a calendar.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">Bone density — the LIFTMOR standard</div>
+      <h2 class="section-heading">Heavy loading is medicine for bone.</h2>
+
+      <blockquote class="key-insight">
+        "8 months of twice-weekly high-intensity resistance training improved lumbar spine bone density +2.9% vs −1.2% in the control group. In postmenopausal women with low bone mass."
+        <cite>Watson & Beck, LIFTMOR RCT, Journal of Bone and Mineral Research, 2018</cite>
+      </blockquote>
+
+      <p>This overturned the old belief that postmenopausal women with low bone mass shouldn't lift heavy. The opposite is true: <strong>heavy compound lifting at ≥80% 1RM is the most osteogenic stimulus available.</strong></p>
+      <p>This is why the hex bar deadlift at high loads is non-negotiable in every eligible client's plan. When you hear yourself thinking "she's 65, maybe I should lighten the load" — check the ICONS plan. If the plan says 185 lbs, that was a clinical decision made from her assessment data, not an accident.</p>
+      <p>Frame it to clients as a <strong>bone investment</strong> — not "heavy lifting." Every heavy set at ≥80% is a direct physiological intervention for bone density. Clients who understand this protect their own training compliance.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">Nutrition basics for ICONS clients</div>
+      <h2 class="section-heading">Three things every trainer must know.</h2>
+
+      <div class="science-grid">
+        <div class="science-card" style="border-top-color:var(--green)">
+          <div class="science-card-label" style="color:var(--green)">Protein — the non-negotiable</div>
+          <div class="science-card-value" style="color:var(--green);font-size:16px">2.0–2.2 g/kg</div>
+          <div class="science-card-note">For women 50+ with ALST At-Risk status. Minimum 1.6 g/kg for all active women. Per meal: ~0.4 g/kg to hit the leucine threshold for muscle protein synthesis.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--blue)">
+          <div class="science-card-label" style="color:var(--blue)">Creatine — strongly indicated</div>
+          <div class="science-card-value" style="color:var(--blue);font-size:16px">3–5g/day</div>
+          <div class="science-card-note">Monohydrate. No loading phase needed. With food. Saturates in 3–4 weeks. Strength, cognition, bone density benefits. Especially for women 40+ and ALST At-Risk clients.</div>
+        </div>
+        <div class="science-card" style="border-top-color:var(--amber)">
+          <div class="science-card-label" style="color:var(--amber)">Collagen — timing matters</div>
+          <div class="science-card-value" style="color:var(--amber);font-size:16px">15g + Vit C</div>
+          <div class="science-card-note">15g collagen + 50mg Vitamin C, 30–60 min BEFORE the loading session. Requires the mechanical load to be effective (Shaw et al. 2017, AJCN). Supports tendons, ligaments, joint health.</div>
+        </div>
+      </div>
+
+      <p>These are not suggestions for clients to consider. For ALST At-Risk clients, these are standard parts of the ICONS protocol. If a client reports not taking protein or creatine — note it, ask why, and flag it in your weekly session log.</p>
+    </div>
+
+    <div class="reflection">
+      <div class="reflection-header">
+        <span class="reflection-eyebrow">Reflect</span>
+        <span class="reflection-title">The science in your practice</span>
+      </div>
+      <ul class="reflection-qs">
+        <li>Have you ever reduced a client's load because of their age? What was your reasoning — and does it hold up against the LIFTMOR finding?</li>
+        <li>How do you currently explain to a client why their rest period matters? Could you explain it in terms of CNS recovery and training stimulus?</li>
+        <li>Which piece of research in this module surprised you most — and why?</li>
+      </ul>
+      <textarea placeholder="Write your reflections here..."></textarea>
+    </div>
+
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(1)">← Module 2</button>
+    <span class="module-position">Module 3 of 5</span>
+    <button class="nav-btn btn-next" onclick="goTo(3)">Module 4: Clinical Decisions →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<!-- MODULE 4 — STYKU & CLINICAL DECISION MAKING -->
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<div class="module" id="module-3">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--red-p),var(--cream))">
+    <div class="module-eyebrow" style="color:var(--red)">Module 04 · Clinical Intelligence</div>
+    <h1 class="module-title">Styku Data &<br>Clinical Decision Making</h1>
+    <p class="module-lead" style="border-color:var(--red)">
+      When a client's Styku scan is in front of you, you are looking at clinical data that shapes everything in their program. This module teaches you to read it and act on it correctly.
+    </p>
+    <div class="module-meta">
+      <span>⏱ 20 min read</span>
+      <span>⚕ Clinical application</span>
+      <span>✍ 2 reflection exercises</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">ALST — the most important number</div>
+      <h2 class="section-heading">What the ALST index tells you about a client's risk.</h2>
+      <p>The <strong>Appendicular Lean Soft Tissue Index (ALST)</strong> measures the lean mass in a client's arms and legs relative to their height. It is the clinical marker for sarcopenia risk. For women, the threshold that defines At-Risk status is <strong>5.5 kg/m²</strong> (EWGSOP2 2018).</p>
+
+      <table class="threshold-table">
+        <thead><tr><th>ALST Value</th><th>Status</th><th>ICONS Response</th></tr></thead>
+        <tbody>
+          <tr><td><strong>≥ 7.0 kg/m²</strong></td><td><span class="tag tag-green">Optimal</span></td><td>Program normally. Continue progressive loading.</td></tr>
+          <tr><td><strong>5.5–6.99 kg/m²</strong></td><td><span class="tag tag-teal">Normal</span></td><td>Monitor at rescan. No immediate program change required.</td></tr>
+          <tr><td><strong>&lt; 5.5 kg/m²</strong></td><td><span class="tag tag-red">At-Risk</span></td><td>Muscle-building is the primary goal. Protein escalation. Creatine strongly indicated. Protein reminder on every training page. Document.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout red">
+        <div class="callout-label">Critical: always use Styku's reported ALST value</div>
+        <p>Styku's ALST calculation is different from manually adding arm and leg lean tissue numbers. Do not calculate it yourself from the segmental data. Use the number Styku reports on the scan summary page.</p>
+      </div>
+
+      <p>When a client's ALST is At-Risk, <strong>muscle-building is not a preference — it is the physiological priority</strong>. The plan is built around this. Every heavy compound set, every progressive load increase, every protein reminder is a clinical intervention for lean mass preservation and bone density.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Asymmetry — the side-leading rule</div>
+      <h2 class="section-heading">Which side leads — and why it matters.</h2>
+      <p>When Styku's segmental analysis shows a difference of 0.5 lbs or more between left and right arms or legs, the ICONS asymmetry protocol applies to every relevant exercise. The rule is simple but must be followed precisely:</p>
+
+      <div class="callout teal">
+        <div class="callout-label">The asymmetry protocol</div>
+        <p><strong>Lower LST number = weaker side = leads all unilateral exercises.</strong></p>
+        <p>If a client's left arm LST is 6.5 lbs and right arm is 7.2 lbs — the left arm is weaker. The left arm leads all single-arm rows, all pressing on one side, all unilateral pulling. Log left vs right performance separately every session.</p>
+        <p>For suitcase carry: the weaker arm holds the weight. The anti-lateral flexion demand falls on the opposite side — which trains the weaker side's core indirectly. This is the correct protocol.</p>
+      </div>
+
+      <div class="apply-it">
+        <div class="apply-it-header">
+          <span class="apply-it-label">Work Through It</span>
+          <span class="apply-it-title">Asymmetry scenario</span>
+        </div>
+        <div class="apply-it-body">
+          <p><strong>A client's Styku scan shows:</strong> Left Arm LST 7.0 lbs / Right Arm LST 6.2 lbs. Left Leg LST 12.7 lbs / Right Leg LST 13.5 lbs.</p>
+          <p>Before reading further: which arm leads the single-arm row? Which leg leads the step-up and split squat? Which arm holds the suitcase carry?</p>
+          <p><em>Answer: Right arm leads the row (R 6.2 < L 7.0 — right is weaker). Left leg leads step-up and split squat (L 12.7 < R 13.5 — left is weaker). Right arm holds the suitcase carry (weaker arm carries).</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Other clinical flags</div>
+      <h2 class="section-heading">What else to watch for in scan data.</h2>
+
+      <table class="threshold-table">
+        <thead><tr><th>Metric</th><th>Flag Threshold</th><th>Clinical Meaning</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><strong>VFA (Visceral Fat)</strong></td><td><span class="tag tag-amber">&gt; 100 cm²</span></td><td>Elevated cardiometabolic risk. This is abdominal fat around organs — more significant than subcutaneous fat.</td><td>Flag in report. Nutrition emphasis. Resistance training is the primary intervention.</td></tr>
+          <tr><td><strong>BMI</strong></td><td><span class="tag tag-red">&lt; 18.5</span></td><td>Clinical underweight — even if body fat % appears "FIT." Low total weight + relatively high fat % + low ALST = sarcopenic obesity.</td><td>Flag clinically. Do NOT use this alone. Cross-reference with body fat % and ALST.</td></tr>
+          <tr><td><strong>BMI</strong></td><td><span class="tag tag-amber">&gt; 30</span></td><td>Clinical obesity. Body composition programming priorities shift.</td><td>Flag. Document. Plan is built accordingly.</td></tr>
+          <tr><td><strong>Shape Score</strong></td><td>0–100</td><td>Composite score from body fat %, waist-to-height ratio, and muscle-fat index. Useful for client communication and trend-tracking.</td><td>Use for client motivation and 8-week comparison. Not a clinical decision maker on its own.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Pelvic floor — the protocol every trainer must know</div>
+      <h2 class="section-heading">When heavy loading raises intra-abdominal pressure.</h2>
+      <p>Heavy carries, squats, deadlifts, and hip thrusts at high loads raise intra-abdominal pressure. For postmenopausal women, the pelvic floor may not counter this adequately — especially at first. Symptoms include leaking, heaviness, or a feeling of pressure during or after the exercise.</p>
+
+      <div class="callout red">
+        <div class="callout-label">The protocol — memorize this</div>
+        <p><strong>Teach before loading:</strong> brace the core before picking up any load. Exhale on the exertion. Do not hold the breath during the movement.</p>
+        <p><strong>If symptoms are reported:</strong> reduce the load and stop the exercise. Do not tell the client to "push through." Do not minimize the symptom.</p>
+        <p><strong>Exact language to use:</strong> "If you experience any leaking, heaviness, or pressure — stop and flag me. This is common and completely treatable. We will not train through it."</p>
+        <p><strong>Refer to pelvic floor PT</strong> when symptomatic. Document it and notify the lead coach before the next session.</p>
+      </div>
+    </div>
+
+    <div class="reflection">
+      <div class="reflection-header">
+        <span class="reflection-eyebrow">Reflect</span>
+        <span class="reflection-title">Clinical application</span>
+      </div>
+      <ul class="reflection-qs">
+        <li>For each client you currently work with — do you know their ALST index? If not, where would you find it, and what would you do with it?</li>
+        <li>Have you ever had a client mention a symptom during a carry or hip thrust that you now recognize as a pelvic floor flag? What did you do then — and what would you do now?</li>
+        <li>Can you state the asymmetry rule from memory, including the suitcase carry laterality, without reading this page?</li>
+      </ul>
+      <textarea placeholder="Write your reflections here..."></textarea>
+    </div>
+
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(2)">← Module 3</button>
+    <span class="module-position">Module 4 of 5</span>
+    <button class="nav-btn btn-next" onclick="goTo(4)">Module 5: Delivering the Session →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<!-- MODULE 5 — DELIVERING THE SESSION -->
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<div class="module" id="module-4">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--blue-p),var(--cream))">
+    <div class="module-eyebrow" style="color:var(--blue)">Module 05 · Execution</div>
+    <h1 class="module-title">Delivering the Session —<br>Standards in Action</h1>
+    <p class="module-lead" style="border-color:var(--blue)">
+      Everything in the previous four modules comes together here. This is what a correctly delivered ICONS session looks and sounds like — and what it never looks or sounds like.
+    </p>
+    <div class="module-meta">
+      <span>⏱ 20 min read</span>
+      <span>🎯 Execution standards</span>
+      <span>✍ Final reflection</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">The session sequence</div>
+      <h2 class="section-heading">Eight steps. No improvisation.</h2>
+      <p>An ICONS session is delivered in the same order every time. The only things that change are the exercises and loads — the structure does not change.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">1</div>
+          <div class="step-content">
+            <div class="step-title">Before the session — read the plan</div>
+            <div class="step-body">Cover page. Red callouts. Week number. Today's warm-up. First cue of each block. Three minutes. Done. Do not arrive at the session unprepared and improvise.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">2</div>
+          <div class="step-content">
+            <div class="step-title">Warm-up — follow it exactly</div>
+            <div class="step-body">The warm-up is not the time to improvise. Every warm-up element is there for a specific reason — to prepare the pattern that follows. If it's written, do it.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">3</div>
+          <div class="step-content">
+            <div class="step-title">Corrective block — non-optional</div>
+            <div class="step-body">The corrective primer runs in full before the primary lifts it precedes. It is not skipped when "time is short." If the session runs long because of the corrective, the session runs long.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">4</div>
+          <div class="step-content">
+            <div class="step-title">Primary blocks — deliver the table</div>
+            <div class="step-body">Use the LOAD column for the current week. Enforce the TEMPO. Deliver the COACHING CUE before or during the set — not after. Track rest periods. These are all non-negotiable.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">5</div>
+          <div class="step-content">
+            <div class="step-title">Rest periods — use a timer</div>
+            <div class="step-body">Rest is part of the program. Too short = reduced strength output on the next set. Too long = reduced metabolic stimulus. Neither is an improvement on the plan. Use a timer.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">6</div>
+          <div class="step-content">
+            <div class="step-title">Finisher — track and record</div>
+            <div class="step-body">The finisher (orange callout) runs at the end if time allows. For fat loss clients it is non-optional. Record AMRAP rounds or time completed — this data is tracked week over week and is meaningless if it's not recorded.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">7</div>
+          <div class="step-content">
+            <div class="step-title">Cool-down — therapeutic, not cosmetic</div>
+            <div class="step-body">For clients with spinal or joint considerations, the cool-down decompresses the spine and restores mobility after loading. It is not "nice to have." It is not dropped because the session ran long.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--blue)">8</div>
+          <div class="step-content">
+            <div class="step-title">Session log — before you leave</div>
+            <div class="step-body">Loads used on primary lifts. Reps on max-effort sets. Any form observations. Anything the client reported. This goes to the lead coach. An unsubmitted log is a standards event.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">Standards checklist</div>
+      <h2 class="section-heading">Before every session — non-negotiable items.</h2>
+      <p>Mark each item only when you can confirm it, not when you think it's probably fine.</p>
+
+      <ul class="checklist" id="session-checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I read the cover page and checked for red callouts.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I confirmed the week number and the correct load for today.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I read the warm-up for today's day.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I know the first coaching cue for each block.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I know which corrective exercises run today and in what order.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I know any active restrictions for this client (shoulder, knee, overhead, etc.).</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>For virtual: I confirmed equipment with the client before starting.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I know the asymmetry protocol for this client — which side leads unilateral work.</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">What you never do without authorization</div>
+      <h2 class="section-heading">The absolute standards. No exceptions.</h2>
+
+      <div class="callout red">
+        <div class="callout-label">Never — without lead coach authorization and documentation</div>
+        <p>Substitute an exercise not listed in the plan · Skip a corrective protocol · Increase load ahead of the programmed week · Remove the cool-down because the session ran long · Override a restriction because the client requests it · Continue a session when a client reports radiating pain · Modify the plan without documenting it and notifying the lead coach.</p>
+      </div>
+
+      <blockquote class="key-insight">
+        "The goal: every trainer at Brace Life Studios should be able to pick up any client's ICONS plan, read it in 3 minutes before the session, and deliver it at the same standard as the lead coach who built it. The plan contains everything needed."
+        <cite>ICONS Trainer Staff Guide — Brace Life Studios</cite>
+      </blockquote>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">When symptoms change during a session</div>
+      <h2 class="section-heading">Three scenarios. Three correct responses.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" style="background:var(--amber)">!</div>
+          <div class="step-content">
+            <div class="step-title">Pain or discomfort reported during a set</div>
+            <div class="step-body">Stop the exercise immediately. Do not push through. Switch to an approved alternative from the plan. Document the exercise, the set number, and what the client reported. Flag to the lead coach before the next session.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--red)">!</div>
+          <div class="step-content">
+            <div class="step-title">Radiating pain, numbness, or tingling</div>
+            <div class="step-body">Stop all training immediately. Help the client to a comfortable seated position. Do not return to any exercise. Contact the lead coach during or immediately after the session. Physician notification and clearance required before the next session.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background:var(--flagr)">!</div>
+          <div class="step-content">
+            <div class="step-title">Client requests a restricted movement</div>
+            <div class="step-body">Do not allow it, regardless of how the client frames the request. "My shoulder feels fine today" is not medical clearance. Explain that the restriction is in place from their program and any change must come from the lead coach. Never override a documented restriction under client pressure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection" style="background:var(--onyx)">
+      <div class="reflection-header">
+        <span class="reflection-eyebrow">Final Reflection</span>
+        <span class="reflection-title">After completing all five modules</span>
+      </div>
+      <ul class="reflection-qs">
+        <li>What is the single most important thing you are going to do differently in your next client session as a result of working through this module?</li>
+        <li>Which of the five modules covered something you did not already know — or challenged something you thought you knew?</li>
+        <li>Write one sentence that describes what an ICONS plan is, in your own words. Could you say that sentence to a client and have it land?</li>
+        <li>What question do you still have after completing this module that you want to bring to the lead coach?</li>
+      </ul>
+      <textarea style="min-height:120px" placeholder="Write your final reflections here — consider sharing these with your lead coach as part of your onboarding..."></textarea>
+    </div>
+
+    <div style="text-align:center;padding:32px 0 16px;border-top:1px solid var(--rule);margin-top:32px">
+      <div style="font-family:Arial,sans-serif;font-size:9px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">You have completed all five modules</div>
+      <div style="font-size:22px;color:var(--onyx);margin-bottom:6px">It's not about working out.<br>It's about working <em>in.</em></div>
+      <div style="font-family:Arial,sans-serif;font-size:10px;color:var(--gold);letter-spacing:1px">B R A C E   L I F E   S T U D I O S  ·  bracelifestudios.com</div>
+    </div>
+
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(3)">← Module 4</button>
+    <span class="module-position">Module 5 of 5 — Complete</span>
+    <button class="nav-btn btn-next" style="background:var(--gold);color:var(--onyx)" onclick="goTo(0)">Start Over ↺</button>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+let current = 0;
+
+function goTo(n) {
+  document.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
+  document.querySelectorAll('.nav-module').forEach(m => m.classList.remove('active'));
+  document.getElementById('module-' + n).classList.add('visible');
+  document.querySelector('[data-module="' + n + '"]').classList.add('active');
+  current = n;
+  updateProgress();
+  window.scrollTo(0, 0);
+}
+
+function updateProgress() {
+  const pct = ((current + 1) / 5) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = 'Module ' + (current + 1) + ' of 5';
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+}
+
+// Save reflections to sessionStorage
+document.querySelectorAll('textarea').forEach((ta, i) => {
+  const key = 'icons-reflection-' + i;
+  ta.value = sessionStorage.getItem(key) || '';
+  ta.addEventListener('input', () => sessionStorage.setItem(key, ta.value));
+});
+</script>
+</body>
+</html>
