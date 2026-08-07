@@ -57,26 +57,38 @@ function checkAsymmetryConsistency(data, texts, issues) {
   if (!styku) return;
 
   const parts = [
-    { label: 'leg', left: styku.leftLegLST, right: styku.rightLegLST },
-    { label: 'arm', left: styku.leftArmLST, right: styku.rightArmLST },
+    { label: 'leg', words: 'legs?', left: styku.leftLegLST, right: styku.rightLegLST },
+    { label: 'arm', words: 'arms?', left: styku.leftArmLST, right: styku.rightArmLST },
   ];
+
+  const keywordRe = /\b(leads?|leading|weaker)\b/i;
 
   for (const part of parts) {
     const result = weakerSide(part.left, part.right);
     if (!result || !result.weaker) continue;
     const wrongSide = result.weaker === 'left' ? 'right' : 'left';
-    const leadRe = new RegExp(`\\b${wrongSide}\\b[^.]{0,50}?\\b(leads?|leading)\\b`, 'i');
-    const weakerRe = new RegExp(`\\b${wrongSide}\\s+(leg|arm)\\b[^.]{0,30}?\\bweaker\\b`, 'i');
+    // Require the body-part word adjacent to the side (either order) so a
+    // "right ARM ... leads" sentence can't trip the LEG check, and vice versa.
+    const mentionRe = new RegExp(
+      `\\b(?:${wrongSide}[\\s-]+${part.words}|${part.words}[^.]{0,15}?${wrongSide})\\b`,
+      'gi',
+    );
     for (const [loc, text] of texts) {
-      if (leadRe.test(text) || weakerRe.test(text)) {
-        issues.push({
-          severity: 'error',
-          loc,
-          message:
-            `${part.label} asymmetry contradiction: Styku LST is L=${part.left} / R=${part.right} ` +
-            `(gap ${result.gap.toFixed(1)} lbs) — the LOWER number (${result.weaker}) is the weaker ` +
-            `side per the ICONS rule, but this text says "${wrongSide}" leads/is weaker: "${text}"`,
-        });
+      let match;
+      while ((match = mentionRe.exec(text)) !== null) {
+        const windowStart = Math.max(0, match.index - 20);
+        const windowEnd = Math.min(text.length, match.index + match[0].length + 60);
+        if (keywordRe.test(text.slice(windowStart, windowEnd))) {
+          issues.push({
+            severity: 'error',
+            loc,
+            message:
+              `${part.label} asymmetry contradiction: Styku LST is L=${part.left} / R=${part.right} ` +
+              `(gap ${result.gap.toFixed(1)} lbs) — the LOWER number (${result.weaker}) is the weaker ` +
+              `side per the ICONS rule, but this text says "${wrongSide} ${part.label}" leads/is weaker: "${text}"`,
+          });
+          break;
+        }
       }
     }
   }
