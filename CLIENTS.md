@@ -16,6 +16,19 @@
 - Program: 3-day (Day 1 Full-Body Foundation 70%, Day 2 Lower Unilateral & Corrective 60%, Day 3 Upper Push/Pull + Core 80%)
 - Baselines tested 8/5/2026: Squat 35×5, OH Press 12×5, Incline Push-Up ×5, Farmer Carry 25/hand, Hip Thrust 45×5, RDL 17.5/hand×5, Plank 50s. Deadlift and Lunges not yet tested.
 
+### Johanna Castillo
+- **Program:** 3-Day Training Plan (`.docx`)
+- **Output:** `clients/johanna_castillo/Johanna_Castillo_3Day_Training_Plan.docx`
+- **Build script:** `scripts/johanna_castillo_3day_plan.js`
+- Age 51 | 5'4" | 172 lbs | Postmenopausal (inferred from the client's existing pelvic-floor cueing — see script header)
+- ALST Index 7.23 kg/m² **Optimal** — strength-maintenance-under-fat-loss program, not muscle-building-primary
+- VFA 142.7 cm² **Moderate Risk** | Body Fat 40.4% **At-Risk** — drives a metabolic finisher on every training day
+- Legs: L 17.5 / R 18.0 lbs LST — 0.5 lb gap, at the asymmetry-protocol trigger — **LEFT leg leads unilateral leg work**
+- Arms: R 8.4 / L 8.7 lbs LST — 0.3 lb gap, below trigger — logged per side as routine monitoring only
+- Protein target: 156–172 g/day (2.0–2.2 g/kg, 50+ tier) | Creatine strongly indicated (postmenopausal)
+- Program: 3-day (Day 1 Full Body Strength & Metabolic Conditioning 70%, Day 2 Lower Body Technique 60% — new squat/deadlift baseline, Day 3 Upper Body & Posterior Chain 70%)
+- Rebuilt Aug 2026 from the client's existing document to match the confirmed engine standard (see CLAUDE.md); all program content carried over 1:1, only rendering changed. The engine's auto pelvic-floor callout now also fires correctly on Day 2 (deadlift/RDL/squat), which the original hand-built document had missed.
+
 ### Elizabeth Poyner (referenced client — no build script in this repo yet)
 - Age 64 | 5'5" | 115 lbs (up from 112 — lean mass gain) | Postmenopausal
 - PRs: Hex DL 195×5 (Epley 1RM 228), Split Hex DL 165×5, Hip Thrust 145×5, DB Lunge 40×8, Push-Ups 28, Carry 50/hand, Plank 2:00, SL RDL 40, OHP 20

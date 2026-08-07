@@ -382,7 +382,10 @@ function proteinTargets(client) {
   const is50Plus = client.ageYears >= 50;
   const is40Plus = client.ageYears >= 40;
   let low, high, tier;
-  if (atRisk || is50Plus) { low = 2.0; high = 2.2; tier = 'ALST At-Risk / 50+ tier'; }
+  if (atRisk || is50Plus) {
+    low = 2.0; high = 2.2;
+    tier = atRisk && is50Plus ? 'ALST At-Risk / 50+ tier' : atRisk ? 'ALST At-Risk tier' : '50+ tier';
+  }
   else if (is40Plus) { low = 1.8; high = 2.0; tier = '40+ tier'; }
   else { low = 1.6; high = 1.6; tier = 'active women general tier'; }
 
@@ -407,10 +410,17 @@ function nutritionBlock(client) {
     ]
   ));
 
-  if (atRisk) {
+  // Strongly indicated: women 40+, ALST At-Risk, postmenopausal (not ALST alone).
+  const creatineStrong = atRisk || client.ageYears >= 40 || client.isPostmenopausal;
+  if (creatineStrong) {
+    const reason = atRisk
+      ? 'ALST Index below the 5.5 kg/m² sarcopenia-risk threshold.'
+      : client.isPostmenopausal
+        ? 'Postmenopausal status.'
+        : 'Age 40+.';
     els.push(...clinicalFlag(
       'Creatine — Strongly Indicated',
-      'ALST Index below the 5.5 kg/m² sarcopenia-risk threshold. Prescribe 3–5g creatine monohydrate daily with food, no loading phase. Saturates in 3–4 weeks. Supports strength, power, cognition, and bone density.'
+      `${reason} Prescribe 3–5g creatine monohydrate daily with food, no loading phase. Saturates in 3–4 weeks. Supports strength, power, cognition, and bone density.`
     ));
   } else {
     els.push(...tealCallout(
