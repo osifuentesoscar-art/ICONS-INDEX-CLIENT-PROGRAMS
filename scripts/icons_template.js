@@ -248,6 +248,30 @@ function metricRow(label, value, colWidths) {
   });
 }
 
+// Clinical status thresholds — see CLAUDE.md Styku scan interpretation workflow.
+function alstStatus(alstIndex) {
+  if (alstIndex == null) return null;
+  if (alstIndex < 5.5) return 'AT-RISK';
+  if (alstIndex < 7.0) return 'NORMAL';
+  return 'OPTIMAL';
+}
+
+function vfaStatus(vfa) {
+  if (vfa == null) return null;
+  if (vfa < 70) return 'VERY LOW RISK';
+  if (vfa < 100) return 'LOW RISK';
+  if (vfa < 150) return 'MODERATE RISK';
+  return 'HIGH RISK';
+}
+
+function bmiStatus(bmi) {
+  if (bmi == null) return null;
+  if (bmi < 18.5) return 'UNDERWEIGHT';
+  if (bmi < 25) return 'NORMAL';
+  if (bmi < 30) return 'OVERWEIGHT';
+  return 'OBESE';
+}
+
 function stykuBlock(styku) {
   const els = [sectionTitle('Styku Body Composition Scan', C.teal)];
   els.push(para([txt(`Scan Date: ${styku.scanDate}`, { size: 14, italics: true, color: C.mid })], { spacing: { after: 100 } }));
@@ -258,13 +282,13 @@ function stykuBlock(styku) {
     ['Lean Mass', `${styku.leanMass} lbs (${styku.leanMassPct}%)`],
     ['Fat Mass', `${styku.fatMass} lbs`],
     ['Bone Mass', `${styku.boneMass} lbs`],
-    ['BMI', styku.bmi],
+    ['BMI', `${styku.bmi}${bmiStatus(styku.bmi) ? ` — ${bmiStatus(styku.bmi)}` : ''}`],
     ['BMR', `${styku.bmr} cal/day`],
   ];
   const rightCol = [
-    ['VFA (Visceral Fat)', `${styku.vfa} cm²`],
+    ['VFA (Visceral Fat)', `${styku.vfa} cm²${vfaStatus(styku.vfa) ? ` — ${vfaStatus(styku.vfa)}` : ''}`],
     ['Shape Score', `${styku.shapeScore}/100 — ${styku.shapeScoreLabel}`],
-    ['ALST Index', `${styku.alstIndex} kg/m²`],
+    ['ALST Index', `${styku.alstIndex} kg/m²${alstStatus(styku.alstIndex) ? ` — ${alstStatus(styku.alstIndex)}` : ''}`],
     ['Left Arm LST', `${styku.leftArmLST} lbs`],
     ['Right Arm LST', `${styku.rightArmLST} lbs`],
     ['Left / Right Leg LST', `${styku.leftLegLST} / ${styku.rightLegLST} lbs`],
@@ -281,6 +305,52 @@ function stykuBlock(styku) {
   }
   els.push(fullWidthTable(rows, colWidths));
   els.push(spacer(160));
+
+  // Automatic clinical flags — CLAUDE.md mandates flagging these immediately
+  // rather than relying on a trainer to remember to author them by hand.
+  if (styku.alstIndex != null && styku.alstIndex < 5.5) {
+    els.push(...clinicalFlag(
+      'ALST At-Risk',
+      `ALST Index of ${styku.alstIndex} kg/m² is below the 5.5 kg/m² sarcopenia threshold (EWGSOP2, 2018). Muscle-building is the primary physiological priority — every session emphasizes progressive resistance, protein targets escalate, and creatine is strongly indicated.`
+    ));
+  }
+  if (styku.bmi != null && styku.bmi < 18.5) {
+    els.push(...clinicalFlag(
+      'BMI Underweight',
+      `BMI of ${styku.bmi} is clinically underweight regardless of body fat percentage. Flag alongside ALST status — a low ALST Index combined with an underweight BMI indicates a sarcopenic obesity profile requiring highest-priority nutrition support.`
+    ));
+  }
+  if (styku.vfa != null && styku.vfa >= 100) {
+    els.push(...watchFlag(
+      'Cardiometabolic Watch',
+      `Visceral Fat Area of ${styku.vfa} cm² is at or above the 100 cm² threshold for cardiometabolic risk. Continue trend tracking at the next rescan.`
+    ));
+  }
+
+  // Asymmetry protocol — auto-detect the weaker side from segmental LST so the
+  // "which side leads unilateral work" call is never made by hand. See
+  // CLAUDE.md's "Common Mistakes" section: getting this backwards is the #1
+  // recurring error in hand-authored notes.
+  const hasArms = styku.leftArmLST != null && styku.rightArmLST != null;
+  const hasLegs = styku.leftLegLST != null && styku.rightLegLST != null;
+  const armGap = hasArms ? Math.abs(styku.leftArmLST - styku.rightArmLST) : 0;
+  const legGap = hasLegs ? Math.abs(styku.leftLegLST - styku.rightLegLST) : 0;
+  if (armGap >= 0.5 || legGap >= 0.5) {
+    const parts = [];
+    if (armGap >= 0.5) {
+      const weaker = styku.leftArmLST < styku.rightArmLST ? 'LEFT' : 'RIGHT';
+      parts.push(`arms (${weaker} weaker by ${armGap.toFixed(1)} lbs — leads single-arm rows and carries)`);
+    }
+    if (legGap >= 0.5) {
+      const weaker = styku.leftLegLST < styku.rightLegLST ? 'LEFT' : 'RIGHT';
+      parts.push(`legs (${weaker} weaker by ${legGap.toFixed(1)} lbs — leads unilateral leg work)`);
+    }
+    els.push(...watchFlag(
+      'Asymmetry Protocol',
+      `A left/right gap of ≥ 0.5 lbs was detected in the ${parts.join(' and ')}. Lead all unilateral work with the weaker side, log left vs. right separately in coaching cues, and track the gap for reduction at the 8-week rescan.`
+    ));
+  }
+
   if (styku.peerComparison) {
     els.push(...tealCallout('Peer Comparison', styku.peerComparison));
   }
@@ -330,6 +400,21 @@ function nutritionBlock(client) {
   ));
 
   return els;
+}
+
+// Per-page protein reminder for ALST At-Risk clients. CLAUDE.md's "Common
+// Mistakes" section calls this out explicitly: the reminder belongs on every
+// training page, not just the assessment report.
+function proteinBar(client) {
+  const atRisk = client.alstIndex !== undefined && client.alstIndex < 5.5;
+  if (!atRisk || client.weightKg == null) return [];
+  const proteinLow = Math.round(client.weightKg * 2.0);
+  const proteinHigh = Math.round(client.weightKg * 2.2);
+  const perMeal = Math.round(client.weightKg * 0.4);
+  return goldCallout(
+    'Protein Reminder — ALST At-Risk',
+    `${proteinLow}–${proteinHigh}g protein today, distributed across 4+ meals (~${perMeal}g/meal). Muscle-building is this session's top priority.`
+  );
 }
 
 // ── DAY HEADER ─────────────────────────────────────────────────────────
@@ -461,10 +546,12 @@ function footerParagraph(clientName) {
 }
 
 // ── DOCUMENT ASSEMBLY ─────────────────────────────────────────────────
-function buildDayContent(day) {
+function buildDayContent(day, client) {
   const els = [];
   els.push(...dayHeader(day.intensity, day.title, day.subtitle, day.descriptor));
   els.push(...intensityPara(day.intensityPara));
+
+  if (client) els.push(...proteinBar(client));
 
   if (day.warmUp) els.push(...goldCallout('Warm-Up', day.warmUp));
 
@@ -508,7 +595,7 @@ async function buildDocument(data) {
 
   (data.days || []).forEach((day) => {
     children.push(new Paragraph({ children: [new PageBreak()] }));
-    children.push(...buildDayContent(day));
+    children.push(...buildDayContent(day, client));
     if (data.includeProgressionBlock !== false) {
       children.push(...progressionBlock());
     }
@@ -549,9 +636,10 @@ async function buildDocument(data) {
 module.exports = {
   buildDocument,
   C,
-  coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock, nutritionBlock,
+  coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock, nutritionBlock, proteinBar,
   dayHeader, exTable, weeklySummary, progressionBlock, milestoneTracker,
   goldCallout, greenCallout, redCallout, tealCallout, blueCallout, purpleCallout,
   clinicalFlag, watchFlag, clearFlag,
   sectionTitle,
+  alstStatus, vfaStatus, bmiStatus,
 };
