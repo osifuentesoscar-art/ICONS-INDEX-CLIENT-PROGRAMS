@@ -5,7 +5,23 @@
  * Source of truth for all client-facing .docx deliverables (training plans,
  * assessment reports). Page setup, color system, and table schemas are
  * extracted from the Kelly Mulroy 5-Day Training Plan reference document.
- * See /CLAUDE.md for the full spec this file implements.
+ * See /CLAUDE.md and /docs/ICONS_System_Prompt.md for the full spec this
+ * file implements.
+ *
+ * Callout color rules — always follow:
+ *   goldCallout   → warm-up, general coaching, ICONS Notes
+ *   greenCallout  → baseline notes, positive performance data, PRs, cleared status
+ *   redCallout    → shoulder flags, corrective priorities, overhead suspension
+ *   tealCallout   → Styku scan data, assessment findings, asymmetry
+ *   blueCallout   → cool-down, recovery, mobility
+ *   purpleCallout → pull-up pathway, posterior chain notes
+ *   clinicalFlag  → ALST At-Risk, BMI underweight — thick red border (sz=20)
+ *   watchFlag     → asymmetry alerts, moderate risk flags
+ *   clearFlag     → shoulder cleared, milestone achieved
+ *
+ * Every training day auto-inserts, when applicable:
+ *   proteinBar(client)      — ALST At-Risk clients only, on EVERY day page
+ *   pelvicFloorCallout()    — postmenopausal clients only, on EVERY day page
  */
 
 const {
@@ -51,6 +67,7 @@ const INTENSITY = {
   80: { accent: C.gold, pale: C.goldPale, label: '80%' },
   90: { accent: C.red, pale: C.redPale, label: '90%' },
   AR: { accent: C.blue, pale: C.bluePale, label: 'AR' },
+  Off: { accent: C.mid, pale: 'F0F0F0', label: 'OFF' },
 };
 
 // ── LOW-LEVEL HELPERS ────────────────────────────────────────────────────
@@ -105,7 +122,7 @@ function spacer(size = 120) {
 
 // ── CALLOUTS ──────────────────────────────────────────────────────────────
 function calloutBase(label, body, fill, borderColor, opts = {}) {
-  const borderSize = opts.thick ? 18 : 6;
+  const borderSize = opts.thick ? 20 : 6;
   const labelColor = opts.labelColor || borderColor;
   const bodyRuns = Array.isArray(body) ? body : [txt(body, { size: 17, color: C.dark })];
 
@@ -287,10 +304,11 @@ function stykuBlock(styku) {
   return els;
 }
 
-// ── NUTRITION BLOCK ───────────────────────────────────────────────────
-function nutritionBlock(client) {
-  const els = [sectionTitle('Evidence-Based Nutrition Targets', C.gold)];
-
+// ── NUTRITION TARGETS (shared calc) ─────────────────────────────────────
+// Women 50+ or ALST At-Risk: 2.0–2.2 g/kg/day. Women 40+: 1.8–2.0 g/kg/day.
+// Active women general: ≥1.6 g/kg/day. Per meal: ~0.4 g/kg (leucine threshold).
+// Source: Morton 2018 meta-analysis + anabolic resistance research.
+function proteinTargets(client) {
   const atRisk = client.alstIndex !== undefined && client.alstIndex < 5.5;
   const is50Plus = client.ageYears >= 50;
   const is40Plus = client.ageYears >= 40;
@@ -302,6 +320,14 @@ function nutritionBlock(client) {
   const proteinLow = Math.round(client.weightKg * low);
   const proteinHigh = Math.round(client.weightKg * high);
   const perMeal = Math.round(client.weightKg * 0.4);
+
+  return { atRisk, low, high, tier, proteinLow, proteinHigh, perMeal };
+}
+
+// ── NUTRITION BLOCK ───────────────────────────────────────────────────
+function nutritionBlock(client) {
+  const els = [sectionTitle('Evidence-Based Nutrition Targets', C.gold)];
+  const { atRisk, low, high, tier, proteinLow, proteinHigh, perMeal } = proteinTargets(client);
 
   els.push(...goldCallout(
     'Daily Protein Target',
@@ -330,6 +356,42 @@ function nutritionBlock(client) {
   ));
 
   return els;
+}
+
+// ── PROTEIN BAR ────────────────────────────────────────────────────────
+// Slim, single-line reminder — distinct from the full nutritionBlock() on
+// the cover page. Auto-inserted on EVERY training day page for ALST
+// At-Risk clients per the "Skipping protein_bar" common mistake.
+function proteinBar(client) {
+  const { proteinLow, proteinHigh } = proteinTargets(client);
+  const table = new Table({
+    width: { size: TW, type: WidthType.DXA },
+    rows: [
+      new TableRow({
+        children: [
+          cell(
+            [para([
+              txt('PROTEIN REMINDER  ', { bold: true, size: 13, color: C.callGoldB, characterSpacing: 8 }),
+              txt(`Target ${proteinLow}–${proteinHigh}g today, 4+ meals. Creatine 3–5g with a meal.`, { size: 13, color: C.dark }),
+            ])],
+            { fill: C.callGold, borders: cellBorders(C.callGoldB, 4), width: TW, margins: { top: 60, bottom: 60, left: 140, right: 140 } }
+          ),
+        ],
+      }),
+    ],
+    borders: noBorders(),
+  });
+  return [table, spacer(120)];
+}
+
+// ── PELVIC FLOOR CALLOUT ──────────────────────────────────────────────
+// Mandatory on every training day page for postmenopausal clients —
+// triggers: heavy carries, squats, deadlifts, hip thrusts at high loads.
+function pelvicFloorCallout() {
+  return watchFlag(
+    'Pelvic Floor Safety Note',
+    'Brace before lifting, exhale on exertion — no breath-holding. If you experience any leaking, heaviness, or pressure, stop and flag your coach. This is common and treatable.'
+  );
 }
 
 // ── DAY HEADER ─────────────────────────────────────────────────────────
@@ -450,6 +512,17 @@ function milestoneTracker(m4wk, m8wk, rescanNote) {
   return els;
 }
 
+// ── 1RM CALCULATION ────────────────────────────────────────────────────
+// Epley formula. Week 1 working load = 80% 1RM. Week 4 peak test = 92–95%.
+// Always round to nearest 5 lbs (or pass roundTo explicitly).
+function epley1RM(weight, reps) {
+  return Math.round(weight * (1 + reps / 30));
+}
+
+function workingLoad(oneRM, pct, roundTo = 5) {
+  return Math.round((oneRM * pct) / roundTo) * roundTo;
+}
+
 // ── FOOTER ─────────────────────────────────────────────────────────────
 function footerParagraph(clientName) {
   return new Paragraph({
@@ -460,13 +533,30 @@ function footerParagraph(clientName) {
   });
 }
 
+// Heavy hip-loading pattern check — squats, deadlifts/RDLs, hip thrusts,
+// loaded carries, lunges — the pelvic floor trigger list.
+const HEAVY_LOAD_PATTERN = /squat|deadlift|\brdl\b|hip thrust|carry|lunge/i;
+function dayHasHeavyLoading(day) {
+  return (day.blocks || []).some((block) =>
+    (block.exercises || []).some((ex) => HEAVY_LOAD_PATTERN.test(ex.name || ''))
+  );
+}
+
 // ── DOCUMENT ASSEMBLY ─────────────────────────────────────────────────
-function buildDayContent(day) {
+function buildDayContent(day, client) {
   const els = [];
   els.push(...dayHeader(day.intensity, day.title, day.subtitle, day.descriptor));
   els.push(...intensityPara(day.intensityPara));
 
+  if (client && client.alstIndex !== undefined && client.alstIndex < 5.5) {
+    els.push(...proteinBar(client));
+  }
+
   if (day.warmUp) els.push(...goldCallout('Warm-Up', day.warmUp));
+
+  if (client && client.isPostmenopausal && day.pelvicFloor !== false && dayHasHeavyLoading(day)) {
+    els.push(...pelvicFloorCallout());
+  }
 
   (day.blocks || []).forEach((block) => {
     const iv = INTENSITY[day.intensity] || INTENSITY[70];
@@ -508,7 +598,7 @@ async function buildDocument(data) {
 
   (data.days || []).forEach((day) => {
     children.push(new Paragraph({ children: [new PageBreak()] }));
-    children.push(...buildDayContent(day));
+    children.push(...buildDayContent(day, client));
     if (data.includeProgressionBlock !== false) {
       children.push(...progressionBlock());
     }
@@ -549,9 +639,11 @@ async function buildDocument(data) {
 module.exports = {
   buildDocument,
   C,
-  coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock, nutritionBlock,
+  coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock,
+  nutritionBlock, proteinTargets, proteinBar, pelvicFloorCallout,
   dayHeader, exTable, weeklySummary, progressionBlock, milestoneTracker,
   goldCallout, greenCallout, redCallout, tealCallout, blueCallout, purpleCallout,
   clinicalFlag, watchFlag, clearFlag,
   sectionTitle,
+  epley1RM, workingLoad,
 };

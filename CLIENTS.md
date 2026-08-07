@@ -16,5 +16,17 @@
 - Program: 3-day (Day 1 Full-Body Foundation 70%, Day 2 Lower Unilateral & Corrective 60%, Day 3 Upper Push/Pull + Core 80%)
 - Baselines tested 8/5/2026: Squat 35×5, OH Press 12×5, Incline Push-Up ×5, Farmer Carry 25/hand, Hip Thrust 45×5, RDL 17.5/hand×5, Plank 50s. Deadlift and Lunges not yet tested.
 
+### Elizabeth Poyner (referenced client — no build script in this repo yet)
+- Age 64 | 5'5" | 115 lbs (up from 112 — lean mass gain) | Postmenopausal
+- PRs: Hex DL 195×5 (Epley 1RM 228), Split Hex DL 165×5, Hip Thrust 145×5, DB Lunge 40×8, Push-Ups 28, Carry 50/hand, Plank 2:00, SL RDL 40, OHP 20
+- Training loads: DL Wk1 180 (~80% 1RM via `workingLoad(228, 0.8)`), HT Wk1 135, Split DL Wk1 155, Carry 50→60–65
+- Program: 5-day (Tue Upper / Wed Glute-Ham / Thu Heavy Lower / Fri Prep / Sat Fast-Twitch)
+- Pelvic floor note: auto-inserted on every heavy carry / hip thrust / deadlift day via `pelvicFloorCallout()`
+
 ## System Files
-- `scripts/icons_template.js` — canonical `.docx` template engine (`buildDocument()`), per `/CLAUDE.md` spec
+- `scripts/icons_template.js` — canonical `.docx` template engine (`buildDocument()`), per `/CLAUDE.md` spec.
+  Auto-inserts `proteinBar()` (ALST At-Risk clients, every day) and `pelvicFloorCallout()`
+  (postmenopausal clients, heavy-loading days) — no manual per-day calls needed.
+  Also exports `epley1RM(weight, reps)` / `workingLoad(oneRM, pct, roundTo=5)` for converting
+  new PR data into program loads.
+- `docs/ICONS_System_Prompt.md` — paste-into-Claude-Projects reference copy of the full system prompt

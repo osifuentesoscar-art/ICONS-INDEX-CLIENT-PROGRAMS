@@ -33,6 +33,15 @@ Uploaded files   → /mnt/user-data/uploads/
 This file        → /mnt/user-data/outputs/CLAUDE.md
 ```
 
+**In this git repo, that maps to:**
+```
+Source scripts   → scripts/
+Final outputs    → clients/<client_name>/
+Uploaded files   → (attached inline to the conversation)
+This file        → CLAUDE.md at repo root
+System prompt    → docs/ICONS_System_Prompt.md (paste-into-Projects reference copy)
+```
+
 **Build pattern — no exceptions:**
 1. Write script to `/home/claude/`
 2. Run script
@@ -91,13 +100,13 @@ C.callPurple / C.callPurpleB // #F3EEF9 / #6A1B9A
 ### Callout Color Assignments — USE THESE RULES
 ```
 goldCallout   → warm-up, general coaching, ICONS Notes
-greenCallout  → baseline notes, positive performance data, cleared status
-redCallout    → shoulder flags, corrective priorities, near-maximal notes
-tealCallout   → Styku scan data, assessment findings
+greenCallout  → baseline notes, positive performance data, PRs, cleared status
+redCallout    → shoulder flags, corrective priorities, overhead suspension, near-maximal notes
+tealCallout   → Styku scan data, assessment findings, asymmetry
 blueCallout   → cool-down, recovery, mobility
 purpleCallout → pull-up pathway, posterior chain notes
-clinicalFlag  → ALST At-Risk, BMI underweight, RED-S — thick red border
-watchFlag     → asymmetry alerts, moderate risk
+clinicalFlag  → ALST At-Risk, BMI underweight, RED-S — thick red border (sz=20)
+watchFlag     → asymmetry alerts, moderate risk, pelvic floor safety notes
 clearFlag     → shoulder cleared, milestone achieved
 ```
 
@@ -132,11 +141,16 @@ weekOverview([{day, intensity, focus}])
 baselinesTable(rows[][])
 stykuBlock(styku)          // ← full Styku scan interpretation
 nutritionBlock(client)     // ← evidence-based protein/creatine/collagen targets
+proteinTargets(client)     // ← shared calc behind nutritionBlock + proteinBar
+proteinBar(client)         // ← slim per-page reminder, auto-inserted for ALST At-Risk clients
+pelvicFloorCallout()       // ← auto-inserted for postmenopausal clients on heavy-loading days
 dayHeader(intensity, title, subtitle, descriptor)
 exTable(exercises[], accentColor, paleFill)
 weeklySummary(rows[][])
 progressionBlock(accentColor)
 milestoneTracker(4wk, 8wk, rescanNote)
+epley1RM(weight, reps)         // ← Epley formula: weight × (1 + reps/30)
+workingLoad(oneRM, pct, roundTo=5)
 
 // Callouts
 goldCallout(label, body)
@@ -144,9 +158,13 @@ greenCallout(label, body)
 redCallout(label, body)
 tealCallout(label, body)
 blueCallout(label, body)
-clinicalFlag(label, body)
+purpleCallout(label, body)
+clinicalFlag(label, body)   // thick red border, sz=20
 watchFlag(label, body)
+clearFlag(label, body)
 ```
+
+`buildDocument()` calls `proteinBar()` and `pelvicFloorCallout()` automatically per day — you do not call them by hand in client scripts. `proteinBar` fires whenever `client.alstIndex < 5.5`; `pelvicFloorCallout` fires whenever `client.isPostmenopausal` is true **and** the day contains a squat, deadlift/RDL, hip thrust, carry, or lunge (set `day.pelvicFloor: false` to suppress it for a specific day if it's genuinely not applicable).
 
 ### Full Data Schema for `buildDocument()`
 ```javascript
@@ -181,13 +199,13 @@ watchFlag(label, body)
     rightLegLST: number,
     peerComparison?: string,
   },
-  weekOverview: [{ day, intensity, focus }],
+  weekOverview: [{ day, intensity, focus }],  // intensity: "60"|"70"|"80"|"90"|"AR"|"Off"
   baselines: string[][],             // [lift, baseline, tested_at, 8wk_target]
-  baselineNotes: [{ type, label, body }],  // type = "green"|"gold"|"red"|"teal"|"blue"
+  baselineNotes: [{ type, label, body }],  // type = "green"|"gold"|"red"|"teal"|"blue"|"purple"|"clinical"|"watch"|"clear"
   includeNutritionBlock: boolean,    // default true
   includeProgressionBlock: boolean,  // default true (per training day)
   days: [{
-    intensity: "60"|"70"|"80"|"90"|"AR",
+    intensity: "60"|"70"|"80"|"90"|"AR",  // "Off" is week-overview-only, no day page rendered
     title: string,                   // "DAY 1 — TUESDAY"
     subtitle: string,                // "Lower Body — Squat Focus"
     descriptor: string,              // CAPS DESCRIPTOR LINE
@@ -348,6 +366,7 @@ Volume tolerance: women fatigue LESS than men at equivalent relative loads
 Rest periods: women recover faster between sets — can use shorter rest
 Frequency: 2–3× per week per muscle group
 Volume: ≥10 sets/muscle/week for hypertrophy (ACSM 2026)
+NEVER under-load: women are systematically under-loaded in most programs
 ```
 
 ### Menstrual Cycle Training
@@ -397,20 +416,22 @@ Do NOT say: "train through it" or minimize symptoms
 Refer to pelvic floor PT when symptomatic
 ```
 
-### ACL / Knee Valgus (women have ~2.8× male incidence)
+### ACL / Knee Valgus (women 2.8× male incidence — team ball sports meta-analysis 2022)
 ```
 Cause: hip abductor / glute med weakness → dynamic knee collapse
 Screen: single-leg squat drop test (does knee cave medially?)
 Fix: lateral band walks, terminal knee extensions, Spanish squat,
      Copenhagen plank, single-leg step-downs
 Banded squats: band above knees creates proprioceptive cue to push OUT
+Protocol: corrective circuit before every squat session
 ```
 
 ### Copenhagen Plank (adductor strengthening)
 ```
+Target: adductor longus. EMG ~108% MVIC — extremely effective.
 Protocol: 3×/week × 6–8 weeks preseason, then 1×/week maintenance
 Dose: progressive hold time starting 15–25s, building to 45s
-Effect: +41% reduction in groin problems (Harøy et al. 2018, BJSM)
+Effect: -41% groin injury risk (Harøy et al. 2018, BJSM)
 Coaching: side plank, top leg on bench, adductor holds the position
 ```
 
@@ -436,8 +457,17 @@ Kelly Mulroy    → /mnt/user-data/outputs/Kelly_Mulroy_5Day_Training_Plan_v2.do
   Scan: 6/17/2026 | BF: 36.4% | Lean: 92.0 lbs | Shape: 61/100
   ALST: not yet At-Risk | Leg asymmetry: L 15.7 vs R 16.5 lbs
   Flags: Knee valgus (squat), hip hinge / adductor weakness
+  Correctives: banded squat, TKE, Copenhagen plank every session
   Program: 5-day progressive intensity (60/70/80/90%/AR)
   Baselines: DL 55–65 lbs, Squat 25 lbs, OHP 25 lbs×3RM, Carry 35 lbs/hand
+
+Elizabeth Poyner → /mnt/user-data/outputs/Elizabeth_Poyner_5Day_Training_Plan.docx
+  Age: 64 | 5'5" | 115 lbs (up from 112 — lean mass gain) | Postmenopausal
+  PRs: Hex DL 195×5 (Epley 1RM 228), Split Hex DL 165×5, Hip Thrust 145×5,
+       DB Lunge 40×8, Push-Ups 28, Carry 50/hand, Plank 2:00, SL RDL 40, OHP 20
+  Training loads: DL Wk1 180 (≈80% 1RM), HT Wk1 135, Split DL Wk1 155, Carry 50→60–65
+  Program: 5-day (Tue Upper / Wed Glute-Ham / Thu Heavy Lower / Fri Prep / Sat Fast-Twitch)
+  Pelvic floor note: mandatory every heavy carry / hip thrust / deadlift day (auto-inserted)
 
 Sarah           → /mnt/user-data/outputs/Sarah_Training_Plan_Client_Version.docx
   Virtual 2-day program | Athletic strength focus
@@ -504,6 +534,28 @@ Every training day follows this exact sequence:
 | 80% | Gold | Primary strength day — last 1-2 reps hard but achievable |
 | 90% | Red | Peak intensity — near-maximal. Rest fully between sets. |
 | AR  | Blue | Active recovery — no PRs, no AMRAP, feel better leaving |
+| Off | Gray | Rest day — week overview only, no training day page |
+
+---
+
+## 1RM CALCULATION
+
+When new PR data is given, calculate working loads before building the plan. Exported from `icons_template.js` as `epley1RM(weight, reps)` and `workingLoad(oneRM, pct, roundTo=5)`.
+
+```javascript
+// Epley formula
+function epley1RM(weight, reps) {
+  return Math.round(weight * (1 + reps / 30));
+}
+
+function workingLoad(oneRM, pct, roundTo = 5) {
+  return Math.round((oneRM * pct) / roundTo) * roundTo;
+}
+
+// Week 1 working load = 80% 1RM
+// Week 4 peak test = 92–95% 1RM
+// Always round to nearest 5 lbs
+```
 
 ---
 
@@ -670,7 +722,9 @@ When a new client joins, build IN THIS ORDER:
   → Replace with RIR: "1–2 RIR on last set"
 
 ✗ Putting protein reminder only on the report, not in the training plan
-  → ALST At-Risk clients need protein_bar on EVERY training page
+  → ALST At-Risk clients need protein_bar on EVERY training page.
+     Engine-enforced: buildDocument() auto-inserts proteinBar(client) on every
+     day when client.alstIndex < 5.5 — do not call it manually per day.
 
 ✗ Assuming the Styku-calculated body composition is the same as clinical DXA
   → Styku 3D scanning is reliable for circumferences and trend tracking.
@@ -682,6 +736,12 @@ When a new client joins, build IN THIS ORDER:
 
 ✗ Recommending training to failure as superior
   → ACSM 2026: failure training does NOT consistently outperform RIR-based loading.
+
+✗ Missing the pelvic floor note on heavy carry / hip thrust / deadlift / squat
+  days for postmenopausal clients
+  → Engine-enforced: buildDocument() auto-inserts pelvicFloorCallout() whenever
+     client.isPostmenopausal is true and the day contains a matching exercise.
+     Set day.pelvicFloor: false only if it's genuinely not applicable.
 ```
 
 ---
@@ -735,7 +795,11 @@ cd /mnt/skills/public/docx && python scripts/office/soffice.py --headless --conv
 
 ---
 
-*Last updated: August 3, 2026 — Brace Life Studios ICONS System*  
+*Last updated: August 7, 2026 — Brace Life Studios ICONS System*  
 *Canonical reference: Kelly Mulroy 5-Day Training Plan (XML audit)*  
-*Science layer: Evidence-Based Women's Strength Research Synthesis*  
-*Styku integration: Siobhan Hansen scan 7/29/2026*
+*Science layer: Evidence-Based Women's Strength Research Synthesis (Aug 2026)*  
+*Styku integration: Siobhan Hansen scan 7/29/2026; August Olivia scan 8/5/2026*  
+*Engine v2: protein_bar and pelvic floor callout are now auto-inserted by
+`buildDocument()` (see `scripts/icons_template.js`) rather than manual
+per-day calls — see `docs/ICONS_System_Prompt.md` for the full paste-into-
+Projects reference copy of this system's rules.*
