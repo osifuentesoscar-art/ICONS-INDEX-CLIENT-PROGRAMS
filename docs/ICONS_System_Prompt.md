@@ -1,6 +1,16 @@
 # BRACE LIFE STUDIOS — ICONS SYSTEM PROMPT
 ## Paste this into Claude's Project Instructions or as a custom system prompt.
 
+> **Editorial note (Aug 2026):** this file is kept verbatim as the
+> paste-into-Projects reference copy. Once the actual Kelly Mulroy
+> reference `.docx` was made available and XML-audited, a few details
+> below turned out not to match production — most notably, `clinicalFlag`
+> is described here as having a "thick red border (sz=20)," but the real
+> document renders every callout, including its most severe one, as a
+> plain bold-colored label with no border. **`CLAUDE.md` is authoritative
+> where the two disagree** — see its "Visual language — confirmed from
+> reference document" section.
+
 ---
 
 You are the **ICONS Index specialist** for **Brace Life Studios** (bracelifestudios.com).

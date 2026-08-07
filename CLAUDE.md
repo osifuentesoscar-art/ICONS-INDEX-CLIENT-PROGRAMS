@@ -55,10 +55,31 @@ System prompt    → docs/ICONS_System_Prompt.md (paste-into-Projects reference 
 
 ## THE TEMPLATE ENGINE — `icons_template.js`
 
-**Location:** `/home/claude/icons_template.js`  
+**Location:** `scripts/icons_template.js`
 **Usage:** `const { buildDocument } = require('./icons_template');`
 
-This is the canonical source of truth for all `.docx` client documents. Every measurement, color, and structure was extracted directly from the Kelly Mulroy 5-Day Training Plan XML (the reference document).
+This is the canonical source of truth for all `.docx` client documents. Every measurement, color, and structure was **XML-audited directly against the actual Kelly Mulroy 5-Day Training Plan client deliverable** (uploaded Aug 2026, not just described) — see `docs/reference/` note below.
+
+### Visual language — confirmed from the reference document
+```
+- Compact and editorial. NO bordered/shaded "alert box" callouts anywhere.
+  Every callout (warm-up, cool-down, ICONS Note, baseline notes, clinical
+  flags, block intros) is ONE paragraph: a bold colored label run
+  ("Warm-Up:  ") followed by a regular dark body run. Label text is
+  Title Case, never forced uppercase.
+- A running header (brand name left, client/program right) and footer
+  (studio credit left, client/schedule right) on every page, each set
+  off by a hairline gold rule.
+- Exercise/baseline/summary table headers use a PALE tint background with
+  BOLD COLORED text — not a solid color bar with white text.
+- Every color has three tiers: accent (solid), table-head tint, and a
+  stripe tint (alternating table rows, lighter than the head tint).
+  Gold is the one exception: its DAY-HEADER pale cell uses the stripe
+  tint (#FAF3E0), not the head tint (#F5E8C0) — the head tint reads too
+  saturated across a full-width band. Everywhere else, table-head tint
+  === day-header pale cell color.
+```
+This superseded the engine's earlier "bordered box" callout design (kept in git history) once the actual reference document was available — the abstract system-prompt description of `clinicalFlag` as a "thick red border" turned out not to match production. Even the reference's most severe note ("Corrective Priorities") renders as a plain bold-red label, no border. Follow the document, not the abstraction, when they disagree.
 
 ### Page Setup (US Letter)
 ```
@@ -66,49 +87,41 @@ PAGE_W = 12240 dxa
 PAGE_H = 15840 dxa
 MARGIN = 900 dxa (0.625" all sides)
 TW     = 10440 dxa (content width)
-Font   = Arial throughout
+Font   = Arial throughout, 8.5pt (size 17) default body
 ```
 
-### Color System — `C` object
+### Color System — three tiers per hue (`HUES` object), exposed via `C`
 ```javascript
-// Day intensity
-C.teal / C.tealPale     // 60% — #00695C / #E0F2F1
-C.green / C.greenPale   // 70% — #43A047 / #E8F5E9
-C.gold / C.goldPale     // 80% — #C9A227 / #FAF3E0
-C.red / C.redPale       // 90% — #E53935 / #FFEBEE
-C.blue / C.bluePale     // Active Recovery — #1565C0 / #EAF4FB
+// hue: { accent, head (table headers / day-header pale), stripe (alt rows) }
+teal   : #00695C / #E0F2F1 / #F0FAFA   // 60%
+green  : #43A047 / #E8F5E9 / #F1F8F2   // 70%
+gold   : #C9A227 / #F5E8C0 / #FAF3E0   // 80% — day-header pale uses stripe (#FAF3E0), not head
+red    : #E53935 / #FFEBEE / #FFF5F5   // 90%
+blue   : #1565C0 / #EAF4FB / #F0F7FF   // Active Recovery
+purple : #6A1B9A / #F3EEF9 / #F8F4FB   // pull-up pathway / posterior chain (no reference example — estimated stripe)
+gray   : #6B6B6B / #F0F0F0 / #F0F0F0   // "Off" days in the week strip
 
-// Text
-C.dark    // #2C2C2C — primary body text
-C.mid     // #6B6B6B — secondary / labels
-C.white   // #FFFFFF
-
-// Clinical flags
-C.flagRed    // #B71C1C — At-Risk / clinical priority
-C.flagAmber  // #E65100 — Watch / moderate
-C.flagGreen  // #1B5E20 — Cleared / optimal
-
-// Callout fills (auto-paired with borders)
-C.callGold / C.callGoldB     // #FAF3E0 / #C9A227
-C.callGreen / C.callGreenB   // #E8F5E9 / #43A047
-C.callRed / C.callRedB       // #FFEBEE / #E53935
-C.callTeal / C.callTealB     // #E0F2F1 / #00695C
-C.callBlue / C.callBlueB     // #EAF4FB / #1565C0
-C.callPurple / C.callPurpleB // #F3EEF9 / #6A1B9A
+C.dark #2C2C2C · C.mid #6B6B6B · C.white #FFFFFF · C.offGray #F0F0F0
+C.warmGreen #2E7D32   // Warm-Up label color — distinct from C.green, used on every day regardless of intensity
+C.goldDeep  #B8860B   // baselines/summary table header TEXT color (table fill stays goldHead #F5E8C0)
+C.flagRed #B71C1C · C.flagAmber #E65100 · C.flagGreen #1B5E20   // clinicalFlag/watchFlag/clearFlag label colors
 ```
 
 ### Callout Color Assignments — USE THESE RULES
+All callouts render as a single compact labeled paragraph (see "Visual language" above) — no border, no fill.
 ```
-goldCallout   → warm-up, general coaching, ICONS Notes
+goldCallout   → general coaching, ICONS Notes
 greenCallout  → baseline notes, positive performance data, PRs, cleared status
 redCallout    → shoulder flags, corrective priorities, overhead suspension, near-maximal notes
 tealCallout   → Styku scan data, assessment findings, asymmetry
 blueCallout   → cool-down, recovery, mobility
 purpleCallout → pull-up pathway, posterior chain notes
-clinicalFlag  → ALST At-Risk, BMI underweight, RED-S — thick red border (sz=20)
-watchFlag     → asymmetry alerts, moderate risk, pelvic floor safety notes
-clearFlag     → shoulder cleared, milestone achieved
+clinicalFlag  → ALST At-Risk, BMI underweight, RED-S — same compact style, C.flagRed text
+watchFlag     → asymmetry alerts, moderate risk, pelvic floor safety notes — C.flagAmber text
+clearFlag     → shoulder cleared, milestone achieved — C.flagGreen text
 ```
+Two elements in `buildDocument()`'s per-day flow are NOT built from these generic callouts, because the reference document colors them independently of content type: **Warm-Up** always uses `C.warmGreen` (#2E7D32 — distinct from `C.green`/greenCallout, and constant regardless of the day's own intensity color), and the **intensity paragraph** (`day.intensityLabel`, e.g. "60% Day:") is colored with that day's own accent.
+The same color rule applies to **block headers** (`block.color`, optional): omit it to use the day's own intensity color (primary strength blocks); set `'red'` for a corrective circuit tied to a flagged movement fault; `'gold'` for generic accessory/stability/mobility blocks; `'green'` for a block tracking a baseline/PR metric (e.g. a push-up protocol block). On Active Recovery days, leave every block uncolored — there's no clinical corrective context on a recovery day, so everything stays the day's own blue.
 
 ### Exercise Table Column Widths — NEVER CHANGE
 ```
@@ -121,12 +134,14 @@ REST       :  440 dxa
 COACHING CUE: 5580 dxa
 TOTAL      : 10440 dxa ✓
 ```
+Header row: EXERCISE/COACHING CUE at 7.5pt bold, SETS/REPS/LOAD/TEMPO/REST at 6.5pt bold, colored text on the block's table-head tint. Body: exercise name 9pt bold dark; numeric columns 7.5pt `C.mid`; coaching cue 8.5pt `C.mid`. Rows alternate the block's stripe tint / white, starting with the stripe tint on the first body row.
 
 ### Other Table Schemas
 ```
-Baselines (4 col)  : [2600, 1600, 1400, 4840]
-Weekly Summary (5) : [1200, 1000, 2040, 2200, 4000]
-Day Header (2 col) : [1600, 8840]
+Baselines (4 col)   : [2600, 1600, 1400, 4840]  — header fill goldHead, text 7pt bold goldDeep
+Weekly Summary (5)  : [1200, 1000, 2040, 2200, 4000] — same gold-branded header treatment
+Day Header (2 col)  : [1600, 8840]  — badge cell solid accent + "INTENSITY" sub-label; title cell day-pale tint
+Week Strip (N col)  : TW divided evenly across up to 7 day-columns, remainder on the last two
 ```
 
 ### API — Primary Functions
@@ -135,34 +150,37 @@ Day Header (2 col) : [1600, 8840]
 await buildDocument(data) → Buffer
 
 // Blocks (compose custom pages)
-coverHeader(clientName, programTitle, tagLine)
-clientStats(stats[])
-weekOverview([{day, intensity, focus}])
+coverHeader(clientName, programTitle, subtitleLine)   // subtitleLine e.g. "60–100% PROGRESSIVE INTENSITY BUILD"
+clientStats(stats[])           // single italic centered line, "·"-joined — not a boxed table
+weekOverview([{day, intensity, focus}])   // single-row day strip, up to 7 columns; intensity: "Off" for rest days
 baselinesTable(rows[][])
 stykuBlock(styku)          // ← full Styku scan interpretation
 nutritionBlock(client)     // ← evidence-based protein/creatine/collagen targets
 proteinTargets(client)     // ← shared calc behind nutritionBlock + proteinBar
-proteinBar(client)         // ← slim per-page reminder, auto-inserted for ALST At-Risk clients
+proteinBar(client)         // ← compact per-page reminder, auto-inserted for ALST At-Risk clients
 pelvicFloorCallout()       // ← auto-inserted for postmenopausal clients on heavy-loading days
 dayHeader(intensity, title, subtitle, descriptor)
-exTable(exercises[], accentColor, paleFill)
+exTable(exercises[], colorKey)   // colorKey: 'teal'|'green'|'gold'|'red'|'blue'|'purple' (a HUES key)
 weeklySummary(rows[][])
-progressionBlock(accentColor)
+progressionBlock()
 milestoneTracker(4wk, 8wk, rescanNote)
+labeledPara(label, body, color)   // ← the base callout primitive everything else wraps
 epley1RM(weight, reps)         // ← Epley formula: weight × (1 + reps/30)
 workingLoad(oneRM, pct, roundTo=5)
 
-// Callouts
+// Callouts — all thin wrappers over labeledPara(label, body, <fixed color>)
 goldCallout(label, body)
 greenCallout(label, body)
 redCallout(label, body)
 tealCallout(label, body)
 blueCallout(label, body)
 purpleCallout(label, body)
-clinicalFlag(label, body)   // thick red border, sz=20
+clinicalFlag(label, body)
 watchFlag(label, body)
 clearFlag(label, body)
 ```
+
+**Breaking change from the earlier boxed-callout engine:** `exTable()`'s second argument is now a `colorKey` string (a `HUES` key), not an `(accentColor, paleFill)` hex-color pair — the table-head/stripe tints are looked up internally so every exercise table stays consistent with the rest of the palette.
 
 `buildDocument()` calls `proteinBar()` and `pelvicFloorCallout()` automatically per day — you do not call them by hand in client scripts. `proteinBar` fires whenever `client.alstIndex < 5.5`; `pelvicFloorCallout` fires whenever `client.isPostmenopausal` is true **and** the day contains a squat, deadlift/RDL, hip thrust, carry, or lunge (set `day.pelvicFloor: false` to suppress it for a specific day if it's genuinely not applicable).
 
@@ -172,7 +190,9 @@ clearFlag(label, body)
   client: {
     name: string,
     programTitle: string,            // e.g. "5-DAY TRAINING PLAN"
-    stats: string[],                 // ["Age 35", "5'4\"", "152 lbs", ...]
+    subtitle: string,                // e.g. "60–100% Progressive Intensity Build" — cover subtitle + running header
+    schedule: string,                // e.g. "Tue/Wed/Thu/Fri Gym" — running footer, right side
+    stats: string[],                 // ["Age 35", "5'4\"", "152 lbs", ...] — rendered as one "·"-joined line
     weightKg: number,                // for protein auto-calculation
     ageYears: number,
     isPostmenopausal: boolean,
@@ -199,23 +219,27 @@ clearFlag(label, body)
     rightLegLST: number,
     peerComparison?: string,
   },
-  weekOverview: [{ day, intensity, focus }],  // intensity: "60"|"70"|"80"|"90"|"AR"|"Off"
+  weekOverview: [{ day, intensity, focus }],  // day: short code "TUE"; intensity: 60|70|80|90|"AR"|"Off"; up to 7 entries → one row, N columns
   baselines: string[][],             // [lift, baseline, tested_at, 8wk_target]
   baselineNotes: [{ type, label, body }],  // type = "green"|"gold"|"red"|"teal"|"blue"|"purple"|"clinical"|"watch"|"clear"
   includeNutritionBlock: boolean,    // default true
   includeProgressionBlock: boolean,  // default true (per training day)
   days: [{
-    intensity: "60"|"70"|"80"|"90"|"AR",  // "Off" is week-overview-only, no day page rendered
+    intensity: 60|70|80|90|"AR",     // "Off" is week-overview-only, no day page rendered
     title: string,                   // "DAY 1 — TUESDAY"
     subtitle: string,                // "Lower Body — Squat Focus"
     descriptor: string,              // CAPS DESCRIPTOR LINE
+    intensityLabel: string,          // e.g. "60% Day" or "Sunday's Purpose" — bold label, day-accent colored
     intensityPara: string,           // why this % day
     warmUp: string,
     coolDown: string,
     iconsNote: string,
+    pelvicFloor?: false,             // set to suppress the auto pelvic-floor callout on this specific day
     blocks: [{
       letter: "A"|"B"|"C"|"D",
       title: string,
+      color?: "teal"|"green"|"gold"|"red"|"blue"|"purple",  // omit → day's own accent color (see Callout Color rules)
+      introLabel?: string,           // e.g. "Why", "Load Target", "Format" — default "Note"
       intro?: string,
       exercises: [{
         name: string,
@@ -231,7 +255,8 @@ clearFlag(label, body)
     }]
   }],
   summary?: {
-    rows: string[][],
+    subtitle?: string,               // "{Client} · ICONS Index · {Build} · Week 1"
+    rows: string[][],                // [day#, intensity, focus, key_lift, progression_target]
     milestones4wk: string,
     milestones8wk: string,
     rescanNote: string,
@@ -584,21 +609,42 @@ Rep target: 5–8 reps throughout (except plank = max hold, push-up = max reps)
 Studio name     : Brace Life Studios
 Website         : bracelifestudios.com
 Tagline         : "It's not about working out. It's about working in.™"
-Brand styling   : B R A C E   L I F E   S T U D I O S (spaced caps in gold)
+                  (brand tagline for marketing/PPTX use — NOT printed on the
+                   compact training-plan cover; confirmed absent from the
+                   Kelly Mulroy reference document)
+Brand styling   : B R A C E   L I F E   S T U D I O S (spaced caps in gold) —
+                  used in the running HEADER on every page, not the cover
 Confidentiality : "CONFIDENTIAL CLIENT REPORT" on assessment docs
-                  "Confidential" in footer on all documents
+                  "Confidential" in the running footer on every document
 ```
 
-### Typography
+### Typography (docx — pt sizes, confirmed from reference; `docx` npm `size` = pt × 2)
 ```
-Font: Arial (docx) / Helvetica (PDF)
-Title: 26pt bold gold (#C9A227), letter-spacing 280
-Client name: 20pt bold #2C2C2C centered
-Day title: 13pt bold = day accent color
-Section: 8.5pt bold = day accent color
-Body: 8.5pt #2C2C2C
-Labels: 7–7.5pt #6B6B6B
-Footer: 7pt #6B6B6B
+Cover title            : 26pt bold gold (#C9A227), centered
+Cover subtitle          : 11pt regular dark, centered, uppercase
+Cover divider           : 10pt em-dash line, color #F5E8C0, centered
+Client name             : 20pt bold #2C2C2C, centered
+Stats line              : 8.5pt italic #6B6B6B, centered, "·"-joined
+Running header (brand)  : 9pt bold gold, letter-spacing 100
+Running header (right)  : 6.5pt regular #6B6B6B, letter-spacing 10, right-aligned
+Running footer          : 8pt regular #6B6B6B both sides
+Week-strip day/pct      : 8.5pt bold / 11pt bold, day accent color
+Week-strip focus        : 6pt regular #2C2C2C
+Section title           : 8.5pt bold gold, bottom border single gold 0.5pt
+Day-header badge %      : 18pt bold white; "INTENSITY" sub-label 6.5pt bold white
+Day-header title        : 13pt bold day accent
+Day-header subtitle     : 9.5pt bold #2C2C2C
+Day-header descriptor   : 7pt bold day accent, uppercase
+Block label ("A — ...") : 8.5pt bold, block color
+Labeled-paragraph body  : 8.5pt regular #2C2C2C (label run bold, same size, block/callout color)
+Exercise name            : 9pt bold #2C2C2C
+Exercise numeric cols    : 7.5pt regular #6B6B6B
+Exercise coaching cue    : 8.5pt regular #6B6B6B
+Exercise table header    : EXERCISE/CUE 7.5pt bold, others 6.5pt bold, colored on pale tint
+Baselines/summary header : 7pt bold #B8860B (goldDeep) on #F5E8C0
+Baselines body           : lift name 8.5pt bold dark, other cols 8pt #6B6B6B
+Closing brand line       : 9pt bold gold, centered
+Closing confidentiality  : 8pt italic #6B6B6B, centered
 ```
 
 ---
@@ -796,10 +842,18 @@ cd /mnt/skills/public/docx && python scripts/office/soffice.py --headless --conv
 ---
 
 *Last updated: August 7, 2026 — Brace Life Studios ICONS System*  
-*Canonical reference: Kelly Mulroy 5-Day Training Plan (XML audit)*  
+*Canonical reference: Kelly Mulroy 5-Day Training Plan — actual client deliverable, XML-audited in full*  
 *Science layer: Evidence-Based Women's Strength Research Synthesis (Aug 2026)*  
 *Styku integration: Siobhan Hansen scan 7/29/2026; August Olivia scan 8/5/2026*  
 *Engine v2: protein_bar and pelvic floor callout are now auto-inserted by
 `buildDocument()` (see `scripts/icons_template.js`) rather than manual
 per-day calls — see `docs/ICONS_System_Prompt.md` for the full paste-into-
-Projects reference copy of this system's rules.*
+Projects reference copy of this system's rules.*  
+*Engine v3: rebuilt against the actual Kelly Mulroy reference .docx (not just
+its narrative description). Callouts are now compact labeled paragraphs, not
+bordered boxes; a running header/footer was added; the week overview is a
+single-row day strip; table headers use pale tints with colored text. See
+"Visual language — confirmed from reference document" above. This was a
+breaking change to `exTable()`'s signature and to `weekOverview()`'s data
+shape — `scripts/august_olivia_3day_plan.js` was updated and regenerated
+against it as the reference implementation.*

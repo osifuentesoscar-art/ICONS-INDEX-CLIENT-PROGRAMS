@@ -25,8 +25,11 @@
 
 ## System Files
 - `scripts/icons_template.js` — canonical `.docx` template engine (`buildDocument()`), per `/CLAUDE.md` spec.
+  Rebuilt (Aug 2026) against the actual Kelly Mulroy reference `.docx`: compact labeled-paragraph
+  callouts (no boxes), a running header/footer, and a single-row week-overview strip.
   Auto-inserts `proteinBar()` (ALST At-Risk clients, every day) and `pelvicFloorCallout()`
   (postmenopausal clients, heavy-loading days) — no manual per-day calls needed.
   Also exports `epley1RM(weight, reps)` / `workingLoad(oneRM, pct, roundTo=5)` for converting
   new PR data into program loads.
 - `docs/ICONS_System_Prompt.md` — paste-into-Claude-Projects reference copy of the full system prompt
+  (see its editorial note — a few visual details there are superseded by CLAUDE.md)

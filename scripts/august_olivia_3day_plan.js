@@ -13,7 +13,9 @@ const { buildDocument } = require('./icons_template');
 const client = {
   name: 'August Olivia',
   programTitle: '3-Day Training Plan',
-  stats: ['AGE 25', "5'2\"", '109 LBS', 'BODY FAT 43.4%', 'ALST 5.02 AT-RISK'],
+  subtitle: '60–80% Progressive Intensity Build',
+  schedule: 'Tue/Thu/Sat Gym',
+  stats: ['Age 25', '5\'2"', '109 lbs', 'Tue/Thu/Sat Gym', 'Sun, Mon, Wed, Fri Off'],
   weightKg: 49.4,
   ageYears: 25,
   isPostmenopausal: false,
@@ -43,9 +45,13 @@ const styku = {
 };
 
 const weekOverview = [
-  { day: 'Day 1 — Tuesday', intensity: 70, focus: 'Full-Body Foundation — Squat, Hip Thrust, Press' },
-  { day: 'Day 2 — Thursday', intensity: 60, focus: 'Lower Unilateral & Corrective — Asymmetry Protocol' },
-  { day: 'Day 3 — Saturday', intensity: 80, focus: 'Upper Push/Pull + Core — Primary Strength' },
+  { day: 'MON', intensity: 'Off', focus: 'Off' },
+  { day: 'TUE', intensity: 70, focus: 'Full-Body\nFoundation' },
+  { day: 'WED', intensity: 'Off', focus: 'Off' },
+  { day: 'THU', intensity: 60, focus: 'Lower Unilateral\n& Corrective' },
+  { day: 'FRI', intensity: 'Off', focus: 'Off' },
+  { day: 'SAT', intensity: 80, focus: 'Upper Push/Pull\n+ Core' },
+  { day: 'SUN', intensity: 'Off', focus: 'Off' },
 ];
 
 const baselines = [
@@ -94,12 +100,14 @@ const days = [
     title: 'Day 1 — Tuesday',
     subtitle: 'Full-Body Foundation — Squat, Hip Thrust, Press',
     descriptor: 'Moderate Day — Building Baseline Volume',
-    intensityPara: '70% day: moderate loading that builds working volume without peak fatigue. Focus on clean, repeatable technique across all three movement patterns before load increases next block.',
+    intensityLabel: '70% Day',
+    intensityPara: 'Tuesday\'s loads are moderate — challenging but not near-maximal. Focus on clean, repeatable technique across all three movement patterns before load increases next block.',
     warmUp: '5 min bike or march in place. 2 rounds: 10 bodyweight squats, 10 arm circles each direction (both arms, controlled), 10 glute bridges, 30-sec world\'s greatest stretch each side.',
     blocks: [
       {
         letter: 'A',
-        title: 'Primary Lower — Squat',
+        title: 'PRIMARY LOWER — SQUAT',
+        introLabel: 'Load Target',
         intro: 'Goblet position, DB held at chest. Full-Body Foundation lift for the day — own the depth and bracing pattern before adding load.',
         exercises: [
           { name: 'DB Goblet Squat', sets: '3', reps: '5', load: '35 lb', tempo: '3-1-1', rest: '90s', cue: 'Chest tall, sit hips back, knees track over toes.' },
@@ -108,7 +116,8 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'Posterior Chain',
+        title: 'POSTERIOR CHAIN',
+        introLabel: 'Why',
         intro: 'Hip thrust and RDL build the posterior chain that supports every lift on the baseline sheet.',
         exercises: [
           { name: 'Barbell Hip Thrust', sets: '3', reps: '5', load: '45 lb', tempo: '2-1-1', rest: '90s', cue: 'Chin tucked, ribs down, drive through heels.', rirNote: '1–2 RIR' },
@@ -117,7 +126,9 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'Upper Press & Core',
+        title: 'UPPER PRESS & CORE',
+        color: 'gold',
+        introLabel: 'Shoulder Note',
         intro: 'Right shoulder leads at reduced load with strict control — see clinical flag above.',
         exercises: [
           { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12 lb', tempo: '2-0-2', rest: '75s', flag: 'Right shoulder leads — control tempo, no press-out compensation.', cue: 'Ribs down, press straight overhead, avoid arching.' },
@@ -133,14 +144,17 @@ const days = [
     intensity: 60,
     title: 'Day 2 — Thursday',
     subtitle: 'Lower Unilateral & Corrective — Asymmetry Protocol',
-    descriptor: 'Technique Day — Form Over Load, No PRs',
-    intensityPara: '60% day: technique-first. LEFT leg leads every unilateral movement per the asymmetry protocol above — lighter loads, full attention on control and symmetry, not weight on the bar.',
+    descriptor: 'Technique & Corrective Day — Lighter Loads, No PRs',
+    intensityLabel: '60% Day',
+    intensityPara: 'Thursday is the lightest training day of the week by design — technique-first. LEFT leg leads every unilateral movement per the asymmetry protocol above; lighter loads, full attention on control and symmetry, not weight on the bar.',
     warmUp: '5 min easy cardio. 2 rounds: 10 banded lateral walks each direction, 10 glute bridges, 20-sec single-leg balance each side (eyes open).',
     blocks: [
       {
         letter: 'A',
-        title: 'Corrective Primer',
-        intro: 'Hip abductor / glute med activation before loaded unilateral work — standard screen for women\'s ACL/knee-valgus risk on single-leg patterns.',
+        title: 'KNEE VALGUS & ASYMMETRY CORRECTIVE CIRCUIT',
+        color: 'red',
+        introLabel: 'Why',
+        intro: 'Hip abductor / glute med activation before loaded unilateral work — standard screen for women\'s ACL/knee-valgus risk on single-leg patterns, and the entry point for closing the flagged leg asymmetry.',
         exercises: [
           { name: 'Banded Lateral Walk', sets: '2', reps: '10 each way', load: 'Mini band', tempo: '—', rest: '30s', cue: 'Band above knees, push knees out, stay low.' },
           { name: 'Single-Leg Balance', sets: '2', reps: '20–30s each', load: 'BW', tempo: '—', rest: '20s', flag: 'Left leg leads — log seconds L vs R separately.', cue: 'Soft knee, tall posture, eyes on a fixed point.' },
@@ -148,7 +162,8 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'Primary Unilateral',
+        title: 'PRIMARY UNILATERAL',
+        introLabel: 'Load Target',
         intro: 'Left leg leads every set — always perform the left-side rep first while freshest.',
         exercises: [
           { name: 'DB Split Squat', sets: '3', reps: '5 each leg', load: 'Light DB', tempo: '3-1-1', rest: '75s', flag: 'Left leg leads — log load/reps L vs R separately.', cue: 'Left leg first. Torso tall, back knee soft-tap.' },
@@ -157,7 +172,8 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'Accessory',
+        title: 'ACCESSORY',
+        color: 'gold',
         exercises: [
           { name: 'Single-Leg RDL (hand-supported)', sets: '2', reps: '5 each leg', load: 'BW / light DB', tempo: '3-1-1', rest: '60s', flag: 'Left leg leads.', cue: 'Hinge from hip, square hips to the floor.' },
           { name: 'Copenhagen Plank (bench, top leg)', sets: '2', reps: '15–20s each side', load: 'BW', tempo: '—', rest: '30s', cue: 'Side plank, top shin on bench, hold level hips.' },
@@ -172,12 +188,14 @@ const days = [
     title: 'Day 3 — Saturday',
     subtitle: 'Upper Push/Pull + Core — Primary Strength',
     descriptor: 'Primary Strength Day — Last 1–2 Reps Hard, Achievable',
-    intensityPara: '80% day: this week\'s primary strength stimulus for the upper body. Right shoulder still leads all pressing and pulling at a controlled load — build capacity without overloading the deficit side.',
+    intensityLabel: '80% Day',
+    intensityPara: 'Saturday is this week\'s primary strength stimulus for the upper body. Right shoulder still leads all pressing and pulling at a controlled load — build capacity without overloading the deficit side.',
     warmUp: '5 min row or bike. 2 rounds: 10 band pull-aparts, 10 scap push-ups, 10 arm circles each direction (both arms).',
     blocks: [
       {
         letter: 'A',
-        title: 'Primary Press',
+        title: 'PRIMARY PRESS',
+        introLabel: 'Shoulder Note',
         intro: 'Right shoulder leads every set at a reduced, controlled load — see clinical flag on page 1.',
         exercises: [
           { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12–13 lb', tempo: '2-0-2', rest: '90s', flag: 'Right shoulder leads at reduced load — strict tempo.', cue: 'Right arm first. Ribs down, straight overhead path.', rirNote: '1–2 RIR' },
@@ -186,7 +204,8 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'Pull',
+        title: 'PULL',
+        introLabel: 'Why',
         intro: 'Single-arm row trains the weaker right shoulder unilaterally under full control.',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '3', reps: '6 each arm', load: '15–17.5 lb', tempo: '2-1-1', rest: '75s', flag: 'Right arm leads — log load L vs R separately.', cue: 'Right first. Flat back, pull elbow to hip.' },
@@ -195,7 +214,8 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'Core & Carry',
+        title: 'CORE & CARRY',
+        color: 'gold',
         exercises: [
           { name: 'DB Farmer Carry', sets: '3', reps: '25 yd each hand', load: '25–27.5 lb', tempo: '—', rest: '60s', cue: 'Tall posture, ribs stacked, quiet shoulders.' },
           { name: 'Plank Hold', sets: '3', reps: '45–50s', load: 'BW', tempo: '—', rest: '45s', cue: 'Ribs down, glutes on, no hip sag.' },
@@ -208,6 +228,7 @@ const days = [
 ];
 
 const summary = {
+  subtitle: 'August Olivia  ·  ICONS Index  ·  Progressive Intensity Build  ·  Week 1',
   rows: [
     ['1', '70%', 'Full-Body Foundation', 'DB Goblet Squat', 'Baseline volume — form check on all 3 patterns'],
     ['2', '60%', 'Lower Unilateral & Corrective', 'DB Split Squat', 'No PRs — left leg leads, close the leg gap'],

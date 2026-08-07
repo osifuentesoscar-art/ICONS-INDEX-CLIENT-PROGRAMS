@@ -2,11 +2,26 @@
  * ICONS Index — Canonical .docx template engine
  * Brace Life Studios
  *
- * Source of truth for all client-facing .docx deliverables (training plans,
- * assessment reports). Page setup, color system, and table schemas are
- * extracted from the Kelly Mulroy 5-Day Training Plan reference document.
- * See /CLAUDE.md and /docs/ICONS_System_Prompt.md for the full spec this
- * file implements.
+ * Source of truth for all client-facing .docx deliverables. Page setup,
+ * color system, typography, and table schemas are extracted directly from
+ * the Kelly Mulroy 5-Day Training Plan reference document (the actual
+ * client-delivered file, XML-audited August 2026) — see
+ * /CLAUDE.md and /docs/ICONS_System_Prompt.md for the narrative spec.
+ *
+ * Visual language, confirmed against the reference document:
+ *   - Compact, editorial. No bordered/shaded "alert box" callouts anywhere.
+ *     Every callout (warm-up, cool-down, ICONS Note, baseline notes,
+ *     clinical flags, block intros) is a single paragraph: a bold colored
+ *     label run ("Warm-Up:  ") followed by a regular dark body run.
+ *   - Running header + footer with a hairline gold rule, present on every page.
+ *   - Table headers use a PALE tint background with BOLD COLORED text
+ *     (not a solid color bar with white text).
+ *   - Every color has three tiers: accent (solid), head tint (table
+ *     headers, day-header pale cell), stripe tint (alternating table rows
+ *     — lighter than the head tint). Gold is the one exception: its
+ *     day-header pale cell uses the STRIPE tint (FAF3E0), not the head
+ *     tint (F5E8C0), because the head tint reads too saturated across a
+ *     full-width band. Everywhere else head === day-header pale.
  *
  * Callout color rules — always follow:
  *   goldCallout   → warm-up, general coaching, ICONS Notes
@@ -15,19 +30,32 @@
  *   tealCallout   → Styku scan data, assessment findings, asymmetry
  *   blueCallout   → cool-down, recovery, mobility
  *   purpleCallout → pull-up pathway, posterior chain notes
- *   clinicalFlag  → ALST At-Risk, BMI underweight — thick red border (sz=20)
- *   watchFlag     → asymmetry alerts, moderate risk flags
+ *   clinicalFlag  → ALST At-Risk, BMI underweight (same compact style, flagRed text —
+ *                   the reference document renders even its most severe note,
+ *                   "Corrective Priorities", as a plain bold-red label, no border)
+ *   watchFlag     → asymmetry alerts, moderate risk flags, pelvic floor safety notes
  *   clearFlag     → shoulder cleared, milestone achieved
+ *
+ * Block header colors follow the same rule, applied per block via an
+ * explicit `block.color` override (one of the keys in HUES below):
+ *   omitted            → the day's own intensity color (primary strength blocks)
+ *   'red'              → corrective circuits tied to a flagged movement fault
+ *   'green'            → blocks tracking a baseline/PR metric (e.g. push-up protocol)
+ *   'gold'             → generic accessory / stability / mobility blocks
+ *   'purple'           → pull-up pathway / posterior-chain-specific blocks
+ * On Active Recovery days every block conventionally stays the day's own
+ * blue — there's no clinical corrective context on a recovery day.
  *
  * Every training day auto-inserts, when applicable:
  *   proteinBar(client)      — ALST At-Risk clients only, on EVERY day page
  *   pelvicFloorCallout()    — postmenopausal clients only, on EVERY day page
+ *   with a squat/deadlift/RDL/hip-thrust/carry/lunge
  */
 
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   WidthType, BorderStyle, AlignmentType, VerticalAlign, ShadingType,
-  HeadingLevel, PageBreak, convertInchesToTwip, Footer,
+  PageBreak, Header, Footer, TabStopType, TabStopPosition,
 } = require('docx');
 
 // ── PAGE SETUP (US Letter) ──────────────────────────────────────────────
@@ -37,48 +65,72 @@ const MARGIN = 900;
 const TW = 10440;
 const FONT = 'Arial';
 
-// ── COLOR SYSTEM ─────────────────────────────────────────────────────────
+// ── COLOR SYSTEM — three tiers per hue ──────────────────────────────────
+const HUES = {
+  teal: { accent: '00695C', head: 'E0F2F1', stripe: 'F0FAFA' },
+  green: { accent: '43A047', head: 'E8F5E9', stripe: 'F1F8F2' },
+  gold: { accent: 'C9A227', head: 'F5E8C0', stripe: 'FAF3E0' },
+  red: { accent: 'E53935', head: 'FFEBEE', stripe: 'FFF5F5' },
+  blue: { accent: '1565C0', head: 'EAF4FB', stripe: 'F0F7FF' },
+  purple: { accent: '6A1B9A', head: 'F3EEF9', stripe: 'F8F4FB' },
+  gray: { accent: '6B6B6B', head: 'F0F0F0', stripe: 'F0F0F0' },
+};
+
 const C = {
-  teal: '00695C', tealPale: 'E0F2F1',
-  green: '43A047', greenPale: 'E8F5E9',
-  gold: 'C9A227', goldPale: 'FAF3E0',
-  red: 'E53935', redPale: 'FFEBEE',
-  blue: '1565C0', bluePale: 'EAF4FB',
+  teal: HUES.teal.accent, tealPale: HUES.teal.head,
+  green: HUES.green.accent, greenPale: HUES.green.head,
+  gold: HUES.gold.accent, goldPale: HUES.gold.stripe,
+  goldHead: HUES.gold.head,       // table-header gold tint — distinct from goldPale
+  goldDeep: 'B8860B',             // brand table header text (baselines / summary)
+  red: HUES.red.accent, redPale: HUES.red.head,
+  blue: HUES.blue.accent, bluePale: HUES.blue.head,
+  purple: HUES.purple.accent,
 
   dark: '2C2C2C',
   mid: '6B6B6B',
   white: 'FFFFFF',
+  offGray: 'F0F0F0',
+  warmGreen: '2E7D32',            // Warm-Up label color — distinct from C.green
 
   flagRed: 'B71C1C',
   flagAmber: 'E65100',
   flagGreen: '1B5E20',
 
-  callGold: 'FAF3E0', callGoldB: 'C9A227',
-  callGreen: 'E8F5E9', callGreenB: '43A047',
-  callRed: 'FFEBEE', callRedB: 'E53935',
-  callTeal: 'E0F2F1', callTealB: '00695C',
-  callBlue: 'EAF4FB', callBlueB: '1565C0',
-  callPurple: 'F3EEF9', callPurpleB: '6A1B9A',
+  // Legacy aliases kept for any external reference to the old names.
+  callGold: HUES.gold.stripe, callGoldB: HUES.gold.accent,
+  callGreen: HUES.green.head, callGreenB: HUES.green.accent,
+  callRed: HUES.red.head, callRedB: HUES.red.accent,
+  callTeal: HUES.teal.head, callTealB: HUES.teal.accent,
+  callBlue: HUES.blue.head, callBlueB: HUES.blue.accent,
+  callPurple: HUES.purple.head, callPurpleB: HUES.purple.accent,
 };
 
+// intensity → hue key + label. "Off" is week-overview-only (no day page).
 const INTENSITY = {
-  60: { accent: C.teal, pale: C.tealPale, label: '60%' },
-  70: { accent: C.green, pale: C.greenPale, label: '70%' },
-  80: { accent: C.gold, pale: C.goldPale, label: '80%' },
-  90: { accent: C.red, pale: C.redPale, label: '90%' },
-  AR: { accent: C.blue, pale: C.bluePale, label: 'AR' },
-  Off: { accent: C.mid, pale: 'F0F0F0', label: 'OFF' },
+  60: { hue: 'teal', label: '60%' },
+  70: { hue: 'green', label: '70%' },
+  80: { hue: 'gold', label: '80%' },
+  90: { hue: 'red', label: '90%' },
+  AR: { hue: 'blue', label: 'ACTIVE\nRECOV.' },
+  Off: { hue: 'gray', label: '—' },
 };
+
+function ivOf(intensity) {
+  const entry = INTENSITY[intensity] || INTENSITY[70];
+  const hue = HUES[entry.hue];
+  const dayPale = entry.hue === 'gold' ? HUES.gold.stripe : hue.head;
+  return { accent: hue.accent, tableHead: hue.head, stripe: hue.stripe, pale: dayPale, label: entry.label, hue: entry.hue };
+}
+
+function hueOf(colorKey) {
+  const h = HUES[colorKey] || HUES.teal;
+  return { accent: h.accent, tableHead: h.head, stripe: h.stripe };
+}
 
 // ── LOW-LEVEL HELPERS ────────────────────────────────────────────────────
 function noBorders() {
   const none = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
   return { top: none, bottom: none, left: none, right: none };
-}
-
-function cellBorders(color, size = 4) {
-  const b = { style: BorderStyle.SINGLE, size, color };
-  return { top: b, bottom: b, left: b, right: b };
 }
 
 function shade(color) {
@@ -87,6 +139,17 @@ function shade(color) {
 
 function txt(text, opts = {}) {
   return new TextRun({ text, font: FONT, ...opts });
+}
+
+// Splits on \n and inserts hard line breaks within a single paragraph run,
+// matching the reference document's "Squat\nKnee Fix" style two-line cells.
+function txtLines(text, opts = {}) {
+  const parts = String(text).split('\n');
+  const runs = [];
+  parts.forEach((part, i) => {
+    runs.push(new TextRun({ text: part, font: FONT, ...opts, break: i > 0 ? 1 : undefined }));
+  });
+  return runs;
 }
 
 function para(children, opts = {}) {
@@ -101,139 +164,154 @@ function cell(content, opts = {}) {
     borders: opts.borders || noBorders(),
     shading: opts.fill ? shade(opts.fill) : undefined,
     verticalAlign: opts.vAlign || VerticalAlign.CENTER,
-    margins: opts.margins || { top: 60, bottom: 60, left: 100, right: 100 },
+    margins: opts.margins || { top: 40, bottom: 40, left: 80, right: 80 },
     width: opts.width ? { size: opts.width, type: WidthType.DXA } : undefined,
     columnSpan: opts.colSpan,
   });
 }
 
-function fullWidthTable(rows, colWidths) {
+function fullWidthTable(rows, colWidths, opts = {}) {
   return new Table({
     width: { size: TW, type: WidthType.DXA },
     columnWidths: colWidths,
     rows,
-    borders: noBorders(),
+    borders: opts.borders || noBorders(),
   });
 }
 
-function spacer(size = 120) {
+function spacer(size = 60) {
   return new Paragraph({ text: '', spacing: { after: size } });
 }
 
-// ── CALLOUTS ──────────────────────────────────────────────────────────────
-function calloutBase(label, body, fill, borderColor, opts = {}) {
-  const borderSize = opts.thick ? 20 : 6;
-  const labelColor = opts.labelColor || borderColor;
-  const bodyRuns = Array.isArray(body) ? body : [txt(body, { size: 17, color: C.dark })];
+// Evenly divides TW across n columns, pushing the rounding remainder onto
+// the last two columns — mirrors the reference week-strip [1488×5, 1500×2].
+function evenWidths(n) {
+  const base = Math.floor(TW / n);
+  const widths = Array(n).fill(base);
+  let remainder = TW - base * n;
+  for (let i = n - 1; remainder > 0; i--, remainder--) widths[i] += 1;
+  return widths;
+}
 
+// ── LABELED PARAGRAPH (the base "callout") ──────────────────────────────
+// Every narrative callout in the reference document is one paragraph: a
+// bold colored label run, then a regular dark body run. No border, no fill.
+function labeledPara(label, body, color, opts = {}) {
+  const bodyRuns = Array.isArray(body)
+    ? body
+    : [txt(body, { size: 17, color: C.dark })];
+  const p = para(
+    [txt(`${label}:  `, { bold: true, size: 17, color }), ...bodyRuns],
+    { spacing: { after: opts.spacingAfter ?? 100 } }
+  );
+  return [p];
+}
+
+const goldCallout = (label, body) => labeledPara(label, body, C.gold);
+const greenCallout = (label, body) => labeledPara(label, body, C.green);
+const redCallout = (label, body) => labeledPara(label, body, C.red);
+const tealCallout = (label, body) => labeledPara(label, body, C.teal);
+const blueCallout = (label, body) => labeledPara(label, body, C.blue);
+const purpleCallout = (label, body) => labeledPara(label, body, C.purple);
+
+const clinicalFlag = (label, body) => labeledPara(label, body, C.flagRed);
+const watchFlag = (label, body) => labeledPara(label, body, C.flagAmber);
+const clearFlag = (label, body) => labeledPara(label, body, C.flagGreen);
+
+// ── RUNNING HEADER / FOOTER ──────────────────────────────────────────────
+// 2-column table, gold hairline rule beneath — present on every page.
+function buildHeader(clientName, subtitleLine) {
+  const colWidths = [5220, 5220];
+  const left = cell(
+    [para([txt('BRACE LIFE STUDIOS', { bold: true, size: 18, color: C.gold, characterSpacing: 100 })])],
+    { width: colWidths[0] }
+  );
+  const right = cell(
+    [para([txt(`ICONS INDEX  |  ${clientName.toUpperCase()}  |  ${subtitleLine}`, { size: 13, color: C.mid, characterSpacing: 10 })], { alignment: AlignmentType.RIGHT })],
+    { width: colWidths[1] }
+  );
   const table = new Table({
     width: { size: TW, type: WidthType.DXA },
-    rows: [
-      new TableRow({
-        children: [
-          cell(
-            [
-              para([txt(label.toUpperCase(), { bold: true, size: 15, color: labelColor, characterSpacing: 12 })], { spacing: { after: 60 } }),
-              para(bodyRuns, { spacing: { after: 0 } }),
-            ],
-            {
-              fill,
-              borders: cellBorders(borderColor, borderSize),
-              width: TW,
-              margins: { top: 120, bottom: 120, left: 160, right: 160 },
-            }
-          ),
-        ],
-      }),
-    ],
-    borders: noBorders(),
+    columnWidths: colWidths,
+    rows: [new TableRow({ children: [left, right] })],
+    borders: {
+      top: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      left: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      bottom: { style: BorderStyle.SINGLE, size: 6, color: C.gold },
+    },
   });
-  return [table, spacer(140)];
+  return new Header({ children: [table] });
 }
 
-const goldCallout = (label, body) => calloutBase(label, body, C.callGold, C.callGoldB);
-const greenCallout = (label, body) => calloutBase(label, body, C.callGreen, C.callGreenB);
-const redCallout = (label, body) => calloutBase(label, body, C.callRed, C.callRedB);
-const tealCallout = (label, body) => calloutBase(label, body, C.callTeal, C.callTealB);
-const blueCallout = (label, body) => calloutBase(label, body, C.callBlue, C.callBlueB);
-const purpleCallout = (label, body) => calloutBase(label, body, C.callPurple, C.callPurpleB);
-
-const clinicalFlag = (label, body) => calloutBase(label, body, C.callRed, C.flagRed, { thick: true, labelColor: C.flagRed });
-const watchFlag = (label, body) => calloutBase(label, body, C.callGold, C.flagAmber, { thick: false, labelColor: C.flagAmber });
-const clearFlag = (label, body) => calloutBase(label, body, C.callGreen, C.flagGreen, { thick: false, labelColor: C.flagGreen });
-
-// ── COVER / HEADER BLOCKS ────────────────────────────────────────────────
-function brandLine() {
-  return para(
-    [txt('B R A C E   L I F E   S T U D I O S', { bold: true, size: 15, color: C.gold, characterSpacing: 20 })],
-    { alignment: AlignmentType.CENTER, spacing: { after: 40 } }
-  );
+function buildFooter(clientName, footerRight) {
+  const p = new Paragraph({
+    border: { top: { style: BorderStyle.SINGLE, size: 4, color: C.gold, space: 1 } },
+    tabStops: [{ type: TabStopType.RIGHT, position: TW }],
+    spacing: { before: 80 },
+    children: [
+      txt('Brace Life Studios  |  Confidential  |  bracelifestudios.com', { size: 16, color: C.mid }),
+      txt('\t', { size: 16 }),
+      txt(footerRight, { size: 16, color: C.mid }),
+    ],
+  });
+  return new Footer({ children: [p] });
 }
 
-function coverHeader(clientName, programTitle, tagLine) {
+// ── COVER BLOCKS ──────────────────────────────────────────────────────
+function coverHeader(clientName, programTitle, subtitleLine) {
   const els = [];
-  els.push(brandLine());
   els.push(para([txt(programTitle.toUpperCase(), { bold: true, size: 52, color: C.gold, characterSpacing: 30 })], {
-    alignment: AlignmentType.CENTER, spacing: { after: 100 },
+    alignment: AlignmentType.CENTER, spacing: { after: 40 },
   }));
-  els.push(para([txt(clientName.toUpperCase(), { bold: true, size: 40, color: C.dark })], {
-    alignment: AlignmentType.CENTER, spacing: { after: 80 },
-  }));
-  if (tagLine) {
-    els.push(para([txt(tagLine, { italics: true, size: 18, color: C.mid })], {
-      alignment: AlignmentType.CENTER, spacing: { after: 200 },
+  if (subtitleLine) {
+    els.push(para([txt(subtitleLine.toUpperCase(), { size: 22, color: C.dark })], {
+      alignment: AlignmentType.CENTER, spacing: { after: 30 },
     }));
   }
-  els.push(new Paragraph({
-    border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: C.gold, space: 1 } },
-    spacing: { after: 240 },
+  els.push(para([txt('————————————————————', { size: 20, color: C.goldHead })], {
+    alignment: AlignmentType.CENTER, spacing: { after: 60 },
+  }));
+  els.push(para([txt(clientName, { bold: true, size: 40, color: C.dark })], {
+    alignment: AlignmentType.CENTER, spacing: { after: 20 },
   }));
   return els;
 }
 
 function clientStats(stats) {
-  const cells = stats.map((s, i) => cell(
-    [para([txt(s, { size: 16, bold: true, color: C.dark })], { alignment: AlignmentType.CENTER })],
-    { fill: i % 2 === 0 ? 'F5F5F5' : 'FFFFFF', width: Math.floor(TW / stats.length) }
-  ));
-  return [
-    fullWidthTable([new TableRow({ children: cells })], stats.map(() => Math.floor(TW / stats.length))),
-    spacer(200),
-  ];
+  return [para(
+    [txt(stats.join('  ·  '), { italics: true, size: 17, color: C.mid })],
+    { alignment: AlignmentType.CENTER, spacing: { after: 100 } }
+  )];
 }
 
 function sectionTitle(title, color = C.gold) {
   return para(
-    [txt(title.toUpperCase(), { bold: true, size: 20, color, characterSpacing: 14 })],
+    [txt(title, { bold: true, size: 17, color })],
     {
-      spacing: { before: 160, after: 120 },
-      border: { bottom: { style: BorderStyle.SINGLE, size: 4, color } },
+      spacing: { before: 120, after: 80 },
+      border: { bottom: { style: BorderStyle.SINGLE, size: 4, color, space: 2 } },
     }
   );
 }
 
-// ── WEEK OVERVIEW ─────────────────────────────────────────────────────────
+// ── WEEK OVERVIEW (single-row day strip, up to 7 columns) ───────────────
 function weekOverview(days) {
-  const colWidths = [2200, 1600, 6640];
-  const header = new TableRow({
-    children: [
-      cell([para([txt('DAY', { bold: true, size: 14, color: C.white })])], { fill: C.dark, width: colWidths[0] }),
-      cell([para([txt('INTENSITY', { bold: true, size: 14, color: C.white })], { alignment: AlignmentType.CENTER })], { fill: C.dark, width: colWidths[1] }),
-      cell([para([txt('FOCUS', { bold: true, size: 14, color: C.white })])], { fill: C.dark, width: colWidths[2] }),
-    ],
-  });
-  const rows = [header, ...days.map((d, i) => {
-    const iv = INTENSITY[d.intensity] || INTENSITY[70];
-    const rowFill = i % 2 === 0 ? 'FFFFFF' : 'F7F7F7';
-    return new TableRow({
-      children: [
-        cell([para([txt(d.day, { bold: true, size: 15, color: C.dark })])], { fill: rowFill, width: colWidths[0] }),
-        cell([para([txt(iv.label, { bold: true, size: 14, color: iv.accent })], { alignment: AlignmentType.CENTER })], { fill: rowFill, width: colWidths[1] }),
-        cell([para([txt(d.focus, { size: 15, color: C.dark })])], { fill: rowFill, width: colWidths[2] }),
+  const colWidths = evenWidths(days.length);
+  const cells = days.map((d, i) => {
+    const iv = ivOf(d.intensity);
+    const isOff = d.intensity === 'Off' || d.intensity === undefined;
+    const accent = isOff ? C.mid : iv.accent;
+    return cell(
+      [
+        para(txtLines(d.day, { bold: true, size: 17, color: accent }), { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
+        para(txtLines(iv.label, { bold: true, size: 22, color: accent }), { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
+        para(txtLines(d.focus, { size: 12, color: C.dark }), { alignment: AlignmentType.CENTER }),
       ],
-    });
-  })];
-  return [sectionTitle('Week Overview'), fullWidthTable(rows, colWidths), spacer(180)];
+      { fill: isOff ? C.offGray : 'FFFFFF', width: colWidths[i], margins: { top: 60, bottom: 60, left: 40, right: 40 } }
+    );
+  });
+  return [fullWidthTable([new TableRow({ children: cells })], colWidths), spacer(120)];
 }
 
 // ── BASELINES ──────────────────────────────────────────────────────────
@@ -242,32 +320,23 @@ function baselinesTable(rows) {
   const headerLabels = ['LIFT', 'BASELINE', 'TESTED AT', '8-WEEK TARGET'];
   const header = new TableRow({
     children: headerLabels.map((h, i) => cell(
-      [para([txt(h, { bold: true, size: 13, color: C.white })], { alignment: i === 0 || i === 3 ? AlignmentType.LEFT : AlignmentType.CENTER })],
-      { fill: C.dark, width: colWidths[i] }
+      [para([txt(h, { bold: true, size: 14, color: C.goldDeep })], { alignment: i === 0 || i === 3 ? AlignmentType.LEFT : AlignmentType.CENTER })],
+      { fill: C.goldHead, width: colWidths[i] }
     )),
   });
   const body = rows.map((r, i) => new TableRow({
     children: r.map((val, j) => cell(
-      [para([txt(String(val), { size: 15, color: C.dark, bold: j === 0 })], { alignment: j === 0 || j === 3 ? AlignmentType.LEFT : AlignmentType.CENTER })],
-      { fill: i % 2 === 0 ? 'FFFFFF' : 'F7F7F7', width: colWidths[j] }
+      [para([txt(String(val), { size: j === 0 ? 17 : 16, color: j === 0 ? C.dark : C.mid, bold: j === 0 })], { alignment: j === 0 || j === 3 ? AlignmentType.LEFT : AlignmentType.CENTER })],
+      { fill: i % 2 === 0 ? C.goldPale : 'FFFFFF', width: colWidths[j] }
     )),
   }));
-  return [sectionTitle('Strength Baselines'), fullWidthTable([header, ...body], colWidths), spacer(160)];
+  return [fullWidthTable([header, ...body], colWidths), spacer(100)];
 }
 
 // ── STYKU BLOCK ────────────────────────────────────────────────────────
-function metricRow(label, value, colWidths) {
-  return new TableRow({
-    children: [
-      cell([para([txt(label, { size: 14, color: C.mid })])], { width: colWidths[0] }),
-      cell([para([txt(String(value), { size: 15, bold: true, color: C.dark })], { alignment: AlignmentType.RIGHT })], { width: colWidths[1] }),
-    ],
-  });
-}
-
 function stykuBlock(styku) {
   const els = [sectionTitle('Styku Body Composition Scan', C.teal)];
-  els.push(para([txt(`Scan Date: ${styku.scanDate}`, { size: 14, italics: true, color: C.mid })], { spacing: { after: 100 } }));
+  els.push(para([txt(`Scan Date: ${styku.scanDate}`, { size: 14, italics: true, color: C.mid })], { spacing: { after: 80 } }));
 
   const colWidths = [5220, 5220];
   const leftCol = [
@@ -291,13 +360,13 @@ function stykuBlock(styku) {
     const l = leftCol[i], r = rightCol[i];
     rows.push(new TableRow({
       children: [
-        cell([para([txt(l ? l[0] : '', { size: 13, color: C.mid })]), para([txt(l ? String(l[1]) : '', { size: 15, bold: true, color: C.dark })])], { fill: i % 2 === 0 ? 'F7FBFA' : 'FFFFFF', width: colWidths[0] }),
-        cell([para([txt(r ? r[0] : '', { size: 13, color: C.mid })]), para([txt(r ? String(r[1]) : '', { size: 15, bold: true, color: C.dark })])], { fill: i % 2 === 0 ? 'F7FBFA' : 'FFFFFF', width: colWidths[1] }),
+        cell([para([txt(l ? l[0] : '', { size: 13, color: C.mid })]), para([txt(l ? String(l[1]) : '', { size: 15, bold: true, color: C.dark })])], { fill: i % 2 === 0 ? HUES.teal.stripe : 'FFFFFF', width: colWidths[0] }),
+        cell([para([txt(r ? r[0] : '', { size: 13, color: C.mid })]), para([txt(r ? String(r[1]) : '', { size: 15, bold: true, color: C.dark })])], { fill: i % 2 === 0 ? HUES.teal.stripe : 'FFFFFF', width: colWidths[1] }),
       ],
     }));
   }
   els.push(fullWidthTable(rows, colWidths));
-  els.push(spacer(160));
+  els.push(spacer(100));
   if (styku.peerComparison) {
     els.push(...tealCallout('Peer Comparison', styku.peerComparison));
   }
@@ -333,8 +402,8 @@ function nutritionBlock(client) {
     'Daily Protein Target',
     [
       txt(`${proteinLow}–${proteinHigh}g/day`, { bold: true, size: 20, color: C.dark }),
-      txt(`  (${low.toFixed(1)}–${high.toFixed(1)} g/kg — ${tier})`, { size: 15, color: C.mid }),
-      txt(`\n~${perMeal}g per meal minimum (leucine threshold), distributed across 4+ meals/day.`, { size: 15, color: C.dark }),
+      txt(`  (${low.toFixed(1)}–${high.toFixed(1)} g/kg — ${tier})  `, { size: 15, color: C.mid }),
+      txt(`~${perMeal}g per meal minimum (leucine threshold), distributed across 4+ meals/day.`, { size: 17, color: C.dark }),
     ]
   ));
 
@@ -359,29 +428,11 @@ function nutritionBlock(client) {
 }
 
 // ── PROTEIN BAR ────────────────────────────────────────────────────────
-// Slim, single-line reminder — distinct from the full nutritionBlock() on
-// the cover page. Auto-inserted on EVERY training day page for ALST
-// At-Risk clients per the "Skipping protein_bar" common mistake.
+// Compact reminder — same labeledPara style as everything else — auto-
+// inserted on EVERY training day page for ALST At-Risk clients.
 function proteinBar(client) {
   const { proteinLow, proteinHigh } = proteinTargets(client);
-  const table = new Table({
-    width: { size: TW, type: WidthType.DXA },
-    rows: [
-      new TableRow({
-        children: [
-          cell(
-            [para([
-              txt('PROTEIN REMINDER  ', { bold: true, size: 13, color: C.callGoldB, characterSpacing: 8 }),
-              txt(`Target ${proteinLow}–${proteinHigh}g today, 4+ meals. Creatine 3–5g with a meal.`, { size: 13, color: C.dark }),
-            ])],
-            { fill: C.callGold, borders: cellBorders(C.callGoldB, 4), width: TW, margins: { top: 60, bottom: 60, left: 140, right: 140 } }
-          ),
-        ],
-      }),
-    ],
-    borders: noBorders(),
-  });
-  return [table, spacer(120)];
+  return labeledPara('Protein Reminder', `Target ${proteinLow}–${proteinHigh}g today, 4+ meals. Creatine 3–5g with a meal.`, C.gold);
 }
 
 // ── PELVIC FLOOR CALLOUT ──────────────────────────────────────────────
@@ -396,143 +447,128 @@ function pelvicFloorCallout() {
 
 // ── DAY HEADER ─────────────────────────────────────────────────────────
 function dayHeader(intensity, title, subtitle, descriptor) {
-  const iv = INTENSITY[intensity] || INTENSITY[70];
+  const iv = ivOf(intensity);
   const colWidths = [1600, 8840];
   const badge = cell(
-    [para([txt(iv.label, { bold: true, size: 30, color: C.white })], { alignment: AlignmentType.CENTER })],
+    [
+      para(txtLines(iv.label, { bold: true, size: 36, color: C.white }), { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
+      para([txt('INTENSITY', { bold: true, size: 13, color: C.white })], { alignment: AlignmentType.CENTER }),
+    ],
     { fill: iv.accent, width: colWidths[0], vAlign: VerticalAlign.CENTER }
   );
   const titleCell = cell(
     [
-      para([txt(title.toUpperCase(), { bold: true, size: 26, color: iv.accent, characterSpacing: 8 })], { spacing: { after: 40 } }),
-      para([txt(subtitle, { bold: true, size: 17, color: C.dark })], { spacing: { after: 40 } }),
-      para([txt(descriptor.toUpperCase(), { size: 13, color: C.mid, characterSpacing: 10 })]),
+      para([txt(title.toUpperCase(), { bold: true, size: 26, color: iv.accent })], { spacing: { after: 30 } }),
+      para([txt(subtitle, { bold: true, size: 19, color: C.dark })], { spacing: { after: 30 } }),
+      para([txt(descriptor.toUpperCase(), { bold: true, size: 14, color: iv.accent })]),
     ],
-    { fill: iv.pale, width: colWidths[1], vAlign: VerticalAlign.CENTER }
+    { fill: iv.pale, width: colWidths[1], vAlign: VerticalAlign.CENTER, margins: { top: 60, bottom: 60, left: 120, right: 120 } }
   );
   return [
     fullWidthTable([new TableRow({ children: [badge, titleCell] })], colWidths),
-    spacer(160),
+    spacer(100),
   ];
 }
 
-function intensityPara(text) {
-  return [para([txt(text, { size: 15, italics: true, color: C.mid })], { spacing: { after: 160 } })];
+function intensityPara(label, text) {
+  return labeledPara(label, text, undefined, { spacingAfter: 100 });
 }
 
 // ── EXERCISE TABLE ────────────────────────────────────────────────────
 const EX_COLS = { EXERCISE: 2400, SETS: 380, REPS: 420, LOAD: 680, TEMPO: 540, REST: 440, CUE: 5580 };
 const EX_COL_WIDTHS = [EX_COLS.EXERCISE, EX_COLS.SETS, EX_COLS.REPS, EX_COLS.LOAD, EX_COLS.TEMPO, EX_COLS.REST, EX_COLS.CUE];
 
-function blockLabel(letter, title, accentColor, intro) {
+function blockLabel(letter, title, colorKey, day, introLabel, intro) {
+  const accent = colorKey ? hueOf(colorKey).accent : ivOf(day.intensity).accent;
   const els = [para(
-    [txt(`${letter}. `, { bold: true, size: 17, color: accentColor }), txt(title.toUpperCase(), { bold: true, size: 15, color: accentColor, characterSpacing: 8 })],
-    { spacing: { before: 140, after: 60 } }
+    [txt(`${letter} — ${title}`, { bold: true, size: 17, color: accent })],
+    { spacing: { before: 120, after: 60 } }
   )];
   if (intro) {
-    els.push(para([txt(intro, { size: 14, color: C.dark })], { spacing: { after: 100 } }));
+    els.push(...labeledPara(introLabel || 'Note', intro, accent, { spacingAfter: 80 }));
   }
   return els;
 }
 
-function exTable(exercises, accentColor, paleFill) {
+function exTable(exercises, colorKey) {
+  const hue = hueOf(colorKey);
   const headers = ['EXERCISE', 'SETS', 'REPS', 'LOAD', 'TEMPO', 'REST', 'COACHING CUE'];
   const header = new TableRow({
     children: headers.map((h, i) => cell(
-      [para([txt(h, { bold: true, size: 12, color: C.white })], { alignment: i === 0 || i === 6 ? AlignmentType.LEFT : AlignmentType.CENTER })],
-      { fill: accentColor, width: EX_COL_WIDTHS[i] }
+      [para([txt(h, { bold: true, size: i === 0 || i === 6 ? 15 : 13, color: hue.accent })], { alignment: i === 0 || i === 6 ? AlignmentType.LEFT : AlignmentType.CENTER })],
+      { fill: hue.tableHead, width: EX_COL_WIDTHS[i] }
     )),
   });
 
   const rows = exercises.map((ex, i) => {
-    const nameParas = [para([txt(ex.name, { bold: true, size: 14, color: C.dark })])];
+    const nameParas = [para([txt(ex.name, { bold: true, size: 18, color: C.dark })])];
     if (ex.flag) {
-      nameParas.push(para([txt(ex.flag, { italics: true, size: 11, color: C.flagRed })]));
+      nameParas.push(para([txt(ex.flag, { italics: true, size: 14, color: C.flagRed })]));
     }
-    let cueRuns = [txt(ex.cue || '', { size: 13, color: C.dark })];
+    let cueRuns = [txt(ex.cue || '', { size: 17, color: C.mid })];
     if (ex.rirNote) {
-      cueRuns.push(txt(`  ${ex.rirNote}`, { size: 12, color: C.teal, italics: true }));
+      cueRuns.push(txt(`  ${ex.rirNote}`, { size: 14, color: C.teal, italics: true }));
     }
-    const fill = i % 2 === 0 ? 'FFFFFF' : paleFill;
+    const fill = i % 2 === 0 ? hue.stripe : 'FFFFFF';
     return new TableRow({
       children: [
         cell(nameParas, { fill, width: EX_COLS.EXERCISE }),
-        cell([para([txt(ex.sets || '', { size: 13, color: C.dark })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.SETS }),
-        cell([para([txt(ex.reps || '', { size: 13, color: C.dark })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.REPS }),
-        cell([para([txt(ex.load || '', { size: 13, color: C.dark })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.LOAD }),
-        cell([para([txt(ex.tempo || '', { size: 13, color: C.dark })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.TEMPO },),
-        cell([para([txt(ex.rest || '', { size: 13, color: C.dark })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.REST }),
+        cell([para([txt(ex.sets || '', { size: 15, color: C.mid })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.SETS }),
+        cell([para([txt(ex.reps || '', { size: 15, color: C.mid })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.REPS }),
+        cell([para([txt(ex.load || '', { size: 15, color: C.mid })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.LOAD }),
+        cell([para([txt(ex.tempo || '', { size: 15, color: C.mid })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.TEMPO }),
+        cell([para([txt(ex.rest || '', { size: 15, color: C.mid })], { alignment: AlignmentType.CENTER })], { fill, width: EX_COLS.REST }),
         cell([para(cueRuns)], { fill, width: EX_COLS.CUE }),
       ],
     });
   });
 
-  return [fullWidthTable([header, ...rows], EX_COL_WIDTHS), spacer(120)];
+  return [fullWidthTable([header, ...rows], EX_COL_WIDTHS), spacer(100)];
 }
 
 // ── WEEKLY SUMMARY ─────────────────────────────────────────────────────
 function weeklySummary(rows) {
   const colWidths = [1200, 1000, 2040, 2200, 4000];
-  const headers = ['DAY', 'INTENSITY', 'FOCUS', 'KEY LIFT', 'NOTES'];
+  const headers = ['DAY', 'INTENSITY', 'FOCUS', 'KEY LIFTS', 'PROGRESSION TARGETS'];
   const header = new TableRow({
     children: headers.map((h, i) => cell(
-      [para([txt(h, { bold: true, size: 12, color: C.white })], { alignment: AlignmentType.CENTER })],
-      { fill: C.dark, width: colWidths[i] }
+      [para([txt(h, { bold: true, size: 14, color: C.goldDeep })], { alignment: AlignmentType.CENTER })],
+      { fill: C.goldHead, width: colWidths[i] }
     )),
   });
   const body = rows.map((r, i) => new TableRow({
     children: r.map((val, j) => cell(
-      [para([txt(String(val), { size: 13, color: C.dark })], { alignment: j === 0 ? AlignmentType.CENTER : AlignmentType.LEFT })],
-      { fill: i % 2 === 0 ? 'FFFFFF' : 'F7F7F7', width: colWidths[j] }
+      [para([txt(String(val), { size: 14, color: j === 0 ? C.gold : C.dark, bold: j === 0 })], { alignment: j === 0 ? AlignmentType.CENTER : AlignmentType.LEFT })],
+      { fill: i % 2 === 0 ? C.goldPale : 'FFFFFF', width: colWidths[j] }
     )),
   }));
-  return [sectionTitle('Weekly Summary'), fullWidthTable([header, ...body], colWidths), spacer(160)];
+  return [fullWidthTable([header, ...body], colWidths), spacer(100)];
 }
 
 // ── PROGRESSION / MILESTONE BLOCKS ────────────────────────────────────
-function progressionBlock(accentColor) {
-  return calloutBase(
+function progressionBlock() {
+  return labeledPara(
     'Progression Rule — RIR Model',
     [
-      txt('Add weight: ', { bold: true, size: 14, color: C.dark }), txt('top of rep range + 2 RIR + clean form.\n', { size: 14, color: C.dark }),
-      txt('Same weight: ', { bold: true, size: 14, color: C.dark }), txt('form degraded on final reps.\n', { size: 14, color: C.dark }),
-      txt('Drop weight: ', { bold: true, size: 14, color: C.dark }), txt('missed reps, pain, or excess fatigue.', { size: 14, color: C.dark }),
+      txt('Add weight ', { bold: true, size: 17, color: C.dark }), txt('at top of rep range + 2 RIR + clean form. ', { size: 17, color: C.dark }),
+      txt('Same weight ', { bold: true, size: 17, color: C.dark }), txt('if form degraded on final reps. ', { size: 17, color: C.dark }),
+      txt('Drop weight ', { bold: true, size: 17, color: C.dark }), txt('on missed reps, pain, or excess fatigue.', { size: 17, color: C.dark }),
     ],
-    C.callTeal, accentColor || C.callTealB
+    C.teal
   );
 }
 
 function milestoneTracker(m4wk, m8wk, rescanNote) {
-  const els = [sectionTitle('Milestone Tracking')];
-  els.push(...goldCallout('4-Week Milestone', m4wk));
-  els.push(...greenCallout('8-Week Milestone', m8wk));
+  const els = [];
+  els.push(...goldCallout('4-Week Milestones', m4wk));
+  els.push(...goldCallout('8-Week Milestones', m8wk));
   if (rescanNote) {
-    els.push(...tealCallout('8-Week Styku Rescan', rescanNote));
+    els.push(...goldCallout('Week 8 Re-Scan', rescanNote));
   }
   return els;
 }
 
-// ── 1RM CALCULATION ────────────────────────────────────────────────────
-// Epley formula. Week 1 working load = 80% 1RM. Week 4 peak test = 92–95%.
-// Always round to nearest 5 lbs (or pass roundTo explicitly).
-function epley1RM(weight, reps) {
-  return Math.round(weight * (1 + reps / 30));
-}
-
-function workingLoad(oneRM, pct, roundTo = 5) {
-  return Math.round((oneRM * pct) / roundTo) * roundTo;
-}
-
-// ── FOOTER ─────────────────────────────────────────────────────────────
-function footerParagraph(clientName) {
-  return new Paragraph({
-    alignment: AlignmentType.CENTER,
-    children: [
-      txt(`Brace Life Studios  •  bracelifestudios.com  •  Confidential — ${clientName}`, { size: 12, color: C.mid }),
-    ],
-  });
-}
-
+// ── DOCUMENT ASSEMBLY ─────────────────────────────────────────────────
 // Heavy hip-loading pattern check — squats, deadlifts/RDLs, hip thrusts,
 // loaded carries, lunges — the pelvic floor trigger list.
 const HEAVY_LOAD_PATTERN = /squat|deadlift|\brdl\b|hip thrust|carry|lunge/i;
@@ -542,30 +578,28 @@ function dayHasHeavyLoading(day) {
   );
 }
 
-// ── DOCUMENT ASSEMBLY ─────────────────────────────────────────────────
 function buildDayContent(day, client) {
   const els = [];
   els.push(...dayHeader(day.intensity, day.title, day.subtitle, day.descriptor));
-  els.push(...intensityPara(day.intensityPara));
+  els.push(...intensityPara(day.intensityLabel || `${ivOf(day.intensity).label} Day`, day.intensityPara));
 
   if (client && client.alstIndex !== undefined && client.alstIndex < 5.5) {
     els.push(...proteinBar(client));
   }
 
-  if (day.warmUp) els.push(...goldCallout('Warm-Up', day.warmUp));
+  if (day.warmUp) els.push(...labeledPara('Warm-Up', day.warmUp, C.warmGreen));
 
   if (client && client.isPostmenopausal && day.pelvicFloor !== false && dayHasHeavyLoading(day)) {
     els.push(...pelvicFloorCallout());
   }
 
   (day.blocks || []).forEach((block) => {
-    const iv = INTENSITY[day.intensity] || INTENSITY[70];
-    els.push(...blockLabel(block.letter, block.title, iv.accent, block.intro));
-    els.push(...exTable(block.exercises, iv.accent, iv.pale));
+    els.push(...blockLabel(block.letter, block.title, block.color, day, block.introLabel, block.intro));
+    els.push(...exTable(block.exercises, block.color || ivOf(day.intensity).hue));
   });
 
-  if (day.coolDown) els.push(...blueCallout('Cool-Down', day.coolDown));
-  if (day.iconsNote) els.push(...goldCallout('ICONS Note', day.iconsNote));
+  if (day.coolDown) els.push(...labeledPara('Cool-Down', day.coolDown, C.blue));
+  if (day.iconsNote) els.push(...labeledPara('ICONS Note', day.iconsNote, C.gold));
 
   return els;
 }
@@ -574,12 +608,16 @@ async function buildDocument(data) {
   const children = [];
   const client = data.client;
 
-  children.push(...coverHeader(client.name, client.programTitle, "It's not about working out. It's about working in.™"));
+  children.push(...coverHeader(client.name, client.programTitle, client.subtitle));
   if (client.stats && client.stats.length) children.push(...clientStats(client.stats));
 
   if (data.weekOverview) children.push(...weekOverview(data.weekOverview));
   if (data.styku) children.push(...stykuBlock(data.styku));
-  if (data.baselines) children.push(...baselinesTable(data.baselines));
+
+  if (data.baselines) {
+    children.push(sectionTitle('Strength Baselines — Established'));
+    children.push(...baselinesTable(data.baselines));
+  }
 
   if (data.baselineNotes) {
     const fnMap = {
@@ -590,6 +628,7 @@ async function buildDocument(data) {
       const fn = fnMap[n.type] || goldCallout;
       children.push(...fn(n.label, n.body));
     });
+    children.push(spacer(80));
   }
 
   if (data.includeNutritionBlock !== false) {
@@ -606,10 +645,28 @@ async function buildDocument(data) {
 
   if (data.summary) {
     children.push(new Paragraph({ children: [new PageBreak()] }));
-    children.push(sectionTitle('Weekly Summary & Milestones'));
+    children.push(para([txt('WEEKLY SUMMARY & PROGRESSION TARGETS', { bold: true, size: 28, color: C.gold })], {
+      alignment: AlignmentType.CENTER, spacing: { after: 40 },
+    }));
+    if (data.summary.subtitle) {
+      children.push(para([txt(data.summary.subtitle, { italics: true, size: 17, color: C.mid })], {
+        alignment: AlignmentType.CENTER, spacing: { after: 100 },
+      }));
+    }
     if (data.summary.rows) children.push(...weeklySummary(data.summary.rows));
     children.push(...milestoneTracker(data.summary.milestones4wk, data.summary.milestones8wk, data.summary.rescanNote));
+
+    children.push(spacer(160));
+    children.push(para([txt(`BRACE LIFE STUDIOS  ·  ICONS INDEX  ·  bracelifestudios.com`, { bold: true, size: 18, color: C.gold })], {
+      alignment: AlignmentType.CENTER, spacing: { after: 40 },
+    }));
+    children.push(para([txt(`This training plan is confidential and prepared exclusively for ${client.name}.`, { italics: true, size: 16, color: C.mid })], {
+      alignment: AlignmentType.CENTER,
+    }));
   }
+
+  const headerSubtitle = client.subtitle || client.programTitle;
+  const footerRight = `${client.name}  |  ${client.programTitle}  |  ${client.schedule || ''}`.replace(/\s*\|\s*$/, '');
 
   const doc = new Document({
     sections: [
@@ -620,15 +677,14 @@ async function buildDocument(data) {
             margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN },
           },
         },
-        footers: {
-          default: new Footer({ children: [footerParagraph(client.name)] }),
-        },
+        headers: { default: buildHeader(client.name, headerSubtitle) },
+        footers: { default: buildFooter(client.name, footerRight) },
         children,
       },
     ],
     styles: {
       default: {
-        document: { run: { font: FONT, size: 15, color: C.dark } },
+        document: { run: { font: FONT, size: 17, color: C.dark } },
       },
     },
   });
@@ -642,8 +698,10 @@ module.exports = {
   coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock,
   nutritionBlock, proteinTargets, proteinBar, pelvicFloorCallout,
   dayHeader, exTable, weeklySummary, progressionBlock, milestoneTracker,
+  labeledPara,
   goldCallout, greenCallout, redCallout, tealCallout, blueCallout, purpleCallout,
   clinicalFlag, watchFlag, clearFlag,
   sectionTitle,
-  epley1RM, workingLoad,
+  epley1RM: (weight, reps) => Math.round(weight * (1 + reps / 30)),
+  workingLoad: (oneRM, pct, roundTo = 5) => Math.round((oneRM * pct) / roundTo) * roundTo,
 };
