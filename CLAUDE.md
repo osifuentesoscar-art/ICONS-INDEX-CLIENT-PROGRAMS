@@ -62,12 +62,17 @@ Drive folder : "ICONS CLIENT PROGRAMS" — id 15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52
 Upload as    : native format (.docx / .pdf / .pptx) — pass disableConversionToGoogleType: true
               on mcp__Google_Drive__create_file so Drive keeps the exact file, not a
               converted Google Doc (conversion can lose custom table shading/borders)
+Filename     : <ClientName>_<ProgramTitle>_YYYY-MM-DD.<ext>
+              e.g. August_Olivia_3Day_Training_Plan_2026-08-07.docx
+              Date = the day the file is generated, not a client-provided date.
+              This applies to the Drive copy only — local repo filenames under
+              clients/<client_name>/ stay undated; git history is their versioning.
 ```
 
-**"Replace with the updated version" — known limitation:** the Google Drive MCP tools available in this environment (`search_files`, `create_file`, `copy_file`, `download_file_content`, `get_file_metadata`, `get_file_permissions`, `list_recent_files`) do **not** include a delete or update-in-place call. There is no way to overwrite or remove the previous file via this integration. The actual workflow, until a delete/update tool is available:
-1. `search_files` with `parentId = '15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52' and title contains '<ClientName>'` to check for an existing copy.
-2. Upload the new version with `create_file` regardless — this does **not** overwrite; it adds a second file with the same name.
-3. Tell the user a stale copy exists and needs manual removal in Drive (this integration cannot delete it) — do not silently leave the user unaware of the duplicate.
+**"Replace with the updated version" — known limitation:** the Google Drive MCP tools available in this environment (`search_files`, `create_file`, `copy_file`, `download_file_content`, `get_file_metadata`, `get_file_permissions`, `list_recent_files`) do **not** include a delete or update-in-place call. There is no way to overwrite or remove the previous file via this integration. Per Xolokan (Aug 2026), the standing workaround is the date-stamped filename above rather than a same-name overwrite:
+1. `search_files` with `parentId = '15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52' and title contains '<ClientName>'` to check for prior dated copies.
+2. Upload the new version under today's dated filename with `create_file` — never reuse an old file's exact name, since there is no overwrite.
+3. Mention the prior dated copy(ies) still in the folder so Xolokan can delete them manually if desired (this integration cannot delete on its own) — don't silently leave stale versions unmentioned.
 
 ---
 
