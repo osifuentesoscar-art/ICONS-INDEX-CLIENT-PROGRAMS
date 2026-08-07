@@ -1,0 +1,167 @@
+{
+  "client": {
+    "name": "Jane Athlete",
+    "programTitle": "3-Day Training Plan",
+    "stats": ["Age 42", "5'6\"", "150 lbs", "Mon/Wed/Fri"],
+    "weightKg": 68,
+    "ageYears": 42,
+    "isPostmenopausal": false,
+    "bmr": 1420,
+    "alstIndex": 5.3
+  },
+  "styku": {
+    "scanDate": "2026-08-01",
+    "bodyFatPct": 29,
+    "bodyFatRank": "AVERAGE",
+    "leanMass": 96,
+    "leanMassPct": 64,
+    "fatMass": 43.5,
+    "boneMass": 6.2,
+    "bmi": 24.2,
+    "bmr": 1420,
+    "vfa": 82,
+    "shapeScore": 58,
+    "shapeScoreLabel": "Good",
+    "alstIndex": 5.3,
+    "leftArmLST": 6.4,
+    "rightArmLST": 6.9,
+    "leftLegLST": 12.1,
+    "rightLegLST": 12.6
+  },
+  "weekOverview": [
+    { "day": "Day 1 — Mon", "intensity": "70", "focus": "Full Body — Squat Focus + Knee Valgus" },
+    { "day": "Day 2 — Wed", "intensity": "80", "focus": "Posterior Chain — Deadlift Focus" },
+    { "day": "Day 3 — Fri", "intensity": "60", "focus": "Upper Body — Technique" }
+  ],
+  "baselines": [
+    ["Deadlift", "135 lbs x 5", "2026-08-01", "155 lbs x 5"],
+    ["Back Squat", "95 lbs x 5", "2026-08-01", "115 lbs x 5"],
+    ["Seated OHP", "45 lbs x 5", "2026-08-01", "55 lbs x 5"]
+  ],
+  "baselineNotes": [
+    { "type": "clinicalFlag", "label": "ALST At-Risk", "body": "ALST index 5.3 kg/m² is below the 5.5 EWGSOP2 sarcopenia threshold. Protein escalated to 2.0–2.2 g/kg/day; creatine 3–5g daily strongly indicated." },
+    { "type": "watchFlag", "label": "Styku Asymmetry", "body": "Left arm (6.4 vs 6.9 lbs) and left leg (12.1 vs 12.6 lbs) LST are lower on both segments — gap at alert threshold. Left leads all unilateral work this block." },
+    { "type": "gold", "label": "Corrective Priority", "body": "Right knee valgus on squat descent — banded squat and TKE precede every squat session." }
+  ],
+  "includeNutritionBlock": true,
+  "includeProgressionBlock": true,
+  "days": [
+    {
+      "intensity": "70",
+      "title": "DAY 1 — MONDAY",
+      "subtitle": "Full Body — Squat Focus + Knee Valgus",
+      "descriptor": "MODERATE STRENGTH · BUILDING VOLUME",
+      "intensityPara": "70% day — moderate strength, no peak CNS demand. Full range of motion, controlled tempo.",
+      "warmUp": "5 min bike, band pull-aparts x15, bodyweight squats x10, lateral band walks x10/side",
+      "coolDown": "Couch stretch 60s/side, 90/90 hip stretch 60s/side",
+      "iconsNote": "Watch the right knee on squat descent — cue 'push the knee out' every set.",
+      "blocks": [
+        {
+          "letter": "A",
+          "title": "Corrective",
+          "intro": "Knee valgus correctives before any loaded squat pattern.",
+          "exercises": [
+            { "name": "Banded Squat", "sets": "2", "reps": "12", "load": "mini band", "tempo": "2-1-1", "rest": "45s", "cue": "Push knees out against the band." },
+            { "name": "Terminal Knee Extension", "sets": "2", "reps": "15/side", "load": "light band", "tempo": "2-0-1", "rest": "30s", "cue": "Straighten knee fully, hold 1 sec." }
+          ]
+        },
+        {
+          "letter": "B",
+          "title": "Primary Strength",
+          "intro": "Working sets at 70% — 2 RIR on all sets.",
+          "exercises": [
+            { "name": "Back Squat", "sets": "3", "reps": "8", "load": "85 lbs", "tempo": "3-1-1", "rest": "90s", "cue": "Brace, knees track over toes, full depth.", "rirNote": "2 RIR" }
+          ]
+        },
+        {
+          "letter": "C",
+          "title": "Accessory",
+          "exercises": [
+            { "name": "Single-Arm DB Row", "sets": "3", "reps": "10/side", "load": "25 lbs", "tempo": "2-0-1", "rest": "60s", "cue": "Lead with left arm — weaker side.", "flag": "Left leads — weaker arm" }
+          ]
+        }
+      ]
+    },
+    {
+      "intensity": "80",
+      "title": "DAY 2 — WEDNESDAY",
+      "subtitle": "Posterior Chain — Deadlift Focus",
+      "descriptor": "PRIMARY STRENGTH DAY",
+      "intensityPara": "80% day — primary strength. Last 1-2 reps hard but achievable.",
+      "warmUp": "5 min row, glute bridges x15, RDL with dowel x10",
+      "coolDown": "Hamstring stretch 60s/side, child's pose 60s",
+      "iconsNote": "Add 5 lbs to deadlift if last week was clean at 1-2 RIR.",
+      "blocks": [
+        {
+          "letter": "A",
+          "title": "Primer",
+          "exercises": [
+            { "name": "Glute Bridge", "sets": "2", "reps": "15", "load": "bodyweight", "tempo": "2-1-1", "rest": "30s", "cue": "Squeeze glutes hard at the top." }
+          ]
+        },
+        {
+          "letter": "B",
+          "title": "Primary Strength",
+          "intro": "Bone-investment day — compound loading at 80%.",
+          "exercises": [
+            { "name": "Hex Bar Deadlift", "sets": "4", "reps": "5", "load": "135 lbs", "tempo": "2-1-1", "rest": "120s", "cue": "Push floor away, brace before every rep.", "rirNote": "1-2 RIR" }
+          ]
+        },
+        {
+          "letter": "C",
+          "title": "Accessory",
+          "exercises": [
+            { "name": "Single-Leg RDL", "sets": "3", "reps": "8/side", "load": "20 lbs", "tempo": "3-1-1", "rest": "60s", "cue": "Lead with left leg — weaker side.", "flag": "Left leads — weaker leg" }
+          ]
+        }
+      ]
+    },
+    {
+      "intensity": "60",
+      "title": "DAY 3 — FRIDAY",
+      "subtitle": "Upper Body — Technique",
+      "descriptor": "TECHNIQUE DAY · LIGHTER LOADS · FULL ATTENTION TO FORM",
+      "intensityPara": "60% day — technique focus. Form over load, no PRs. Bank clean movement patterns.",
+      "warmUp": "5 min row, band pull-aparts x15, arm circles x10/direction, scap push-ups x10",
+      "coolDown": "Doorway chest stretch 60s/side, cross-body shoulder stretch 30s/side",
+      "iconsNote": "Technique day — dial in OHP bar path before loading next block. Hit protein target daily to support ALST recovery.",
+      "blocks": [
+        {
+          "letter": "A",
+          "title": "Primer",
+          "intro": "Shoulder prep before overhead loading.",
+          "exercises": [
+            { "name": "Band Pull-Apart", "sets": "2", "reps": "15", "load": "light band", "tempo": "2-0-1", "rest": "30s", "cue": "Squeeze shoulder blades together." },
+            { "name": "Scapular Push-Up", "sets": "2", "reps": "12", "load": "bodyweight", "tempo": "2-1-1", "rest": "30s", "cue": "Protract fully, control the return." }
+          ]
+        },
+        {
+          "letter": "B",
+          "title": "Primary Strength",
+          "intro": "Working sets at 60% — 3+ RIR, technique focus.",
+          "exercises": [
+            { "name": "Seated Overhead Press", "sets": "3", "reps": "8", "load": "35 lbs", "tempo": "2-1-1", "rest": "90s", "cue": "Brace core, press straight overhead.", "rirNote": "3+ RIR" }
+          ]
+        },
+        {
+          "letter": "C",
+          "title": "Accessory",
+          "exercises": [
+            { "name": "Incline DB Press", "sets": "3", "reps": "10", "load": "20 lbs", "tempo": "2-0-1", "rest": "60s", "cue": "Control the eccentric, full stretch." },
+            { "name": "Push-Ups", "sets": "2", "reps": "AMRAP", "load": "bodyweight", "tempo": "2-0-1", "rest": "60s", "cue": "Full range, chest to floor." }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "rows": [
+      ["Day 1", "70%", "Squat + Knee Valgus", "Back Squat", "115 lbs x 5"],
+      ["Day 2", "80%", "Deadlift Focus", "Hex Bar DL", "155 lbs x 5"],
+      ["Day 3", "60%", "Upper Body Technique", "Seated OHP", "55 lbs x 5"]
+    ],
+    "milestones4wk": "Right knee tracks cleanly through full squat depth without banded cue. Deadlift +10 lbs.",
+    "milestones8wk": "Full Styku rescan. ALST index should move toward 5.5+. L/R LST gap should narrow.",
+    "rescanNote": "Schedule Styku rescan at week 8 to confirm ALST trend and asymmetry reduction."
+  }
+}
