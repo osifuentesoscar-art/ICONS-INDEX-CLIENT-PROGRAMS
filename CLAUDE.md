@@ -53,6 +53,24 @@ System prompt    → docs/ICONS_System_Prompt.md (paste-into-Projects reference 
 
 ---
 
+## GOOGLE DRIVE SYNC — REQUIRED FOR EVERY FINAL CLIENT DELIVERABLE
+
+Every finished client deliverable (`.docx` training plan or assessment report, PDF, PPTX) must be uploaded to the client's Google Drive folder as the last step of the build — not just delivered to the chat. This is a standing instruction; do it automatically, without being asked each time.
+
+```
+Drive folder : "ICONS CLIENT PROGRAMS" — id 15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52
+Upload as    : native format (.docx / .pdf / .pptx) — pass disableConversionToGoogleType: true
+              on mcp__Google_Drive__create_file so Drive keeps the exact file, not a
+              converted Google Doc (conversion can lose custom table shading/borders)
+```
+
+**"Replace with the updated version" — known limitation:** the Google Drive MCP tools available in this environment (`search_files`, `create_file`, `copy_file`, `download_file_content`, `get_file_metadata`, `get_file_permissions`, `list_recent_files`) do **not** include a delete or update-in-place call. There is no way to overwrite or remove the previous file via this integration. The actual workflow, until a delete/update tool is available:
+1. `search_files` with `parentId = '15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52' and title contains '<ClientName>'` to check for an existing copy.
+2. Upload the new version with `create_file` regardless — this does **not** overwrite; it adds a second file with the same name.
+3. Tell the user a stale copy exists and needs manual removal in Drive (this integration cannot delete it) — do not silently leave the user unaware of the duplicate.
+
+---
+
 ## THE TEMPLATE ENGINE — `icons_template.js`
 
 **Location:** `scripts/icons_template.js`
