@@ -1,0 +1,11 @@
+{
+  "name": "icons-index-client-programs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Brace Life Studios ICONS client document generation scripts",
+  "type": "commonjs",
+  "scripts": {},
+  "dependencies": {
+    "docx": "^9.0.2"
+  }
+}
