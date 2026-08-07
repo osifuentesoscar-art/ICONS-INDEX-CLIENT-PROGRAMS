@@ -35,8 +35,8 @@
     lb asymmetry trigger, no formal protocol, but right is marginally
     weaker)
   - Left leg: 17.5 lbs / Right leg: 18.0 lbs (gap 0.5 lbs — at the
-    asymmetry trigger threshold; right leg is weaker and should lead
-    all unilateral leg work)
+    asymmetry trigger threshold; LEFT leg has the lower LST value, so
+    left is the weaker side and should lead all unilateral leg work)
 
 ### Circumferences (in)
 Bicep L lower 12.0, Bicep L 12.8, Bicep R lower 11.6, Bicep R 12.5,
@@ -72,5 +72,5 @@ Thigh L upper 24.5, Thigh R lower 17.9, Mid-thigh R 20.7, Thigh R upper
 
 ## Goals
 - Not yet specified by client — build the initial 3-day plan around the
-  cardiometabolic/body-fat priority above, with the right-leg asymmetry
+  cardiometabolic/body-fat priority above, with the left-leg asymmetry
   protocol applied to unilateral leg work.

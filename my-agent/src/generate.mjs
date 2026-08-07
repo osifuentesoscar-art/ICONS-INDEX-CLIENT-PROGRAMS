@@ -6,7 +6,11 @@
  *   1. If intake.md changed since last run, ask Claude (via the Agent SDK,
  *      using docs/ICONS_System_Prompt.md as its system prompt) to structure
  *      it into clients/<slug>/data.json, applying the ICONS science layer.
- *   2. If data.json changed since last run, render it to
+ *   2. If data.json changed since last run, run it through the pre-export
+ *      validation gate (src/validate.mjs — catches things like a "weaker
+ *      side" claim that contradicts the raw Styku numbers, stray
+ *      generation artifacts, and overlong cues). Any error-level finding
+ *      blocks rendering. On a clean pass, render to
  *      deliverables/<slug>/<slug>.docx and .pdf via the deterministic
  *      engines, then audit the PDF for overflow.
  *
@@ -24,6 +28,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { query } from '@anthropic-ai/claude-agent-sdk';
+import { validateClientData, formatIssues } from './validate.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -152,7 +157,19 @@ async function processClient(slug) {
 
   const dataHash = sha256(fs.readFileSync(dataPath, 'utf8'));
   if (dataHash !== state.dataHash || touched) {
-    console.log(`[${slug}] rendering deliverables...`);
+    const parsed = readJsonSafe(dataPath);
+    const issues = validateClientData(parsed);
+    const errors = issues.filter((i) => i.severity === 'error');
+    const warnings = issues.filter((i) => i.severity === 'warning');
+    if (warnings.length) {
+      console.warn(`[${slug}] validation warnings:\n${formatIssues(warnings)}`);
+    }
+    if (errors.length) {
+      throw new Error(
+        `[${slug}] pre-export validation failed — not rendering. Fix and rerun:\n${formatIssues(errors)}`,
+      );
+    }
+    console.log(`[${slug}] validation clean — rendering deliverables...`);
     renderDeliverables(slug, dataPath);
     state.dataHash = dataHash;
     state.generatedAt = new Date().toISOString();
