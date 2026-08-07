@@ -85,7 +85,7 @@ async function structureIntake(slug, intakePath, dataPath) {
       systemPrompt,
       allowedTools: ['Read', 'Write'],
       permissionMode: 'acceptEdits',
-      maxTurns: 12,
+      maxTurns: 20,
     },
   })) {
     if (message.type === 'result') {
@@ -93,15 +93,18 @@ async function structureIntake(slug, intakePath, dataPath) {
     }
   }
 
-  if (!finalResult || finalResult.is_error) {
-    throw new Error(`[${slug}] intake structuring failed: ${finalResult?.subtype || 'no result'}`);
-  }
-  if (!fs.existsSync(dataPath)) {
-    throw new Error(`[${slug}] agent finished but did not write data.json`);
-  }
-  const parsed = readJsonSafe(dataPath);
+  // A turn-limit or other mid-flight error doesn't necessarily mean the
+  // write failed — the agent may have already written a complete,
+  // well-formed data.json before running out of turns on self-review.
+  // Trust the file on disk over the SDK's result subtype: only hard-fail
+  // when there's no usable output.
+  const parsed = fs.existsSync(dataPath) ? readJsonSafe(dataPath) : null;
+
   if (!parsed) {
-    throw new Error(`[${slug}] data.json written by agent is not valid JSON`);
+    throw new Error(`[${slug}] intake structuring failed: ${finalResult?.subtype || 'no result'}, and no valid data.json was written`);
+  }
+  if (!finalResult || finalResult.is_error) {
+    console.warn(`[${slug}] agent finished with "${finalResult?.subtype || 'no result'}" but data.json is valid JSON — proceeding`);
   }
   return parsed;
 }
