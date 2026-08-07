@@ -1,0 +1,213 @@
+{
+  "client": {
+    "name": "August Olivia",
+    "programTitle": "3-Day Training Plan",
+    "stats": ["Age 25", "5'2\"", "109 lbs", "3-Day Program (assumed — TBD)"],
+    "weightKg": 49.4,
+    "ageYears": 25,
+    "isPostmenopausal": false,
+    "bmr": 1284,
+    "alstIndex": 5.02
+  },
+  "styku": {
+    "scanDate": "2026-08-05",
+    "bodyFatPct": 43.4,
+    "bodyFatRank": "AT-RISK",
+    "leanMass": 58.1,
+    "leanMassPct": 53.3,
+    "fatMass": 47.3,
+    "boneMass": 3.6,
+    "bmi": 19.9,
+    "bmr": 1284,
+    "vfa": 71.4,
+    "shapeScore": 39,
+    "shapeScoreLabel": "Off Track",
+    "alstIndex": 5.02,
+    "leftArmLST": 4.3,
+    "rightArmLST": 4.7,
+    "leftLegLST": 11.4,
+    "rightLegLST": 12.1,
+    "peerComparison": "Body fat % higher than 88% of women ages 18-29 (Styku high-risk percentile)"
+  },
+  "weekOverview": [
+    { "day": "Day 1 — Lower Body Foundation", "intensity": "60", "focus": "Squat & Posterior Chain — Technique Priority" },
+    { "day": "Day 2 — Upper Body & Shoulder Correctives", "intensity": "70", "focus": "Pressing Priority — Right Shoulder Force Asymmetry Protocol" },
+    { "day": "Day 3 — Full Body Strength & Loaded Carries", "intensity": "70", "focus": "Deadlift Introduction + Carry Progression" }
+  ],
+  "baselines": [
+    ["Deadlift", "Not tested", "—", "Establish baseline — Day 3 hex bar pattern"],
+    ["Back Squat", "35 lbs x 5", "2026-08-05", "45 lbs x 5"],
+    ["Seated Overhead Press", "12 lbs x 5", "2026-08-05", "15 lbs x 5 (shoulder caution)"],
+    ["Incline Push-Up", "5 reps (bodyweight)", "2026-08-05", "10-12 reps"],
+    ["Dumbbell Farmers Carry", "25 lbs/hand", "2026-08-05", "35 lbs/hand"],
+    ["Hip Thrust", "45 lbs x 5", "2026-08-05", "65 lbs x 5"],
+    ["Single-Leg RDL", "17.5 lbs/hand x 5", "2026-08-05", "22.5 lbs/hand x 5"],
+    ["Lunges", "Not tested", "—", "Establish baseline within 2 weeks"],
+    ["Plank Hold", "50 sec", "2026-08-05", "75 sec"],
+    ["Pull-Ups", "Not tested", "—", "Introduce assisted variation Week 4"]
+  ],
+  "baselineNotes": [
+    {
+      "type": "clinicalFlag",
+      "label": "ALST At-Risk — 5.02 kg/m²",
+      "body": "Appendicular Lean Soft Tissue Index of 5.02 kg/m² falls below the 5.5 EWGSOP2 sarcopenia threshold. Muscle-building is the primary physiological goal this block. Protein escalated to 2.0–2.2 g/kg/day (99–109g/day); creatine 3–5g daily strongly indicated."
+    },
+    {
+      "type": "watchFlag",
+      "label": "Leg Asymmetry — 0.7 lb L/R Gap",
+      "body": "Styku segmental LST: left leg 11.4 lbs vs right leg 12.1 lbs — gap crosses the 0.5 lb asymmetry protocol threshold. Left leg leads all unilateral lower-body work; track gap reduction at 8-week rescan."
+    },
+    {
+      "type": "red",
+      "label": "Right Shoulder Force Asymmetry — Corrective Priority",
+      "body": "Force-plate shoulder extension testing (6/1/2026) shows 63.2% asymmetry: left peak force 190N (10.29s to peak, RFD 136 N/s) vs right peak force 70N (1.75s to peak, RFD 290 N/s). Right side reaches force fast but tops out low. Functional flag, not pain or injury — keep pressing/overhead loads conservative on the right until rate-of-force quality evens out; monitor RFD, not just peak load."
+    },
+    {
+      "type": "teal",
+      "label": "Styku Scan Summary — 8/5/2026",
+      "body": "Body fat 43.4% (Styku At-Risk, Mayo Clinic >40% threshold; higher than 88% of women ages 18-29). VFA 71.4 cm² — Low Risk. BMI 19.9 — Normal. Shape Score 39/100 — Off Track. BMR 1,284 cal/day."
+    },
+    {
+      "type": "green",
+      "label": "Arm Asymmetry — Below Alert Threshold",
+      "body": "Left arm 4.3 lbs vs right arm 4.7 lbs — 0.4 lb gap, just under the 0.5 lb protocol trigger. Lead with left arm on unilateral upper-body work as a precaution and monitor at rescan."
+    },
+    {
+      "type": "gold",
+      "label": "Program Length Assumption",
+      "body": "Client has not yet specified schedule or session frequency. A 3-day full-body split is assumed as a reasonable new-client default — confirm with client and adjust at next check-in."
+    },
+    {
+      "type": "green",
+      "label": "Untested Lifts",
+      "body": "Deadlift and Lunges were not tested in the initial battery; Pull-Ups not attempted. Deadlift hinge pattern introduced on Day 3; Deadlift, Lunges, and Pull-Ups will be formally baselined within the first 2 weeks."
+    }
+  ],
+  "includeNutritionBlock": true,
+  "includeProgressionBlock": true,
+  "days": [
+    {
+      "intensity": "60",
+      "title": "DAY 1 — LOWER BODY FOUNDATION",
+      "subtitle": "Squat & Posterior Chain — Technique Priority",
+      "descriptor": "TECHNIQUE DAY · LIGHTER LOADS · FULL ATTENTION TO FORM",
+      "intensityPara": "60% day — technique priority given new-client status and ALST At-Risk profile. Form takes precedence over load; no PRs this block. Left leg leads all unilateral work per Styku segmental LST.",
+      "warmUp": "5 min bike, bodyweight squat x10, glute bridge x10, band walk x10/side",
+      "coolDown": "Couch stretch 60s/side, child's pose 60s, hamstring stretch 60s/side",
+      "iconsNote": "New client — 3-day split assumed pending client schedule confirmation. Prioritize clean squat depth and hip thrust lockout over load this block.",
+      "blocks": [
+        {
+          "letter": "A",
+          "title": "Glute Activation & Left-Led Unilateral Prep",
+          "intro": "Left leg is the weaker side (Styku LST) — activation before loading.",
+          "exercises": [
+            { "name": "Banded Lateral Walk", "sets": "2", "reps": "10/side", "load": "mini band", "tempo": "continuous", "rest": "30s", "cue": "Push knees out, small controlled steps." },
+            { "name": "Glute Bridge", "sets": "2", "reps": "15", "load": "bodyweight", "tempo": "2-1-1", "rest": "30s", "cue": "Squeeze glutes hard at the top." }
+          ]
+        },
+        {
+          "letter": "B",
+          "title": "Primary Strength — Squat & Hip Thrust",
+          "intro": "60% day — technique priority. 3+ RIR, focus on form over load.",
+          "exercises": [
+            { "name": "Back Squat", "sets": "3", "reps": "5", "load": "35 lbs", "tempo": "3-1-1", "rest": "90s", "cue": "Brace, knees track over toes, full depth.", "rirNote": "3+ RIR" },
+            { "name": "Hip Thrust", "sets": "3", "reps": "5", "load": "45 lbs", "tempo": "2-1-2", "rest": "90s", "cue": "Drive through heels, squeeze at top.", "rirNote": "2-3 RIR" }
+          ]
+        },
+        {
+          "letter": "C",
+          "title": "Unilateral Leg & Core",
+          "exercises": [
+            { "name": "Single-Leg RDL", "sets": "3", "reps": "5/side", "load": "17.5 lbs/hand", "tempo": "3-1-1", "rest": "60s", "cue": "Lead with left leg — weaker side.", "flag": "Left leads — weaker leg (Styku LST)", "rirNote": "2-3 RIR" },
+            { "name": "Plank Hold", "sets": "2", "reps": "50s hold", "load": "bodyweight", "tempo": "hold", "rest": "45s", "cue": "Brace core, neutral spine, breathe steady." }
+          ]
+        }
+      ]
+    },
+    {
+      "intensity": "70",
+      "title": "DAY 2 — UPPER BODY & SHOULDER CORRECTIVES",
+      "subtitle": "Pressing Priority — Right Shoulder Force Asymmetry Protocol",
+      "descriptor": "MODERATE INTENSITY · RIGHT SHOULDER CAUTION · CONTROLLED TEMPO",
+      "intensityPara": "70% day — moderate strength. Right shoulder force-plate asymmetry (63.2%) means pressing loads stay conservative until rate-of-force quality improves bilaterally. Left arm leads unilateral pulling per Styku LST.",
+      "warmUp": "5 min row, band pull-apart x15, arm circles x10/direction, scap push-up x10",
+      "coolDown": "Doorway chest stretch 60s/side, cross-body shoulder stretch 30s/side",
+      "iconsNote": "Right shoulder produces force fast but tops out low (70N vs 190N peak) — monitor quality, not just load, on every pressing set.",
+      "blocks": [
+        {
+          "letter": "A",
+          "title": "Shoulder Force Asymmetry Protocol",
+          "intro": "Right shoulder is slower to peak force but faster RFD — bilateral quality check before loading.",
+          "exercises": [
+            { "name": "Band External Rotation", "sets": "2", "reps": "15/side", "load": "light band", "tempo": "2-0-2", "rest": "30s", "cue": "Elbow pinned, rotate slow, control return." },
+            { "name": "Band Pull-Apart", "sets": "2", "reps": "15", "load": "light band", "tempo": "2-0-1", "rest": "30s", "cue": "Squeeze shoulder blades together." }
+          ]
+        },
+        {
+          "letter": "B",
+          "title": "Overhead Press — Conservative Load",
+          "intro": "2 RIR ceiling on pressing — right shoulder caution per force-plate flag.",
+          "exercises": [
+            { "name": "Seated Overhead Press", "sets": "3", "reps": "5", "load": "12 lbs", "tempo": "2-1-1", "rest": "90s", "cue": "Brace core, press straight, even both sides.", "rirNote": "2 RIR", "flag": "Right shoulder caution — force-plate flag" },
+            { "name": "Incline Push-Up", "sets": "3", "reps": "8-10", "load": "bodyweight", "tempo": "2-0-1", "rest": "60s", "cue": "Full range, chest to bar, even tempo both arms." }
+          ]
+        },
+        {
+          "letter": "C",
+          "title": "Unilateral Pull — Left-Led",
+          "exercises": [
+            { "name": "Single-Arm DB Row", "sets": "3", "reps": "8/side", "load": "15 lbs", "tempo": "2-0-1", "rest": "60s", "cue": "Lead with left arm — weaker side.", "flag": "Left leads — weaker arm (Styku LST)", "rirNote": "2 RIR" },
+            { "name": "Dumbbell Farmers Carry", "sets": "3", "reps": "30 sec", "load": "25 lbs/hand", "tempo": "steady", "rest": "60s", "cue": "Tall posture, braced core, even steps." }
+          ]
+        }
+      ]
+    },
+    {
+      "intensity": "70",
+      "title": "DAY 3 — FULL BODY STRENGTH & LOADED CARRIES",
+      "subtitle": "Deadlift Introduction + Carry Progression",
+      "descriptor": "MODERATE INTENSITY · TECHNIQUE-FIRST DEADLIFT PATTERN",
+      "intensityPara": "70% day — full body. Deadlift pattern introduced at light load — untested lift, priority is hinge technique before loading. Today's working loads become the new 8-week baseline.",
+      "warmUp": "5 min bike, hip hinge with dowel x10, glute bridge x10, band walk x10/side",
+      "coolDown": "Hamstring stretch 60s/side, 90/90 hip stretch 60s/side, child's pose 60s",
+      "iconsNote": "Deadlift and lunge baselines untested — log today's working loads as the new baseline for 8-week tracking.",
+      "blocks": [
+        {
+          "letter": "A",
+          "title": "Hip Hinge Prep",
+          "exercises": [
+            { "name": "Dowel Hip Hinge", "sets": "2", "reps": "10", "load": "dowel", "tempo": "2-1-1", "rest": "30s", "cue": "Push hips back, dowel stays in 3 contact points." },
+            { "name": "Banded Lateral Walk", "sets": "2", "reps": "10/side", "load": "mini band", "tempo": "continuous", "rest": "30s", "cue": "Push knees out, small controlled steps." }
+          ]
+        },
+        {
+          "letter": "B",
+          "title": "Deadlift Technique Introduction",
+          "intro": "Light load, 3+ RIR — establishing hinge pattern as the new baseline.",
+          "exercises": [
+            { "name": "Hex Bar Deadlift", "sets": "3", "reps": "5", "load": "45 lbs", "tempo": "2-1-1", "rest": "90s", "cue": "Push floor away, brace before every rep.", "rirNote": "3+ RIR" },
+            { "name": "Back Squat", "sets": "3", "reps": "5", "load": "40 lbs", "tempo": "3-1-1", "rest": "90s", "cue": "Brace, full depth, knees track over toes.", "rirNote": "2 RIR" }
+          ]
+        },
+        {
+          "letter": "C",
+          "title": "Loaded Carry & Core",
+          "exercises": [
+            { "name": "Dumbbell Farmers Carry", "sets": "3", "reps": "30-40 sec", "load": "27.5 lbs/hand", "tempo": "steady", "rest": "60s", "cue": "Tall posture, shoulders back, even steps." },
+            { "name": "Plank Hold", "sets": "2", "reps": "55s hold", "load": "bodyweight", "tempo": "hold", "rest": "45s", "cue": "Brace core, neutral spine, breathe steady." }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "rows": [
+      ["Day 1", "60%", "Lower Body Foundation", "Back Squat / Hip Thrust", "45 lbs x 5 / 65 lbs x 5"],
+      ["Day 2", "70%", "Upper Body & Shoulder Correctives", "Seated OHP / Single-Arm Row", "15 lbs x 5 / 20 lbs x 8"],
+      ["Day 3", "70%", "Full Body Strength & Carries", "Hex Bar DL / Farmers Carry", "65 lbs x 5 / 35 lbs/hand"]
+    ],
+    "milestones4wk": "Right shoulder RFD trends toward bilateral symmetry on pressing sets; left-leg-led unilateral work shows clean control; deadlift and lunge baselines formally established.",
+    "milestones8wk": "Full Styku rescan. ALST index should trend toward 5.5+; leg L/R gap should narrow below 0.5 lbs; body fat % and Shape Score should improve.",
+    "rescanNote": "Schedule Styku rescan at week 8 to confirm ALST trend, leg asymmetry reduction, and shoulder force-plate retest."
+  }
+}
