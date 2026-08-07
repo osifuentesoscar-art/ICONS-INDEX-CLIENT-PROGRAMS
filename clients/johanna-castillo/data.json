@@ -31,7 +31,7 @@
   },
   "weekOverview": [
     { "day": "Day 1 — Full Body Strength & Metabolic Conditioning", "intensity": "70", "focus": "Moderate Strength + Cardiometabolic Priority" },
-    { "day": "Day 2 — Lower Body Technique", "intensity": "60", "focus": "Squat & Deadlift Introduction + Right-Leg Asymmetry Protocol" },
+    { "day": "Day 2 — Lower Body Technique", "intensity": "60", "focus": "Squat & Deadlift Introduction + Left-Leg Asymmetry Protocol" },
     { "day": "Day 3 — Upper Body & Posterior Chain", "intensity": "70", "focus": "Pressing/Pulling Strength + Metabolic Finisher" }
   ],
   "baselines": [
@@ -59,8 +59,8 @@
     },
     {
       "type": "watchFlag",
-      "label": "Right Leg Asymmetry — 0.5 lb L/R Gap",
-      "body": "Styku segmental LST: left leg 17.5 lbs vs right leg 18.0 lbs — gap sits exactly at the 0.5 lb asymmetry protocol trigger. Right leg leads all unilateral lower-body work; track gap at 8-week rescan."
+      "label": "Left Leg Asymmetry — 0.5 lb L/R Gap",
+      "body": "Styku segmental LST: left leg 17.5 lbs vs right leg 18.0 lbs — gap sits exactly at the 0.5 lb asymmetry protocol trigger. Left leg has the lower LST value and leads all unilateral lower-body work; track gap at 8-week rescan."
     },
     {
       "type": "teal",
@@ -140,12 +140,12 @@
     {
       "intensity": "60",
       "title": "DAY 2 — LOWER BODY TECHNIQUE",
-      "subtitle": "Squat & Deadlift Introduction + Right-Leg Asymmetry Protocol",
+      "subtitle": "Squat & Deadlift Introduction + Left-Leg Asymmetry Protocol",
       "descriptor": "TECHNIQUE DAY · LIGHTER LOADS · FULL ATTENTION TO FORM",
-      "intensityPara": "60% day — technique priority. Squat and deadlift were not tested in the initial battery, so today's loads are deliberately light and become the new 8-week baseline. Right leg leads every unilateral set — Styku segmental LST shows an 0.5 lb deficit (17.5 vs 18.0 lbs), exactly at the asymmetry protocol trigger.",
+      "intensityPara": "60% day — technique priority. Squat and deadlift were not tested in the initial battery, so today's loads are deliberately light and become the new 8-week baseline. Left leg leads every unilateral set — Styku segmental LST shows a 0.5 lb deficit (17.5 vs 18.0 lbs), exactly at the asymmetry protocol trigger.",
       "warmUp": "5 min bike, hip circles x10/direction, banded lateral walk x10/side, bodyweight squat x10, glute bridge x10",
       "coolDown": "Couch stretch 30s/side, standing quad stretch 30s/side, child's pose 45s",
-      "iconsNote": "First exposure to squat and deadlift patterns — log today's working loads as the new baseline for 8-week testing. Right leg leads all unilateral work this block; track the L/R gap at rescan.",
+      "iconsNote": "First exposure to squat and deadlift patterns — log today's working loads as the new baseline for 8-week testing. Left leg leads all unilateral work this block; track the L/R gap at rescan.",
       "blocks": [
         {
           "letter": "A",
@@ -167,11 +167,11 @@
         },
         {
           "letter": "C",
-          "title": "Unilateral Leg — Right-Led",
-          "intro": "Styku scan shows a 0.5 lb right-leg deficit (L 17.5 / R 18.0) — at the asymmetry trigger threshold. Right leg leads every set below; log reps per side.",
+          "title": "Unilateral Leg — Left-Led",
+          "intro": "Styku scan shows a 0.5 lb left-leg deficit (L 17.5 / R 18.0) — at the asymmetry trigger threshold. Left leg leads every set below; log reps per side.",
           "exercises": [
-            { "name": "Single-Leg RDL", "sets": "3", "reps": "6/side", "load": "22.5 lbs/hand", "tempo": "3-1-1", "rest": "60s", "cue": "Right leg first. Hinge, flat back, soft knee.", "flag": "Right leg weaker (Styku) — leads every set", "rirNote": "2 RIR" },
-            { "name": "Reverse Lunge", "sets": "3", "reps": "8/side", "load": "bodyweight", "tempo": "2-1-1", "rest": "60s", "cue": "Right leg first. Knee tracks over mid-foot.", "flag": "Right leg leads", "rirNote": "2 RIR" }
+            { "name": "Single-Leg RDL", "sets": "3", "reps": "6/side", "load": "22.5 lbs/hand", "tempo": "3-1-1", "rest": "60s", "cue": "Left leg first. Hinge, flat back, soft knee.", "flag": "Left leg weaker (Styku) — leads every set", "rirNote": "2 RIR" },
+            { "name": "Reverse Lunge", "sets": "3", "reps": "8/side", "load": "bodyweight", "tempo": "2-1-1", "rest": "60s", "cue": "Left leg first. Knee tracks over mid-foot.", "flag": "Left leg leads", "rirNote": "2 RIR" }
           ]
         },
         {
@@ -241,8 +241,8 @@
       ["Day 2", "60%", "Lower Body Technique", "Goblet Squat / Trap Bar DL", "20 lbs x 8 / 45 lbs x 6"],
       ["Day 3", "70%", "Upper Body & Posterior Chain", "Bent-Over Row / Incline DB Press", "20 lbs/hand x 10 / 17.5 lbs/hand x 8"]
     ],
-    "milestones4wk": "Clean, repeatable squat and deadlift patterns at technique loads; right leg leads all unilateral leg work without compensation; conditioning finishers completed at brisk, sustainable effort each session.",
-    "milestones8wk": "Full Styku rescan. VFA should trend down from 142.7 cm² toward the moderate-risk band; body fat % and Shape Score should improve; right-leg L/R gap should narrow below the 0.5 lb trigger; squat, deadlift, and lunge baselines formally established with 8-week targets set.",
-    "rescanNote": "Schedule Styku rescan at week 8 to confirm VFA and body fat trend, right-leg asymmetry reduction, and to formally baseline squat, deadlift, and lunges for future progression targets."
+    "milestones4wk": "Clean, repeatable squat and deadlift patterns at technique loads; left leg leads all unilateral leg work without compensation; conditioning finishers completed at brisk, sustainable effort each session.",
+    "milestones8wk": "Full Styku rescan. VFA should trend down from 142.7 cm² toward the moderate-risk band; body fat % and Shape Score should improve; left-leg L/R gap should narrow below the 0.5 lb trigger; squat, deadlift, and lunge baselines formally established with 8-week targets set.",
+    "rescanNote": "Schedule Styku rescan at week 8 to confirm VFA and body fat trend, left-leg asymmetry reduction, and to formally baseline squat, deadlift, and lunges for future progression targets."
   }
 }
