@@ -315,9 +315,12 @@ function weekOverview(days) {
 }
 
 // ── BASELINES ──────────────────────────────────────────────────────────
-function baselinesTable(rows) {
+// targetHeaderLabel defaults to the Kelly Mulroy reference's "8-WEEK TARGET"
+// — override for clients on a different progression cadence (e.g. Aimee's
+// 4-week block: "TRAINING LOAD · 4-WEEK TARGET").
+function baselinesTable(rows, targetHeaderLabel = '8-WEEK TARGET') {
   const colWidths = [2600, 1600, 1400, 4840];
-  const headerLabels = ['LIFT', 'BASELINE', 'TESTED AT', '8-WEEK TARGET'];
+  const headerLabels = ['LIFT', 'BASELINE', 'TESTED AT', targetHeaderLabel];
   const header = new TableRow({
     children: headerLabels.map((h, i) => cell(
       [para([txt(h, { bold: true, size: 14, color: C.goldDeep })], { alignment: i === 0 || i === 3 ? AlignmentType.LEFT : AlignmentType.CENTER })],
@@ -456,13 +459,19 @@ function pelvicFloorCallout() {
 }
 
 // ── DAY HEADER ─────────────────────────────────────────────────────────
-function dayHeader(intensity, title, subtitle, descriptor) {
+// badgeOverride: optional { label, sub } to replace the default intensity
+// label/"INTENSITY" sub-label — for non-%-graded programs (e.g. letter-named
+// days) where showing a borrowed intensity value (like "AR") would misstate
+// what the day actually is. Pass sub: '' to omit the sub-label entirely.
+function dayHeader(intensity, title, subtitle, descriptor, badgeOverride) {
   const iv = ivOf(intensity);
   const colWidths = [1600, 8840];
+  const badgeLabel = badgeOverride ? badgeOverride.label : iv.label;
+  const badgeSub = badgeOverride ? (badgeOverride.sub ?? '') : 'INTENSITY';
   const badge = cell(
     [
-      para(txtLines(iv.label, { bold: true, size: 36, color: C.white }), { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
-      para([txt('INTENSITY', { bold: true, size: 13, color: C.white })], { alignment: AlignmentType.CENTER }),
+      para(txtLines(badgeLabel, { bold: true, size: 36, color: C.white }), { alignment: AlignmentType.CENTER, spacing: { after: badgeSub ? 20 : 0 } }),
+      ...(badgeSub ? [para([txt(badgeSub, { bold: true, size: 13, color: C.white })], { alignment: AlignmentType.CENTER })] : []),
     ],
     { fill: iv.accent, width: colWidths[0], vAlign: VerticalAlign.CENTER }
   );
@@ -590,7 +599,7 @@ function dayHasHeavyLoading(day) {
 
 function buildDayContent(day, client) {
   const els = [];
-  els.push(...dayHeader(day.intensity, day.title, day.subtitle, day.descriptor));
+  els.push(...dayHeader(day.intensity, day.title, day.subtitle, day.descriptor, day.badge));
   els.push(...intensityPara(day.intensityLabel || `${ivOf(day.intensity).label} Day`, day.intensityPara));
 
   if (client && client.alstIndex !== undefined && client.alstIndex < 5.5) {
@@ -626,7 +635,7 @@ async function buildDocument(data) {
 
   if (data.baselines) {
     children.push(sectionTitle('Strength Baselines — Established'));
-    children.push(...baselinesTable(data.baselines));
+    children.push(...baselinesTable(data.baselines, data.baselinesTargetHeader));
   }
 
   if (data.baselineNotes) {
