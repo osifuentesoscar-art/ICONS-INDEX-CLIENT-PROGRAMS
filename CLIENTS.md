@@ -69,12 +69,15 @@
 - No strength-baselines table — source has no testing battery; weekOverview uses generic "DAY 1/2/3" labels (no weekday schedule given)
 - Program: 3-day (Day 1 Lower Body — Left Hip Corrective 70%, Day 2 Upper Body — Stability & Posterior Chain 60%, Day 3 Lower Body — Bilateral Strength + Unilateral Finishers 80%)
 
-### Elizabeth Poyner (referenced client — no build script in this repo yet)
-- Age 64 | 5'5" | 115 lbs (up from 112 — lean mass gain) | Postmenopausal
+### Elizabeth Poyner (no build script yet — document maintained as a direct client-file edit, not via icons_template.js)
+- **Output:** `clients/elizabeth_poyner/Elizabeth_Poyner_5Day_Training_Plan.docx`
+- Age 64 | 5'5" | 114 lbs (per Week 8 Styku rescan, essentially flat vs. 115 lbs pre-scan) | Postmenopausal
 - PRs: Hex DL 195×5 (Epley 1RM 228), Split Hex DL 165×5, Hip Thrust 145×5, DB Lunge 40×8, Push-Ups 28, Carry 50/hand, Plank 2:00, SL RDL 40, OHP 20
 - Training loads: DL Wk1 180 (~80% 1RM via `workingLoad(228, 0.8)`), HT Wk1 135, Split DL Wk1 155, Carry 50→60–65
 - Program: 5-day (Tue Upper / Wed Glute-Ham / Thu Heavy Lower / Fri Prep / Sat Fast-Twitch)
 - Pelvic floor note: auto-inserted on every heavy carry / hip thrust / deadlift day via `pelvicFloorCallout()`
+- **Week 8 Styku Re-Scan (8/7/2026)** — first full scan on file for this client: ALST Index 5.85 kg/m² Not At-Risk (Normal/monitor tier) | Body Fat 27.1% (Fit) | Lean Mass 78.4 lbs | VFA 61.4 cm² Low Risk | Shape Score 98/100 Excellent | BMI 18.9
+  Segmental: L Arm 6.2 / R Arm 6.4 lbs (0.2 lb gap, below asymmetry threshold) · L Leg 12.7 / R Leg 13.1 lbs (0.4 lb gap, below threshold — monitor only, no unilateral-lead change indicated)
 
 ## System Files
 - `scripts/icons_template.js` — canonical `.docx` template engine (`buildDocument()`), per `/CLAUDE.md` spec.
