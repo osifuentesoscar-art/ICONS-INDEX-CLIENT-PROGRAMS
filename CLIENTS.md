@@ -29,6 +29,46 @@
 - Program: 3-day (Day 1 Full Body Strength & Metabolic Conditioning 70%, Day 2 Lower Body Technique 60% — new squat/deadlift baseline, Day 3 Upper Body & Posterior Chain 70%)
 - Rebuilt Aug 2026 from the client's existing document to match the confirmed engine standard (see CLAUDE.md); all program content carried over 1:1, only rendering changed. The engine's auto pelvic-floor callout now also fires correctly on Day 2 (deadlift/RDL/squat), which the original hand-built document had missed.
 
+### Kelly Mulroy
+- **Program:** 5-Day Training Plan (`.docx`) — the canonical reference document the engine (`icons_template.js`) was itself XML-audited against
+- **Output:** `clients/kelly_mulroy/Kelly_Mulroy_5Day_Training_Plan.docx`
+- **Build script:** none — the client's uploaded file matches the engine's reference standard byte-for-byte (sha256-verified), so it was copied into the repo as-is rather than regenerated from a data script.
+- Age 35 | 5'4" | 152 lbs | Tue/Wed/Thu/Fri Gym, Sun Active Recovery, Sat & Mon Off
+- Styku Scan 6/17/2026: Body Fat 36.4% | Lean Mass 92.0 lbs | Shape Score 61/100 | ALST not yet At-Risk
+- Legs: L 15.7 / R 16.5 lbs LST — **LEFT leg weaker, leads all unilateral leg work**
+- Flags: Knee valgus (squat), hip hinge/adductor weakness — banded squat, TKE, and Copenhagen plank run every session
+- Program: 5-day progressive intensity build (60% / 70% / 80% / 90% / Active Recovery)
+- Baselines: Deadlift 55–65 lbs, Squat 25 lbs, OH Press 25 lbs ×3RM, Farmer Carry 35 lbs/hand, Push-Up 15 assisted → 15 unassisted target, Pull-Up Level 9/12 assisted → Level 6 target
+
+### Aimee
+- **Program:** 2-Day Full Gym Training Plan (`.docx`)
+- **Output:** `clients/aimee/Aimee_2Day_Training_Plan.docx`
+- **Build script:** `scripts/aimee_2day_plan.js`
+- No age/height/weight given in source — `includeNutritionBlock` explicitly false; no ALST/postmenopausal flags fabricated
+- Clinical: confirmed **slight spinal stenosis** — program avoids axial spinal compression and lumbar flexion/extension under load. Hex bar deadlift replaces conventional barbell; all pressing is dumbbell-based; no behind-the-neck movements; all core work is anti-flexion/anti-extension
+- Underdeveloped hip hinge pattern flagged as clinically significant given the stenosis — hip hinge rehearsal drills precede all loaded hinge work every session
+- Pull-up baseline: 5 reps each in neutral/wide/standard grip (assisted) — neutral grip prioritized as safest for spinal stenosis
+- Program: 2-day/week, 4-week progression (Day A Hinge + Push + Core, Day B Squat + Pull + Conditioning). Day A/B are not %-graded — `day.badge` overrides the borrowed intensity-key badge text ('A'/'DAY', 'B'/'DAY') so the page doesn't misstate the day's nature (e.g. Day A no longer reads "ACTIVE RECOV." on a heavy strength day) while still reproducing the source's exact badge accent colors
+- Baseline note pair reproduces the source's "Avoid — Spine-Unsafe" / "Safe — Spine-Appropriate" exercise comparison
+
+### Petra
+- **Program:** 3-Day Virtual Training Plan (`.docx`) — "Strength & Muscle Building, Updated Equipment"
+- **Output:** `clients/petra/Petra_3Day_Virtual_Training_Plan.docx`
+- **Build script:** `scripts/petra_3day_virtual_plan.js`
+- Virtual/flexible 3-day schedule | Equipment: dumbbells, kettlebell, bench, bands, medicine ball
+- No Styku scan/weight/age in source — force-plate/dynamometer assessment data (grip squeeze, floor pull, hip extension A/B asymmetry) captured in `baselineNotes` instead; `includeNutritionBlock` explicitly false
+- Day intensities interpretively mapped from the source's non-standard, blank-badge color key onto the standard framework: Day 1 Squat/Hinge/Unilateral/Kettlebell = 80% Gold, Day 2 Push/Pull/Carry/Bench = 70% Green, Day 3 Kettlebell/Medicine Ball/Compound Clusters = 90% Red
+- Corrected an apparent source typo in Day 1's warm-up ("5–80% grade" treadmill incline, physically implausible) to "5–8% grade"
+
+### Nancy Avitable
+- **Program:** 3-Day Training Plan (`.docx`)
+- **Output:** `clients/nancy_avitable/Nancy_Avitable_3Day_Training_Plan.docx`
+- **Build script:** `scripts/nancy_avitable_3day_plan.js`
+- Age 38 | No weight/height/Styku scan in source — only an isolated hip abduction force test; `includeNutritionBlock` explicitly false, `isPostmenopausal: false` (no menopause indication in source)
+- Hip Abduction Test 8/3/2026: Left peak force 126N (weaker) / Right peak force 153N — **17.5% asymmetry, right-dominant — LEFT leads all unilateral leg work** per protocol
+- No strength-baselines table — source has no testing battery; weekOverview uses generic "DAY 1/2/3" labels (no weekday schedule given)
+- Program: 3-day (Day 1 Lower Body — Left Hip Corrective 70%, Day 2 Upper Body — Stability & Posterior Chain 60%, Day 3 Lower Body — Bilateral Strength + Unilateral Finishers 80%)
+
 ### Elizabeth Poyner (referenced client — no build script in this repo yet)
 - Age 64 | 5'5" | 115 lbs (up from 112 — lean mass gain) | Postmenopausal
 - PRs: Hex DL 195×5 (Epley 1RM 228), Split Hex DL 165×5, Hip Thrust 145×5, DB Lunge 40×8, Push-Ups 28, Carry 50/hand, Plank 2:00, SL RDL 40, OHP 20
