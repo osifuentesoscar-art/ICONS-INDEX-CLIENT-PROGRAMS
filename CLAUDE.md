@@ -53,26 +53,17 @@ System prompt    → docs/ICONS_System_Prompt.md (paste-into-Projects reference 
 
 ---
 
-## GOOGLE DRIVE SYNC — REQUIRED FOR EVERY FINAL CLIENT DELIVERABLE
+## GOOGLE DRIVE — MANUAL HANDOFF ONLY (Aug 2026 policy change, supersedes prior auto-upload instruction)
 
-Every finished client deliverable (`.docx` training plan or assessment report, PDF, PPTX) must be uploaded to the client's Google Drive folder as the last step of the build — not just delivered to the chat. This is a standing instruction; do it automatically, without being asked each time.
+**Do NOT attempt to upload finished deliverables to Google Drive via `mcp__Google_Drive__create_file`.** This was previously a standing "upload automatically every time" instruction, but it was retired after a full session (Aug 8–9, 2026) of diagnosis proved the automated path is fundamentally unreliable, not just occasionally flaky:
 
-```
-Drive folder : "ICONS CLIENT PROGRAMS" — id 15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52
-Upload as    : native format (.docx / .pdf / .pptx) — pass disableConversionToGoogleType: true
-              on mcp__Google_Drive__create_file so Drive keeps the exact file, not a
-              converted Google Doc (conversion can lose custom table shading/borders)
-Filename     : <ClientName>_<ProgramTitle>_YYYY-MM-DD.<ext>
-              e.g. August_Olivia_3Day_Training_Plan_2026-08-07.docx
-              Date = the day the file is generated, not a client-provided date.
-              This applies to the Drive copy only — local repo filenames under
-              clients/<client_name>/ stay undated; git history is their versioning.
-```
+- `create_file` requires the entire file re-encoded as a single base64 string generated inline as a tool-call parameter. Above roughly 26–29 KB of source file size, that generation step silently truncates or corrupts the payload — confirmed repeatedly across direct attempts, fresh isolated subagents, and multiple independent retry loops, on multiple different client files.
+- The API's own `fileSize` response field is **not proof of correctness** — a corrupt upload has reported a `fileSize` that exactly matched the original while the actual byte content was completely different. Only a full download + local decode + sha256 compare catches this, and even that is expensive to do reliably every time.
+- The integration also has no delete or update-in-place call (`search_files`, `create_file`, `copy_file`, `download_file_content`, `get_file_metadata`, `get_file_permissions`, `list_recent_files` only), so every failed attempt leaves a permanent orphan file in the Drive folder that only Xolokan can remove.
 
-**"Replace with the updated version" — known limitation:** the Google Drive MCP tools available in this environment (`search_files`, `create_file`, `copy_file`, `download_file_content`, `get_file_metadata`, `get_file_permissions`, `list_recent_files`) do **not** include a delete or update-in-place call. There is no way to overwrite or remove the previous file via this integration. Per Xolokan (Aug 2026), the standing workaround is the date-stamped filename above rather than a same-name overwrite:
-1. `search_files` with `parentId = '15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52' and title contains '<ClientName>'` to check for prior dated copies.
-2. Upload the new version under today's dated filename with `create_file` — never reuse an old file's exact name, since there is no overwrite.
-3. Mention the prior dated copy(ies) still in the folder so Xolokan can delete them manually if desired (this integration cannot delete on its own) — don't silently leave stale versions unmentioned.
+**Current workflow instead:** every finished deliverable is delivered directly in the chat (e.g. via `SendUserFile`) as the last step of the build. Xolokan uploads it to the "ICONS CLIENT PROGRAMS" Drive folder (id `15H7cenvZAY4vn2_eaPmGKR7zgZo2cR52`) manually from there — dragging a file in from the browser doesn't go through the broken re-encoding path, so it isn't subject to any of the above. Do not re-enable automatic Drive upload unless Xolokan explicitly asks for it again.
+
+If asked to still name the file for Drive, the filename convention is unchanged: `<ClientName>_<ProgramTitle>_YYYY-MM-DD.<ext>` (date = day generated), e.g. `August_Olivia_3Day_Training_Plan_2026-08-07.docx` — mention this suggested filename to Xolokan alongside the delivered file so they can rename it on the way in if they want. This applies to the Drive copy only — local repo filenames under `clients/<client_name>/` stay undated; git history is their versioning.
 
 ---
 
