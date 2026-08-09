@@ -50,6 +50,7 @@
 - Pull-up baseline: 5 reps each in neutral/wide/standard grip (assisted) — neutral grip prioritized as safest for spinal stenosis
 - Program: 2-day/week, 4-week progression (Day A Hinge + Push + Core, Day B Squat + Pull + Conditioning). Day A/B are not %-graded — `day.badge` overrides the borrowed intensity-key badge text ('A'/'DAY', 'B'/'DAY') so the page doesn't misstate the day's nature (e.g. Day A no longer reads "ACTIVE RECOV." on a heavy strength day) while still reproducing the source's exact badge accent colors
 - Baseline note pair reproduces the source's "Avoid — Spine-Unsafe" / "Safe — Spine-Appropriate" exercise comparison
+- **Updated baselines (8/9/2026):** Hex Deadlift 105 lbs 3RM · Single-Leg RDL 25 lbs/hand · Overhead Press 17.5 lbs/hand 5RM · Incline DB Press 15 lbs/hand · Push-Up 7 incline reps (advanced past knee stage) · Plank :55. New exercises added: Hip Thrust 95 lbs (hip-dominant, spine-safe — added to Day A hinge block) and DB Flat Bench Press 20 lbs/hand (added to Day A press block). A barbell back squat was also tested at 55 lbs — recorded in the baselines table for reference only; per the confirmed spinal stenosis restriction it is **not programmed** as a working exercise (DB Split Squat/Goblet Squat remain primary). Flag to Xolokan if physician clearance for barbell squatting has since been given, since that would change the standing restriction.
 
 ### Petra
 - **Program:** 3-Day Virtual Training Plan (`.docx`) — "Strength & Muscle Building, Updated Equipment"

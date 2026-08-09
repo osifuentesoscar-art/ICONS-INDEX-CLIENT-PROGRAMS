@@ -67,6 +67,11 @@ const baselineNotes = [
   },
   {
     type: 'clinical',
+    label: 'Barbell Back Squat — Tested, Not Programmed',
+    body: 'A barbell back squat was tested at 55 lbs. This is recorded in the baselines table for reference only — it is not programmed as a working exercise. The confirmed spinal stenosis restriction against barbell back squats (axial spinal compression) remains in place. DB Split Squat and Goblet Squat continue as the primary lower-body lifts. If Aimee has since received physician clearance for barbell squatting, flag this so the restriction and program can be formally updated.',
+  },
+  {
+    type: 'clinical',
     label: 'Spinal Stenosis — Movements Removed or Modified',
     body: 'Movements removed or modified for spinal stenosis: No barbell back squat (axial compression). No conventional barbell deadlift (replaced with hex bar). No behind-the-neck press or pulldown. No heavy good mornings. No lumbar flexion under load (sit-ups, crunches). All core work is anti-flexion or anti-extension (plank, dead bug, Pallof press). If any exercise produces radiating pain or numbness — stop and flag immediately.',
   },
@@ -108,11 +113,12 @@ const days = [
       {
         letter: 'B',
         title: 'PRIMARY HINGE STRENGTH',
-        introLabel: 'Deadlift Baseline — 95 lbs ×3RM',
-        intro: 'Week 1 backs down to 85 lbs ×4×4. The 3RM baseline means technique may be under pressure at higher loads. Given the spinal stenosis, form is the absolute priority over load. Hip hinge corrective runs before every set. Add 5 lbs per week when all sets complete with clean hip hinge mechanics. Hex bar only — no conventional barbell.',
+        introLabel: 'Deadlift Baseline — 105 lbs ×3RM',
+        intro: 'Week 1 backs down to 95 lbs ×4×4. The 3RM baseline means technique may be under pressure at higher loads. Given the spinal stenosis, form is the absolute priority over load. Hip hinge corrective runs before every set. Add 5 lbs per week when all sets complete with clean hip hinge mechanics. Hex bar only — no conventional barbell. Hip thrust is new this block — hip-dominant and fully spine-safe, it reinforces the hip hinge pattern without any axial load.',
         exercises: [
-          { name: 'Hex Bar Deadlift', sets: '4', reps: '4–6', load: 'Wk1: 85 lbs → Wk4: 110 lbs', tempo: '2-1-1', rest: '90s', cue: 'Hex bar reduces lumbar shear vs conventional deadlift — appropriate for spinal stenosis. Stand centered. Hinge hips back to grip handles. Drive floor away. Hips and shoulders rise together. Lockout at top. Hip hinge drill before each set.' },
-          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 32.5 lbs → Wk4: 40 lbs', tempo: '3-1-1', rest: '75s', cue: 'Strong baseline (35 lbs ×8). Slight knee bend, hinge from hip, feel hamstring load. Return by squeezing glute. Left and right equal. The most effective hip hinge developer in this plan — single-leg removes the compensation that two-leg hinging allows.' },
+          { name: 'Hex Bar Deadlift', sets: '4', reps: '4–6', load: 'Wk1: 95 lbs → Wk4: 120 lbs', tempo: '2-1-1', rest: '90s', cue: 'Hex bar reduces lumbar shear vs conventional deadlift — appropriate for spinal stenosis. Stand centered. Hinge hips back to grip handles. Drive floor away. Hips and shoulders rise together. Lockout at top. Hip hinge drill before each set.' },
+          { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5―6', load: 'Wk1: 80 lbs → Wk4: 105 lbs', tempo: '2-1-2', rest: '90s', cue: 'New baseline 95 lbs. Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Hip-dominant — no axial spinal load, one of the safest heavy-loading options for spinal stenosis.' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 22.5 lbs → Wk4: 30 lbs', tempo: '3-1-1', rest: '75s', cue: 'Updated baseline 25 lbs ×8. Slight knee bend, hinge from hip, feel hamstring load. Return by squeezing glute. Left and right equal. The most effective hip hinge developer in this plan — single-leg removes the compensation that two-leg hinging allows.' },
           { name: 'Romanian Deadlift (DB)', sets: '3', reps: '10', load: '25–30 lbs / hand', tempo: '3-1-1', rest: '60s', cue: 'Hip hinge, soft knee, full hamstring stretch at bottom. DBs track close to legs. Builds hip hinge volume after the hex bar primary work. Keep spine long throughout — no rounding.' },
         ],
       },
@@ -120,10 +126,11 @@ const days = [
         letter: 'C',
         title: 'PRIMARY PRESS STRENGTH',
         introLabel: 'Spinal Stenosis Note',
-        intro: 'All pressing is dumbbell-based — no barbell overhead press. Dumbbells allow the spine to remain in a more neutral position and reduce axial load vs a barbell. Seated overhead press is preferred for spinal stenosis (supported lumbar spine). Avoid pressing to absolute failure — brace fails first.',
+        intro: 'All pressing is dumbbell-based — no barbell overhead press. Dumbbells allow the spine to remain in a more neutral position and reduce axial load vs a barbell. Seated overhead press is preferred for spinal stenosis (supported lumbar spine). Flat bench press is new this block — fully supine, no axial load. Avoid pressing to absolute failure — brace fails first.',
         exercises: [
-          { name: 'DB Overhead Press (Seated)', sets: '4', reps: '10', load: 'Wk1: 17.5 lbs/hand → Wk4: 22.5', tempo: '2-1-1', rest: '75s', cue: 'Baseline 20 lbs ×5RM. Wk1 starts at 17.5 lbs for 10 reps. Seated: back supported, spine neutral. Press overhead, arms alongside ears. Core braced throughout. Add 2.5 lbs every 2 weeks.' },
-          { name: 'Incline DB Press (30–45°)', sets: '4', reps: '10―12', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs', tempo: '3-1-1', rest: '75s', cue: 'Baseline 20 lbs ×8 reps — solid. Primary chest movement. 30–45° incline. Elbows at 45°. Full range, squeeze at top. Safe for spinal stenosis — no axial load.' },
+          { name: 'DB Overhead Press (Seated)', sets: '4', reps: '10', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs', tempo: '2-1-1', rest: '75s', cue: 'Updated baseline 17.5 lbs ×5RM. Wk1 starts at 15 lbs for 10 reps. Seated: back supported, spine neutral. Press overhead, arms alongside ears. Core braced throughout. Add 2.5 lbs every 2 weeks.' },
+          { name: 'Incline DB Press (30–45°)', sets: '4', reps: '10―12', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs', tempo: '3-1-1', rest: '75s', cue: 'Updated baseline 15 lbs ×8 reps. Primary chest movement. 30–45° incline. Elbows at 45°. Full range, squeeze at top. Safe for spinal stenosis — no axial load.' },
+          { name: 'DB Flat Bench Press', sets: '3', reps: '10', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs', tempo: '2-1-1', rest: '75s', cue: 'New baseline 20 lbs ×5RM. Fully supine, full back support — one of the safest presses for spinal stenosis. Full range, control the descent, drive up without arching off the bench.' },
           { name: 'DB Lateral Raise', sets: '3', reps: '12―15', load: '8―10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Lateral delt. Arms slightly bent. Raise to shoulder height. 1-second hold at top. Slow 2-second lower. Short rest maintains heart rate for fat loss.' },
         ],
       },
@@ -135,7 +142,7 @@ const days = [
         exercises: [
           { name: 'Farmer Carry (DB, Both Hands)', sets: '4', reps: '25–30 yds', load: 'Wk1: 35 lbs/hand → +5 lbs/2wks', tempo: 'Controlled', rest: '90s', cue: 'Baseline 35 lbs/hand. Shoulders packed, chest tall, neutral neck. Add 5 lbs every 2 weeks. Stop if spine begins to laterally flex or shoulder hikes. These are the form cues that matter most.' },
           { name: 'Suitcase Carry (Single Arm)', sets: '3', reps: '20 yds ea', load: '25―30 lbs', tempo: 'Controlled', rest: '60s', cue: 'One arm. Resist lateral lean — anti-lateral flexion core. Keep spine perfectly vertical. Alternate starting arm each set.' },
-          { name: 'Plank Hold (Elbow)', sets: '2', reps: '1:00', load: 'Bodyweight', tempo: '—', rest: '90s', cue: 'Baseline 1:03. Hold at 1:00 in training — quality over max time. Full brace, neutral spine. Increases to 1:10 in Wk2, 1:20 in Wk4. SAFE for stenosis: anti-extension, no spinal flexion under load.' },
+          { name: 'Plank Hold (Elbow)', sets: '2', reps: ':50', load: 'Bodyweight', tempo: '—', rest: '90s', cue: 'Updated baseline :55. Hold at :50 in training — quality over max time. Full brace, neutral spine. Builds to 1:05 in Wk2, 1:15 in Wk4. SAFE for stenosis: anti-extension, no spinal flexion under load.' },
           { name: 'Dead Bug', sets: '3', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-3', rest: '45s', cue: 'Lower back pressed FIRMLY into the floor throughout — this is therapeutic for stenosis (gentle lumbar flexion in non-loaded position). Slow opposite arm and leg extension. The best safe core exercise for this clinical presentation.' },
         ],
       },
@@ -192,11 +199,11 @@ const days = [
         letter: 'C',
         title: 'PUSH-UP PROGRESSION',
         color: 'green',
-        introLabel: 'Push-Up Baseline — 12 Reps on Knees',
-        intro: 'Push-ups on the knees reduce the lever arm but the pattern transfers. Week 1 bridges to incline push-ups (hands on bench) and attempts the first floor reps. Week 3: target 10 full push-ups. Week 4: 12 full unassisted. Push-ups are safe for spinal stenosis when the core is braced and spine remains neutral.',
+        introLabel: 'Push-Up Baseline — 7 Reps Incline (Hands Elevated)',
+        intro: 'Aimee has already progressed past the knee push-up stage to incline push-ups at 7 reps. Week 1 continues building incline volume while beginning the first full floor attempts. Week 3: target 6–8 full push-ups. Week 4: 8–10 full unassisted. Push-ups are safe for spinal stenosis when the core is braced and spine remains neutral.',
         exercises: [
-          { name: 'Incline Push-Up (Hands Elevated)', sets: '3', reps: '12―15', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Hands on bench or box. Full chest to bench level. Controlled descent. Progress by lowering the incline height each week. Bridges the gap from knee push-ups to floor push-ups.' },
-          { name: 'Full Push-Up (Floor Attempt)', sets: '3', reps: 'Max (target 5–8)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt full push-ups. Stop 2 reps before form breaks. Record reps every set every session. Target: 12 full reps by Week 4. Neutral spine throughout — no sag or pike.' },
+          { name: 'Incline Push-Up (Hands Elevated)', sets: '3', reps: '8―10', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Updated baseline 7 reps. Hands on bench or box. Full chest to bench level. Controlled descent. Progress by lowering the incline height each week. Bridges the gap to floor push-ups.' },
+          { name: 'Full Push-Up (Floor Attempt)', sets: '3', reps: 'Max (target 3–5)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt full push-ups. Stop 2 reps before form breaks. Record reps every set every session. Target: 8–10 full reps by Week 4. Neutral spine throughout — no sag or pike.' },
           { name: 'Tricep Dip (Bench)', sets: '3', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '45s', cue: 'Hands on bench behind body. Lower until elbows reach 90°, drive back up. Complements pressing volume. Builds tricep strength for push-up progression.' },
         ],
       },
@@ -220,15 +227,18 @@ const days = [
 ];
 
 const baselines = [
-  ['Hex Deadlift', '95 lbs', '3 RM', 'Wk1: 85 lbs ×4×4 (hip hinge form first) → Wk4: 110 lbs ×4. Spine-safe: hex bar only, no conventional barbell.'],
-  ['Single-Leg RDL', '35 lbs / hand', '8 reps', 'Strong baseline. Wk1: 32.5 lbs ×10 → Wk4: 40 lbs ×8. Left and right equal sets. Most important hip hinge developer.'],
+  ['Hex Deadlift', '105 lbs', '3 RM', 'Wk1: 95 lbs ×4×4 (hip hinge form first) → Wk4: 120 lbs ×4. Spine-safe: hex bar only, no conventional barbell.'],
+  ['Hip Thrust', '95 lbs', '5 RM (est.)', 'New baseline. Wk1: 80 lbs ×6 → Wk4: 105 lbs ×5–6. Hip-dominant, no axial spinal load — ideal for spinal stenosis.'],
+  ['Single-Leg RDL', '25 lbs / hand', '8 reps', 'Wk1: 22.5 lbs ×10 → Wk4: 30 lbs ×8. Left and right equal sets. Most important hip hinge developer.'],
   ['DB Split Squat', '35 lbs / hand', '3 RM', 'Wk1: 25 lbs ×8 (form + depth focus at lower load) → Wk4: 35 lbs ×8. 3RM suggests form may break at max — train sub-max.'],
-  ['Overhead Press', '20 lbs / hand', '5 RM', 'Wk1: 17.5 lbs ×10 (sub-max) → Wk4: 22.5 lbs ×8. Spine-safe: seated or standing, no barbell.'],
-  ['Incline DB Press', '20 lbs / hand', '8 reps', 'Wk1: 20 lbs ×10 → Wk4: 25 lbs ×8. Good baseline. Primary chest movement.'],
+  ['Barbell Back Squat', '55 lbs', 'Tested — Not Programmed', 'Recorded for reference only. Per confirmed spinal stenosis restriction, barbell back squat is not programmed — DB Split Squat and Goblet Squat remain the primary lower-body lifts (see clinical note below).'],
+  ['Overhead Press', '17.5 lbs / hand', '5 RM', 'Wk1: 15 lbs ×10 (sub-max) → Wk4: 20 lbs ×8. Spine-safe: seated or standing, no barbell.'],
+  ['Incline DB Press', '15 lbs / hand', '8 reps', 'Wk1: 15 lbs ×10 → Wk4: 20 lbs ×8. Primary chest movement.'],
+  ['DB Flat Bench Press', '20 lbs / hand', '5 RM (est.)', 'New baseline. Wk1: 20 lbs ×10 → Wk4: 25 lbs ×8. Supine bench position is fully spine-safe — full back support, no axial load.'],
   ['Dumbbell Row', '25 lbs', '5 RM', 'Wk1: 22.5 lbs ×10 → Wk4: 30 lbs ×8. Chest-supported row preferred (no lumbar load).'],
   ['Farmer Carry', '35 lbs / hand', 'Working', 'Wk1: 35 lbs ×4 sets → +5 lbs/hand every 2 weeks → Wk4: 45 lbs/hand.'],
-  ['Push-Up', '12 knee', 'Max', 'Wk1: incline push-ups + 5–8 full floor reps → Wk4: 12+ full unassisted.'],
-  ['Plank (Elbow)', '1:03', 'Max', 'Good baseline. Hold at 1:00 in training (controlled). Wk4 target: 1:20. Wk8: 1:40.'],
+  ['Push-Up', '7 incline', 'Max', 'Advanced past the knee push-up stage. Wk1: 8–10 incline reps + 3–5 full floor attempts → Wk4: 8–10 full floor push-ups unassisted.'],
+  ['Plank (Elbow)', ':55', 'Max', 'Wk1: hold at :50 (controlled) → Wk4 target 1:15. Wk8: 1:30.'],
   ['Assisted Pull-Up (all grips)', '5 reps each', 'Neutral / Wide / Standard', 'Wk1: all 3 grips ×5. Wk2: ×6. Wk4: ×8. Neutral grip leads (most spine-safe).'],
 ];
 
@@ -238,13 +248,13 @@ const baselines = [
 const summary = {
   subtitle: 'Aimee  ·  ICONS Index  ·  Fat Loss & Body Composition  ·  2 Days/Week  ·  Full Gym',
   rows: [
-    ['Wk 1', '—', 'Day A & B', 'Hex DL 85 lbs ×4×4 / Split Squat 25 lbs ×8', 'Establish all baselines. Hip hinge drill every set. Push-up: 5–8 floor reps. Plank: 1:00. Cardio: 15 min Zone 2.'],
-    ['Wk 2', '—', 'Day A & B', 'Hex DL 90 lbs ×4×4 / Split Squat 27.5 lbs ×8', 'Pull-up: 6 reps all grips. Push-up: 8–10 floor reps. Hip hinge should feel more natural. Plank: 1:10.'],
-    ['Wk 3', '—', 'Day A & B', 'Hex DL 95 lbs ×4×4 / Split Squat 30 lbs ×8', 'Hex DL back to baseline (95 lbs) treated as working weight. Push-up: 10 full reps. Plank: 1:15. Cardiovascular endurance noticeably improved.'],
-    ['Wk 4', '—', 'Day A & B', 'Hex DL 105 lbs ×4×4 / Split Squat 32.5 lbs ×8', 'All baseline lifts surpassed. Push-up: 12 full unassisted. Plank: 1:20. Hip hinge: clean and reflexive. Reassess pull-up assist level.'],
+    ['Wk 1', '—', 'Day A & B', 'Hex DL 95 lbs ×4×4 / Hip Thrust 80 lbs ×5–6 / Split Squat 25 lbs ×8', 'Establish updated baselines. Hip hinge drill every set. Push-up: 3–5 full floor reps off a 7-rep incline base. Plank: :50. Cardio: 15 min Zone 2.'],
+    ['Wk 2', '—', 'Day A & B', 'Hex DL 100 lbs ×4×4 / Hip Thrust 90 lbs ×5–6 / Split Squat 27.5 lbs ×8', 'Pull-up: 6 reps all grips. Push-up: 5–6 full floor reps. Hip hinge should feel more natural. Plank: 1:00.'],
+    ['Wk 3', '—', 'Day A & B', 'Hex DL 105 lbs ×4×4 / Hip Thrust 95–100 lbs ×5–6 / Split Squat 30 lbs ×8', 'Hex DL and Hip Thrust back to tested baseline, treated as working weight. Push-up: 6–8 full reps. Plank: 1:10. Cardiovascular endurance noticeably improved.'],
+    ['Wk 4', '—', 'Day A & B', 'Hex DL 120 lbs ×4×4 / Hip Thrust 105 lbs ×5–6 / Split Squat 32.5 lbs ×8', 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.'],
   ],
-  milestones4wk: 'All baseline lifts surpassed. Push-up: 12 full unassisted. Plank: 1:20. Hip hinge: clean and reflexive. Reassess pull-up assist level.',
-  milestones8wk: 'Strength: Hex DL 120+ lbs ×4. OHP 25 lbs/hand ×8. Incline 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Goblet 45 lbs ×10. SL-RDL 42.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:35. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads; resting heart rate should be noticeably lower.',
+  milestones4wk: 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.',
+  milestones8wk: 'Strength: Hex DL 130+ lbs ×4. Hip Thrust 115+ lbs ×5–6. OHP 22.5 lbs/hand ×8. Incline 22.5 lbs/hand ×8. Flat Press 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Goblet 45 lbs ×10. SL-RDL 32.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:30. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads; resting heart rate should be noticeably lower. Re-test barbell back squat only if physician clearance has been obtained.',
   rescanNote: 'No Styku scan is on file for this client — reassess at 8 weeks via baseline lift retest, pull-up assist-level reduction, and resting heart rate trend rather than a body-composition rescan.',
 };
 
