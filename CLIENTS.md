@@ -1,5 +1,9 @@
 # Client Roster & Document Map
 
+## Age Bracket Framework — Verification Pass (8/9/2026)
+
+Checked every client with a known age/weight against the new Age Bracket Programming Framework in CLAUDE.md (added the same day, alongside the ICONS Training Philosophy section). `icons_template.js`'s `proteinTargets()` already implements the exact same tier logic (ALST-at-risk-or-50+ → 2.0–2.2 g/kg, 40+ → 1.8–2.0, else 1.6) — so every script-generated client (August Olivia, Johanna Castillo) was already numerically correct; rebuilding them produced byte-identical text output. **Elizabeth Poyner's hand-maintained doc had a real mislabeled tier** (see her entry below) and was corrected. Aimee, Petra, and Nancy Avitable have no age/weight on file (by design — see their entries) so the bracket framework doesn't apply to them numerically. Kelly Mulroy's file is the byte-identical engine reference standard with no build script and was left untouched.
+
 ## Active Clients
 
 ### August Olivia
@@ -79,6 +83,7 @@
 - Pelvic floor note: auto-inserted on every heavy carry / hip thrust / deadlift day via `pelvicFloorCallout()`
 - **Week 8 Styku Re-Scan (8/7/2026)** — first full scan on file for this client: ALST Index 5.85 kg/m² Not At-Risk (Normal/monitor tier) | Body Fat 27.1% (Fit) | Lean Mass 78.4 lbs | VFA 61.4 cm² Low Risk | Shape Score 98/100 Excellent | BMI 18.9
   Segmental: L Arm 6.2 / R Arm 6.4 lbs (0.2 lb gap, below asymmetry threshold) · L Leg 12.7 / R Leg 13.1 lbs (0.4 lb gap, below threshold — monitor only, no unilateral-lead change indicated)
+- **Protein target corrected (8/9/2026):** the nutrition table mislabeled her tier as "1.8–2.0 g/kg for women 50+" (94–104g/day) — that's actually the 40+ tier per the Evidence-Based Science Layer / Age Bracket Framework. At 64yo and postmenopausal she's squarely in the 55–65 bracket, which calls for 2.0–2.2 g/kg. Corrected to 104–115g/day (2.0–2.2 g/kg) in both the intro line and the nutrition table; nothing else on the page changed.
 
 ## System Files
 - `scripts/icons_template.js` — canonical `.docx` template engine (`buildDocument()`), per `/CLAUDE.md` spec.
