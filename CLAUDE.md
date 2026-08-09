@@ -337,6 +337,49 @@ Each training day splits across **2 pages** (Part 1 of 2 / Part 2 of 2):
 
 This is the foundation of every programming decision. Do not deviate without flagging it.
 
+### Age Bracket Programming Framework
+
+Every client's program should be filtered through the age bracket below, layered on top of their individual Styku/ALST/VFA findings and any clinical flags. Brackets are proximity guides, not hard cutoffs — a 44-year-old postpartum client may sit closer to the 45–55 profile, and vice versa; use judgment. Each bullet below points to the detailed protocol elsewhere in this section rather than restating it — that section stays the single source of truth for the actual numbers.
+
+**20–35 — Foundation & Peak Bone Mass**
+- Protein: ≥1.6 g/kg/day ("Active women general" tier)
+- Creatine: indicated (not yet the "strongly indicated" tier by age alone — that's driven by ALST/postmenopausal status, not age in this bracket)
+- Menstrual cycle: no phase-based programming — autoregulate around individual symptoms over ≥3 cycles, train hard year-round
+- Volume/frequency: full ≥10 sets/muscle/week hypertrophy target, 2–3×/week per muscle group — never under-load
+- ACL/knee valgus screening is highest-yield here for clients in field/court sports (2.8× male incidence)
+- Copenhagen plank / adductor injury prevention is highest-yield here for athletic/team-sport clients
+- Heavy compound lifting still contributes to building peak bone mass — no need to wait for LIFTMOR-style candidacy criteria to justify loading
+
+**35–45 — Transition Onset**
+- Protein: trending from 1.6 g/kg/day toward the 1.8–2.0 g/kg "Women 40+" tier as the client crosses 40
+- Creatine: move to "strongly indicated" once the client crosses 40
+- Watch for early perimenopausal signals (cycle irregularity, symptom shifts) — still autoregulate on individual data, not calendar or age alone
+- Volume/frequency targets unchanged from the 20–35 bracket — no physiological reason to reduce load yet
+- Begin ALST/VFA monitoring at the first Styku scan if not already established, even though risk is typically still low
+
+**45–55 — Perimenopause / Menopause Transition**
+- Protein: 1.8–2.0 g/kg/day minimum, moving to 2.0–2.2 g/kg/day as menopause is reached or ALST flags At-Risk
+- Creatine: strongly indicated
+- Heavy RT ≥3×/week + protein 2.0–2.2 g/kg/day is strongly evidence-backed through this transition; HRV dips in luteal-equivalent phases are NORMAL — interpret against the client's individual baseline, not a flat line
+- Start screening for LIFTMOR-style bone loading candidacy (T-score < -1.0) as estrogen decline accelerates
+- ALST monitoring becomes a priority — sarcopenia risk begins rising through this window
+
+**55–65 — Postmenopausal**
+- Protein: 2.0–2.2 g/kg/day ("Women 50+ / ALST At-Risk" tier)
+- Creatine: strongly indicated
+- Bone loading: LIFTMOR protocol directly applicable if T-score < -1.0 — frame as "bone investment," never as risk
+- Pelvic floor triggers apply to every heavy carry/squat/deadlift/hip thrust session
+- ALST At-Risk is the top programming priority when flagged — protein/creatine escalation, resistance-priority sessions
+- VFA/cardiometabolic monitoring carries more weight given metabolic shifts post-menopause
+
+**65+ — Older Postmenopausal**
+- Protein: 2.0–2.2 g/kg/day, same tier as 55–65 — do not step this down with age
+- Creatine: strongly indicated — cognitive and bone benefits carry extra weight here
+- Bone loading: LIFTMOR candidacy screening remains a priority, framed consistently as "bone investment"
+- Pelvic floor protocol applies identically to the 55–65 bracket
+- ALST At-Risk / sarcopenia prevention remains the top physiological priority
+- Favor movements with direct functional/fall-risk transfer (carries, step-ups, single-leg work) alongside the standard compound lifts — this is general good practice, not a cited protocol; no dedicated fall-risk research is documented elsewhere in this file, so don't present it to a client as evidence-backed the way the other bullets are
+
 ### ALST Index (Appendicular Lean Soft Tissue) — EWGSOP2 2018
 ```
 ≥ 7.0 kg/m²  → Optimal
@@ -828,6 +871,8 @@ cd /mnt/skills/public/docx && python scripts/office/soffice.py --headless --conv
 ---
 
 ## QUICK REFERENCE — SCIENCE THRESHOLDS
+
+For age-specific programming emphasis (protein tier, creatine indication, bone loading candidacy, etc.), see "Age Bracket Programming Framework" under Evidence-Based Science Layer above — the thresholds below are the underlying numbers that framework references.
 
 | Metric | At-Risk | Normal | Optimal |
 |--------|---------|--------|---------|
