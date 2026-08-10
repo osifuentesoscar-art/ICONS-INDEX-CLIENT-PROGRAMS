@@ -1,20 +1,29 @@
 /**
- * Aimee — ICONS 2-Day Full Gym Training Plan
+ * Aimee Morris — ICONS 2-Day Full Gym Training Plan
  * Brace Life Studios
  *
- * Rebuilt from the client's existing document (Aimee 2-Day Full Gym Training
- * Plan .docx) to match the confirmed engine standard (Kelly Mulroy reference
- * — see CLAUDE.md's "Visual language" note). All program content, loads,
- * and clinical flags are carried over 1:1 from the source; only rendering
- * changed.
+ * Originally rebuilt from the client's existing document (Aimee 2-Day Full
+ * Gym Training Plan .docx) to match the confirmed engine standard (Kelly
+ * Mulroy reference — see CLAUDE.md's "Visual language" note).
  *
- * No age/height/weight is given anywhere in the source document, so no
- * weightKg/ageYears/alstIndex/isPostmenopausal is set on the client object —
- * fabricating any of these would produce an unsupported protein target or
- * an unsupported pelvic-floor trigger. includeNutritionBlock is explicitly
- * set to false for the same reason (no weightKg → no defensible protein
- * target). proteinBar() and pelvicFloorCallout() both no-op automatically
- * since client.alstIndex and client.isPostmenopausal are both undefined.
+ * Updated 8/10/2026 from a SOAP note by a second provider ("Stress Bar
+ * Clinical, CSCS, LMT", dated 7/31/2026, sourced from Drive folder
+ * "ICONS NOTES JASON PDFS"), confirmed by the trainer:
+ *   - Full name and DOB now known (Aimee Morris, DOB 1977-11-30 → age 48
+ *     as of Aug 2026) — client.ageYears is now set. weightKg is still not
+ *     given anywhere, so includeNutritionBlock stays false (no weight →
+ *     no defensible protein target); isPostmenopausal also still unset
+ *     (not stated anywhere) — neither is fabricated just because age is
+ *     now known.
+ *   - Her spinal stenosis restriction is CLEARED as of this update (trainer
+ *     confirmed) — but per the trainer's explicit "moderate progression"
+ *     instruction, previously-restricted movements are being reintroduced
+ *     gradually, not all at once. Landmine squat, sit-up/bicycle crunch
+ *     (moderate volume), and kettlebell swing are added now; barbell back
+ *     squat, conventional barbell deadlift, and clean-to-overhead-press
+ *     (the most axially-loaded/ballistic movements) are deliberately
+ *     deferred to a later phase pending a few clean weeks on the
+ *     reintroduced work — see baselineNotes for the exact reasoning.
  *
  * Day A ("Hinge + Push + Core") and Day B ("Squat + Pull + Conditioning")
  * are not naturally 60/70/80/90/AR intensity days — this is a 2-day/week,
@@ -37,28 +46,29 @@ const path = require('path');
 const { buildDocument } = require('./icons_template');
 
 const client = {
-  name: 'Aimee',
+  name: 'Aimee Morris',
   programTitle: '2-Day Full Gym Training Plan',
   subtitle: 'Fat Loss · Body Composition · Cardiovascular Health',
   schedule: 'Full Gym · 2 Days/Week',
-  stats: ['2 Days / Week', 'Full Gym', 'Fat Loss & Body Comp', 'Spinal Stenosis Considerations'],
+  stats: ['Age 48', '2 Days / Week', 'Full Gym', 'Fat Loss & Body Comp', 'Cleared — Moderate Progression'],
+  ageYears: 48,
 };
 
 const baselineNotes = [
   {
-    type: 'clinical',
-    label: 'Spinal Stenosis — Confirmed Diagnosis',
-    body: 'Aimee has a confirmed diagnosis of slight spinal stenosis. This means the spinal canal is slightly narrowed, which can create nerve irritation under certain loading conditions — particularly: heavy axial spinal compression (e.g. barbell back squat, heavy barbell deadlift), extreme lumbar flexion under load, and sustained lumbar extension positions. This program avoids all of these. The hex bar deadlift is used instead of a conventional barbell (it reduces shear forces on the lumbar spine). All pressing is dumbbell-based. No behind-the-neck movements. If Aimee experiences radiating pain, numbness, or tingling in the legs during any exercise, stop immediately and do not return to that movement without physician clearance.',
+    type: 'clear',
+    label: 'Spinal Stenosis — Cleared (8/2026), Moderate Progression',
+    body: 'Aimee\'s previously confirmed slight spinal stenosis is now cleared. Movements that were restricted are being reintroduced deliberately, not all at once: landmine squat, sit-up/bicycle crunch (moderate volume), and kettlebell swing are added to this update. The most axially-loaded or ballistic movements — barbell back squat, conventional barbell deadlift, and clean-to-overhead-press — are intentionally held for a later phase pending a few clean weeks on the newly-reintroduced work (see "Deferred — Later Phase" below). The hex bar deadlift stays as the primary hinge lift for now; there is no need to rush back to a conventional barbell just because the restriction is lifted.',
   },
   {
     type: 'watch',
     label: 'Hip Hinge Pattern — Underdeveloped',
-    body: 'The hip hinge pattern is underdeveloped, which is clinically significant given the spinal stenosis. Poor hip hinge = spine compensates under load. Every session begins with hip hinge rehearsal drills before any loaded hinge work. The goal is to make the hip hinge reflexive over 8 weeks so the spine is never the path of least resistance during pulling and deadlift movements.',
+    body: 'The hip hinge pattern was flagged as underdeveloped at intake. Poor hip hinge = spine compensates under load, which matters even post-clearance while heavier/more dynamic patterns are being reintroduced. Every session begins with hip hinge rehearsal drills before any loaded hinge work. The goal is a reflexive hip hinge so the spine is never the path of least resistance during pulling and deadlift movements.',
   },
   {
     type: 'purple',
     label: 'Pull-Up Priority — Baseline 5 Reps, All Grips',
-    body: 'Aimee tested at 5 reps each in neutral, wide, and standard grip — this is a solid assisted baseline. The program runs pull-up progression systematically, tracking all three grips. Neutral grip is the safest for spinal stenosis (least shoulder internal rotation and lat compression through the spine). Standard and wide grips progress alongside.',
+    body: 'Aimee tested at 5 reps each in neutral, wide, and standard grip — a solid assisted baseline. The program runs pull-up progression systematically, tracking all three grips. Neutral grip leads (most shoulder-friendly), standard and wide grips progress alongside.',
   },
   {
     type: 'gold',
@@ -66,24 +76,14 @@ const baselineNotes = [
     body: 'Cardiovascular health improvement is built into every session via metabolic finishers and conditioning circuits. Day A ends with a Zone 2 or HIIT cardio finisher. Day B ends with a metabolic strength circuit. At 2 days per week, the cardio within each session is the primary cardiovascular training stimulus for fat loss. Rest periods on accessory work are kept short (30–45s) to maintain heart rate.',
   },
   {
-    type: 'clinical',
-    label: 'Barbell Back Squat — Tested, Not Programmed',
-    body: 'A barbell back squat was tested at 55 lbs. This is recorded in the baselines table for reference only — it is not programmed as a working exercise. The confirmed spinal stenosis restriction against barbell back squats (axial spinal compression) remains in place. DB Split Squat and Goblet Squat continue as the primary lower-body lifts. If Aimee has since received physician clearance for barbell squatting, flag this so the restriction and program can be formally updated.',
-  },
-  {
-    type: 'clinical',
-    label: 'Spinal Stenosis — Movements Removed or Modified',
-    body: 'Movements removed or modified for spinal stenosis: No barbell back squat (axial compression). No conventional barbell deadlift (replaced with hex bar). No behind-the-neck press or pulldown. No heavy good mornings. No lumbar flexion under load (sit-ups, crunches). All core work is anti-flexion or anti-extension (plank, dead bug, Pallof press). If any exercise produces radiating pain or numbness — stop and flag immediately.',
-  },
-  {
-    type: 'red',
-    label: 'Avoid — Spine-Unsafe',
-    body: 'Barbell back squat (axial load); conventional barbell deadlift; behind-the-neck press or pulldown; sit-ups, crunches, or any flexion under load; heavy good mornings; any exercise producing radiating leg pain.',
+    type: 'watch',
+    label: 'Deferred to a Later Phase — Barbell Squat, Barbell Deadlift, Clean-to-Press',
+    body: 'A barbell back squat was tested at 55 lbs (recorded in the baselines table for reference) and a second provider\'s SOAP note (Stress Bar Clinical, 7/31/2026) prescribed a full Clean-to-Overhead-Press sequence. Per the trainer\'s "moderate progression" guidance, none of these are programmed yet: barbell back squat, conventional barbell deadlift, and clean-to-overhead-press are all higher axial-load or higher-skill/ballistic than anything currently in the program. DB Split Squat, Goblet Squat, Landmine Squat, and Hex Bar Deadlift remain the primary lower-body/hinge lifts. Revisit adding these once 3–4 weeks of the newly-reintroduced work (landmine squat, sit-ups, KB swing) is clean and symptom-free.',
   },
   {
     type: 'green',
-    label: 'Safe — Spine-Appropriate',
-    body: 'Hex bar deadlift (reduced spinal shear); DB / KB loading (no axial bar load); anti-extension core — plank, dead bug; anti-rotation core — Pallof press; chest-supported rows (no lumbar load); single-leg RDL (hip hinge, controlled).',
+    label: 'Reintroduced This Update — From Stress Bar Clinical SOAP Note (7/31/2026)',
+    body: 'Landmine squat (Day B, primary squat block), sit-up and bicycle crunch (Day A, core block — moderate volume, controlled tempo), and kettlebell swing (Day B, metabolic circuit) are folded in from a cross-training session note. Sled push is added as a new Day A cardio-finisher option. Source: Drive folder "ICONS NOTES JASON PDFS."',
   },
 ];
 
@@ -95,7 +95,7 @@ const days = [
     subtitle: 'Deadlift · Press · Carry — Strength Emphasis & Hip Hinge Development',
     descriptor: 'STRENGTH EMPHASIS · HIP HINGE DEVELOPMENT · CARDIOVASCULAR FINISHER · 55–65 MIN',
     intensityLabel: "Day A's Purpose",
-    intensityPara: 'Hinge, press, and loaded carry work built around hip hinge development and spinal-stenosis-safe loading. Hex bar deadlift replaces the conventional barbell; all pressing is dumbbell-based. The day closes with a Zone 2 or HIIT cardio finisher — the primary cardiovascular training stimulus in this 2-day/week program.',
+    intensityPara: 'Hinge, press, and loaded carry work built around hip hinge development. Hex bar deadlift stays as the primary hinge lift for now, and all pressing is dumbbell-based — moderate progression means new patterns get added deliberately rather than all at once, even with the stenosis restriction cleared. The day closes with a Zone 2 or HIIT cardio finisher — the primary cardiovascular training stimulus in this 2-day/week program.',
     warmUp: '10 min: 5 min stationary bike or treadmill walk (Zone 2 — cardiovascular warm-in). Then hip hinge rehearsal: PVC or broomstick hip hinge drill 2×10 (spine neutral, hinge from hips not back), glute bridge 2×15, dead bug 2×8 each side (spine decompression before loading), cat-cow 10 slow reps, ankle circles 10 each.',
     blocks: [
       {
@@ -137,13 +137,13 @@ const days = [
       {
         letter: 'D',
         title: 'LOADED CARRY + CORE',
-        introLabel: 'Farmer Carry & Spinal Stenosis',
-        intro: 'Loaded carries are safe and beneficial for spinal stenosis when performed with neutral spine and shoulders packed. The carry builds deep spinal stabilizer strength (multifidus, QL) which directly supports the stenotic segments. Avoid carrying so heavy that the spine laterally flexes or the shoulder hikes. Start at 35 lbs/hand and feel the position first.',
+        introLabel: 'Farmer Carry & Core Progression',
+        intro: 'Loaded carries build deep spinal stabilizer strength (multifidus, QL) with neutral spine and shoulders packed. Sit-up and bicycle crunch are new this update — previously restricted, now cleared, reintroduced at moderate volume and controlled tempo. Stop and flag any discomfort rather than pushing through.',
         exercises: [
           { name: 'Farmer Carry (DB, Both Hands)', sets: '4', reps: '25–30 yds', load: 'Wk1: 35 lbs/hand → +5 lbs/2wks', tempo: 'Controlled', rest: '90s', cue: 'Baseline 35 lbs/hand. Shoulders packed, chest tall, neutral neck. Add 5 lbs every 2 weeks. Stop if spine begins to laterally flex or shoulder hikes. These are the form cues that matter most.' },
-          { name: 'Suitcase Carry (Single Arm)', sets: '3', reps: '20 yds ea', load: '25―30 lbs', tempo: 'Controlled', rest: '60s', cue: 'One arm. Resist lateral lean — anti-lateral flexion core. Keep spine perfectly vertical. Alternate starting arm each set.' },
-          { name: 'Plank Hold (Elbow)', sets: '2', reps: ':50', load: 'Bodyweight', tempo: '—', rest: '90s', cue: 'Updated baseline :55. Hold at :50 in training — quality over max time. Full brace, neutral spine. Builds to 1:05 in Wk2, 1:15 in Wk4. SAFE for stenosis: anti-extension, no spinal flexion under load.' },
-          { name: 'Dead Bug', sets: '3', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-3', rest: '45s', cue: 'Lower back pressed FIRMLY into the floor throughout — this is therapeutic for stenosis (gentle lumbar flexion in non-loaded position). Slow opposite arm and leg extension. The best safe core exercise for this clinical presentation.' },
+          { name: 'Plank Hold (Elbow)', sets: '2', reps: ':50', load: 'Bodyweight', tempo: '—', rest: '90s', cue: 'Updated baseline :55. Hold at :50 in training — quality over max time. Full brace, neutral spine. Builds to 1:05 in Wk2, 1:15 in Wk4.' },
+          { name: 'Dead Bug', sets: '3', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-3', rest: '45s', cue: 'Lower back pressed firmly into the floor throughout. Slow opposite arm and leg extension. Still one of the best control-focused core exercises in the plan.' },
+          { name: 'Sit-Up or Bicycle Crunch (Coach/Client Choice)', sets: '3', reps: '12–15 (sit-up) or 20/10 ea side (bicycle)', load: 'Bodyweight', tempo: 'Controlled', rest: '45s', cue: 'Newly reintroduced — moderate volume, full control, no yanking on the neck. If bicycle crunch: rotate from the torso, not the neck. Reduce volume or drop if any discomfort.' },
         ],
       },
       {
@@ -154,12 +154,13 @@ const days = [
         exercises: [
           { name: 'Treadmill — Zone 2 Walk/Jog', sets: '1', reps: '15–20 min', load: '60–65% max HR', tempo: 'Steady', rest: '—', cue: 'Brisk walk or light jog at conversational pace. Full sentences throughout. Builds aerobic base. Best option on high-fatigue days. Minimum cardiovascular dose for fat loss adaptation.' },
           { name: 'Treadmill — Incline Intervals', sets: '8–10', reps: '30s on / 60s easy', load: 'Incline 8–12%', tempo: 'Alternating', rest: '30s', cue: '30 seconds at steep incline (brisk walk), 60 seconds flat easy walk. Elevates HR without running impact. Spine-appropriate — no jarring. Excellent cardiovascular fat-burn tool.' },
-          { name: 'Stationary Bike — HIIT', sets: '8', reps: '20s hard / 40s easy', load: 'High resistance', tempo: 'Hard then easy', rest: '40s', cue: 'Cycling is zero spinal impact. 20 seconds maximum effort, 40 seconds easy spin. 8 rounds total. Heart rate should peak at 80–85% then recover partially. Best HIIT option for spinal stenosis.' },
+          { name: 'Stationary Bike — HIIT', sets: '8', reps: '20s hard / 40s easy', load: 'High resistance', tempo: 'Hard then easy', rest: '40s', cue: 'Cycling is zero spinal impact. 20 seconds maximum effort, 40 seconds easy spin. 8 rounds total. Heart rate should peak at 80–85% then recover partially.' },
+          { name: 'Sled Push', sets: '3', reps: '20–30 yd', load: 'Moderate — coach discretion', tempo: 'Aggressive drive', rest: 'Short between rounds', cue: 'New option from cross-training notes. Drive aggressively from the hips, short rest between rounds. Horizontal loading — well tolerated even while other patterns are being reintroduced gradually.' },
         ],
       },
     ],
-    coolDown: "Hip flexor lunge 60s each (unloads lumbar after hinge work). Supine knee-to-chest 30s each (gentle lumbar decompression — safe for stenosis). Pigeon pose 60s each. Hamstring stretch 60s each. Thoracic extension over foam roller 60s.",
-    iconsNote: 'If Aimee experiences any of the following at any point: radiating pain down either leg, numbness or tingling in the feet or toes, significant increase in lower back pain after a session — pause that movement, note it, and flag it before the next session. Do not attempt to train through radiating neurological symptoms. These are signals from the stenosis and require physician review before continuing.',
+    coolDown: "Hip flexor lunge 60s each (unloads lumbar after hinge work). Supine knee-to-chest 30s each (gentle lumbar decompression). Pigeon pose 60s each. Hamstring stretch 60s each. Thoracic extension over foam roller 60s.",
+    iconsNote: 'As a general precaution — not specific to any current restriction — if Aimee experiences radiating pain down either leg, numbness or tingling in the feet or toes, or a significant increase in lower back pain after a session: pause that movement, note it, and flag it before the next session.',
   },
   {
     intensity: 70,
@@ -168,18 +169,19 @@ const days = [
     subtitle: 'Split Squat · Row · Pull-Up — Pulling Strength & Pull-Up Progression',
     descriptor: 'PULLING STRENGTH · PULL-UP PROGRESSION · METABOLIC CONDITIONING · 55–65 MIN',
     intensityLabel: "Day B's Purpose",
-    intensityPara: 'Squat, pull, and pull-up progression work using DB/KB-only lower-body loading (no barbell back squat) and a metabolic conditioning circuit that doubles as the day\'s cardiovascular stimulus. Neutral-grip pull-up leads every session as the safest grip for spinal stenosis.',
+    intensityPara: 'Squat, pull, and pull-up progression work using DB/KB-only lower-body loading (barbell back squat is still deferred — see baseline notes) and a metabolic conditioning circuit that doubles as the day\'s cardiovascular stimulus. Neutral-grip pull-up leads every session.',
     warmUp: '10 min: 5 min bike or treadmill walk (Zone 2 cardiovascular warm-in). Then: glute bridge 2×15, hip hinge rehearsal 2×10 (runs every session), goblet squat 2×10 light (30 lbs, depth focus), cat-cow 10, dead hang 20 seconds (shoulder decompression), band pull-aparts or arm circles 2×15.',
     blocks: [
       {
         letter: 'A',
         title: 'PRIMARY SQUAT STRENGTH',
-        introLabel: 'Spinal Stenosis Note',
-        intro: 'No barbell back squat. DB split squat and goblet squat are the primary lower body movements on Day B. Both allow the spine to remain in a safe, upright position without axial barbell load. The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus.',
+        introLabel: 'Squat Progression Note',
+        intro: 'DB split squat and goblet squat remain the primary lower body movements on Day B. Landmine squat is new this update — the angled bar path is more forgiving than a straight barbell back squat, a good bridge exercise while barbell squatting itself is still deferred (see baseline notes). The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus.',
         exercises: [
           { name: 'DB Split Squat (Front Foot Elevated)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 25 lbs/hand → Wk4: 35 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Baseline 35 lbs ×3RM. Start at 25 lbs for 8 quality reps with full depth. Front foot elevated 2–4 inches increases range of motion. Front knee tracks over second toe. Left leg leads first. Add 2.5 lbs every 2 weeks.' },
-          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '10―12', load: '30–40 lbs', tempo: '3-1-1', rest: '75s', cue: 'DB held at chest. Full depth, chest tall. Elbows inside knees at bottom. Knees track out over toes. Builds the bilateral squat pattern safely without axial spine load. Progress load every 2 weeks.' },
-          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '12.5―17.5 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Left leg leads. Unilateral lower body volume without spine compression. Excellent glute and quad developer.' },
+          { name: 'Landmine Squat', sets: '3', reps: '10–12', load: 'Light-Mod — coach discretion', tempo: 'Controlled', rest: '75s', cue: 'New this update. Chest up, drive through heels, full ROM. Angled bar path loads the spine more forgivingly than a straight barbell — bridges toward barbell squatting once that\'s reintroduced.' },
+          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '10―12', load: '30–40 lbs', tempo: '3-1-1', rest: '75s', cue: 'DB held at chest. Full depth, chest tall. Elbows inside knees at bottom. Knees track out over toes. Progress load every 2 weeks.' },
+          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '12.5―17.5 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Left leg leads. Excellent glute and quad developer.' },
         ],
       },
       {
@@ -212,17 +214,17 @@ const days = [
         title: 'METABOLIC CONDITIONING CIRCUIT — 3 ROUNDS',
         color: 'gold',
         introLabel: 'Cardio Protocol',
-        intro: "Day B's cardiovascular work is a metabolic circuit rather than dedicated cardio. This provides the strength-plus-conditioning stimulus that is most effective for fat loss and body composition at 2 days per week. The circuit uses movements Aimee has already done in the session at sub-maximal loads to maintain quality under fatigue. After 3 circuit rounds: 10-minute cardiovascular finisher — choose stationary bike easy spin, treadmill Zone 2 walk, or rowing machine easy pace. This is active recovery from the circuit while maintaining elevated heart rate for continued fat oxidation. Spine-safe — no impact.",
+        intro: "Day B's cardiovascular work is a metabolic circuit rather than dedicated cardio. This provides the strength-plus-conditioning stimulus that is most effective for fat loss and body composition at 2 days per week. Kettlebell swing is new this update — a moderate, hip-hinge-dominant option from the cross-training notes (client/coach choice over jump squat, which stays deferred for now given moderate-progression pacing). After 3 circuit rounds: 10-minute cardiovascular finisher — choose stationary bike easy spin, treadmill Zone 2 walk, or rowing machine easy pace.",
         exercises: [
-          { name: 'Goblet Squat (Light, Continuous)', sets: '3 rounds', reps: '15', load: '25―30 lbs', tempo: '2-0-1', rest: '15s then next', cue: 'Sub-maximal load, continuous reps. Focus is metabolic — keep moving. Into the next exercise immediately after 15 seconds.' },
+          { name: 'Kettlebell Swing OR Goblet Squat (Light, Continuous)', sets: '3 rounds', reps: '10–15', load: 'Light-Mod KB or 25―30 lbs DB', tempo: '2-0-1', rest: '15s then next', cue: 'New: KB swing — hip hinge, snap glutes at top, arms relaxed. If goblet squat: sub-maximal load, continuous reps. Coach discretion which to use. Into the next exercise after 15 seconds.' },
           { name: 'DB Row (Both Arms, Bent Over)', sets: '3 rounds', reps: '12', load: '20―25 lbs', tempo: '2-1-2', rest: '15s then next', cue: 'Hip hinge, pull both DBs to ribs. Lighter than Day B primary row. Metabolic pull volume. Into the next exercise.' },
           { name: 'Push-Up (Max or Incline)', sets: '3 rounds', reps: 'Max', load: 'Bodyweight', tempo: '3-0-1', rest: '15s then next', cue: 'Full or incline — whatever allows quality reps. Stop 1 rep before form breaks.' },
           { name: 'Plank Hold', sets: '3 rounds', reps: '45–60s', load: 'Bodyweight', tempo: '—', rest: '90s rest', cue: 'Full brace. Rest 90 seconds after plank then begin next round. 3 full rounds of the complete circuit. Record how many rounds complete with good form each week.' },
         ],
       },
     ],
-    coolDown: 'Supine knee-to-chest 30s each (lumbar decompression — most important cool-down for stenosis). Cat-cow 10 slow reps. Doorway chest stretch 30s each. Lat stretch 30s each. Hip flexor lunge 60s each. Thoracic extension over foam roller 60s.',
-    iconsNote: 'If Aimee experiences any of the following at any point: radiating pain down either leg, numbness or tingling in the feet or toes, significant increase in lower back pain after a session — pause that movement, note it, and flag it before the next session. Do not attempt to train through radiating neurological symptoms. These are signals from the stenosis and require physician review before continuing.',
+    coolDown: 'Supine knee-to-chest 30s each. Cat-cow 10 slow reps. Doorway chest stretch 30s each. Lat stretch 30s each. Hip flexor lunge 60s each. Thoracic extension over foam roller 60s.',
+    iconsNote: 'As a general precaution — not specific to any current restriction — if Aimee experiences radiating pain down either leg, numbness or tingling in the feet or toes, or a significant increase in lower back pain after a session: pause that movement, note it, and flag it before the next session.',
   },
 ];
 
@@ -231,7 +233,7 @@ const baselines = [
   ['Hip Thrust', '95 lbs', '5 RM (est.)', 'New baseline. Wk1: 80 lbs ×6 → Wk4: 105 lbs ×5–6. Hip-dominant, no axial spinal load — ideal for spinal stenosis.'],
   ['Single-Leg RDL', '25 lbs / hand', '8 reps', 'Wk1: 22.5 lbs ×10 → Wk4: 30 lbs ×8. Left and right equal sets. Most important hip hinge developer.'],
   ['DB Split Squat', '35 lbs / hand', '3 RM', 'Wk1: 25 lbs ×8 (form + depth focus at lower load) → Wk4: 35 lbs ×8. 3RM suggests form may break at max — train sub-max.'],
-  ['Barbell Back Squat', '55 lbs', 'Tested — Not Programmed', 'Recorded for reference only. Per confirmed spinal stenosis restriction, barbell back squat is not programmed — DB Split Squat and Goblet Squat remain the primary lower-body lifts (see clinical note below).'],
+  ['Barbell Back Squat', '55 lbs', 'Tested — Deferred', 'Recorded for reference. Stenosis restriction cleared, but per moderate-progression guidance this is deferred to a later phase — Landmine Squat bridges toward it in the meantime (see baseline notes).'],
   ['Overhead Press', '17.5 lbs / hand', '5 RM', 'Wk1: 15 lbs ×10 (sub-max) → Wk4: 20 lbs ×8. Spine-safe: seated or standing, no barbell.'],
   ['Incline DB Press', '15 lbs / hand', '8 reps', 'Wk1: 15 lbs ×10 → Wk4: 20 lbs ×8. Primary chest movement.'],
   ['DB Flat Bench Press', '20 lbs / hand', '5 RM (est.)', 'New baseline. Wk1: 20 lbs ×10 → Wk4: 25 lbs ×8. Supine bench position is fully spine-safe — full back support, no axial load.'],
@@ -246,7 +248,7 @@ const baselines = [
 // already established in the baselines table above (no Styku scan exists
 // for this client, so no rescan-tracking metrics are fabricated).
 const summary = {
-  subtitle: 'Aimee  ·  ICONS Index  ·  Fat Loss & Body Composition  ·  2 Days/Week  ·  Full Gym',
+  subtitle: 'Aimee Morris  ·  ICONS Index  ·  Fat Loss & Body Composition  ·  2 Days/Week  ·  Full Gym',
   rows: [
     ['Wk 1', '—', 'Day A & B', 'Hex DL 95 lbs ×4×4 / Hip Thrust 80 lbs ×5–6 / Split Squat 25 lbs ×8', 'Establish updated baselines. Hip hinge drill every set. Push-up: 3–5 full floor reps off a 7-rep incline base. Plank: :50. Cardio: 15 min Zone 2.'],
     ['Wk 2', '—', 'Day A & B', 'Hex DL 100 lbs ×4×4 / Hip Thrust 90 lbs ×5–6 / Split Squat 27.5 lbs ×8', 'Pull-up: 6 reps all grips. Push-up: 5–6 full floor reps. Hip hinge should feel more natural. Plank: 1:00.'],
@@ -254,7 +256,7 @@ const summary = {
     ['Wk 4', '—', 'Day A & B', 'Hex DL 120 lbs ×4×4 / Hip Thrust 105 lbs ×5–6 / Split Squat 32.5 lbs ×8', 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.'],
   ],
   milestones4wk: 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.',
-  milestones8wk: 'Strength: Hex DL 130+ lbs ×4. Hip Thrust 115+ lbs ×5–6. OHP 22.5 lbs/hand ×8. Incline 22.5 lbs/hand ×8. Flat Press 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Goblet 45 lbs ×10. SL-RDL 32.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:30. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads; resting heart rate should be noticeably lower. Re-test barbell back squat only if physician clearance has been obtained.',
+  milestones8wk: 'Strength: Hex DL 130+ lbs ×4. Hip Thrust 115+ lbs ×5–6. OHP 22.5 lbs/hand ×8. Incline 22.5 lbs/hand ×8. Flat Press 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Landmine Squat progressing in load. Goblet 45 lbs ×10. SL-RDL 32.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:30. Sit-up/bicycle crunch and KB swing clean and symptom-free for 3–4+ weeks. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads. Revisit barbell back squat, conventional barbell deadlift, and clean-to-overhead-press for reintroduction once the above is consistent.',
   rescanNote: 'No Styku scan is on file for this client — reassess at 8 weeks via baseline lift retest, pull-up assist-level reduction, and resting heart rate trend rather than a body-composition rescan.',
 };
 
@@ -271,9 +273,9 @@ const data = {
 
 async function main() {
   const buffer = await buildDocument(data);
-  const outDir = path.join(__dirname, '..', 'clients', 'aimee');
+  const outDir = path.join(__dirname, '..', 'clients', 'aimee_morris');
   fs.mkdirSync(outDir, { recursive: true });
-  const outPath = path.join(outDir, 'Aimee_2Day_Training_Plan.docx');
+  const outPath = path.join(outDir, 'Aimee_Morris_2Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
 }

@@ -56,16 +56,17 @@ Checked every client with a known age/weight against the new Age Bracket Program
 - Program: 5-day progressive intensity build (60% / 70% / 80% / 90% / Active Recovery)
 - Baselines: Deadlift 55–65 lbs, Squat 25 lbs, OH Press 25 lbs ×3RM, Farmer Carry 35 lbs/hand, Push-Up 15 assisted → 15 unassisted target, Pull-Up Level 9/12 assisted → Level 6 target
 
-### Aimee
+### Aimee Morris (renamed from "Aimee" 8/10/2026 — full name confirmed via SOAP note, see below)
 - **Program:** 2-Day Full Gym Training Plan (`.docx`)
-- **Output:** `clients/aimee/Aimee_2Day_Training_Plan.docx`
-- **Build script:** `scripts/aimee_2day_plan.js`
-- No age/height/weight given in source — `includeNutritionBlock` explicitly false; no ALST/postmenopausal flags fabricated
-- Clinical: confirmed **slight spinal stenosis** — program avoids axial spinal compression and lumbar flexion/extension under load. Hex bar deadlift replaces conventional barbell; all pressing is dumbbell-based; no behind-the-neck movements; all core work is anti-flexion/anti-extension
-- Underdeveloped hip hinge pattern flagged as clinically significant given the stenosis — hip hinge rehearsal drills precede all loaded hinge work every session
-- Pull-up baseline: 5 reps each in neutral/wide/standard grip (assisted) — neutral grip prioritized as safest for spinal stenosis
-- Program: 2-day/week, 4-week progression (Day A Hinge + Push + Core, Day B Squat + Pull + Conditioning). Day A/B are not %-graded — `day.badge` overrides the borrowed intensity-key badge text ('A'/'DAY', 'B'/'DAY') so the page doesn't misstate the day's nature (e.g. Day A no longer reads "ACTIVE RECOV." on a heavy strength day) while still reproducing the source's exact badge accent colors
-- Baseline note pair reproduces the source's "Avoid — Spine-Unsafe" / "Safe — Spine-Appropriate" exercise comparison
+- **Output:** `clients/aimee_morris/Aimee_Morris_2Day_Training_Plan.docx`
+- **Build script:** `scripts/aimee_morris_2day_plan.js`
+- Age 48 (DOB 1977-11-30, confirmed 8/10/2026) — height/weight still not given anywhere, so `includeNutritionBlock` stays explicitly false; `isPostmenopausal` still unset (not stated). ageYears is now set, which is enough to place her in the 45–55 age bracket for future reference even without a nutrition block.
+- **Clinical update (8/10/2026): spinal stenosis restriction CLEARED**, per the trainer — previously confirmed slight spinal stenosis, program avoided axial spinal compression and lumbar flexion/extension under load. Trainer specified **moderate progression** for reintroducing previously-restricted movements, not an immediate full return: Landmine Squat, Sit-Up/Bicycle Crunch (moderate volume), and Kettlebell Swing are added now (see below); Barbell Back Squat, conventional Barbell Deadlift, and Clean-to-Overhead-Press are deliberately **deferred to a later phase** pending a few clean weeks on the newly-reintroduced work. Hex Bar Deadlift stays as the primary hinge lift for now.
+- **Source: "AIMEE SOAP NOTES" PDF**, Drive folder "ICONS NOTES JASON PDFS", from a second provider (Stress Bar Clinical, CSCS/LMT, session dated 7/31/2026) — provided her name/DOB and a cross-training session template. Only the non-conflicting/now-cleared portions were merged into the ICONS plan (Landmine Squat, Sit-Up/Bicycle Crunch, Kettlebell Swing, Sled Push as a new cardio-finisher option); Clean-to-Overhead-Press and Jump Squat were held back per moderate-progression guidance despite being in the source note.
+- Underdeveloped hip hinge pattern still flagged — hip hinge rehearsal drills precede all loaded hinge work every session, independent of the stenosis clearance
+- Pull-up baseline: 5 reps each in neutral/wide/standard grip (assisted) — neutral grip leads (most shoulder-friendly)
+- Program: 2-day/week, 4-week progression (Day A Hinge + Push + Core, Day B Squat + Pull + Conditioning). Day A/B are not %-graded — `day.badge` overrides the borrowed intensity-key badge text ('A'/'DAY', 'B'/'DAY') so the page doesn't misstate the day's nature while still reproducing the source's exact badge accent colors
+- Baseline note pair updated 8/10/2026: "Deferred to a Later Phase" and "Reintroduced This Update" replace the old "Avoid — Spine-Unsafe" / "Safe — Spine-Appropriate" pair, reflecting the clearance
 - **Updated baselines (8/9/2026):** Hex Deadlift 105 lbs 3RM · Single-Leg RDL 25 lbs/hand · Overhead Press 17.5 lbs/hand 5RM · Incline DB Press 15 lbs/hand · Push-Up 7 incline reps (advanced past knee stage) · Plank :55. New exercises added: Hip Thrust 95 lbs (hip-dominant, spine-safe — added to Day A hinge block) and DB Flat Bench Press 20 lbs/hand (added to Day A press block). A barbell back squat was also tested at 55 lbs — recorded in the baselines table for reference only; per the confirmed spinal stenosis restriction it is **not programmed** as a working exercise (DB Split Squat/Goblet Squat remain primary). Flag to Xolokan if physician clearance for barbell squatting has since been given, since that would change the standing restriction.
 
 ### Petra
