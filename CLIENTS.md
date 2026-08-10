@@ -6,6 +6,18 @@ Checked every client with a known age/weight against the new Age Bracket Program
 
 ## Active Clients
 
+### Rena Paul
+- **Program:** 2-Day Full Gym Training Plan (`.docx`)
+- **Output:** `clients/rena_paul/Rena_Paul_2Day_Training_Plan.docx`
+- **Build script:** `scripts/rena_paul_2day_plan.js`
+- **Name note:** the Styku scan PDF the trainer provided identifies the client as "Ren Itch" (email renitchka@gmail.com), not "Rena Paul." Built under "Rena Paul" per the trainer's explicit instruction — flag if the scan needs to be re-filed under the correct name, or if a different client's scan was attached by mistake.
+- Age 45 | 5'3" | 116 lbs | Scan: 8/8/2026 | Menopausal status not stated — not fabricated (falls in the 45–55 age bracket by age alone, but isPostmenopausal is left false pending confirmation)
+- Body Fat 27.0% (Fit) | BMI 20.5 (Normal) | Shape Score 92/100 (Excellent) | ALST Index 5.94 kg/m² (Normal/monitor tier) | VFA 26.3 cm² (Very Low Risk)
+- Segmental: L Arm 6.3 / R Arm 6.4 lbs (0.1 lb gap) · L Leg 13.3 / R Leg 13.7 lbs (0.4 lb gap) — both below the 0.5 lb asymmetry-protocol threshold, no unilateral-lead protocol triggered; leg gap flagged as monitor-only since it's closer to the threshold
+- Protein target: 95–105g/day (1.8–2.0 g/kg, 40+ tier per `proteinTargets()`) | Creatine strongly indicated (age 40+)
+- Strong baseline battery (all tested 8/8/2026): Hex DL 85×5, Hip Thrust 85×5, SL-RDL 25×8, DB Lunge 25×5, Single-Arm Row 30×5, Seated OHP 15×5, Incline DB Chest Press 20×5, Farmer Carry 30/hand, Plank 2:00, Incline Push-Up ×10, Assisted Pull-Up 5 reps × close/standard/wide grip
+- Program: 2-day/week, 4-week progression (Day A Hinge + Press + Core 70%, Day B Squat/Lunge + Pull + Conditioning 80%) — no clinical restrictions on file, so full standard progression applies; no weekOverview strip (2-day/week programs use `days[].intensity` badges directly, matching the Aimee precedent)
+
 ### August Olivia
 - **Program:** 3-Day Training Plan (`.docx`)
 - **Output:** `clients/august_olivia/August_Olivia_3Day_Training_Plan.docx`
