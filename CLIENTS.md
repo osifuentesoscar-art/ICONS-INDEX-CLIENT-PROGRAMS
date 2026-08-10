@@ -6,6 +6,20 @@ Checked every client with a known age/weight against the new Age Bracket Program
 
 ## Active Clients
 
+### Jake Poyner
+- **Program:** 3-Day Strength Program — "QL Tendinosis-Informed · Pelvic & Trunk Stability Focus" (`.docx`)
+- **Output:** `clients/jake_poyner/Jake_Poyner_3Day_Training_Plan.docx`
+- **Build script:** `scripts/jake_poyner_3day_plan.js`
+- **Source:** client-supplied `QL_Tendinosis_3Day_Program.pdf` (force plate / dynamometer assessment, 8/4–8/5/2026) — rebuilt into the `icons_template.js` engine, all clinical/assessment content preserved faithfully.
+- Age 25 | Male — **outside the ICONS documented target population (women 40s–60s per CLAUDE.md's Training Philosophy section)**. Deliberately did NOT apply the ICONS women's science-layer numeric thresholds (protein/creatine tiers, ALST, VFA, LIFTMOR bone-loading, pelvic floor protocol) — none are validated for a 25-year-old male and CLAUDE.md scopes them explicitly to the women's demographic. Retained the sex-neutral structural philosophy instead: the Isolated→Compound→Metabolic three-zone framework and RIR/RPE-based autoregulation. This reasoning is documented in the script header and in a dedicated purple baselineNote ("Why This Program Doesn't Use the Standard ICONS Science-Layer Numbers") so it's visible in the delivered document, not just buried in code.
+- Presenting issue: QL (quadratus lumborum) tendinosis, PT-coordinated care.
+- Force plate/dynamometer findings: hip abduction & hip flexion asymmetry, right-side force development lag, reduced trunk extension capacity (flagged red), minor hand grip asymmetry (flagged teal). Working hypothesis and movements held back until 4-week reassessment both documented via baselineNotes, carried over from the source.
+- Load/progression: RPE-based (RPE 6–8, ≈2–4 RIR), not the standard ICONS 60/70/80/90% intensity framework — day-to-day symptom-responsive given the tendinosis diagnosis; no true-failure work.
+- Evidence base cited in-document: Robinson et al. (2024/2025) volume/frequency meta-regression (age-matched to Jake), Grgic et al. (2018) on RIR vs. failure, Morton et al. (2018) protein dose-response, Shaw et al. (2017)/Bischof et al. (2024)/Praet et al. (2019, Achilles tendinopathy) on pre-load collagen + vitamin C for tendon stiffness.
+- Two genuine additions beyond the source program (both flagged explicitly in-document, not silently added): (1) a Conditioning Finisher block on Days 1–2 — the source had zero conditioning/metabolic work, and ICONS's three-zone philosophy calls for a metabolic zone; Day 3 deliberately has none, since its own power/RFD block already provides that stimulus. (2) A sharpened pain-monitoring rule in every day's ICONS Note: mild soreness resolving within 24h is expected training response, not a stop signal; sharp/line-specific QL pain is the actual stop signal — standard tendon-rehab practice, made explicit rather than left ambiguous.
+- Pain-rehab loading model followed: isometric → slow eccentric → controlled concentric → dynamic, standard tendon-loading continuum.
+- `includeNutritionBlock: false` (no weight/Styku data on file — nothing fabricated) and no `baselines` table (source had no traditional lift-testing battery; force plate/dynamometer data captured in `baselineNotes` instead, matching the Nancy Avitable/Petra precedent).
+
 ### Rena Paul
 - **Program:** 2-Day Full Gym Training Plan (`.docx`)
 - **Output:** `clients/rena_paul/Rena_Paul_2Day_Training_Plan.docx`
