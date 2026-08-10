@@ -711,8 +711,117 @@ async function buildDocument(data) {
   return Packer.toBuffer(doc);
 }
 
+// ── COMPARISON TABLE (Brace Life Improvement Report) ────────────────────
+// 4-column before/after table: Metric | <date A> | <date B> | Change.
+// The Change column is bold green — this document type exists to
+// celebrate improvement, so unlike baselinesTable() it doesn't need to
+// stay direction-neutral.
+function comparisonTable(headers, rows) {
+  const colWidths = [3200, 2400, 2400, 2440];
+  const header = new TableRow({
+    children: headers.map((h, i) => cell(
+      [para([txt(h, { bold: true, size: 14, color: C.goldDeep })], { alignment: i === 0 ? AlignmentType.LEFT : AlignmentType.CENTER })],
+      { fill: C.goldHead, width: colWidths[i] }
+    )),
+  });
+  const body = rows.map((r, i) => new TableRow({
+    children: r.map((val, j) => cell(
+      [para([txt(String(val), { size: j === 0 ? 17 : 16, color: j === 0 ? C.dark : (j === 3 ? C.green : C.mid), bold: j === 0 || j === 3 })], { alignment: j === 0 ? AlignmentType.LEFT : AlignmentType.CENTER })],
+      { fill: i % 2 === 0 ? C.goldPale : 'FFFFFF', width: colWidths[j] }
+    )),
+  }));
+  return [fullWidthTable([header, ...body], colWidths), spacer(100)];
+}
+
+// ── BRACE LIFE IMPROVEMENT REPORT ────────────────────────────────────────
+// A standalone before/after progress report — not a training plan, so it
+// doesn't reuse buildDocument()'s day/block schema. Data shape:
+// {
+//   client: { name, subtitle, stats },
+//   reportTitle,                 // default 'BRACE LIFE IMPROVEMENT REPORT'
+//   periodLabel,                 // e.g. '2/7/2026 → 8/7/2026  ·  6-Month Progress'
+//   comparison: { title, headers: [4], rows: [[metric, before, after, change], ...] },
+//   narrative: [{ type, label, body }],   // same shape/types as baselineNotes
+//   strengthGains: { title, headers: [4], rows: [...] },  // optional 2nd table
+//   closingNote,                 // optional plain paragraph before the brand footer
+// }
+async function buildImprovementDoc(data) {
+  const children = [];
+  const client = data.client;
+
+  children.push(...coverHeader(client.name, data.reportTitle || 'BRACE LIFE IMPROVEMENT REPORT', client.subtitle));
+  if (client.stats && client.stats.length) children.push(...clientStats(client.stats));
+
+  if (data.periodLabel) {
+    children.push(para([txt(data.periodLabel, { italics: true, size: 16, color: C.mid })], {
+      alignment: AlignmentType.CENTER, spacing: { after: 120 },
+    }));
+  }
+
+  if (data.comparison) {
+    children.push(sectionTitle(data.comparison.title || 'Body Composition — Before & After', C.teal));
+    children.push(...comparisonTable(data.comparison.headers, data.comparison.rows));
+  }
+
+  if (data.narrative) {
+    const fnMap = {
+      green: greenCallout, gold: goldCallout, red: redCallout, teal: tealCallout, blue: blueCallout, purple: purpleCallout,
+      clinical: clinicalFlag, watch: watchFlag, clear: clearFlag,
+    };
+    data.narrative.forEach((n) => {
+      const fn = fnMap[n.type] || goldCallout;
+      children.push(...fn(n.label, n.body));
+    });
+    children.push(spacer(80));
+  }
+
+  if (data.strengthGains) {
+    children.push(sectionTitle(data.strengthGains.title || 'Strength Gains', C.gold));
+    children.push(...comparisonTable(data.strengthGains.headers, data.strengthGains.rows));
+  }
+
+  if (data.closingNote) {
+    children.push(para([txt(data.closingNote, { size: 17, color: C.dark })], { spacing: { after: 120 } }));
+  }
+
+  children.push(spacer(160));
+  children.push(para([txt('BRACE LIFE STUDIOS  ·  ICONS INDEX  ·  bracelifestudios.com', { bold: true, size: 18, color: C.gold })], {
+    alignment: AlignmentType.CENTER, spacing: { after: 40 },
+  }));
+  children.push(para([txt(`This progress report is confidential and prepared exclusively for ${client.name}.`, { italics: true, size: 16, color: C.mid })], {
+    alignment: AlignmentType.CENTER,
+  }));
+
+  const headerSubtitle = client.subtitle || data.reportTitle || 'Improvement Report';
+  const footerRight = `${client.name}  |  Brace Life Improvement Report`;
+
+  const doc = new Document({
+    sections: [
+      {
+        properties: {
+          page: {
+            size: { width: PAGE_W, height: PAGE_H },
+            margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN },
+          },
+        },
+        headers: { default: buildHeader(client.name, headerSubtitle) },
+        footers: { default: buildFooter(client.name, footerRight) },
+        children,
+      },
+    ],
+    styles: {
+      default: {
+        document: { run: { font: FONT, size: 17, color: C.dark } },
+      },
+    },
+  });
+
+  return Packer.toBuffer(doc);
+}
+
 module.exports = {
   buildDocument,
+  buildImprovementDoc, comparisonTable,
   C,
   coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock,
   nutritionBlock, proteinTargets, proteinBar, pelvicFloorCallout,

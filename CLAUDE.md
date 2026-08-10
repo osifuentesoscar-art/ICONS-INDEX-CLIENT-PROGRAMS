@@ -163,6 +163,12 @@ Week Strip (N col)  : TW divided evenly across up to 7 day-columns, remainder on
 // Build complete document from data object
 await buildDocument(data) → Buffer
 
+// Build a standalone before/after progress report (NOT a training plan —
+// skips the days/blocks/baselines schema entirely). See "Brace Life
+// Improvement Report" below for the data shape.
+await buildImprovementDoc(data) → Buffer
+comparisonTable(headers[4], rows[][4])   // the 4-col before/after table buildImprovementDoc() uses internally — exported for reuse
+
 // Blocks (compose custom pages)
 coverHeader(clientName, programTitle, subtitleLine)   // subtitleLine e.g. "60–100% PROGRESSIVE INTENSITY BUILD"
 clientStats(stats[])           // single italic centered line, "·"-joined — not a boxed table
@@ -277,6 +283,32 @@ clearFlag(label, body)
   }
 }
 ```
+
+### Brace Life Improvement Report — `buildImprovementDoc()`
+
+A standalone before/after progress report — for a client with two Styku scans (or two testing sessions) to compare, not for a training plan. Deliberately does not reuse `buildDocument()`'s days/blocks/baselines schema. Same page setup, running header/footer, and brand styling as the training-plan engine (both are built by the same `icons_template.js`).
+
+```javascript
+{
+  client: { name: string, subtitle: string, stats: string[] },
+  reportTitle?: string,          // default 'BRACE LIFE IMPROVEMENT REPORT'
+  periodLabel?: string,          // e.g. '2/7/2026 → 8/7/2026  ·  6-Month Progress Window'
+  comparison?: {
+    title?: string,              // default 'Body Composition — Before & After'
+    headers: [string, string, string, string],   // e.g. ['Metric', '<date A>', '<date B>', 'Change']
+    rows: string[][4],           // [metric, before, after, change]
+  },
+  narrative?: [{ type, label, body }],   // same shape/types as baselineNotes (green/gold/red/teal/blue/purple/clinical/watch/clear)
+  strengthGains?: {               // optional second comparisonTable — same shape as `comparison`
+    title?: string,
+    headers: [string, string, string, string],
+    rows: string[][4],
+  },
+  closingNote?: string,          // optional plain paragraph before the brand footer
+}
+```
+
+**Never fabricate a "before" value.** Only put a metric/lift in `comparison.rows` or `strengthGains.rows` if both the before and after numbers are actually documented — if a metric (e.g. ALST/VFA/Shape Score on a client whose earlier scan predates that report page) or a PR (e.g. a lift with no prior numeric baseline on file) only has a current value, describe it in `narrative` as a newly-established baseline or an undocumented-improvement PR instead of inventing a "before" number for the table. See `scripts/elizabeth_poyner_improvement_doc.js` for the reference implementation of this rule.
 
 ---
 
