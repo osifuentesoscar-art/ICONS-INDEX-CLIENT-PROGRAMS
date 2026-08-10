@@ -45,7 +45,10 @@ const data = {
       ['Body Fat %', '33.5%', '27.1%', '−6.4 pts'],
       ['Fat Mass', '35.2 lbs', '30.8 lbs', '−4.4 lbs'],
       ['Lean Mass', '65.6 lbs (62.5%)', '78.4 lbs (69.0%)', '+12.8 lbs'],
-      ['Bone Mass', '4.2 lbs', '4.5 lbs', '+0.3 lbs'],
+      ['Bone Mass', '4.2 lbs (4.0%)', '4.5 lbs (4.0%)', '+0.3 lbs'],
+      ['Waist (Abdominal)', '29.9 in', '27.4 in', '−2.5 in'],
+      ['Waist (Narrowest)', '29.6 in', '26.1 in', '−3.5 in'],
+      ['Waist (Lower)', '29.4 in', '29.4 in', 'No change'],
       ['BMR', '1,122 cal/day', '1,159 cal/day', '+37 cal/day'],
       ['Body Fat Percentile', 'Lower than 50% of peers', 'Lower than 80% of peers', '+30 pts'],
     ],
@@ -60,6 +63,16 @@ const data = {
       type: 'teal',
       label: 'New Baselines Established (8/7/2026)',
       body: 'The 2/7/2026 scan did not include segmental analysis, so ALST Index, VFA, and Shape Score have no prior comparison point — they are newly established at this rescan and become the tracking baseline going forward: ALST Index 5.85 kg/m² (Not At-Risk), VFA 61.4 cm² (Low Risk), Shape Score 98/100 (Excellent), BMI 18.9.',
+    },
+    {
+      type: 'blue',
+      label: 'Waist & Silhouette',
+      body: 'Abdominal waist dropped 2.5 in (29.9→27.4) and narrowest waist dropped 3.5 in (29.6→26.1) — the visible shape change behind the recomposition above. Lower waist held essentially flat (29.4→29.4), suggesting the change is concentrated through the upper abdomen and natural waist rather than spread evenly. This is the "tall, open, sculpted" silhouette the ICONS system targets, not just a scale number.',
+    },
+    {
+      type: 'watch',
+      label: 'Bone Mass — Not the Same as Clinical Bone Density',
+      body: 'Bone Mass rose 4.2→4.5 lbs (+0.3 lbs) while holding steady at 4.0% of total mass. This is Styku\'s soft-tissue-derived estimate, not a DEXA bone density scan or T-score — worth being precise about with Elizabeth so the gain isn\'t overstated. At 64 and postmenopausal, a true DEXA scan would be the next step to confirm bone density directly and screen LIFTMOR-protocol candidacy (T-score < -1.0) if she wants to pursue it.',
     },
     {
       type: 'gold',
