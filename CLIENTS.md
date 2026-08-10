@@ -10,7 +10,7 @@ Checked every client with a known age/weight against the new Age Bracket Program
 - **Program:** 2-Day Full Gym Training Plan (`.docx`)
 - **Output:** `clients/rena_paul/Rena_Paul_2Day_Training_Plan.docx`
 - **Build script:** `scripts/rena_paul_2day_plan.js`
-- **Name note:** the Styku scan PDF the trainer provided identifies the client as "Ren Itch" (email renitchka@gmail.com), not "Rena Paul." Built under "Rena Paul" per the trainer's explicit instruction — flag if the scan needs to be re-filed under the correct name, or if a different client's scan was attached by mistake.
+- **Also on file as:** "Ren Itch" (email renitchka@gmail.com) — confirmed same client; this is the name her Styku scan is registered under. Client-facing documents use "Rena Paul"; match on either name when searching Styku/Drive records for her.
 - Age 45 | 5'3" | 116 lbs | Scan: 8/8/2026 | Menopausal status not stated — not fabricated (falls in the 45–55 age bracket by age alone, but isPostmenopausal is left false pending confirmation)
 - Body Fat 27.0% (Fit) | BMI 20.5 (Normal) | Shape Score 92/100 (Excellent) | ALST Index 5.94 kg/m² (Normal/monitor tier) | VFA 26.3 cm² (Very Low Risk)
 - Segmental: L Arm 6.3 / R Arm 6.4 lbs (0.1 lb gap) · L Leg 13.3 / R Leg 13.7 lbs (0.4 lb gap) — both below the 0.5 lb asymmetry-protocol threshold, no unilateral-lead protocol triggered; leg gap flagged as monitor-only since it's closer to the threshold

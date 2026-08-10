@@ -6,10 +6,9 @@
  * baseline battery (all tested same session, includes bonus pull-up test).
  *
  * NAME NOTE: the Styku scan PDF identifies the client as "Ren Itch"
- * (email renitchka@gmail.com) — the trainer supplied "Rena Paul" as the
- * client's name for this build. Using "Rena Paul" per the trainer's
- * explicit instruction; flagged in CLIENTS.md in case the scan was
- * filed under a different name/nickname and needs reconciling.
+ * (email renitchka@gmail.com) — confirmed by the trainer to be the same
+ * client, also on file under that name. Client-facing documents use
+ * "Rena Paul"; see CLIENTS.md for the cross-reference.
  *
  * isPostmenopausal is left false/unset — no menopausal status was stated
  * by the trainer. At 45 she sits in the 45-55 "Perimenopause / Menopause
