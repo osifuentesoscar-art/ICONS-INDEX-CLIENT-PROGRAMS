@@ -6,6 +6,18 @@ Checked every client with a known age/weight against the new Age Bracket Program
 
 ## Active Clients
 
+### Vinz Feller
+- **Program:** 3-Day Strength Program (`.docx`)
+- **Output:** `clients/vinz_feller/Vinz_Feller_3Day_Training_Plan.docx`
+- **Build script:** `scripts/vinz_feller_3day_plan.js`
+- **Source:** Styku scan (8/11/2026) + same-day self-reported baseline strength testing. Built via the `icons-expert` subagent and independently structurally audited via `icons-doc-auditor` — first client built through the new subagent delegation workflow (see "Subagent Team" in CLAUDE.md).
+- Age 50 | Male, 5'10", 165 lbs | BMI 23.6 | BMR 1658 cal/day — **outside the ICONS documented target population (women 40s–60s per CLAUDE.md's Training Philosophy section)**. Per the Demographic Scope Rule, did NOT apply the ICONS women's numeric thresholds (protein/creatine tiers, ALST/VFA cutoff table, LIFTMOR bone-loading, pelvic floor protocol) — `includeNutritionBlock: false`, and his ALST/VFA are reported with Styku's own labels rather than re-bracketed through the women's tiers. Retained the sex-neutral structural philosophy: Isolated→Compound→Metabolic three-zone build, RIR autoregulation, corrective-before-compound sequencing. Documented via a dedicated purple baselineNote, mirroring the Jake Poyner precedent.
+- Body Fat 26.5% (Average, lower than 50% of peers) | Lean Mass 115.5 lbs (70.1%) | Shape Score 69/100 (Needs Improvement) | ALST Index 7.55 kg/m² (Styku: "Not At-Risk") | VFA 70.0 cm² (Styku: "Low Risk")
+- Segmental: L Arm 10.0 / R Arm 10.8 lbs (0.8 lb gap) · L Leg 21.5 / R Leg 22.7 lbs (1.2 lb gap) — **both sides weaker on the LEFT**, left leads all unilateral work (row, split squat, SL-RDL, suitcase hold) throughout
+- Baseline battery (8/11/2026): Hex Bar Deadlift 185×8 (Epley 1RM 234), Back Squat 145×6 (1RM 174), Hip Thrust 145×6 (1RM 174), Incline Bench Press 45×8 (1RM 57), Single-Arm DB Row 60×15 (1RM ~90, high-rep test — programmed in a moderate 10–12 rep range, not treated as a precise max), Overhead Press 35 lbs (reps not recorded — programmed as self-selected load off this reference, no percentage prescription), Push-Ups 26, Assisted Pull-Ups 15 reps × wide/standard/close grip, Farmers Carry 40 lbs/hand, Weighted Plank 10 lbs × 1:35
+- Program: 3-day (Day 1 80% Gold Lower Body & Posterior Chain — Hex DL 185 lbs Wk1, Back Squat 120 lbs Wk1; Day 2 90% Red Upper Push/Pull — Incline Bench 50 lbs Wk1, OHP self-selected, pull-up assistance-reduction progression, Single-Arm Row 70 lbs Wk1 left-led; Day 3 70% Green Full-Body Unilateral + Carries + Conditioning — Hip Thrust 120 lbs Wk1, left-led unilateral leg work, Farmers Carry, weighted plank progression, conditioning finisher)
+- Rescan mechanism: 8-week Styku re-scan (he has a scan on file, unlike Jake who used a force-plate retest)
+
 ### Jake Poyner
 - **Program:** 3-Day Strength Program — "QL Tendinosis-Informed · Pelvic & Trunk Stability Focus" (`.docx`)
 - **Output:** `clients/jake_poyner/Jake_Poyner_3Day_Training_Plan.docx`
