@@ -421,9 +421,10 @@ Every client's program should be filtered through the age bracket below, layered
 **35–45 — Transition Onset**
 - Protein: trending from 1.6 g/kg/day toward the 1.8–2.0 g/kg "Women 40+" tier as the client crosses 40
 - Creatine: move to "strongly indicated" once the client crosses 40
-- Watch for early perimenopausal signals (cycle irregularity, symptom shifts) — still autoregulate on individual data, not calendar or age alone
+- Watch for early perimenopausal signals (cycle irregularity, symptom shifts) — still autoregulate on individual data, not calendar or age alone. This is a genuinely early bracket for it: perimenopausal symptoms can begin in the early-to-mid 30s, well before the ~45 average onset, so "she's too young for this" is not a safe assumption to bring into an intake conversation
 - Volume/frequency targets unchanged from the 20–35 bracket — no physiological reason to reduce load yet
 - Begin ALST/VFA monitoring at the first Styku scan if not already established, even though risk is typically still low
+- If a client mentions she's on a GLP-1/anti-obesity medication (semaglutide, tirzepatide, etc.), see "GLP-1 / Anti-Obesity Medications" below — treat as a standing ALST-preservation priority regardless of her current ALST number
 
 **45–55 — Perimenopause / Menopause Transition**
 - Protein: 1.8–2.0 g/kg/day minimum, moving to 2.0–2.2 g/kg/day as menopause is reached or ALST flags At-Risk
@@ -533,6 +534,71 @@ Fall-risk link: ≥2 hrs/week strength training associated with ~34% fall-risk
 Status: this replaces the earlier "general good practice, not evidence-
   backed" caveat that lived in the 65+ bracket bullet — power/fall-risk
   training is now a cited protocol, not just a reasonable instinct.
+```
+
+### Hormone Therapy (MHT/HRT) — How Resistance Training Relates, Not Competes
+```
+Client question to expect: "Should I also be on hormone therapy, or does
+  training cover it?" — this is not ours to answer clinically, but the
+  training-specific evidence is worth knowing so the answer isn't a shrug.
+Finding: resistance training ALONE was as effective as hormone therapy
+  alone at preventing bone loss at the spine in early postmenopausal
+  women, and outperformed HRT alone at the spine in some trials. Combining
+  HRT + resistance training showed no additional spine-BMD benefit over
+  resistance training alone in the reviewed trials.
+Framing: never present training as a replacement for a client's medical
+  care or as medical advice either way — "on or off HRT, the resistance
+  training half of this is doing real, comparable work for your bone
+  density" is an accurate, supportive thing to say; "you don't need HRT
+  because of this program" is not ours to say.
+Optimal RT dose for BMD in menopausal women specifically: 2–3×/week
+  moderate-to-high intensity resistance training + separate impact
+  activity (jumps, hops) at least 3×/week — consistent with the existing
+  LIFTMOR-style protocol above, not a change to it.
+```
+
+### GLP-1 / Anti-Obesity Medications (semaglutide, tirzepatide, etc.) — 2025 evidence
+```
+Relevance: increasingly common in this client population (women 40s-60s)
+  — worth asking about directly at intake rather than assuming, since it
+  changes the nutrition and programming priorities materially.
+Finding: roughly 40% of weight lost on GLP-1 medications is lean mass,
+  not fat mass — women and older adults appear to lose muscle at a higher
+  rate than the general GLP-1 population. This directly compounds ALST
+  At-Risk status if already flagged, and can create a new sarcopenic-
+  composition risk even in a client who is losing weight "successfully"
+  by the scale.
+Mitigation — resistance training: clients combining GLP-1 therapy with
+  structured resistance training 3-5x/week preserved 2-3x more lean mass
+  than those on medication without structured training.
+Mitigation — protein: higher protein intake specifically protects lean
+  mass during GLP-1-driven weight loss — this is the same mechanism the
+  existing protein tiers already target, but the priority is sharper for
+  a client on these medications: do not let a shrinking appetite (a
+  common GLP-1 side effect) become an excuse to under-hit the g/kg target.
+ICONS application: a client on a GLP-1 medication should be treated as a
+  standing ALST-preservation priority regardless of what her actual ALST
+  number currently reads — resistance-priority programming and hitting
+  the protein target are not optional "nice to haves" for this client,
+  they are the entire reason the weight loss doesn't become a sarcopenia
+  problem in 6 months. Flag GLP-1 use explicitly in intake notes/baseline
+  notes so this isn't missed by a trainer who wasn't told.
+```
+
+### Sleep & Recovery
+```
+Finding: resistance training itself measurably improves sleep quality —
+  shown in both young women and older women (12-week RCT), independent of
+  a client's baseline sleep quality. This is a legitimate thing to tell a
+  client who says she's "too tired to train" — properly dosed training is
+  more often a fix for that than a further drain on it.
+Mechanism: modulates sympathetic/β-adrenergic signaling, reduces
+  inflammatory markers, increases BDNF (linked to cognitive/mental health
+  benefits already cited elsewhere in this file for creatine/exercise).
+Caution: this describes properly dosed, RIR-managed training — it is not
+  a license to add volume indiscriminately. Unmanaged excessive volume or
+  chronic near-failure training remains a plausible sleep/recovery drain;
+  the RIR model above is what keeps the dose in the beneficial range.
 ```
 
 ### Progressive Overload — RIR Model (ACSM 2026)
@@ -1050,6 +1116,13 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Corroborated, unchanged:** ACSM 2026's RIR-over-failure recommendation is a real, substantial citation (first resistance-training guideline update in 17 years, 137 systematic reviews, 30,000+ participants) — strengthened the citation's framing in-place rather than changing the guidance itself. Protein tiers already in this file (2.0–2.2 g/kg for 50+/At-Risk) sit at or above current academic RNI estimates for sarcopenic older adults, which is appropriate for an actively-training population and needed no change.
 - **Process change:** added the "Demographic scope rule" to the Age Bracket Programming Framework's intro, formalizing (not just doing ad hoc) the judgment call already used once for Jake Poyner — any future client outside the women's target population gets the same explicit scope note, not a silent default either way.
 - Sources: [Optimal RT parameters for BMD in postmenopausal women, 2025 meta-analysis](https://link.springer.com/article/10.1186/s13018-025-05890-1) · [Creatine and Cognition in Aging systematic review, 2025](https://academic.oup.com/nutritionreviews/advance-article/doi/10.1093/nutrit/nuaf135/8253584) · [Creatine monohydrate for older adults and clinical populations, 2025](https://www.tandfonline.com/doi/full/10.1080/15502783.2025.2534130) · [2-yr creatine/BMD RCT in older women](https://pubmed.ncbi.nlm.nih.gov/31257405/) · [WHEN position statement — resistance training & menopause](https://when.org.au/education/resistance-training-menopause/) · [ACSM 2026 resistance training guidelines summary](https://acsm.org/resistance-training-guidelines-update-2026/) · [Neuromuscular training for ACL injury prevention, female athletes, 2025 meta-analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC12581765/) · [Power training/mortality risk, Mayo Clinic Proceedings 2025 coverage](https://fabulous50s.com/power-training-longevity-and-fall-prevention-over-50/) · [Fall risk & strength training, women 75–105 (WHISH cohort)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12363929/) · [Peak bone mass in 20s/30s](https://www.screenmybones.com/blog/building-peak-bone-mass)
+
+**8/11/2026 — second pass, same day.** Checked: HRT/MHT vs. resistance training for bone, GLP-1/anti-obesity medications, sleep & recovery evidence, 35-45 bracket perimenopause-onset timing.
+- **Added (new, real gap):** a "GLP-1 / Anti-Obesity Medications" section — nothing in this file previously addressed these medications at all, despite them being increasingly common in this exact client population. Key finding: ~40% of GLP-1 weight loss is lean mass, women/older adults lose muscle at a higher rate, and structured resistance training 3-5x/week preserves 2-3x more lean mass than medication alone. Flagged as a standing ALST-preservation priority regardless of a client's current ALST number, and added a cross-reference from the 35-45 bracket. This is arguably the single most practically relevant addition from either research pass today — worth asking every new client about at intake, not just clients who volunteer it.
+- **Added:** an "MHT/HRT" section — resistance training alone is comparably or more effective than HRT alone for spine BMD in early postmenopausal women, with no added spine-BMD benefit from combining them. Framed carefully as a training-evidence talking point, explicitly not medical advice either direction.
+- **Added:** a "Sleep & Recovery" section — properly dosed RT measurably improves sleep quality in both young and older women, independent of baseline. Useful reframe for a client who says she's "too tired to train."
+- **Corroborated:** 35-45 bracket's existing "watch for early perimenopausal signals" guidance — symptoms can genuinely start in the early-to-mid 30s, well before the ~45 average, which sharpens (doesn't just restate) the existing bullet.
+- Sources: [Menopause hormone therapy + exercise scoping review, 2025](https://www.frontiersin.org/journals/reproductive-health/articles/10.3389/frph.2025.1542746/full) · [HRT vs. exercise bone health systematic review](https://www.cureus.com/articles/426988-comparative-effects-of-hormone-replacement-therapy-and-exercise-on-bone-health-in-postmenopausal-women-a-systematic-review) · [SEMALEAN study — semaglutide body composition, 2025](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12673431/) · [GLP-1 receptor agonists in older women — lean mass preservation review](https://www.mdpi.com/2072-6643/18/4/632) · [Resistance training + sleep quality, older women RCT, 2025](https://www.sciencedirect.com/science/article/abs/pii/S1469029225001670) · [Short-term RT + sleep quality, young women, 2025](https://pubmed.ncbi.nlm.nih.gov/40156675/) · [Untreated perimenopause in younger women](https://www.healthline.com/health-news/untreated-perimenopause-symptoms-young-women)
 
 ---
 
