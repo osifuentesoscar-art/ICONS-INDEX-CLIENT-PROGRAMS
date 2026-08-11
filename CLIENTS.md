@@ -4,6 +4,10 @@
 
 Checked every client with a known age/weight against the new Age Bracket Programming Framework in CLAUDE.md (added the same day, alongside the ICONS Training Philosophy section). `icons_template.js`'s `proteinTargets()` already implements the exact same tier logic (ALST-at-risk-or-50+ → 2.0–2.2 g/kg, 40+ → 1.8–2.0, else 1.6) — so every script-generated client (August Olivia, Johanna Castillo) was already numerically correct; rebuilding them produced byte-identical text output. **Elizabeth Poyner's hand-maintained doc had a real mislabeled tier** (see her entry below) and was corrected. Aimee, Petra, and Nancy Avitable have no age/weight on file (by design — see their entries) so the bracket framework doesn't apply to them numerically. Kelly Mulroy's file is the byte-identical engine reference standard with no build script and was left untouched.
 
+## Priority Clients
+
+A **⭐ Priority Client** designation (first used 8/11/2026, for August Olivia, at Xolokan's explicit instruction) means: no shortcuts on this client, ever. Concretely — `icons-doc-auditor` runs its full standing checklist on every delivery for her, never an abbreviated pass; `icons-intake-monitor`'s weekly Drive sweep treats her as a standing full-content re-check candidate rather than the normal "only flag if a relevant bracket/topic was touched since her last build" light-touch default; `icons-expert` gives her document tone and clinical accuracy an extra pass before delivery. This is a diligence floor, not a different set of clinical rules — the same ICONS science layer and engine conventions apply to her as to every client. Mark future priority clients the same way, with a one-line reason and date, directly in their roster entry below.
+
 ## Active Clients
 
 ### Vinz Feller
@@ -46,7 +50,8 @@ Checked every client with a known age/weight against the new Age Bracket Program
 - Strong baseline battery (all tested 8/8/2026): Hex DL 85×5, Hip Thrust 85×5, SL-RDL 25×8, DB Lunge 25×5, Single-Arm Row 30×5, Seated OHP 15×5, Incline DB Chest Press 20×5, Farmer Carry 30/hand, Plank 2:00, Incline Push-Up ×10, Assisted Pull-Up 5 reps × close/standard/wide grip
 - Program: 2-day/week, 4-week progression (Day A Hinge + Press + Core 70%, Day B Squat/Lunge + Pull + Conditioning 80%) — no clinical restrictions on file, so full standard progression applies; no weekOverview strip (2-day/week programs use `days[].intensity` badges directly, matching the Aimee precedent)
 
-### August Olivia
+### August Olivia — ⭐ Priority Client
+**Priority Client** (flagged by Xolokan, 8/11/2026): "treat her with the utmost respect." No shortcuts on her documents, audits, or Drive sweeps — see "Priority Clients" note above. Given her ALST At-Risk + Body Fat At-Risk + shoulder-deficit profile (below), the extra diligence isn't just a courtesy — this is a genuinely higher-clinical-complexity file where a missed detail matters more than most.
 - **Program:** 3-Day Training Plan (`.docx`)
 - **Output:** `clients/august_olivia/August_Olivia_3Day_Training_Plan.docx`
 - **Build script:** `scripts/august_olivia_3day_plan.js`
