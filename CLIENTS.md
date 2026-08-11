@@ -121,7 +121,8 @@ A **⭐ Priority Client** designation (first used 8/11/2026, for August Olivia, 
 - No strength-baselines table — source has no testing battery; weekOverview uses generic "DAY 1/2/3" labels (no weekday schedule given)
 - Program: 3-day (Day 1 Lower Body — Left Hip Corrective 70%, Day 2 Upper Body — Stability & Posterior Chain 60%, Day 3 Lower Body — Bilateral Strength + Unilateral Finishers 80%)
 
-### Elizabeth Poyner (no build script yet — document maintained as a direct client-file edit, not via icons_template.js)
+### Elizabeth Poyner — ⭐ Priority Client (no build script yet — document maintained as a direct client-file edit, not via icons_template.js)
+**Priority Client** (flagged by Xolokan, 8/11/2026). No shortcuts on her documents, audits, or Drive sweeps — see "Priority Clients" note above. Worth flagging alongside the designation: she's also the one active client with **no build script** — every edit to her document is currently a direct hand-edit rather than a regenerated `buildDocument()` output, which is exactly the kind of file where the extra diligence (full `icons-doc-auditor` checklist, full-content `icons-intake-monitor` re-check) matters most, since there's no script to diff against.
 - **Output:** `clients/elizabeth_poyner/Elizabeth_Poyner_5Day_Training_Plan.docx`
 - Age 64 | 5'5" | 114 lbs (per Week 8 Styku rescan, essentially flat vs. 115 lbs pre-scan) | Postmenopausal
 - PRs: Hex DL 195×5 (Epley 1RM 228), Split Hex DL 165×5, Hip Thrust 145×5, DB Lunge 40×8, Push-Ups 28, Carry 50/hand, Plank 2:00, SL RDL 40, OHP 20
