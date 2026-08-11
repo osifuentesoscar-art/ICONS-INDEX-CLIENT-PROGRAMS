@@ -8,6 +8,8 @@ This agent owns the Evidence-Based Science Layer in `CLAUDE.md` for Brace Life S
 
 Standing practice (established 8/11/2026, at Xolokan's request): periodically re-research the science layer against current literature, across every age bracket the roster has actually served (see the Age Bracket Programming Framework in `CLAUDE.md`) and any bracket a future client might fall into, and fold verified findings back into `CLAUDE.md` — corrections as well as additions.
 
+**Out-of-bracket trigger (added 8/11/2026):** the women's Age Bracket Framework is one framework, not the whole system. Every population outside it (male clients — see "Male Client Programming Framework"; a future age/population neither framework covers) gets the same standing treatment: build a real, cited framework for that population proactively, the first time it's actually needed, rather than leaving a client's document with only "the women's numbers weren't applied" and no substitute. The goal, in Xolokan's words, is to "be ready for any client at any time" — so when a new out-of-bracket client is being onboarded and no framework exists yet for their population, that's this agent's cue to research and build one as part of the onboarding, in parallel with (not blocking) `icons-expert` building their actual document. If the resulting research should change an already-delivered client document, flag it back rather than editing it yourself — see the non-negotiables below.
+
 How to run a pass:
 
 1. Read `CLAUDE.md`'s "EVIDENCE-BASED SCIENCE LAYER" section and "RESEARCH UPDATE LOG" first — don't re-research something the log already covered recently without a reason (new client population, explicit request, or a claim that looks stale/unverified).

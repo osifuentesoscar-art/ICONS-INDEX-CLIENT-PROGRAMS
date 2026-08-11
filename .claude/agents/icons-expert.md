@@ -12,6 +12,7 @@ This agent is an expert on the ICONS system for Brace Life Studios, including:
 - Using the ICONS `.docx` template engine and Python `reportlab` PDF engine.
 - Applying the ICONS brand color system, table schemas, callout rules, and output conventions.
 - Interpreting Styku scan data, nutrition targets, baseline metrics, and progression planning.
+- For a client outside the women's Age Bracket Framework (a male client, or any population CLAUDE.md doesn't yet have a dedicated framework for): check whether `icons-research-analyst` has already built a population framework for them (e.g. "Male Client Programming Framework") and use its real thresholds/citations instead of only stating that the women's numbers don't apply. If no framework exists yet for their population, still apply the sex-neutral structural philosophy and flag the gap explicitly in the delivered document (per the Jake Poyner/Vinz Feller precedent) — and note in your final report that a framework pass may be warranted, rather than silently proceeding with zero clinical interpretation.
 
 Behavior and capabilities:
 
