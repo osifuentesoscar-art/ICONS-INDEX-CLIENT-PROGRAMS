@@ -69,6 +69,23 @@
  *     slower, not a lower one) — so reusing weakerSide() here would either
  *     require negating inputs against its documented convention or produce
  *     an inverted (wrong) answer. Left as narrative findings instead.
+ *
+ * REVISION (8/11/2026, same day) — STUDIO STAFF NAMING (CLAUDE.md's new
+ * "STUDIO STAFF — IN-HOUSE PT & STRETCH THERAPY" section): every generic
+ * "PT-coordinated care" / "treating PT" occurrence (stats line, Presenting
+ * Issue baselineNote, Evidence Base note, Reassessment note, Day 3 iconsNote,
+ * summary.milestones4wk) now names Jason Bethea, Brace Life's in-house
+ * Trainer/Physical Therapist, directly — a documentation-accuracy upgrade,
+ * not a new clinical claim; the treating physician role (external, distinct
+ * from Jason) is preserved wherever it was already named separately.
+ * Niko Heers (in-house Stretch Therapist) was deliberately NOT added
+ * anywhere in this program: Jake's clinical picture is force-asymmetry and
+ * tendon-loading driven (RFD, hip abduction reliability, trunk extensor
+ * capacity), not a flagged ROM/flexibility restriction, and the warm-up/
+ * cool-down stretches here are routine maintenance work, not the kind of
+ * assisted-stretching-heavy content CLAUDE.md's new section describes as
+ * Niko's genuine fit. Inserting his name here would be decorative, which
+ * that section explicitly warns against.
  */
 
 const fs = require('fs');
@@ -80,14 +97,14 @@ const client = {
   programTitle: '3-Day Strength Program',
   subtitle: 'QL Tendinosis-Informed · Pelvic & Trunk Stability Focus',
   schedule: '3 Days/Week · Full Gym',
-  stats: ['Age 25', 'Male', 'QL Tendinosis — PT-Coordinated Care', 'Assessment: Force Plate / Dynamometer, 8/4–5/2026'],
+  stats: ['Age 25', 'Male', 'QL Tendinosis — Coordinated with Jason Bethea, In-House PT', 'Assessment: Force Plate / Dynamometer, 8/4–5/2026'],
 };
 
 const baselineNotes = [
   {
     type: 'clinical',
     label: 'Presenting Issue — Quadratus Lumborum (QL) Tendinosis',
-    body: 'Diagnosed QL tendinosis, managed alongside the client\'s treating PT/physician — this program runs alongside that care, not instead of it. Train through a pain-free range only. Standard tendon-rehab nuance: mild exercise-induced discomfort that fully resolves within 24 hours is an accepted part of loading a tendinopathic tissue and is not itself a stop signal. Sharp, pulling, or line-specific pain at the QL (just above the iliac crest, lateral to the spine) — during or lasting beyond 24h — is the real stop signal for that exercise: regress or substitute it.',
+    body: 'Diagnosed QL tendinosis, managed alongside Jason Bethea, Brace Life\'s in-house Trainer/Physical Therapist, and the client\'s treating physician — this program runs alongside that care, not instead of it. Train through a pain-free range only. Standard tendon-rehab nuance: mild exercise-induced discomfort that fully resolves within 24 hours is an accepted part of loading a tendinopathic tissue and is not itself a stop signal. Sharp, pulling, or line-specific pain at the QL (just above the iliac crest, lateral to the spine) — during or lasting beyond 24h — is the real stop signal for that exercise: regress or substitute it.',
   },
   {
     type: 'watch',
@@ -127,7 +144,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Evidence Base — Volume, Frequency, RIR, Protein & Tendon Nutrition (Age 25, Male)',
-    body: 'Robinson et al. (2024/2025) — a meta-regression of 67 studies / 2,000+ participants averaging age 25.2, putting Jake at the center of this evidence base rather than requiring extrapolation: ~10–20 hard sets/muscle/week before diminishing returns (this program targets ~12–16 across the 3 days); frequency matters more for strength than hypertrophy once volume is equated, so squat/hinge/press/pull patterns are each hit twice weekly. Grgic et al. (2018): strength gains are largely insensitive to proximity to failure — RPE 6–8 (≈2–4 RIR) is used throughout, no true failure, both per the evidence and to protect the QL. Morton et al. (2018): 1.6–2.2 g/kg/day protein supports hypertrophy with a plateau in benefit around 1.6 g/kg/day — target roughly 130–175g/day, spread across 4–5 meals including a pre-sleep dose (pre-sleep protein improves overnight muscle protein synthesis). Shaw et al. (2017), Bischof et al. (2024), Praet et al. (2019 — specifically in Achilles tendinopathy patients): 15–30g vitamin-C-enriched collagen/gelatin 30–60 min before loading increases collagen synthesis markers and, over months, tendon stiffness — directly relevant given the QL tendinosis. Recommend 15g collagen peptides + ~50mg vitamin C, 30–60 min pre-session, on all 3 training days, alongside PT-directed care.',
+    body: 'Robinson et al. (2024/2025) — a meta-regression of 67 studies / 2,000+ participants averaging age 25.2, putting Jake at the center of this evidence base rather than requiring extrapolation: ~10–20 hard sets/muscle/week before diminishing returns (this program targets ~12–16 across the 3 days); frequency matters more for strength than hypertrophy once volume is equated, so squat/hinge/press/pull patterns are each hit twice weekly. Grgic et al. (2018): strength gains are largely insensitive to proximity to failure — RPE 6–8 (≈2–4 RIR) is used throughout, no true failure, both per the evidence and to protect the QL. Morton et al. (2018): 1.6–2.2 g/kg/day protein supports hypertrophy with a plateau in benefit around 1.6 g/kg/day — target roughly 130–175g/day, spread across 4–5 meals including a pre-sleep dose (pre-sleep protein improves overnight muscle protein synthesis). Shaw et al. (2017), Bischof et al. (2024), Praet et al. (2019 — specifically in Achilles tendinopathy patients): 15–30g vitamin-C-enriched collagen/gelatin 30–60 min before loading increases collagen synthesis markers and, over months, tendon stiffness — directly relevant given the QL tendinosis. Recommend 15g collagen peptides + ~50mg vitamin C, 30–60 min pre-session, on all 3 training days, alongside Jason Bethea\'s continued care.',
   },
   {
     type: 'purple',
@@ -137,7 +154,7 @@ const baselineNotes = [
   {
     type: 'green',
     label: 'Reassessment — 4-Week Retest',
-    body: 'Re-test hip abduction, hip extension time-to-peak-force, and trunk extension peak force/RFD at the 4-week mark. Progress QL-side loaded carries and side-bend work only once hip abduction asymmetry is under ~10% and trunk extension RFD has improved — and only with continued clearance from the treating PT/physician.',
+    body: 'Re-test hip abduction, hip extension time-to-peak-force, and trunk extension peak force/RFD at the 4-week mark. Progress QL-side loaded carries and side-bend work only once hip abduction asymmetry is under ~10% and trunk extension RFD has improved — and only with continued clearance from Jason Bethea and the treating physician.',
   },
 ];
 
@@ -337,7 +354,7 @@ const days = [
       },
     ],
     coolDown: 'Child\'s pose 60s. Hip flexor stretch 60s each side. Thoracic extension over foam roller 60s.',
-    iconsNote: 'Sharp, pulling, or line-specific pain at the QL — during a set or persisting beyond 24h — is the stop signal. Mild, diffuse post-exercise soreness that resolves within a day is expected. This program is strength & conditioning guidance based on performance testing data — it is not a substitute for medical diagnosis or PT treatment of the QL tendinosis; coordinate with the treating provider before progressing load or range of motion.',
+    iconsNote: 'Sharp, pulling, or line-specific pain at the QL — during a set or persisting beyond 24h — is the stop signal. Mild, diffuse post-exercise soreness that resolves within a day is expected. This program is strength & conditioning guidance based on performance testing data — it is not a substitute for medical diagnosis or physical therapy treatment of the QL tendinosis; coordinate with Jason Bethea and the treating physician before progressing load or range of motion.',
   },
 ];
 
@@ -349,7 +366,7 @@ const summary = {
     ['Wk 3', '—', 'Days 1–3', 'RPE 7–8', 'Small load increases (2.5–5 lb upper / 5–10 lb lower) if RPE target is being undershot.'],
     ['Wk 4', '—', 'Days 1–3', 'RPE 6 (deload)', 'Reduce load ~15–20% ahead of 4-week reassessment testing.'],
   ],
-  milestones4wk: 'Reassessment: re-test hip abduction, hip extension time-to-peak-force, and trunk extension peak force/RFD. Progress QL-side loaded carries and side-bend work only once hip abduction asymmetry is under ~10% and trunk extension RFD has improved — with continued clearance from the treating PT/physician.',
+  milestones4wk: 'Reassessment: re-test hip abduction, hip extension time-to-peak-force, and trunk extension peak force/RFD. Progress QL-side loaded carries and side-bend work only once hip abduction asymmetry is under ~10% and trunk extension RFD has improved — with continued clearance from Jason Bethea and the treating physician.',
   milestones8wk: 'If the 4-week reassessment clears progression: gradually reintroduce QL-side suitcase carries and loaded side-bends, continue right-side-biased unilateral work until posterior chain/lat time-to-peak-force symmetry improves, and progress the Day 3 power/RFD work (broad jump distance, trunk extension range) as tolerance is confirmed. Re-evaluate whether the RPE-based approach can shift toward standard %1RM programming once the QL has been consistently asymptomatic.',
   rescanNote: 'Force plate / dynamometer retest at 4 weeks is the primary reassessment tool for this client — not a Styku scan. Track hip abduction symmetry %, hip extension time-to-peak-force (L vs R), and trunk extension peak force + RFD as the three key metrics.',
 };

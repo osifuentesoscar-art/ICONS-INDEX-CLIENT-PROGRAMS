@@ -10,8 +10,11 @@
  * self-reported baseline battery, 3-day program, same engine helpers).
  *
  * CLINICAL CONTEXT — ROTATOR CUFF: Moe is currently in active rehabilitation
- * from a small rotator cuff tear, coordinated with his treating PT/
- * physician. Per an explicit correction from Xolokan mid-build, this
+ * from a small rotator cuff tear, coordinated with Jason Bethea, Brace
+ * Life's in-house Trainer/Physical Therapist, and his treating physician
+ * (per the 8/11/2026 STUDIO STAFF addition to CLAUDE.md, replacing the
+ * generic "PT-coordinated care" language this doc originally shipped
+ * with). Per an explicit correction from Xolokan mid-build, this
  * program's shoulder content is framed as PROGRESSIVE STRENGTHENING with
  * smart precautions, not as restriction/avoidance:
  *   - Day 2's Block A (external rotation, scapular stability work) IS the
@@ -90,7 +93,7 @@ const client = {
   programTitle: '3-Day Training Plan',
   subtitle: 'Full-Body Strength & Rotator Cuff Strengthening · Three-Zone Build',
   schedule: 'Tue/Thu/Sat · Full Gym',
-  stats: ['Age 46', 'Male', "5'11\"", '192 lbs', 'Styku Scan 8/11/2026', 'Rotator Cuff Rehab — PT-Coordinated Care'],
+  stats: ['Age 46', 'Male', "5'11\"", '192 lbs', 'Styku Scan 8/11/2026', 'Rotator Cuff Rehab — Coordinated with Jason Bethea, In-House PT'],
   weightKg: 87.1,
   ageYears: 46,
   isPostmenopausal: false,
@@ -161,8 +164,8 @@ const baselineNotes = [
   },
   {
     type: 'clinical',
-    label: 'Rotator Cuff — Active Strengthening, PT-Coordinated Care',
-    body: "Moe is currently in an active rotator cuff tear rehabilitation program, coordinated with his treating PT/physician — this ICONS program runs alongside that care, not instead of it, and its shoulder content is built to progressively STRENGTHEN the rotator cuff and scapular stabilizers, not to work around them. The dedicated block on Day 2 (external rotation, scapular stability work) is the strengthening protocol itself, not a warm-up throwaway — it follows the standard rehab loading sequence (isometric hold capacity first, then slow eccentric control, then controlled concentric strength, then dynamic/functional loading), progressed week to week as capacity builds rather than held at one level indefinitely. Overhead Press and Assisted Pull-Ups both continue as real, loaded strengthening work — load progresses week to week the same as any other lift in this program, autoregulated by pain-free range of motion and RIR rather than a fixed %1RM table, because rehab strengthening responds better to day-to-day pain-free autoregulation than a rigid percentage schedule pulled from one tested load. Pain-free technique is the guardrail here, not a low-effort ceiling: sharp or pinching shoulder pain during a set, or pain lasting beyond 24 hours, is the real stop signal for that exercise (regress the range or substitute it); ordinary muscular fatigue or normal training soreness is not a stop signal and should never be confused with it.",
+    label: 'Rotator Cuff — Active Strengthening, Coordinated with Jason Bethea',
+    body: "Moe is currently in an active rotator cuff tear rehabilitation program, coordinated with Jason Bethea, Brace Life's in-house Trainer/Physical Therapist, and his treating physician — this ICONS program runs alongside that care, not instead of it, and its shoulder content is built to progressively STRENGTHEN the rotator cuff and scapular stabilizers, not to work around them. The dedicated block on Day 2 (external rotation, scapular stability work) is the strengthening protocol itself, not a warm-up throwaway — it follows the standard rehab loading sequence (isometric hold capacity first, then slow eccentric control, then controlled concentric strength, then dynamic/functional loading), progressed week to week as capacity builds rather than held at one level indefinitely. Overhead Press and Assisted Pull-Ups both continue as real, loaded strengthening work — load progresses week to week the same as any other lift in this program, autoregulated by pain-free range of motion and RIR rather than a fixed %1RM table, because rehab strengthening responds better to day-to-day pain-free autoregulation than a rigid percentage schedule pulled from one tested load. Pain-free technique is the guardrail here, not a low-effort ceiling: sharp or pinching shoulder pain during a set, or pain lasting beyond 24 hours, is the real stop signal for that exercise (regress the range or substitute it); ordinary muscular fatigue or normal training soreness is not a stop signal and should never be confused with it. The mobility/ROM side of this rehabilitation — regaining full pain-free range through assisted stretching — is a natural complement from Niko Heers, Brace Life's certified in-house Stretch Therapist, working alongside Jason's strengthening-led protocol, not in place of it.",
   },
   {
     type: 'purple',
@@ -174,7 +177,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Purpose of This Program',
-    body: 'General strength and conditioning development, built around a rotator cuff tear currently in active PT-coordinated rehabilitation — this is a program that actively rebuilds the shoulder, not one that avoids it. This 3-day build applies the ICONS three-zone philosophy (Isolated activation/corrective strengthening → Compound strength → Metabolic conditioning finisher) across a Lower Body / Upper Body / Full-Body split, with Day 2 carrying the dedicated rotator cuff and scapular strengthening work ahead of its compound pressing, and every primary and secondary lift autoregulated on RIR and pain-free range of motion rather than a fixed percentage grind.',
+    body: 'General strength and conditioning development, built around a rotator cuff tear currently in active rehabilitation coordinated with Jason Bethea — this is a program that actively rebuilds the shoulder, not one that avoids it. This 3-day build applies the ICONS three-zone philosophy (Isolated activation/corrective strengthening → Compound strength → Metabolic conditioning finisher) across a Lower Body / Upper Body / Full-Body split, with Day 2 carrying the dedicated rotator cuff and scapular strengthening work ahead of its compound pressing, and every primary and secondary lift autoregulated on RIR and pain-free range of motion rather than a fixed percentage grind.',
   },
 ];
 
@@ -248,9 +251,9 @@ const days = [
     badge: { label: 'REHAB', sub: 'STRENGTH' },
     title: 'DAY 2 — THURSDAY',
     subtitle: 'Upper Body Push/Pull — Rotator Cuff Strengthening Priority',
-    descriptor: 'ROTATOR CUFF STRENGTHENING DAY · PROGRESSIVE, PT-COORDINATED, PAIN-FREE ROM',
+    descriptor: 'ROTATOR CUFF STRENGTHENING DAY · PROGRESSIVE, COORDINATED WITH JASON BETHEA, PAIN-FREE ROM',
     intensityLabel: 'Day 2 Priority',
-    intensityPara: "This isn't a standard %1RM intensity day, so the badge reads REHAB / STRENGTH rather than a percentage that would misstate what's actually prescribed. That doesn't mean light or limited — it means the point of today is to actively rebuild the rotator cuff and scapular stabilizers while continuing real strength work everywhere else. The corrective block below is strengthening work in its own right, not a warm-up throwaway, and runs ahead of compound pressing per ICONS's own 'control precedes power' sequencing. Overhead Press and Assisted Pull-Ups both keep progressing — load builds week to week — autoregulated by pain-free range of motion and RIR instead of a fixed percentage table, in coordination with his treating PT.",
+    intensityPara: "This isn't a standard %1RM intensity day, so the badge reads REHAB / STRENGTH rather than a percentage that would misstate what's actually prescribed. That doesn't mean light or limited — it means the point of today is to actively rebuild the rotator cuff and scapular stabilizers while continuing real strength work everywhere else. The corrective block below is strengthening work in its own right, not a warm-up throwaway, and runs ahead of compound pressing per ICONS's own 'control precedes power' sequencing. Overhead Press and Assisted Pull-Ups both keep progressing — load builds week to week — autoregulated by pain-free range of motion and RIR instead of a fixed percentage table, in coordination with Jason Bethea.",
     warmUp: 'General warm-up: 5 min row or bike, arm circles, band pull-aparts x10 before the strengthening block below.',
     blocks: [
       {
@@ -304,7 +307,7 @@ const days = [
       },
     ],
     coolDown: 'Lat stretch 30s/side. Chest doorway stretch 30s/side. Thoracic extension over foam roller 60s.',
-    iconsNote: "Sharp or pinching shoulder pain during a set — or pain lasting beyond 24 hours — is the stop signal: regress the range or substitute that exercise, and flag it before the next session. Ordinary muscular fatigue and normal training soreness are not stop signals. This is active strengthening work coordinated with his treating PT, not a maintenance-only day.",
+    iconsNote: "Sharp or pinching shoulder pain during a set — or pain lasting beyond 24 hours — is the stop signal: regress the range or substitute that exercise, and flag it before the next session. Ordinary muscular fatigue and normal training soreness are not stop signals. This is active strengthening work coordinated with Jason Bethea, not a maintenance-only day.",
   },
   {
     intensity: 70,
@@ -380,8 +383,8 @@ const summary = {
     ['Day 3', '70%', 'Full-Body Unilateral & Carries', 'SL RDL · Farmers Carry · Plank/Push-Ups', 'Build carry load; extend plank hold and push-up reps past baseline.'],
   ],
   milestones4wk: 'Confirm all primary/secondary lifts are progressing cleanly at their prescribed RIR (add load only at top of rep range with clean form). Rotator cuff/scapular strengthening block progresses from isometric to slow eccentric loading, fully pain-free. Left-leads unilateral leg work should show improving control and even tempo both sides.',
-  milestones8wk: 'Target Hex Bar Deadlift 195-200 x 5, Incline Bench 35-40 x 8, Single-Arm Row 40+ lbs x 10-12/side, Farmers Carry 55-60 lbs/hand, Plank 1:45-2:00, Push-Ups 20-22 reps. Overhead Press and Assisted Pull-Ups showing real week-over-week load/assistance progression, fully pain-free through range. Rotator cuff strengthening block progressed into controlled concentric or early dynamic loading, per PT clearance.',
-  rescanNote: '8-week Styku re-scan — track ALST Index, VFA, Shape Score, body fat % trend, and left/right leg LST gap reduction (target: under 0.5 lbs), alongside the strength baselines table above and continued PT-coordinated shoulder progress.',
+  milestones8wk: 'Target Hex Bar Deadlift 195-200 x 5, Incline Bench 35-40 x 8, Single-Arm Row 40+ lbs x 10-12/side, Farmers Carry 55-60 lbs/hand, Plank 1:45-2:00, Push-Ups 20-22 reps. Overhead Press and Assisted Pull-Ups showing real week-over-week load/assistance progression, fully pain-free through range. Rotator cuff strengthening block progressed into controlled concentric or early dynamic loading, per Jason Bethea\'s clearance.',
+  rescanNote: '8-week Styku re-scan — track ALST Index, VFA, Shape Score, body fat % trend, and left/right leg LST gap reduction (target: under 0.5 lbs), alongside the strength baselines table above and continued shoulder progress coordinated with Jason Bethea.',
 };
 
 const data = {
