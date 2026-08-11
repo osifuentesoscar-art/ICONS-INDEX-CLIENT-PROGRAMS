@@ -1028,6 +1028,28 @@ Applies to: the 60+ bracket onward for men, consistent with the same
 
 ---
 
+## STUDIO STAFF — IN-HOUSE PT & STRETCH THERAPY
+
+Added 8/11/2026, at Xolokan's direction: "utilize [this staff] to push my clients' experience at Brace Life Studios to the maximal potential." Brace Life now has two in-house staff whose scope directly affects how clinical-flag content gets written in client documents:
+
+```
+Jason Bethea  — Trainer / Physical Therapist
+Niko Heers    — Stretch Therapist (certified)
+```
+
+**Operating model: folded into training days, not a standalone bookable session.** Both work within a client's existing training session — leading a warm-up, cool-down, or corrective block in person — rather than as a separately scheduled appointment. Nothing in this system should describe a "stretch therapy session" or "PT session" as its own booking; describe it as in-session work led by name.
+
+**What this changes in document language.** Before this addition, a clinical flag requiring rehab-adjacent care (a tendinosis, a tear, a corrective-heavy program) was written with generic external-referral language — "PT-coordinated care," "refer to a physical therapist." That language is still correct for genuinely external specialties (see scope note below), but where the actual coordinating clinician is now in-house, name them:
+- **General orthopedic/musculoskeletal rehab context** (tendinosis, a tear in active rehab, a corrective-strengthening program tied to a real injury): reference **Jason Bethea** by name and role ("coordinated with Jason Bethea, Brace Life's in-house Trainer/Physical Therapist") rather than the generic "PT-coordinated care" phrase. This is a documentation-accuracy upgrade, not a new clinical claim — the coordinating relationship was already real, it's now nameable.
+- **Mobility, ROM, assisted-stretching-heavy content** (a cool-down protocol, a corrective block built around regaining range rather than strength, a client whose limiting factor is flexibility/ROM rather than load): **Niko Heers** is a real, usable resource — reference him by name where a session's mobility work would genuinely benefit from stretch-therapist involvement, not as a blanket addition to every cool-down in the system.
+- Use judgment on when naming either of them adds real information vs. when it would read as decorative — a client with no rehab/mobility-limiting content on file doesn't need either name inserted just because they're now on staff.
+
+**Scope boundary — do not over-extend either name.** Neither Jason nor Niko's scope has been confirmed to cover **pelvic floor physical therapy**, which is its own specialized sub-discipline distinct from general orthopedic PT. The existing Pelvic Floor Protocol language ("refer to pelvic floor PT when symptomatic," in the Evidence-Based Science Layer and the Male Client Programming Framework) stays exactly as written — external/generic — unless Xolokan explicitly confirms one of them covers that specialty. Do not silently extend "in-house PT is now available" to imply in-house pelvic floor care; that would be a real, unverified clinical claim, not a documentation upgrade.
+
+**Retrofit status:** Moe Shahheidari's rotator cuff rehab and Jake Poyner's QL tendinosis program both had genuine "PT-coordinated care" language predating this addition — both were updated 8/11/2026 to name Jason Bethea directly (see their CLIENTS.md entries for what changed). Any future client with comparable rehab-context clinical content should be written with the named-staff language from the start rather than the old generic phrasing.
+
+---
+
 ## CLIENT ROSTER & DOCUMENT MAP
 
 ### Active Clients (documents built this session)
