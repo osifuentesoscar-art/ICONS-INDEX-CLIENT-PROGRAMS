@@ -7,35 +7,72 @@
  * at intake — this is a general strength & conditioning build, not a
  * corrective/rehab program.
  *
- * IMPORTANT — SCOPE OF "ICONS METHODOLOGY" APPLIED HERE:
- * Per CLAUDE.md's "Demographic scope rule" (Age Bracket Programming
- * Framework), the ICONS Evidence-Based Science Layer's numeric thresholds
- * (ALST sarcopenia cutoffs, protein g/kg tiers, the LIFTMOR postmenopausal
- * bone-loading protocol, pelvic floor triggers) are validated specifically
- * for women 40s-60s navigating hormonal transitions. Vinz is a 50-year-old
- * male, so those numeric thresholds are NOT applied to him here — doing so
- * would be scientifically inappropriate, not just off-brand.
+ * REVISION (8/11/2026, same day) — MALE CLIENT PROGRAMMING FRAMEWORK NOW
+ * APPLIED: this document originally reported Vinz's Styku numbers with
+ * Styku's own labels only ("Not At-Risk", "Low Risk", "Average") and a
+ * purple note explaining that the women's Age Bracket Programming
+ * Framework's numeric thresholds did not apply to him, with nothing
+ * clinical substituted in their place. `icons-research-analyst` has since
+ * built the "MALE CLIENT PROGRAMMING FRAMEWORK" section in CLAUDE.md
+ * (immediately after the Evidence-Based Science Layer), giving real,
+ * cited male-specific thresholds. This revision applies that framework:
+ *   - ALST 7.55 kg/m² is now cited against EWGSOP2 2018's male cutoff
+ *     (<7.0 AT-RISK / >=7.0 Not At-Risk) instead of just repeating
+ *     Styku's uncited label.
+ *   - VFA 70.0 cm² is now read against the ICONS VFA risk table directly
+ *     (confirmed sex-independent in the framework's source studies)
+ *     rather than only relaying Styku's label.
+ *   - Body Fat % 26.5% gets its own new 'watch' note: Styku's "Average"
+ *     is a peer-comparison rank, not an absolute classification — the
+ *     ACE male body-fat-% table puts 26.5% in the "Obese" tier, worth
+ *     him knowing even though ALST and BMI both read healthy.
+ *   - BMI 23.6 is noted as Normal per WHO (not sex-specific) but framed
+ *     alongside ALST/body-fat per the framework's caution about reading
+ *     BMI in isolation for male clients.
+ *   - Real protein (1.6-2.2 g/kg/day, ISSN 2017 + Morton 2018) and
+ *     creatine (3-5g/day) targets replace the absence of a nutrition
+ *     block — built as direct goldCallout/tealCallout baselineNotes,
+ *     NOT via `nutritionBlock()`, which remains the women's tier system
+ *     and stays out of scope for him (`includeNutritionBlock: false` is
+ *     unchanged).
+ *   - One informational testosterone/andropause note (Hildreth et al.
+ *     2024) mirrors how HRT is handled for women — not diagnostic, not
+ *     raised unprompted.
+ *   - The purple demographic-scope note is revised (not deleted) to
+ *     describe what the document now does: real male-specific thresholds
+ *     applied, sex-neutral structural philosophy unchanged.
+ * The training program itself (days, blocks, exercises, loads, asymmetry
+ * protocol) is untouched by this revision — see below.
  *
- * Concretely:
+ * ORIGINAL SCOPE NOTE (context for the above): per CLAUDE.md's
+ * "Demographic scope rule" (Age Bracket Programming Framework), the
+ * women's Evidence-Based Science Layer numeric thresholds (ALST sarcopenia
+ * cutoffs, protein g/kg tiers, the LIFTMOR postmenopausal bone-loading
+ * protocol, pelvic floor triggers) are validated specifically for women
+ * 40s-60s navigating hormonal transitions and were never applied to Vinz,
+ * a 50-year-old male — that remains true. What changed is that a real
+ * male-specific framework now exists to use instead, rather than leaving
+ * the gap unfilled.
+ *
+ * Concretely (updated):
  *   - `includeNutritionBlock: false` — nutritionBlock()/proteinTargets()
- *     are never called; their protein-tier logic (is50Plus/ALST-driven
- *     g/kg targets, Morton 2018 women's citation) has no evidentiary basis
- *     applied to a 50-year-old male client.
+ *     are never called; that logic is the women's tier system. Real
+ *     protein/creatine targets are supplied via baselineNotes instead
+ *     (see above).
  *   - `client.isPostmenopausal: false` — the pelvic floor callout will not
- *     (and should not) auto-fire regardless of exercise content.
- *   - Vinz's ALST (7.55 kg/m²) and VFA (70.0 cm²) are reported as their
- *     actual Styku values with Styku's OWN risk labels ("Not At-Risk",
- *     "Low Risk") rather than re-run through the ICONS women's bracket
- *     table (ALST <5.5/5.5-6.99/>=7.0, VFA <70/70-99/>=100) — those
- *     cutoffs were never validated for him. (Note: `client.alstIndex` is
- *     still set to the real 7.55 figure for the engine's own mechanical
- *     proteinBar-trigger check — 7.55 sits above 5.5 regardless of which
- *     population the cutoff was derived for, so this does not risk
- *     silently applying a women's-only interpretation; it just prevents
- *     an irrelevant reminder bar from appearing on every page.)
- *   - A dedicated purple baselineNote spells out this scope decision
- *     explicitly, following the same pattern established for Jake Poyner
- *     (see scripts/jake_poyner_3day_plan.js) rather than burying it in code.
+ *     (and should not) auto-fire regardless of exercise content. Male
+ *     pelvic floor symptoms (if ever reported) are handled as an
+ *     individual clinical flag per the Male Client Programming Framework,
+ *     not an auto-triggered callout — none reported at intake.
+ *   - `client.alstIndex` stays 7.55 for the engine's own mechanical
+ *     proteinBar-trigger check — 7.55 sits above both the 5.5 (women) and
+ *     7.0 (men, EWGSOP2) at-risk lines, so this does not risk silently
+ *     applying a women's-only interpretation; it just prevents an
+ *     irrelevant reminder bar from appearing on every page.
+ *   - A dedicated purple baselineNote spells out the current scope
+ *     decision explicitly (now: framework applied, not "no framework
+ *     exists"), following the same document-don't-bury-in-code pattern
+ *     established for Jake Poyner (see scripts/jake_poyner_3day_plan.js).
  *
  * What DOES carry over from ICONS, because it's sex-neutral structural
  * philosophy, not a numeric threshold: the Isolated -> Compound ->
@@ -78,7 +115,7 @@ const client = {
   ageYears: 50,
   isPostmenopausal: false,
   bmr: 1658,
-  alstIndex: 7.55, // Styku value — "Not At-Risk" per Styku's own label; see scope note
+  alstIndex: 7.55, // Not At-Risk — EWGSOP2 2018 male cutoff <7.0; see Styku interpretation note
 };
 
 const styku = {
@@ -118,8 +155,13 @@ const baselines = [
 const baselineNotes = [
   {
     type: 'teal',
-    label: 'Styku Scan Interpretation — Reported As-Is (8/11/2026)',
-    body: "Body Fat 26.5% (Styku rank: Average — lower body fat than 50% of peers). Lean Mass 115.5 lbs (70.1%), Fat Mass 43.6 lbs, Bone Mass 5.5 lbs (3.4%). BMI 23.6, BMR 1658 cal/day. Shape Score 69/100 (Styku label: \"Needs Improvement\"). ALST Index 7.55 kg/m² — Styku label: \"Not At-Risk\". VFA 70.0 cm² — Styku label: \"Low Risk\". All labels above are Styku's own, reported as given — not re-run through the ICONS women's ALST/VFA bracket table (see the demographic-scope note below for why).",
+    label: 'Styku Scan Interpretation — Male Client Programming Framework (8/11/2026)',
+    body: "Lean Mass 115.5 lbs (70.1%), Fat Mass 43.6 lbs, Bone Mass 5.5 lbs (3.4%), BMR 1658 cal/day, Shape Score 69/100. ALST Index 7.55 kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Vinz sits comfortably above the line. VFA 70.0 cm² — the ICONS VFA risk table (<70 Very Low Risk / 70–99 Low Risk / 100–149 Moderate Risk / ≥150 High Risk cm²) is validated sex-independent and applies to him directly; 70.0 sits right at the boundary of the Low Risk band. BMI 23.6 falls in the WHO Normal range (18.5–24.9) — WHO BMI thresholds are not sex-specific. See the note below for why BMI, ALST, and body fat % need to be read together rather than any one in isolation.",
+  },
+  {
+    type: 'watch',
+    label: 'Body Fat % & BMI — Why These Need To Be Read Together',
+    body: "Styku's Body Fat 26.5% carries the label \"Average\" — but that is a peer-comparison rank (lower body fat than 50% of Styku's user base), not an absolute health classification. Against the ACE body-fat-% reference for men (Essential 2–5% / Athletes 6–13% / Fitness 14–17% / Acceptable 18–24% / Obese 25%+), 26.5% falls in the Obese tier — a genuinely different read than \"Average\" suggests. His BMI of 23.6 is Normal per WHO thresholds, and his ALST of 7.55 kg/m² is Not At-Risk — but BMI should always be read alongside body fat % and ALST for a male client, not alone, especially for anyone visibly muscular. Vinz's profile isn't the over-flagged-muscular-athlete case that caution is usually written for; it's closer to the opposite — a normal-weight, non-sarcopenic client whose body composition, not his overall size, is the metric worth acting on.",
   },
   {
     type: 'watch',
@@ -128,8 +170,18 @@ const baselineNotes = [
   },
   {
     type: 'purple',
-    label: "Why This Program Doesn't Use the Standard ICONS Science-Layer Numbers",
-    body: "ICONS's Evidence-Based Science Layer (protein/creatine g/kg tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived specifically from research on women 40-65 navigating hormonal transitions — it doesn't transfer to a 50-year-old male client. His ALST (7.55 kg/m²) and VFA (70.0 cm²) are reported above using Styku's own risk labels rather than the women's bracket table, and no nutrition block was generated for the same reason. What DOES carry over from ICONS: the Isolated → Compound → Metabolic structural philosophy, RIR-based autoregulated progressive overload, corrective-before-compound sequencing, and the Styku segmental asymmetry protocol — all demographic-neutral principles, applied here on their own merits.",
+    label: 'Male Client Programming Framework — What Was Applied Here',
+    body: "ICONS's Evidence-Based Science Layer's five-bracket Age Bracket Programming Framework (protein/creatine g/kg tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived from and validated for women 40s-60s navigating hormonal transitions — none of its numeric thresholds are applied to Vinz directly. Instead, this document uses the Male Client Programming Framework: his ALST, VFA, and BMI are interpreted above against real male-specific citations (EWGSOP2 2018, the sex-independent VFA table, WHO BMI thresholds read alongside the ACE body-fat-% classification), and his protein/creatine targets and the testosterone note below come from that framework's ISSN 2017 / Morton 2018 and Hildreth et al. 2024 sources rather than the women's tiers. What carries over unchanged from ICONS regardless of sex: the Isolated → Compound → Metabolic structural philosophy, RIR-based autoregulated progressive overload, corrective-before-compound sequencing, and the Styku segmental asymmetry protocol — all demographic-neutral principles, applied here on their own merits.",
+  },
+  {
+    type: 'gold',
+    label: 'Protein & Creatine Targets — Male Client Programming Framework',
+    body: "General resistance-trained-male range is 1.6–2.2 g/kg/day (ISSN 2017 position stand; Morton et al. 2018 meta-analysis — the same source already cited for the women's 1.6 g/kg tier in this system, and its trial pool was not sex-restricted). At 74.8 kg that's roughly 120–165g/day; trending toward the upper end of that range is reasonable given his 40-59 bracket (\"Midlife Androgen Decline & Sarcopenia Onset\") and the body-fat finding above, landing around 150–165g/day as a working target, at ~0.4 g/kg per meal across 4+ meals/day. Creatine: 3–5g monohydrate daily with food, no loading phase — same protocol as any resistance-trained adult, saturates in 3–4 weeks.",
+  },
+  {
+    type: 'teal',
+    label: 'Testosterone & Training — Informational Note, Not Diagnostic',
+    body: "At 50, Vinz sits within the Male Client Programming Framework's 40-59 bracket (\"Midlife Androgen Decline & Sarcopenia Onset\"), where late-onset hypogonadism / TRT can become a relevant screening conversation IF he raises it — not something inferred from a Styku scan or training performance, and not raised unprompted. Late-onset hypogonadism is a clinical diagnosis requiring both persistent symptoms and confirmed low morning serum testosterone on bloodwork — a referral conversation, not a training assessment. Worth knowing: a 2024 study (Hildreth et al., Sports Medicine – Open) of men 50-70 with low-normal testosterone found structured exercise training matched or outperformed testosterone treatment alone for aerobic fitness, strength, and fat mass, with no additional benefit from adding testosterone on top of training. On or off TRT, the resistance training in this program is doing real, evidenced work for his strength, fitness, and body composition — this is not a substitute for medical care in either direction.",
   },
   {
     type: 'gold',
