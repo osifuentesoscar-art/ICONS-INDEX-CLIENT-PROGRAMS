@@ -1048,6 +1048,8 @@ Niko Heers    — Stretch Therapist (certified)
 
 **Retrofit status:** Moe Shahheidari's rotator cuff rehab and Jake Poyner's QL tendinosis program both had genuine "PT-coordinated care" language predating this addition — both were updated 8/11/2026 to name Jason Bethea directly (see their CLIENTS.md entries for what changed). Any future client with comparable rehab-context clinical content should be written with the named-staff language from the start rather than the old generic phrasing.
 
+**Where Jason's notes live — the "ICONS NOTES JASON PDFS" Drive folder.** Confirmed 8/11/2026: this folder is Jason Bethea's own PT documentation archive — current, past, and future notes for every client he works with directly. It is not third-party/external SOAP-note data; it's the system of record for his in-house PT relationship with a client. `icons-intake-monitor` already sweeps this folder weekly (see "Subagent Team" below) and now treats a new note there as an update to an existing coordinated-care flag (a rehab-stage progression, a new clearance, a setback) rather than a first-time external finding — but the same never-silently-merge-clinical-conflicts rule still applies in full: a new note that contradicts or changes something already documented for a client still gets flagged to the main thread before any document is touched, exactly as the Aimee Morris precedent established.
+
 ---
 
 ## CLIENT ROSTER & DOCUMENT MAP
