@@ -255,6 +255,7 @@ clearFlag(label, body)
     coolDown: string,
     iconsNote: string,
     pelvicFloor?: false,             // set to suppress the auto pelvic-floor callout on this specific day
+    badge?: { label: string, sub?: string },  // overrides the day-header badge's default "{intensity}%" / "INTENSITY" text — for non-%-graded days (letter-named days, "BASE TEST"/"RE TEST" testing days) where showing the borrowed intensity value would misstate the day; pass sub: '' to omit the sub-label entirely. Color/accent still comes from `intensity`. See Aimee Morris's Day A/B badges and the Baseline-to-Rescan trainer program's Day 0/Day 4 badges for reference usage.
     blocks: [{
       letter: "A"|"B"|"C"|"D",
       title: string,
