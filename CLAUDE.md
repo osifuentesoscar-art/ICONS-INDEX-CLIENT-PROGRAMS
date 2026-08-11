@@ -406,7 +406,12 @@ This is the foundation of every programming decision. Do not deviate without fla
 
 Every client's program should be filtered through the age bracket below, layered on top of their individual Styku/ALST/VFA findings and any clinical flags. Brackets are proximity guides, not hard cutoffs — a 44-year-old postpartum client may sit closer to the 45–55 profile, and vice versa; use judgment. Each bullet below points to the detailed protocol elsewhere in this section rather than restating it — that section stays the single source of truth for the actual numbers.
 
-**Demographic scope rule.** These five brackets, and every numeric threshold in the Evidence-Based Science Layer below (ALST cutoffs, protein tiers, LIFTMOR candidacy, pelvic floor protocol), are validated for the stated target population: women. When a client falls outside that — a male client (see Jake Poyner), or a client meaningfully younger than 20-35 (e.g. adolescent) — do not silently apply the women's numeric thresholds by default, and do not silently invent a parallel framework either. Apply the sex-neutral structural philosophy (three-zone Isolated→Compound→Metabolic build, RIR/RPE autoregulation, corrective-before-compound sequencing) since that transfers, and explicitly flag in the client's document which numeric thresholds were NOT applied and why — the same way Jake Poyner's program carries a dedicated note explaining the scope decision rather than burying it in code. This is a standing decision rule, not a one-off judgment call specific to that client.
+**Demographic scope rule.** These five brackets, and every numeric threshold in the Evidence-Based Science Layer below (ALST cutoffs, protein tiers, LIFTMOR candidacy, pelvic floor protocol), are validated for the stated target population: women. When a client falls outside that, do not silently apply the women's numeric thresholds by default, and do not silently invent a parallel framework either.
+
+- **Male clients** (e.g. Jake Poyner, Vinz Feller): a real, cited framework now exists for this — see "MALE CLIENT PROGRAMMING FRAMEWORK" immediately after this Evidence-Based Science Layer section. Use its ALST/protein/creatine/testosterone/VFA/BMI/bone-loading thresholds rather than reporting raw Styku numbers with no clinical interpretation, and rather than reaching for the women's numeric thresholds by default.
+- **A population neither framework covers** (a client meaningfully younger than 20-35, e.g. an adolescent, or any other genuinely out-of-scope case): apply the sex-neutral structural philosophy (three-zone Isolated→Compound→Metabolic build, RIR/RPE autoregulation, corrective-before-compound sequencing) since that transfers, and explicitly flag in the client's document which numeric thresholds were NOT applied and why — the same way Jake Poyner's and Vinz Feller's programs each carry a dedicated note explaining the scope decision rather than burying it in code. Per the standing trigger at the top of the Male Client Programming Framework section, treat onboarding a client from any such population as the moment to research and build out that population's framework in this file, not just document the gap and move on.
+
+This is a standing decision rule, not a one-off judgment call specific to any one client.
 
 **20–35 — Foundation & Peak Bone Mass**
 - Protein: ≥1.6 g/kg/day ("Active women general" tier)
@@ -710,6 +715,221 @@ Protocol: 3×/week × 6–8 weeks preseason, then 1×/week maintenance
 Dose: progressive hold time starting 15–25s, building to 45s
 Effect: -41% groin injury risk (Harøy et al. 2018, BJSM)
 Coaching: side plank, top leg on bench, adductor holds the position
+```
+
+---
+
+## MALE CLIENT PROGRAMMING FRAMEWORK
+
+Built 8/11/2026 in response to Xolokan's explicit request, after Jake Poyner's and Vinz Feller's documents both correctly *scoped out* the women's numeric thresholds but left no substitute in their place — meaning a male client's ALST, VFA, BMI, and protein needs were being reported with no clinical interpretation at all, just raw Styku numbers. This section fixes that gap and is now the standing reference for any male client, present or future.
+
+**Standing trigger — this is proactive, not reactive.** Whenever a new client falls outside both the women's Age Bracket Programming Framework above and this section (a different sex/gender scope, an age population neither framework covers, etc.), research and build out that population's framework in this file *as part of onboarding them* — the same way this section was built for Jake and Vinz — rather than shipping another document that just says "thresholds not applied" with nothing to replace them. "We need to be ready for any client at any time" (Xolokan, 8/11/2026) is the operating principle, not a one-time backfill.
+
+**How this differs structurally from the women's framework, and why.** The women's Age Bracket Programming Framework is built around a hormonal cliff — perimenopause/menopause — which justifies five brackets tied to a fairly predictable timeline and a set of threshold escalations (protein, creatine, bone-loading candidacy) that trigger around that transition. Men do not have an equivalent cliff. Total testosterone decline with age is gradual, and its population-level shape is genuinely less settled than the menopause literature: the commonly cited figure is roughly 1–2%/year from age 30 (cumulative ~20–30% loss of peak T by age 50), but at least one published normative-modeling study found *increasing variance* rather than a clean population-level decline after age 40 — i.e., individual variation matters more than a fixed age curve for men, the same way this file already tells trainers to autoregulate women's training around individual symptoms rather than a calendar. That's why this section uses a flatter, three-bracket structure instead of mirroring the women's five, and why none of its brackets carry a hard numeric trigger the way "postmenopausal" does for women.
+
+### Male Age Bracket Structure
+
+**20–39 — Foundation**
+- No unique physiological trigger in this window; apply standard resistance-training protocol (ACSM 2026 RIR model, ≥10 sets/muscle/week hypertrophy target, sex-neutral) at full intensity.
+- Protein/creatine/ALST: see thresholds below — no age-based escalation needed yet.
+- The women's ACL/knee-valgus corrective-priority emphasis in this file (2.8× female incidence, dedicated corrective circuit before every squat session) is a *female-elevated-risk* finding specific to the cited meta-analysis — do not apply that same weighting/priority to a male client by default. General movement-quality coaching (single-leg squat drop screen, correcting an obvious fault) still applies to anyone; the elevated-risk corrective-circuit emphasis does not transfer.
+- Copenhagen plank / adductor injury prevention is sex-neutral (Harøy et al. 2018 studied male and female athletes) and remains highest-yield for athletic/team-sport clients in this bracket regardless of sex.
+
+**40–59 — Midlife Androgen Decline & Sarcopenia Onset**
+- Protein: reasonable to trend toward the upper end of the general resistance-trained-male range (see below) as anabolic resistance with age is a real, if more gradual, phenomenon in men too — there just isn't a single hormonal-transition trigger the way "crossing 40" or "postmenopausal" functions for women, so treat this as a soft trend, not a hard tier change.
+- Late-onset hypogonadism (LOH) / "andropause" becomes a relevant screening conversation here, especially by the 50s — but it is a clinical diagnosis requiring both persistent symptoms (low libido, fatigue, unexplained muscle loss, mood changes) AND confirmed low morning testosterone on bloodwork, not something inferred from a Styku scan or training performance. Flag it as a referral conversation, the same way this file treats HRT for women: not ours to diagnose, but worth knowing what the training evidence says (see "Testosterone & Resistance Training" below).
+- ALST monitoring becomes a priority in this window, same rationale as the women's 45–55 bracket — sarcopenia risk begins rising, even before any hormonal diagnosis is on the table.
+- Vinz Feller (age 50) sits in this bracket.
+
+**60+ — Older Male / Bone-Density Priority**
+- Bone loss in men becomes clinically significant later than in women — typically described in the literature as emerging in the "seventh decade and beyond" rather than tracking a menopause-adjacent transition — which is consistent with standard osteoporosis screening guidance generally starting at 65+ for men (or 50–64 with additional risk factors), later than the postmenopausal-window trigger used for women in this file.
+- Bone loading: see "Bone Loading in Men" below — apply the same "bone investment" framing used for women, with the evidentiary caveats noted there.
+- Power training for fall-risk/longevity applies directly and with strong evidentiary backing — see "Power Training — Men" below; unlike the women's WHISH-cohort fall-risk citation (women 75+, women's-health-specific cohort), the core power/mortality citation for this bracket is a mixed-sex study in which men were the majority of the sample, so it transfers to men directly rather than by analogy.
+- If a male client reports pelvic floor symptoms (most commonly post-prostatectomy in this age range), treat it as an individual clinical flag and refer to pelvic floor PT — the same "stop and flag your coach, this is common and treatable" language used for women applies, but do NOT auto-trigger it the way `pelvicFloorCallout()` does for postmenopausal women; there is no equivalent universal age/sex trigger for men, so this stays a documented individual flag, not a bracket-driven default.
+
+### ALST Index (Appendicular Lean Soft Tissue) — Men, EWGSOP2 2018
+```
+< 7.0 kg/m²  → AT-RISK for sarcopenia (EWGSOP2's male ASM/height² low-muscle-mass cutoff)
+≥ 7.0 kg/m²  → Not At-Risk
+```
+EWGSOP2 sets the low-muscle-mass cutoff at ASM/height² < 7.0 kg/m² for men and < 5.5 kg/m² for women — the same source already cited for the women's threshold in this file. This confirms Vinz Feller's Styku report (ALST 7.55 kg/m², labeled "Not At-Risk") is consistent with the standard clinical cutoff, not a Styku-specific number.
+
+**Genuine gap — no three-tier subdivision found for men.** The women's ALST table above splits into three tiers (At-Risk / Normal-monitor / Optimal ≥7.0). The literature search for this pass did not turn up a comparably-cited three-tier subdivision for men — EWGSOP2 gives a single binary threshold (<7.0 at-risk / ≥7.0 not-at-risk), used alongside grip strength (<27 kg = low) and physical-performance testing to stage probable vs. confirmed vs. severe sarcopenia, not to sub-divide the "not at-risk" range the way this file does for women. Do not invent an "optimal" male ALST number. Treat a value close to the 7.0 line with the same clinical judgment used for any borderline finding, not a numbered tier.
+
+### Protein Targets — Men (ISSN 2017 position stand + Morton 2018 meta-analysis)
+```
+General resistance-trained men     : 1.6–2.2 g/kg/day
+  (ISSN 2017: 1.4–2.0 g/kg/day sufficient for most exercising individuals;
+   Morton et al. 2018 meta-analysis/meta-regression, 49 trials, 1,863
+   participants — the same meta-analysis already cited for the women's
+   1.6 g/kg tier in this file, and its underlying trial pool was not
+   sex-restricted — dose-response plateau ~1.62 g/kg)
+Caloric restriction / cutting      : 2.3–3.1 g/kg/day to maximize lean-mass
+  retention (ISSN 2017) — higher than maintenance, mirrors the logic (not
+  the exact number) behind the women's ALST At-Risk escalation
+Per meal                            : ~0.4 g/kg (leucine threshold — mechanism
+  is not sex-specific)
+Distribution                        : 4+ meals/day
+```
+No single age-based tier escalation (unlike the women's 1.6 → 1.8–2.0 → 2.0–2.2 progression tied to the 40/postmenopausal thresholds) is cited in the literature for men specifically — trend a 40–59+ client toward the upper end of the 1.6–2.2 g/kg range as a matter of sound practice given general anabolic-resistance-with-age findings, but do not present it as a cited hard tier the way the women's brackets are.
+
+### Creatine — Men
+```
+Dose     : 3–5g monohydrate daily (no loading phase needed) — identical to
+           the women's protocol; sex-specific dosing differences are not
+           supported by the literature reviewed (men and women show
+           comparable creatine-transporter saturation and comparable
+           strength/performance benefit at standard doses)
+Indicated: all resistance-trained men, same as women
+Benefits : strength, power, cognition — well-supported, same evidence base
+           already cited in the women's Creatine section (the 2025
+           Nutrition Reviews systematic review and the 2025 Tandfonline
+           older-adults/clinical-populations review were not sex-restricted)
+Bone     : GENUINE GAP — no dedicated male-specific creatine + BMD RCT was
+           found in this pass. The "mixed evidence" note in the women's
+           Creatine section (2-year RCT showing no BMD benefit over
+           placebo) was generated in postmenopausal women specifically.
+           Do not assume it transfers to men either direction — treat
+           creatine's bone effect in men as simply unverified, not as
+           "probably mixed like the women's data."
+```
+
+### Testosterone & Resistance Training — the Male Physiological Analog to Perimenopause/Menopause
+```
+Client question to expect: "Should I look into TRT, or does training cover
+  it?" — not ours to answer clinically (same posture as the women's HRT
+  section), but the training-specific evidence is worth knowing.
+Decline: total testosterone commonly cited as declining ~1-2%/year from
+  age 30 (cumulative ~20-30% loss of peak T by age 50) — but this is
+  LESS settled than it's often presented: a published normative-modeling
+  study (Sartorius et al.) found increasing population VARIANCE rather
+  than a clean age-linked decline after age 40. Treat age as a loose
+  proximity guide for this conversation, not a determinant — same
+  posture this file already takes toward perimenopause symptom onset
+  timing for women.
+Late-onset hypogonadism (LOH): a clinical diagnosis requiring persistent
+  symptoms (low libido, fatigue, unexplained muscle loss, mood changes)
+  PLUS confirmed low morning serum testosterone — not inferable from a
+  Styku scan, training performance, or age alone. Flag for medical
+  referral when a client raises it; do not diagnose or imply diagnosis.
+Finding — exercise vs. TRT: in men 50-70 with low-normal serum
+  testosterone, structured exercise training produced SUPERIOR outcomes
+  to testosterone treatment alone for aerobic fitness, muscular strength,
+  and total/visceral fat mass. Testosterone treatment alone and exercise
+  alone had SIMILAR impacts on lean body mass. Adding testosterone
+  treatment on top of exercise training gave NO additional benefit for
+  any of these outcomes over exercise alone (Hildreth et al., Sports
+  Medicine - Open, 2024).
+Nuance — very old/frail men: a separate 52-week RCT in frail men 70+ with
+  confirmed low T found testosterone + progressive resistance training
+  reduced fatigue vs. controls, but the combined group did NOT
+  significantly outperform other groups on a physical-performance test
+  (30-second Sit-to-Stand) — i.e., evidence for training synergizing with
+  TRT is more mixed in frail very-old men than the 50-70 low-normal-T
+  finding above suggests. Do not over-generalize the "exercise beats/
+  matches TRT" framing to a frail 75+ client without flagging this
+  nuance.
+Framing: mirror the women's HRT framing exactly — "on or off TRT, the
+  resistance training half of this is doing real, evidenced work for
+  your strength, fitness, and body composition" is accurate and
+  supportive; "you don't need TRT because of this program" is not ours
+  to say.
+```
+
+### VFA (Visceral Fat Area) — Men
+```
+The women's VFA table above (< 70 Very Low Risk / 70-99 Low Risk /
+100-149 Moderate Risk / ≥ 150 High Risk cm²) applies to men WITHOUT
+adjustment. The ~100 cm² visceral-obesity threshold underlying this scale
+(Japanese Examination Committee of Criteria for "Obesity Disease", and
+the large-scale VACATION-J population study) was validated as predicting
+obesity-related cardiovascular risk factor accumulation "irrespective of
+gender, age, and BMI" — unlike ALST/protein/creatine, VFA risk banding is
+not sex-differentiated in the literature reviewed. No separate male VFA
+table is needed; use the existing one.
+Waist circumference (if reported/measured): the equivalent visceral-
+adiposity waist-circumference cutoffs DO differ by sex — commonly cited
+as ≥40 in (102 cm) for men vs. ≥35 in (88 cm) for women for elevated
+cardiometabolic risk — flag this if a client's circumference data is
+ever interpreted directly rather than through VFA.
+```
+
+### BMI & Body Fat % — Men
+```
+BMI category thresholds (< 18.5 Underweight / 18.5-24.9 Normal / 25-29.9
+Overweight / ≥ 30 Obese) are NOT sex-specific per WHO classification and
+apply to men without adjustment — same table as the women's section
+above. The same caution already implicit in this file for muscular/
+athletic clients applies with EXTRA force to men: a 2025 analysis found
+standard BMI cutoffs substantially over-flag muscular male athletes as
+overweight/obese relative to their actual body-fat-percentage-based
+classification — read BMI alongside Styku body fat % and ALST, never
+BMI alone, for any visibly muscular male client.
+
+Body fat % reference (ACE classification, men — genuinely different
+numbers than would be used for a woman, since Styku's peer-comparison
+label like "Average" doesn't tell a trainer whether that's objectively
+healthy):
+  Essential fat : 2-5%
+  Athletes      : 6-13%
+  Fitness       : 14-17%
+  Acceptable    : 18-24%
+  Obese         : 25%+
+```
+
+### Bone Loading in Men
+```
+Finding: a 2024 systematic review (13 articles from 6 trials) found
+  regular resistance and impact training of varying duration (6-18
+  months) maintained or improved BMD in men with osteopenia/osteoporosis,
+  with additional benefits to mobility/balance function (Archives of
+  Rehabilitation Research and Clinical Translation, 2024). Resistance
+  training outperformed other modalities tested (whole-body vibration,
+  traditional Chinese exercise) in the same review.
+Genuine gap: no male-specific RCT replicating LIFTMOR's exact protocol
+  (≥80-85% 1RM, 5×5, 2×/week, supervised) was found in this pass. The
+  2024 review's included trials varied in duration and were not confirmed
+  at LIFTMOR's specific loading intensity. Treat "apply the same %1RM
+  bone-investment framing to a male client" as a reasonable extrapolation
+  from "high-intensity resistance training benefits bone in men" — not as
+  an evidenced identical protocol the way LIFTMOR is for postmenopausal
+  women.
+T-score candidacy: the numeric thresholds transfer (T-score < -1.0
+  osteopenia / < -2.5 osteoporosis, WHO), but the reference database
+  differs — clinical guidance recommends T-scores in men be derived from
+  a MALE-specific normative database, not the female young-adult
+  reference the WHO standard was originally built on. Male osteoporosis
+  more often has an identifiable secondary cause (hypogonadism,
+  glucocorticoid/steroid use, alcohol) worth flagging for medical
+  workup rather than assuming primary age-related bone loss by default.
+Anatomical note: men retain more trabecular bone connectivity with age
+  (steady trabecular thinning) vs. the loss of trabecular connectivity
+  more characteristic of postmenopausal women's bone loss pattern — cited
+  as a reason male bone loss becomes clinically significant later, not
+  as a reason to skip loading.
+```
+
+### Power Training — Men
+```
+Finding: the same Mayo Clinic Proceedings 2025 study already cited in
+  the women's Power Training section (relative muscle power predicting
+  mortality more strongly than relative strength) was a MIXED-SEX cohort
+  in which men were the majority (2,636 of 3,889 participants, 67.8%),
+  and the finding held for men directly: hazard ratio for lowest-vs-
+  highest relative power category was 5.88 for men (6.90 for women),
+  vs. 1.62 for relative strength in men. This citation applies to male
+  clients directly, not by analogy — unlike the WHISH fall-risk cohort
+  in the women's section, which is a women's-health-specific study and
+  does NOT get cited for a male client without a separate source.
+Protocol: same as the women's section — sub-maximal load (30-50% 1RM)
+  moved with maximal intent, full recovery between sets. No evidence
+  reviewed suggests a different protocol for men.
+Applies to: the 60+ bracket onward for men, consistent with the same
+  "power declines before strength, don't wait" logic already established
+  for women — though note the underlying cohort's age range (46-75)
+  means the evidence base itself doesn't specifically validate waiting
+  until 60 either; 60+ is this file's judgment call for where to
+  prioritize it in a male client's programming, not a hard cited cutoff.
 ```
 
 ---
@@ -1134,6 +1354,14 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Added:** a "Sleep & Recovery" section — properly dosed RT measurably improves sleep quality in both young and older women, independent of baseline. Useful reframe for a client who says she's "too tired to train."
 - **Corroborated:** 35-45 bracket's existing "watch for early perimenopausal signals" guidance — symptoms can genuinely start in the early-to-mid 30s, well before the ~45 average, which sharpens (doesn't just restate) the existing bullet.
 - Sources: [Menopause hormone therapy + exercise scoping review, 2025](https://www.frontiersin.org/journals/reproductive-health/articles/10.3389/frph.2025.1542746/full) · [HRT vs. exercise bone health systematic review](https://www.cureus.com/articles/426988-comparative-effects-of-hormone-replacement-therapy-and-exercise-on-bone-health-in-postmenopausal-women-a-systematic-review) · [SEMALEAN study — semaglutide body composition, 2025](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12673431/) · [GLP-1 receptor agonists in older women — lean mass preservation review](https://www.mdpi.com/2072-6643/18/4/632) · [Resistance training + sleep quality, older women RCT, 2025](https://www.sciencedirect.com/science/article/abs/pii/S1469029225001670) · [Short-term RT + sleep quality, young women, 2025](https://pubmed.ncbi.nlm.nih.gov/40156675/) · [Untreated perimenopause in younger women](https://www.healthline.com/health-news/untreated-perimenopause-symptoms-young-women)
+
+**8/11/2026 — third pass, same day. Male Client Programming Framework (new section, first pass on this population).** Checked: EWGSOP2 male ALST/ASM cutoff, ISSN protein/creatine position stands for men, late-onset hypogonadism (LOH)/andropause and resistance training vs. TRT, male VFA/BMI/body-fat thresholds, bone-density loading evidence in men, and whether a LIFTMOR-equivalent or the existing power-training citation transfers to men. Triggered by Xolokan flagging that Jake Poyner's and Vinz Feller's documents both correctly scoped OUT the women's thresholds but never scoped anything IN — leaving male clients with uninterpreted raw Styku numbers.
+- **Added (new top-level section):** "MALE CLIENT PROGRAMMING FRAMEWORK," positioned directly after the Evidence-Based Science Layer. Confirmed EWGSOP2's male ASM/height² cutoff is <7.0 kg/m² (vs. <5.5 kg/m² for women, same source already cited in this file) — this confirms Vinz Feller's Styku-reported 7.55 kg/m² "Not At-Risk" label is standard, not Styku-specific. Added men's protein (1.6-2.2 g/kg/day, ISSN 2017 + the same Morton 2018 meta-analysis already cited for women, whose trial pool was not sex-restricted), creatine (identical 3-5g/day dosing, no sex-specific adjustment needed), a full "Testosterone & Resistance Training" subsection (the male analog to the women's HRT section — exercise training outperformed TRT alone for fitness/strength/fat mass and matched it for lean mass in men 50-70 with low-normal T, per a 2024 Sports Medicine - Open RCT-comparison study), VFA (existing women's table transfers to men unchanged — the ~100 cm² threshold was validated "irrespective of gender" in the source population studies), BMI (WHO thresholds are not sex-specific and transfer unchanged, with an added ACE body-fat-% reference table since the numbers genuinely differ by sex and Styku's peer-comparison labels don't indicate absolute healthiness), and bone loading in men (a 2024 systematic review confirms resistance/impact training maintains or improves BMD in men with low bone mass, though no male-specific LIFTMOR-protocol replication was found).
+- **Flagged as genuine gaps, not filled with invented numbers:** no three-tier ALST subdivision (optimal/normal/at-risk) exists for men in the literature reviewed — only EWGSOP2's single binary cutoff; no dedicated male-specific creatine+BMD RCT exists (the women's "mixed evidence" bone caveat does not transfer either direction, it's simply unverified for men); no male-specific RCT replicating LIFTMOR's exact ≥80-85% 1RM/5×5/2×week protocol was found, only general high-intensity-RT-benefits-male-bone evidence at varying intensities/durations; the age-linked testosterone decline widely cited (~1-2%/year from 30) is contradicted in its population-level shape by at least one normative-modeling study showing increasing variance rather than clean decline after 40 — presented as unsettled, not corrected to a single number.
+- **Corroborated/reused:** confirmed the Mayo Clinic Proceedings 2025 power-training/mortality study already cited in the women's Power Training section was in fact a mixed-sex cohort in which men were the majority (67.8%) and the finding held for men directly (HR 5.88 men vs. 6.90 women) — cited directly for the male framework's 60+ bracket rather than by analogy. Did not edit the women's section's existing framing of that same study, per this pass's scope (women's content stays untouched) — flagging back to the main thread that a future pass could sharpen the women's-section citation to note the study's actual mixed-sex, majority-male composition, since it currently reads as a women's-only study.
+- **Process change:** updated the "Demographic scope rule" paragraph (Age Bracket Programming Framework intro) to point to this new section as the actual resource for a male client, instead of only saying the women's thresholds "weren't applied." Added a standing trigger note at the top of the new section: any future client outside both frameworks (different sex/gender scope, or an age population neither covers) should get the same treatment — a real framework built during onboarding, not a scope note with nothing behind it.
+- Did NOT touch `clients/jake_poyner/`, `clients/vinz_feller/`, or their build scripts — flagging back to the main thread (see final report) that both documents likely warrant a follow-up pass now that real male thresholds exist, but that decision and the edit itself belong to `icons-expert`, not this agent.
+- Sources: [EWGSOP2 sarcopenia cutoffs, ASM/height² men <7.0 / women <5.5 kg/m²](https://onlinelibrary.wiley.com/doi/10.1002/jcsm.13160) · [ISSN Position Stand: protein and exercise, Jäger et al. 2017](https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8) · [Morton et al. 2018 meta-analysis/meta-regression, protein supplementation and RT-induced gains](https://pubmed.ncbi.nlm.nih.gov/28698222/) · [ISSN Position Stand: creatine supplementation, Kreider et al. 2017](https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z) · [Creatine monohydrate for older adults and clinical populations, 2025 (reused from earlier pass, not sex-restricted)](https://www.tandfonline.com/doi/full/10.1080/15502783.2025.2534130) · [Comparing the Impacts of Testosterone and Exercise on Lean Body Mass, Strength and Aerobic Fitness in Aging Men, Hildreth et al., Sports Medicine - Open 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC10987448/) · [Testosterone and resistance training in frail older men, 1-yr RCT follow-up, 2024](https://www.tandfonline.com/doi/full/10.1080/13685538.2024.2403519) · [A Validated Age-Related Normative Model for Male Total Testosterone Shows Increasing Variance but No Decline after Age 40](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4190174/) · [VACATION-J study — VFA 100 cm² threshold irrespective of gender](https://pubmed.ncbi.nlm.nih.gov/20964583/) · [Revising BMI Cut-Off Points for Overweight/Obesity in Male Athletes, 2025](https://www.mdpi.com/2072-6643/17/5/908) · [ACE body fat percentage categories](https://www.acefitness.org/about-ace/press-room/in-the-news/8602/body-fat-percentage-charting-averages-in-men-and-women-very-well-health/) · [Exercise and Musculoskeletal Health in Men With Low Bone Mineral Density: A Systematic Review, 2024](https://www.archives-rrct.org/article/S2590-1095(23)00080-0/fulltext) · [Osteoporosis in men — T-score reference database and diagnostic criteria](https://pubmed.ncbi.nlm.nih.gov/12464708/) · [Muscle Power Versus Strength as a Predictor of Mortality in Middle-Aged and Older Men and Women, Mayo Clinic Proceedings 2025](https://www.mayoclinicproceedings.org/article/S0025-6196(25)00100-4/abstract)
 
 ---
 
