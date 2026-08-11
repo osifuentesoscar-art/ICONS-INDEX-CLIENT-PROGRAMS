@@ -497,6 +497,10 @@ function intensityPara(label, text) {
 const EX_COLS = { EXERCISE: 2400, SETS: 380, REPS: 420, LOAD: 680, TEMPO: 540, REST: 440, CUE: 5580 };
 const EX_COL_WIDTHS = [EX_COLS.EXERCISE, EX_COLS.SETS, EX_COLS.REPS, EX_COLS.LOAD, EX_COLS.TEMPO, EX_COLS.REST, EX_COLS.CUE];
 
+// introLabel: null (explicit) renders intro as a plain unlabeled paragraph —
+// for trainer-education-style content where the intro reads as continuous
+// prose rather than a labeled callout. Omitted/undefined keeps the default
+// labeledPara behavior (bold "Note:" or custom label prefix).
 function blockLabel(letter, title, colorKey, day, introLabel, intro) {
   const accent = colorKey ? hueOf(colorKey).accent : ivOf(day.intensity).accent;
   const els = [para(
@@ -504,7 +508,11 @@ function blockLabel(letter, title, colorKey, day, introLabel, intro) {
     { spacing: { before: 120, after: 60 } }
   )];
   if (intro) {
-    els.push(...labeledPara(introLabel || 'Note', intro, accent, { spacingAfter: 80 }));
+    if (introLabel === null) {
+      els.push(para([txt(intro, { size: 17, color: C.dark })], { spacing: { after: 80 } }));
+    } else {
+      els.push(...labeledPara(introLabel || 'Note', intro, accent, { spacingAfter: 80 }));
+    }
   }
   return els;
 }
@@ -523,6 +531,9 @@ function exTable(exercises, colorKey) {
     const nameParas = [para([txt(ex.name, { bold: true, size: 18, color: C.dark })])];
     if (ex.flag) {
       nameParas.push(para([txt(ex.flag, { italics: true, size: 14, color: C.flagRed })]));
+    }
+    if (ex.insight) {
+      nameParas.push(para([txt(ex.insight, { italics: true, size: 14, color: C.mid })]));
     }
     let cueRuns = [txt(ex.cue || '', { size: 17, color: C.mid })];
     if (ex.rirNote) {
