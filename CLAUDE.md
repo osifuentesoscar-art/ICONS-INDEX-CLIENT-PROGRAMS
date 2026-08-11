@@ -406,6 +406,8 @@ This is the foundation of every programming decision. Do not deviate without fla
 
 Every client's program should be filtered through the age bracket below, layered on top of their individual Styku/ALST/VFA findings and any clinical flags. Brackets are proximity guides, not hard cutoffs — a 44-year-old postpartum client may sit closer to the 45–55 profile, and vice versa; use judgment. Each bullet below points to the detailed protocol elsewhere in this section rather than restating it — that section stays the single source of truth for the actual numbers.
 
+**Demographic scope rule.** These five brackets, and every numeric threshold in the Evidence-Based Science Layer below (ALST cutoffs, protein tiers, LIFTMOR candidacy, pelvic floor protocol), are validated for the stated target population: women. When a client falls outside that — a male client (see Jake Poyner), or a client meaningfully younger than 20-35 (e.g. adolescent) — do not silently apply the women's numeric thresholds by default, and do not silently invent a parallel framework either. Apply the sex-neutral structural philosophy (three-zone Isolated→Compound→Metabolic build, RIR/RPE autoregulation, corrective-before-compound sequencing) since that transfers, and explicitly flag in the client's document which numeric thresholds were NOT applied and why — the same way Jake Poyner's program carries a dedicated note explaining the scope decision rather than burying it in code. This is a standing decision rule, not a one-off judgment call specific to that client.
+
 **20–35 — Foundation & Peak Bone Mass**
 - Protein: ≥1.6 g/kg/day ("Active women general" tier)
 - Creatine: indicated (not yet the "strongly indicated" tier by age alone — that's driven by ALST/postmenopausal status, not age in this bracket)
@@ -414,6 +416,7 @@ Every client's program should be filtered through the age bracket below, layered
 - ACL/knee valgus screening is highest-yield here for clients in field/court sports (2.8× male incidence)
 - Copenhagen plank / adductor injury prevention is highest-yield here for athletic/team-sport clients
 - Heavy compound lifting still contributes to building peak bone mass — no need to wait for LIFTMOR-style candidacy criteria to justify loading
+- Watch energy availability in athletic/high-training-volume clients in this bracket — Relative Energy Deficiency in Sport (RED-S) suppresses bone density and raises stress-fracture risk even in clients who read as lean/fit on a scan; a BMI or body-fat reading that looks "fine" does not rule this out if training volume is high and intake hasn't been discussed
 
 **35–45 — Transition Onset**
 - Protein: trending from 1.6 g/kg/day toward the 1.8–2.0 g/kg "Women 40+" tier as the client crosses 40
@@ -436,14 +439,15 @@ Every client's program should be filtered through the age bracket below, layered
 - Pelvic floor triggers apply to every heavy carry/squat/deadlift/hip thrust session
 - ALST At-Risk is the top programming priority when flagged — protein/creatine escalation, resistance-priority sessions
 - VFA/cardiometabolic monitoring carries more weight given metabolic shifts post-menopause
+- Power training (moving a sub-maximal load with maximal intent — see "Power Training — Fall Risk & Longevity" below) belongs in this bracket already, not just 65+; power output starts declining before strength does
 
 **65+ — Older Postmenopausal**
 - Protein: 2.0–2.2 g/kg/day, same tier as 55–65 — do not step this down with age
-- Creatine: strongly indicated — cognitive and bone benefits carry extra weight here
+- Creatine: strongly indicated — cognitive benefits are well-supported here; treat bone-density benefit as plausible but not settled (see Creatine section below)
 - Bone loading: LIFTMOR candidacy screening remains a priority, framed consistently as "bone investment"
 - Pelvic floor protocol applies identically to the 55–65 bracket
 - ALST At-Risk / sarcopenia prevention remains the top physiological priority
-- Favor movements with direct functional/fall-risk transfer (carries, step-ups, single-leg work) alongside the standard compound lifts — this is general good practice, not a cited protocol; no dedicated fall-risk research is documented elsewhere in this file, so don't present it to a client as evidence-backed the way the other bullets are
+- Favor movements with direct functional/fall-risk transfer (carries, step-ups, single-leg work, and explicit power/velocity work) alongside the standard compound lifts — this is now evidence-backed, not just general good practice: see "Power Training — Fall Risk & Longevity" below
 
 ### ALST Index (Appendicular Lean Soft Tissue) — EWGSOP2 2018
 ```
@@ -471,7 +475,16 @@ Timing  : with food
 Saturates: 3–4 weeks
 Indicated: all women in strength training
 Strongly indicated: women 40+, ALST At-Risk, postmenopausal
-Benefits: strength, power, cognition, bone (Hall et al. 2025), sleep quality
+Benefits: strength, power, sleep quality — all well-supported
+Cognition: well-supported — memory, attention, and processing speed improved in
+           5 of 6 reviewed older-adult trials (Nutrition Reviews systematic
+           review, 2025)
+Bone    : evidence is MIXED, not settled — some trials show a benefit when
+          creatine is paired with heavy resistance training; a well-designed
+          2-year RCT in older women found no BMD improvement over placebo.
+          Coach it as a strength/cognition supplement with a possible bone
+          upside, not a guaranteed bone intervention — LIFTMOR-style loading
+          is the settled bone protocol, creatine is not a substitute for it
 ```
 
 ### Collagen (Shaw et al. 2017 AJCN)
@@ -489,6 +502,37 @@ Safe in  : postmenopausal women WITH low bone mass (T-score < -1.0)
 Result   : +2.9% lumbar BMD vs -1.2% control
 Frame as : "bone investment" not "heavy lifting"
 Supplement: impact loading (jumps, drop landings) for hip bone
+Corroborated: 2025 systematic review/meta-analysis (17 RCTs, n=690) confirms
+  resistance training improves BMD at lumbar spine, femoral neck, total hip,
+  and trochanter in postmenopausal women; high-intensity strength training
+  outperforms low/moderate intensity specifically at spine and hip; combined
+  aerobic + resistance training is the single most effective modality for
+  lumbar BMD specifically — worth defaulting to for clients who already do
+  cardio elsewhere in their week, not an either/or against the lifting.
+```
+
+### Power Training — Fall Risk & Longevity (2025 evidence)
+```
+Finding: muscle POWER (force × velocity — moving a sub-maximal load fast,
+  not moving a maximal load slowly) predicts functional independence and
+  longevity in older women more strongly than strength alone. Mayo Clinic
+  Proceedings 2025 (~4,000 adults, ages 46–75, 10+ year follow-up): women
+  with low power had ~7× higher mortality risk than women with high power.
+  Power output declines faster with age than strength does — training it
+  directly does not happen automatically as a side effect of strength work.
+Protocol: sub-maximal load (30–50% 1RM) moved with maximal intent —
+  trap bar jumps, box step-up jumps, med ball throws/slams, fast (not
+  maximal-load) sled pushes. Full recovery between sets — this is a
+  velocity stimulus, not a metabolic one.
+Applies to: 55–65 bracket onward, not just 65+ — power decline starts
+  before the 65+ bracket, so waiting until then to introduce it is late.
+Fall-risk link: ≥2 hrs/week strength training associated with ~34% fall-risk
+  reduction in women 75+ (WHISH cohort, 2025); power-specific training
+  shows the strongest single association with retained functional
+  independence in women over 70 among the qualities studied.
+Status: this replaces the earlier "general good practice, not evidence-
+  backed" caveat that lived in the 65+ bracket bullet — power/fall-risk
+  training is now a cited protocol, not just a reasonable instinct.
 ```
 
 ### Progressive Overload — RIR Model (ACSM 2026)
@@ -503,6 +547,17 @@ Use RIR (Reps In Reserve) language:
 Add weight when: top of rep range + 2 RIR + clean form
 Same weight when: form degraded
 Drop weight when: missed reps / pain / fatigue
+
+Citation strength: this is ACSM's first resistance-training guideline update
+in 17 years, synthesizing 137 systematic reviews across 30,000+ participants
+— not a single-study finding. Cite it with that weight when a trainer or
+client pushes back on "why not just go to failure."
+
+Perimenopause-specific corroboration (WHEN position statement, 2025): heavy
+lifting is well-supported for bone density and strength in perimenopausal/
+menopausal women specifically; training to failure or near-failure has no
+evidence base in this population for ANY outcome — reinforces, not just
+generalizes, the RIR standard for the 45–55 bracket specifically.
 ```
 
 ### Women & Strength Training (Roberts, Nuckols & Krieger 2020, JSCR)
@@ -571,6 +626,15 @@ Fix: lateral band walks, terminal knee extensions, Spanish squat,
      Copenhagen plank, single-leg step-downs
 Banded squats: band above knees creates proprioceptive cue to push OUT
 Protocol: corrective circuit before every squat session
+
+Updated 2025 meta-analyses (female team-sport athletes): neuromuscular
+training reduces ACL injury risk ~50% and overall knee injury risk ~22%.
+Critical practical finding: compliance (≥75% session adherence) predicts
+outcomes better than program complexity does. Coaching implication — a
+short, simple 4-exercise corrective circuit run every single session beats
+an elaborate 8-exercise circuit that gets skipped when time is short. Don't
+add correctives to look thorough; add the minimum set a client will
+actually complete every time.
 ```
 
 ### Copenhagen Plank (adductor strengthening)
@@ -975,6 +1039,20 @@ For age-specific programming emphasis (protein tier, creatine indication, bone l
 
 ---
 
+## RESEARCH UPDATE LOG
+
+Standing practice (started 8/11/2026, at Xolokan's request): periodically re-research the Evidence-Based Science Layer against current literature, across every age bracket the roster has actually served (25–64 so far) and any bracket a future client might fall into, and fold verified findings back into this file — corrections as well as additions. Each entry below is one pass: what was checked, what changed, what was corroborated as-is (not touched), and sources. Do not add an entry for using the science layer to build a client doc — only for a pass that changed or verified the reference material itself.
+
+**8/11/2026 — first pass.** Checked: postmenopausal resistance training/BMD, creatine (cognition + bone), protein/sarcopenia, perimenopause RT, the ACSM 2026 RIR citation itself, 20s/30s bone mass, ACL/neuromuscular training, fall-risk/power training 65+.
+- **Corrected:** Creatine's bone-density benefit was stated flatly ("bone (Hall et al. 2025)") — actual evidence is mixed, including a 2-year RCT in older women showing no BMD improvement over placebo. Softened to reflect the real uncertainty; cognition/strength/sleep claims stayed as-is since those are well-supported.
+- **Upgraded:** the 65+ bracket's fall-risk/functional-transfer bullet previously carried an explicit "not evidence-backed" caveat because no citation existed yet. A 2025 Mayo Clinic Proceedings study (~4,000 adults, 10+ yr follow-up) now gives that real evidentiary backing via power (not just strength) training — new "Power Training — Fall Risk & Longevity" subsection added, caveat removed, and the guidance extended down into the 55–65 bracket since power decline starts before 65.
+- **Added:** RED-S/energy-availability caution to the 20–35 bracket (young athletic clients can look "fine" on BMI/body-fat and still be under-fueled); compliance-over-complexity finding to the ACL/knee-valgus section (adherence predicts outcome better than corrective-circuit complexity); LIFTMOR corroboration detail (2025 meta-analysis, 17 RCTs) confirming combined aerobic+resistance training as the strongest single modality for lumbar BMD specifically.
+- **Corroborated, unchanged:** ACSM 2026's RIR-over-failure recommendation is a real, substantial citation (first resistance-training guideline update in 17 years, 137 systematic reviews, 30,000+ participants) — strengthened the citation's framing in-place rather than changing the guidance itself. Protein tiers already in this file (2.0–2.2 g/kg for 50+/At-Risk) sit at or above current academic RNI estimates for sarcopenic older adults, which is appropriate for an actively-training population and needed no change.
+- **Process change:** added the "Demographic scope rule" to the Age Bracket Programming Framework's intro, formalizing (not just doing ad hoc) the judgment call already used once for Jake Poyner — any future client outside the women's target population gets the same explicit scope note, not a silent default either way.
+- Sources: [Optimal RT parameters for BMD in postmenopausal women, 2025 meta-analysis](https://link.springer.com/article/10.1186/s13018-025-05890-1) · [Creatine and Cognition in Aging systematic review, 2025](https://academic.oup.com/nutritionreviews/advance-article/doi/10.1093/nutrit/nuaf135/8253584) · [Creatine monohydrate for older adults and clinical populations, 2025](https://www.tandfonline.com/doi/full/10.1080/15502783.2025.2534130) · [2-yr creatine/BMD RCT in older women](https://pubmed.ncbi.nlm.nih.gov/31257405/) · [WHEN position statement — resistance training & menopause](https://when.org.au/education/resistance-training-menopause/) · [ACSM 2026 resistance training guidelines summary](https://acsm.org/resistance-training-guidelines-update-2026/) · [Neuromuscular training for ACL injury prevention, female athletes, 2025 meta-analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC12581765/) · [Power training/mortality risk, Mayo Clinic Proceedings 2025 coverage](https://fabulous50s.com/power-training-longevity-and-fall-prevention-over-50/) · [Fall risk & strength training, women 75–105 (WHISH cohort)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12363929/) · [Peak bone mass in 20s/30s](https://www.screenmybones.com/blog/building-peak-bone-mass)
+
+---
+
 ## SCRIPTS QUICK REFERENCE
 
 | Script | Purpose | Output |
@@ -990,7 +1068,8 @@ For age-specific programming emphasis (protein tier, creatine indication, bone l
 
 ---
 
-*Last updated: August 7, 2026 — Brace Life Studios ICONS System*  
+*Last updated: August 11, 2026 — Brace Life Studios ICONS System*  
+*Research Update Log added 8/11/2026 — standing practice of re-checking the science layer against current literature over time; see that section for the running history of what's been verified, corrected, or added.*  
 *Canonical reference: Kelly Mulroy 5-Day Training Plan — actual client deliverable, XML-audited in full*  
 *Science layer: Evidence-Based Women's Strength Research Synthesis (Aug 2026)*  
 *Styku integration: Siobhan Hansen scan 7/29/2026; August Olivia scan 8/5/2026*  
