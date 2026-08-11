@@ -179,6 +179,10 @@ nutritionBlock(client)     // ← evidence-based protein/creatine/collagen targe
 proteinTargets(client)     // ← shared calc behind nutritionBlock + proteinBar
 proteinBar(client)         // ← compact per-page reminder, auto-inserted for ALST At-Risk clients
 pelvicFloorCallout()       // ← auto-inserted for postmenopausal clients on heavy-loading days
+weakerSide(leftLST, rightLST)  // ← 'left'|'right'|'even' — lower LST is weaker, leads unilateral work
+maleProteinTargets(client)     // ← Male Client Programming Framework equivalent of proteinTargets()
+maleNutritionNote(client)      // ← goldCallout-equivalent protein/creatine note built from maleProteinTargets()
+testosteroneNote(client)       // ← teal, informational-only testosterone/andropause note; returns [] under age 40
 dayHeader(intensity, title, subtitle, descriptor)
 exTable(exercises[], colorKey)   // colorKey: 'teal'|'green'|'gold'|'red'|'blue'|'purple' (a HUES key)
 weeklySummary(rows[][])
@@ -427,7 +431,7 @@ This is a standing decision rule, not a one-off judgment call specific to any on
 **35–45 — Transition Onset**
 - Protein: trending from 1.6 g/kg/day toward the 1.8–2.0 g/kg "Women 40+" tier as the client crosses 40
 - Creatine: move to "strongly indicated" once the client crosses 40
-- Watch for early perimenopausal signals (cycle irregularity, symptom shifts) — still autoregulate on individual data, not calendar or age alone. This is a genuinely early bracket for it: perimenopausal symptoms can begin in the early-to-mid 30s, well before the ~45 average onset, so "she's too young for this" is not a safe assumption to bring into an intake conversation
+- Watch for early perimenopausal signals (cycle irregularity, symptom shifts) — still autoregulate on individual data, not calendar or age alone. This is a genuinely early bracket for it: perimenopausal symptoms can begin in the early-to-mid 30s, well before the ~45 average onset, so "she's too young for this" is not a safe assumption to bring into an intake conversation. See "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" below for what's reasonable to ask about this at intake
 - Volume/frequency targets unchanged from the 20–35 bracket — no physiological reason to reduce load yet
 - Begin ALST/VFA monitoring at the first Styku scan if not already established, even though risk is typically still low
 - If a client mentions she's on a GLP-1/anti-obesity medication (semaglutide, tirzepatide, etc.), see "GLP-1 / Anti-Obesity Medications" below — treat as a standing ALST-preservation priority regardless of her current ALST number
@@ -438,6 +442,7 @@ This is a standing decision rule, not a one-off judgment call specific to any on
 - Heavy RT ≥3×/week + protein 2.0–2.2 g/kg/day is strongly evidence-backed through this transition; HRV dips in luteal-equivalent phases are NORMAL — interpret against the client's individual baseline, not a flat line
 - Start screening for LIFTMOR-style bone loading candidacy (T-score < -1.0) as estrogen decline accelerates
 - ALST monitoring becomes a priority — sarcopenia risk begins rising through this window
+- Perimenopausal status is frequently ambiguous at intake in this bracket — neither confirmed premenopausal nor confirmed postmenopausal. See "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" below for what's reasonable to ask at intake without overstepping into diagnosis, and why an unconfirmed status should still trigger pelvic-floor caution rather than default to "not postmenopausal" — that section's evidence says the transition window itself, not confirmed postmenopausal status, is the higher-risk period for stress urinary incontinence specifically
 
 **55–65 — Postmenopausal**
 - Protein: 2.0–2.2 g/kg/day ("Women 50+ / ALST At-Risk" tier)
@@ -522,9 +527,19 @@ Corroborated: 2025 systematic review/meta-analysis (17 RCTs, n=690) confirms
 ```
 Finding: muscle POWER (force × velocity — moving a sub-maximal load fast,
   not moving a maximal load slowly) predicts functional independence and
-  longevity in older women more strongly than strength alone. Mayo Clinic
-  Proceedings 2025 (~4,000 adults, ages 46–75, 10+ year follow-up): women
-  with low power had ~7× higher mortality risk than women with high power.
+  longevity in older women more strongly than strength alone. Primary
+  source: Araújo CG, Kunutsor SK, et al., "Muscle Power Versus Strength as
+  a Predictor of Mortality in Middle-Aged and Older Men and Women," Mayo
+  Clinic Proceedings 2025;100(8):1319-1331 (CLINIMEX Exercise cohort,
+  n=3,889, ages 46-75, median 10.8yr follow-up). Hazard ratio for
+  mortality comparing lowest-vs-highest relative POWER was 6.90 for women
+  (5.88 for men), vs. only 1.71 for relative STRENGTH in women (1.62 for
+  men) — i.e. women in the lowest power category had ~7x the mortality
+  risk of women in the highest, a materially larger gap than strength
+  alone shows. (This is the same primary source now cited directly, with
+  its actual composition and hazard-ratio data, in the Male Client
+  Programming Framework's "Power Training — Men" section below — see that
+  section for the full men's-data breakdown.)
   Power output declines faster with age than strength does — training it
   directly does not happen automatically as a side effect of strength work.
 Protocol: sub-maximal load (30–50% 1RM) moved with maximal intent —
@@ -561,6 +576,83 @@ Optimal RT dose for BMD in menopausal women specifically: 2–3×/week
   moderate-to-high intensity resistance training + separate impact
   activity (jumps, hops) at least 3×/week — consistent with the existing
   LIFTMOR-style protocol above, not a change to it.
+```
+
+### Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context (2025-2026 evidence)
+```
+Why this matters: the 35-45 and 45-55 brackets above already say "autoregulate
+  on individual symptoms, not calendar/age" — this section checks that
+  guidance against current literature and asks the sharper follow-up
+  question: what is actually reasonable for a trainer to ASK at intake, and
+  does an unconfirmed/ambiguous status (neither clearly premenopausal nor
+  postmenopausal) require anything MORE specific than "autoregulate"?
+
+Diagnosis/staging context (not ours to perform, but useful to know what it's
+  built on): STRAW+10 (Stages of Reproductive Aging Workshop, 2011 revision)
+  is the clinical gold-standard staging system, and it is itself built on
+  self-reported menstrual bleeding-pattern changes — persistent cycle-length
+  differences of 7+ days between consecutive cycles marks early perimenopause
+  (stage -2), continuing through 12 months after the final period (stage
+  +1a). This means the categories a trainer could reasonably ask about at
+  intake (has your cycle length changed by a week or more? periods further
+  apart or closer together? hot flashes/night sweats, sleep disruption, new
+  mood changes?) are the SAME category of self-report data STRAW+10 itself
+  runs on — asking about them is not overstepping into diagnosis, it's
+  collecting the same input a clinician would use. What crosses the line is
+  STAGING the answers into a diagnosis or a treatment recommendation — that
+  stays a referral conversation, mirroring the posture already established
+  for HRT/TRT elsewhere in this file.
+STRAW+10 known limitation: reduced applicability for women with PCOS, prior
+  hysterectomy, endometrial ablation, or a hormonal IUD — none of which
+  produce a trackable normal bleeding pattern. Useful for a trainer to know
+  because it flags exactly the clients for whom "ask about cycle changes"
+  won't produce a usable answer, making vasomotor/sleep/mood self-report the
+  only usable signal instead.
+
+Does ambiguous status change the training prescription itself? A 2025 RCT
+  (University of Exeter, n=70 pre-/peri-/postmenopausal women not on HRT,
+  12-week supervised low-impact resistance program 4x/week, Medicine &
+  Science in Sports & Exercise 2025;57(3):501-513) found lower-body strength
+  and dynamic balance adaptations occurred irrespective of menopausal status
+  — the training response itself did not depend on which stage a woman was
+  actually in. This is now a direct, current citation for what this file's
+  35-45/45-55 brackets already state. FINDING OF THIS PASS: the existing
+  "autoregulate on individual symptoms, not calendar" guidance already
+  covers this adequately — no change to the underlying training philosophy
+  is warranted. A client with genuinely unconfirmed status does not need
+  her programming held back pending a diagnosis; RIR-based autoregulation,
+  protein/creatine tiering by the nearer bracket, and heavy compound
+  lifting all proceed the same way whether status reads confirmed peri-,
+  post-, or unknown.
+
+One place ambiguity DOES have a concrete, non-trivial consequence: pelvic
+  floor risk is not a clean postmenopausal-only phenomenon. Mishra GD,
+  Cardozo L, Kuh D, "Menopausal transition and the risk of urinary
+  incontinence: results from a British prospective cohort," BJU
+  International 2010 (n=1,211 women followed ages 48-54) found women who
+  were perimenopausal, or had been perimenopausal >1 year, were MORE likely
+  to report stress urinary incontinence than postmenopausal women in the
+  same cohort (OR 1.39, 95% CI 1.11-1.73 for both) — the transition itself,
+  not confirmed postmenopausal status, is the higher-risk window for this
+  specific outcome. This is an older but still-cited cohort study, not a
+  2025-2026 finding, but it is the clearest direct evidence found on this
+  specific question and it changes a practical default, so it's included
+  here rather than left out for recency alone.
+Engine implication: `client.isPostmenopausal` in `icons_template.js` gates
+  `pelvicFloorCallout()` as a clean boolean. That boolean is a reasonable
+  proxy once status is CONFIRMED, but per the finding above, a 45-55
+  bracket client with an ambiguous/unconfirmed status should NOT be
+  assumed pelvic-floor-safe by default just because `isPostmenopausal`
+  reads false or is unset — the transition window itself is the elevated-
+  risk period for stress UI, arguably more so than confirmed
+  postmenopausal status. Until/unless the engine supports a three-state
+  field, the safe manual practice is: for any 45-55 bracket client with
+  menstrual irregularity or vasomotor/sleep symptoms reported at intake,
+  set `isPostmenopausal: true` (or otherwise manually include
+  `pelvicFloorCallout()`/equivalent language on heavy-loading days) even
+  without a confirmed diagnosis. This is a genuine, evidence-based
+  refinement — not just a restatement of "autoregulate" — and is the one
+  concrete process change this pass produced.
 ```
 
 ### GLP-1 / Anti-Obesity Medications (semaglutide, tirzepatide, etc.) — 2025 evidence
@@ -662,6 +754,7 @@ When Styku shows L/R gap ≥ 0.5 lbs in arms or legs:
 3. Suitcase carry: carry in weaker HAND (anti-lateral-flexion trains opposite)
 4. Track at 8-week Styku rescan — asymmetry should reduce
 ```
+`weakerSide(leftLST, rightLST)` (exported from `icons_template.js`) now does the "lower LST = weaker" comparison itself — returns `'left'|'right'|'even'` — use it instead of hand-deriving weaker side in comments.
 
 ### VFA (Visceral Fat Area) Thresholds
 ```
@@ -1004,6 +1097,8 @@ trainer_education/ICONS_Trainer_Development_C_Baseline_to_Rescan.html    — mir
 ```
 All three (built 8/11/2026) reuse the base file's Brace Life editorial CSS design system but add real teeth beyond passive reading: scored multiple-choice knowledge-check gates (`data-correct` per option, self-checking JS, no backend) that lock the next section until a trainer hits a stated threshold, pulled directly from the science-layer thresholds above (ALST/VFA/BMI, RIR, asymmetry, LIFTMOR, pelvic floor language). Each ends in a live, lead-coach-observed practicum sign-off — self-certification is explicitly disallowed for that step in all three. Self-contained single-file HTML, no build script — open directly in a browser.
 
+**Male-client scope-awareness addition (8/11/2026, retro follow-up).** All four HTML files above (the base plus A/B/C) now fold in a compact male-scope addition alongside their existing ALST/VFA/BMI clinical-thresholds content — not a new module, since a trainer needs to know *when to reach for* the Male Client Programming Framework, not relearn ICONS pedagogy for a male client. Covers: the male EWGSOP2 ALST At-Risk cutoff (<7.0 kg/m², a single binary threshold with no "Optimal" tier — genuinely different from the women's <5.5/5.5–6.99/≥7.0 three-tier band, not the same number applied more loosely), the Demographic Scope Rule (women's numeric thresholds never silently transfer to a male client), and the referral-not-diagnose posture on TRT/late-onset-hypogonadism questions (mirroring how HRT questions are already handled for women). Each of the three gated variants (A/B/C) got one added knowledge-check question testing this, in the existing `data-correct`/`answerQuiz()` format, in the gate closest to its existing ALST/clinical content (Module A's Week 3 Primary Certification gate, Module B's Zone 1 Isolated Precision Check, Module C's Weeks 1–4 Milestone Check) — the mirrored Day 0/Rescan competency battery in Module C was deliberately left untouched to avoid disturbing its skill-ID-driven before/after comparison-table logic. Gate question-count/threshold display text was recomputed and updated alongside each addition (e.g. Module A's Week 3 gate: 8→9 questions, pass floor 7/8→8/9) so the displayed fraction still matches the actual `pct >= threshold` pass math. The base (ungated) file got the same content as a plain section plus one added reflection question, no quiz, since it has no gating infrastructure at all. See `trainer_education/README.md` for the short index this prompted.
+
 ### Trainer Development Programs — physical `.docx` (trainers do the actual workouts), distinct from the HTML knowledge modules above
 ```
 trainer_education/ICONS_Trainer_Development_Program.docx                          — base: client-uploaded "Train the Trainer" plan, 5-day 80/90/70/70/90%, Days 4-5 completed (source only specified them at the weekly-summary level)
@@ -1019,6 +1114,8 @@ Two small, backward-compatible additions to `icons_template.js` were needed to r
 - Block objects: `introLabel: null` (the literal value `null`, not omitted) renders a block's `intro` as a plain unlabeled paragraph instead of the default bold-label callout — for content that reads as continuous prose rather than a "Note: ..." callout.
 
 Deliberate deviation from the uploaded source: its boxed "PROGRESSIVE OVERLOAD — HOW TO ADD WEIGHT" table (a bordered/shaded box with colored rows) was dropped in favor of the engine's standard `progressionBlock()` — CLAUDE.md's engine v3 notes already document that bordered/shaded box callouts were explicitly superseded when the engine was rebuilt against the Kelly Mulroy reference; the source's box was a regression back toward that retired style. The same RIR add/same/drop rule is preserved, just in the confirmed house format.
+
+**Male-client scope-awareness — deliberately NOT added here (8/11/2026 retro follow-up).** Unlike the 4 HTML modules above, none of these 4 `.docx` documents were touched for male-client scope awareness. These are physical, self-administered workout programs a trainer runs on themselves, not knowledge-testing content — there's no natural home for a scope-awareness note inside an exercise table or a `progressionBlock()`, and grafting one on would be forced. Revisit only if a future need (e.g. a male-specific Train-the-Trainer variant) makes it a genuine fit rather than an awkward addition.
 
 ### Subagent Team (`.claude/agents/*.md`)
 
@@ -1347,7 +1444,7 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Added:** RED-S/energy-availability caution to the 20–35 bracket (young athletic clients can look "fine" on BMI/body-fat and still be under-fueled); compliance-over-complexity finding to the ACL/knee-valgus section (adherence predicts outcome better than corrective-circuit complexity); LIFTMOR corroboration detail (2025 meta-analysis, 17 RCTs) confirming combined aerobic+resistance training as the strongest single modality for lumbar BMD specifically.
 - **Corroborated, unchanged:** ACSM 2026's RIR-over-failure recommendation is a real, substantial citation (first resistance-training guideline update in 17 years, 137 systematic reviews, 30,000+ participants) — strengthened the citation's framing in-place rather than changing the guidance itself. Protein tiers already in this file (2.0–2.2 g/kg for 50+/At-Risk) sit at or above current academic RNI estimates for sarcopenic older adults, which is appropriate for an actively-training population and needed no change.
 - **Process change:** added the "Demographic scope rule" to the Age Bracket Programming Framework's intro, formalizing (not just doing ad hoc) the judgment call already used once for Jake Poyner — any future client outside the women's target population gets the same explicit scope note, not a silent default either way.
-- Sources: [Optimal RT parameters for BMD in postmenopausal women, 2025 meta-analysis](https://link.springer.com/article/10.1186/s13018-025-05890-1) · [Creatine and Cognition in Aging systematic review, 2025](https://academic.oup.com/nutritionreviews/advance-article/doi/10.1093/nutrit/nuaf135/8253584) · [Creatine monohydrate for older adults and clinical populations, 2025](https://www.tandfonline.com/doi/full/10.1080/15502783.2025.2534130) · [2-yr creatine/BMD RCT in older women](https://pubmed.ncbi.nlm.nih.gov/31257405/) · [WHEN position statement — resistance training & menopause](https://when.org.au/education/resistance-training-menopause/) · [ACSM 2026 resistance training guidelines summary](https://acsm.org/resistance-training-guidelines-update-2026/) · [Neuromuscular training for ACL injury prevention, female athletes, 2025 meta-analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC12581765/) · [Power training/mortality risk, Mayo Clinic Proceedings 2025 coverage](https://fabulous50s.com/power-training-longevity-and-fall-prevention-over-50/) · [Fall risk & strength training, women 75–105 (WHISH cohort)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12363929/) · [Peak bone mass in 20s/30s](https://www.screenmybones.com/blog/building-peak-bone-mass)
+- Sources: [Optimal RT parameters for BMD in postmenopausal women, 2025 meta-analysis](https://link.springer.com/article/10.1186/s13018-025-05890-1) · [Creatine and Cognition in Aging systematic review, 2025](https://academic.oup.com/nutritionreviews/advance-article/doi/10.1093/nutrit/nuaf135/8253584) · [Creatine monohydrate for older adults and clinical populations, 2025](https://www.tandfonline.com/doi/full/10.1080/15502783.2025.2534130) · [2-yr creatine/BMD RCT in older women](https://pubmed.ncbi.nlm.nih.gov/31257405/) · [WHEN position statement — resistance training & menopause](https://when.org.au/education/resistance-training-menopause/) · [ACSM 2026 resistance training guidelines summary](https://acsm.org/resistance-training-guidelines-update-2026/) · [Neuromuscular training for ACL injury prevention, female athletes, 2025 meta-analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC12581765/) · [Muscle Power Versus Strength as a Predictor of Mortality in Middle-Aged and Older Men and Women, Araújo/Kunutsor et al., Mayo Clinic Proceedings 2025;100(8):1319-1331 — primary source, corrected 8/11/2026 fourth pass from a secondhand blog citation](https://www.mayoclinicproceedings.org/article/S0025-6196(25)00100-4/abstract) · [Fall risk & strength training, women 75–105 (WHISH cohort)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12363929/) · [Peak bone mass in 20s/30s](https://www.screenmybones.com/blog/building-peak-bone-mass)
 
 **8/11/2026 — second pass, same day.** Checked: HRT/MHT vs. resistance training for bone, GLP-1/anti-obesity medications, sleep & recovery evidence, 35-45 bracket perimenopause-onset timing.
 - **Added (new, real gap):** a "GLP-1 / Anti-Obesity Medications" section — nothing in this file previously addressed these medications at all, despite them being increasingly common in this exact client population. Key finding: ~40% of GLP-1 weight loss is lean mass, women/older adults lose muscle at a higher rate, and structured resistance training 3-5x/week preserves 2-3x more lean mass than medication alone. Flagged as a standing ALST-preservation priority regardless of a client's current ALST number, and added a cross-reference from the 35-45 bracket. This is arguably the single most practically relevant addition from either research pass today — worth asking every new client about at intake, not just clients who volunteer it.
@@ -1363,6 +1460,14 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Process change:** updated the "Demographic scope rule" paragraph (Age Bracket Programming Framework intro) to point to this new section as the actual resource for a male client, instead of only saying the women's thresholds "weren't applied." Added a standing trigger note at the top of the new section: any future client outside both frameworks (different sex/gender scope, or an age population neither covers) should get the same treatment — a real framework built during onboarding, not a scope note with nothing behind it.
 - Did NOT touch `clients/jake_poyner/`, `clients/vinz_feller/`, or their build scripts — flagging back to the main thread (see final report) that both documents likely warrant a follow-up pass now that real male thresholds exist, but that decision and the edit itself belong to `icons-expert`, not this agent.
 - Sources: [EWGSOP2 sarcopenia cutoffs, ASM/height² men <7.0 / women <5.5 kg/m²](https://onlinelibrary.wiley.com/doi/10.1002/jcsm.13160) · [ISSN Position Stand: protein and exercise, Jäger et al. 2017](https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8) · [Morton et al. 2018 meta-analysis/meta-regression, protein supplementation and RT-induced gains](https://pubmed.ncbi.nlm.nih.gov/28698222/) · [ISSN Position Stand: creatine supplementation, Kreider et al. 2017](https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z) · [Creatine monohydrate for older adults and clinical populations, 2025 (reused from earlier pass, not sex-restricted)](https://www.tandfonline.com/doi/full/10.1080/15502783.2025.2534130) · [Comparing the Impacts of Testosterone and Exercise on Lean Body Mass, Strength and Aerobic Fitness in Aging Men, Hildreth et al., Sports Medicine - Open 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC10987448/) · [Testosterone and resistance training in frail older men, 1-yr RCT follow-up, 2024](https://www.tandfonline.com/doi/full/10.1080/13685538.2024.2403519) · [A Validated Age-Related Normative Model for Male Total Testosterone Shows Increasing Variance but No Decline after Age 40](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4190174/) · [VACATION-J study — VFA 100 cm² threshold irrespective of gender](https://pubmed.ncbi.nlm.nih.gov/20964583/) · [Revising BMI Cut-Off Points for Overweight/Obesity in Male Athletes, 2025](https://www.mdpi.com/2072-6643/17/5/908) · [ACE body fat percentage categories](https://www.acefitness.org/about-ace/press-room/in-the-news/8602/body-fat-percentage-charting-averages-in-men-and-women-very-well-health/) · [Exercise and Musculoskeletal Health in Men With Low Bone Mineral Density: A Systematic Review, 2024](https://www.archives-rrct.org/article/S2590-1095(23)00080-0/fulltext) · [Osteoporosis in men — T-score reference database and diagnostic criteria](https://pubmed.ncbi.nlm.nih.gov/12464708/) · [Muscle Power Versus Strength as a Predictor of Mortality in Middle-Aged and Older Men and Women, Mayo Clinic Proceedings 2025](https://www.mayoclinicproceedings.org/article/S0025-6196(25)00100-4/abstract)
+
+**8/11/2026 — fourth pass, same day. Citation-integrity fix + 45-55 bracket perimenopause-diagnosis-ambiguity deep dive.** Triggered by the first subagent team retro: (1) the women's Power Training section cited its Mayo Clinic Proceedings study only secondhand via a fitness-blog summary, while the Male Client Programming Framework (third pass) had already sourced the same study's actual primary-source data directly; (2) the 45-55 bracket was flagged as the highest-priority next topic because two live clients — one at the 45 bracket boundary, one at 48 — currently have unconfirmed menopausal status on file.
+- **Corrected (citation integrity, no substance change):** the women's "Power Training — Fall Risk & Longevity" section previously cited "Mayo Clinic Proceedings 2025 (~4,000 adults...)" with the only real URL living in a fabulous50s.com blog-summary link in the first pass's Sources line. Replaced with the direct primary citation — Araújo CG, Kunutsor SK, et al., Mayo Clinic Proceedings 2025;100(8):1319-1331, CLINIMEX Exercise cohort, n=3,889 — and swapped the "~7x higher mortality risk" approximation for the actual hazard ratios (6.90 women / 5.88 men for power, vs. 1.71 women / 1.62 men for strength alone), matching the rigor the male framework already achieved for the same study. Also retroactively corrected the broken secondhand link in the **first-pass (8/11/2026) log entry's own Sources line** — a deliberate, disclosed exception to this log's normal append-only convention, made because leaving a demonstrably weak citation sitting uncorrected in the historical record while claiming to have "upgraded" it elsewhere would undercut the citation-integrity goal this fix exists for. The claim's substance (power predicts mortality more strongly than strength in older women) is unchanged — only the citation quality changed.
+- **Added (new subsection):** "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context," placed between the Hormone Therapy (MHT/HRT) and GLP-1 sections, with cross-references added from both the 35-45 and 45-55 bracket bullets. Covers two questions: (a) what's reasonable for a trainer to ask at intake without overstepping into diagnosis — confirmed that STRAW+10, the clinical gold-standard staging system, is itself built on the same self-reported menstrual/vasomotor/sleep/mood data a trainer could reasonably ask about; staging those answers into a diagnosis is the actual line, not asking about them; (b) whether ambiguous status changes the training prescription itself.
+- **Corroborated (explicit finding, not padding):** for question (b), a 2025 University of Exeter RCT (n=70 pre-/peri-/postmenopausal women, 12-week supervised resistance program, Medicine & Science in Sports & Exercise 2025;57(3):501-513) found strength/balance training adaptations occurred irrespective of menopausal status. **This confirms the existing "autoregulate on individual symptoms, not calendar" guidance in the 35-45/45-55 brackets already covers this adequately — no change to the underlying training philosophy was made.** Stating this plainly per instructions rather than inventing a new protocol layer where the honest finding is "the existing guidance holds up."
+- **Added (genuine refinement, not just restated):** one concrete exception where ambiguity DOES change a default. A British prospective cohort study (Mishra, Cardozo & Kuh, BJU International 2010, n=1,211, ages 48-54) found perimenopausal women — not just postmenopausal women — had significantly elevated stress urinary incontinence risk (OR 1.39) relative to the same cohort's postmenopausal members; the transition window itself, not confirmed postmenopausal status, is the higher-risk period for this specific outcome. Practical consequence flagged for `icons_template.js`'s `client.isPostmenopausal` boolean (which gates `pelvicFloorCallout()`): that boolean is a reasonable proxy once status is confirmed, but a 45-55 bracket client with ambiguous status and any menstrual/vasomotor/sleep symptoms at intake should not be treated as pelvic-floor-safe by default just because the field reads false/unset — documented as a manual-override practice (set `isPostmenopausal: true` or otherwise include the callout) rather than an engine change, since a three-state field is a code change outside this agent's scope. This citation is older (2010) than this log's usual 2025-2026 preference; included anyway because it was the clearest direct evidence found on this specific question and changes a practical default, not because recency requirements were relaxed generally.
+- Did NOT edit any client-facing document (e.g. Rena Paul's or Aimee Morris's files) — per this agent's non-negotiables, that finding is flagged back to the main thread/`icons-expert` for their intake data and documents, not applied here.
+- Sources: [Muscle Power Versus Strength as a Predictor of Mortality in Middle-Aged and Older Men and Women, Araújo/Kunutsor et al., Mayo Clinic Proceedings 2025;100(8):1319-1331](https://www.mayoclinicproceedings.org/article/S0025-6196(25)00100-4/abstract) (also available via [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0025619625001004)) · [STRAW+10 staging criteria overview](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11601186/) · [A Novel Low-Impact Resistance Exercise Program Increases Strength and Balance in Females Irrespective of Menopause Status, Medicine & Science in Sports & Exercise 2025;57(3):501-513](https://pubmed.ncbi.nlm.nih.gov/39480197/) · [University of Exeter coverage of the same study](https://news.exeter.ac.uk/faculty-of-health-and-life-sciences/first-of-its-kind-study-shows-resistance-training-can-improve-physical-function-during-menopause/) · [Mishra GD, Cardozo L, Kuh D, "Menopausal transition and the risk of urinary incontinence: results from a British prospective cohort," BJU International 2010](https://pmc.ncbi.nlm.nih.gov/articles/PMC3492747/) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/20346050/))
 
 ---
 
@@ -1398,3 +1503,38 @@ single-row day strip; table headers use pale tints with colored text. See
 breaking change to `exTable()`'s signature and to `weekOverview()`'s data
 shape — `scripts/august_olivia_3day_plan.js` was updated and regenerated
 against it as the reference implementation.*
+
+Three small, backward-compatible additions to `icons_template.js` (8/11/2026,
+from the first ICONS subagent-team retro — every other client script that
+doesn't touch these is unaffected):
+- `weakerSide(leftLST, rightLST)` — the "lower LST = weaker = leads
+  unilateral work" comparison, returning `'left'|'right'|'even'` (a <0.1 lb
+  gap reads as `'even'`, to avoid false precision on scan noise — a separate,
+  smaller threshold from the 0.5 lb Asymmetry Protocol trigger above). Every
+  client script previously hand-derived this in a comment; getting it
+  backwards was a real, documented bug (see "Common Mistakes"). Used in
+  `scripts/vinz_feller_3day_plan.js`.
+- `maleProteinTargets(client)` / `maleNutritionNote(client)` /
+  `testosteroneNote(client)` — a Male Client Programming Framework
+  equivalent to `proteinTargets()`/`nutritionBlock()`, built from that
+  section's real thresholds/citations rather than the women's tier system.
+  `maleProteinTargets()` mirrors `proteinTargets()`'s calc shape but does
+  NOT invent a fake hard age-tier boundary the way the women's function
+  does — the framework's own "trend toward the upper end of 1.6–2.2 g/kg
+  once 40+" is a soft judgment call, not a cited tier, so the function
+  returns the full range plus a narrower "working" sub-range that nudges
+  upward at 40+, not a new tier. `maleNutritionNote()` is a goldCallout-
+  equivalent built the same `labeledPara()`-wrapping way `goldCallout()` is.
+  `testosteroneNote()` mirrors the women's HRT framing (informational, never
+  diagnostic) and returns `[]` under age 40, since neither is auto-inserted
+  by `buildDocument()` the way the women's callouts are — call them
+  explicitly from a male client's script. To let a pre-built callout like
+  these splice into the declarative `baselineNotes` schema, a `baselineNotes`
+  item can now carry `{ render: [...] }` (a pre-built paragraph array)
+  instead of `{ type, label, body }` — backward compatible, existing items
+  are unaffected. Both replace ~15–20 lines each of hand-written duplicate
+  prose in `scripts/jake_poyner_3day_plan.js` (evaluated, not force-fit — see
+  that script's header comment for why the nutrition builder doesn't apply
+  to a client with no weight/Styku data on file) and
+  `scripts/vinz_feller_3day_plan.js` (applied directly — real Styku data on
+  file).

@@ -376,6 +376,20 @@ function stykuBlock(styku) {
   return els;
 }
 
+// ── ASYMMETRY — WEAKER SIDE HELPER ──────────────────────────────────────
+// Lower LST = weaker = leads unilateral work (see CLAUDE.md's Asymmetry
+// Protocol and Common Mistakes sections — getting this backwards is a
+// documented real bug, not a hypothetical one). Returns 'left'|'right'|
+// 'even'. A gap under ~0.1 lbs is treated as noise-level "even" to avoid
+// false precision on scan data — this is a small, separate comparison
+// threshold, not the 0.5 lb gap CLAUDE.md's Asymmetry Protocol uses to
+// decide whether the full protocol applies at all.
+function weakerSide(leftLST, rightLST) {
+  const gap = leftLST - rightLST;
+  if (Math.abs(gap) < 0.1) return 'even';
+  return gap < 0 ? 'left' : 'right';
+}
+
 // ── NUTRITION TARGETS (shared calc) ─────────────────────────────────────
 // Women 50+ or ALST At-Risk: 2.0–2.2 g/kg/day. Women 40+: 1.8–2.0 g/kg/day.
 // Active women general: ≥1.6 g/kg/day. Per meal: ~0.4 g/kg (leucine threshold).
@@ -446,6 +460,111 @@ function nutritionBlock(client) {
 function proteinBar(client) {
   const { proteinLow, proteinHigh } = proteinTargets(client);
   return labeledPara('Protein Reminder', `Target ${proteinLow}–${proteinHigh}g today, 4+ meals. Creatine 3–5g with a meal.`, C.gold);
+}
+
+// ── MALE PROTEIN TARGETS (shared calc) — Male Client Programming Framework
+// General resistance-trained-male range: 1.6–2.2 g/kg/day (ISSN 2017
+// position stand + Morton et al. 2018 meta-analysis — the same meta-
+// analysis already cited for the women's tiers above; its trial pool was
+// not sex-restricted). Unlike proteinTargets() above, the male framework
+// in CLAUDE.md documents no cited hard age-tier escalation — only a soft
+// judgment call to "trend toward the upper end of the range" once a
+// client is 40+. This function mirrors that deliberately: it always
+// returns the full 1.6–2.2 g/kg range (proteinLow/proteinHigh), plus a
+// narrower "working" sub-range (workingLow/workingHigh) that nudges
+// toward the top of that same range for 40+ clients — not a distinct,
+// separately-cited tier the way the women's 40+/50+ brackets are.
+//
+// `client.maleBodyFatConcern` (optional, boolean, default false/undefined —
+// backward compatible, no behavior change for a client that doesn't set
+// it): mirrors how proteinTargets() above checks `client.alstIndex` to
+// decide its own escalation. There is no ALST-based protein escalation
+// cited for men, so this instead ties to the one composition-based finding
+// CLAUDE.md's Male Client Programming Framework actually documents — an
+// ACE body-fat-% tier reading worse than a client's BMI/ALST alone would
+// suggest (e.g. Vinz Feller: "Average" per Styku's peer-comparison rank,
+// but "Obese" tier per the ACE male body-fat-% reference table). When set,
+// the working sub-range escalates to the TOP of the cited 1.6-2.2 g/kg
+// range (2.0-2.2 g/kg) rather than just nudging to 1.9 g/kg for age alone
+// — this is what reproduces Vinz's original hand-written 150-165g/day
+// target once his real weight is run through it. Still inside the cited
+// range; not a new invented threshold.
+function maleProteinTargets(client) {
+  const low = 1.6, high = 2.2;
+  const trendUpper = client.ageYears !== undefined && client.ageYears >= 40;
+  const bodyFatConcern = client.maleBodyFatConcern === true;
+  // Escalation precedence: a documented body-fat-tier concern escalates
+  // further than age alone (2.0 vs. 1.9 g/kg floor) — mirrors the women's
+  // proteinTargets() pattern of a composition-driven finding outweighing a
+  // bracket-only trend, just built on the male framework's own cited factor.
+  let workLow = low;
+  if (bodyFatConcern) workLow = 2.0;
+  else if (trendUpper) workLow = 1.9; // soft nudge toward the top of the range, not a new tier
+  const workHigh = high;
+
+  const proteinLow = Math.round(client.weightKg * low);
+  const proteinHigh = Math.round(client.weightKg * high);
+  const workingLow = Math.round(client.weightKg * workLow);
+  const workingHigh = Math.round(client.weightKg * workHigh);
+  const perMeal = Math.round(client.weightKg * 0.4);
+
+  return { low, high, proteinLow, proteinHigh, trendUpper, bodyFatConcern, workingLow, workingHigh, perMeal };
+}
+
+// ── MALE NUTRITION NOTE — protein + creatine callout ────────────────────
+// The male-framework equivalent of nutritionBlock()/proteinTargets() above,
+// built as a single goldCallout-style labeledPara rather than a full
+// section (matching how Vinz Feller's document hand-wrote this before this
+// helper existed). Not auto-inserted by buildDocument() — call explicitly
+// from a male client's script and add the returned paragraphs to
+// baselineNotes / day content as appropriate.
+function maleNutritionNote(client) {
+  const t = maleProteinTargets(client);
+  let trendClause = '';
+  if (t.bodyFatConcern && t.trendUpper) {
+    trendClause = ` given both his age bracket (40+) and his ACE body-fat-% tier finding (see the Styku interpretation note above), the working target escalates to the top of that range — roughly ${t.workingLow}–${t.workingHigh}g/day —`;
+  } else if (t.bodyFatConcern) {
+    trendClause = ` given his ACE body-fat-% tier finding (see the Styku interpretation note above), the working target escalates to the top of that range — roughly ${t.workingLow}–${t.workingHigh}g/day —`;
+  } else if (t.trendUpper) {
+    trendClause = ` trending toward the upper end of that range is reasonable given his age (40+), landing around ${t.workingLow}–${t.workingHigh}g/day as a working target,`;
+  }
+  const body = `General resistance-trained-male range is ${t.low.toFixed(1)}–${t.high.toFixed(1)} g/kg/day (ISSN 2017 position stand; Morton et al. 2018 meta-analysis — the same source already cited for the women's 1.6 g/kg tier in this system, and its trial pool was not sex-restricted). At ${client.weightKg} kg that's roughly ${t.proteinLow}–${t.proteinHigh}g/day;${trendClause} at ~${t.perMeal}g per meal minimum (leucine threshold), distributed across 4+ meals/day. Creatine: 3–5g monohydrate daily with food, no loading phase — same protocol as any resistance-trained adult, saturates in 3–4 weeks.`;
+  return labeledPara('Protein & Creatine Targets — Male Client Programming Framework', body, C.gold);
+}
+
+// ── TESTOSTERONE / ANDROPAUSE NOTE — informational, not diagnostic ──────
+// Male-framework analog to how the women's HRT/MHT section is framed
+// elsewhere in this system: never diagnostic, never presented as a
+// substitute for medical care in either direction. Per CLAUDE.md's Male
+// Client Programming Framework, this becomes a relevant conversation
+// starting in the 40-59 bracket ("Midlife Androgen Decline & Sarcopenia
+// Onset") — returns [] for a client younger than 40 (an easy no-op to
+// spread, e.g. `els.push(...testosteroneNote(client))`), rather than
+// auto-firing the way pelvicFloorCallout() does, since male-scope
+// auto-detection isn't wired into buildDocument() the way
+// client.isPostmenopausal is.
+//
+// Branches on the two separate CLAUDE.md brackets rather than lumping
+// every 40+ client into one label — "40-59 — Midlife Androgen Decline &
+// Sarcopenia Onset" and "60+ — Older Male / Bone-Density Priority" are
+// distinct brackets with distinct framing. The 60+ bracket's own bullet
+// list in CLAUDE.md is bone-density/power-training-first and carries no
+// dedicated testosterone content of its own (beyond the general
+// Testosterone & Resistance Training subsection's frail-70+ nuance), so
+// its branch here stays deliberately shorter rather than inventing detail
+// CLAUDE.md doesn't state for that bracket.
+function testosteroneNote(client) {
+  if (client.ageYears === undefined || client.ageYears < 40) return [];
+  const who = client.name || 'this client';
+  const is60Plus = client.ageYears >= 60;
+
+  if (is60Plus) {
+    const body = `At ${client.ageYears}, ${who} sits within the Male Client Programming Framework's 60+ bracket ("Older Male / Bone-Density Priority"). This bracket's programming priority is bone-density loading and power/fall-risk training, not a dedicated testosterone discussion — CLAUDE.md's Male Client Programming Framework carries thinner testosterone-specific content here than it does for the 40-59 bracket. The same posture still applies if it comes up: late-onset hypogonadism is a clinical diagnosis requiring persistent symptoms plus confirmed low morning serum testosterone on bloodwork — a referral conversation, not something inferred from a Styku scan or training performance. One nuance worth flagging for a client this age: the exercise-vs-testosterone evidence is more mixed in frail very-old men — a separate 52-week RCT in frail men 70+ with confirmed low T found testosterone + resistance training reduced fatigue versus controls, but the combined group did not significantly outperform other groups on a physical-performance test — so the "exercise matches or beats TRT alone" finding below should not be over-generalized to a frail client without that caveat.`;
+    return labeledPara('Testosterone & Training — Informational Note, Not Diagnostic', body, C.teal);
+  }
+
+  const body = `At ${client.ageYears}, ${who} sits within the Male Client Programming Framework's 40-59 bracket ("Midlife Androgen Decline & Sarcopenia Onset"), where late-onset hypogonadism / TRT can become a relevant screening conversation IF he raises it — not something inferred from a Styku scan or training performance, and not raised unprompted. Late-onset hypogonadism is a clinical diagnosis requiring both persistent symptoms and confirmed low morning serum testosterone on bloodwork — a referral conversation, not a training assessment. Worth knowing: a 2024 study (Hildreth et al., Sports Medicine – Open) of men 50-70 with low-normal testosterone found structured exercise training matched or outperformed testosterone treatment alone for aerobic fitness, strength, and fat mass, with no additional benefit from adding testosterone on top of training. On or off TRT, the resistance training in this program is doing real, evidenced work for his strength, fitness, and body composition — this is not a substitute for medical care in either direction.`;
+  return labeledPara('Testosterone & Training — Informational Note, Not Diagnostic', body, C.teal);
 }
 
 // ── PELVIC FLOOR CALLOUT ──────────────────────────────────────────────
@@ -655,6 +774,13 @@ async function buildDocument(data) {
       clinical: clinicalFlag, watch: watchFlag, clear: clearFlag,
     };
     data.baselineNotes.forEach((n) => {
+      // n.render: an already-built paragraph array (e.g. the output of
+      // maleNutritionNote()/testosteroneNote(), which — like goldCallout/
+      // tealCallout — bake their own label/color internally) can be
+      // spliced in directly instead of going through the type/label/body
+      // dispatch below. Backward compatible: existing {type,label,body}
+      // items are unaffected.
+      if (n.render) { children.push(...n.render); return; }
       const fn = fnMap[n.type] || goldCallout;
       children.push(...fn(n.label, n.body));
     });
@@ -836,6 +962,8 @@ module.exports = {
   C,
   coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock,
   nutritionBlock, proteinTargets, proteinBar, pelvicFloorCallout,
+  weakerSide,
+  maleProteinTargets, maleNutritionNote, testosteroneNote,
   dayHeader, exTable, weeklySummary, progressionBlock, milestoneTracker,
   labeledPara,
   goldCallout, greenCallout, redCallout, tealCallout, blueCallout, purpleCallout,

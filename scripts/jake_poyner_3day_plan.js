@@ -51,6 +51,24 @@
  * battery (no 1RM/5RM lift PRs), only force-plate/dynamometer assessment
  * data, which is captured in baselineNotes instead (same pattern as
  * Nancy Avitable / Petra, whose sources also had no lift-testing battery).
+ *
+ * REVISION (8/11/2026, same day) — EVALUATED AGAINST THE NEW ENGINE
+ * HELPERS (weakerSide/maleNutritionNote/testosteroneNote, added this same
+ * day per the subagent-team retro), NEITHER FORCE-FIT IN:
+ *   - maleNutritionNote()/maleProteinTargets() require client.weightKg,
+ *     which Jake has none of on file (`includeNutritionBlock: false`, no
+ *     Styku scan) — his nutrition targets come from the source document's
+ *     own force-plate-appropriate research (see the Evidence Base note
+ *     below) instead. Nothing to calculate from, so nothing was forced in.
+ *   - weakerSide() is built for a single-instant "lower LST = weaker"
+ *     magnitude comparison (Styku segmental lean-soft-tissue data). Jake's
+ *     asymmetry findings are force-plate/dynamometer % asymmetry and
+ *     time-to-peak-force data — a genuinely different shape (direction
+ *     flips between test sessions on hip abduction; time-to-peak-force is
+ *     inverted from LST's convention, since a HIGHER time means weaker/
+ *     slower, not a lower one) — so reusing weakerSide() here would either
+ *     require negating inputs against its documented convention or produce
+ *     an inverted (wrong) answer. Left as narrative findings instead.
  */
 
 const fs = require('fs');
