@@ -271,7 +271,7 @@ const days = [
     intensity: 70,
     title: 'DAY 2 — UPPER BODY & SHOULDER CARE',
     subtitle: 'Internal Rotation Strengthening Before Pressing + Pull Strength',
-    descriptor: 'SHOULDER COROLLARY PRIORITY · MODERATE STRENGTH · VOLUME BUILD',
+    descriptor: 'SHOULDER CARE PRIORITY · MODERATE STRENGTH · VOLUME BUILD',
     intensityLabel: '70% Day',
     intensityPara: 'Moderate strength day. Control precedes power: the shoulder internal-rotation corrective block below is non-negotiable before any overhead or compound pressing — Johnna\'s frozen shoulder history means today\'s work builds real strength within her current, respected range of motion rather than chasing depth.',
     warmUp: '5 min bike, band pull-apart x15, scapular wall slide x10, arm circles x10/direction (pain-free range only)',
@@ -306,7 +306,7 @@ const days = [
         intro: 'Rowing volume balances the pressing work above and builds scapular stability around the healing shoulder.',
         exercises: [
           { name: 'Bent-Over DB Row', sets: '3', reps: '10', load: '20 lbs/hand', tempo: '2-1-2', rest: '75s', cue: 'Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
-          { name: 'Face Pull (Band or Cable)', sets: '3', reps: '15', load: 'light band', tempo: '2-1-2', rest: '45s', cue: 'Pull to face, elbows at ear height — light range only, stay pain-free.' },
+          { name: 'Face Pull (Band or Cable)', sets: '3', reps: '15', load: 'light band', tempo: '2-1-2', rest: '45s', cue: 'Pull to face, elbows high. Light, pain-free range only.' },
         ],
       },
       {
