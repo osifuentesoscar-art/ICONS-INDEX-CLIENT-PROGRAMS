@@ -35,11 +35,13 @@ This file        → /mnt/user-data/outputs/CLAUDE.md
 
 **In this git repo, that maps to:**
 ```
-Source scripts   → scripts/
-Final outputs    → clients/<client_name>/
-Uploaded files   → (attached inline to the conversation)
-This file        → CLAUDE.md at repo root
-System prompt    → docs/ICONS_System_Prompt.md (paste-into-Projects reference copy)
+Source scripts    → scripts/
+Client outputs    → clients/<client_name>/
+Trainer programs   → trainer_education/
+System documents  → system_documents/ (added 8/12/2026 — see "System Documents" below)
+Uploaded files    → (attached inline to the conversation)
+This file         → CLAUDE.md at repo root
+System prompt     → docs/ICONS_System_Prompt.md (paste-into-Projects reference copy)
 ```
 
 **Build pattern — no exceptions:**
@@ -1325,12 +1327,24 @@ Daisy Dominguez → Shoulder rehab
 
 ### System Documents
 ```
-/mnt/user-data/outputs/ICONS_Baseline_Testing_Protocol.pdf    — 5-page protocol
-/mnt/user-data/outputs/ICONS_Baseline_Sheets.pdf              — 5 athletes
-/mnt/user-data/outputs/ICONS_Trainer_Education_Deck_Full.pptx — 16 slides
-/mnt/user-data/outputs/BraceLife_ICONS_Trainer_Staff_Guide.docx
-/mnt/user-data/outputs/BraceLife_Client_Modification_Briefing_Template.docx
+system_documents/ICONS_Baseline_Sheets.docx                   — 5 athletes (migrated 8/12/2026 — see below)
+/mnt/user-data/outputs/ICONS_Baseline_Testing_Protocol.pdf    — 5-page protocol (not yet migrated)
+/mnt/user-data/outputs/ICONS_Trainer_Education_Deck_Full.pptx — 16 slides (not yet migrated)
+/mnt/user-data/outputs/BraceLife_ICONS_Trainer_Staff_Guide.docx (not yet migrated)
+/mnt/user-data/outputs/BraceLife_Client_Modification_Briefing_Template.docx (not yet migrated)
 ```
+`system_documents/` (new folder, 8/12/2026) is this section's home in the repo, mirroring how `trainer_education/` maps to the "Trainer Development" sections above — for reference/operational documents that are neither a `clients/<name>/` deliverable nor a self-administered trainer program. The remaining 4 items above are still pre-repo-only (`/mnt/user-data/outputs/` paths, no source script in this repo) — migrate them the same way if/when they resurface, per the Siobhan Hansen and Baseline Sheets precedent.
+
+**ICONS Baseline Sheets — migration detail (8/12/2026).** Xolokan supplied the actual legacy PDF (5 athletes: Becca, Brodie, Oscar, Jah, Nick — strength-testing reference sheets, no Styku/clinical data, not part of the women's client roster). Built via `scripts/icons_baseline_sheets.js`, composing a `Document` directly from the `docx` package (this content's five independent per-athlete tables don't fit `buildDocument()`'s single-client `baselines[]`/`days[]` schema) while reusing the engine's exact page chrome and content primitives rather than hand-recreating any of it.
+
+**Deliberate style deviation, same pattern as the Trainer Development Program migration**: the source PDF used a legacy visual language — solid black header bands, bright blue/orange accents keyed to a level badge, and bordered/shaded callout boxes for the coach note / "not yet assessed" / 4-week-target sections. This predates and was explicitly superseded by this system's confirmed house visual language (no boxed callouts — see "Visual language — confirmed from reference document" above). Rebuilt using `goldCallout()` (coach note), `watchFlag()` (not yet assessed), `greenCallout()` (4-week targets), and `baselinesTable()`/`weeklySummary()` for the two tabular sections — all data preserved verbatim, only the visual treatment changed. Each athlete's level tag (INTERMEDIATE / INTERMEDIATE-ADVANCED / ADVANCED-ELITE) isn't a %-graded value, so it's carried via the existing non-%-graded `badge: {label, sub}` override pattern (same mechanism as Aimee Morris's Day A/B and the Baseline-to-Rescan program's Day 0/Day 4) rather than forced into the 60/70/80/90%/AR intensity system; tier color mapped onto the house accent system (INTERMEDIATE→teal, INTERMEDIATE/ADVANCED→green, ADVANCED/ELITE→red) rather than the source's blue/orange.
+
+Two small backward-compatible engine additions were needed and are now available to any future script:
+- `baselinesTable(rows, targetHeaderLabelOrHeaders)` — 2nd param now also accepts a full 4-string header array (not just an override of the 4th "target" column) for reusing this table schema outside the LIFT/BASELINE/TESTED-AT/TARGET shape (here: MOVEMENT/BASELINE/FORMAT/COACHING NOTE). Existing single-string callers unaffected — verified via full regeneration-and-diff against 3 existing client scripts.
+- `weeklySummary(rows, headerLabels)` — same idea, optional 5-string header override (here: MOVEMENT/WK 1/WK 2/WK 3/WK 4 for a hand-tracked session log) defaulting to the original DAY/INTENSITY/FOCUS/KEY LIFTS/PROGRESSION TARGETS headers when omitted.
+- `PAGE_W, PAGE_H, MARGIN, TW, buildHeader, buildFooter` added to `module.exports` — these already existed internally but weren't exposed, so a script composing its own `Document` outside `buildDocument()` had no way to reuse the exact branded running header/footer and page setup.
+
+No clinical framework applies to this document (no Styku/ALST/VFA/age/sex data on file for any of the 5 athletes) and neither the Antagonist Rotation Rule nor the "ICONS Index Full-Spectrum Progression Standard — Women 40–55" apply — there are no sequenced Compound-zone training blocks here, just a fixed testing-movement list per athlete, and confirmed correctly absent from the delivered document. Independently audited via `icons-doc-auditor`: all 5 athletes' data verified 100% verbatim against the source PDF (not sampled — every movement/baseline/format/coaching-note/not-yet-assessed/target value checked), visual-language compliance confirmed via direct XML inspection (zero legacy box/border artifacts, only house palette colors present), and the engine changes empirically verified non-breaking via regenerate-and-diff against 3 existing client documents.
 
 ### Trainer Development Modules — self-paced HTML, distinct from the PPTX/docx system documents above
 ```
@@ -1777,9 +1791,9 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 | `siobhan_icons_report_v3.js` | Siobhan assessment report | Siobhan_Hansen_ICONS_Report_v3.docx |
 | `siobhan_3day_plan_v2.py` | Siobhan 3-day PDF | Siobhan_Hansen_3Day_Training_Plan.pdf |
 | `sarah_plan_v2.js` | Sarah 2-day plan | Sarah_Training_Plan_Client_Version.docx |
-| `icons_baseline_protocol.py` | 5-page baseline PDF | ICONS_Baseline_Testing_Protocol.pdf |
-| `baseline_sheets.py` | Athlete baseline sheets | ICONS_Baseline_Sheets.pdf |
-| `icons_trainer_deck.js` | 16-slide trainer deck | ICONS_Trainer_Education_Deck_Full.pptx |
+| `icons_baseline_protocol.py` | 5-page baseline PDF | ICONS_Baseline_Testing_Protocol.pdf (not yet migrated) |
+| `icons_baseline_sheets.js` | Athlete baseline sheets (5 athletes) | system_documents/ICONS_Baseline_Sheets.docx — migrated 8/12/2026, supersedes the old `baseline_sheets.py`/.pdf pre-repo pair |
+| `icons_trainer_deck.js` | 16-slide trainer deck | ICONS_Trainer_Education_Deck_Full.pptx (not yet migrated) |
 
 ---
 

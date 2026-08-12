@@ -318,9 +318,16 @@ function weekOverview(days) {
 // targetHeaderLabel defaults to the Kelly Mulroy reference's "8-WEEK TARGET"
 // — override for clients on a different progression cadence (e.g. Aimee's
 // 4-week block: "TRAINING LOAD · 4-WEEK TARGET").
-function baselinesTable(rows, targetHeaderLabel = '8-WEEK TARGET') {
+// Second param accepts either the historical single-string override (only
+// the 4th/target header changes, "LIFT"/"BASELINE"/"TESTED AT" stay fixed —
+// existing behavior, unchanged) or a full 4-string array to relabel every
+// column (e.g. ['MOVEMENT','BASELINE','FORMAT','COACHING NOTE'] for a
+// non-client-plan reuse of this schema — see ICONS Baseline Sheets).
+function baselinesTable(rows, targetHeaderLabelOrHeaders = '8-WEEK TARGET') {
   const colWidths = [2600, 1600, 1400, 4840];
-  const headerLabels = ['LIFT', 'BASELINE', 'TESTED AT', targetHeaderLabel];
+  const headerLabels = Array.isArray(targetHeaderLabelOrHeaders)
+    ? targetHeaderLabelOrHeaders
+    : ['LIFT', 'BASELINE', 'TESTED AT', targetHeaderLabelOrHeaders];
   const header = new TableRow({
     children: headerLabels.map((h, i) => cell(
       [para([txt(h, { bold: true, size: 14, color: C.goldDeep })], { alignment: i === 0 || i === 3 ? AlignmentType.LEFT : AlignmentType.CENTER })],
@@ -676,9 +683,13 @@ function exTable(exercises, colorKey) {
 }
 
 // ── WEEKLY SUMMARY ─────────────────────────────────────────────────────
-function weeklySummary(rows) {
+// headerLabels: optional 5-string override of the default DAY/INTENSITY/
+// FOCUS/KEY LIFTS/PROGRESSION TARGETS headers — backward compatible, only
+// used when a caller reuses this table's schema for non-weekly-summary
+// content (e.g. a MOVEMENT/WK1/WK2/WK3/WK4 session log).
+function weeklySummary(rows, headerLabels = ['DAY', 'INTENSITY', 'FOCUS', 'KEY LIFTS', 'PROGRESSION TARGETS']) {
   const colWidths = [1200, 1000, 2040, 2200, 4000];
-  const headers = ['DAY', 'INTENSITY', 'FOCUS', 'KEY LIFTS', 'PROGRESSION TARGETS'];
+  const headers = headerLabels;
   const header = new TableRow({
     children: headers.map((h, i) => cell(
       [para([txt(h, { bold: true, size: 14, color: C.goldDeep })], { alignment: AlignmentType.CENTER })],
@@ -967,6 +978,8 @@ module.exports = {
   buildDocument,
   buildImprovementDoc, comparisonTable,
   C,
+  PAGE_W, PAGE_H, MARGIN, TW,
+  buildHeader, buildFooter,
   coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock,
   nutritionBlock, proteinTargets, proteinBar, pelvicFloorCallout,
   weakerSide,
