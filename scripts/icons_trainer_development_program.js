@@ -135,7 +135,7 @@ const days = [
           { name: 'Weighted Pull-Up (or Lat Pulldown)', insight: 'Trainer Insight: pull-up is the best single indicator of relative pulling strength', sets: '4', reps: '4–6', load: 'BW +10–20 lbs', tempo: '3-1-2', rest: '2 min', cue: 'Full dead hang. Chin over bar. 3-sec descent. Log weight + reps.', rirNote: '1–2 RIR' },
           { name: 'Barbell or DB Bent-Over Row', sets: '4', reps: '5–7', load: '80% Est 1RM', tempo: '3-1-2', rest: '90s', cue: '45° hinge. Drive elbows to hips. 2-sec hold at top. Full stretch at bottom.', rirNote: '1 RIR on last set' },
           { name: 'Single-Arm DB Row (Heavy)', insight: 'Trainer Insight: log left vs right separately — you may find your own asymmetry', sets: '3', reps: '8–10', load: 'Heavy — 8RM', tempo: '3-1-2', rest: '60s', cue: 'Chest on bench. Full stretch at bottom — blade opens. Note L vs R.', rirNote: '2 RIR' },
-          { name: 'Face Pull (Cable or Band)', insight: 'Trainer Insight: this is the posture corrective you give every client every session', sets: '3', reps: '15–20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face. Elbows at ear height. External rotation at end. Rear delt.' },
+          { name: 'Hanging Knee Tuck', sets: '3', reps: '10–12', load: 'Bodyweight', tempo: '2-0-2', rest: '45s', cue: 'Hang from bar. Pull knees to chest. Lower controlled. No swinging.' },
         ],
       },
       {
@@ -144,7 +144,7 @@ const days = [
         exercises: [
           { name: 'Elbow Plank (Loaded)', insight: 'Trainer Insight: if a client can hold 60s BW easily — load it. Same principle applies here.', sets: '3', reps: '60–90s', load: '25 lb plate', tempo: 'Hold', rest: '90s', cue: 'Plate on mid-back. Full brace. Exhale to set. Glutes squeezed.' },
           { name: 'Pallof Press (Cable)', insight: 'Trainer Insight: this fires the same core pattern as a heavy carry — pre-teaches it', sets: '3', reps: '12 ea side', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Press straight out against band tension. Resist the twist. Anti-rotation.' },
-          { name: 'Hanging Knee Tuck', sets: '3', reps: '10–12', load: 'Bodyweight', tempo: '2-0-2', rest: '45s', cue: 'Hang from bar. Pull knees to chest. Lower controlled. No swinging.' },
+          { name: 'Face Pull (Cable or Band)', insight: 'Trainer Insight: this is the posture corrective you give every client every session', sets: '3', reps: '15–20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face. Elbows at ear height. External rotation at end. Rear delt.' },
         ],
       },
     ],
@@ -167,7 +167,7 @@ const days = [
         exercises: [
           { name: 'Hex Bar Deadlift — Work Sets', insight: 'Trainer Insight: 3-sec eccentric is non-negotiable. This is where bone density is stimulated. Every client gets this.', sets: '5', reps: '3–5', load: '87–92% Est 1RM', tempo: '3-1-1', rest: '2–3 min', cue: 'Neutral spine. Hip-width stance. Drive floor away. Lock hips + knees at top.', rirNote: '1 RIR on sets 1–4 · 0–1 RIR on set 5' },
           { name: 'Romanian Deadlift (Barbell)', insight: 'Trainer Insight: RDL teaches the hip hinge clients struggle with most', sets: '3', reps: '6–8', load: '70% 1RM', tempo: '3-1-1', rest: '90s', cue: 'Hips back to wall. Hamstring stretch at bottom. Bar close to legs.', rirNote: '2 RIR' },
-          { name: 'Single-Leg RDL (Heavy DB)', insight: 'Trainer Insight: log left vs right — find your own asymmetry before coaching others on theirs', sets: '3', reps: '6–8 ea', load: 'Heavy — challenging', tempo: '3-1-1', rest: '75s', cue: 'Soft knee. Hips square. DB tracks the standing leg. Control the balance.', rirNote: '2 RIR' },
+          { name: 'Lateral Band Walk (Loaded)', insight: 'Trainer Insight: glute medius weakness = knee valgus = ACL risk. Every client gets this.', sets: '3', reps: '15 ea way', load: 'Heavy band', tempo: 'Controlled', rest: '30s', cue: 'Mini-band above knees. Squat stance. Steps lateral, maintain tension.' },
         ],
       },
       {
@@ -177,7 +177,7 @@ const days = [
           { name: 'Trap Bar Jump (or Box Jump)', insight: "Trainer Insight: rate of force development declines fastest with age. This is why it's programmed. Not optional.", sets: '4', reps: '4–5', load: '30–40% 1RM (fast)', tempo: 'Explosive', rest: '90s', cue: 'Fast intent. Triple extension: ankle, knee, hip. Land soft — absorb and reset.' },
           { name: 'Barbell Hip Thrust (Heavy)', insight: 'Trainer Insight: hip thrust at this load is the primary glute strength stimulus — not squats', sets: '4', reps: '5–6', load: '90% of your baseline', tempo: '2-2-1', rest: '90s', cue: 'Upper back on bench. Drive through heels. 2-sec hold. Exhale on drive.', rirNote: '1 RIR on last set' },
           { name: 'Weighted Reverse Lunge', insight: 'Trainer Insight: log L vs R. Your weaker leg will reveal itself here.', sets: '3', reps: '8–10 ea', load: 'Heavy — challenging', tempo: '2-1-1', rest: '60s', cue: 'Step back, hover rear knee. Drive through front heel. Full hip extension.', rirNote: '2 RIR' },
-          { name: 'Lateral Band Walk (Loaded)', insight: 'Trainer Insight: glute medius weakness = knee valgus = ACL risk. Every client gets this.', sets: '3', reps: '15 ea way', load: 'Heavy band', tempo: 'Controlled', rest: '30s', cue: 'Mini-band above knees. Squat stance. Steps lateral, maintain tension.' },
+          { name: 'Single-Leg RDL (Heavy DB)', insight: 'Trainer Insight: log left vs right — find your own asymmetry before coaching others on theirs', sets: '3', reps: '6–8 ea', load: 'Heavy — challenging', tempo: '3-1-1', rest: '75s', cue: 'Soft knee. Hips square. DB tracks the standing leg. Control the balance.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -186,7 +186,7 @@ const days = [
         exercises: [
           { name: 'Farmers Carry (Trap Bar or DB) — Heavy', insight: 'Trainer Insight: if a 64-year-old client can carry 50 lbs/hand for 30 yards, you must carry more.', sets: '5', reps: '35–40 yds', load: 'BW per hand (target)', tempo: 'Controlled', rest: '90s', cue: 'Shoulders packed. Chest tall. Neutral neck. Grip is the limiter — that is the point.' },
           { name: 'Suitcase Carry — Single Arm (Heavy)', insight: 'Trainer Insight: the lateral lean reveals hip and core asymmetry. Your clients’ asymmetries live here.', sets: '3', reps: '30 yds ea', load: 'Heavy — reveals asymmetry', tempo: 'Controlled', rest: '60s', cue: 'One arm. Spine vertical. Resist the lateral lean. Log left vs right.' },
-          { name: 'Farmer Carry — Sprint (Light, Fast)', insight: 'Trainer Insight: velocity training at sub-maximal loads builds fast-twitch output', sets: '3', reps: '20 yds', load: '50% of heavy carry', tempo: 'Fast walk / sprint', rest: '60s', cue: 'Same posture, faster pace. Power and speed variant of the carry pattern.' },
+          { name: 'Medicine Ball Slam', insight: 'Trainer Insight: this is how you develop RFD safely across all ages and fitness levels', sets: '3', reps: '8–10', load: '12–16 lbs', tempo: 'Max intent', rest: '60s', cue: 'Full overhead raise. Slam with max force. Full-body power expression.' },
         ],
       },
       {
@@ -194,7 +194,7 @@ const days = [
         intro: "The finisher is the highest-output, shortest-duration block. It tests and develops athletic capacity — the quality most clients fear they've lost. When you can perform this finisher, you can coach it. Record your score. Beat it next week. This is the same competitive framing you will use with clients.",
         exercises: [
           { name: 'Sled Push (Speed Focus)', insight: 'Trainer Insight: speed-load sled vs max-load sled = different stimulus. This is velocity training.', sets: '5', reps: '20 yds', load: '60–80% of max sled', tempo: 'Explosive', rest: '90s', cue: 'Low drive angle. Full hip extension each stride. Drive through the floor.' },
-          { name: 'Medicine Ball Slam', insight: 'Trainer Insight: this is how you develop RFD safely across all ages and fitness levels', sets: '3', reps: '8–10', load: '12–16 lbs', tempo: 'Max intent', rest: '60s', cue: 'Full overhead raise. Slam with max force. Full-body power expression.' },
+          { name: 'Farmer Carry — Sprint (Light, Fast)', insight: 'Trainer Insight: velocity training at sub-maximal loads builds fast-twitch output', sets: '3', reps: '20 yds', load: '50% of heavy carry', tempo: 'Fast walk / sprint', rest: '60s', cue: 'Same posture, faster pace. Power and speed variant of the carry pattern.' },
           { name: 'AMRAP — 10 Minutes (Record Rounds)', insight: 'Trainer Insight: record rounds completed. This is your Week 1 benchmark. Beat it every week. You will teach clients to track this same way.', sets: '10 min', reps: 'Max rounds', load: 'See cue', tempo: '—', rest: '—', cue: '5 pull-ups + 10 KB swings (32 kg) + 15 yd sprint. Count and record total rounds.' },
         ],
       },
@@ -228,7 +228,7 @@ const days = [
         exercises: [
           { name: 'Back Squat (Bilateral)', insight: 'Trainer Insight: 75% at 8–10 reps is the volume-accumulation standard. Notice how different this feels from 90% × 3–5.', sets: '4', reps: '8–10', load: '75% Est 1RM', tempo: '3-1-1', rest: '90s', cue: 'Brace before descent. Sit between knees — not down. Drive through full foot.', rirNote: '2 RIR on all sets' },
           { name: 'Goblet Squat (Technique + Depth)', insight: 'Trainer Insight: goblet squat teaches clients to sit into the bottom position. Use this as a teaching tool.', sets: '3', reps: '12–15', load: 'Moderate — technique focus', tempo: '3-2-1', rest: '60s', cue: '2-sec pause at bottom. Knees out. Heels down. Chest tall. Elbows push knees.', rirNote: '3 RIR — technique priority' },
-          { name: 'Leg Press (Bilateral — Foot Width Variation)', insight: 'Trainer Insight: foot position variation teaches clients that stance is individual — not universal.', sets: '3', reps: '12–15', load: 'Moderate', tempo: '3-1-1', rest: '60s', cue: 'Try two foot positions: shoulder-width and wide-stance. Note which feels stronger.', rirNote: '2 RIR' },
+          { name: 'Lying or Seated Hamstring Curl (Machine)', insight: "Trainer Insight: 3-sec eccentric on the curl is highest mechanical tension point. Don't let clients rush this.", sets: '3', reps: '12–15', load: 'Light-Moderate', tempo: '2-1-3', rest: '45s', cue: '3-sec eccentric. Hips flat on pad. Full extension between reps. Hamstring isolation.' },
         ],
       },
       {
@@ -237,7 +237,7 @@ const days = [
         exercises: [
           { name: 'Barbell Hip Thrust (Bilateral)', insight: 'Trainer Insight: hip thrust at this load is the primary glute hypertrophy stimulus for the week. The 2-sec hold is the contraction — not a pause.', sets: '4', reps: '10–12', load: '80% of Day 2 hip thrust load', tempo: '2-2-1', rest: '75s', cue: 'Upper back on bench. Drive through heels. 2-sec hold. Exhale on the drive.', rirNote: '2 RIR on all sets' },
           { name: 'Romanian Deadlift (Bilateral — Both Legs)', insight: 'Trainer Insight: bilateral RDL after hip thrust = full posterior chain volume. This is the pairing.', sets: '3', reps: '10–12', load: '70% 1RM', tempo: '3-1-1', rest: '60s', cue: 'Hips back. Hamstring loaded to full stretch. Bar or DBs close to legs throughout.', rirNote: '2 RIR' },
-          { name: 'Lying or Seated Hamstring Curl (Machine)', insight: "Trainer Insight: 3-sec eccentric on the curl is highest mechanical tension point. Don't let clients rush this.", sets: '3', reps: '12–15', load: 'Light-Moderate', tempo: '2-1-3', rest: '45s', cue: '3-sec eccentric. Hips flat on pad. Full extension between reps. Hamstring isolation.' },
+          { name: 'Leg Press (Bilateral — Foot Width Variation)', insight: 'Trainer Insight: foot position variation teaches clients that stance is individual — not universal.', sets: '3', reps: '12–15', load: 'Moderate', tempo: '3-1-1', rest: '60s', cue: 'Try two foot positions: shoulder-width and wide-stance. Note which feels stronger.', rirNote: '2 RIR' },
           { name: 'Glute Bridge — Feet Elevated (Bodyweight Volume)', insight: 'Trainer Insight: this high-rep glute bridge volume at session end is exactly what you give clients as a finisher when they need glute activation without spinal load.', sets: '2', reps: '20–25', load: 'Bodyweight', tempo: '2-2-1', rest: '30s', cue: 'Heels on bench. 2-sec hold at top. Max squeeze. High-rep glute finisher.' },
         ],
       },
