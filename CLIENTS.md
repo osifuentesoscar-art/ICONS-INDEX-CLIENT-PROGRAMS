@@ -165,6 +165,7 @@ A **⭐ Priority Client** designation (first used 8/11/2026, for August Olivia, 
 - Flags: Knee valgus (squat), hip hinge/adductor weakness — banded squat, TKE, and Copenhagen plank run every session
 - Program: 5-day progressive intensity build (60% / 70% / 80% / 90% / Active Recovery)
 - Baselines: Deadlift 55–65 lbs, Squat 25 lbs, OH Press 25 lbs ×3RM, Farmer Carry 35 lbs/hand, Push-Up 15 assisted → 15 unassisted target, Pull-Up Level 9/12 assisted → Level 6 target
+- **Updated 8/12/2026** (retroactive Antagonist Rotation Rule audit): Day 1 Block B ("Primary Squat Strength") had three consecutive knee-dominant exercises (Goblet Squat → Box Squat → Step-Up). Swapped Step-Up with Single-Leg Glute Bridge from Block C (an Isolated-zone corrective block, exempt from the rule regardless of its own pattern concentration) — Block B is now Goblet Squat → Box Squat → Single-Leg Glute Bridge (compliant), Block C absorbed Step-Up in the same slot. `icons-doc-auditor` independently re-verified the swap at the text, run-formatting, shading, and column-width level against the pre-fix version — confirmed exactly this one row-content swap, nothing else changed.
 
 ### Aimee Morris (renamed from "Aimee" 8/10/2026 — full name confirmed via SOAP note, see below)
 - **Program:** 2-Day Full Gym Training Plan (`.docx`)
@@ -188,6 +189,7 @@ A **⭐ Priority Client** designation (first used 8/11/2026, for August Olivia, 
 - No Styku scan/weight/age in source — force-plate/dynamometer assessment data (grip squeeze, floor pull, hip extension A/B asymmetry) captured in `baselineNotes` instead; `includeNutritionBlock` explicitly false
 - Day intensities interpretively mapped from the source's non-standard, blank-badge color key onto the standard framework: Day 1 Squat/Hinge/Unilateral/Kettlebell = 80% Gold, Day 2 Push/Pull/Carry/Bench = 70% Green, Day 3 Kettlebell/Medicine Ball/Compound Clusters = 90% Red
 - Corrected an apparent source typo in Day 1's warm-up ("5–80% grade" treadmill incline, physically implausible) to "5–8% grade"
+- **Updated 8/12/2026** (retroactive Antagonist Rotation Rule audit): Day 3 Block A ("KB Power Block") had three consecutive hip-hinge/explosive-hip-extension exercises (KB Swing Two-Hand → KB Swing Single-Arm → KB Clean) before KB Goblet Squat finally broke the pattern in 4th position. Reordered to KB Swing (Two-Hand) → KB Swing (Single-Arm) → KB Goblet Squat → KB Clean (hinge/hinge/squat/hinge — compliant, no 3 consecutive same-pattern). `icons-doc-auditor` independently regenerated the docx from the script and confirmed only these two exercises' positions swapped, all sets/reps/loads/cues unchanged.
 
 ### Nancy Avitable
 - **Program:** 3-Day Training Plan (`.docx`)

@@ -262,8 +262,8 @@ const days = [
         exercises: [
           { name: 'KB Swing (Two-Hand)', sets: '5', reps: '10', load: 'Moderate KB', tempo: 'Explosive', rest: '60s', cue: 'Hip hinge back, explosive hip snap forward. The KB floats to shoulder height from hip drive alone. This is the foundational power exercise in this program.' },
           { name: 'KB Swing (Single-Arm, alternating)', sets: '3', reps: '8 ea hand', load: 'Moderate KB', tempo: 'Explosive', rest: '60s', cue: 'Same mechanics as two-hand. Release and switch at the top. Challenges rotational core stability. Build from two-hand base before loading this.' },
-          { name: 'KB Clean (to Rack Position)', sets: '3', reps: '6 ea side', load: 'Moderate KB', tempo: 'Explosive', rest: '75s', cue: 'Hinge back, pull KB up close to body, punch elbow under to rack at shoulder. Explosive pull from the floor. Builds power and shoulder stability simultaneously.' },
           { name: 'KB Goblet Squat (Pulse at Bottom)', sets: '3', reps: '10 + 5 pulse', load: 'Moderate KB', tempo: '3-1-1+pulse', rest: '60s', cue: 'Full squat, then pulse 3 inches at bottom for 5 reps. The pulse creates time under tension at the most mechanically demanding position.' },
+          { name: 'KB Clean (to Rack Position)', sets: '3', reps: '6 ea side', load: 'Moderate KB', tempo: 'Explosive', rest: '75s', cue: 'Hinge back, pull KB up close to body, punch elbow under to rack at shoulder. Explosive pull from the floor. Builds power and shoulder stability simultaneously.' },
         ],
       },
       {
