@@ -558,6 +558,195 @@ Status: this replaces the earlier "general good practice, not evidence-
   training is now a cited protocol, not just a reasonable instinct.
 ```
 
+### Cardiovascular / Cardiac Considerations in Resistance Training (2023-2026 evidence)
+```
+Why this section exists: every other clinical area this file handles
+  (pelvic floor, GLP-1, HRT, ACL/knee valgus, bone loading) has a dedicated
+  cited subsection — cardiac considerations did not, despite this
+  population carrying materially elevated cardiovascular risk through and
+  after the menopause transition, and despite a live client (Kayma
+  Liburd — cardiac flag, hard 160bpm ceiling, physician-coordinated,
+  added 8/12/2026) already needing this judgment call made in practice
+  ahead of any citation existing for it. This section is that citation,
+  added retroactively; nothing in Kayma Liburd's document was edited as
+  part of this pass — see the direct assessment of her build below, which
+  is a flag back to the main thread/icons-expert, not an edit.
+Risk context: cardiovascular disease is the leading cause of death in
+  women, and CVD risk approximately DOUBLES in the 10 years after
+  menopause — independent of chronological/ovarian aging, the menopause
+  TRANSITION itself (not just confirmed postmenopausal status) is already
+  a window of rising risk (Anagnostis P, El Khoudary SR, et al.,
+  "Menopause Transition and Cardiovascular Disease Risk: Implications for
+  Timing of Early Prevention," AHA Scientific Statement, Circulation
+  2020;142(25):e506-e532). This mirrors the same "the transition itself
+  matters, not just confirmed postmenopausal status" framing this file
+  already uses for pelvic floor risk in the Perimenopausal Status section
+  above — cardiac risk belongs in that same category, not treated as an
+  unrelated one-off.
+Resistance training is broadly SAFE in cardiac populations, including at
+  meaningful intensity: primary source "Resistance Exercise Training in
+  Individuals With and Without Cardiovascular Disease: 2023 Update," AHA
+  Scientific Statement, Circulation 2023;149(3):e217-e231 (update to
+  AHA's 2007 statement). Contraindications mirror the ones already used
+  for the aerobic/cardiac-rehab component — unstable angina, advanced
+  arrhythmias, decompensated heart failure, active thromboembolism.
+  Hypertrophic cardiomyopathy is a named exception where RT is generally
+  advised against, though low-intensity machine-based RT may be
+  permissible per a separate AHA statement on genetic CV disease in young
+  patients. Progression: initial intensity 40-60% 1RM, advancing sets/
+  frequency/load via a "2-for-2" rule; after ~6 months of regular
+  training, a client free of contraindications can move to >80% 1RM with
+  longer rest — i.e. heavy compound work is NOT categorically off-limits
+  for a stable, cleared cardiac client. Even ~20% 1RM produces real
+  strength benefit post-acute-coronary-event, useful context for a client
+  early in rehab rather than an established trainee.
+  Corroboration (ACSM 2026 — the same guideline update already cited
+  elsewhere in this file for the RIR model): safety data spanning >38,000
+  participants shows resistance training does NOT increase serious
+  adverse event risk, including in adults with cardiovascular disease,
+  when progressed appropriately — and in the coronary-heart-disease-
+  specific data reviewed, nonfatal cardiovascular complications occurred
+  during AEROBIC training, not resistance training. Worth stating plainly
+  to a trainer or client who assumes heavy lifting is the riskier half of
+  a cardiac-flagged client's session — the citation base places more of
+  the observed risk on the conditioning/aerobic side, not the strength
+  side.
+HR-based vs. RPE/RIR-based autoregulation for a hard HR ceiling: a
+  physician-issued absolute bpm ceiling (e.g. Kayma Liburd's 160bpm) is
+  standard, legitimate cardiac-rehab practice — typically derived from an
+  individual's symptom-limited graded exercise test (the bpm at which
+  ischemia, arrhythmia, or symptoms actually emerged, minus a safety
+  margin), not an arbitrary population formula. Treat a physician's
+  literal number as authoritative over any generic formula (Karvonen/
+  heart-rate-reserve, resting-HR-plus-20-30, age-predicted-max
+  percentage) — those formulas are what a physician uses to DERIVE a
+  number like this in the first place, not a substitute for it once it
+  exists. Caution: if a cardiac-flagged client is on a beta-blocker or
+  other chronotropic-limiting medication (worth asking directly at
+  intake, not assuming), heart rate becomes a LESS reliable real-time
+  effort signal — beta-blockade blunts HR response across the intensity
+  spectrum, while the RPE-to-oxygen-uptake relationship stays stable even
+  under beta-blockade. Track both; do not let a "still under the ceiling"
+  HR reading alone clear a set that RPE/RIR says is near-maximal. Direct
+  corroboration that this file's existing RIR model transfers to a
+  cardiac population, not just a general one: a pilot study in coronary
+  artery disease patients (n=16, 9-week supervised cardiac-rehab RT
+  protocol) comparing RIR-based RPE prescription against %1RM
+  prescription found no significant between-group difference in strength
+  gains (Gismondi A, Iellamo F, Caminiti G, et al., "Rate of Perceived
+  Exertion Based on Repetitions in Reserve Versus Percentage of
+  One-Repetition Maximum for Resistance Training Prescription in Cardiac
+  Rehabilitation: A Pilot Study," Journal of Cardiovascular Development
+  and Disease 2025;12(1):8). Practical takeaway: run HR-ceiling
+  monitoring on conditioning work AND RIR-based autoregulation on
+  strength work together for a cardiac-flagged client — they are not
+  competing systems, and the existing RIR model (see "Progressive
+  Overload — RIR Model" above) does not need a cardiac-specific
+  substitute.
+Valsalva maneuver / blood pressure response — this is the direct answer to
+  whether it was correct to leave Kayma Liburd's strength side entirely
+  unrestricted under "precautions not restrictions": PARTIALLY correct.
+  The load/intensity side of that call holds up against the AHA 2023
+  evidence above — nothing there supports capping %1RM or avoiding heavy
+  compound lifts by default in a stable, cleared cardiac client. But the
+  call stopped one layer short: a cardiac flag should also trigger an
+  explicit BREATHING-TECHNIQUE precaution on heavy compound work, a real,
+  separate, well-evidenced risk pathway distinct from the sustained-
+  elevated-HR risk that conditioning-side HR capping addresses. A heavy
+  near-maximal lift spontaneously triggers a Valsalva maneuver (forced
+  exhalation against a closed glottis / breath-holding), sharply raising
+  intrathoracic pressure and blood pressure — directly measured mean
+  peak values of 320/250 mmHg (one subject exceeding 480/350 mmHg) during
+  a double-leg press taken to failure at up to 100% max with Valsalva
+  (MacDougall JD, Tuxen D, Sale DG, Moroz JR, Sutton JR, "Arterial blood
+  pressure response to heavy resistance exercise," Journal of Applied
+  Physiology 1985;58(3):785-790 — an old but still frequently-cited direct
+  measurement study, the clearest primary source found for this specific
+  magnitude). Breathing technique alone changes this materially at the
+  SAME load: mean BP of 311/284 mmHg with Valsalva breath-holding vs.
+  198/175 mmHg with slow controlled exhalation, both at ~100% max
+  (Linsenbardt ST, Vidal C, Prietto CA, "Effect of breathing techniques
+  on blood pressure response to resistance exercise," British Journal of
+  Sports Medicine 1992;26(2):97-100 — likewise an older but clearly still
+  the primary direct-comparison source; a 2025 bench-press hemodynamics
+  study, Deniz IE & Erdemir I, BMC Sports Science, Medicine and
+  Rehabilitation 2025, corroborates the same direction of effect in
+  resistance-trained males, though its sample was healthy young athletes,
+  not a cardiac population, and is cited here only for mechanism
+  corroboration, not as cardiac-population evidence). A second,
+  cardiac-specific risk sits on the release side: the hemodynamic
+  "rebound" when breath is released after sustained Valsalva — the heart
+  overcompensates for reduced venous return and BP can drop rapidly
+  enough to disrupt normal SA-node pacing, a documented mechanism for
+  palpitations or more serious arrhythmia specifically in someone with
+  underlying cardiac vulnerability.
+  Recommended technique: controlled, open-glottis exhale during the
+  exertion (lifting) phase of a heavy rep, rather than sustained breath-
+  holding through the rep or the set. This is NOT a call to eliminate
+  bracing — brief intra-abdominal-pressure bracing at the sticking point
+  of a heavy compound lift is normal, necessary spinal-stability
+  technique, and is the SAME "brace BEFORE lifting, exhale on exertion"
+  cue this file already prescribes in the Pelvic Floor Protocol above for
+  a completely different reason (continence, not cardiac risk) — the two
+  populations' needs converge on the identical coaching cue. What matters
+  for cardiac risk specifically is SUSTAINED breath-holding across
+  multiple reps or an entire set, not a single brief brace-and-exhale.
+  Practical implication: a cardiac flag should make an explicit "exhale
+  on exertion, do not hold your breath through the rep" cue a standing,
+  WRITTEN part of every heavy compound-lift block (roughly ≥70-80%
+  working intensity — squat, deadlift-pattern hinge, heavy press) for
+  that client, the same way the pelvic floor cue is standing/written
+  rather than assumed. Per CLIENTS.md's own description, Kayma Liburd's
+  document left the strength-training side unrestricted with no
+  breathing-technique language at all — flagged back to the main thread/
+  icons-expert as a candidate revision, not edited here.
+General framing — when should a cardiac flag scope conditioning only vs.
+  also touch resistance training: conditioning/metabolic work (sustained
+  elevated HR, circuits, bike/rower, anything with a duration component)
+  is where a hard HR ceiling + RIR/RPE monitoring is the primary, direct
+  control — correctly the main lever Kayma Liburd's build already used.
+  Heavy compound resistance training (brief, near-maximal single-effort
+  loading) is not automatically load-restricted in a stable, cleared
+  client per AHA 2023 above — but it's the domain where Valsalva/BP-spike
+  risk is sharpest, so it should ALWAYS carry the breathing-technique cue
+  above as a standing precaution, regardless of whether load is
+  restricted. Anything beyond that standing precaution (a true %1RM cap,
+  avoiding single-rep near-maximal testing, avoiding sustained isometric
+  holds, a lower absolute HR ceiling than standard formulas would
+  suggest) must come from the client's own physician/cardiologist, not be
+  invented here — cardiac clearance is inherently individualized
+  (ejection fraction, arrhythmia history, actual stress-test result) in a
+  way ALST/VFA/T-score are not, so unlike `pelvicFloorCallout()`'s
+  universal auto-trigger off a single boolean, a cardiac flag's SPECIFIC
+  numeric restrictions (beyond breathing technique) have no universal
+  threshold to auto-apply — document whatever the physician specifies,
+  and default to the breathing-technique + HR-ceiling/RIR combination
+  above when nothing more specific has been given.
+Engine note (flagged for future engine work, not built in this pass — out
+  of this agent's scope): the pattern above — HR-ceiling conditioning
+  language + a standing breathing-technique cue on heavy compound blocks,
+  auto-fired off a `client.cardiacFlag`-type field — is structurally
+  similar to how `pelvicFloorCallout()` already auto-fires off
+  `client.isPostmenopausal`. Worth considering as a template addition the
+  next time `icons_template.js` is extended, so a future cardiac-flagged
+  client doesn't depend on a trainer/agent remembering this section by
+  hand the way Kayma Liburd's build currently does.
+Male Client Programming Framework population: the RT-safety evidence
+  above (AHA 2023, ACSM 2026) is not sex-differentiated — the same
+  "resistance training does not increase serious-adverse-event risk,
+  breathing technique matters more than load restriction" framing applies
+  to a male client with a cardiac flag without adjustment. The one
+  population-level difference worth flagging: average CVD-risk onset
+  runs earlier in men than the postmenopause-linked rise this file
+  documents for women — commonly described as risk beginning to climb
+  from the mid-40s in men, roughly a decade or more ahead of the
+  postmenopause-driven rise cited for women above — so a cardiac-flag
+  conversation is reasonably relevant starting earlier in the Male
+  Client Programming Framework's brackets than the equivalent trigger
+  point in the women's brackets, not because the training response
+  differs, but because the base-rate conversation comes up sooner.
+```
+
 ### Hormone Therapy (MHT/HRT) — How Resistance Training Relates, Not Competes
 ```
 Client question to expect: "Should I also be on hormone therapy, or does
@@ -834,6 +1023,7 @@ Built 8/11/2026 in response to Xolokan's explicit request, after Jake Poyner's a
 - Protein: reasonable to trend toward the upper end of the general resistance-trained-male range (see below) as anabolic resistance with age is a real, if more gradual, phenomenon in men too — there just isn't a single hormonal-transition trigger the way "crossing 40" or "postmenopausal" functions for women, so treat this as a soft trend, not a hard tier change.
 - Late-onset hypogonadism (LOH) / "andropause" becomes a relevant screening conversation here, especially by the 50s — but it is a clinical diagnosis requiring both persistent symptoms (low libido, fatigue, unexplained muscle loss, mood changes) AND confirmed low morning testosterone on bloodwork, not something inferred from a Styku scan or training performance. Flag it as a referral conversation, the same way this file treats HRT for women: not ours to diagnose, but worth knowing what the training evidence says (see "Testosterone & Resistance Training" below).
 - ALST monitoring becomes a priority in this window, same rationale as the women's 45–55 bracket — sarcopenia risk begins rising, even before any hormonal diagnosis is on the table.
+- If a client reports a cardiac history or diagnosis, see "Cardiovascular / Cardiac Considerations in Resistance Training" in the Evidence-Based Science Layer above — its RT-safety evidence (AHA 2023, ACSM 2026) is not sex-differentiated and applies directly; average CVD-risk onset runs earlier in men than the postmenopause-linked rise documented for women, so this conversation is reasonably relevant starting in this bracket rather than later.
 - Vinz Feller (age 50) sits in this bracket.
 
 **60+ — Older Male / Bone-Density Priority**
@@ -1153,12 +1343,13 @@ Deliberate deviation from the uploaded source: its boxed "PROGRESSIVE OVERLOAD �
 
 ### Subagent Team (`.claude/agents/*.md`)
 
-Five scoped subagents cover this system as of 8/11/2026 — one per structure built so far. Route a task to the one whose scope actually matches rather than doing everything in the main thread; each agent's own file has the operative detail, this is just the map:
+Six scoped subagents cover this system as of 8/12/2026 — one per structure built so far. Route a task to the one whose scope actually matches rather than doing everything in the main thread; each agent's own file has the operative detail, this is just the map:
 
 | Agent | Owns | Does NOT own |
 |---|---|---|
 | `icons-expert` | Client-facing documents — training plans, assessment reports, PPTX decks, Styku interpretation, via `buildDocument()`/reportlab | Trainer education content, science-layer research, QA, Drive monitoring |
-| `icons-research-analyst` | The Evidence-Based Science Layer in this file — periodic literature research, correcting/upgrading/adding claims, the Research Update Log | Writing or editing any client/trainer deliverable |
+| `icons-research-analyst` | The Evidence-Based Science Layer in this file — periodic literature research, correcting/upgrading/adding claims, the Research Update Log | Writing or editing any client/trainer deliverable; the standalone deep-reference doc below |
+| `icons-evidence-curator` | `docs/Evidence_Based_Science_Womens_Strength_Training.md` — the discursive, fully-cited deep-reference literature review behind the women's science layer (distinct from this file's compact actionable version) | This file's Evidence-Based Science Layer itself; any client/trainer deliverable |
 | `icons-trainer-education` | Trainer onboarding — the self-paced HTML knowledge modules and the physical Train-the-Trainer `.docx` programs | Client-facing plans/reports; science-layer research |
 | `icons-doc-auditor` | Pre-delivery structural QA on `.docx`/`.pptx`/`.pdf` output (python-docx/pdfplumber checks, since rendered PDF audits are broken in this environment) | Building or editing deliverables — reports findings back, doesn't fix them itself |
 | `icons-intake-monitor` | Weekly read-only scan of the "ICONS CLIENT PROGRAMS" and "ICONS NOTES JASON PDFS" Drive folders — flags stale-document candidates and new SOAP-note data back to the main thread / `icons-expert` | Editing any document, uploading anything to Drive (the manual-handoff policy below still stands), resolving clinical conflicts itself |
@@ -1503,6 +1694,13 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Added (genuine refinement, not just restated):** one concrete exception where ambiguity DOES change a default. A British prospective cohort study (Mishra, Cardozo & Kuh, BJU International 2010, n=1,211, ages 48-54) found perimenopausal women — not just postmenopausal women — had significantly elevated stress urinary incontinence risk (OR 1.39) relative to the same cohort's postmenopausal members; the transition window itself, not confirmed postmenopausal status, is the higher-risk period for this specific outcome. Practical consequence flagged for `icons_template.js`'s `client.isPostmenopausal` boolean (which gates `pelvicFloorCallout()`): that boolean is a reasonable proxy once status is confirmed, but a 45-55 bracket client with ambiguous status and any menstrual/vasomotor/sleep symptoms at intake should not be treated as pelvic-floor-safe by default just because the field reads false/unset — documented as a manual-override practice (set `isPostmenopausal: true` or otherwise include the callout) rather than an engine change, since a three-state field is a code change outside this agent's scope. This citation is older (2010) than this log's usual 2025-2026 preference; included anyway because it was the clearest direct evidence found on this specific question and changes a practical default, not because recency requirements were relaxed generally.
 - Did NOT edit any client-facing document (e.g. Rena Paul's or Aimee Morris's files) — per this agent's non-negotiables, that finding is flagged back to the main thread/`icons-expert` for their intake data and documents, not applied here.
 - Sources: [Muscle Power Versus Strength as a Predictor of Mortality in Middle-Aged and Older Men and Women, Araújo/Kunutsor et al., Mayo Clinic Proceedings 2025;100(8):1319-1331](https://www.mayoclinicproceedings.org/article/S0025-6196(25)00100-4/abstract) (also available via [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0025619625001004)) · [STRAW+10 staging criteria overview](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11601186/) · [A Novel Low-Impact Resistance Exercise Program Increases Strength and Balance in Females Irrespective of Menopause Status, Medicine & Science in Sports & Exercise 2025;57(3):501-513](https://pubmed.ncbi.nlm.nih.gov/39480197/) · [University of Exeter coverage of the same study](https://news.exeter.ac.uk/faculty-of-health-and-life-sciences/first-of-its-kind-study-shows-resistance-training-can-improve-physical-function-during-menopause/) · [Mishra GD, Cardozo L, Kuh D, "Menopausal transition and the risk of urinary incontinence: results from a British prospective cohort," BJU International 2010](https://pmc.ncbi.nlm.nih.gov/articles/PMC3492747/) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/20346050/))
+
+**8/12/2026 — fifth pass. Cardiovascular/cardiac considerations in resistance training (new topic, first pass — genuine gap, no prior coverage).** Triggered by a daily subagent check-in surfacing that Kayma Liburd's document (cardiac flag, hard 160bpm ceiling, physician-coordinated) rested entirely on undocumented clinical judgment — every other major clinical area this file handles (pelvic floor, GLP-1, HRT, ACL/knee valgus, bone loading) had a cited subsection; cardiovascular/cardiac did not. Checked: current AHA/ACSM guidance on resistance training with a cardiac flag, HR-based vs. RPE/RIR-based autoregulation for a hard HR ceiling (including beta-blocker interference with HR readings), the Valsalva maneuver/blood pressure response during heavy compound lifting and whether it should moderate strength work (not just conditioning) for a cardiac-flagged client, and whether/how a male client's cardiac considerations differ.
+- **Added (new top-level subsection):** "Cardiovascular / Cardiac Considerations in Resistance Training (2023-2026 evidence)," placed in the Evidence-Based Science Layer between Power Training — Fall Risk & Longevity and Hormone Therapy (MHT/HRT). Covers: (1) risk context — CVD is the leading cause of death in women and risk roughly doubles in the 10 years after menopause, with the transition itself (not just confirmed postmenopausal status) already elevated, per the 2020 AHA menopause-transition scientific statement; (2) resistance training is broadly safe in cardiac populations at meaningful intensity per the AHA's 2023 update statement — contraindications mirror standard cardiac-rehab/aerobic contraindications (unstable angina, advanced arrhythmias, decompensated heart failure, active thromboembolism, with hypertrophic cardiomyopathy as a named exception), heavy work (>80% 1RM) is appropriate after ~6 months of progressive training in a cleared, stable client, and this is corroborated by the ACSM 2026 guideline update (already cited elsewhere in this file) reporting that nonfatal CV complications in coronary-heart-disease patients occurred during aerobic training, not resistance training, across >38,000 participants studied; (3) HR-based vs. RPE/RIR-based autoregulation — a physician-issued absolute bpm ceiling is legitimate, GXT-derived clinical practice and should be treated as authoritative over generic formulas, but beta-blockers blunt HR response and make RPE/RIR the more reliable real-time signal in that specific case, corroborated by a 2025 pilot RCT in coronary artery disease patients showing RIR-based prescription performs equivalently to %1RM prescription in a cardiac-rehab setting; (4) the Valsalva maneuver/BP response during heavy lifting — real, well-evidenced, and NOT limited to a load-restriction question: breathing technique alone changes peak BP dramatically at the same load (mean 311/284 mmHg with breath-holding vs. 198/175 mmHg with slow controlled exhalation at ~100% max, Linsenbardt et al. 1992), extreme BP spikes are directly measured during heavy lifting with Valsalva (MacDougall et al. 1985, mean 320/250 mmHg, one subject exceeding 480/350 mmHg), and a hemodynamic "rebound" on breath release is a documented arrhythmia-risk mechanism specifically in cardiac-vulnerable individuals — recommended technique is controlled open-glottis exhale-on-exertion (distinct from brief bracing, which is unaffected), the same cue this file already uses in the Pelvic Floor Protocol for an unrelated reason; (5) a general framing rule for when a cardiac flag should scope conditioning only vs. also touch resistance training, plus an engine note flagging a `pelvicFloorCallout()`-style auto-trigger as a reasonable future engine addition (not built in this pass); (6) a Male Client Programming Framework note — the RT-safety evidence is not sex-differentiated, but average CVD-risk onset runs earlier in men, so the conversation is relevant starting earlier in that framework's brackets. Added a one-line cross-reference pointer from the Male framework's 40–59 bracket back to this section.
+- **Direct finding on Kayma Liburd's document, flagged back rather than edited:** the "precautions not restrictions, strength side left unrestricted" call was only PARTIALLY correct. The load/intensity side holds up — AHA 2023 does not support capping her 80%/90% working intensities or restricting compound lifts by default for a stable, physician-cleared cardiac client. But per CLIENTS.md's own description, her document's strength-training side carries no breathing-technique language at all, and the evidence above indicates a cardiac flag should make an explicit "exhale on exertion, don't hold your breath through the rep" cue a standing, written part of her heavy compound-lift blocks (squat, deadlift-pattern hinge, near-maximal pressing) — not because her load needs to change, but because Valsalva/BP-spike risk during heavy lifting is a real, separate risk pathway from the sustained-elevated-HR risk her conditioning-side HR cap already addresses. This is a candidate revision to her already-delivered document — flagged to the main thread/`icons-expert` per this agent's non-negotiables, not edited here.
+- **Genuine gaps/uncertainty flagged, not resolved with invented numbers:** no cardiac-specific numeric %1RM cap is established in the literature reviewed beyond the standing breathing-technique precaution — any restriction tighter than that must come from the client's own physician, since cardiac clearance is individualized (ejection fraction, arrhythmia history, actual stress-test result) in a way this file's other numeric thresholds (ALST/VFA/T-score) are not. The 2025 breathing-technique/hemodynamics corroborating study (Deniz & Erdemir, BMC Sports Science, Medicine and Rehabilitation) was in healthy young resistance-trained males, not a cardiac population — cited only for mechanism corroboration, explicitly flagged as such, not presented as cardiac-population evidence.
+- Did NOT edit `clients/kayma_liburd/` or `scripts/kayma_liburd_2day_plan.js` — flagged above per this agent's non-negotiables; that edit belongs to `icons-expert`.
+- Sources: [Resistance Exercise Training in Individuals With and Without Cardiovascular Disease: 2023 Update, AHA Scientific Statement, Circulation 2023;149(3):e217-e231](https://www.ahajournals.org/doi/10.1161/CIR.0000000000001189) · [Menopause Transition and Cardiovascular Disease Risk: Implications for Timing of Early Prevention, AHA Scientific Statement, Circulation 2020;142(25):e506-e532](https://www.ahajournals.org/doi/10.1161/CIR.0000000000000912) · [ACSM 2026 resistance training guidelines update summary (reused, already cited elsewhere in this file)](https://acsm.org/resistance-training-guidelines-update-2026/) · [Gismondi A, Iellamo F, Caminiti G, et al., "Rate of Perceived Exertion Based on Repetitions in Reserve Versus Percentage of One-Repetition Maximum for Resistance Training Prescription in Cardiac Rehabilitation: A Pilot Study," Journal of Cardiovascular Development and Disease 2025;12(1):8](https://pmc.ncbi.nlm.nih.gov/articles/PMC11766398/) · [Effect of β-blockade on measures and reproducibility of heart rate, oxygen uptake and work rate across repeated bouts of short-duration, RPE-regulated exercise, European Journal of Applied Physiology 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12528277/) · [Reliability of Resting Heart Rate-based Target Heart Rate for Exercise Prescription after Acute Myocardial Infarction](https://pmc.ncbi.nlm.nih.gov/articles/PMC12778352/) · [MacDougall JD, Tuxen D, Sale DG, Moroz JR, Sutton JR, "Arterial blood pressure response to heavy resistance exercise," Journal of Applied Physiology 1985;58(3):785-790](https://journals.physiology.org/doi/abs/10.1152/jappl.1985.58.3.785) · [Linsenbardt ST, Vidal C, Prietto CA, "Effect of breathing techniques on blood pressure response to resistance exercise," British Journal of Sports Medicine 1992;26(2):97-100](https://pmc.ncbi.nlm.nih.gov/articles/PMC1478931/) · [Deniz IE, Erdemir I, "Influence of breathing strategies on maximal strength output and hemodynamic parameters during bench press exercise," BMC Sports Science, Medicine and Rehabilitation 2025](https://link.springer.com/article/10.1186/s13102-025-01460-4)
 
 ---
 

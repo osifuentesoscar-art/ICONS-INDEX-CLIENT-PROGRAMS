@@ -1,0 +1,179 @@
+# The Evidence-Based Science of Women's Strength Training, Body Composition, and Recovery
+
+## What Elite Coaches Know That Most Programs Miss
+
+Standalone deep-reference document for Brace Life Studios' ICONS system. This is the extended, discursive evidence base behind the compact, actionable thresholds embedded in `CLAUDE.md`'s Evidence-Based Science Layer — this file carries the full literature discussion, citations, and caveats; `CLAUDE.md` carries the numbers a client document actually needs at build time. See `.claude/agents/icons-evidence-curator.md` for who maintains this file and how it relates to `icons-research-analyst`'s ongoing `CLAUDE.md` passes.
+
+**Seeded 8/12/2026** from a research brief supplied directly by Xolokan. Maintained going forward by `icons-evidence-curator`.
+
+---
+
+## TL;DR
+
+- The single biggest evidence-practice gap is that women are systematically under-loaded and under-fed protein: the highest-quality current research (Roberts/Nuckols/Krieger 2020; the 2026 ACSM Position Stand; the LIFTMOR trial) shows women adapt at least as well as men to heavy loading (≥80% 1RM), tolerate more volume, and recover faster between sets — yet most programs prescribe them light weights, high reps, and cycle-based restrictions that the strongest evidence does not support.
+- Menstrual-cycle "hormonal periodization" is far weaker than popular figures like Dr. Stacy Sims imply: the best umbrella review (Colenso-Semple, D'Souza, Elliott-Sale & Phillips 2023) concludes there is no reliable influence of cycle phase on strength adaptations; the defensible practice is to train hard year-round and autoregulate around individual symptoms, not to build programs around phase.
+- The genuinely female-specific priorities are bone and muscle preservation from ~40 onward, protein sufficiency (≥1.6 g/kg/day, higher in menopause), creatine (3–5 g/day), and pelvic-floor/ACL-informed movement — these are where the evidence is strongest and where most programming actually fails women.
+
+## Key Findings
+
+1. Cycle-phase training is not supported for strength adaptation. The 2023 Phillips-lab umbrella review found the supporting literature small, heterogeneous, and methodologically weak. Meta-analyses that do show effects (Niering 2024) find only small-to-medium effects favoring the late follicular/ovulation phase for peak strength — not enough to justify restricting luteal-phase training.
+2. Women respond to resistance training as well as or better than men in relative terms. Roberts, Nuckols & Krieger (2020, JSCR): no sex difference in hypertrophy (ES=0.07, p=0.31); women showed greater relative upper-body strength gains (ES=−0.60, p=0.002).
+3. Heavy + impact loading is the strongest bone stimulus. The LIFTMOR RCT (Watson/Beck 2018) used 5×5 at >85% 1RM twice weekly and improved lumbar-spine BMD +2.9% (vs −1.2% control) in postmenopausal women with low bone mass — safely.
+4. Estrogen loss drives anabolic resistance and accelerated muscle/bone loss; transdermal estrogen therapy amplifies muscle gains from resistance training (Dam et al. 2021).
+5. Creatine (3–5 g/day) is one of the best-supported supplements for women, with strength, cognitive, and possibly bone/sleep benefits, especially in peri/postmenopause.
+6. Sarcopenia thresholds: appendicular lean mass index (ALM/height²) <5.5 kg/m² (EWGSOP2, DXA) or <5.4 kg/m² (AWGS) defines low muscle mass in women.
+7. Protein needs are higher than most women eat: ~1.6 g/kg/day minimum (Morton 2018 breakpoint 1.62 g/kg/day, 95% CI 1.03–2.20), up to ~2.2 g/kg, distributed ~0.4 g/kg/meal, with older women showing a blunted response to feeding.
+8. Female-specific injury risk (ACL ~2.8× male incidence) and pelvic-floor considerations require targeted programming that most general programs omit.
+
+## Details
+
+### 1. Hormonal Periodization & Menstrual Cycle Training
+
+**The popular model (Stacy Sims).** Dr. Stacy Sims argues "women are not small men" and recommends concentrating high-intensity and heavy strength work in the follicular (low-hormone) phase and shifting to lower intensity, mobility, and recovery in the late luteal phase, citing progesterone-driven increases in core temperature (~0.5°C), reduced plasma volume, sympathetic activation, reduced HRV, and impaired sleep. She also recommends pre-loading carbohydrate before hard luteal-phase sessions.
+
+**What the strongest evidence says.** The most rigorous synthesis — Colenso-Semple, D'Souza, Elliott-Sale & Phillips (2023, Frontiers in Sports and Active Living), an umbrella review of meta-analyses and systematic reviews — concluded verbatim: "it is premature to conclude that short-term fluctuations in reproductive hormones appreciably influence acute exercise performance or longer-term strength or hypertrophic adaptations to resistance exercise training." They specifically criticized the methodological quality (poor cycle-phase verification, tiny samples, high heterogeneity, I²>80%) of the reviews supporting phase-based training.
+
+The Niering (2024) meta-analysis (22 studies, 433 women) found only medium effects (SMD 0.60) for isometric strength favoring the late follicular phase and small effects for dynamic strength (SMD 0.14), with the early follicular phase (menstruation) being the least favorable. So there is a weak signal that the early follicular phase may be slightly worse for peak strength expression, but no strong basis for down-programming the entire luteal phase.
+
+**Verdict and practice.** Train hard across the whole cycle. Use symptom-based autoregulation (RPE, reps-in-reserve) rather than calendar-based restriction. If an individual reliably feels worse in the late luteal/menstrual window, deload or reduce intensity for her, tracked over ≥3 cycles — this is individualization, not a universal law. Hormonal contraception flattens the natural fluctuation and makes phase-based programming moot.
+
+**Perimenopause & menopause.** This is where genuine, evidence-based change is warranted. Declining estrogen reduces muscle stem-cell (satellite cell) regeneration (30–60% drops in animal estrogen-withdrawal models), reduces bone mineral density, and induces anabolic resistance. Sims' menopause guidance converges with the RCT evidence here: prioritize heavy resistance training (she suggests 3–5 sets of ≤6 reps with ≥2 min rest, ≥3 sessions/week), add impact/jump training and sprint intervals.
+
+**HRT/estrogen therapy.** Dam et al. (2021, Frontiers in Physiology) — a double-blind RCT in early postmenopausal women (≤5 years past menopause) — found transdermal estrogen therapy amplified skeletal-muscle mass gains over 12 weeks of resistance training vs placebo. This suggests HRT may enhance the training response, though decisions about HRT are medical and individual.
+
+### 2. Bone Density & Sarcopenia Prevention (40–60+)
+
+**ALM/ALST thresholds.** Low muscle mass in women is defined by appendicular lean mass index (ALM/height²):
+
+- EWGSOP2 (DXA): <5.5 kg/m²
+- AWGS 2019: <5.4 kg/m² (DXA), <5.7 kg/m² (BIA)
+- IWGS: ≤5.67 kg/m²
+
+These derive from ~2 SD below the young-adult reference mean (Rosetta/Baumgartner). Combined with low grip strength (<18–20 kg) and slow gait (<1.0 m/s), they define sarcopenia. Obesity confounds these cutoffs — a normal-weight-looking woman can be "sarcopenic obese."
+
+**Best exercises for bone.** Optimal osteogenic loading requires high-magnitude strain at high rates. The LIFTMOR RCT (Watson, Weeks, Beck 2018, JBMR) is the landmark: 101 postmenopausal women (65±5 yr) with low bone mass (T-score <−1.0), 8 months, twice-weekly 30-min supervised high-intensity resistance + impact training (deadlift, squat, overhead press at 5×5 >85% 1RM, plus jumping chin-ups with drop landings). Results: lumbar-spine BMD +2.9% vs −1.2% control (p<0.001), femoral-neck improvements, improved functional performance, excellent safety. This overturned the old belief that osteoporotic women shouldn't lift heavy.
+
+**Impact vs resistance.** Both matter and are complementary. Impact/plyometric loading (jumps, hops, drop landings) drives high strain rates especially at the hip; heavy resistance drives spine and hip loading via muscle pull. Walking/cycling/swimming are insufficient bone stimuli. Minimum effective dose from LIFTMOR: ~2 × 30 min/week.
+
+**Estrogen and muscle protein synthesis.** Basal MPS is similar in young men and women. Critically, older women show an elevated basal MPS rate but a blunted response to feeding ("anabolic resistance") — they become resistant to the muscle-building stimulus of protein (Gatorade Sports Science Institute review). This is why higher per-meal protein and heavy loading matter more, not less, with age.
+
+**Current guidelines.** The 2026 ACSM Position Stand ("Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults," Currier, D'Souza, Fiatarone Singh, Schoenfeld, Smith-Ryan, Phillips et al., MSSE 2026;58(4):851–872), an umbrella review of 137 systematic reviews and >30,000 participants, states that voluntary strength "was enhanced by lifting heavier loads (≥80% one-repetition maximum), through a complete range of motion, for 2–3 sets... and ≥2 sessions/wk," while hypertrophy "was enhanced by higher volumes (≥10 sets/wk) and eccentric overload." Notably, training to momentary failure did not consistently improve strength or hypertrophy. The NSCA 2019 Position Statement for older adults (Fragala et al., JSCR 2019;33(8):2019–2052) recommends "2–3 sets of 6–12 repetitions at 50–85% of 1RM per muscle group," 2–3 days/week, with 1.5–3.0 min rest between sets; for frailty, progressing intensity from 20–30% up to 80% 1RM is well tolerated. Neither is sex-stratified, but both endorse heavy loading applicable to women.
+
+### 3. Progressive Overload & Rep Ranges for Women
+
+**Do women respond differently to rep ranges?** Largely no in relative terms. Roberts, Nuckols & Krieger (2020, JSCR, PROSPERO-registered): hypertrophy (12 outcomes/10 studies) showed no significant sex difference (ES=0.07, p=0.31); upper-body strength (19 outcomes/17 studies) showed a significant effect favoring females (ES=−0.60, p=0.002). The 2025 Refalo/Nuckols/Galpin Bayesian meta-analysis (PeerJ) confirmed similar relative muscle growth between sexes.
+
+**Volume tolerance and fatigue resistance — a genuine female advantage.** Sandra Hunter's work (e.g., Acta Physiologica 2014: "Women are usually less fatigable than men for similar intensity isometric fatiguing contractions") establishes that women fatigue less, owing to greater proportional type-I (oxidative) fiber area, better perfusion, and less metabolite accumulation. Practically, women can often handle higher volumes and shorter rest intervals. Recent work (PeerJ) found female lifters recover faster than males between sets and "may be able to benefit from higher bench press volumes"; a 2024 squat study (BMC Sports Sci Med Rehabil) found "women recover better than men between sets in both exercises." Ansdell et al. (2019, J Physiol) found females demonstrate greater fatigue resistance at intensities relative to maximum force.
+
+**Frequency.** No evidence women need different frequency; 2–3×/week per muscle group is well supported; higher volume tolerance means women may benefit from slightly more weekly sets (hypertrophy target ≥10 sets/muscle/week per the 2026 ACSM stand).
+
+**Rest periods.** Because women fatigue less and recover faster between sets, coaches can use somewhat shorter rest intervals without the performance decrement men show — a practical efficiency lever.
+
+**Rate of force development (RFD).** Women generally have lower absolute RFD and peak power; this supports including power/explosive and heavy work (not avoiding it) to develop the neuromuscular qualities that decline with age and matter for fall prevention.
+
+### 4. Body Composition & Assessment
+
+**Visceral fat (VFA/VAT) thresholds.** The most-cited health-risk threshold is VAT ≥100 cm² for elevated cardiometabolic risk (Hologic DXA white paper; multiple studies show 100–110 cm² adversely affects the metabolic profile in women). DXA-VAT >100 cm² was associated with ≥2 cardiometabolic risk factors (OR 2.2) in postmenopausal women, and DXA-VAT outperforms BMI/waist circumference for predicting cardiometabolic risk in postmenopausal (but not premenopausal) women. Some datasets suggest a sex-independent threshold ~100–103 cm² for metabolic syndrome.
+
+**ALM index interpretation** — see section 2; clinically, <5.5 kg/m² flags low muscle mass warranting intervention.
+
+**Styku / 3D scanning.** 3D optical scanners (Styku, etc.) are highly reliable for circumferences and shape/volume (test-retest), useful for tracking change over time and for client motivation, but they estimate body-fat % via proprietary regression equations and are less accurate than DXA for absolute body composition. Best used for trend-tracking of girths and shape, not as a criterion body-fat measure.
+
+**Body-fat ranges for women (ACE/ACSM general categories).** Essential fat ~10–13%; athletes ~14–20%; fitness ~21–24%; average ~25–31%; obese ≥32%. Body fat rises with age at any given weight; realistic targets should be individualized and account for the fact that very low body fat impairs menstrual/bone health.
+
+**Lean mass–bone–metabolic triangle.** In women 40+, higher lean mass tracks with higher BMD (muscle pull loads bone) and better insulin sensitivity/glucose handling; estrogen loss simultaneously worsens all three, making resistance training the keystone intervention.
+
+### 5. Corrective Exercise & Movement Screening for Women
+
+**Knee valgus & ACL risk.** Females sustain markedly more non-contact ACL injuries than males. A team-ball-sports meta-analysis (Sports Medicine 2022) reported non-contact ACL incidence of 0.14 per 1000 player-hours (95% CI 0.10–0.19) in females vs 0.05 (95% CI 0.03–0.07) in males (~2.8×); NCAA 9-year data show basketball 0.22 vs 0.08 and soccer 0.10 vs 0.04 per 1000 athlete-exposures. Females tend to injure in the frontal plane (dynamic valgus); males more in the sagittal plane. Hewett et al. (2005, prospective) showed knee-abduction angle/moment on drop-landing predicts ACL injury with 78% sensitivity, 73% specificity. Drivers: hip abductor/external-rotator weakness (gluteus medius can't control hip adduction → knee collapses in), limited ankle dorsiflexion, hamstring:quadriceps imbalance, limb dominance.
+
+**Corrective protocols.** A 2025 PRISMA meta-analysis of RCTs (Annals of Medicine) found neuromuscular training "reduced overall knee injury risk by 22% (RR = 0.78, 95% CI 0.65–0.94, p = 0.008) and ACL injury risk by 50% (RR = 0.50, 95% CI 0.31–0.81, p = 0.005)," with high compliance (≥75%) the strongest moderator (RR 0.67). Effective components: lateral band walks (glute med), single-leg step-downs, box-drop stick landings (progress 15–40 cm), and jump-landing retraining. Females rely more on gluteal activation for knee control than males, so hip-focused work is especially high-yield.
+
+**Copenhagen adduction exercise.** A partner/bench eccentric adductor exercise producing ~108% MVIC EMG in the adductor longus. The Adductor Strengthening Programme (Harøy et al. 2018, BJSM, cluster-RCT, 35 teams/652 players) reduced groin problems by 41% over a season, done 3×/week preseason (6–8 wk) then 1×/week in-season, with 3 progression levels. Systematic reviews confirm it reliably improves eccentric hip-adduction strength (a key groin-injury risk factor) in a dose-dependent way; low-dose (2×/week for 6 weeks) improves squeeze strength but may not raise eccentric strength significantly (Dawkins 2021). Most data are in men; applicable to women but under-studied.
+
+**Adductor:abductor ratio.** Balanced hip strength is protective; weakness in either — abductors for knee valgus/ACL, adductors for groin — flags risk. Screen with handheld dynamometry (squeeze test, side-lying abduction).
+
+**Pelvic floor in loaded exercise.** Heavy lifting raises intra-abdominal pressure (IAP), amplified by the Valsalva maneuver; if pelvic floor muscles can't counter it, risk of stress urinary incontinence and prolapse rises. A crossover study in strength-trained nulliparous women (able to squat 1.2× and deadlift 1.5× bodyweight; 4×4 at 75–85% 1RM) examined acute PFM effects. A menstrual-cycle study found greater pelvic-floor displacement during menstruation than ovulation on ballistic lifting (6.0 vs 5.1 mm, p=0.03) — but pelvic-floor pre-contraction eliminated the difference. Practice: teach breath/bracing and pelvic-floor pre-contraction, progress load gradually, screen for symptoms (leaking, heaviness), and refer to pelvic-floor PT when symptomatic. Symptoms are common even in nulliparous athletes and are under-discussed.
+
+**Diastasis recti (DRA).** Diagnosed by inter-recti distance (IRD); normal ~17–28 mm at 6 months postpartum; DRA often defined as >2.2–2.5 cm. Conservative exercise (deep core/transversus abdominis + pelvic floor, progressing to whole-abdominal work, plus breathing) produces statistically significant but often modest IRD reductions (meta-analyses: ~−6.8 to −8.1 mm; one review noted only ~0.4 cm vs usual care — of uncertain clinical significance). Comprehensive programs engaging both superficial and deep muscles, sometimes with biofeedback/breathing, outperform isolated approaches. The old blanket ban on rectus-abdominis work is not well supported; individualized loading with monitoring is appropriate.
+
+### 6. Nutrition Science for Women in Strength Training
+
+**Protein synthesis, leucine, and sex.** Basal plasma leucine is ~15% lower in women than men, but MPS responses to feeding are similar in young men and women. Older women show anabolic resistance (blunted MPS response to feeding). Leucine-enriched essential amino acids (as little as 3 g EAA at 40% leucine) can stimulate MPS equivalently to 20 g whey in older women at rest and after exercise (Bukhari/Phillips work), useful for lower-appetite older clients.
+
+**Daily and per-meal protein targets.** Morton et al. (2018, BJSM) meta-analysis (49 studies, 1,863 participants): "Protein supplementation beyond total protein intakes of 1.62 g/kg/day resulted in no further RET-induced gains in FFM" (breakpoint 1.62 g/kg/day, 95% CI 1.03–2.20); supplementation raised 1RM strength by 2.49 kg and fat-free mass by 0.30 kg, with effect "reduced with increasing age." Practically: 1.6 g/kg/day minimum for training women, up to ~2.0–2.2 g/kg, distributed as ~0.4 g/kg/meal across ≥4 meals (Schoenfeld & Aragon 2018), hitting a ~2.5–3 g leucine threshold per meal (higher end for older women). Sims recommends the higher end (~2.0–2.4 g/kg/day) for peri/postmenopausal women plus a substantial post-workout dose (40–60 g within ~45 min), though at least one RCT (Nabuco 2017) did not find added lean-mass benefit from higher protein in postmenopausal women — so 1.6 g/kg is the well-supported floor and >2.0 g/kg is reasonable but less certain.
+
+**Carbohydrate timing across the cycle.** Weak evidence. Sims suggests slightly higher carbohydrate availability/pre-loading before hard luteal-phase sessions (progesterone shifts metabolism toward fat oxidation and impairs glycogen access), but this is a small, practical tweak, not a strong effect.
+
+**Micronutrients for active women.** Iron deficiency affects roughly 3–11% of male athletes vs 15–35% of female athletes; some elite cohorts report suboptimal iron status in ~52% of women using a 35 ng/mL cutoff. The RDI for iron is ~2.5× higher in women. Monitor ferritin (deficiency commonly flagged <30 µg/L per Swiss Society of Sports Medicine consensus) rather than serum iron; pair iron with vitamin C, separate from calcium/coffee/tea. Vitamin D insufficiency affects ~33–42% of female athletes, and vitamin D and iron status are interrelated (VDD roughly triples odds of iron deficiency in female athletes). Calcium and vitamin D are critical for bone, especially with low estrogen/amenorrhea. Magnesium supports many active women who run low.
+
+**Female athlete triad / RED-S.** Low energy availability (LEA) is the root cause of both the Triad (disordered eating/low EA, menstrual dysfunction, low BMD — ACSM 1992/2007) and the broader RED-S (IOC 2014, updated 2018; multi-system: metabolic, hormonal, bone, immune, cardiovascular, psychological, protein synthesis). Screen with the LEAF-Q (Br J Sports Med 2014) and the IOC RED-S CAT2 (2023), ideally at annual physicals. Amenorrhea, stress fractures, and underperformance are red flags. This is a major, under-recognized risk in lean-focused and high-volume female training.
+
+**Creatine.** 3–5 g/day monohydrate; no loading needed (saturates in 3–4 weeks). Women have lower baseline creatine stores, potentially making them more responsive. Benefits: strength/power (especially combined with resistance training in older women), cognition/mood, possible bone and sleep benefits in peri/postmenopause. Hall et al. (2025, J Int Soc Sports Nutr, St. Olaf College) — 15 women (mean age 54; 5 perimenopausal, 10 postmenopausal) taking 5 g creatine daily + twice-weekly strength training for 14 weeks — found significant increases in lower-body strength (isometric concentric extensor peak torque at 60°, p<0.05) and improved sleep quality in perimenopausal women (p=0.0181). Very safe at recommended doses; ~1 lb transient water-weight increase possible.
+
+> **Cross-reference note (icons-evidence-curator, 8/12/2026):** this file's "possible bone... benefits" phrasing for creatine is the pre-correction framing. `CLAUDE.md`'s Evidence-Based Science Layer already carries the corrected, more precise version (a 2-year RCT found no BMD benefit over placebo — "mixed evidence, not settled," not a flat benefit) — see `CLAUDE.md`'s Creatine section and the Research Update Log's first-pass entry. This file's bone-benefit line above should be read alongside that correction, not in place of it; reconciling this file's wording to match is queued as this curator agent's first real pass.
+
+**Collagen for connective tissue.** Keith Baar's lab (Shaw et al. 2017, AJCN): 15 g collagen/gelatin + ~50 mg vitamin C, taken 30–60 min before loading exercise, doubled blood markers of collagen synthesis. Both the nutrient and the mechanical load are required. Structural tendon benefits in trials generally used 15–30 g/day; a 2025 RCT (Miyamoto, MSSE) found 10 g/day over 16 weeks increased Achilles stiffness and explosive strength. Higher doses (30 g) may further raise acute synthesis vs 15 g in trained young men. Collagen supports but does not replace loading/rehab.
+
+### 7. Recovery & Sleep in Women
+
+**Sleep across the cycle.** Subjective sleep quality reliably worsens in the late-luteal/premenstrual phase; objective (polysomnography) changes are smaller and less consistent, but the clearest findings are reduced REM and reduced slow-wave sleep in the luteal phase plus elevated core temperature (~0.3–0.7°C from progesterone) impairing sleep-onset heat dissipation. Sleep apnea may worsen in the luteal phase (one cohort: AHI 6.1/h follicular vs 14.3/h luteal, p=0.033). Postmenopausal women have lower HRV and more sleep disruption.
+
+**HRV monitoring.** In naturally cycling women, HRV (RMSSD/SDNN) is generally higher early in the cycle and declines in the luteal phase; Schmalenberger et al. showed higher-than-usual progesterone predicts lower-than-usual HRV, with lowest HRV in the mid-luteal phase (no significant estradiol effect). Interpretation difference vs men: a woman's HRV baseline naturally oscillates across the cycle, so coaches should interpret HRV relative to her own cycle phase, not against a flat baseline, to avoid mistaking normal luteal dips for overreaching.
+
+**Cortisol response.** Sex differences are stressor-dependent. Kirschbaum et al. (1992, Psychosomatic Medicine) found men's cortisol responses to psychological stress were 1.5–2× higher than women's, but responses to exercise-to-exhaustion and CRH challenge were similar between sexes. Roberts/Nuckols/Krieger (2020) noted males show reduced serum cortisol with chronic resistance training whereas females do not. Direction varies with acute vs chronic stress — report the specific context rather than over-interpreting single readings.
+
+**Active recovery.** Strongest-evidence protocols: low-intensity movement (Zone 2 walking/cycling), adequate protein and total energy, and sleep hygiene (especially in the late-luteal phase). Zone 2 is a recovery adjunct, not a substitute for resistance training.
+
+### 8. Psychological & Behavioral Factors
+
+**Self-efficacy.** Holloway, Beuter & Duda (1988, J Applied Social Psychology): 12 weeks of strength training in untrained adolescent girls increased strength +40% and generalized to greater "confrontation efficacy" and life self-efficacy vs controls — early evidence that lifting builds transferable confidence in women. A 2024 Frontiers in Psychology barbell-training study found significant gains in mastery and self-efficacy when participants received rich, individualized progress feedback.
+
+**Load-progression hesitancy.** Women (and novices generally) tend to self-select loads below what's optimal for adaptation. Ratamess et al. (2008) found women who worked with a trainer selected significantly higher loads than those training alone. State anxiety decreases at 40–60% 1RM but rises above 70% 1RM (Bartholomew; Focht), so coaching through the psychological barrier to heavy loads is key. Coaching levers: competent spotting, safety bars/racks, a culture of encouragement, and individualized progress tracking.
+
+**Coaching language & body image.** Progress-based, mastery-oriented framing (tracking strength/reps/load PRs) builds self-efficacy better than appearance-based framing. Group/partner training increases adherence, enjoyment, and confidence (Spink & Carron 1994). Emphasize capability and function over aesthetics.
+
+## Recommendations
+
+**Stage 1 — Foundation (weeks 0–8):**
+- Train all major muscle groups 2–3×/week, compound movements, full range of motion.
+- Teach bracing, breathing, and pelvic-floor coordination before loading heavy. Screen for incontinence/prolapse symptoms, diastasis (IRD), and dynamic knee valgus (single-leg squat/drop-landing test).
+- Establish protein at ≥1.6 g/kg/day, ~0.4 g/kg/meal across 4 meals. Check ferritin and vitamin D.
+- Start creatine 3–5 g/day (no loading).
+- Coach load selection actively — women systematically under-load themselves; use RIR/RPE and progress deliberately.
+
+**Stage 2 — Build (weeks 8–24):**
+- Progress toward heavy loading (≥80% 1RM, e.g., 5×5) for strength/bone on key lifts; add impact/jump work (LIFTMOR-style drop landings/jumps) 2×/week for bone.
+- Exploit women's fatigue resistance: use higher weekly set volumes (hypertrophy ≥10 sets/muscle/week) and somewhat shorter rest where appropriate.
+- Add hip-abductor/glute-med and Copenhagen adductor work (3×/week ramping to maintenance) for ACL/groin resilience.
+- Add collagen 15 g + ~50 mg vitamin C, 30–60 min pre-loading if managing tendon/joint issues.
+
+**Stage 3 — Individualize & sustain:**
+- Do not build the program around menstrual phases. Train hard year-round; autoregulate around individual symptoms tracked over ≥3 cycles.
+- Peri/postmenopause: heavy resistance ≥3×/week, impact/sprint work, protein toward 2.0–2.2 g/kg/day, discuss HRT with a physician (may enhance the training response). This is the highest-yield window for preventing bone/muscle loss.
+- Monitor HRV relative to cycle phase (expect luteal dips); prioritize sleep hygiene in the late-luteal week.
+- Screen for RED-S/low energy availability (LEAF-Q / IOC RED-S CAT2) in lean-focused or high-volume trainees.
+
+**Benchmarks that change the plan:**
+- Ferritin <30 µg/L → investigate/treat iron deficiency before pushing volume.
+- ALM index <5.5 kg/m², grip <20 kg, or gait <1.0 m/s → prioritize hypertrophy/strength, protein, and refer.
+- VAT >100 cm² → metabolic-risk flag; emphasize resistance training + nutrition.
+- Incontinence/prolapse/DRA symptoms under load → reduce IAP demand, refer to pelvic-floor PT.
+- Amenorrhea/stress fracture → screen RED-S immediately; address energy availability first.
+
+## Caveats
+
+- Menstrual-cycle science is genuinely contested. Popular practitioners (Sims) and some meta-analyses claim phase effects; the highest-quality umbrella review (Phillips lab 2023) finds the evidence too weak to program around. Weight the umbrella review more heavily on methodology, but reasonable experts disagree, and individual symptom-based adjustment remains sensible.
+- Much foundational research is on men or young women; older-women and perimenopausal RCTs are fewer, and some findings (e.g., higher-protein benefit in postmenopausal women, cycle-based nutrition) are extrapolated or conflicting.
+- Cortisol/HRV sex differences are context-dependent (acute vs chronic stress); avoid over-interpreting single readings.
+- Body-composition tools differ in accuracy: DXA is the practical reference for fat/lean/VAT/ALM; 3D scanners (Styku) are best for tracking shape/girth trends, not absolute body-fat criterion measures; BIA cutoffs differ from DXA.
+- Supplement effects are modest: creatine and collagen have real but bounded benefits and do not substitute for training, protein sufficiency, and sleep.
+- Injury-prevention percentages (ACL, groin) come largely from youth/athletic cohorts and may not transfer identically to older recreational women; the ~2.8× ACL incidence ratio (team ball sports) is lower than the often-quoted "4–6×," which reflected specific high-risk sport subsets.
+
+---
+
+## Curator Update Log
+
+Dated entries for every pass `icons-evidence-curator` makes to this file — what was checked, what changed, what was corroborated as-is. Mirrors the format of `CLAUDE.md`'s Research Update Log but scoped to this document specifically.
+
+**8/12/2026 — file seeded.** Full document saved from a research brief supplied directly by Xolokan. Not yet independently re-verified claim-by-claim against current literature — that's the curator's first real pass. One cross-reference note added inline (Creatine/bone claim, section 6) flagging that this file's wording predates the correction already live in `CLAUDE.md`.
