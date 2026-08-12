@@ -402,6 +402,22 @@ Functional training (multi-planar, unstable, or balance-based movement — lunge
 
 Full ROM strengthens muscle through its full length (supports flexibility and hypertrophy) and keeps joints healthy through usable ranges, building the "sculpted grace" look — but only *with control*: never chase depth if posture breaks, and regress ROM or load when alignment falters. Quality movement under tension is the true transformation driver. Coaching cue: *"Long where you move, tight where you hold."*
 
+### Compound Block Sequencing — Antagonist Rotation Rule
+
+Added 8/12/2026, at Xolokan's direction after a team discussion. **Within a Compound-zone block, never stack three consecutive exercises that load the same primary muscle group or movement pattern.** Rotate through an antagonistic or complementary pattern instead — push↔pull, hip-dominant↔knee-dominant, upper↔lower — so the block still trains hard, just not the same joints/tissue three times in a row.
+
+**Why:** the third consecutive exercise on the same pattern is exactly where accumulated joint/connective-tissue stress and technical fatigue peak — the same rep range and mechanical loading, but with the least fresh stabilization left to control it. Rotating to the antagonist lets the just-worked muscle group passively recover while the block's training density stays high; the client keeps working hard, just not on the same structures back-to-back-to-back. This is a sequencing rule, not a volume cut — nothing about total sets, load, or intensity changes, only the order exercises land in.
+
+**What this does and doesn't restrict:**
+- Two same-pattern exercises back to back is fine (a primary compound lift immediately followed by a close accessory in the same pattern — e.g. Back Squat → Goblet Squat as a primary/accessory pairing) — the rule is specifically about a *third* stacked on top of that.
+- Example fix: Squat → RDL → Split Squat all load the same quad/hip-hinge chain under compression three times running — swap the third for a pull or press instead (Squat → RDL → Row) even within the same block, rather than moving it to a different block.
+- Applies to Compound-zone blocks specifically — multi-joint, real-load exercises. Isolated-zone/corrective blocks (lower load, different injury-risk profile, often deliberately targeting one weak muscle group repeatedly, e.g. a hip-activation circuit) are not bound by this the same way; use judgment there rather than force antagonist rotation where the block's actual purpose is concentrated correctivework.
+- This governs exercise *order within and across a block*, not exercise *selection* — don't drop an exercise the day's programming actually calls for just to satisfy this rule; resequence it (move it to a later block, or swap its position with a complementary-pattern exercise already in the plan) instead.
+
+Coaching cue: *"No muscle group works alone three times in a row."*
+
+`icons-expert` applies this at build time when constructing a day's blocks; `icons-doc-auditor` spot-checks it on delivery (see that agent's standing checklist).
+
 ---
 
 ## EVIDENCE-BASED SCIENCE LAYER
@@ -1620,6 +1636,13 @@ When a new client joins, build IN THIS ORDER:
   → Engine-enforced: buildDocument() auto-inserts pelvicFloorCallout() whenever
      client.isPostmenopausal is true and the day contains a matching exercise.
      Set day.pelvicFloor: false only if it's genuinely not applicable.
+
+✗ Stacking three same-muscle-group compound exercises in a row in one block
+  → See "Compound Block Sequencing — Antagonist Rotation Rule" above. Squat →
+     RDL → Split Squat all hammer the same hip-hinge/quad chain three times
+     running; swap the third for a push/pull instead (Squat → RDL → Row). Two
+     in a row (primary lift + its accessory) is fine — it's the third stacked
+     on top that's the mistake.
 ```
 
 ---
