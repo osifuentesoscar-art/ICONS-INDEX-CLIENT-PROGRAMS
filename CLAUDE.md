@@ -184,6 +184,7 @@ maleProteinTargets(client)     // ← Male Client Programming Framework equivale
 maleNutritionNote(client)      // ← goldCallout-equivalent protein/creatine note built from maleProteinTargets()
 testosteroneNote(client)       // ← teal, informational-only testosterone/andropause note; returns [] under age 40
 dayHeader(intensity, title, subtitle, descriptor)
+sectionTitle(title, color = C.gold)   // ← bold label + bottom-border rule; the section-header primitive stykuBlock/nutritionBlock/baselinesTable/buildImprovementDoc all build on — exported for reuse when composing a custom page
 exTable(exercises[], colorKey)   // colorKey: 'teal'|'green'|'gold'|'red'|'blue'|'purple' (a HUES key)
 weeklySummary(rows[][])
 progressionBlock()

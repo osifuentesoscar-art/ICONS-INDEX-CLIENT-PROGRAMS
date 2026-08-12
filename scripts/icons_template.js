@@ -608,8 +608,8 @@ function dayHeader(intensity, title, subtitle, descriptor, badgeOverride) {
   ];
 }
 
-function intensityPara(label, text) {
-  return labeledPara(label, text, undefined, { spacingAfter: 100 });
+function intensityPara(label, text, color) {
+  return labeledPara(label, text, color, { spacingAfter: 100 });
 }
 
 // ── EXERCISE TABLE ────────────────────────────────────────────────────
@@ -729,8 +729,15 @@ function dayHasHeavyLoading(day) {
 
 function buildDayContent(day, client) {
   const els = [];
+  const iv = ivOf(day.intensity);
   els.push(...dayHeader(day.intensity, day.title, day.subtitle, day.descriptor, day.badge));
-  els.push(...intensityPara(day.intensityLabel || `${ivOf(day.intensity).label} Day`, day.intensityPara));
+  // .replace() guards the AR fallback ('ACTIVE\nRECOV.') — intensityPara's label
+  // is a single inline TextRun (unlike dayHeader's badge, which uses txtLines()
+  // for real two-line rendering), so a raw \n here would show as a literal
+  // stray break instead of wrapping. Every current day object sets
+  // intensityLabel explicitly and never hits this fallback, but it's a real
+  // landmine for anyone who doesn't.
+  els.push(...intensityPara(day.intensityLabel || `${iv.label.replace(/\n/g, ' ')} Day`, day.intensityPara, iv.accent));
 
   if (client && client.alstIndex !== undefined && client.alstIndex < 5.5) {
     els.push(...proteinBar(client));
@@ -744,7 +751,7 @@ function buildDayContent(day, client) {
 
   (day.blocks || []).forEach((block) => {
     els.push(...blockLabel(block.letter, block.title, block.color, day, block.introLabel, block.intro));
-    els.push(...exTable(block.exercises, block.color || ivOf(day.intensity).hue));
+    els.push(...exTable(block.exercises, block.color || iv.hue));
   });
 
   if (day.coolDown) els.push(...labeledPara('Cool-Down', day.coolDown, C.blue));
