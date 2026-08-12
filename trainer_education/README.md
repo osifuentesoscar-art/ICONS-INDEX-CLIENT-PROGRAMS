@@ -17,6 +17,8 @@ Every gated module ends in a live, lead-coach-observed practicum sign-off — qu
 
 All four now include a compact male-client scope-awareness addition (added 8/11/26, alongside CLAUDE.md's Male Client Programming Framework) — the male ALST cutoff (<7.0 kg/m², vs <5.5 for women), the rule that women's numeric thresholds don't silently transfer to a male client, and the referral-not-diagnose posture on TRT/hypogonadism questions, each with at least one knowledge-check question testing it.
 
+Case-study/scenario content in these modules should name Brace Life's in-house staff (Jason Bethea, Trainer/Physical Therapist; Niko Heers, Stretch Therapist) the same way real client documents do as of 8/11/26 — see CLAUDE.md's "STUDIO STAFF" section. A rehab-referral callout still using generic "pending PT clearance" language is stale, not a style choice.
+
 ## Format 2 — Physical "Train the Trainer" `.docx` programs (trainers run the workouts on themselves)
 
 Built via `buildDocument()` in `scripts/icons_template.js` — never hand-composed. "You cannot coach what you haven't felt." Carries `insight` sub-lines (italic gray "Trainer Insight: ...") explaining the clinical rationale behind each exercise, distinct from the clinical-red `flag` field.
