@@ -437,7 +437,7 @@ function nutritionBlock(client) {
         : 'Age 40+.';
     els.push(...clinicalFlag(
       'Creatine — Strongly Indicated',
-      `${reason} Prescribe 3–5g creatine monohydrate daily with food, no loading phase. Saturates in 3–4 weeks. Supports strength, power, cognition, and bone density.`
+      `${reason} Prescribe 3–5g creatine monohydrate daily with food, no loading phase. Saturates in 3–4 weeks. Well-supported for strength, power, and cognition; bone-density evidence is mixed, not settled — a possible upside alongside LIFTMOR-style loading, not a substitute for it.`
     ));
   } else {
     els.push(...tealCallout(
