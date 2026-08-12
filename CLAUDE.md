@@ -1385,6 +1385,18 @@ Cascade per document, since each variant reuses a different subset of the base's
 
 **Male-client scope-awareness — deliberately NOT added here (8/11/2026 retro follow-up).** Unlike the 4 HTML modules above, none of these 4 `.docx` documents were touched for male-client scope awareness. These are physical, self-administered workout programs a trainer runs on themselves, not knowledge-testing content — there's no natural home for a scope-awareness note inside an exercise table or a `progressionBlock()`, and grafting one on would be forced. Revisit only if a future need (e.g. a male-specific Train-the-Trainer variant) makes it a genuine fit rather than an awkward addition.
 
+### Individual Trainer/Athlete Training Programs — real people, real tested baselines, distinct from the generic Format 2 program above
+
+Built 8/12/2026 at Xolokan's direct request ("have a program built for all these trainers"), immediately after the `ICONS_Baseline_Sheets.docx` migration. Distinct from the Trainer Development Programs above in one key way: those are one hypothetical trainer running the client-facing method once as a training exercise; these are 5 real, named trainers/athletes (Becca, Brodie, Oscar, Jah, Nick) with real tested strength baselines from that same baseline-sheets document, each getting an actual individualized 3-day program built off their own numbers via `epley1RM()`/`workingLoad()`.
+
+Full detail — per-athlete baseline anchoring, new-baseline introductions, and Nick's structurally-applied "advanced periodization" note — lives in `trainer_education/README.md`'s "Format 3" table rather than duplicated here. Key points:
+- Uniform 3-day length across all 5 (Xolokan's explicit choice, not level-varied).
+- No Styku/age/sex/clinical data on file for any of the 5 — same demographic-scope discipline as Jake Poyner/Vinz Feller/Petra: `includeNutritionBlock: false`, no women's or male framework numbers applied, each document carries an explicit scope note stating this rather than silently omitting it.
+- Antagonist Rotation Rule applied at BUILD TIME, not retrofitted — the first content in this system built with the rule as a starting constraint rather than a later audit-and-fix pass.
+- Independently audited via `icons-doc-auditor` in two batches: every Epley/working-load calculation re-derived by hand and confirmed, every Compound-zone block across all 15 day-pages checked for 3-consecutive-same-pattern violations (none found), Nick's claimed departure from the standard 60/70/80% framework confirmed as a genuine structural difference (not cosmetic) by direct comparison against Jah's document on the same template.
+
+Output: `trainer_education/Becca_3Day_Training_Plan.docx`, `Brodie_3Day_Training_Plan.docx`, `Oscar_3Day_Training_Plan.docx`, `Jah_3Day_Training_Plan.docx`, `Nick_3Day_Training_Plan.docx`. Build scripts: `scripts/becca_3day_plan.js`, `scripts/brodie_3day_plan.js`, `scripts/oscar_3day_plan.js`, `scripts/jah_3day_plan.js`, `scripts/nick_3day_plan.js`.
+
 ### Subagent Team (`.claude/agents/*.md`)
 
 Six scoped subagents cover this system as of 8/12/2026 — one per structure built so far. Route a task to the one whose scope actually matches rather than doing everything in the main thread; each agent's own file has the operative detail, this is just the map:

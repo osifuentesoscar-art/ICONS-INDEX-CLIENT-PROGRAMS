@@ -32,6 +32,22 @@ Built via `buildDocument()` in `scripts/icons_template.js` — never hand-compos
 
 No male-scope addition was made to this format — these are physical self-administered workout programs, not knowledge-testing content, so a scope-awareness addition doesn't fit naturally here. See CLAUDE.md's Trainer Development Programs subsection if that changes.
 
+## Format 3 — Individual trainer/athlete training plans (real people, real tested baselines)
+
+Distinct from Format 2: these are not a generic hypothetical trainer running the client-facing method once — each is a real 3-day training program built for a named trainer/athlete off their own actual tested strength numbers from `system_documents/ICONS_Baseline_Sheets.docx`. Built 8/12/2026 at Xolokan's request ("have a program built for all these trainers"). Uniform 3-day length across all 5, per Xolokan's explicit choice. None of the 5 have Styku/age/sex/clinical data on file — every document carries an explicit scope note (matching the Jake Poyner/Vinz Feller/Petra precedent) rather than silently omitting the ICONS science-layer numbers, and none of the women's or male clinical frameworks were applied.
+
+| File | Level | What's individualized |
+|---|---|---|
+| `Becca_3Day_Training_Plan.docx` | Intermediate | Deadlift/Split Stance/Row loads off her real 5RMs; Back Squat and Hex Bar Deadlift introduced as new conservative baselines (both were "Not Yet Assessed"); Full Pull-Up given a single unassisted test rep alongside her standing 3-grip assisted battery. |
+| `Brodie_3Day_Training_Plan.docx` | Intermediate | Back Squat/Hex Bar Deadlift/Row loads off his real 5RMs; Conventional Deadlift introduced as a new baseline. Assisted Pull-Up deliberately NOT programmed — his 16-rep unassisted baseline already supersedes it. |
+| `Oscar_3Day_Training_Plan.docx` | Intermediate | Back Squat/Hex Bar Deadlift/Row loads off his real 5RMs (heaviest row, highest pull-up count in the group); Conventional Deadlift and Farmer Carry both introduced as new baselines. Assisted Pull-Up deliberately skipped, same rationale as Brodie's. |
+| `Jah_3Day_Training_Plan.docx` | Intermediate/Advanced | Squat/Deadlift/Row/Split Squat loads off his real 5RMs; Goblet Squat and Hex Bar Deadlift introduced as new baselines per his own coach note's stated substitution intent (Hex Bar DL's Week 1 load explicitly derived from his Conventional Deadlift 1RM, not an independent number). |
+| `Nick_3Day_Training_Plan.docx` | Advanced/Elite | Same anchoring approach, but his coach note's "advanced periodization" instruction is applied structurally, not just narratively: Week 1 working loads computed at ~70/80/88% of 1RM (vs. the 60/70/80% used for the other 4), reps held to 3-5 throughout, rest at 120-180s on primary lifts (vs. 30-90s elsewhere), and one sub-maximal/maximal-intent velocity exercise per day (Trap Bar Jump, Med Ball Slam) using this system's existing Power Training framing. |
+
+All 5 apply the Antagonist Rotation Rule at build time (not as a retrofit) and were independently audited via `icons-doc-auditor` — every Epley 1RM/working-load calculation was independently re-derived and confirmed, every Compound-zone block across all 15 day-pages checked for 3-consecutive-same-pattern violations (none found), and every claimed scope/framework exclusion confirmed via a full-text grep (zero leaked women's- or male-framework content in any of the 5).
+
+Build scripts: `scripts/becca_3day_plan.js`, `scripts/brodie_3day_plan.js`, `scripts/oscar_3day_plan.js`, `scripts/jah_3day_plan.js`, `scripts/nick_3day_plan.js`.
+
 ## Where a new trainer should start
 
 1. `ICONS_Trainer_Learning_Module.html` (repo root) — ungated foundation, 5 modules, ~100 min total.
