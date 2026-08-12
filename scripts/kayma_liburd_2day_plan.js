@@ -92,6 +92,24 @@
  *     circuit (steady-state-adjacent, not intervals structured as "hard/
  *     easy" sprints). Every Block D intro instructs an explicit HR-monitor
  *     check between rounds/sets.
+ *
+ * BREATHING-TECHNIQUE ADDITION (8/12/2026 — cueing-only correction, from
+ * CLAUDE.md's new "Cardiovascular / Cardiac Considerations in Resistance
+ * Training" section): the Valsalva maneuver / blood-pressure-spike risk
+ * pathway during heavy compound lifting is real and SEPARATE from the
+ * sustained-elevated-HR risk the Block D HR ceiling already addresses —
+ * this document previously had no breathing-technique language on the
+ * strength side. Nothing about load, intensity, or exercise selection
+ * changed (the "precautions not restrictions" call on the resistance-
+ * training side still holds per the science-layer citation above); this is
+ * a cueing addition only. An explicit "exhale on exertion, do not hold your
+ * breath through the rep" cue was added to the six heaviest compound
+ * lifts across both days (Day A: Barbell Back Squat, Romanian Deadlift,
+ * Incline DB Bench Press; Day B: Trap Bar Deadlift, Barbell Hip Thrust,
+ * Close-Grip Bench Press or Weighted Dip) and to the cardiac clinicalFlag
+ * baselineNote — the same brace-before-lifting/exhale-on-exertion cue this
+ * system already uses in the Pelvic Floor Protocol, extended here for a
+ * different (cardiac, not continence) reason.
  */
 
 const fs = require('fs');
@@ -117,7 +135,7 @@ const baselineNotes = [
   {
     type: 'clinical',
     label: 'Cardiac Flag — Hard Heart-Rate Ceiling, 160 BPM',
-    body: 'Known cardiac condition on file. Heart rate must not exceed 160 bpm at any point during training. Wear a heart-rate monitor every session, and check it explicitly during every conditioning/metabolic block (flagged inline in each day\'s Block D below) — not just at the end of a set. This program proceeds under physician/cardiologist clearance and coordination, the same posture this system already uses for PT-coordinated clinical flags: this is an operating constraint, not a diagnosis. Stop signal: chest pain, dizziness, shortness of breath disproportionate to effort, or an HR monitor reading above 160 bpm is a hard stop for that set or session — flag your coach immediately, do not push through to finish a set or round.',
+    body: 'Known cardiac condition on file. Heart rate must not exceed 160 bpm at any point during training. Wear a heart-rate monitor every session, and check it explicitly during every conditioning/metabolic block (flagged inline in each day\'s Block D below) — not just at the end of a set. This program proceeds under physician/cardiologist clearance and coordination, the same posture this system already uses for PT-coordinated clinical flags: this is an operating constraint, not a diagnosis. Stop signal: chest pain, dizziness, shortness of breath disproportionate to effort, or an HR monitor reading above 160 bpm is a hard stop for that set or session — flag your coach immediately, do not push through to finish a set or round. Breathing technique on the heaviest compound lifts (squat, deadlift-pattern hinge, heavy press) is a second, separate precaution, distinct from the HR ceiling above: exhale on exertion through the lift, do not hold your breath through the rep. This is the same brace-before-lifting, exhale-on-exertion cue this system already uses for pelvic floor safety, extended here because sustained breath-holding on a heavy rep (a Valsalva maneuver) can cause a real blood-pressure spike — a manageable, well-understood consideration with the right cueing, not a reason to restrict the loads themselves.',
   },
   {
     type: 'gold',
@@ -169,8 +187,8 @@ const days = [
         introLabel: 'Load Target',
         intro: 'Heaviest work of the session. Advanced compound variations with tempo control — both squat and hinge patterns loaded every session by design, true full-body.',
         exercises: [
-          { name: 'Barbell Back Squat', sets: '4', reps: '6', load: 'Heavy — 1-2 RIR', tempo: '3-2-1', rest: '2 min', cue: 'Brace before descent, 2-count pause at depth, drive floor away.' },
-          { name: 'Romanian Deadlift (Barbell)', sets: '4', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '3-1-1', rest: '90s', cue: 'Hinge from the hip, bar tracks close, feel hamstring load, stand tall.' },
+          { name: 'Barbell Back Squat', sets: '4', reps: '6', load: 'Heavy — 1-2 RIR', tempo: '3-2-1', rest: '2 min', cue: 'Brace before descent, 2-count pause at depth, drive floor away. Exhale on exertion — do not hold your breath through the rep.' },
+          { name: 'Romanian Deadlift (Barbell)', sets: '4', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '3-1-1', rest: '90s', cue: 'Hinge from the hip, bar tracks close, feel hamstring load, stand tall. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Bulgarian Split Squat (DB)', sets: '3+3', reps: '8 ea', load: '25–30 lbs/hand', tempo: '2-1-1', rest: '75s', cue: 'Rear foot elevated, front knee tracks over toes, even tempo both legs.' },
         ],
       },
@@ -180,7 +198,7 @@ const days = [
         introLabel: 'Format',
         intro: 'Paired sets: press then row, 15 seconds between the pair, full rest after. Advanced complexity — heavier press/pull pairing than a foundation-day program would use.',
         exercises: [
-          { name: 'Incline DB Bench Press (Paired A1)', sets: '5', reps: '6–8', load: 'Heavy DB', tempo: '3-1-1', rest: '15s → A2', cue: 'Elbows ~45°, full stretch at bottom, press to lockout.' },
+          { name: 'Incline DB Bench Press (Paired A1)', sets: '5', reps: '6–8', load: 'Heavy DB', tempo: '3-1-1', rest: '15s → A2', cue: 'Elbows ~45°, full stretch at bottom, press to lockout. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Single-Arm DB Row (Paired A2)', sets: '5', reps: '8/side', load: 'Heavy DB', tempo: '2-1-2', rest: '90s after pair', cue: 'Bench-supported, flat back, drive elbow to hip, full stretch at bottom.' },
           { name: 'Standing Barbell Overhead Press (Paired B1)', sets: '4', reps: '6', load: 'Moderate-Heavy', tempo: '2-1-1', rest: '15s → B2', cue: 'Ribs down, brace hard, press straight overhead.', rirNote: '1-2 RIR' },
           { name: 'Weighted Pull-Up or Lat Pulldown (Paired B2)', sets: '4', reps: '6–8', load: 'BW + load, or heavy stack', tempo: '3-1-2', rest: '90s after pair', cue: 'Full hang to chin over bar, controlled descent.' },
@@ -229,8 +247,8 @@ const days = [
         introLabel: 'Load Target',
         intro: 'The week\'s heaviest resistance work. Full recovery between every set — near-maximal loading, not fatigue accumulation. Advanced complexity: paused unilateral lunge and a peak-week trap bar pull. This block is not affected by the cardiac ceiling the way conditioning is — controlled heavy sets with full rest between them do not sustain HR the way continuous circuit work does — but the HR monitor stays on throughout regardless.',
         exercises: [
-          { name: 'Trap Bar Deadlift', sets: '4', reps: '5', load: 'Heavy — near-maximal, 1 RIR', tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, symmetric setup, drive floor away hard.' },
-          { name: 'Barbell Hip Thrust', sets: '4', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, full hip lockout, squeeze glutes hard at top.' },
+          { name: 'Trap Bar Deadlift', sets: '4', reps: '5', load: 'Heavy — near-maximal, 1 RIR', tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, symmetric setup, drive floor away hard. Exhale on exertion — do not hold your breath through the rep.' },
+          { name: 'Barbell Hip Thrust', sets: '4', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, full hip lockout, squeeze glutes hard at top. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Front Rack Reverse Lunge (DB or BB)', sets: '3+3', reps: '6 ea', load: 'Moderate-Heavy', tempo: '3-1-1, 1s pause at bottom', rest: '75s', cue: 'Step back with control, front knee tracks over toes, pause at depth.' },
         ],
       },
@@ -241,7 +259,7 @@ const days = [
         intro: 'Pull leads this session — paired sets, 15 seconds between the pair, full rest after. Heaviest pulling and pressing complexity of the week.',
         exercises: [
           { name: 'Weighted Pull-Up or Chin-Up (Paired A1)', sets: '4', reps: '5–6', load: 'BW + load', tempo: '3-1-1', rest: '15s → A2', cue: 'Full hang, chin clears the bar, controlled 3-count descent.' },
-          { name: 'Close-Grip Bench Press or Weighted Dip (Paired A2)', sets: '5', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '2-1-1', rest: '90s after pair', cue: 'Elbows tucked ~30°, full range, drive to lockout.' },
+          { name: 'Close-Grip Bench Press or Weighted Dip (Paired A2)', sets: '5', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '2-1-1', rest: '90s after pair', cue: 'Elbows tucked ~30°, full range, drive to lockout. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Bent-Over Barbell Row (Paired B1)', sets: '3', reps: '8', load: 'Heavy', tempo: '2-1-2', rest: '15s → B2', cue: 'Hip hinge, flat back, pull bar to lower ribs.' },
           { name: 'Standing DB Arnold Press (Paired B2)', sets: '4', reps: '8–10', load: 'Moderate', tempo: '2-1-2', rest: '75s after pair', cue: 'Rotate palms in to out through the press, brace throughout.' },
         ],
