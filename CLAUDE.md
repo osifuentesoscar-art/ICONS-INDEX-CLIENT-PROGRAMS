@@ -1057,16 +1057,23 @@ Niko Heers    — Stretch Therapist (certified)
 
 ### Active Clients (documents built this session)
 ```
-Siobhan Hansen  → /mnt/user-data/outputs/Siobhan_Hansen_3Day_Training_Plan.pdf
-                  /mnt/user-data/outputs/Siobhan_Hansen_ICONS_Report_v3.docx
+Siobhan Hansen  → MIGRATED 8/12/2026 into this repo's clients/scripts structure — see
+                  `clients/siobhan_hansen/Siobhan_Hansen_3Day_Training_Plan.docx` and
+                  CLIENTS.md's "Siobhan Hansen" entry for the current, engine-built version.
+                  This block's numbers were the pre-repo (reportlab/PDF-era) profile; her
+                  8/12/2026 rebuild independently re-confirmed every figure below against
+                  her actual Styku PDF before reusing it, so it's accurate as a historical
+                  snapshot but CLIENTS.md is now the maintained source of truth for her.
   Age: 59 | 5'9" | 118 lbs | Postmenopausal
   ALST: 4.66 AT-RISK | VFA: 70.8 cm² | BMI: 17.4 UNDERWEIGHT
   Body fat: 30.9% (FIT) | Scan: 7/29/2026
   Arms: L 7.0 / R 6.2 (RIGHT weaker — leads rows)
   Legs: L 12.7 / R 13.5 (LEFT weaker — leads unilateral)
-  Flags: Left shoulder pain (overhead suspended), ALST At-Risk, BMI underweight
+  Flags: ALST At-Risk, BMI underweight; left shoulder overhead pain — previously
+    suspended, now being actively/carefully reintroduced under pain-free-ROM
+    autoregulation per her 8/12/2026 rebuild (see CLIENTS.md)
   Protein target: 107–118g/day | Creatine: strongly indicated
-  Program: 3-day (Day 1 Posterior, Day 2 Lower Unilateral, Day 3 Upper/Pull)
+  Program (current): 3-day, engine-built — see CLIENTS.md for the full breakdown
 
 Kelly Mulroy    → /mnt/user-data/outputs/Kelly_Mulroy_5Day_Training_Plan_v2.docx
   Age: 35 | 5'4" | 152 lbs | Tue/Wed/Thu/Fri gym + Sun active recovery
