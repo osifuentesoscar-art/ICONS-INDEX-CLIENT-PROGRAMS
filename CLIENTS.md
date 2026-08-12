@@ -10,6 +10,21 @@ A **⭐ Priority Client** designation (first used 8/11/2026, for August Olivia, 
 
 ## Active Clients
 
+### Mary Burfete
+- **Program:** 2-Day Full Gym Training Plan (`.docx`)
+- **Output:** `clients/mary_burfete/Mary_Burfete_2Day_Training_Plan.docx`
+- **Build script:** `scripts/mary_burfete_2day_plan.js`
+- **Source:** Styku scan (8/10/2026, Brace Life Studios) + a strong, fully-tested baseline strength battery. Built via `icons-expert`, independently structurally audited via `icons-doc-auditor` — clean pass, no defects found.
+- Age 55 | 5'8" | 140 lbs | BMR 1330 cal/day — sits right at the boundary of the 45–55 (Perimenopause/Menopause Transition) and 55–65 (Postmenopausal) Age Bracket Framework brackets; noted explicitly rather than forced into one or the other.
+- Body Fat 35.5% (50 lbs, Styku "Average" tier) | Lean Mass 85.2 lbs / 61.1% — Styku flags **"Ideal Lean Mass"** | BMI 21.2 (Normal) | Bone Mass 4.7 lbs (3.4%) | Shape Score 65/100 "Needs Improvement"
+- ALST Index **5.52 kg/m² — Normal/monitor tier**, but flagged explicitly as **genuinely borderline** — only 0.02 kg/m² above the 5.5 At-Risk cutoff, worth close attention at her 8-week rescan | VFA **62.0 cm² — Very Low Risk** per CLAUDE.md's own table (<70 cm²), a more favorable and more precise tier than Styku's own dashboard "Low Risk" tag — the document states both and explains the discrepancy
+- Segmental: L Arm 7.3 / R Arm 7.2 lbs (0.1 lb gap, below the 0.5 lb trigger — monitor only) · L Leg 14.6 / R Leg 15.1 lbs (0.5 lb gap — **exactly at** the asymmetry-protocol trigger, treated as triggering per the Johanna Castillo precedent, not waived as borderline) — `weakerSide()` correctly identifies **LEFT leg as weaker**, leads all unilateral leg work (independently re-verified by the auditor: `weakerSide(14.6, 15.1)` → `'left'`)
+- **Postmenopausal status not stated — not fabricated.** `isPostmenopausal: false` (unconfirmed, matching the Rena Paul precedent), but given her age (55, at/past average menopause onset) and a program with real heavy hip-thrust/squat/deadlift loading, a dedicated baselineNote recommends confirming her actual status at next intake given how load-bearing that determination is for the pelvic floor protocol. `pelvicFloorCallout()` correctly did not auto-fire — auditor confirmed zero occurrences of its trigger language anywhere in the document.
+- Protein target: 127–140 g/day (2.0–2.2 g/kg, 50+ tier, independently re-verified against her 63.5 kg bodyweight) | Creatine strongly indicated
+- Strong baseline battery (all tested, same intake window): Hex Bar Deadlift 155×5 (Epley 1RM 181), Back Squat 90×5 (1RM 105), Hip Thrust 90×5 (1RM 105), Bench Press 65×5 (1RM 76), Split Stance Squat 17.5×5 (1RM 20), Single-Arm DB Row 30×5 (1RM 35), Sled Push 45 lbs, Farmers Carry 25 lbs/hand, Plank Hold 2:03, Incline Push-Up ×10, Assisted Pull-Up 5 reps × close/standard/wide grip — all Epley/working-load math independently re-derived by the auditor and confirmed correct.
+- Program: 2-day/week (Day A Hinge, Pull & Loaded Carry 80% Gold; Day B Squat, Press & Pull-Up Progression 70% Green, including a gold-colored Conditioning Circuit block) — no `weekOverview` strip per the 2-day-program convention, `days[].intensity` badges used directly.
+- Trainer's only instruction beyond the intake data: "remember keeping the icons method" — standard three-zone philosophy and RIR-based autoregulation followed faithfully, no departures from house style.
+
 ### Kayma Liburd
 - **Program:** 2-Day Full-Body Training Plan (`.docx`)
 - **Output:** `clients/kayma_liburd/Kayma_Liburd_2Day_Training_Plan.docx`
