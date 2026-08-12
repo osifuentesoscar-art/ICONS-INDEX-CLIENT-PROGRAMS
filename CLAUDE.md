@@ -433,6 +433,7 @@ Every client's program should be filtered through the age bracket below, layered
 
 - **Male clients** (e.g. Jake Poyner, Vinz Feller): a real, cited framework now exists for this — see "MALE CLIENT PROGRAMMING FRAMEWORK" immediately after this Evidence-Based Science Layer section. Use its ALST/protein/creatine/testosterone/VFA/BMI/bone-loading thresholds rather than reporting raw Styku numbers with no clinical interpretation, and rather than reaching for the women's numeric thresholds by default.
 - **A population neither framework covers** (a client meaningfully younger than 20-35, e.g. an adolescent, or any other genuinely out-of-scope case): apply the sex-neutral structural philosophy (three-zone Isolated→Compound→Metabolic build, RIR/RPE autoregulation, corrective-before-compound sequencing) since that transfers, and explicitly flag in the client's document which numeric thresholds were NOT applied and why — the same way Jake Poyner's and Vinz Feller's programs each carry a dedicated note explaining the scope decision rather than burying it in code. Per the standing trigger at the top of the Male Client Programming Framework section, treat onboarding a client from any such population as the moment to research and build out that population's framework in this file, not just document the gap and move on.
+- **The "ICONS Index Full-Spectrum Progression Standard" (all 10 core Baseline Testing Protocol exercises must show programmed progression)** is scoped to women 40–55 specifically (see that standard, under "ICONS BASELINE TESTING PROTOCOL" below) — the same non-transfer rule applies: don't silently extend that specific mandate to women outside 40–55 or to male clients without a dedicated research pass validating it for that population first.
 
 This is a standing decision rule, not a one-off judgment call specific to any one client.
 
@@ -453,6 +454,7 @@ This is a standing decision rule, not a one-off judgment call specific to any on
 - Volume/frequency targets unchanged from the 20–35 bracket — no physiological reason to reduce load yet
 - Begin ALST/VFA monitoring at the first Styku scan if not already established, even though risk is typically still low
 - If a client mentions she's on a GLP-1/anti-obesity medication (semaglutide, tirzepatide, etc.), see "GLP-1 / Anti-Obesity Medications" below — treat as a standing ALST-preservation priority regardless of her current ALST number
+- For a client 40+ within this bracket, see "ICONS Index Full-Spectrum Progression Standard — Women 40–55" below — her program should show programmed progression across all 10 core Baseline Testing Protocol exercises, not just her strongest or most-tested lifts
 
 **45–55 — Perimenopause / Menopause Transition**
 - Protein: 1.8–2.0 g/kg/day minimum, moving to 2.0–2.2 g/kg/day as menopause is reached or ALST flags At-Risk
@@ -461,6 +463,7 @@ This is a standing decision rule, not a one-off judgment call specific to any on
 - Start screening for LIFTMOR-style bone loading candidacy (T-score < -1.0) as estrogen decline accelerates
 - ALST monitoring becomes a priority — sarcopenia risk begins rising through this window
 - Perimenopausal status is frequently ambiguous at intake in this bracket — neither confirmed premenopausal nor confirmed postmenopausal. See "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" below for what's reasonable to ask at intake without overstepping into diagnosis, and why an unconfirmed status should still trigger pelvic-floor caution rather than default to "not postmenopausal" — that section's evidence says the transition window itself, not confirmed postmenopausal status, is the higher-risk period for stress urinary incontinence specifically
+- See "ICONS Index Full-Spectrum Progression Standard — Women 40–55" below — her program should show programmed progression across all 10 core Baseline Testing Protocol exercises
 
 **55–65 — Postmenopausal**
 - Protein: 2.0–2.2 g/kg/day ("Women 50+ / ALST At-Risk" tier)
@@ -1452,6 +1455,22 @@ Rep target: 5–8 reps throughout (except plank = max hold, push-up = max reps)
 
 ---
 
+### ICONS Index Full-Spectrum Progression Standard — Women 40–55
+
+Directive from Xolokan, 8/12/2026 ("the programs should improve all 10 icons index numbers, for only the clients that are woman between 40-45 [corrected same day to 40-55]... the icons index applies to all clients just research data for males & females outside that age bracket").
+
+**"The 10 ICONS Index numbers"** = the 10 core ICONS Baseline Testing Protocol exercises above, excluding Pull-Ups (explicitly marked "(bonus)" and not part of the core battery): Deadlift, Back Squat, Seated Overhead Press, Incline Dumbbell Press, Push-Ups, Dumbbell Farmers Carry, Hip Thrust, Single-Leg RDL, Lunges, Plank Hold.
+
+**The rule, for any client who is a woman aged 40–55** (spanning the back half of the 35–45 bracket and the whole 45–55 bracket above — her exact age determines which bracket's protein/creatine/pelvic-floor thresholds apply, but this standard applies uniformly across the full 40–55 span regardless of which bracket she falls in): across the arc of her delivered program — not necessarily touched every single day, but visibly present somewhere in `baselines[]`, a day's `exercises[]`, and/or the `summary`/`weeklySummary`/`milestoneTracker` progression targets — all 10 of the exercises above should carry a programmed line of progression. Not every one of the 10 needs its own dedicated exercise slot on every day; a hex-bar deadlift, a goblet-squat regression, or an incline push-up are all legitimate programmatic substitutes for the literal named lift when appropriate to the client's level — the point is that the movement-pattern territory of all 10 gets programmed and tracked, not that a document silently goes 8-for-10 and leaves two patterns untouched for the life of the program.
+
+**"Not Tested" is not an exemption.** If a client's intake baseline shows one of the 10 as "Not Tested" (e.g. Johnna Macarthur's Deadlift and Squat), the program should be establishing a first working baseline for that lift, not skipping it because no historical number exists yet to progress from.
+
+**Demographic scope — this is a build-time requirement for women 40–55 specifically, not a universal hard rule (yet).** The broader ICONS three-zone system and its philosophy (see "ICONS TRAINING PHILOSOPHY") apply to every client regardless of age or sex, exactly as they always have — nothing about this standard narrows that. What's scoped to 40–55 is the specific "all 10 numbers must show programmed progression" requirement itself, per the Demographic Scope Rule already established in the Age Bracket Programming Framework: this exact mandate hasn't been researched or validated for women outside 40–55 or for male clients of any age, so it should not be silently extended to those clients by default. Per the same standing-trigger pattern already used to build the Male Client Programming Framework, the next time a client from one of those populations is onboarded, research and formalize a population-appropriate version of this standard (or an explicit finding that it doesn't apply / needs different numbers) rather than leaving a silent gap — this is `icons-research-analyst`'s or `icons-evidence-curator`'s scope, not `icons-expert`'s.
+
+**Retroactive audit status:** not yet run. Per the same two-step pattern used for the Antagonist Rotation Rule (rule drafted first, retroactive audit only after explicit authorization), do not sweep existing 40–55-bracket client documents against this standard without Xolokan's explicit go-ahead.
+
+---
+
 ## BRAND STANDARDS
 
 ```
@@ -1644,6 +1663,17 @@ When a new client joins, build IN THIS ORDER:
      running; swap the third for a push/pull instead (Squat → RDL → Row). Two
      in a row (primary lift + its accessory) is fine — it's the third stacked
      on top that's the mistake.
+
+✗ Leaving one of the 10 core Baseline Testing Protocol lifts silently
+  unprogrammed for a 40–55 client's whole program
+  → See "ICONS Index Full-Spectrum Progression Standard — Women 40–55" above.
+     A woman 40–55 whose program never touches, say, Overhead Press or
+     Single-Leg RDL anywhere in baselines[]/exercises[]/summary isn't just
+     incomplete — it's the specific defect this standard exists to catch.
+     A reasonable programmatic substitute (hex-bar DL for BB DL, goblet squat
+     for back squat) is fine; total silence on a pattern for the program's
+     whole arc is not. Scoped to women 40–55 only — do not apply this as a
+     hard requirement outside that bracket without a dedicated research pass.
 ```
 
 ---
