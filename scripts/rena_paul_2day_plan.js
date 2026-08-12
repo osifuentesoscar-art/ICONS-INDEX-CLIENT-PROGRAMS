@@ -107,7 +107,7 @@ const days = [
         exercises: [
           { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: 'Wk1: 75 lbs → Wk4: 95 lbs', tempo: '2-1-1', rest: '90s', cue: 'Hinge hips back to grip, drive floor away, hips and shoulders rise together. Strong baseline — own the pattern before pushing load.' },
           { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5―6', load: 'Wk1: 75 lbs → Wk4: 95–100 lbs', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Hip-dominant — a direct bone-density investment.' },
-          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 22.5 lbs → Wk4: 30 lbs', tempo: '3-1-1', rest: '75s', cue: 'Baseline 25 lbs ×8. Slight knee bend, hinge from hip, feel hamstring load. Left and right equal sets — builds hip hinge control unilaterally.' },
+          { name: 'DB Lateral Raise', sets: '3', reps: '12―15', load: '8―10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Lateral delt. Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.' },
         ],
       },
       {
@@ -118,7 +118,7 @@ const days = [
         exercises: [
           { name: 'DB Overhead Press (Seated)', sets: '4', reps: '8', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 15 lbs ×5RM. Seated: back supported, spine neutral. Press overhead, arms alongside ears. Core braced throughout.' },
           { name: 'Incline DB Chest Press (30–45°)', sets: '4', reps: '8', load: 'Wk1: 17.5 lbs/hand → Wk4: 22.5–25 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 20 lbs ×5RM. 30–45° incline. Full range, control the descent, drive up without arching off the bench.' },
-          { name: 'DB Lateral Raise', sets: '3', reps: '12―15', load: '8―10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Lateral delt. Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 22.5 lbs → Wk4: 30 lbs', tempo: '3-1-1', rest: '75s', cue: 'Baseline 25 lbs ×8. Slight knee bend, hinge from hip, feel hamstring load. Left and right equal sets — builds hip hinge control unilaterally.' },
         ],
       },
       {
@@ -164,7 +164,7 @@ const days = [
         exercises: [
           { name: 'DB Reverse Lunge', sets: '3+3', reps: '8 ea', load: 'Wk1: 20 lbs/hand → Wk4: 27.5–30 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 25 lbs ×5RM. Step back with control, front knee tracks over toes, drive through the front heel to stand.' },
           { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '10―12', load: '30–40 lbs', tempo: '3-1-1', rest: '75s', cue: 'DB held at chest. Full depth, chest tall, elbows inside knees at bottom. Builds the bilateral squat pattern.' },
-          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '15―20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Excellent glute and quad developer without spine loading.' },
+          { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Balances the pressing volume from Day A.' },
         ],
       },
       {
@@ -177,7 +177,7 @@ const days = [
           { name: 'Assisted Pull-Up — Standard Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'Standard overhand grip, shoulder-width. Same quality as close grip. Second grip in the rotation.' },
           { name: 'Assisted Pull-Up — Wide Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '75s', cue: 'Wide overhand grip — greatest lat stretch at bottom, hardest of the three. Full range, no partial reps.' },
           { name: 'Single-Arm DB Row', sets: '4', reps: '8', load: 'Wk1: 25 lbs → Wk4: 32.5–35 lbs', tempo: '3-1-2', rest: '60s', cue: 'Baseline 30 lbs ×5RM. Bench-supported, flat back. Drive elbow to hip, full stretch at bottom.' },
-          { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Balances the pressing volume from Day A.' },
+          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '15―20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Excellent glute and quad developer without spine loading.' },
         ],
       },
       {
