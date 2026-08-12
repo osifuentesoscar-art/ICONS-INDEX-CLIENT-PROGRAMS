@@ -166,18 +166,18 @@ const days = [
         exercises: [
           { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${hexDL_wk1} lbs → Wk4: ${hexDL_wk4} lbs`, tempo: '2-1-1', rest: '90s', cue: 'Hinge hips back to grip, drive floor away, hips and shoulders rise together.' },
           { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5–6', load: `Wk1: ${hipThrust_wk1} lbs → Wk4: ${hipThrust_wk4} lbs`, tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Bone-density investment.' },
-          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8–10 ea', load: '20 lbs → 25 lbs', tempo: '3-1-1', rest: '75s', cue: 'LEFT leg leads every set — lower leg LST (14.6 vs 15.1 lbs), asymmetry-protocol trigger at exactly 0.5 lb gap.' },
+          { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15–20', load: 'Light–Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Shoulder health, balances pressing.' },
         ],
       },
       {
         letter: 'B',
         title: 'PRIMARY PULL STRENGTH',
         introLabel: `Single-Arm Row — Epley 1RM ${row1RM} lbs`,
-        intro: 'Single-arm row tested at 30 lbs for 5 reps and climbs from there; bent-over bilateral row and face pull round out the pulling volume, balancing the pressing work on Day B.',
+        intro: 'Single-arm row tested at 30 lbs for 5 reps and climbs from there; bent-over bilateral row rounds out the pulling volume, balancing the pressing work on Day B, before single-leg RDL closes the block on the posterior chain.',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '4', reps: '8', load: `Wk1: ${row_wk1} lbs → Wk4: ${row_wk4} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Bench-supported, flat back. Drive elbow to hip, full stretch at bottom.' },
           { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: '20–25 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to ribs together. Bilateral pulling volume.' },
-          { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15–20', load: 'Light–Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Shoulder health, balances pressing.' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8–10 ea', load: '20 lbs → 25 lbs', tempo: '3-1-1', rest: '75s', cue: 'LEFT leg leads every set — lower leg LST (14.6 vs 15.1 lbs), asymmetry-protocol trigger at exactly 0.5 lb gap.' },
         ],
       },
       {
@@ -223,7 +223,7 @@ const days = [
         exercises: [
           { name: 'Back Squat (Barbell or Loaded)', sets: '4', reps: '5–6', load: `Wk1: ${backSquat_wk1} lbs → Wk4: ${backSquat_wk4} lbs`, tempo: '3-1-1', rest: '90s', cue: 'Full depth, chest tall, drive knees out. Brace before descent, exhale on the drive up.' },
           { name: 'Split Stance Squat (DB) — LEFT Leads', sets: '3+3', reps: '8 ea', load: `Wk1: ${splitSquat_wk1} lbs/hand → Wk4: ${splitSquat_wk4} lbs/hand`, tempo: '2-1-1', rest: '75s', cue: 'LEFT (weaker) leg trains first every set. Rear foot elevated optional. Front knee tracks over toes.' },
-          { name: 'Step-Up (Unilateral, DB) — LEFT Leads', sets: '3+3', reps: '8 ea', load: '15–20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'LEFT leads. 18–20 inch box. Drive through front heel, full hip extension at top.' },
+          { name: 'DB Lateral Raise', sets: '3', reps: '12–15', load: '8–10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.' },
         ],
       },
       {
@@ -236,7 +236,7 @@ const days = [
           { name: 'Assisted Pull-Up — Close Grip', sets: '3', reps: '5–6', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'LEADS every session. Full hang at bottom, chin over bar at top, controlled 3-second descent.' },
           { name: 'Assisted Pull-Up — Standard Grip', sets: '3', reps: '5–6', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'Standard overhand grip, shoulder-width. Same quality as close grip.' },
           { name: 'Assisted Pull-Up — Wide Grip', sets: '3', reps: '5–6', load: 'Assist level set', tempo: '3-1-2', rest: '75s', cue: 'Wide overhand grip — greatest lat stretch at bottom, hardest of the three. Full range, no partial reps.' },
-          { name: 'DB Lateral Raise', sets: '3', reps: '12–15', load: '8–10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.' },
+          { name: 'Step-Up (Unilateral, DB) — LEFT Leads', sets: '3+3', reps: '8 ea', load: '15–20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'LEFT leads. 18–20 inch box. Drive through front heel, full hip extension at top.' },
         ],
       },
       {
