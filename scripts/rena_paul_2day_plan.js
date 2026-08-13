@@ -26,6 +26,21 @@
  * Hip Thrust x5, 2:00 plank, 5 reps/grip on assisted pull-ups) — program
  * starts her at meaningful loads per the "never under-load" principle
  * rather than conservatively.
+ *
+ * REVISION (8/13/2026, icons-roster-analyst cross-check) — GOBLET SQUAT LOAD
+ * FORMAT FIXED: Goblet Squat (Day B, Block A) — her only squat-pattern
+ * movement — was loaded as a flat "30-40 lbs" while every other tested lift
+ * in this document uses the Wk1->Wk4 progression format. Checked: this was
+ * a genuine formatting gap, not an intentional flat-load choice — Back
+ * Squat/Goblet Squat was never part of her tested 11-exercise battery (the
+ * baselines table below has no squat-pattern row at all; Single-Arm Row
+ * fills its slot in the standard ICONS 11), so there was no tested number
+ * to build a Wk1->Wk4 ramp from, and no baseline row existed to say so.
+ * Fixed the same way Johanna Castillo's and Johnna Macarthur's previously-
+ * untested Squat/Deadlift lifts are handled: today's working load becomes
+ * the new 8-week baseline, documented as such in the baselines table and
+ * the Block A intro, and the exercise's load field now uses the same
+ * Wk1->Wk4 format as the rest of the document.
  */
 
 const fs = require('fs');
@@ -86,6 +101,11 @@ const baselineNotes = [
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
     body: 'At 45, Rena sits in the 45-55 age bracket, where heavy compound lifting is both a hormonal reset and an early bone-density investment ahead of the menopause transition — protein and creatine targets below reflect the 40+ tier, and bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing currently indicates low bone mass.',
+  },
+  {
+    type: 'gold',
+    label: 'Goblet Squat — Baseline Established This Week',
+    body: 'Back Squat/Goblet Squat was not part of the initial 11-exercise testing battery (Single-Arm Row fills that slot instead). Today\'s working load (30 lbs) becomes the new 8-week baseline — track progression from here the same as every other lift in this program.',
   },
 ];
 
@@ -160,10 +180,10 @@ const days = [
         letter: 'A',
         title: 'PRIMARY LOWER — LUNGE & SQUAT',
         introLabel: 'DB Lunge Baseline — 25 lbs ×5',
-        intro: 'Lunge tested at 25 lbs/hand for 5 reps — a solid unilateral strength baseline. Goblet squat and step-up round out the bilateral and unilateral lower-body volume for the week.',
+        intro: 'Lunge tested at 25 lbs/hand for 5 reps — a solid unilateral strength baseline. Goblet squat was not part of the initial testing battery — today\'s working load becomes the new 8-week baseline — and step-up rounds out the bilateral and unilateral lower-body volume for the week.',
         exercises: [
           { name: 'DB Reverse Lunge', sets: '3+3', reps: '8 ea', load: 'Wk1: 20 lbs/hand → Wk4: 27.5–30 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 25 lbs ×5RM. Step back with control, front knee tracks over toes, drive through the front heel to stand.' },
-          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '10―12', load: '30–40 lbs', tempo: '3-1-1', rest: '75s', cue: 'DB held at chest. Full depth, chest tall, elbows inside knees at bottom. Builds the bilateral squat pattern.' },
+          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '10―12', load: 'Wk1: 30 lbs → Wk4: 40 lbs', tempo: '3-1-1', rest: '75s', cue: 'Not tested — establishing baseline. DB held at chest. Full depth, chest tall, elbows inside knees at bottom.' },
           { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Balances the pressing volume from Day A.' },
         ],
       },
@@ -223,6 +243,7 @@ const baselines = [
   ['Plank (Elbow)', '2:00', 'Max', 'Exceptional — well above the 60-second ICONS threshold. Hold at 1:30 in training → Wk4: 2:00 loaded.'],
   ['Incline Push-Up', '10 reps', 'Max', 'Wk1: 10–12 reps, begin floor attempts → Wk4: 6–8 full push-ups.'],
   ['Assisted Pull-Up (all grips)', '5 reps each', 'Close-Grip / Standard / Wide', 'Wk1: all 3 grips ×5 → Wk4: ×7–8. Close grip leads (most shoulder-friendly).'],
+  ['Goblet Squat (Back Squat)', 'Not Tested — Established This Week', 'Working', 'Wk1: 30 lbs ×10–12 → Wk4: 40 lbs ×10–12. Becomes the new 8-week baseline.'],
 ];
 
 const summary = {

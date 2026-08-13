@@ -13,6 +13,13 @@
  * treatable.") on every heavy-load exercise — that's the documented trigger
  * for postmenopausal clients, so buildDocument() now inserts it automatically
  * instead of it being hand-repeated in every block intro and ICONS Note.
+ *
+ * REVISION (8/13/2026, icons-roster-analyst cross-check) — AGE BRACKET / LIFTMOR
+ * NOTE ADDED: every other 45-55/55-65 bracket client on the roster (Johnna
+ * Macarthur, Rena Paul, Mary Burfete, Siobhan Hansen, Elizabeth Poyner)
+ * carries a LIFTMOR bone-loading candidacy / T-score screening note; this
+ * document had none. Added below, matching the established wording pattern
+ * for her bracket (45-55, confirmed postmenopausal).
  */
 
 const fs = require('fs');
@@ -120,6 +127,11 @@ const baselineNotes = [
     type: 'gold',
     label: 'Squat & Deadlift — Baseline Established This Week',
     body: 'Not part of the initial testing battery. Today\'s working loads (Goblet Squat 20 lbs, Trap Bar Deadlift 45 lbs) become the new 8-week baseline — track progression from here.',
+  },
+  {
+    type: 'gold',
+    label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
+    body: 'At 51, Johanna sits in the 45–55 age bracket, confirmed postmenopausal. Protein and creatine targets already reflect the 2.0–2.2 g/kg "50+" tier (resolved automatically once age crosses 50), and creatine is strongly indicated by age and postmenopausal status alike. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk — though no DEXA/T-score data is currently on file to confirm candidacy either way.',
   },
   {
     type: 'watch',

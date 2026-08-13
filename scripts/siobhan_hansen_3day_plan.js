@@ -84,6 +84,24 @@
  * left leg leads all unilateral leg work (Single-Leg Stance Squat and
  * Single-Leg RDL, Day 2; carried into Day 3's activation carryover). Both
  * gaps (0.8 lbs) sit above the 0.5 lb Asymmetry Protocol trigger.
+ *
+ * REVISION (8/13/2026, roster cross-check from icons-roster-analyst) — POWER
+ * TRAINING ADDED, 55-65 BRACKET: CLAUDE.md's Power Training section places
+ * sub-maximal-load/maximal-intent power work in the 55-65 bracket already,
+ * not just 65+ (power output declines before strength does). Her three
+ * existing Metabolic-finisher blocks (Bike Intervals, Standing March w/
+ * Band, Incline Treadmill Walk) are general conditioning, not power work.
+ * Day 3, Block F is new: Box Step-Up Jump — bodyweight, full recovery
+ * between sets, deliberately NOT an overhead movement given the left
+ * shoulder reintroduction underway in Blocks A/C on Days 1 and 3 (no
+ * overhead med ball throw or similar). Full recovery between sets is the
+ * defining design feature of power work, distinct from a metabolic
+ * stimulus — it does not compete with the deliberately brief metabolic
+ * finishers elsewhere in this program, which stay short specifically to
+ * protect recovery capacity for the ALST At-Risk/Underweight resistance
+ * priority (see the sarcopenic-profile baselineNote). The prior Block F
+ * (Metabolic Finisher) is renumbered to Block G; nothing else on Day 3
+ * changed.
  */
 
 const fs = require('fs');
@@ -206,6 +224,11 @@ const baselineNotes = [
     type: 'gold',
     label: 'Age Bracket & Postmenopausal Status — 55-65 Bracket',
     body: `At 59, Siobhan sits within CLAUDE.md's 55-65 "Postmenopausal" Age Bracket. isPostmenopausal is a confirmed, already-documented fact (not inferred from today's build), so pelvicFloorCallout() fires automatically on every day containing squat, deadlift/RDL, hip-thrust, or carry content — Days 2 and 3 in this program — and is left to fire naturally throughout, never suppressed. Protein escalates to the 2.0-2.2 g/kg ALST At-Risk/50+ tier: at her 53.5 kg bodyweight that resolves to 107-118g/day, matching her already-documented protein target exactly. Creatine is strongly indicated. LIFTMOR-style bone-loading candidacy (T-score < -1.0) is worth screening for as part of ongoing care, though no DEXA/T-score data is currently on file to confirm candidacy either way.`,
+  },
+  {
+    type: 'gold',
+    label: 'Power Training Added — 55-65 Bracket (8/13/2026)',
+    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day 3, Block F now includes a Box Step-Up Jump: bodyweight, full recovery between sets, and deliberately a lower-body movement — no overhead component, given the left shoulder reintroduction still underway in Blocks A and C. Full recovery between sets is the defining design feature of power work, distinct from a metabolic stimulus, so it does not compete with the deliberately brief metabolic finishers used elsewhere in this program, which stay short specifically to protect recovery capacity for the ALST At-Risk/Underweight resistance-training priority named above.',
   },
 ];
 
@@ -406,6 +429,15 @@ const days = [
       },
       {
         letter: 'F',
+        title: 'POWER TRAINING — LOWER BODY (55-65 BRACKET)',
+        introLabel: 'Why',
+        intro: 'Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity in older women more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. This is deliberately a lower-body movement, not overhead, given the shoulder reintroduction still underway in Blocks A and C. Full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it does not compete with Block G\'s deliberately brief finisher below.',
+        exercises: [
+          { name: 'Box Step-Up Jump (Submaximal, Full Recovery)', sets: '3', reps: '3', load: 'bodyweight, low box (~10-12")', tempo: 'explosive up, soft controlled landing', rest: '120s', cue: 'Drive up with real intent, land soft and controlled. Full recovery — not a metabolic set.' },
+        ],
+      },
+      {
+        letter: 'G',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'Closing conditioning, kept low-impact and brief given the volume of the day and the ALST At-Risk/Underweight recovery priority.',

@@ -111,6 +111,16 @@
  * system already uses in the Pelvic Floor Protocol, extended here for a
  * different (cardiac, not continence) reason.
  *
+ * BETA-BLOCKER FLAG ADDED (8/13/2026, icons-roster-analyst cross-check) —
+ * CLAUDE.md's Cardiovascular section notes that beta-blockade blunts HR
+ * response across the intensity spectrum, making RIR/RPE the more reliable
+ * real-time effort signal for a client on one, and that beta-blocker status
+ * is worth confirming directly at intake rather than assumed. Nothing on
+ * file indicates this was ever asked. A short line was added to the cardiac
+ * clinicalFlag baselineNote flagging this as an open confirmation item —
+ * not resolving it either way, since whether she is actually on a
+ * beta-blocker is not known and is not invented here.
+ *
  * ICONS INDEX FULL-SPECTRUM COVERAGE FIX (8/13/2026 — retroactive audit
  * against CLAUDE.md's "ICONS Index Full-Spectrum Progression Standard —
  * Women 40-55"; Kayma's working age of 44 sits within the 40-55 window
@@ -164,7 +174,7 @@ const baselineNotes = [
   {
     type: 'clinical',
     label: 'Cardiac Flag — Hard Heart-Rate Ceiling, 160 BPM',
-    body: 'Known cardiac condition on file. Heart rate must not exceed 160 bpm at any point during training. Wear a heart-rate monitor every session, and check it explicitly during every conditioning/metabolic block (flagged inline in each day\'s Block D below) — not just at the end of a set. This program proceeds under physician/cardiologist clearance and coordination, the same posture this system already uses for PT-coordinated clinical flags: this is an operating constraint, not a diagnosis. Stop signal: chest pain, dizziness, shortness of breath disproportionate to effort, or an HR monitor reading above 160 bpm is a hard stop for that set or session — flag your coach immediately, do not push through to finish a set or round. Breathing technique on the heaviest compound lifts (squat, deadlift-pattern hinge, heavy press) is a second, separate precaution, distinct from the HR ceiling above: exhale on exertion through the lift, do not hold your breath through the rep. This is the same brace-before-lifting, exhale-on-exertion cue this system already uses for pelvic floor safety, extended here because sustained breath-holding on a heavy rep (a Valsalva maneuver) can cause a real blood-pressure spike — a manageable, well-understood consideration with the right cueing, not a reason to restrict the loads themselves.',
+    body: 'Known cardiac condition on file. Heart rate must not exceed 160 bpm at any point during training. Wear a heart-rate monitor every session, and check it explicitly during every conditioning/metabolic block (flagged inline in each day\'s Block D below) — not just at the end of a set. This program proceeds under physician/cardiologist clearance and coordination, the same posture this system already uses for PT-coordinated clinical flags: this is an operating constraint, not a diagnosis. Stop signal: chest pain, dizziness, shortness of breath disproportionate to effort, or an HR monitor reading above 160 bpm is a hard stop for that set or session — flag your coach immediately, do not push through to finish a set or round. Breathing technique on the heaviest compound lifts (squat, deadlift-pattern hinge, heavy press) is a second, separate precaution, distinct from the HR ceiling above: exhale on exertion through the lift, do not hold your breath through the rep. This is the same brace-before-lifting, exhale-on-exertion cue this system already uses for pelvic floor safety, extended here because sustained breath-holding on a heavy rep (a Valsalva maneuver) can cause a real blood-pressure spike — a manageable, well-understood consideration with the right cueing, not a reason to restrict the loads themselves. Beta-blocker status should be confirmed directly with her physician/at intake — this has not yet been asked. Beta-blockade blunts heart-rate response across the intensity spectrum, so if she is on one, the 160 bpm ceiling alone becomes a less reliable real-time effort signal on conditioning work — in that case, RIR/RPE tracking should be trusted as the primary signal, alongside (not instead of) the HR ceiling.',
   },
   {
     type: 'gold',

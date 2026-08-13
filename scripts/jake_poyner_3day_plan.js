@@ -86,6 +86,26 @@
  * assisted-stretching-heavy content CLAUDE.md's new section describes as
  * Niko's genuine fit. Inserting his name here would be decorative, which
  * that section explicitly warns against.
+ *
+ * REVISION (8/13/2026, icons-roster-analyst cross-check) — SCOPE NOTE
+ * REWORDED, NOT NEW CLINICAL CONTENT: the purple "Why This Program Doesn't
+ * Use the Standard ICONS Science-Layer Numbers" note below was written
+ * before CLAUDE.md's Male Client Programming Framework existed (built
+ * 8/11/2026) and had gone stale — it still read as if no male-specific
+ * framework existed at all, the same gap Vinz Feller's document had before
+ * its 8/11/2026 revision (see scripts/vinz_feller_3day_plan.js's header).
+ * Checked whether Jake has weight/Styku scan data on file to actually
+ * attach the framework's numeric thresholds (ALST/VFA/BMI/body-fat-%,
+ * maleProteinTargets()/maleNutritionNote()) to, the way Vinz's revision did
+ * — he does not: `client` below carries no weightKg, and no Styku scan
+ * exists anywhere in this file. Vinz's fix doesn't apply here as-is. This
+ * is a wording/citation-accuracy fix only: the note now correctly says the
+ * framework's "20-39 — Foundation" bracket exists and is where Jake would
+ * sit, but that its numeric interpretation tools have nothing on file to
+ * calculate from for him specifically — not that no framework exists.
+ * Nothing clinical changed; his nutrition targets still come from the
+ * source document's own age/sex-appropriate research (Robinson et al.
+ * 2024/2025, Morton et al. 2018, Shaw/Bischof/Praet), unchanged.
  */
 
 const fs = require('fs');
@@ -149,7 +169,7 @@ const baselineNotes = [
   {
     type: 'purple',
     label: "Why This Program Doesn't Use the Standard ICONS Science-Layer Numbers",
-    body: "ICONS's Evidence-Based Science Layer (protein/creatine tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived specifically from research on women 40-65 navigating hormonal transitions — it doesn't transfer to a 25-year-old male client. This program instead uses the age/sex-appropriate research above. What does carry over from ICONS: the Isolated → Compound → Metabolic structural philosophy and RPE/RIR-based autoregulated progressive overload — both are demographic-neutral principles, applied here on their own merits.",
+    body: "ICONS's Evidence-Based Science Layer (protein/creatine tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived specifically from research on women 40-65 navigating hormonal transitions — none of it transfers to a 25-year-old male client. A Male Client Programming Framework now exists (built 8/11/2026) with real male-specific thresholds, and its \"20-39 — Foundation\" bracket is where Jake would sit — but its numeric interpretation tools (ALST/VFA/BMI/body-fat-% reads, protein/creatine targets) all require weight and/or Styku scan data, and neither is on file for him. There is nothing numeric to attach those thresholds to yet, not an absent framework. This program instead uses the age/sex-appropriate research already cited above (Robinson et al. 2024/2025, Morton et al. 2018, Shaw/Bischof/Praet on collagen and tendon loading). What does carry over from ICONS regardless: the Isolated → Compound → Metabolic structural philosophy and RPE/RIR-based autoregulated progressive overload — both demographic-neutral principles, applied here on their own merits. Revisit this note if a Styku scan or weigh-in is ever added to his intake record.",
   },
   {
     type: 'green',
