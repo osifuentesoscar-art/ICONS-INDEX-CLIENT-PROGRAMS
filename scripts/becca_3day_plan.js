@@ -240,7 +240,7 @@ const days = [
         exercises: [
           { name: 'Deadlift (Conventional)', sets: '4', reps: '5', load: `${d3Deadlift} lbs`, tempo: '2-1-1', rest: '90s', cue: 'Progress to 135 lbs once all 5 reps are clean at 2 RIR — 4-week target is 145–150 lbs. Hip hinge corrective before every set.' },
           { name: 'Split Stance', sets: '3', reps: '5 ea leg', load: `${d3SplitStance} lbs`, tempo: '3-1-1', rest: '75s', cue: '80% Week-1 load, close to her tested 50×5 baseline. Progress +5 lbs when all reps are clean at 2 RIR.' },
-          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d3SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Matches tested 30×5 baseline — appropriate for the heaviest day of the week. Build to 40 lbs by Week 4.' },
+          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d3SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Matches tested 30×5 baseline — appropriate for the heaviest day of the week. Build to 42.5 lbs by Week 4.' },
         ],
       },
       {
