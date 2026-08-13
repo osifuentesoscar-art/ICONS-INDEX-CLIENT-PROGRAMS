@@ -8,7 +8,61 @@
  * (`scripts/jah_3day_plan.js`) — Becca, Brodie, and Oscar's 3-day programs
  * are being built separately and are NOT touched here.
  *
- * SCOPE NOTE — WHY THE WOMEN'S/MALE CLINICAL FRAMEWORKS DO NOT APPEAR HERE:
+ * REVISION (8/13/2026) — MALE CLIENT PROGRAMMING FRAMEWORK NOW APPLIED,
+ * REAL STYKU SCAN ON FILE: Xolokan supplied Nick's first Styku scan
+ * (8/13/2026, Brace Life Studios). This document originally carried the
+ * "no Styku/age/sex/clinical data" scope note reproduced below (kept for
+ * build-history context) because none existed at build time — that is no
+ * longer true. Following the exact pattern already used for Vinz Feller's
+ * revision (`scripts/vinz_feller_3day_plan.js`), this build now applies:
+ *   - Age 25 -> Male Client Programming Framework's "20-39 — Foundation"
+ *     bracket: no unique physiological trigger, standard resistance
+ *     protocol (ACSM 2026 RIR model) at full intensity, no age-based
+ *     protein/creatine escalation yet (CLAUDE.md's "trend toward the upper
+ *     end at 40+" is a 40+ judgment call, not applicable at 25).
+ *     `testosteroneNote()` correctly returns [] under 40 and is deliberately
+ *     NOT included below.
+ *   - ALST Index 8.01 kg/m² -> read against EWGSOP2 2018's male cutoff
+ *     (<7.0 At-Risk / >=7.0 Not At-Risk, the same source already cited for
+ *     Vinz Feller) — comfortably Not At-Risk. No three-tier subdivision
+ *     exists for men per CLAUDE.md's documented gap, so no "optimal" label
+ *     is invented for how far above the line he sits.
+ *   - VFA — the scan's Segmental Analysis tab reports 9.7 cm² (Styku's own
+ *     label: "Low Risk"); read directly against the ICONS VFA table
+ *     (<70 cm² Very Low Risk), already confirmed sex-independent for Vinz
+ *     Feller — 9.7 sits deep in the Very Low Risk band. NOTE: a separate,
+ *     unrelated "Visceral Fat 0.1" figure appears on the scan's Body
+ *     Composition summary page in a different, non-cm² scale — the
+ *     Segmental Analysis tab's 9.7 cm² figure is the one directly
+ *     comparable to CLAUDE.md's table and is the only VFA figure used here;
+ *     the 0.1 figure is not repeated or interpreted as VFA anywhere below.
+ *   - BMI 21.4 -> squarely WHO Normal (18.5-24.9). Unlike Vinz, this is not
+ *     a case needing the muscular-athlete BMI caution — it reads correctly
+ *     Normal, not falsely elevated.
+ *   - Body Fat % 17.2% -> reads consistently lean/fit under both systems
+ *     this file cites: the ACE male table (14-17% Fitness / 18-24%
+ *     Acceptable — sits right at that boundary) and Styku's own
+ *     Mayo-Clinic-based band (12-20.9% "Fit," where 17.2% sits solidly
+ *     inside). No composition-driven protein escalation is warranted the
+ *     way Vinz's Obese-tier ACE finding required — `maleBodyFatConcern` is
+ *     deliberately left unset below.
+ *   - Segmental LST asymmetry: Left Arm 13.6 lbs / Right Arm 13.3 lbs (0.3
+ *     lb gap) sits BELOW CLAUDE.md's 0.5 lb Asymmetry Protocol trigger —
+ *     noted in the Styku interpretation but the weaker-side-leads rule is
+ *     deliberately NOT applied to Single-Arm Row. Left Leg 23.6 lbs /
+ *     Right Leg 24.9 lbs (1.3 lb gap) DOES meet the trigger — left leg
+ *     leads Split Stance (Days 1 and 2), the program's only unilateral leg
+ *     movement (see the two updated cue lines below).
+ *   - Real protein/creatine targets now come from `maleNutritionNote()` /
+ *     `maleProteinTargets()` off `client.weightKg: 77.6` (171 lbs) and
+ *     `client.ageYears: 25` — general resistance-trained range
+ *     1.6-2.2 g/kg/day, no age-tier escalation at 25.
+ * The training program itself (days, blocks, exercise selection, Epley/
+ * working-load calculations, Antagonist Rotation sequencing) is UNCHANGED
+ * by this revision except for the two Split Stance cue updates noting
+ * left-leg-leads.
+ *
+ * ORIGINAL SCOPE NOTE (context only — superseded by the revision above):
  * No Styku scan, no age, no sex, and no clinical data of any kind exists on
  * file for Nick — the baseline sheet is a pure strength-testing document.
  * Per CLAUDE.md's Demographic Scope Rule, the women's Age Bracket
@@ -76,6 +130,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   buildDocument, epley1RM, workingLoad,
+  weakerSide, maleNutritionNote, testosteroneNote,
 } = require('./icons_template');
 
 // ── Verify Week 1 working loads off Nick's tested baselines ────────────
@@ -102,8 +157,38 @@ const client = {
   programTitle: '3-Day Training Plan',
   subtitle: 'Advanced / Elite — Full-Body Strength Build',
   schedule: '3-Day · In-House Athlete Program',
-  stats: ['Level: Advanced / Elite', '3-Day Program', 'ICONS Baseline Testing Protocol', 'Advanced Periodization'],
+  stats: ['Age 25', 'Male', "6'3\"", '171 lbs', 'Level: Advanced / Elite', 'Styku Scan 8/13/2026'],
+  weightKg: 77.6, // 171 lbs
+  ageYears: 25,
+  isPostmenopausal: false,
+  bmr: 1902,
+  alstIndex: 8.01, // Not At-Risk — EWGSOP2 2018 male cutoff <7.0; see Styku interpretation note
 };
+
+const styku = {
+  scanDate: '8/13/2026',
+  bodyFatPct: 17.2,
+  bodyFatRank: 'Fit',
+  leanMass: 135.3,
+  leanMassPct: 79.0,
+  fatMass: 29.6,
+  boneMass: 6.5,
+  bmi: 21.4,
+  bmr: 1902,
+  vfa: 9.7,
+  shapeScore: 95,
+  shapeScoreLabel: 'Excellent',
+  alstIndex: 8.01,
+  leftArmLST: 13.6,
+  rightArmLST: 13.3,
+  leftLegLST: 23.6,
+  rightLegLST: 24.9,
+  peerComparison: 'Lower body fat than 94% of men ages 18–29 (6th percentile — Low Risk).',
+};
+
+// weakerSide() — lower LST = weaker = leads unilateral work.
+const armWeakerSide = weakerSide(styku.leftArmLST, styku.rightArmLST); // 'right' — 0.3 lb gap, below the 0.5 lb Asymmetry Protocol trigger
+const legWeakerSide = weakerSide(styku.leftLegLST, styku.rightLegLST); // 'left' — 1.3 lb gap, meets the trigger
 
 const weekOverview = [
   { day: 'DAY 1', intensity: 60, focus: 'Hinge & New Baselines\nNeural Priming' },
@@ -128,10 +213,27 @@ const baselineNotes = [
     body: 'Elite-level baselines across every movement. 345 lb hex bar deadlift, 275 lb back squat, 60 lb single-arm row, 205 lb farmer carry, 15 pull-ups. Programming requires advanced periodization — heavier loads, lower rep ranges, longer rest, velocity-based progression.',
   },
   {
-    type: 'purple',
-    label: 'Scope Note — No Clinical/Demographic Framework Applied',
-    body: "No Styku scan, age, sex, or clinical data exists on file for Nick — this is a pure strength-testing baseline, not a clinical intake. Neither the women's Age Bracket Programming Framework nor the Male Client Programming Framework's numeric thresholds are applied here for the same reason as Jah's document: both require age/weight data that hasn't been collected. What carries over is the sex/age-neutral ICONS structural philosophy — the Isolated -> Compound -> Metabolic three-zone build, RIR-based autoregulated progressive overload, and corrective-before-compound sequencing.",
+    type: 'teal',
+    label: 'Styku Scan Interpretation — Male Client Programming Framework (8/13/2026)',
+    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs, BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 — Excellent. ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for Vinz Feller); Nick sits comfortably above the line. VFA ${styku.vfa} cm² (Segmental Analysis tab; a separate "Visceral Fat 0.1" figure on the Body Composition summary page is a different, non-cm² metric and is not used here) — the ICONS VFA table (<70 Very Low Risk / 70–99 Low Risk / 100–149 Moderate Risk / ≥150 High Risk cm²) is validated sex-independent and applies directly; 9.7 cm² sits deep in the Very Low Risk band. BMI ${styku.bmi} falls in the WHO Normal range (18.5–24.9) and reads correctly here — no muscular-athlete BMI caution needed. Body Fat ${styku.bodyFatPct}% reads lean under both systems this file cites: the ACE male table (14–17% Fitness / 18–24% Acceptable — sits right at that boundary) and Styku's own Mayo-Clinic-based band (12–20.9% "Fit," where 17.2% sits solidly inside) — no composition-driven protein escalation is warranted.`,
   },
+  {
+    type: 'watch',
+    label: `${legWeakerSide === 'left' ? 'Left' : 'Right'}-Leg Asymmetry — Below Trigger on Arms, Applies on Legs`,
+    body: `Left Arm LST ${styku.leftArmLST} lbs vs Right Arm LST ${styku.rightArmLST} lbs (${(Math.abs(styku.leftArmLST - styku.rightArmLST)).toFixed(1)} lb gap, ${armWeakerSide} marginally lower) — this sits below CLAUDE.md's 0.5 lb Asymmetry Protocol trigger, so it's noted here but the weaker-side-leads rule is deliberately NOT applied to Single-Arm Row. Left Leg LST ${styku.leftLegLST} lbs vs Right Leg LST ${styku.rightLegLST} lbs (${(Math.abs(styku.leftLegLST - styku.rightLegLST)).toFixed(1)} lb gap, ${legWeakerSide} weaker) DOES meet the trigger — standard ICONS asymmetry protocol applied: left leg leads Split Stance (Days 1–2), the program's only unilateral leg movement, and is logged separately in the coaching cue. Re-check both gaps at Nick's next Styku rescan.`,
+  },
+  {
+    type: 'purple',
+    label: 'Male Client Programming Framework — What Was Applied Here',
+    body: "ICONS's Evidence-Based Science Layer's five-bracket Age Bracket Programming Framework (protein/creatine g/kg tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived from and validated for women 40s-60s navigating hormonal transitions — none of its numeric thresholds are applied to Nick. Instead, this document uses the Male Client Programming Framework's \"20-39 — Foundation\" bracket: his ALST, VFA, BMI, and body fat % are interpreted above against real male-specific citations (EWGSOP2 2018, the sex-independent VFA table, WHO BMI thresholds read alongside the ACE body-fat-% classification), and his protein/creatine targets below come from that framework's ISSN 2017 / Morton 2018 sources rather than the women's tiers. No testosterone/andropause note is included — that framework section is scoped to the 40-59+ brackets and `testosteroneNote()` correctly returns nothing for a 25-year-old client. What carries over unchanged from ICONS regardless of sex or age: the Isolated → Compound → Metabolic structural philosophy, RIR-based autoregulated progressive overload, corrective-before-compound sequencing, and the Styku segmental asymmetry protocol — all demographic-neutral principles, applied here on their own merits.",
+  },
+  // Protein/creatine targets generated by the engine's maleNutritionNote()
+  // helper (icons_template.js) — `render` splices its pre-built paragraph
+  // directly into the document. testosteroneNote() is deliberately checked
+  // and omitted: it returns [] for ageYears < 40, correctly excluding Nick
+  // at 25 rather than silently defaulting to no note either way.
+  { render: maleNutritionNote(client) },
+  ...testosteroneNote(client).length ? [{ render: testosteroneNote(client) }] : [],
   {
     type: 'watch',
     label: 'Advanced Periodization — What Changed From the Standard 3-Day Template',
@@ -162,7 +264,7 @@ const days = [
         intro: "Split Stance and Goblet Squat are both marked \"to assess\" on Nick's baseline sheet — first exposure here, light and technique-focused, becoming tracked baselines from this week forward.",
         exercises: [
           { name: 'Hip/Ankle Mobility Flow', sets: '2', reps: '—', load: 'Bodyweight', tempo: 'Controlled', rest: '30s', cue: 'General mobility prep before loaded hinge work.' },
-          { name: 'Split Stance (NEW — Baseline Established)', sets: '3', reps: '8 ea', load: '35 lbs/hand (new baseline, light technique load)', tempo: '2-1-1', rest: '45s', cue: 'NOT YET ASSESSED — establishing first working baseline. Depth and control priority.' },
+          { name: 'Split Stance (NEW — Baseline Established)', sets: '3', reps: '8 ea', load: '35 lbs/hand (new baseline, light technique load)', tempo: '2-1-1', rest: '45s', cue: 'NOT YET ASSESSED — establishing first working baseline. Left leg leads — weaker per Styku segmental data. Depth and control priority.' },
           { name: 'Goblet Squat (NEW — Baseline Established, Back Squat Reference)', sets: '3', reps: '6', load: `70 lbs (new baseline — ref. Back Squat 1RM ${oneRM.squat})`, tempo: '3-1-1', rest: '60s', cue: 'NOT YET ASSESSED — using Back Squat baseline as reference load.' },
         ],
       },
@@ -228,7 +330,7 @@ const days = [
         intro: `Week 1 working load ${wk1.squat80} lbs (~80% of est. 1RM ${oneRM.squat}, off the tested 275 lbs x 5 baseline) — 1-2 RIR, film every work set.`,
         exercises: [
           { name: 'Back Squat', sets: '5', reps: '4', load: `${wk1.squat80} lbs (Wk1)`, tempo: '3-1-X', rest: '150s', cue: 'Elite baseline — film every work set. 1–2 RIR.' },
-          { name: 'Split Stance (Progression Load)', sets: '3', reps: '6 ea', load: '45 lbs/hand (building off Wk1 new baseline)', tempo: '2-1-1', rest: '75s', cue: 'Building off Week 1 new baseline. Depth and control priority.' },
+          { name: 'Split Stance (Progression Load)', sets: '3', reps: '6 ea', load: '45 lbs/hand (building off Wk1 new baseline)', tempo: '2-1-1', rest: '75s', cue: 'Building off Week 1 new baseline. Left leg leads — weaker per Styku data. Depth and control priority.' },
           { name: 'Single-Arm Row', sets: '4', reps: '4 ea', load: `${wk1.row80} lbs (Wk1)`, tempo: '3-1-2', rest: '90s', cue: 'Progress toward 72.5–75 lb Wk4 target.' },
         ],
       },
@@ -327,6 +429,7 @@ const summary = {
 
 const data = {
   client,
+  styku,
   weekOverview,
   baselines,
   baselinesTargetHeader: ['MOVEMENT', 'BASELINE', 'TESTED AT', '4-WEEK TARGET'],
