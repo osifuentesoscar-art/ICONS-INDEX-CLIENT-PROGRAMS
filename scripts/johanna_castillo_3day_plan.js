@@ -41,6 +41,55 @@ const weekOverview = [
   { day: 'SUN', intensity: 'Off', focus: 'Off' },
 ];
 
+// ── Baselines table (added 8/13/2026, roster completeness sweep) ──────────
+// The script previously had no `baselines: []` array at all, even though the
+// document's own text repeatedly references a real "initial testing battery"
+// (intensityPara on Day 1 and Day 2, the gold "Squat & Deadlift" baseline
+// note). Rows below are built ONLY from numbers the document's own language
+// confirms one way or the other — nothing re-derived or guessed:
+//   - DB Hip Thrust (60 lbs, Day 1 Block B) and Seated DB Overhead Press
+//     (17.5 lbs, Day 1 Block B) are explicitly named in the Day 1
+//     intensityPara as "today's tested baselines (Hip Thrust, Seated OHP)"
+//     and again in the Week 1 summary row ("Working loads hold at tested
+//     baseline") — confirmed tested, real numbers pulled straight from
+//     their exercise-table load fields.
+//   - Goblet Squat (20 lbs) and Trap Bar Deadlift (45 lbs), both Day 2
+//     Block B, are explicitly the opposite case — the Day 2 intensityPara
+//     ("Squat and deadlift were not tested in the initial battery"), the
+//     Block B intro ("No baseline was recorded for squat or deadlift"),
+//     and the gold baselineNote below all confirm these were NOT part of
+//     the initial battery and instead become the new Week 1 baseline this
+//     week — matching the Johnna Macarthur "Not Tested — Established This
+//     Week" precedent (see scripts/johnna_macarthur_3day_plan.js) rather
+//     than being presented as if pre-tested.
+// No calendar date is stated anywhere in the source document for when the
+// initial battery was run (unlike Nancy Avitable/Johnna Macarthur, where
+// Xolokan supplied a dated battery) — rather than inventing one, the TESTED
+// AT column uses the document's own phrasing ("Initial Testing Battery" /
+// "This Week").
+//
+// Checked every other Day 1/Day 3 exercise for similar "tested" language
+// (Chest-Supported Row, Incline Push-Up, DB Farmers Carry, Plank Hold,
+// Bent-Over DB Row, Incline DB Press, Single-Arm DB Row, Suitcase Carry) —
+// none is ever called "tested" or "baseline" anywhere in the document; only
+// Hip Thrust, Seated OHP, Squat, and Deadlift carry that language. Per the
+// "flag ambiguity rather than guess" instruction, these are deliberately
+// NOT added to the baselines table as if their origin were confirmed — see
+// the new watch-type baselineNote below. This doesn't leave a program gap:
+// Johanna is 51 (CLAUDE.md's 40–55 bracket), and the core-protocol movements
+// among that list (DB Farmers Carry, Plank Hold, Incline DB Press,
+// Single-Leg RDL, Reverse Lunge, Incline Push-Up) already satisfy the ICONS
+// Index Full-Spectrum Progression Standard via their presence in `days[].
+// exercises[]` — the standard only requires programmed progression
+// somewhere in baselines[]/exercises[]/summary, not a baselines-table row
+// specifically.
+const baselines = [
+  ['DB Hip Thrust', '60 lbs × 8', 'Initial Testing Battery', 'Day 1 working load holds at tested baseline (60 lbs × 8, 2 RIR) — reassess at 8-week retest'],
+  ['Seated DB Overhead Press', '17.5 lbs × 8', 'Initial Testing Battery', 'Day 1 working load holds at tested baseline (17.5 lbs × 8, 2 RIR) — reassess at 8-week retest'],
+  ['Goblet Squat (Back Squat)', 'Not Tested — Established This Week', 'This Week', 'Wk1 working load 20 lbs × 8 (Day 2 Block B) — becomes the new 8-week baseline'],
+  ['Trap Bar Deadlift', 'Not Tested — Established This Week', 'This Week', 'Wk1 working load 45 lbs × 6 (Day 2 Block B) — becomes the new 8-week baseline'],
+];
+
 const baselineNotes = [
   {
     type: 'green',
@@ -71,6 +120,11 @@ const baselineNotes = [
     type: 'gold',
     label: 'Squat & Deadlift — Baseline Established This Week',
     body: 'Not part of the initial testing battery. Today\'s working loads (Goblet Squat 20 lbs, Trap Bar Deadlift 45 lbs) become the new 8-week baseline — track progression from here.',
+  },
+  {
+    type: 'watch',
+    label: 'Baselines Table Scope — Confirmed Tested Lifts Only',
+    body: 'The table above lists only the lifts this program explicitly documents as tested (Hip Thrust, Seated OHP) or explicitly documents as newly established this week (Goblet Squat, Trap Bar Deadlift). Other core ICONS movements in this program — DB Farmers Carry, Plank Hold, Incline DB Press, Single-Leg RDL, Reverse Lunge, Incline Push-Up — carry real current working loads in their exercise tables but are not labeled tested or untested anywhere in the source record, so their loads are not presented here as confirmed baselines. Confirm with the trainer whether these were part of the same initial battery before treating them as retest-tracked baselines.',
   },
 ];
 
@@ -257,6 +311,7 @@ const summary = {
 const data = {
   client,
   weekOverview,
+  baselines,
   baselineNotes,
   includeNutritionBlock: true,
   includeProgressionBlock: true,
