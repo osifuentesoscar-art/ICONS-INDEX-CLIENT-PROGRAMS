@@ -284,9 +284,9 @@ const days = [
         introLabel: 'Cluster Format',
         intro: 'A ‘cluster’ is two exercises performed back-to-back with 15 seconds rest between them, then full rest after the pair. C1+C2 together, 15s, then 90s rest. This allows heavier loads with better quality reps than straight supersets.',
         exercises: [
-          { name: 'C1  DB Deadlift (Suitcase Style)', sets: '3', reps: '5', load: 'Heavy DB', tempo: '2-1-1', rest: '15s rest then C2', cue: 'Hip hinge, one DB each side like a suitcase. Heavy — close to Day 1 deadlift loads. Then 15s rest, straight into C2.' },
+          { name: 'C1  DB Deadlift (Suitcase Style)', sets: '3', reps: '5', load: 'Wk1: 80 lbs → Wk4: 100 lbs (per hand, total)', tempo: '2-1-1', rest: '15s rest then C2', cue: 'Hip hinge, one DB each side like a suitcase. Heavy — near Day 1\'s Hex Bar Deadlift load. Then 15s rest, straight into C2.' },
           { name: 'C2  DB Overhead Press', sets: '3', reps: '8', load: 'Working load', tempo: '2-1-1', rest: '90s', cue: '15 lbs/hand Wk1. Same baseline as Day 2. Full 90s rest after C2 before next cluster. The deadlift pre-fatigues the posterior chain, making the OHP pure upper.' },
-          { name: 'D1  DB Goblet Squat', sets: '3', reps: '8', load: 'Heavy KB or DB', tempo: '3-1-1', rest: '15s rest then D2', cue: 'Heaviest goblet squat of the week. Push load here. Then 15s, into D2.' },
+          { name: 'D1  DB Goblet Squat', sets: '3', reps: '8', load: 'Wk1: 40 lbs → Wk4: 50 lbs', tempo: '3-1-1', rest: '15s rest then D2', cue: 'Heaviest goblet squat of the week — above Day 1\'s working load. Push load here. Then 15s, into D2.' },
           { name: 'D2  DB Bench Press', sets: '3', reps: '10', load: 'Working load', tempo: '3-1-1', rest: '90s', cue: '15 lbs/hand Wk1. Rest 90s after D2. Squat pre-loads the full body, making the bench a true upper test under fatigue.' },
         ],
       },
