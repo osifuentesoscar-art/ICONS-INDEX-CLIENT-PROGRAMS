@@ -440,6 +440,8 @@ Every client's program should be filtered through the age bracket below, layered
 
 This is a standing decision rule, not a one-off judgment call specific to any one client.
 
+**Method Selection Principle — best-evidenced bracket per client, not a universal rule (added 8/13/2026, at Xolokan's direction).** When choosing a specific training method or parameter — rep range, bone-loading protocol, power-training inclusion, protein/creatine tier, RIR target, whether a corrective circuit is warranted — select whichever age/sex-bracket-specific finding is most significant and best-supported for that particular client's actual demographic profile, rather than adopting one method as a blanket rule applied to every client regardless of bracket. This file's bracket structure already exists for exactly this reason (the women's five brackets, the male three-bracket structure, EWGSOP2's separate ALST cutoffs by sex, LIFTMOR's postmenopausal-specific bone-loading evidence, the Mayo Clinic Proceedings power-training data broken out by sex) — the direct trigger for stating it as an explicit principle was the 8/13/2026 rep-range question below, where the correct answer was "rep range should vary by goal/zone, governed by RIR — not a fixed 8-12 applied to everyone" precisely because the strongest evidence (ACSM 2026, Schoenfeld 2021, Robinson et al. 2024) supports goal/context-dependent prescription over a universal number. Apply the same logic to every other method choice: reach for whichever bracket's cited evidence is strongest and most specific to the client actually in front of you, and do not silently default to whichever method happens to be used most often across the roster.
+
 **20–35 — Foundation & Peak Bone Mass**
 - Protein: ≥1.6 g/kg/day ("Active women general" tier)
 - Creatine: indicated (not yet the "strongly indicated" tier by age alone — that's driven by ALST/postmenopausal status, not age in this bracket)
@@ -935,6 +937,47 @@ lifting is well-supported for bone density and strength in perimenopausal/
 menopausal women specifically; training to failure or near-failure has no
 evidence base in this population for ANY outcome — reinforces, not just
 generalizes, the RIR standard for the 45–55 bracket specifically.
+```
+
+### Why Not Just Fix Every Exercise At 8–12 Reps? (checked 8/13/2026)
+```
+"8–12 reps for growth" is retired bodybuilding-era doctrine, not current
+evidence — do not adopt it as a standing rule. Two separate bodies of
+evidence say this directly, not just permissively:
+
+Hypertrophy: Schoenfeld, Grgic, Van Every & Plotkin's repetition-continuum
+  re-examination (Sports 2021;9(2):32) found comparable hypertrophy across a
+  wide loading spectrum (as low as ~30% 1RM up to ~90%+ 1RM) PROVIDED sets
+  are taken close to failure — load/rep-range itself is not the driver once
+  effort is controlled for. Robinson, Pelland, Remmert, Refalo, Jukic,
+  Steele & Zourdos's 2024 dose-response meta-regression (Sports Medicine
+  2024;54(9):2209-2231) sharpens the mechanism: hypertrophy increased as
+  sets were taken closer to failure (lower RIR), largely independent of rep
+  range — but strength gains showed a NEGLIGIBLE relationship with
+  proximity to failure. In other words: for hypertrophy, proximity-to-
+  failure (RIR) is the driver, not rep count. For strength specifically,
+  %1RM/load is the driver, not RIR and not rep count.
+ACSM 2026 (the same guideline update already anchoring this section) makes
+  this a position-stand-level conclusion, not just a meta-analysis footnote:
+  it explicitly retires the "8-12 reps for hypertrophy" rule, states rep
+  range has no independent effect on hypertrophy once effort/volume are
+  matched, and supports a working range of roughly 1-30 reps/set depending
+  on goal — a direct endorsement of exactly the goal-varying rep-range
+  approach this system already uses (e.g. Nick's 3-5 rep/70-88% 1RM
+  strength-focused primary lifts vs. 8-12+ rep Compound-zone accessory and
+  Isolated-zone activation work), not a contradiction of it.
+Practical takeaway: locking every exercise in every program to 8-12 reps
+  would be a REGRESSION from current evidence, not an upgrade — it would
+  cap strength-focused primary lifts at a rep range that isn't optimized
+  for that goal, for no evidence-based reason. The correct model — already
+  what this system does — is: rep range varies by training goal/zone
+  (Isolated activation, Compound strength-vs-hypertrophy split, Metabolic
+  conditioning each have a different natural rep-range profile), and
+  PROGRESSION within whatever rep range is programmed is governed by RIR/
+  proximity-to-failure, not by hitting a specific rep number. 8-12 is not
+  wrong as ONE reasonable range a Compound-zone hypertrophy block might use
+  — it's wrong as a universal rule applied to every exercise regardless of
+  goal.
 ```
 
 ### Women & Strength Training (Roberts, Nuckols & Krieger 2020, JSCR)
@@ -1797,6 +1840,12 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Genuine gaps/uncertainty flagged, not resolved with invented numbers:** no cardiac-specific numeric %1RM cap is established in the literature reviewed beyond the standing breathing-technique precaution — any restriction tighter than that must come from the client's own physician, since cardiac clearance is individualized (ejection fraction, arrhythmia history, actual stress-test result) in a way this file's other numeric thresholds (ALST/VFA/T-score) are not. The 2025 breathing-technique/hemodynamics corroborating study (Deniz & Erdemir, BMC Sports Science, Medicine and Rehabilitation) was in healthy young resistance-trained males, not a cardiac population — cited only for mechanism corroboration, explicitly flagged as such, not presented as cardiac-population evidence.
 - Did NOT edit `clients/kayma_liburd/` or `scripts/kayma_liburd_2day_plan.js` — flagged above per this agent's non-negotiables; that edit belongs to `icons-expert`.
 - Sources: [Resistance Exercise Training in Individuals With and Without Cardiovascular Disease: 2023 Update, AHA Scientific Statement, Circulation 2023;149(3):e217-e231](https://www.ahajournals.org/doi/10.1161/CIR.0000000000001189) · [Menopause Transition and Cardiovascular Disease Risk: Implications for Timing of Early Prevention, AHA Scientific Statement, Circulation 2020;142(25):e506-e532](https://www.ahajournals.org/doi/10.1161/CIR.0000000000000912) · [ACSM 2026 resistance training guidelines update summary (reused, already cited elsewhere in this file)](https://acsm.org/resistance-training-guidelines-update-2026/) · [Gismondi A, Iellamo F, Caminiti G, et al., "Rate of Perceived Exertion Based on Repetitions in Reserve Versus Percentage of One-Repetition Maximum for Resistance Training Prescription in Cardiac Rehabilitation: A Pilot Study," Journal of Cardiovascular Development and Disease 2025;12(1):8](https://pmc.ncbi.nlm.nih.gov/articles/PMC11766398/) · [Effect of β-blockade on measures and reproducibility of heart rate, oxygen uptake and work rate across repeated bouts of short-duration, RPE-regulated exercise, European Journal of Applied Physiology 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12528277/) · [Reliability of Resting Heart Rate-based Target Heart Rate for Exercise Prescription after Acute Myocardial Infarction](https://pmc.ncbi.nlm.nih.gov/articles/PMC12778352/) · [MacDougall JD, Tuxen D, Sale DG, Moroz JR, Sutton JR, "Arterial blood pressure response to heavy resistance exercise," Journal of Applied Physiology 1985;58(3):785-790](https://journals.physiology.org/doi/abs/10.1152/jappl.1985.58.3.785) · [Linsenbardt ST, Vidal C, Prietto CA, "Effect of breathing techniques on blood pressure response to resistance exercise," British Journal of Sports Medicine 1992;26(2):97-100](https://pmc.ncbi.nlm.nih.gov/articles/PMC1478931/) · [Deniz IE, Erdemir I, "Influence of breathing strategies on maximal strength output and hemodynamic parameters during bench press exercise," BMC Sports Science, Medicine and Rehabilitation 2025](https://link.springer.com/article/10.1186/s13102-025-01460-4)
+
+**8/13/2026 — sixth pass. Rep range vs. RIR model — direct check on whether "reps should always be 8-12" is evidence-backed.** Triggered by Xolokan directly asking whether an 8-12-reps-always rule should be adopted system-wide for progressive overload. Checked: Schoenfeld's rep-range/hypertrophy meta-analyses (the 2017 low- vs. high-load systematic review/meta-analysis and the 2021 repetition-continuum re-examination), the 2024 Robinson/Pelland/Remmert/Refalo/Jukic/Steele/Zourdos proximity-to-failure dose-response meta-regression, and what the ACSM 2026 position stand (already this file's standing citation for the RIR Model) says specifically about rep-range prescription.
+- **Corroborated, with new supporting citations added — no rule change made.** The existing RIR-governed, goal-varying rep-range approach already in use across client programs (e.g. Nick's 3-5 rep/70-88% 1RM strength-focused primary lifts vs. most clients' 8-12+ rep Compound-zone accessory and Isolated-zone activation work) is confirmed correct, not just a defensible design choice. No current evidence supports a universal "always 8-12 reps" rule for progressive overload — that is retired bodybuilding-era doctrine, not current literature. Schoenfeld, Grgic, Van Every & Plotkin 2021 (Sports 9(2):32) found comparable hypertrophy across a wide loading spectrum (~30% to 90%+ 1RM) provided sets are taken close to failure — rep range itself is not the driver once effort/proximity-to-failure is controlled for. The 2024 Robinson et al. meta-regression (Sports Medicine 54(9):2209-2231) sharpens this: hypertrophy responds to proximity-to-failure (lower RIR), largely independent of rep range, while strength gains showed a NEGLIGIBLE relationship with proximity-to-failure — meaning %1RM/load, not RIR and not rep count, is the primary driver of strength adaptation specifically. Most directly: ACSM 2026 itself (this file's existing RIR-Model citation) explicitly retires the "8-12 for hypertrophy" rule at the position-stand level, states rep range has no independent hypertrophy effect once effort/volume are matched, and endorses a working range of roughly 1-30 reps/set depending on goal — a direct validation of this system's existing zone-varying rep-range practice, not a call to change it.
+- **Added:** a new subsection, "Why Not Just Fix Every Exercise At 8–12 Reps?", directly under the existing "Progressive Overload — RIR Model (ACSM 2026)" section, so this exact question has a standing citation-backed answer on file rather than needing re-research if it recurs from a trainer or from Xolokan again.
+- **Did not touch:** any client program's rep ranges, block structure, or the core RIR Model guidance itself — this pass confirmed the current approach is the evidence-backed one; nothing needed correcting.
+- Sources: [Strength and Hypertrophy Adaptations Between Low- vs. High-Load Resistance Training: A Systematic Review and Meta-analysis, Schoenfeld et al. 2017](https://pubmed.ncbi.nlm.nih.gov/28834797/) · [Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum, Schoenfeld, Grgic, Van Every & Plotkin, Sports 2021;9(2):32](https://www.mdpi.com/2075-4663/9/2/32) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/33671664/)) · [Exploring the Dose-Response Relationship Between Estimated Resistance Training Proximity to Failure, Strength Gain, and Muscle Hypertrophy: A Series of Meta-Regressions, Robinson, Pelland, Remmert, Refalo, Jukic, Steele & Zourdos, Sports Medicine 2024;54(9):2209-2231](https://link.springer.com/article/10.1007/s40279-024-02069-2) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/38970765/)) · [ACSM Unveils Landmark 2026 Resistance Training Guidelines — First Update in 17 Years (reused, already cited elsewhere in this file for the RIR model itself)](https://acsm.org/resistance-training-guidelines-update-2026/)
 
 ---
 
