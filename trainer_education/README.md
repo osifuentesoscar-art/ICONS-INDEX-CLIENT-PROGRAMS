@@ -54,4 +54,6 @@ Build scripts: `scripts/becca_3day_plan.js`, `scripts/brodie_3day_plan.js`, `scr
 2. Pick **one** gated HTML variant (A, B, or C) based on what the lead coach wants reinforced — they teach the same content through different structures, not different content.
 3. `ICONS_Trainer_Development_Program.docx` (or a variant, at the lead coach's discretion) — physical, felt experience of the client-facing method.
 
+Format 3 is deliberately not part of this path — it's not a generic teaching step handed to any new trainer, it's an individualized program for a specific named trainer/athlete once their own baseline testing is on file (see "Format 3" above). Don't hand a new trainer one of the 5 named athlete programs as an onboarding step.
+
 Full build details, data schemas, and the science-layer sourcing behind every quiz question live in `CLAUDE.md` — see "Trainer Development Modules" and "Trainer Development Programs."
