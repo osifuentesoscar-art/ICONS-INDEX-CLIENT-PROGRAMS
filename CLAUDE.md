@@ -1411,6 +1411,11 @@ Six scoped subagents cover this system as of 8/12/2026 — one per structure bui
 | `icons-doc-auditor` | Pre-delivery structural QA on `.docx`/`.pptx`/`.pdf` output (python-docx/pdfplumber checks, since rendered PDF audits are broken in this environment) | Building or editing deliverables — reports findings back, doesn't fix them itself |
 | `icons-intake-monitor` | Weekly read-only scan of the "ICONS CLIENT PROGRAMS" and "ICONS NOTES JASON PDFS" Drive folders — flags stale-document candidates and new SOAP-note data back to the main thread / `icons-expert` | Editing any document, uploading anything to Drive (the manual-handoff policy below still stands), resolving clinical conflicts itself |
 
+**Standing practice — client roster completeness ("stay at standard across the board," added 8/13/2026 at Xolokan's direct request).** Triggered by Nancy Avitable's document being found with no `baselines[]` table and vague load placeholders throughout, despite real strength-testing data existing for her — a gap present since her first build, invisible to any diff-against-prior-version check since there was no earlier complete version to diff against. Two standing responses now cover this, not just the one-time fix:
+- **Build time** (`icons-expert`): read a client's full existing record (CLIENTS.md entry + current build script) before any build or revision — see that agent's file for the full rule.
+- **Audit time** (`icons-doc-auditor`): the "Missing-standard-section check" in that agent's standing checklist — compare a client's document against its own CLIENTS.md entry and against a comparable sibling's document, not just against its own prior version.
+- **Ongoing cadence**: the daily subagent check-in (see Research Update Log/trigger config) now rotates `icons-doc-auditor` through 2-3 not-recently-reviewed client documents each day as a spot-check, so a gap gets caught within days rather than sitting for weeks. A full 15-document sweep ran once (8/13/2026, all clean beyond the fixes already made) and doesn't need repeating in full — the rotating spot-check is the ongoing mechanism, not another full sweep.
+
 ---
 
 ## DOCUMENT STRUCTURE — PER DAY PAGE
