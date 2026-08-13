@@ -162,6 +162,7 @@ const baselines = [
   ['Plank Hold', '37 sec', '8/12/2026', 'Target 50–60 sec by Week 4'],
   ['Back Squat (Goblet)', 'Not Tested — Established This Week', '8/12/2026', 'Wk1 working load 25 lbs — becomes the new 8-week baseline'],
   ['Deadlift (Trap Bar)', 'Not Tested — Established This Week', '8/12/2026', 'Wk1 working load 55 lbs — becomes the new 8-week baseline'],
+  ['Incline Dumbbell Press', 'Not Tested — Established This Week', '8/12/2026', 'Wk1 working load 12.5 lbs/hand x8 — becomes the new 8-week baseline; target 15–17.5 lbs/hand by Week 4 as shoulder tolerates load'],
 ];
 
 const baselineNotes = [
@@ -187,8 +188,8 @@ const baselineNotes = [
   },
   {
     type: 'gold',
-    label: 'Squat & Deadlift — Baseline Established This Week',
-    body: `Neither lift was part of the initial testing battery. Day 1's deliberately light working loads (Goblet Squat 25 lbs, Trap Bar Deadlift 55 lbs) become the new 8-week baseline — track progression from here rather than against an invented tested number.`,
+    label: 'Squat, Deadlift & Incline Press — Baselines Established This Week',
+    body: `Three lifts were not part of the initial testing battery: Back Squat, Deadlift, and Incline Dumbbell Press. Day 1's deliberately light working loads (Goblet Squat 25 lbs, Trap Bar Deadlift 55 lbs) and Day 2's Incline Dumbbell Press (12.5 lbs/hand, technique-first, same conservative posture as her Overhead Press given the frozen shoulder history) all become the new 8-week baseline — track progression from here rather than against an invented tested number.`,
   },
   {
     type: 'gold',
@@ -300,13 +301,14 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'PULL STRENGTH',
+        title: 'PULL STRENGTH & INCLINE PRESS BASELINE',
         color: 'purple',
         introLabel: 'Note',
-        intro: 'Rowing volume balances the pressing work above and builds scapular stability around the healing shoulder.',
+        intro: 'Rowing volume balances the pressing work above and builds scapular stability around the healing shoulder. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, light load and technique-first, respecting the same pain-free-range guardrail as the rest of this session.',
         exercises: [
           { name: 'Bent-Over DB Row', sets: '3', reps: '10', load: '20 lbs/hand', tempo: '2-1-2', rest: '75s', cue: 'Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
           { name: 'Face Pull (Band or Cable)', sets: '3', reps: '15', load: 'light band', tempo: '2-1-2', rest: '45s', cue: 'Pull to face, elbows high. Light, pain-free range only.' },
+          { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: '12.5 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline. Stop at any pinch or sharp pain.', cue: 'Bench ~30°, elbows ~45°, press within pain-free range only.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -396,10 +398,10 @@ const summary = {
   subtitle: 'Johnna Macarthur  ·  ICONS Index  ·  Hip Activation, Shoulder Care & Posterior Chain Strength Build  ·  Week 1',
   rows: [
     ['1', '60%', 'Lower Body Foundation — Squat & Deadlift Baseline', 'Goblet Squat / Trap Bar Deadlift', 'New baseline established (25 lbs / 55 lbs); hip activation, 90/90, and tibia/inner-thigh corrective priorities open the week'],
-    ['2', '70%', 'Upper Body — Shoulder Care Priority', 'Seated DB Overhead Press', `Internal rotation strengthening precedes all pressing — frozen shoulder history, conservative load progression ${wk1.ohp}→${wk4.ohp} lbs`],
+    ['2', '70%', 'Upper Body — Shoulder Care Priority', 'Seated DB Overhead Press', `Internal rotation strengthening precedes all pressing — frozen shoulder history, conservative load progression ${wk1.ohp}→${wk4.ohp} lbs; Incline Dumbbell Press baseline newly established this week at 12.5 lbs/hand, technique-first`],
     ['3', '80%', 'Posterior Chain — Left-Led Unilateral', 'DB Hip Thrust', `Loads build off tested baselines (Hip Thrust Epley 1RM ≈${oneRM.hipThrust} lbs); left leg leads every unilateral set per 1.4 lb Styku gap`],
   ],
-  milestones4wk: `Goblet Squat 30–35 lbs x8, Trap Bar Deadlift 65–70 lbs x6 at 2–3 RIR. Hip Thrust progressing toward ${wk4.hipThrust + 5} lbs x8. Seated OHP at 15 lbs x8 pain-free (matching tested baseline) — progress only as shoulder ROM allows. Left-leg single-leg RDL load matched toward parity with right within 10%.`,
+  milestones4wk: `Goblet Squat 30–35 lbs x8, Trap Bar Deadlift 65–70 lbs x6 at 2–3 RIR. Hip Thrust progressing toward ${wk4.hipThrust + 5} lbs x8. Seated OHP at 15 lbs x8 pain-free (matching tested baseline) — progress only as shoulder ROM allows. Incline Dumbbell Press progressing from 12.5 lbs/hand toward 15 lbs/hand, pain-free. Left-leg single-leg RDL load matched toward parity with right within 10%.`,
   milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline (25 lbs / 55 lbs). Hip Thrust and OHP progressed from current working loads. Left/right leg LST gap reduced from 1.4 lbs. Plank hold past 50 seconds. Shoulder internal rotation strength improved with no pain flags logged.',
   rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently 6.32 kg/m², Normal — monitor tier, not yet Optimal), VFA (currently 82.7 cm², Low Risk — maintain), left/right leg LST gap (baseline 1.4 lbs, target under 0.5), lean mass (currently 96.6 lbs, Ideal Lean Mass marker — maintain or build further).',
 };

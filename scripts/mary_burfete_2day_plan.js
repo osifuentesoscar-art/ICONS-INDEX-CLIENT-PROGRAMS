@@ -142,6 +142,11 @@ const baselineNotes = [
     body: 'At 55, Mary sits directly on the boundary between the 45-55 (Perimenopause/Menopause Transition) and 55-65 (Postmenopausal) age brackets. Protein and creatine targets below already reflect the 50+ escalation (2.0-2.2 g/kg, creatine strongly indicated) appropriate to either bracket. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing now rather than waiting — both brackets converge on bone density as a priority as estrogen decline accelerates.',
   },
   {
+    type: 'gold',
+    label: 'Seated Overhead Press, Incline Press & Lunge — Baselines Established This Week',
+    body: 'Three movements from the core ICONS Baseline Testing Protocol were not part of Mary\'s initial testing battery: Seated Overhead Press, Incline Dumbbell Press, and a true lunge pattern (her split stance squat and step-up cover related but distinct patterns, not a substitute for a genuine lunge). All three are introduced this week at conservative, technique-first loads (Seated DB Overhead Press 15 lbs/hand, Incline Dumbbell Press 20 lbs/hand, DB Reverse Lunge 15 lbs/hand — LEFT leg leads, consistent with the segmental asymmetry finding above) and become the new 8-week baseline for each pattern, not an invented tested number.',
+  },
+  {
     type: 'watch',
     label: 'Menopausal Status — Unconfirmed, Flagged for Next Intake',
     body: 'No menopausal status was stated by the trainer at intake — isPostmenopausal is left unconfirmed here rather than fabricated. At 55, Mary is at or past the average age of menopause onset (~51), and this program includes real, heavy hip-thrust, squat, and deadlift loading — exactly the pattern the pelvic floor protocol exists to safeguard. Per CLAUDE.md\'s Perimenopausal Status guidance, the transition window itself (not just confirmed postmenopausal status) carries elevated stress-urinary-incontinence risk, so this is not a low-stakes unknown. Confirming her actual status is worth doing at the next intake conversation given how load-bearing that determination is for whether the pelvic floor safety callout should be running on every heavy day. Until confirmed, coach standard pelvic floor bracing and exhale-on-exertion cues verbally on all heavy hinge and squat work as a precaution, independent of what this document auto-generates.',
@@ -171,13 +176,14 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY PULL STRENGTH',
+        title: 'PRIMARY PULL STRENGTH & PRESS ACCESSORY',
         introLabel: `Single-Arm Row — Epley 1RM ${row1RM} lbs`,
-        intro: 'Single-arm row tested at 30 lbs for 5 reps and climbs from there; bent-over bilateral row rounds out the pulling volume, balancing the pressing work on Day B, before single-leg RDL closes the block on the posterior chain.',
+        intro: 'Single-arm row tested at 30 lbs for 5 reps and climbs from there; bent-over bilateral row rounds out the pulling volume, balancing the pressing work on Day B, before single-leg RDL closes the posterior-chain portion of the block. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, established this week at a conservative technique-first load.',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '4', reps: '8', load: `Wk1: ${row_wk1} lbs → Wk4: ${row_wk4} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Bench-supported, flat back. Drive elbow to hip, full stretch at bottom.' },
           { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: '20–25 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to ribs together. Bilateral pulling volume.' },
           { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8–10 ea', load: '20 lbs → 25 lbs', tempo: '3-1-1', rest: '75s', cue: 'LEFT leg leads every set — lower leg LST (14.6 vs 15.1 lbs), asymmetry-protocol trigger at exactly 0.5 lb gap.' },
+          { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline this week', cue: 'Bench ~30°, elbows ~45°, controlled descent to full stretch.' },
         ],
       },
       {
@@ -217,22 +223,24 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY LOWER — SQUAT & SPLIT SQUAT',
+        title: 'PRIMARY LOWER — SQUAT, SPLIT SQUAT & LUNGE',
         introLabel: `Back Squat & Split Stance Squat — Epley 1RM ${backSquat1RM} / ${splitSquat1RM} lbs`,
-        intro: `Back squat tested at 90 lbs for 5 reps; split stance DB squat tested at 17.5 lbs/hand for 5 reps. LEFT leg leads every unilateral exercise here — legs sit exactly at the 0.5 lb asymmetry-protocol trigger (14.6 vs 15.1 lbs), per the Johanna Castillo precedent.`,
+        intro: `Back squat tested at 90 lbs for 5 reps; split stance DB squat tested at 17.5 lbs/hand for 5 reps. LEFT leg leads every unilateral exercise here — legs sit exactly at the 0.5 lb asymmetry-protocol trigger (14.6 vs 15.1 lbs), per the Johanna Castillo precedent. DB Reverse Lunge was not part of the initial testing battery — it closes the block as a new baseline, LEFT-led per the same asymmetry finding.`,
         exercises: [
           { name: 'Back Squat (Barbell or Loaded)', sets: '4', reps: '5–6', load: `Wk1: ${backSquat_wk1} lbs → Wk4: ${backSquat_wk4} lbs`, tempo: '3-1-1', rest: '90s', cue: 'Full depth, chest tall, drive knees out. Brace before descent, exhale on the drive up.' },
           { name: 'Split Stance Squat (DB) — LEFT Leads', sets: '3+3', reps: '8 ea', load: `Wk1: ${splitSquat_wk1} lbs/hand → Wk4: ${splitSquat_wk4} lbs/hand`, tempo: '2-1-1', rest: '75s', cue: 'LEFT (weaker) leg trains first every set. Rear foot elevated optional. Front knee tracks over toes.' },
           { name: 'DB Lateral Raise', sets: '3', reps: '12–15', load: '8–10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.' },
+          { name: 'DB Reverse Lunge — LEFT Leads', sets: '3+3', reps: '8 ea', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs/hand', tempo: '2-1-1', rest: '75s', flag: 'Not tested — establishing baseline this week', cue: 'LEFT (weaker) leg trains first. Step back, knee tracks over mid-foot, drive through front heel.' },
         ],
       },
       {
         letter: 'B',
         title: 'PRIMARY PRESS + PULL-UP PROGRESSION',
         introLabel: `Bench Press & Pull-Up Baseline — Epley 1RM ${bench1RM} lbs / 5 Reps Each Grip`,
-        intro: 'Bench press tested at 65 lbs for 5 reps. Five clean reps per grip on assisted pull-ups (close, standard, wide) is a strong starting point — close grip leads every session as the least shoulder strain and easiest to add volume to first.',
+        intro: 'Bench press tested at 65 lbs for 5 reps. Seated Overhead Press was not part of the initial testing battery and closes the pressing pair as a new vertical-press baseline, established this week at a conservative technique-first load. Five clean reps per grip on assisted pull-ups (close, standard, wide) is a strong starting point — close grip leads every session as the least shoulder strain and easiest to add volume to first.',
         exercises: [
           { name: 'Bench Press (Barbell or DB)', sets: '4', reps: '6–8', load: `Wk1: ${bench_wk1} lbs → Wk4: ${bench_wk4} lbs`, tempo: '2-1-1', rest: '90s', cue: 'Shoulder blades set, feet planted, controlled descent to chest, drive up without bouncing.' },
+          { name: 'Seated DB Overhead Press', sets: '3', reps: '8', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs/hand', tempo: '2-0-2', rest: '75s', flag: 'Not tested — establishing baseline this week', cue: 'Ribs stacked over hips, press straight overhead, no lean-back.' },
           { name: 'Assisted Pull-Up — Close Grip', sets: '3', reps: '5–6', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'LEADS every session. Full hang at bottom, chin over bar at top, controlled 3-second descent.' },
           { name: 'Assisted Pull-Up — Standard Grip', sets: '3', reps: '5–6', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'Standard overhand grip, shoulder-width. Same quality as close grip.' },
           { name: 'Assisted Pull-Up — Wide Grip', sets: '3', reps: '5–6', load: 'Assist level set', tempo: '3-1-2', rest: '75s', cue: 'Wide overhand grip — greatest lat stretch at bottom, hardest of the three. Full range, no partial reps.' },
@@ -282,6 +290,9 @@ const baselines = [
   ['Plank (Elbow)', '2:03', 'Max', 'Exceptional — well above the 60-second ICONS threshold. Hold at 1:45 in training → Wk4: 2:00+ loaded.'],
   ['Incline Push-Up', '10 reps', 'Max', 'Wk1: 10–12 reps, begin floor attempts → Wk4: 5–7 full push-ups.'],
   ['Assisted Pull-Up (all grips)', '5 reps each', 'Close-Grip / Standard / Wide', 'Wk1: all 3 grips ×5 → Wk4: ×6–7. Close grip leads (most shoulder-friendly).'],
+  ['Seated DB Overhead Press', 'Not Tested', 'Working', 'Wk1: 15 lbs/hand ×8 — new baseline established this week. Target 20 lbs/hand ×8 by Wk4.'],
+  ['Incline Dumbbell Press', 'Not Tested', 'Working', 'Wk1: 20 lbs/hand ×8 — new baseline established this week. Target 25 lbs/hand ×8 by Wk4.'],
+  ['DB Reverse Lunge', 'Not Tested', 'Working', 'Wk1: 15 lbs/hand ×8/side — new baseline established this week. Target 20 lbs/hand by Wk4. LEFT leg leads.'],
 ];
 
 const summary = {
@@ -292,7 +303,7 @@ const summary = {
     ['Wk 3', '—', 'Day A & B', 'Hex DL approaching tested baseline / Hip Thrust at tested baseline / Back Squat above baseline', 'Push-up: 6–7 floor reps. Plank: 1:55.'],
     ['Wk 4', '—', 'Day A & B', `Hex DL ${hexDL_wk4} lbs ×5 / Hip Thrust ${hipThrust_wk4} lbs ×5–6 / Back Squat ${backSquat_wk4} lbs ×5–6 / Bench ${bench_wk4} lbs ×6–8`, 'All baseline lifts surpassed. Push-up: 7 full unassisted. Plank: 2:00+ loaded. Reassess pull-up assist level.'],
   ],
-  milestones4wk: 'All baseline lifts surpassed. Push-up: 7 full unassisted. Plank: 2:00+ loaded. Pull-up assist level reduced across all 3 grips.',
+  milestones4wk: 'All baseline lifts surpassed. Push-up: 7 full unassisted. Plank: 2:00+ loaded. Pull-up assist level reduced across all 3 grips. Seated Overhead Press progressing from 15 toward 20 lbs/hand; Incline Dumbbell Press from 20 toward 25 lbs/hand; DB Reverse Lunge from 15 toward 20 lbs/hand (LEFT leads) — all three newly established this week.',
   milestones8wk: `Strength: Hex DL ${hexDL_wk4 + 15}+ lbs ×5. Hip Thrust ${hipThrust_wk4 + 10}+ lbs ×5–6. Back Squat ${backSquat_wk4 + 10}+ lbs ×5–6. Bench ${bench_wk4 + 5}+ lbs ×6–8. Row ${row_wk4 + 5}+ lbs ×8. Split Stance Squat ${splitSquat_wk4 + 5}+ lbs/hand ×8. Sled Push distance/resistance increased. Push-up 10+ full unassisted. Pull-up 8+ reps all grips, next assist-level reduction. Plank 2:15+ loaded.`,
   rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index closely given the current 5.52 kg/m² reading sits only 0.02 kg/m² above the At-Risk cutoff (do not assume it stays clear of the threshold without confirming), VFA trend (currently 62.0 cm², Very Low Risk — maintain), and the leg segmental gap (currently exactly 0.5 lbs, at the asymmetry-protocol trigger — should trend down with the LEFT-leads unilateral protocol). Also worth revisiting at next intake: confirming actual menopausal status, given its direct relevance to the pelvic floor protocol on this program\'s heavy hinge/squat days.',
 };

@@ -110,6 +110,35 @@
  * baselineNote — the same brace-before-lifting/exhale-on-exertion cue this
  * system already uses in the Pelvic Floor Protocol, extended here for a
  * different (cardiac, not continence) reason.
+ *
+ * ICONS INDEX FULL-SPECTRUM COVERAGE FIX (8/13/2026 — retroactive audit
+ * against CLAUDE.md's "ICONS Index Full-Spectrum Progression Standard —
+ * Women 40-55"; Kayma's working age of 44 sits within the 40-55 window
+ * regardless of exactly where in her 40s she actually falls). Two of the
+ * 10 core ICONS Baseline Testing Protocol patterns were genuinely absent
+ * from the document, not just under-emphasized: Push-Ups (the only
+ * "push-up" string anywhere was a warm-up "scapular push-up 2x10" mobility
+ * cue, not a tracked exercise) and Single-Leg RDL (her hinge work was
+ * entirely bilateral — Romanian Deadlift, Trap Bar Deadlift — and her
+ * unilateral lower-body work — Bulgarian Split Squat, Front Rack Reverse
+ * Lunge — is squat/lunge-pattern, not hinge-pattern). Both are added using
+ * the SAME descriptive-band load convention as the rest of this document
+ * (no numeric 1RM math introduced, since no tested battery exists on file
+ * — see "INTAKE GAPS" above) and placed with the Antagonist Rotation Rule
+ * applied to their exact insertion point, not waived for her Advanced
+ * level per CLAUDE.md's explicit standing note that advanced trainees are
+ * not exempt:
+ *   - Push-Up (Weighted or Tempo, Advanced Variation) added to Day A,
+ *     Block D, inserted 2nd (between Suitcase Carry and Weighted Plank):
+ *     Suitcase Carry (carry) -> Push-Up (push, NEW) -> Weighted Plank
+ *     (core) -> Kettlebell Swing (hinge) — four different patterns in a
+ *     row, no 3-consecutive-same-pattern stack introduced.
+ *   - Single-Leg RDL (DB) added to Day B, Block B, inserted 4th/last
+ *     (after Front Rack Reverse Lunge): Trap Bar Deadlift (hinge) ->
+ *     Barbell Hip Thrust (hinge) -> Front Rack Reverse Lunge (squat/lunge,
+ *     breaks the hinge run at 2) -> Single-Leg RDL (hinge, NEW) — the
+ *     hinge pattern never stacks 3 in a row since the lunge exercise sits
+ *     between the two hinge pairs.
  */
 
 const fs = require('fs');
@@ -156,6 +185,11 @@ const baselineNotes = [
     type: 'gold',
     label: 'Program Structure — True Full-Body, Advanced, Per Client Request',
     body: 'Built as a genuine 2-day full-body program at Kayma\'s explicit request — both Day A and Day B hit squat, hinge, upper push, upper pull, and core/carry patterns, not a movement-pattern split. Advanced level means no technique/foundation day: both sessions open at real working intensity (80% / 90%) with barbell and heavy-DB compound variations, unilateral single-leg/single-arm work, tempo and paused reps, and supersets. Volume audits to meet or exceed the ACSM/ICONS >=10 sets/muscle/week hypertrophy target across the two sessions for every major pattern (squat/quad, hinge/hamstring-glute, chest, back, direct core work), with shoulders picking up substantial secondary volume from the pressing and dip work even where direct sets land just under 10. RIR 1-2 on all working sets — advanced expresses as load and complexity, never as training to failure.',
+  },
+  {
+    type: 'gold',
+    label: 'ICONS Index Coverage Added — Push-Ups & Single-Leg RDL (8/13/2026)',
+    body: 'Push-Ups and Single-Leg RDL were genuinely absent from this program — not just lightly touched — and are added to close that gap: Push-Up (Day A, Block D, loaded-carry/core/conditioning) and Single-Leg RDL (Day B, Block B, primary hinge/squat). Both use the same descriptive-band load convention already established throughout this document (no tested 1RM battery exists yet to derive numbers from), and both are placed to preserve the Antagonist Rotation Rule\'s no-3-consecutive-same-pattern standard within their block — not waived for her Advanced level, per CLAUDE.md\'s explicit note that heavier absolute loads at an advanced level make that rule\'s underlying accumulated-stress mechanism higher-stakes, not lower. Both should be included in her first ICONS Baseline Testing Protocol session so these descriptive bands can convert to real numbers alongside the rest of the program.',
   },
 ];
 
@@ -209,9 +243,10 @@ const days = [
         title: 'LOADED CARRY, CORE & CONDITIONING — HR-CAPPED',
         color: 'gold',
         introLabel: 'Cardiac-Safe Format — 160 BPM Ceiling',
-        intro: 'Energy becomes identity — the session\'s finish, respecting the 160 bpm cardiac ceiling throughout. Heavy carry work doubles as core and grip loading at a controlled pace; the kettlebell work closes the session at a moderate, HR-monitored pace, not an all-out finisher. Check the HR monitor between every set in this block — ease pace immediately if approaching 160 bpm.',
+        intro: 'Energy becomes identity — the session\'s finish, respecting the 160 bpm cardiac ceiling throughout. Heavy carry work doubles as core and grip loading at a controlled pace; the kettlebell work closes the session at a moderate, HR-monitored pace, not an all-out finisher. Check the HR monitor between every set in this block — ease pace immediately if approaching 160 bpm. Push-Up is new this update — closes the program\'s previously-missing direct push-up coverage.',
         exercises: [
           { name: 'Suitcase Carry (Single-Side, Heavy DB)', sets: '3+3', reps: '30 yds ea', load: '40–50 lbs', tempo: 'Controlled', rest: '60s', cue: 'Resist lateral lean, tall posture. Check HR monitor before switching sides.' },
+          { name: 'Push-Up (Weighted Vest or Tempo, Advanced Variation)', sets: '3', reps: '10–12', load: 'Bodyweight or light vest/plate', tempo: '3-1-1', rest: '45s', cue: 'New this update. Full brace, neutral spine, chest to floor. Add a light vest or slow the eccentric to 3-count for advanced loading — bodyweight-based, brief effort, minimal HR carryover into the next exercise.' },
           { name: 'Weighted Plank (Plate on Back)', sets: '3', reps: '30–45s', load: 'Light-Mod plate', tempo: 'Hold', rest: '45s', cue: 'Full brace, ribs down, no sag or pike. Isometric — minimal HR load.' },
           { name: 'Kettlebell Swing (Two-Hand, Moderate Pace)', sets: '3', reps: '12', load: 'Moderate KB', tempo: 'Controlled — not max effort', rest: '60s', cue: 'Hip hinge back, steady controlled pace. Check HR monitor after each set; stop the set early if approaching 160 bpm.' },
         ],
@@ -245,11 +280,12 @@ const days = [
         letter: 'B',
         title: 'PRIMARY HINGE & SQUAT — PEAK LOADS',
         introLabel: 'Load Target',
-        intro: 'The week\'s heaviest resistance work. Full recovery between every set — near-maximal loading, not fatigue accumulation. Advanced complexity: paused unilateral lunge and a peak-week trap bar pull. This block is not affected by the cardiac ceiling the way conditioning is — controlled heavy sets with full rest between them do not sustain HR the way continuous circuit work does — but the HR monitor stays on throughout regardless.',
+        intro: 'The week\'s heaviest resistance work. Full recovery between every set — near-maximal loading, not fatigue accumulation. Advanced complexity: paused unilateral lunge and a peak-week trap bar pull. This block is not affected by the cardiac ceiling the way conditioning is — controlled heavy sets with full rest between them do not sustain HR the way continuous circuit work does — but the HR monitor stays on throughout regardless. Single-Leg RDL is new this update — closes the program\'s previously-missing unilateral hinge coverage, placed last so the block never stacks three consecutive hinge-pattern lifts (Front Rack Reverse Lunge breaks the run between the two hinge pairs).',
         exercises: [
           { name: 'Trap Bar Deadlift', sets: '4', reps: '5', load: 'Heavy — near-maximal, 1 RIR', tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, symmetric setup, drive floor away hard. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Barbell Hip Thrust', sets: '4', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, full hip lockout, squeeze glutes hard at top. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Front Rack Reverse Lunge (DB or BB)', sets: '3+3', reps: '6 ea', load: 'Moderate-Heavy', tempo: '3-1-1, 1s pause at bottom', rest: '75s', cue: 'Step back with control, front knee tracks over toes, pause at depth.' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8 ea', load: 'Moderate — 20–25 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'New this update. Slight bend in standing knee, hinge from the hip, reach toward floor, squeeze glute to return. Free hand may lightly touch a rack or wall for balance if needed early on — advanced target is unassisted. Left leg leads first.' },
         ],
       },
       {

@@ -25,6 +25,27 @@
  *     deferred to a later phase pending a few clean weeks on the
  *     reintroduced work — see baselineNotes for the exact reasoning.
  *
+ * Updated 8/13/2026 (retroactive audit against CLAUDE.md's "ICONS Index
+ * Full-Spectrum Progression Standard — Women 40-55"): the audit found a
+ * circular-coverage gap, not a missing-pattern gap — DB Split Squat was
+ * being counted as the substitute for BOTH Back Squat AND Lunges, and no
+ * exercise in the document was actually shaped like a lunge (the only
+ * "lunge" string anywhere was a cooldown hip-flexor stretch, not a trained
+ * exercise). Barbell Back Squat's 'Tested — Deferred' status and its
+ * surrounding clinical framing are untouched by this fix — the squat
+ * pattern itself was already legitimately covered via Landmine Squat/
+ * Goblet Squat/DB Split Squat and stays exactly as documented. The only
+ * change: a genuine Reverse Lunge exercise was added to Day B, Block A, so
+ * Lunges coverage no longer depends on the same exercise already covering
+ * Back Squat. Reverse Lunge (not walking or curtsy lunge) was chosen as
+ * the more established, lower-technical-demand starting point given her
+ * documented stenosis history and moderate-progression pattern, even
+ * though it is a brand-new addition, not a SOAP-note reintroduction.
+ * Inserted between Face Pull and Step-Up (was 3rd/4th, now 3rd/4th/5th) so
+ * the block still never stacks 3 consecutive squat/lunge-pattern
+ * exercises (Split Squat + Landmine Squat = 2, Face Pull breaks it, then
+ * Reverse Lunge + Step-Up = 2) — Antagonist Rotation Rule compliant.
+ *
  * Day A ("Hinge + Push + Core") and Day B ("Squat + Pull + Conditioning")
  * are not naturally 60/70/80/90/AR intensity days — this is a 2-day/week,
  * 4-week-progression program, not a %-graded weekly split. Day A is
@@ -84,6 +105,11 @@ const baselineNotes = [
     type: 'green',
     label: 'Reintroduced This Update — From Stress Bar Clinical SOAP Note (7/31/2026)',
     body: 'Landmine squat (Day B, primary squat block), sit-up and bicycle crunch (Day A, core block — moderate volume, controlled tempo), and kettlebell swing (Day B, metabolic circuit) are folded in from a cross-training session note. Sled push is added as a new Day A cardio-finisher option. Source: Drive folder "ICONS NOTES JASON PDFS."',
+  },
+  {
+    type: 'gold',
+    label: 'Lunge Pattern Added — 8/13/2026',
+    body: 'Reverse Lunge is added to Day B\'s primary squat block as a genuinely distinct lunge-pattern exercise. Previously, DB Split Squat was covering both the squat and lunge movement-pattern territory in this program — a stationary front-foot-elevated split squat and a true stepping reverse lunge train meaningfully differently, so this closes that gap rather than relying on one exercise to stand in for both. No baseline has been tested for this pattern; Week 1 starts at bodyweight for quality reps, consistent with the moderate-progression approach already used for every other newly-introduced movement in this program, and given her spinal stenosis history a reverse lunge (controlled step-back, no forward-stepping deceleration load) is the more conservative starting variant vs. a walking or curtsy lunge.',
   },
 ];
 
@@ -176,11 +202,12 @@ const days = [
         letter: 'A',
         title: 'PRIMARY SQUAT STRENGTH',
         introLabel: 'Squat Progression Note',
-        intro: 'DB split squat and goblet squat remain the primary lower body movements on Day B. Landmine squat is new this update — the angled bar path is more forgiving than a straight barbell back squat, a good bridge exercise while barbell squatting itself is still deferred (see baseline notes). The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus.',
+        intro: 'DB split squat and goblet squat remain the primary lower body movements on Day B. Landmine squat is new this update — the angled bar path is more forgiving than a straight barbell back squat, a good bridge exercise while barbell squatting itself is still deferred (see baseline notes). The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus. Reverse Lunge is new this update — a genuinely distinct lunge-pattern movement from DB Split Squat (see "Lunge Pattern Added" note), started at bodyweight.',
         exercises: [
           { name: 'DB Split Squat (Front Foot Elevated)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 25 lbs/hand → Wk4: 35 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Baseline 35 lbs ×3RM. Start at 25 lbs for 8 quality reps with full depth. Front foot elevated 2–4 inches increases range of motion. Front knee tracks over second toe. Left leg leads first. Add 2.5 lbs every 2 weeks.' },
           { name: 'Landmine Squat', sets: '3', reps: '10–12', load: 'Light-Mod — coach discretion', tempo: 'Controlled', rest: '75s', cue: 'New this update. Chest up, drive through heels, full ROM. Angled bar path loads the spine more forgivingly than a straight barbell — bridges toward barbell squatting once that\'s reintroduced.' },
           { name: 'Face Pull (Cable)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Rear delt and rotator cuff health. Balances the pressing volume from Day A. Non-negotiable for shoulder health.' },
+          { name: 'Reverse Lunge (Bodyweight or DB)', sets: '3', reps: '8 ea', load: 'Wk1: Bodyweight → Wk4: 10 lbs/hand', tempo: '3-1-1', rest: '60s', cue: 'New this update — first genuine lunge-pattern movement in the program. Step straight back, lower until rear knee lightly grazes floor, front knee tracks over toes, drive through front heel to return. Controlled step-back (not walking lunge) — lower deceleration demand, appropriate given the stenosis history. Left leg leads first.' },
           { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '12.5―17.5 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Left leg leads. Excellent glute and quad developer.' },
         ],
       },
@@ -233,6 +260,7 @@ const baselines = [
   ['Hip Thrust', '95 lbs', '5 RM (est.)', 'New baseline. Wk1: 80 lbs ×6 → Wk4: 105 lbs ×5–6. Hip-dominant, no axial spinal load — ideal for spinal stenosis.'],
   ['Single-Leg RDL', '25 lbs / hand', '8 reps', 'Wk1: 22.5 lbs ×10 → Wk4: 30 lbs ×8. Left and right equal sets. Most important hip hinge developer.'],
   ['DB Split Squat', '35 lbs / hand', '3 RM', 'Wk1: 25 lbs ×8 (form + depth focus at lower load) → Wk4: 35 lbs ×8. 3RM suggests form may break at max — train sub-max.'],
+  ['Reverse Lunge', 'Not Tested', 'New — 8/13/2026', 'Wk1: Bodyweight ×8 ea (controlled step-back, form focus) → Wk4: 10 lbs/hand ×8 ea. New exercise added to establish genuine lunge-pattern coverage, distinct from DB Split Squat (a stationary split-squat pattern).'],
   ['Barbell Back Squat', '55 lbs', 'Tested — Deferred', 'Recorded for reference. Stenosis restriction cleared, but per moderate-progression guidance this is deferred to a later phase — Landmine Squat bridges toward it in the meantime (see baseline notes).'],
   ['Overhead Press', '17.5 lbs / hand', '5 RM', 'Wk1: 15 lbs ×10 (sub-max) → Wk4: 20 lbs ×8. Spine-safe: seated or standing, no barbell.'],
   ['Incline DB Press', '15 lbs / hand', '8 reps', 'Wk1: 15 lbs ×10 → Wk4: 20 lbs ×8. Primary chest movement.'],
