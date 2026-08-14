@@ -62,7 +62,7 @@ const data = {
     {
       type: 'teal',
       label: 'New Baselines Established (8/7/2026)',
-      body: 'The 2/7/2026 scan did not include segmental analysis, so ALST Index, VFA, and Shape Score have no prior comparison point — they are newly established at this rescan and become the tracking baseline going forward: ALST Index 5.85 kg/m² (Not At-Risk), VFA 61.4 cm² (Low Risk), Shape Score 98/100 (Excellent), BMI 18.9.',
+      body: 'The 2/7/2026 scan did not include segmental analysis, so ALST Index, VFA, and Shape Score have no prior comparison point — they are newly established at this rescan and become the tracking baseline going forward: ALST Index 5.85 kg/m² (Not At-Risk), VFA 61.4 cm² (Very Low Risk), Shape Score 98/100 (Excellent), BMI 18.9.',
     },
     {
       type: 'blue',

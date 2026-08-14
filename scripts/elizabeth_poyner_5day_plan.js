@@ -68,37 +68,48 @@
  *     `isPostmenopausal` (see weightKg note below) — the CALORIES row has no
  *     engine equivalent, so it's preserved as an explicit baselineNote
  *     ("Calories & Energy Availability") rather than silently dropped.
- *   - `client.weightKg = 52.2` (not 114 lbs / 51.7 kg, her current post-
- *     rescan weight) is a deliberate reproduction of the OLD FILE'S OWN
- *     figure: its nutrition paragraph literally states "(64yo · 52.2 kg)"
- *     — 52.2 kg = 115 lbs (her PRE-rescan weight), and running that through
- *     `proteinTargets()` reproduces the documented 104–115g/day target
- *     exactly (52.2 × 2.0 = 104.4→104, × 2.2 = 114.8→115). Using her current
- *     114 lbs (51.7 kg) instead would silently shift the protein target to
- *     103–114g/day — a real, if 1g, change to already-documented clinical
- *     guidance, which is out of scope for this fix. Flagged in the final
- *     report as a pre-existing minor inconsistency (protein calc based on
- *     pre-rescan weight) worth a future look, not resolved here.
- *   - `styku.bmr = 1159` (the confirmed current 8/7/2026 value, per the
- *     sibling Improvement Report script, itself part of Elizabeth's existing
- *     record) is used for the structured Styku block, while the preserved
- *     CALORIES baselineNote keeps the OLD FILE'S stale "BMR: 1,122 cal/day"
- *     (a pre-rescan figure) verbatim, since correcting it is outside this
- *     fix's authorized scope. Also flagged in the final report — this is a
- *     genuine internal inconsistency already present in the source file,
- *     not introduced by this migration.
- *   - Two more pre-existing internal inconsistencies in the OLD FILE are
- *     reproduced as-is, not resolved, per the standing "surface conflicts,
- *     don't silently drop one side" rule: (1) the Weight Update baselineNote
- *     narrates a 112→115 lb update, while the later Week 8 rescan shows 114
- *     lbs — two different weight-tracking moments, left exactly as the old
- *     file had them; (2) the baselines table's Single-Leg RDL row says
- *     "Wk4 target: 45 lbs — left leg leads," while the Week 8 rescan
- *     narrative explicitly states the leg LST gap (0.4 lbs) is BELOW the
- *     0.5 lb asymmetry threshold and calls for "no unilateral-lead protocol
- *     change indicated." Both statements existed simultaneously in the old
- *     file; both are reproduced simultaneously here, unresolved — flagged in
- *     the final report rather than silently picking a side.
+ *   - **UPDATED 8/14/2026 (Xolokan-approved resolution of CLIENTS.md item 2):**
+ *     `client.weightKg` now reflects her CURRENT 114 lb weight (51.7 kg),
+ *     not the pre-rescan 52.2 kg (115 lbs) the original hand-authored file
+ *     used. This shifts the `proteinTargets()`-calculated range from
+ *     104–115g/day to 103–114g/day (51.7 × 2.0 = 103.4→103, × 2.2 =
+ *     113.74→114) — the ~1g/day shift previously flagged as a pre-existing
+ *     inconsistency is now resolved, current weight in, current target out.
+ *   - **UPDATED 8/14/2026 (CLIENTS.md item 3):** the preserved CALORIES
+ *     baselineNote's stale "BMR: 1,122 cal/day" (her pre-rescan 2/7/2026
+ *     figure) is now corrected to "BMR: 1,159 cal/day," matching the
+ *     confirmed current 8/7/2026 value already used for `client.bmr` /
+ *     `styku.bmr` and documented in the sibling Improvement Report script.
+ *     This resolves the internal inconsistency previously flagged.
+ *   - **UPDATED 8/14/2026 (CLIENTS.md item 4):** the baselines table's
+ *     Single-Leg RDL row previously said "Wk4 target: 45 lbs — left leg
+ *     leads," left over from her original asymmetry finding, while the
+ *     Week 8 rescan narrative elsewhere in the same document states the leg
+ *     LST gap (0.4 lbs) is now below the 0.5 lb asymmetry threshold with
+ *     "no unilateral-lead protocol change indicated." Resolved in favor of
+ *     the more current rescan data — the row now briefly notes the
+ *     historical left-leg-lead basis and states it's resolved per the Week
+ *     8 rescan, with unilateral work proceeding evenly both sides going
+ *     forward. The Weight Update baselineNote's 112→115 lb narrative vs. the
+ *     Week 8 rescan's 114 lbs remains an unresolved, disclosed pre-existing
+ *     inconsistency (out of the 6 authorized items, not touched here).
+ *   - **UPDATED 8/14/2026 (CLIENTS.md item 5 — Antagonist Rotation Rule):**
+ *     Friday Block B ran 4 consecutive pull-pattern exercises (Lat Pulldown
+ *     → Seated Cable Row → Face Pull → Band Pull-Apart), a real violation.
+ *     Neither of Friday's other two blocks (A: lower-body hinge/squat; C:
+ *     core/anti-rotation) contains a push movement to reorder in, so per
+ *     CLAUDE.md's documented fallback a light push exercise was added
+ *     rather than deleting any pull exercise — "Wall Push-Up (Light
+ *     Activation)" inserted as the 3rd exercise (between Seated Cable Row
+ *     and Face Pull), matching Friday's sub-maximal 60% "no PRs, no
+ *     grinding" theme. Sequence is now pull → pull → push → pull → pull:
+ *     no 3 consecutive same-pattern exercises anywhere in the block, all 4
+ *     original exercises preserved.
+ *   - **UPDATED 8/14/2026 (CLIENTS.md item 6):** the Week 8 rescan narrative
+ *     (`summary.rescanNote`) mislabeled VFA 61.4 cm² as "Low Risk" —
+ *     per CLAUDE.md's VFA table (<70 cm² = Very Low Risk, 70–99 = Low
+ *     Risk), corrected to "Very Low Risk." No other VFA-risk-label
+ *     occurrence exists elsewhere in this document (confirmed via search).
  *   - Two cosmetic style corrections happen automatically as a byproduct of
  *     using `buildDocument()` rather than the old hand-authored XML, per
  *     CLAUDE.md's documented house rules (not treated as content changes):
@@ -158,10 +169,9 @@ const client = {
   subtitle: '60–100% Progressive Intensity Build',
   schedule: 'Tue/Wed/Thu/Fri/Sat Gym',
   stats: ['Age 64', '5\'5"', '114 lbs', 'Postmenopausal', 'Tue/Wed/Thu/Fri/Sat Gym'],
-  // 52.2 kg (not her current 114 lbs / 51.7 kg) — see header note above:
-  // reproduces the old file's own protein-target basis (its nutrition
-  // paragraph literally states "64yo · 52.2 kg") exactly, 104-115g/day.
-  weightKg: 52.2,
+  // UPDATED 8/14/2026: her current 114 lbs (51.7 kg) — see header note
+  // above. Protein target recalculates to 103-114g/day (2.0-2.2 g/kg).
+  weightKg: 51.7,
   ageYears: 64,
   isPostmenopausal: true,
   bmr: 1159,
@@ -204,7 +214,7 @@ const baselines = [
   ['Split Stance Hex DL', '165 lbs × 5', 'NEW PR', 'Est 1RM: 192 lbs · Wk4 target: 175–180 lbs'],
   ['Hip Thrust', '145 lbs × 5', 'NEW PR', 'Est 1RM: 169 lbs · Wk4 target: 155–160 lbs'],
   ['DB Lunge', '40 lbs × 8', 'Baseline', 'Wk4 target: 45–50 lbs/hand'],
-  ['Single-Leg RDL', '40 lbs', 'Baseline', 'Wk4 target: 45 lbs — left leg leads'],
+  ['Single-Leg RDL', '40 lbs', 'Baseline', 'Wk4 target: 45 lbs. Previously left-leg-lead (per original leg LST gap); Week 8 rescan confirmed gap closed below the 0.5 lb threshold — proceed evenly both sides.'],
   ['Push-Ups', '28 reps', 'NEW PR', 'Exceptional. Add weighted vest Wk3'],
   ['Farmers Carry', '50 lbs/hand', 'Baseline', 'Wk4 target: 60–65 lbs/hand'],
   ['Plank Hold', '2:00', 'NEW PR', 'Exceptional. Loaded with 10–15 lb plate from session 1'],
@@ -240,7 +250,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Calories & Energy Availability',
-    body: 'BMR: 1,122 cal/day. Total intake must SUPPORT training and muscle-building — avoid a deficit while building lean mass. RED-S risk: avoid chronic low energy availability; priority is muscle-building, not fat loss. Body composition changes as lean mass grows.',
+    body: 'BMR: 1,159 cal/day (current, per 8/7/2026 Week 8 Styku rescan). Total intake must SUPPORT training and muscle-building — avoid a deficit while building lean mass. RED-S risk: avoid chronic low energy availability; priority is muscle-building, not fat loss. Body composition changes as lean mass grows.',
   },
 ];
 
@@ -403,6 +413,7 @@ const days = [
         exercises: [
           { name: 'Lat Pulldown (Wide Grip)', sets: '4', reps: '10–12', load: 'Moderate', tempo: '2-1-2', rest: '60s', cue: "Full stretch at top. Drive elbows to hip pockets. Don't shrug at top." },
           { name: 'Seated Cable Row', sets: '3', reps: '12–15', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Shoulder blades retract and depress at end range. Sit tall throughout.' },
+          { name: 'Wall Push-Up (Light Activation)', insight: 'Antagonist rotation — brief push touch between pull sets, no CNS tax', sets: '2', reps: '12–15', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Light chest/shoulder activation. Sub-maximal — prime the push pattern only.' },
           { name: 'Face Pull (Band or Cable)', sets: '3', reps: '20', load: 'Light', tempo: '2-1-2', rest: '30s', cue: 'External rotation emphasis. Elbows at ear height. Rotator cuff health.' },
           { name: 'Band Pull-Apart', sets: '3', reps: '20', load: 'Light band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight. Pull to chest. Rear delt and mid-trap. Posture carry-over.' },
         ],
@@ -488,7 +499,7 @@ const summary = {
   ],
   milestones4wk: 'Wk1: Hex DL 180 lbs working set, hip thrust 135 lbs, carry 50 lbs. Wk2: DL 190, HT 145, carry 52.5 lbs. Wk3: DL 200, weighted vest push-ups, carry 55 lbs, plank loaded 2:00. Wk4 peak test: DL 210–215 lbs, Hip Thrust 155–160 lbs, Split DL 175 lbs, carry 60–65 lbs.',
   milestones8wk: 'Hex DL: 215–225 lbs for 5 reps. Hip Thrust: 165–175 lbs. Push-ups: 28+ reps unweighted or 20+ with vest. Carry: 65–70 lbs/hand. OHP: 25 lbs. Pull-up: reduce assist by 2–3 levels. Plank: 2:00 loaded. Styku rescan to confirm ALST index and lean mass gain.',
-  rescanNote: 'Scan completed. Weight 114 lbs (essentially flat vs. 115 lbs pre-scan — the 116–118 lb lean-gain target was not reached this cycle). ALST Index 5.85 kg/m² — Not At-Risk (Normal/monitor tier, just under the 7.0 Optimal threshold). Body Fat 27.1% (Fit — lower than 80% of peers). Lean Mass 78.4 lbs. Fat Mass 30.8 lbs. VFA 61.4 cm² — Low Risk. Shape Score 98/100 — Excellent. BMI 18.9. Segmental: Left Arm LST 6.2 lbs / Right Arm LST 6.4 lbs (0.2 lb gap — below the 0.5 lb asymmetry threshold). Left Leg LST 12.7 lbs / Right Leg LST 13.1 lbs (0.4 lb gap — below threshold, monitor only, no unilateral-lead protocol change indicated). Compare all 9 ICONS battery lifts against these new baselines heading into the next block.',
+  rescanNote: 'Scan completed. Weight 114 lbs (essentially flat vs. 115 lbs pre-scan — the 116–118 lb lean-gain target was not reached this cycle). ALST Index 5.85 kg/m² — Not At-Risk (Normal/monitor tier, just under the 7.0 Optimal threshold). Body Fat 27.1% (Fit — lower than 80% of peers). Lean Mass 78.4 lbs. Fat Mass 30.8 lbs. VFA 61.4 cm² — Very Low Risk. Shape Score 98/100 — Excellent. BMI 18.9. Segmental: Left Arm LST 6.2 lbs / Right Arm LST 6.4 lbs (0.2 lb gap — below the 0.5 lb asymmetry threshold). Left Leg LST 12.7 lbs / Right Leg LST 13.1 lbs (0.4 lb gap — below threshold, monitor only, no unilateral-lead protocol change indicated). Compare all 9 ICONS battery lifts against these new baselines heading into the next block.',
 };
 
 const data = {
