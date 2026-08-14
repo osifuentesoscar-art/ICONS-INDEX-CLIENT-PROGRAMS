@@ -1049,6 +1049,139 @@ Do NOT say: "train through it" or minimize symptoms
 Refer to pelvic floor PT when symptomatic
 ```
 
+### Postpartum Return to Training & Diastasis Recti Abdominis (DRA) — 2025 evidence (new subsection, checked 8/14/2026)
+```
+Why this section exists: the Age Bracket Programming Framework's own intro
+  already gives "a 44-year-old postpartum client may sit closer to the
+  45-55 profile" as its example of bracket proximity guidance — meaning
+  this file has referenced a postpartum client as a live scenario since
+  8/11/2026 without ever actually building the protocol behind it. This
+  is that protocol, added retroactively, the same pattern as the
+  Cardiovascular section's relationship to Kayma Liburd's build. No
+  current roster client is known to be postpartum as of this pass — this
+  is proactive framework-building per the standing "be ready for any
+  client at any time" trigger, not a response to a specific intake.
+Scope: this is a physiological STATE, not an age bracket — a postpartum
+  client can fall anywhere in the 20-35 or 35-45 brackets (rarely 45-55+).
+  Layer this section's guidance on top of whichever age bracket otherwise
+  applies; it does not replace that bracket's protein/creatine/volume
+  guidance.
+
+Not a blanket "cleared at 6 weeks" event: the 2025 Canadian Guideline for
+  Physical Activity, Sedentary Behaviour and Sleep Throughout the First
+  Year Postpartum (CSEP-led pan-Canadian Consensus Panel, ~19,000 articles
+  screened, 7 supporting systematic reviews, published British Journal of
+  Sports Medicine 2025, endorsed by ACSM) explicitly moves away from a
+  single blanket medical-clearance date toward an individualized,
+  gradual, symptom-based return. Target: build up to 120 min/week
+  moderate-to-vigorous physical activity spread over ≥4 days, including
+  BOTH aerobic movement and resistance training, plus daily pelvic floor
+  exercise — resistance training is a named, explicit component of the
+  guideline, not an afterthought to cardio. A physician's 6-week
+  "cleared for exercise" note is necessary but not sufficient by this
+  standard — it does not by itself mean cleared for heavy compound
+  loading, and progression from there should still be gradual and
+  symptom-led.
+Screening: the guideline's companion tool, the Get Active Questionnaire
+  for Postpartum (GAQ-PP, CSEP), is a 4-question self-administered
+  screen for relative contraindications to postpartum exercise; a "yes"
+  on any item routes the client to her own healthcare provider before
+  progressing, mirroring this file's existing referral-not-diagnose
+  posture used for HRT/TRT and pelvic floor symptoms elsewhere. A
+  trainer administering GAQ-PP-style questions at intake is the same
+  category of legitimate, non-diagnostic self-report collection already
+  established for perimenopausal screening in this file (see
+  "Perimenopausal Status — Screening Ambiguity" above) — collecting the
+  answers is fine, staging/diagnosing off them is not.
+
+Diastasis recti abdominis (DRA) — what it is and how common it stays:
+  a midline separation of the rectus abdominis at the linea alba,
+  present in roughly 60-100% of women in late pregnancy depending on
+  diagnostic threshold, and NOT something that reliably resolves on its
+  own by 6 weeks or even 6 months. A frequently-cited longitudinal cohort
+  found prevalence at 60% at 6 weeks postpartum, 45.4% at 6 months, and
+  32.6% at 12 months (Sperstad JB, Tennfjord MK, Hilde G, Ellström-Engh
+  M, Bø K, "Diastasis recti abdominis during pregnancy and 12 months
+  after childbirth," British Journal of Sports Medicine 2016 — an older
+  but still the standard-cited cohort on this specific timeline). A
+  separate 2024 cross-sectional study found DRA (IRD > 2cm) still present
+  in 36%/31%/22%/26%/30% of women at 3/5/10/20/30 YEARS postpartum
+  respectively — worth knowing because it means a "postpartum" clinical
+  flag isn't automatically stale just because a client is years out from
+  delivery; ask rather than assume it resolved.
+Exercise is the recommended first-line treatment, not a risk to manage
+  around: multiple 2025 systematic reviews/meta-analyses (a Scientific
+  Reports systematic review and network meta-analysis, 27 RCTs/1,340
+  postpartum women with DRA/39 interventions, comparing physical-therapy
+  strategies for reducing inter-recti distance; a separate non-operative-
+  management systematic review and meta-analysis of RCTs) confirm
+  structured exercise programs measurably reduce inter-recti distance.
+  Neither review found a single clearly superior protocol — evidence
+  favors SOME structured deep-core exercise over no intervention, without
+  yet settling which specific exercise program is best.
+The "no crunches/no sit-ups ever" rule is outdated, not evidence-based
+  as an absolute: the mechanical concern is real (a standard curl-up
+  raises intra-abdominal pressure and can visibly bulge/dome the midline
+  in an under-prepared client — this is a real biomechanical finding, not
+  a myth), but the current evidence-based response is sequencing, not a
+  permanent ban. Gluppe S, Ellström Engh M, Bø K, "What is the evidence
+  for abdominal and pelvic floor muscle training to treat diastasis
+  recti abdominis postpartum? A systematic review with meta-analysis,"
+  Brazilian Journal of Physical Therapy 2021, found low-quality but
+  positive evidence that transversus abdominis (TrA) training AND
+  curl-up training both outperformed minimal intervention for DRA — i.e.
+  curl-up-pattern training is not disqualified by the evidence, provided
+  it's introduced once foundational deep-core control is established, not
+  as a first exercise. This maps directly onto this file's existing
+  Three-Zone philosophy: Isolated-zone work (TrA/diaphragm/pelvic-floor
+  activation, neutral-spine control) precedes Compound-zone loading and
+  any anti-flexion/flexion-pattern accessory work for this client, exactly
+  as "Control precedes power" already describes for every other client —
+  this is not a new philosophy, it's an application of the existing one
+  to a population this file hadn't yet written the application for.
+ICONS practical application for a postpartum client's program:
+  - Do not assume a physician's 6-week clearance note means cleared for
+    heavy compound loading — confirm current symptom status (leaking,
+    pelvic heaviness/pressure, visible midline doming/coning under load)
+    before progressing intensity, the same "ask, don't assume" posture
+    already used for perimenopausal status.
+  - Sequence Isolated-zone deep-core/pelvic-floor activation (TrA
+    bracing, diaphragmatic breathing, dead bug/bird dog-family patterns)
+    before Compound-zone heavy loading, and before reintroducing
+    flexion-pattern ab work (crunches, sit-ups, hollow holds) — not a
+    permanent exclusion of those patterns, a sequencing decision.
+  - Watch for visible midline doming/coning under load (the same "does
+    the pattern break down under load" judgment already used for squat-
+    depth/posture regression elsewhere in this file) as the practical,
+    coachable signal to regress load or exercise selection, rather than
+    relying on a caliper/finger-width DRA measurement a trainer isn't
+    qualified to perform diagnostically.
+  - A symptomatic client (leaking, pelvic pressure/heaviness, or a DRA
+    gap that isn't responding to several weeks of foundational work)
+    should be referred to pelvic floor PT — same language and posture as
+    the existing Pelvic Floor Protocol above. Per the Studio Staff
+    section's scope boundary, this stays an EXTERNAL referral — neither
+    Jason Bethea's nor Niko Heers' in-house scope has been confirmed to
+    cover pelvic floor PT, and DRA/postpartum core rehab sits close
+    enough to that specialty that the same boundary applies here, not
+    just to classic pelvic-floor-symptom cases.
+Genuine gap, not filled here: no systematic review reviewed in this pass
+  gives a specific %1RM, load, or timeline threshold for when a
+  postpartum client can safely return to LIFTMOR-style (≥80% 1RM)
+  compound loading — the guideline's own framing is deliberately
+  individualized/symptom-based rather than threshold-based, so inventing
+  a specific number here would misrepresent the evidence. Progress load
+  the same RIR-governed way every other client's program does, gated by
+  the symptom checks above rather than a fixed week count.
+Engine note (flagged for future engine work, not built in this pass —
+  out of this agent's scope, same pattern as the cardiac-flag engine
+  note above): a `client.isPostpartum`-type field that auto-inserts a
+  deep-core/pelvic-floor sequencing reminder the way `isPostmenopausal`
+  auto-inserts `pelvicFloorCallout()` would be a reasonable future
+  addition — no postpartum client exists on the roster yet to make this
+  urgent, but the pattern is now documented here for whenever one does.
+```
+
 ### ACL / Knee Valgus (women 2.8× male incidence — team ball sports meta-analysis 2022)
 ```
 Cause: hip abductor / glute med weakness → dynamic knee collapse
@@ -1871,6 +2004,14 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Judgment call, made per the task's own instruction to verify rather than assume: a compact addition inside the STUDIO STAFF section is sufficient — no dedicated Evidence-Based Science Layer subsection was added.** Reasoning: every existing Science Layer subsection (ALST, protein, RIR, Copenhagen plank, etc.) drives a population-wide programming threshold or technique applied across the roster independent of which staff member is involved. PNF here is scoped specifically to Niko's in-session work per this section's own "folded into training days, led by name" operating model — it's who does it and how it's described in documents, not a new client-population threshold. If PNF-based programming ever needs to be prescribed/tracked independent of Niko's involvement (e.g. a trainer running PNF cool-down protocols on their own), that would be the trigger to promote this into a full Science Layer subsection — not the case today.
 - **Did not touch any client document** (`clients/`, `trainer_education/`) — confirmed via grep that no delivered/rendered document currently names Niko Heers; he appears only in a couple of build scripts' header comments explaining why he was deliberately NOT used for that client. Nothing to retrofit. **Flag for the main thread:** no existing client document was found that's an obvious immediate candidate for a follow-up naming Niko with the PNF detail — but per this section's existing "use judgment, don't insert decoratively" rule, the next client document with a genuine ROM-limited/mobility-focused cool-down or corrective block (rather than a strength/load-limited one) is the natural place to apply the new "PNF stretching," not "assisted stretching," language going forward.
 - Sources: [Konrad A, Alizadeh S, Daneshjoo A, Hadjizadeh Anvar S, Graham A, Zahiri A, Goudini R, Edwards C, Culleton R, Scharf C, Behm DG, "Acute Effects of Various Stretching Techniques on Range of Motion: A Systematic Review with Meta-Analysis," Sports Medicine – Open 2023](https://link.springer.com/article/10.1186/s40798-023-00652-x) · [Konrad A, Alizadeh S, Daneshjoo A, Hadjizadeh Anvar S, Graham A, Zahiri A, Goudini R, Edwards C, Scharf C, Behm DG, "Chronic effects of stretching on range of motion with consideration of potential moderating variables: A systematic review with meta-analysis," Journal of Sport and Health Science 2024;13(2):186-194 (published online 2023)](https://www.sciencedirect.com/science/article/pii/S2095254623000571) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/37301370/)) · [Sharman MJ, Cresswell AG, Riek S, "Proprioceptive Neuromuscular Facilitation Stretching: Mechanisms and Clinical Implications," Sports Medicine 2006;36(11):929-939](https://pubmed.ncbi.nlm.nih.gov/17052131/) · [Hold-relax and contract-relax stretching for hamstrings flexibility: a systematic review with meta-analysis — reviewed for hamstring-specific PNF-vs-other-modality comparison](https://www.sciencedirect.com/science/article/abs/pii/S1466853X18300361)
+
+**8/14/2026 — ninth pass. Postpartum return to training & diastasis recti abdominis (DRA) — new topic, first pass; genuine gap that had gone unfilled since the Age Bracket Programming Framework's own intro referenced a postpartum client as its bracket-proximity example (8/11/2026) without any actual protocol behind it.** Daily subagent check-in; no current roster client is known to be postpartum — this is proactive framework-building per the standing "be ready for any client at any time" trigger, the same category of pass that built the Male Client Programming Framework. Checked: current (2025-preferred) postpartum return-to-exercise/resistance-training guidelines, diastasis recti abdominis (DRA) prevalence and persistence timelines, whether structured exercise/resistance training is evidence-backed as treatment for DRA, and whether the "no crunches/sit-ups with DRA" rule commonly taught holds up as an absolute.
+- **Added (new subsection):** "Postpartum Return to Training & Diastasis Recti Abdominis (DRA)," placed directly after the existing Pelvic Floor Protocol section in the Evidence-Based Science Layer (thematically closest — both are core/pelvic-region protocols with the same referral-not-diagnose posture). Key findings folded in: (1) the 2025 Canadian Guideline for Physical Activity, Sedentary Behaviour and Sleep Throughout the First Year Postpartum (CSEP-led Consensus Panel, ~19,000 articles screened, 7 systematic reviews, published British Journal of Sports Medicine 2025, ACSM-endorsed) explicitly retires the blanket "cleared at 6 weeks" model in favor of individualized, gradual, symptom-based return, with resistance training named as an explicit target-behavior component (120 min/week MVPA across ≥4 days, aerobic + resistance + daily pelvic floor work) — not just cardio with strength training implied; (2) its companion GAQ-PP (Get Active Questionnaire for Postpartum) 4-question screen is the same category of legitimate non-diagnostic self-report tool this file already uses for perimenopausal screening — collecting the answers is fine, staging/diagnosing them is not; (3) DRA prevalence/persistence is real and long-tailed, not a 6-week-resolving condition — a frequently-cited cohort (Sperstad et al. 2016, BJSM) found 60%/45.4%/32.6% prevalence at 6 weeks/6 months/12 months postpartum, and a 2024 cross-sectional study found DRA still present in 22-36% of women at 3-30 YEARS postpartum, meaning a postpartum flag shouldn't be assumed resolved just because a client is years past delivery; (4) structured exercise is evidence-backed as first-line DRA treatment — multiple 2025 systematic reviews/meta-analyses (a Scientific Reports network meta-analysis of 27 RCTs/1,340 women/39 interventions; a separate non-operative-management meta-analysis of RCTs) confirm structured programs reduce inter-recti distance versus no intervention, though no single protocol is yet confirmed superior; (5) the commonly-taught "never do crunches/sit-ups with DRA" rule is outdated as an absolute — Gluppe, Ellström Engh & Bø 2021 (Brazilian Journal of Physical Therapy) found both TrA training AND curl-up training outperformed minimal intervention, meaning the correct evidence-based response is SEQUENCING (deep-core/TrA/pelvic-floor foundation before flexion-pattern loading), not permanent exclusion — mapped directly onto this file's existing Three-Zone "Control precedes power" philosophy rather than presented as a new idea.
+- **Practical application added:** don't treat a physician's 6-week clearance as sufficient for heavy compound loading without a current symptom check (leaking, pelvic pressure/heaviness, visible midline doming/coning under load); sequence Isolated-zone deep-core/pelvic-floor work before Compound-zone heavy loading and before reintroducing flexion-pattern ab work; use visible doming/coning under load as the trainer-coachable regression signal rather than attempting a diagnostic DRA measurement; refer a symptomatic client to pelvic floor PT using the same language as the existing Pelvic Floor Protocol. Explicitly cross-referenced the Studio Staff section's existing scope boundary — neither Jason Bethea nor Niko Heers has confirmed pelvic-floor-PT scope, so DRA/postpartum core referrals stay external, same as classic pelvic-floor-symptom referrals.
+- **Genuine gap flagged, not filled with an invented number:** no systematic review found in this pass gives a specific %1RM/load/week-count threshold for safe return to LIFTMOR-style (≥80% 1RM) compound loading postpartum — the guideline's own framing is deliberately individualized/symptom-based, so a fabricated threshold would misrepresent the evidence. Progression stays RIR-governed and symptom-gated, same as every other client, rather than a fixed timeline.
+- **Engine note (not built, flagged for future work only):** a `client.isPostpartum`-type field auto-inserting a deep-core/pelvic-floor sequencing reminder, mirroring how `isPostmenopausal` auto-inserts `pelvicFloorCallout()`, would be a reasonable future engine addition once a postpartum client is actually onboarded — documented here per the same pattern already used for the cardiac-flag engine note (5th pass, 8/12/2026).
+- Did not touch any client document — no roster client is currently flagged postpartum, so there was nothing to retrofit; this is pure framework-building ahead of need.
+- Sources: [2025 Canadian guideline for physical activity, sedentary behaviour and sleep throughout the first year postpartum — CSEP guideline landing page](https://csep.ca/2025/06/24/guideline-for-postpartum/) · [Postpartum – 24-Hour Movement Guidelines summary, CSEP](https://csepguidelines.ca/guidelines/postpartum/) · [ACSM Science Spotlight — ACSM Endorses CSEP Postpartum Guidelines](https://acsm.org/science-spotligh-csep-postpartum-guidelines/) · [Get Active Questionnaire for Postpartum, CSEP](https://csep.ca/2025/03/21/csep-get-active-questionnaire-for-postpartum/) · [CSEP-PATH GAQ-PP Guidelines PDF](https://csep.ca/wp-content/uploads/2025/03/CSEP-PATH_GAQ_PP_Guidelines.pdf) · [An evidence-based comparison of rehabilitation strategies for diastasis recti abdominis in postpartum women: a systematic review and network meta-analysis, Scientific Reports 2025](https://www.nature.com/articles/s41598-025-22574-2) · [Non operative management of postpartum Diastasis Recti: a systematic review and metanalysis of randomized controlled trials, Hernia 2025/2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC13090193/) · [Impact of postpartum exercise on pelvic floor disorders and diastasis recti abdominis: a systematic review and meta-analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC12013572/) · [Gluppe S, Ellström Engh M, Bø K, "What is the evidence for abdominal and pelvic floor muscle training to treat diastasis recti abdominis postpartum? A systematic review with meta-analysis," Brazilian Journal of Physical Therapy 2021](https://pubmed.ncbi.nlm.nih.gov/34391661/) · [Sperstad JB, Tennfjord MK, Hilde G, Ellström-Engh M, Bø K, "Diastasis recti abdominis during pregnancy and 12 months after childbirth: prevalence, risk factors and report of lumbopelvic pain," British Journal of Sports Medicine 2016;50(17):1092-1096](https://pubmed.ncbi.nlm.nih.gov/27324871/) · [Prevalence and risk factors of diastasis recti abdominis in the long-term postpartum: a cross-sectional study, Scientific Reports 2024](https://www.nature.com/articles/s41598-024-76974-x)
 
 ---
 
