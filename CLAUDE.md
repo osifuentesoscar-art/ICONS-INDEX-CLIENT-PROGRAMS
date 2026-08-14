@@ -1487,7 +1487,12 @@ Kelly Mulroy    → /mnt/user-data/outputs/Kelly_Mulroy_5Day_Training_Plan_v2.do
   Program: 5-day progressive intensity (60/70/80/90%/AR)
   Baselines: DL 55–65 lbs, Squat 25 lbs, OHP 25 lbs×3RM, Carry 35 lbs/hand
 
-Elizabeth Poyner → /mnt/user-data/outputs/Elizabeth_Poyner_5Day_Training_Plan.docx
+Elizabeth Poyner → MIGRATED 8/14/2026 into this repo's clients/scripts structure — see
+                    `clients/elizabeth_poyner/Elizabeth_Poyner_5Day_Training_Plan.docx` /
+                    `scripts/elizabeth_poyner_5day_plan.js` and CLIENTS.md's "Elizabeth Poyner"
+                    entry for the current, engine-built version (which also fixed a missing
+                    pelvic floor note on Thu/Fri — see CLIENTS.md for the open items flagged
+                    alongside that fix). This block's numbers are the pre-migration snapshot.
   Age: 64 | 5'5" | 115 lbs (up from 112 — lean mass gain) | Postmenopausal
   PRs: Hex DL 195×5 (Epley 1RM 228), Split Hex DL 165×5, Hip Thrust 145×5,
        DB Lunge 40×8, Push-Ups 28, Carry 50/hand, Plank 2:00, SL RDL 40, OHP 20
