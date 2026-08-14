@@ -102,7 +102,7 @@ const days = [
     descriptor: 'Moderate Day — Building Baseline Volume',
     intensityLabel: '70% Day',
     intensityPara: 'Tuesday\'s loads are moderate — challenging but not near-maximal. Focus on clean, repeatable technique across all three movement patterns before load increases next block.',
-    warmUp: '5 min bike or march in place. 2 rounds: 10 bodyweight squats, 10 arm circles each direction (both arms, controlled), 10 glute bridges, 30-sec world\'s greatest stretch each side.',
+    warmUp: '5 min bike or march in place. 2 rounds: 10 bodyweight squats, 10 band pull-aparts, 10 scap push-ups, 10 arm circles each direction (both arms, controlled), 10 glute bridges, 30-sec world\'s greatest stretch each side.',
     blocks: [
       {
         letter: 'A',
