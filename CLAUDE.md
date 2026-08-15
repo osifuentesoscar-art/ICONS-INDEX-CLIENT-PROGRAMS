@@ -273,7 +273,22 @@ clearFlag(label, body)
         name: string,
         sets: string,
         reps: string,
-        load: string,
+        load: string,                // convention (added 8/15/2026): a flat value
+                                      // ("Bodyweight", "35 lbs/hand") is for a
+                                      // genuinely non-progressing prescription only.
+                                      // Whenever a lift IS being progressed across the
+                                      // program's weeks, use "Wk1: X → Wk4: Y" (the
+                                      // format already used across most of the roster —
+                                      // see Rena Paul's script) so the load column itself
+                                      // carries the progression, rather than burying it
+                                      // in a block intro paragraph (see Elizabeth
+                                      // Poyner's Hip Thrust/Split Stance Hex DL, where
+                                      // the Wk1 numbers live only in `intro` prose and
+                                      // `load` never states them) or leaving it implicit.
+                                      // Not retrofitted roster-wide in this pass — apply
+                                      // going forward and opportunistically when a
+                                      // document is already being touched for another
+                                      // reason.
         tempo: string,
         rest: string,
         cue: string,                 // max ~50 chars — 1 line in cue column
@@ -557,6 +572,66 @@ Corroborated: 2025 systematic review/meta-analysis (17 RCTs, n=690) confirms
   aerobic + resistance training is the single most effective modality for
   lumbar BMD specifically — worth defaulting to for clients who already do
   cardio elsewhere in their week, not an either/or against the lifting.
+```
+
+### Vitamin D & Calcium Supplementation — Bone Health Cofactor (2024-2025 evidence)
+```
+Why this section exists: the Bone Loading section above (LIFTMOR) and the
+  Power Training/65+ bracket bullets treat resistance-training load as the
+  bone stimulus, but this file had no position at all on the supplement
+  question a bone-loading-candidate client will very likely ask about
+  directly — "should I also be taking calcium and vitamin D?" This is a
+  genuine gap, filled here for the first time; not a correction of anything
+  previously written.
+Not a blanket recommendation for a healthy client: USPSTF's December 2024
+  draft update (finalizing its 2018 statement) concludes with MODERATE
+  certainty that vitamin D supplementation, with or without calcium, has NO
+  net benefit for primary fracture prevention in community-dwelling
+  postmenopausal women and men 60+ at standard doses (≤400 IU vitamin D /
+  ≤1,000mg calcium/day) — and finds the evidence INSUFFICIENT (not
+  negative, genuinely unknown) to judge benefit/harm at higher doses. This
+  explicitly does NOT apply to a client with a confirmed osteoporosis
+  diagnosis, a prior fracture, a condition affecting vitamin D absorption,
+  or confirmed vitamin D deficiency — those clients follow their
+  prescriber's guidance, not this general-population framing. Mirrors this
+  file's existing posture on GLP-1/HRT/TRT: worth knowing the evidence, not
+  ours to prescribe or diagnose deficiency.
+Combined with exercise, the picture is more favorable — but the "exercise"
+  studied isn't confirmed to be LIFTMOR-style loading specifically: a 2025
+  systematic review/meta-analysis (13 RCTs, postmenopausal women) found
+  combined exercise + calcium/vitamin D supplementation outperformed
+  supplementation alone for both lumbar spine BMD (SMD 0.31) and femoral
+  neck BMD (SMD 0.47). Genuine gap, same pattern as the creatine/bone
+  caveat above: the review's exercise arms were heterogeneous (whole-body
+  vibration produced the most consistent benefit across sites in
+  subgroup analysis; mixed/traditional-Chinese-exercise arms improved
+  spine BMD specifically) — none of the included trials were confirmed at
+  LIFTMOR's specific ≥80% 1RM/5×5/2×week protocol, so treat "add
+  supplementation on top of our bone-loading protocol" as a reasonable
+  extrapolation from adjacent evidence, not a directly-replicated finding.
+Live, unresolved risk signal — do not treat calcium supplementation as a
+  free add-on: a meta-analysis of 13 double-blind placebo-controlled RCTs
+  (n=43,178) found calcium supplementation was associated with a 15%
+  increased risk of cardiovascular disease/coronary heart disease
+  specifically in postmenopausal women — a finding the literature
+  describes as contested, not settled (other trials/reviews found no
+  increased risk). This is the same "evidence is mixed, say so plainly"
+  standard this file already applies to creatine and bone density above,
+  and it now has a direct line to the Cardiovascular / Cardiac
+  Considerations section above — a client already carrying a cardiac flag
+  is exactly the wrong client to casually recommend calcium supplementation
+  to without her physician weighing in, given this unresolved signal.
+Practical takeaway: don't default to recommending blanket calcium +
+  vitamin D supplementation for a healthy postmenopausal client just
+  because she's a LIFTMOR/bone-loading candidate — current best evidence
+  (USPSTF 2024 draft) doesn't support that as a fracture-prevention
+  measure at standard doses in an otherwise-healthy client, and calcium's
+  cardiovascular signal is a real, unresolved caution rather than a
+  reason to encourage it casually. Food-first framing (dietary
+  calcium/vitamin D intake, sun exposure) is uncontroversial; a
+  supplement recommendation is a conversation for her physician/
+  dietitian, not a standing line in her ICONS document — consistent with
+  the referral-not-diagnose posture already used throughout this file.
 ```
 
 ### Power Training — Fall Risk & Longevity (2025 evidence)
@@ -2017,6 +2092,13 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Engine note (not built, flagged for future work only):** a `client.isPostpartum`-type field auto-inserting a deep-core/pelvic-floor sequencing reminder, mirroring how `isPostmenopausal` auto-inserts `pelvicFloorCallout()`, would be a reasonable future engine addition once a postpartum client is actually onboarded — documented here per the same pattern already used for the cardiac-flag engine note (5th pass, 8/12/2026).
 - Did not touch any client document — no roster client is currently flagged postpartum, so there was nothing to retrofit; this is pure framework-building ahead of need.
 - Sources: [2025 Canadian guideline for physical activity, sedentary behaviour and sleep throughout the first year postpartum — CSEP guideline landing page](https://csep.ca/2025/06/24/guideline-for-postpartum/) · [Postpartum – 24-Hour Movement Guidelines summary, CSEP](https://csepguidelines.ca/guidelines/postpartum/) · [ACSM Science Spotlight — ACSM Endorses CSEP Postpartum Guidelines](https://acsm.org/science-spotligh-csep-postpartum-guidelines/) · [Get Active Questionnaire for Postpartum, CSEP](https://csep.ca/2025/03/21/csep-get-active-questionnaire-for-postpartum/) · [CSEP-PATH GAQ-PP Guidelines PDF](https://csep.ca/wp-content/uploads/2025/03/CSEP-PATH_GAQ_PP_Guidelines.pdf) · [An evidence-based comparison of rehabilitation strategies for diastasis recti abdominis in postpartum women: a systematic review and network meta-analysis, Scientific Reports 2025](https://www.nature.com/articles/s41598-025-22574-2) · [Non operative management of postpartum Diastasis Recti: a systematic review and metanalysis of randomized controlled trials, Hernia 2025/2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC13090193/) · [Impact of postpartum exercise on pelvic floor disorders and diastasis recti abdominis: a systematic review and meta-analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC12013572/) · [Gluppe S, Ellström Engh M, Bø K, "What is the evidence for abdominal and pelvic floor muscle training to treat diastasis recti abdominis postpartum? A systematic review with meta-analysis," Brazilian Journal of Physical Therapy 2021](https://pubmed.ncbi.nlm.nih.gov/34391661/) · [Sperstad JB, Tennfjord MK, Hilde G, Ellström-Engh M, Bø K, "Diastasis recti abdominis during pregnancy and 12 months after childbirth: prevalence, risk factors and report of lumbopelvic pain," British Journal of Sports Medicine 2016;50(17):1092-1096](https://pubmed.ncbi.nlm.nih.gov/27324871/) · [Prevalence and risk factors of diastasis recti abdominis in the long-term postpartum: a cross-sectional study, Scientific Reports 2024](https://www.nature.com/articles/s41598-024-76974-x)
+
+**8/15/2026 — tenth pass. Vitamin D & Calcium supplementation as a bone-health cofactor — new topic, first pass; genuine gap directly adjacent to the existing Bone Loading (LIFTMOR) section, which had a stimulus/loading protocol but no position at all on the supplement question a bone-loading-candidate client would naturally ask about.** Daily subagent check-in. Checked: current (2024-2025 preferred) evidence on vitamin D/calcium supplementation for fracture/BMD outcomes in postmenopausal women specifically, whether combining supplementation with exercise changes the picture, standard dosing guidance, and the calcium/cardiovascular-risk controversy (relevant given the Cardiovascular section added in the fifth pass).
+- **Added (new subsection):** "Vitamin D & Calcium Supplementation — Bone Health Cofactor (2024-2025 evidence)," placed directly after the existing Bone Loading — LIFTMOR RCT section (before Power Training), since it's the natural adjacent question for the same LIFTMOR-candidate client. Key findings folded in: (1) USPSTF's December 2024 draft recommendation update concludes with MODERATE certainty that vitamin D supplementation (with or without calcium) has NO net benefit for primary fracture prevention in healthy community-dwelling postmenopausal women/men 60+ at standard doses (≤400 IU vitamin D/≤1,000mg calcium), and finds evidence INSUFFICIENT — not negative, genuinely unresolved — at higher doses; explicitly does not apply to a client with confirmed osteoporosis, prior fracture, absorption issues, or confirmed deficiency, who should follow her own prescriber; (2) a 2025 systematic review/meta-analysis (13 RCTs) found combined exercise + calcium/vitamin D outperformed supplementation alone for lumbar spine (SMD 0.31) and femoral neck (SMD 0.47) BMD in postmenopausal women — genuine gap flagged alongside this, same pattern as the existing creatine/bone caveat: the exercise arms studied were heterogeneous (whole-body vibration, mixed/Baduanjin-style training) and not confirmed to include LIFTMOR's specific ≥80% 1RM/5×5/2×week protocol, so applying this to our bone-loading protocol specifically is a reasonable extrapolation, not a directly-replicated finding; (3) a meta-analysis of 13 double-blind placebo-controlled RCTs (n=43,178) found calcium supplementation associated with a 15% increased CVD/CHD risk specifically in postmenopausal women — described in the literature as contested/unresolved, not settled, and now cross-referenced directly to the Cardiovascular / Cardiac Considerations section (fifth pass) since a cardiac-flagged client is exactly the wrong client to casually recommend calcium supplementation to without her physician's input.
+- **Practical takeaway added:** don't default to recommending blanket calcium + vitamin D supplementation to a healthy LIFTMOR-candidate client — current best evidence doesn't support it as a fracture-prevention measure at standard doses in an otherwise-healthy client, and the cardiovascular signal is real enough to warrant caution rather than casual encouragement. Food-first framing is uncontroversial; a supplement recommendation itself stays a physician/dietitian conversation, mirroring this file's existing referral-not-diagnose posture for GLP-1/HRT/TRT.
+- **Categorization: Add, not Correct** — nothing prior in this file addressed vitamin D/calcium supplementation at all, so there was no existing claim to soften or fix, only a gap to fill.
+- Did not touch any client document — this is reference material for a conversation that may come up with any LIFTMOR-candidate client (e.g. Siobhan Hansen, Elizabeth Poyner), not a correction tied to a specific existing document.
+- Sources: [Draft Recommendation: Vitamin D, Calcium, or Combined Supplementation for the Primary Prevention of Falls and Fractures in Community-Dwelling Adults, USPSTF (Dec 2024 draft)](https://www.uspreventiveservicestaskforce.org/uspstf/draft-recommendation/vitamin-d-calcium-combined-supplementation-primary-prevention-falls-fractures-communitydwelling-adults) · [USPSTF final recommendation page — Vitamin D, Calcium, or Combined Supplementation for the Primary Prevention of Fractures in Community-Dwelling Adults](https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/vitamin-d-calcium-or-combined-supplementation-for-the-primary-prevention-of-fractures-in-adults-preventive-medication) · [Effects of Combined Exercise and Calcium/Vitamin D Supplementation on Bone Mineral Density in Postmenopausal Women: A Systematic Review and Meta-Analysis, 2025](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12735737/) · [Effect of combined exercise and nutrition on bone density in postmenopausal women — a systematic review and meta-analysis, Nutrition & Metabolism 2025](https://link.springer.com/article/10.1186/s12986-025-01025-9) · [The effects of combined calcium and vitamin D supplementation on bone mineral density and fracture risk in postmenopausal women with osteoporosis: a systematic review and meta-analysis of RCTs, BMC Musculoskeletal Disorders 2025](https://link.springer.com/article/10.1186/s12891-025-09089-7) · [Calcium Supplements and Risk of Cardiovascular Disease: A Meta-Analysis of Clinical Trials, Nutrients 2021 (13 RCTs, n=43,178, postmenopausal-women-specific finding — older but the clearest direct source found for this specific risk signal)](https://www.mdpi.com/2072-6643/13/2/368) · [Calcium Supplementation - Efficacy and Safety, 2025 review](https://pmc.ncbi.nlm.nih.gov/articles/PMC11821691/)
 
 ---
 
