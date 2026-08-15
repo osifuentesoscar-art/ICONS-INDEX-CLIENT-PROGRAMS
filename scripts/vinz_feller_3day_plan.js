@@ -341,16 +341,23 @@ const days = [
         ],
       },
       {
+        // Antagonist Rotation Rule fix (8/15/2026 rotating audit): this block
+        // (pull-up progression) was originally lettered D and sequenced after
+        // the OHP block, putting two pull-up grip variants directly ahead of
+        // Block E's Single-Arm DB Row — a distinct, separately-loaded compound
+        // pull exercise, not a grip variant of the same pull-up movement, so
+        // the grip/skill-progression exemption (which covers a single movement
+        // progressing through grip width, e.g. this Wide->Standard sequence
+        // itself) does not extend to cover the Row stacking on top of it. That
+        // produced 3 consecutive pull-pattern exercises across the D->E block
+        // boundary (Pull-Up Wide, Pull-Up Standard, Single-Arm DB Row). Fixed
+        // by resequencing this block ahead of the OHP block (now lettered D,
+        // below) rather than dropping or altering any exercise — the OHP
+        // (push) block now sits between the pull-up progression and the row,
+        // breaking the run: Incline Bench(B, push) -> Pull-Up Wide/Standard(C,
+        // pull, pull) -> OHP(D, push) -> Single-Arm DB Row(E, pull). No 3
+        // same-pattern exercises in a row anywhere in the day.
         letter: 'C',
-        title: 'SECONDARY — OVERHEAD PRESS',
-        introLabel: 'Load Target',
-        intro: 'No percentage prescription — self-select load off the tested 35 lb reference at 1–2 RIR; establish a true Week 1 working weight here.',
-        exercises: [
-          { name: 'Standing Overhead Press', sets: '3', reps: '6', load: 'Self-select ~35 lbs', tempo: 'Controlled', rest: '2 min', cue: 'Brace hard; no lumbar arch. 1–2 RIR.' },
-        ],
-      },
-      {
-        letter: 'D',
         title: 'PULL — PULL-UP PROGRESSION',
         color: 'purple',
         introLabel: 'Load Target',
@@ -358,6 +365,15 @@ const days = [
         exercises: [
           { name: 'Assisted Pull-Up (Wide Grip)', sets: '3', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Full hang to chin-over-bar; reduce assist vs test.' },
           { name: 'Assisted Pull-Up (Standard Grip)', sets: '2', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Full stretch at bottom; controlled descent.' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'SECONDARY — OVERHEAD PRESS',
+        introLabel: 'Load Target',
+        intro: 'No percentage prescription — self-select load off the tested 35 lb reference at 1–2 RIR; establish a true Week 1 working weight here.',
+        exercises: [
+          { name: 'Standing Overhead Press', sets: '3', reps: '6', load: 'Self-select ~35 lbs', tempo: 'Controlled', rest: '2 min', cue: 'Brace hard; no lumbar arch. 1–2 RIR.' },
         ],
       },
       {
