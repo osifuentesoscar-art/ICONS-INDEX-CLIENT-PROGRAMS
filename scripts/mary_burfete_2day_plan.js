@@ -55,6 +55,61 @@
  * conservative estimates, per the "never under-load" principle. Sled Push
  * and Farmer Carry use descriptive/reference load framing (no 1RM math —
  * neither is a maximal-strength-tested movement).
+ *
+ * REVISION (8/16/2026, roster spot-check from icons-roster-analyst) — POWER
+ * TRAINING ADDED, 55-65 BRACKET: CLAUDE.md's Power Training section places
+ * sub-maximal-load/maximal-intent power work in the 55-65 bracket already,
+ * not just 65+ (power output declines before strength does), and Mary's two
+ * closest bracket-mates on the roster (Siobhan Hansen 59, Elizabeth Poyner
+ * 64) both already carry it. Mary has no clinical flag — no shoulder issue,
+ * no cardiac flag — that would rule out any particular movement, but the
+ * addition below stays deliberately conservative and consistent with the
+ * roster's existing pattern (Siobhan's Box Step-Up Jump was kept lower-body/
+ * non-overhead specifically because of her shoulder reintroduction; the same
+ * lower-body choice is used here even though nothing in Mary's document
+ * specifically rules out an overhead movement, since a hip/knee-dominant
+ * jump pattern is the more conservative default and pairs naturally with her
+ * existing Hex Bar Deadlift work). Day A, new Block D: Trap Bar Jump — light
+ * load (well below her Epley-derived hinge working loads), full recovery
+ * between sets, deliberately sequenced BEFORE the Conditioning Finisher
+ * (renumbered from Block D to Block E) so the power stimulus is trained
+ * fresh rather than after fatiguing conditioning work — matching Siobhan's
+ * Day 3 sequencing (power block placed before, not after, the metabolic
+ * finisher). Reviewed against the Antagonist Rotation Rule: Block C closes
+ * on Pallof Press (core/anti-rotation, not hip-hinge), so the new Trap Bar
+ * Jump does not stack a third consecutive hip-hinge/power movement against
+ * anything preceding it, and Block E's Sled Push option (if chosen over the
+ * Bike HIIT alternative) makes only 2 consecutive hip-dominant/explosive
+ * exercises across the block boundary — within the rule's two-in-a-row
+ * allowance, not a violation.
+ *
+ * REVISION (8/16/2026, roster spot-check from icons-doc-auditor) —
+ * ANTAGONIST ROTATION RULE FIX, DAY A BLOCK A/B BOUNDARY: a real,
+ * pre-existing violation was found spanning the Block A/B boundary — Block A
+ * closed on Face Pull (pull) and Block B opened Single-Arm DB Row (pull) →
+ * Bent-Over DB Row (pull), three consecutive pull-pattern exercises. This
+ * was an artifact of the 8/12/2026 antagonist-rotation fix (see CLIENTS.md),
+ * which resolved the original Block-B-internal 3-pull stack (Single-Arm Row
+ * → Bent-Over Row → Face Pull) by moving Face Pull to the end of Block A —
+ * inadvertently relocating the same 3-pull run to span the block boundary
+ * instead of eliminating it. Fixed by swapping Bent-Over DB Row and
+ * Single-Leg RDL's order within Block B: the day now reads Face Pull (pull)
+ * → Single-Arm DB Row (pull) → Single-Leg RDL (hinge) → Bent-Over DB Row
+ * (pull) → Incline DB Press (push) — the hinge exercise breaks up the pull
+ * stack without dropping anything, per the rule's own "resequence, don't
+ * drop" scope. Full sequence re-checked end to end: Block A opens Hex Bar
+ * Deadlift (hinge) → Hip Thrust (hinge) — 2 in a row, the allowed
+ * primary+accessory pairing — then Face Pull (pull) → Single-Arm DB Row
+ * (pull) — 2 in a row, allowed — then Single-Leg RDL (hinge) breaks it, so
+ * no 3-consecutive-hinge or 3-consecutive-pull stack exists anywhere across
+ * the boundary, and Single-Leg RDL is separated from Block A's Hex Bar
+ * Deadlift/Hip Thrust hinge pair by two intervening pull exercises, so it
+ * does not create a new hinge-adjacency issue with them either. Block B's
+ * intro paragraph was rewritten to match the new order (learning from the
+ * 8/12/2026 history where a stale intro was initially missed on the first
+ * pass). Regenerated and structurally re-verified via python-docx; one more
+ * independent audit pass recommended before this change is committed
+ * alongside the rest of Mary Burfete's pending revisions.
  */
 
 const fs = require('fs');
@@ -151,6 +206,11 @@ const baselineNotes = [
     label: 'Menopausal Status — Unconfirmed, Flagged for Next Intake',
     body: 'No menopausal status was stated by the trainer at intake — isPostmenopausal is left unconfirmed here rather than fabricated. At 55, Mary is at or past the average age of menopause onset (~51), and this program includes real, heavy hip-thrust, squat, and deadlift loading — exactly the pattern the pelvic floor protocol exists to safeguard. Per CLAUDE.md\'s Perimenopausal Status guidance, the transition window itself (not just confirmed postmenopausal status) carries elevated stress-urinary-incontinence risk, so this is not a low-stakes unknown. Confirming her actual status is worth doing at the next intake conversation given how load-bearing that determination is for whether the pelvic floor safety callout should be running on every heavy day. Until confirmed, coach standard pelvic floor bracing and exhale-on-exertion cues verbally on all heavy hinge and squat work as a precaution, independent of what this document auto-generates.',
   },
+  {
+    type: 'gold',
+    label: 'Power Training Added — 55-65 Bracket (8/16/2026)',
+    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day A, Block D now includes a Trap Bar Jump: a light load well below her tested hinge working weights, moved with maximal intent, full recovery between sets. Full recovery is the defining design feature of power work, distinct from a metabolic stimulus, so it is sequenced before the Conditioning Finisher rather than after it — trained fresh, not stacked onto fatigue. Mary carries no clinical flag ruling out any particular movement, but a lower-body, non-overhead jump pattern was chosen as the more conservative default, consistent with how this same addition was made for her closest bracket-mates on the roster (Siobhan Hansen, Elizabeth Poyner), and because it pairs naturally with the hex bar equipment already in use on this day.',
+  },
 ];
 
 const days = [
@@ -178,11 +238,11 @@ const days = [
         letter: 'B',
         title: 'PRIMARY PULL STRENGTH & PRESS ACCESSORY',
         introLabel: `Single-Arm Row — Epley 1RM ${row1RM} lbs`,
-        intro: 'Single-arm row tested at 30 lbs for 5 reps and climbs from there; bent-over bilateral row rounds out the pulling volume, balancing the pressing work on Day B, before single-leg RDL closes the posterior-chain portion of the block. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, established this week at a conservative technique-first load.',
+        intro: 'Single-arm row tested at 30 lbs for 5 reps and climbs from there; single-leg RDL sits next, breaking up the pulling volume with a hinge-pattern movement, before bent-over bilateral row rounds out the pulling volume, balancing the pressing work on Day B. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, established this week at a conservative technique-first load.',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '4', reps: '8', load: `Wk1: ${row_wk1} lbs → Wk4: ${row_wk4} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Bench-supported, flat back. Drive elbow to hip, full stretch at bottom.' },
-          { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: '20–25 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to ribs together. Bilateral pulling volume.' },
           { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8–10 ea', load: '20 lbs → 25 lbs', tempo: '3-1-1', rest: '75s', cue: 'LEFT leg leads every set — lower leg LST (14.6 vs 15.1 lbs), asymmetry-protocol trigger at exactly 0.5 lb gap.' },
+          { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: '20–25 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to ribs together. Bilateral pulling volume.' },
           { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline this week', cue: 'Bench ~30°, elbows ~45°, controlled descent to full stretch.' },
         ],
       },
@@ -199,6 +259,15 @@ const days = [
       },
       {
         letter: 'D',
+        title: 'POWER TRAINING — LOWER BODY (55-65 BRACKET)',
+        introLabel: 'Why',
+        intro: 'Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. Light load relative to her tested hex deadlift working weights; full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it is trained fresh, before the conditioning finisher below, not after it.',
+        exercises: [
+          { name: 'Trap Bar Jump (Light Load, Full Recovery)', sets: '3', reps: '3', load: '30–40 lbs (empty-to-light trap bar)', tempo: 'Explosive up, soft controlled landing', rest: '120s', cue: 'Drive up with real intent through ankle, knee, hip. Land soft. Full recovery — not a metabolic set.' },
+        ],
+      },
+      {
+        letter: 'E',
         title: 'CONDITIONING FINISHER (CHOOSE ONE)',
         color: 'gold',
         introLabel: 'Conditioning Protocol — Sled Push Baseline 45 lbs',
