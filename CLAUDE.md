@@ -668,6 +668,119 @@ Status: this replaces the earlier "general good practice, not evidence-
   training is now a cited protocol, not just a reasonable instinct.
 ```
 
+### Osteoarthritis (Knee & Hip) & Resistance Training (2024-2025 evidence)
+```
+Why this section exists: knee/hip osteoarthritis (OA) is extremely common in
+  this client population and had ZERO prior coverage in this file, despite
+  every other major joint/loading topic (bone density, ACL/knee valgus,
+  pelvic floor, postpartum core) having a dedicated subsection. The default
+  instinct — lighten load or avoid a movement pattern around a painful/
+  diagnosed joint — is the opposite of current evidence, which treats
+  resistance training as CORE first-line OA management, not a risk to
+  train around.
+Prevalence/risk context: women account for roughly 60% of OA cases
+  globally, and postmenopausal women show roughly TWICE the knee OA
+  prevalence of age-matched men. Estrogen deficiency is mechanistically
+  linked to cartilage degeneration in a 2025 systematic review/meta-
+  analysis (Journal of Menopausal Medicine) — this directly reinforces
+  (does not newly introduce) this file's existing ICONS Training
+  Philosophy language about declining estrogen reducing "joint
+  lubrication," but note the mechanistic evidence is stronger at the
+  molecular/animal-model level than at the human causal-intervention
+  level — treat "menopause raises OA risk" as well-supported and "here is
+  exactly how much estrogen itself drives it vs. general aging" as still
+  being clarified.
+Standing guideline: the 2019 ACR/Arthritis Foundation Guideline for the
+  Management of Osteoarthritis of the Hand, Hip, and Knee — the most
+  current ACR guideline found in this pass, no 2025 update located —
+  STRONGLY recommends land-based resistance exercise (alongside aerobic,
+  aquatic, and neuromuscular exercise) for knee OA, with no established
+  hierarchy among exercise modes, and notes supervised exercise is
+  associated with better outcomes than unsupervised.
+Programming specifics (2025 systematic review and network meta-analysis,
+  46 RCTs, 3,463 participants): high-speed resistance training was most
+  effective across pain, stiffness, and function combined. For pain and
+  function specifically, moderate intensity (43-47% 1RM) sustained over a
+  longer duration (35-37 weeks) with higher weekly rep volume (610-640
+  reps/week) was optimal. For stiffness specifically, a shorter, higher-
+  rep protocol (12 weeks, ~1,200 reps/week) was more effective — dosing
+  should follow the client's actual limiting symptom, not one universal
+  OA prescription.
+Heavier loading is not disqualified by OA or joint pain — useful nuance
+  for a LIFTMOR-candidate client who also has knee/hip OA: the PROHIP
+  trial (hip OA, 2025) found patients tolerated progressively higher
+  training loads while maintaining low pain intensity. A case series
+  (Henriksen et al., Translational Sports Medicine, 16 women with
+  generalized joint hypermobility + knee pain, supervised heavy RT 2x/wk
+  for 12 weeks) found meaningful pain reduction plus gains in strength,
+  proprioception, and patellar tendon stiffness with no major adverse
+  events — heavy loading had traditionally been considered inappropriate
+  in a hypermobile/joint-lax population specifically because of assumed
+  pain/injury risk, and this case series pushes back on that assumption.
+  Flag honestly: this case series' population is young (mean age 24.2)
+  and hypermobility-specific, not this file's postmenopausal bracket
+  directly — cited here as counter-evidence to the "heavy loading is
+  unsafe with joint laxity" assumption, which is directly relevant given
+  this file's own philosophy language about postmenopausal ligament
+  laxity, not as a bracket-matched replication.
+Important boundary — resistance training is not a substitute for an
+  already-indicated surgery: a 2024 NEJM RCT (Frydendal et al., n=109,
+  severe hip OA WITH an existing surgical indication) found total hip
+  replacement produced a clinically superior improvement in patient-
+  reported hip pain and function vs. resistance training alone at 6
+  months — physical activity levels improved comparably in both groups,
+  but hip replacement won on the primary pain/function outcome. Practical
+  implication: resistance training is strongly evidence-backed as core
+  OA management generally, but a client whose OA is severe enough that a
+  surgeon has already indicated replacement should not be led to believe
+  training alone is expected to match a surgical outcome — refer to her
+  orthopedist for that specific conversation, same referral-not-diagnose
+  posture used throughout this file.
+Knee replacement continuum: a 2026 (ahead-of-print) systematic review
+  found resistance training benefits both BEFORE knee replacement
+  (greater strength gains with higher training intensity/machine-based
+  work; better pain/function outcomes with programs ≥8 weeks) and AFTER
+  (faster mobility/walking-capacity gains with programs ≥12 weeks) — RT
+  has a role on both sides of a replacement, not just as an alternative
+  to one.
+ICONS practical application:
+  - Do not default to reducing load or avoiding a movement pattern just
+    because a client reports a knee or hip OA diagnosis — resistance
+    training, including progressively heavier loading, is core evidence-
+    based management, not a risk to train around by default.
+  - Screen at intake: which specific joint, diagnosed OA vs. undiagnosed
+    pain, and whether a surgical-indication conversation is already
+    underway with her physician — a client already in that conversation
+    should have expectations set accordingly (see the NEJM finding
+    above), not be led to expect training alone will resolve what a
+    surgeon has already flagged as replacement-indicated.
+  - Program to the client's actual limiting symptom per the 2025 network
+    meta-analysis above: sustained moderate-intensity work over a longer
+    block for pain/function complaints; higher-rep, shorter-duration
+    blocks for stiffness-predominant complaints. This is programming
+    nuance layered on top of, not a contradiction of, the RIR-governed
+    approach already used everywhere else in this file.
+  - An OA-affected joint does not need to be avoided in the Compound
+    zone, but pain occurring DURING or persisting AFTER a session (as
+    opposed to a client's pre-existing baseline pain) is the coachable
+    regression signal — the same "does the pattern hold up under load"
+    judgment already used elsewhere in this file (postpartum DRA midline
+    doming, squat-depth/posture breakdown).
+  - Diagnosis, imaging interpretation, and surgical-timing decisions stay
+    an external referral to the client's physician/orthopedist — training
+    can proceed in parallel per the evidence above, but staging severity
+    or timing a replacement decision is not ours to do.
+Genuine gap: no dedicated postmenopausal-women-specific OA-plus-heavy-
+  loading RCT replicating LIFTMOR's exact protocol (≥80% 1RM, 5×5,
+  2×/week) in a confirmed-OA population was found in this pass — the
+  intensity/dosing evidence above is drawn from mixed-age, mixed-sex
+  knee/hip OA RCT pools, not this file's specific 40-65 bracket
+  population. Treat the guidance above as directly applicable (it's
+  OA-specific evidence with a strong RCT count behind it) but not as a
+  bracket-matched replication of LIFTMOR the way the core Bone Loading
+  section is.
+```
+
 ### Cardiovascular / Cardiac Considerations in Resistance Training (2023-2026 evidence)
 ```
 Why this section exists: every other clinical area this file handles
@@ -2099,6 +2212,13 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Categorization: Add, not Correct** — nothing prior in this file addressed vitamin D/calcium supplementation at all, so there was no existing claim to soften or fix, only a gap to fill.
 - Did not touch any client document — this is reference material for a conversation that may come up with any LIFTMOR-candidate client (e.g. Siobhan Hansen, Elizabeth Poyner), not a correction tied to a specific existing document.
 - Sources: [Draft Recommendation: Vitamin D, Calcium, or Combined Supplementation for the Primary Prevention of Falls and Fractures in Community-Dwelling Adults, USPSTF (Dec 2024 draft)](https://www.uspreventiveservicestaskforce.org/uspstf/draft-recommendation/vitamin-d-calcium-combined-supplementation-primary-prevention-falls-fractures-communitydwelling-adults) · [USPSTF final recommendation page — Vitamin D, Calcium, or Combined Supplementation for the Primary Prevention of Fractures in Community-Dwelling Adults](https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/vitamin-d-calcium-or-combined-supplementation-for-the-primary-prevention-of-fractures-in-adults-preventive-medication) · [Effects of Combined Exercise and Calcium/Vitamin D Supplementation on Bone Mineral Density in Postmenopausal Women: A Systematic Review and Meta-Analysis, 2025](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12735737/) · [Effect of combined exercise and nutrition on bone density in postmenopausal women — a systematic review and meta-analysis, Nutrition & Metabolism 2025](https://link.springer.com/article/10.1186/s12986-025-01025-9) · [The effects of combined calcium and vitamin D supplementation on bone mineral density and fracture risk in postmenopausal women with osteoporosis: a systematic review and meta-analysis of RCTs, BMC Musculoskeletal Disorders 2025](https://link.springer.com/article/10.1186/s12891-025-09089-7) · [Calcium Supplements and Risk of Cardiovascular Disease: A Meta-Analysis of Clinical Trials, Nutrients 2021 (13 RCTs, n=43,178, postmenopausal-women-specific finding — older but the clearest direct source found for this specific risk signal)](https://www.mdpi.com/2072-6643/13/2/368) · [Calcium Supplementation - Efficacy and Safety, 2025 review](https://pmc.ncbi.nlm.nih.gov/articles/PMC11821691/)
+
+**8/16/2026 — eleventh pass. Osteoarthritis (knee & hip) and resistance training — new topic, first pass; genuine gap confirmed via grep (zero prior mentions of "osteoarthritis"/"arthritis"/"joint pain" anywhere in this file) despite every other major joint/loading topic already having a dedicated subsection.** Daily subagent check-in. Checked: current ACR/OARSI-adjacent exercise guidance for knee/hip OA, 2025 dose-response/network meta-analysis evidence on resistance training intensity/volume for OA pain vs. stiffness vs. function, whether heavy/high-intensity loading is safe with OA or joint pain/laxity (directly relevant to this file's own "postmenopausal ligament laxity" philosophy language), the postmenopause/estrogen-OA link, and the boundary between training as OA management vs. training as a substitute for an already-indicated joint replacement.
+- **Added (new subsection):** "Osteoarthritis (Knee & Hip) & Resistance Training (2024-2025 evidence)," placed directly after Power Training — Fall Risk & Longevity and before Cardiovascular / Cardiac Considerations, grouping it with this file's other joint-loading-adjacent sections (Bone Loading, Vitamin D & Calcium, Power Training). Key findings folded in: (1) prevalence/risk context — women account for ~60% of global OA cases and postmenopausal women show roughly 2x the knee OA prevalence of age-matched men, with a 2025 systematic review/meta-analysis (Journal of Menopausal Medicine) linking estrogen deficiency mechanistically to cartilage degeneration — directly reinforcing, not newly introducing, this file's existing ICONS Training Philosophy language about declining estrogen reducing "joint lubrication," with an honest caveat that the mechanistic evidence is stronger at the molecular/animal level than the human causal-intervention level; (2) the 2019 ACR/Arthritis Foundation guideline (no 2025 update located) strongly recommends land-based resistance exercise for knee OA, with supervised exercise outperforming unsupervised and no established hierarchy among exercise modes; (3) a 2025 network meta-analysis (46 RCTs, 3,463 participants) found high-speed resistance training most effective overall, with a specific dose-response split — moderate intensity (43-47% 1RM) over a longer duration (35-37 weeks, 610-640 weekly reps) optimal for pain/function, vs. a shorter, higher-rep protocol (12 weeks, ~1,200 weekly reps) optimal for stiffness specifically — i.e. dosing should follow the client's actual limiting symptom, not one universal OA prescription; (4) heavier loading is not disqualified by OA/joint pain — the PROHIP trial (hip OA, 2025) found patients tolerated progressively higher training loads while maintaining low pain, and a case series (Henriksen et al., Translational Sports Medicine, 16 women with joint hypermobility + knee pain) found supervised heavy RT reduced pain and improved strength/proprioception/tendon stiffness with no major adverse events — flagged honestly as a young (mean age 24.2), hypermobility-specific population, cited as counter-evidence to the "heavy loading is unsafe with joint laxity" assumption rather than a bracket-matched replication; (5) an important boundary — a 2024 NEJM RCT (Frydendal et al., n=109, severe hip OA WITH an existing surgical indication) found total hip replacement produced clinically superior pain/function outcomes vs. resistance training alone at 6 months, meaning training is not a substitute for an already-indicated replacement and a client in that specific situation should be referred to her orthopedist rather than told training alone should match a surgical outcome; (6) a 2026 ahead-of-print systematic review found RT benefits both pre- and post- knee replacement (higher intensity/machine work pre-op, ≥8-week programs for pain/function, ≥12-week programs for post-op mobility gains) — RT has a role on both sides of a replacement, not just as an alternative to one.
+- **Categorization: Add, not Correct.** Nothing prior in this file addressed OA at all — pure gap-fill, consistent with this file's existing default instinct (reduce load around a painful/diagnosed joint) actually running counter to current evidence, which treats resistance training as core first-line OA management rather than a risk to train around.
+- **Genuine gap flagged, not filled with an invented number:** no dedicated postmenopausal-women-specific OA-plus-heavy-loading RCT replicating LIFTMOR's exact protocol (≥80% 1RM, 5×5, 2×/week) in a confirmed-OA population was found — the intensity/dosing evidence above comes from mixed-age, mixed-sex OA RCT pools, not this file's specific 40-65 bracket population. Documented as directly applicable OA-specific evidence, not a bracket-matched LIFTMOR replication.
+- Did not touch any client document — no current roster client has a documented OA diagnosis on file; this is proactive framework-building for when one is onboarded, same pattern as the Male Client Programming Framework and Postpartum/DRA passes. Also did not edit the ICONS Training Philosophy section's existing "joint lubrication" language — that's qualitative brand-voice prose, not a cited threshold, and out of this pass's scope; noting here only that the new subsection now gives it a real citation to point to if a future pass wants to add a cross-reference there.
+- Sources: [Optimal resistance training strategies for knee osteoarthritis symptom relief: a systematic review and network meta-analysis, 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12821314/) · [Optimizing resistance training for pain management in knee and hip osteoarthritis: a pairwise and dose–response meta-analysis, Frontiers in Public Health 2025](https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1623679/full) · [Training load and pain response during progressive resistance training in patients with hip osteoarthritis in the PROHIP trial, 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12547905/) · [Frydendal T, et al., "Total Hip Replacement or Resistance Training for Severe Hip Osteoarthritis," New England Journal of Medicine 2024](https://www.nejm.org/doi/abs/10.1056/NEJMoa2400141) · [Supervised, Heavy Resistance Training Is Tolerated and Potentially Beneficial in Women with Knee Pain and Knee Joint Hypermobility: A Case Series, Henriksen et al., Translational Sports Medicine](https://pmc.ncbi.nlm.nih.gov/articles/PMC11022762/) · [Efficacy and safety of resistance training for knee osteoarthritis and subsequent knee replacement: A systematic review and meta-analysis, 2026](https://www.sciencedirect.com/science/article/pii/S1877065726000254) · [2019 American College of Rheumatology/Arthritis Foundation Guideline for the Management of Osteoarthritis of the Hand, Hip, and Knee](https://pubmed.ncbi.nlm.nih.gov/31908149/) · [ACR's Latest Osteoarthritis Guidelines Address Benefits of Exercise](https://www.mdedge.com/familymedicine/article/49048/osteoarthritis/acrs-latest-osteoarthritis-guidelines-address-benefits) · [Estrogen Deficiency in Menopause: A Major Contributor to Cartilage Degeneration and Osteoarthritis: A Systematic Review and Meta-Analysis, Journal of Menopausal Medicine 2025](https://e-jmm.org/DOIx.php?id=10.6118%2Fjmm.25141) · [The intersection of aging and estrogen in osteoarthritis, npj Women's Health 2025](https://www.nature.com/articles/s44294-025-00063-1)
 
 ---
 
