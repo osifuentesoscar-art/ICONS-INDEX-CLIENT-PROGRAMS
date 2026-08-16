@@ -365,6 +365,7 @@ const days = [
         exercises: [
           { name: 'Assisted Pull-Up (Wide Grip)', sets: '3', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Full hang to chin-over-bar; reduce assist vs test.' },
           { name: 'Assisted Pull-Up (Standard Grip)', sets: '2', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Full stretch at bottom; controlled descent.' },
+          { name: 'Assisted Pull-Up (Close Grip)', sets: '2', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Hands inside shoulder width; reduce assist vs test.' },
         ],
       },
       {
