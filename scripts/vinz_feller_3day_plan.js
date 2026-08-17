@@ -223,6 +223,9 @@ const baselineNotes = [
   },
   {
     type: 'purple',
+    audience: 'internal', // Client View: documentation-methodology note — explains which
+    // internal science-layer framework/thresholds were selected and why, build-process
+    // reasoning rather than client-facing coaching content.
     label: 'Male Client Programming Framework — What Was Applied Here',
     body: "ICONS's Evidence-Based Science Layer's five-bracket Age Bracket Programming Framework (protein/creatine g/kg tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived from and validated for women 40s-60s navigating hormonal transitions — none of its numeric thresholds are applied to Vinz directly. Instead, this document uses the Male Client Programming Framework: his ALST, VFA, and BMI are interpreted above against real male-specific citations (EWGSOP2 2018, the sex-independent VFA table, WHO BMI thresholds read alongside the ACE body-fat-% classification), and his protein/creatine targets and the testosterone note below come from that framework's ISSN 2017 / Morton 2018 and Hildreth et al. 2024 sources rather than the women's tiers. What carries over unchanged from ICONS regardless of sex: the Isolated → Compound → Metabolic structural philosophy, RIR-based autoregulated progressive overload, corrective-before-compound sequencing, and the Styku segmental asymmetry protocol — all demographic-neutral principles, applied here on their own merits.",
   },
@@ -489,12 +492,21 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'vinz_feller');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Vinz_Feller_3Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // No clientHighlight: this is Vinz's first build — today's baseline
+  // testing battery is not a PR/progress-since-last-version, so nothing
+  // real exists yet to highlight. Omitted per spec rather than fabricated.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Vinz_Feller_3Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

@@ -333,12 +333,25 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'petra');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Petra_3Day_Virtual_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — same data object, filtered. None of
+  // her baselineNotes are build/methodology notes (all are training-logic,
+  // equipment, or force-assessment findings genuinely meant for her), so
+  // none are marked internal; no `insight` fields exist in this script;
+  // and no real documented PR/progress-since-last-version exists on file
+  // (this is a rebuild from the original source, not an update over an
+  // earlier version), so no clientHighlight is set.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Petra_3Day_Virtual_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

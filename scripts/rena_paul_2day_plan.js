@@ -272,12 +272,22 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'rena_paul');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Rena_Paul_2Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // No clientHighlight: first build (single Styku scan + single baseline
+  // testing session, no prior version to compare against) — her strong
+  // baseline numbers are a starting point, not a documented PR/progress-
+  // since-last-version. Omitted per spec rather than fabricated.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Rena_Paul_2Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

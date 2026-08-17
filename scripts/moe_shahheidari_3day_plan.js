@@ -149,11 +149,17 @@ const baselines = [
 const baselineNotes = [
   {
     type: 'teal',
+    audience: 'internal', // Client View: documentation-methodology note — cross-references
+    // EWGSOP2 citation sourcing and another client's (Vinz Feller's) Styku reading by name;
+    // not appropriate to surface directly to Moe.
     label: 'Styku Scan Interpretation — Male Client Programming Framework (8/11/2026)',
     body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs (3.0%), BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 ("${styku.shapeScoreLabel}"). ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system, and for Vinz Feller's 7.55 kg/m² reading); Moe sits comfortably above the line — this is the clinically-governing figure for his muscle-mass status, see the note below for how it relates to Styku's own internal flag. VFA ${styku.vfa} cm² falls in the ICONS VFA table's Low Risk band (70-99 cm²), validated sex-independent and applied to him directly. BMI ${styku.bmi} falls in the WHO Overweight range (25-29.9) — WHO BMI thresholds are not sex-specific, and unlike the "over-flagged muscular athlete" caution the Male Client Programming Framework raises for reading BMI in isolation, this BMI reading is concordant with — not contradicted by — his body fat % and lean mass findings below. There is no muscular-athlete false positive to correct for here.`,
   },
   {
     type: 'watch',
+    audience: 'internal', // Client View: documentation-methodology note — explicitly compares
+    // Moe's scan interpretation against "Vinz Feller's document" by name; internal cross-client
+    // audit-trail language, not client-facing.
     label: "Body Fat % & Lean Mass — Styku's Internal Flags vs. the Clinical ALST Reading",
     body: `Body Fat ${styku.bodyFatPct}% (${styku.fatMass} lbs fat mass) carries Styku's own classification of At-Risk (their internal, Mayo Clinic-based >28% threshold), and his peer comparison — higher body fat than 73% of Styku's men 40-49 comparison group — is labeled "High Risk" on Styku's own dashboard. Cross-checked against the ACE male body-fat-% reference table (Essential 2-5% / Athletes 6-13% / Fitness 14-17% / Acceptable 18-24% / Obese 25%+), 31.6% also falls in the Obese tier — the two scales agree here, a genuinely different situation from Vinz Feller's document, where Styku's "Average" peer-comparison label diverged from an ACE "Obese" reading. Styku's dashboard separately flags "Low Lean Mass" internally — this is Styku's own internal ranking, not the EWGSOP2 clinical ALST cutoff, and the two genuinely disagree: his ALST Index of ${styku.alstIndex} kg/m² reads Not At-Risk against the EWGSOP2 <7.0 kg/m² clinical threshold cited above. The clinically-governing figure is the EWGSOP2 ALST reading — he is not sarcopenic — but Styku's Low Lean Mass flag is still carried forward as a body-recomposition priority (build lean mass, reduce fat mass) rather than a red flag requiring an escalated protein tier on ALST grounds alone.`,
   },
@@ -169,6 +175,9 @@ const baselineNotes = [
   },
   {
     type: 'purple',
+    audience: 'internal', // Client View: documentation-methodology note — explains which
+    // internal science-layer framework/thresholds were selected and why, build-process
+    // reasoning rather than client-facing coaching content.
     label: 'Male Client Programming Framework — What Was Applied Here',
     body: "ICONS's Evidence-Based Science Layer's five-bracket Age Bracket Programming Framework (protein/creatine g/kg tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived from and validated for women 40s-60s navigating hormonal transitions — none of its numeric thresholds are applied to Moe directly. Instead, this document uses the Male Client Programming Framework: at 46, he sits in its 40-59 bracket (\"Midlife Androgen Decline & Sarcopenia Onset\"), where ALST monitoring is a stated priority even before any hormonal diagnosis is on the table. His ALST (7.92 kg/m²) is comfortably Not At-Risk, so this is a body-recomposition priority given the Styku-internal Low Lean Mass flag above — not a sarcopenia-driven programming escalation. His ALST, VFA, and BMI are interpreted above against real male-specific citations (EWGSOP2 2018, the sex-independent VFA table, WHO BMI thresholds read alongside the ACE body-fat-% classification), and his protein/creatine targets and the testosterone note below come from that framework's ISSN 2017 / Morton 2018 and Hildreth et al. 2024 sources rather than the women's tiers. What carries over unchanged from ICONS regardless of sex: the Isolated → Compound → Metabolic structural philosophy, RIR-based autoregulated progressive overload, corrective-before-compound sequencing, and the Styku segmental asymmetry protocol — all demographic-neutral principles, applied here on their own merits.",
   },
@@ -400,12 +409,21 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'moe_shahheidari');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Moe_Shahheidari_3Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // No clientHighlight: this is Moe's first build — today's baseline testing
+  // battery is not a PR/progress-since-last-version, so nothing real exists
+  // yet to highlight. Omitted per spec rather than fabricated.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Moe_Shahheidari_3Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

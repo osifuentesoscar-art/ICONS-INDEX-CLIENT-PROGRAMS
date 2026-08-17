@@ -252,12 +252,23 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'august_olivia');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'August_Olivia_3Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — same data object, filtered for the
+  // client-facing copy. No baselineNotes are marked audience: 'internal'
+  // (none of hers are build/methodology notes) and no clientHighlight is
+  // set — this is her first build, with Deadlift/Lunges baselines still
+  // pending, so there is no real prior PR/version to compare against.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'August_Olivia_3Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

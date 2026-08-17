@@ -105,23 +105,58 @@ const baselineNotes = [
     type: 'green',
     label: 'Reintroduced This Update — From Stress Bar Clinical SOAP Note (7/31/2026)',
     body: 'Landmine squat (Day B, primary squat block), sit-up and bicycle crunch (Day A, core block — moderate volume, controlled tempo), and kettlebell swing (Day B, metabolic circuit) are folded in from a cross-training session note. Sled push is added as a new Day A cardio-finisher option. Source: Drive folder "ICONS NOTES JASON PDFS."',
+    // Client View (added 8/17/2026): names an internal Drive folder/file
+    // sourcing detail — documentation-methodology language, not something
+    // to send directly to the client. The exercises themselves stay fully
+    // visible in the day pages; only this build-provenance note is hidden.
+    audience: 'internal',
   },
   {
     type: 'gold',
     label: 'Lunge Pattern Added — 8/13/2026',
     body: 'Reverse Lunge is added to Day B\'s primary squat block as a genuinely distinct lunge-pattern exercise. Previously, DB Split Squat was covering both the squat and lunge movement-pattern territory in this program — a stationary front-foot-elevated split squat and a true stepping reverse lunge train meaningfully differently, so this closes that gap rather than relying on one exercise to stand in for both. No baseline has been tested for this pattern; Week 1 starts at bodyweight for quality reps, consistent with the moderate-progression approach already used for every other newly-introduced movement in this program, and given her spinal stenosis history a reverse lunge (controlled step-back, no forward-stepping deceleration load) is the more conservative starting variant vs. a walking or curtsy lunge.',
+    // Client View (added 8/17/2026): this is a programming-gap admission
+    // ("Previously... this closes that gap rather than relying on one
+    // exercise to stand in for both") — an internal audit/build-fix note,
+    // the same category the CLIENT VIEW spec calls out. The Reverse Lunge
+    // exercise itself stays fully visible and programmed in Day B.
+    audience: 'internal',
   },
   {
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
     body: 'At 48, Aimee sits in the 45–55 age bracket. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk, and directly relevant given real heavy Hex Bar Deadlift and Hip Thrust content already in her program. No DEXA/T-score data is currently on file to confirm candidacy either way. Every other 45-55/55-65 bracket client on the roster carries this note; it was missing here and is added now (8/17/2026, roster-wide research-coverage sweep).',
+    // Client View (added 8/17/2026): the LIFTMOR/bone-investment framing
+    // itself would be fine client-facing on its own, but this instance's
+    // trailing sentence ("Every other... client on the roster carries this
+    // note; it was missing here...") is a cross-client roster-audit
+    // admission — not something to reveal to the client directly. Marked
+    // internal rather than partially edited, since the audience filter
+    // only operates at the whole-note level.
+    audience: 'internal',
   },
   {
     type: 'watch',
     label: 'Perimenopausal Status — Not Assessed at Intake',
     body: 'No menstrual irregularity, vasomotor symptoms (hot flashes/night sweats), sleep disruption, or mood-change data was reported at intake, and `isPostmenopausal` is left unset rather than fabricated either direction. Per CLAUDE.md\'s "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" guidance, this is the exact bracket/symptom-ambiguity window the guidance is written around — and given real heavy hip-thrust/deadlift content in this program, worth confirming at next intake given how load-bearing that determination is for the pelvic floor protocol. Revisit if symptom data becomes available.',
+    // Client View (added 8/17/2026): a screening-gap admission — reads
+    // awkwardly coming from the studio directly to the client (per the
+    // task brief's own flagging of this exact note as a strong candidate).
+    audience: 'internal',
   },
 ];
+
+// Client View highlight (added 8/17/2026) — her most significant real,
+// documented clinical milestone: the spinal stenosis restriction that
+// shaped this entire program was formally cleared this update (see the
+// 'clear'-type baselineNote above, which stays visible in both documents).
+// Framed here in second person for the "milestone achieved" placement at
+// the top of the client copy. Not fabricated — restates the documented
+// clearance and the real, already-programmed reintroduction plan.
+const clientHighlight = {
+  label: 'Spinal Stenosis Restriction — Cleared',
+  body: 'Your previously confirmed slight spinal stenosis is now cleared. We\'re reintroducing movements deliberately, not all at once — landmine squat, sit-ups, and kettlebell swing are back in your program this update. Barbell back squat, barbell deadlift, and clean-to-overhead-press will follow once you\'ve built a few clean weeks on this newly reintroduced work. Every choice in this program is built around getting you back to full strength safely.',
+};
 
 const days = [
   {
@@ -310,12 +345,23 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'aimee_morris');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Aimee_Morris_2Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — same data object, filtered. Four
+  // baselineNotes above are marked audience: 'internal' (Drive-folder
+  // sourcing detail, a programming-gap admission, a roster-audit trailer,
+  // and a screening-gap admission); clientHighlight surfaces her real,
+  // documented spinal stenosis clearance.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client', clientHighlight });
+  const clientOutPath = path.join(outDir, 'Aimee_Morris_2Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

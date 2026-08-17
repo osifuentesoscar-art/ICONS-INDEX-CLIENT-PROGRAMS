@@ -137,6 +137,11 @@ const baselineNotes = [
     type: 'watch',
     label: 'Baselines Table Scope — Confirmed Tested Lifts Only',
     body: 'The table above lists only the lifts this program explicitly documents as tested (Hip Thrust, Seated OHP) or explicitly documents as newly established this week (Goblet Squat, Trap Bar Deadlift). Other core ICONS movements in this program — DB Farmers Carry, Plank Hold, Incline DB Press, Single-Leg RDL, Reverse Lunge, Incline Push-Up — carry real current working loads in their exercise tables but are not labeled tested or untested anywhere in the source record, so their loads are not presented here as confirmed baselines. Confirm with the trainer whether these were part of the same initial battery before treating them as retest-tracked baselines.',
+    // Client View (added 8/17/2026): documentation-methodology note written
+    // for the trainer/build-process ("confirm with the trainer...") — not
+    // appropriate to send directly to the client. See CLAUDE.md's "CLIENT
+    // VIEW" section, which cites this exact note as its worked example.
+    audience: 'internal',
   },
 ];
 
@@ -332,12 +337,23 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'johanna_castillo');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Johanna_Castillo_3Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — same data object, filtered. The
+  // "Baselines Table Scope" note above is marked audience: 'internal'
+  // (build-methodology language, "confirm with the trainer..."); no real
+  // documented PR/progress-since-last-version exists on file for her, so
+  // no clientHighlight is set.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Johanna_Castillo_3Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

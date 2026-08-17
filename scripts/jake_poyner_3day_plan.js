@@ -168,6 +168,10 @@ const baselineNotes = [
   },
   {
     type: 'purple',
+    audience: 'internal', // Client View: documentation-methodology/scope note — explains
+    // why the standard ICONS numeric thresholds weren't applied and what's missing from
+    // his intake to attach the Male Framework's tools; build-process reasoning, not
+    // client-facing coaching content.
     label: "Why This Program Doesn't Use the Standard ICONS Science-Layer Numbers",
     body: "ICONS's Evidence-Based Science Layer (protein/creatine tiers, ALST sarcopenia thresholds, the LIFTMOR postmenopausal bone-loading protocol, pelvic floor triggers) is derived specifically from research on women 40-65 navigating hormonal transitions — none of it transfers to a 25-year-old male client. A Male Client Programming Framework now exists (built 8/11/2026) with real male-specific thresholds, and its \"20-39 — Foundation\" bracket is where Jake would sit — but its numeric interpretation tools (ALST/VFA/BMI/body-fat-% reads, protein/creatine targets) all require weight and/or Styku scan data, and neither is on file for him. There is nothing numeric to attach those thresholds to yet, not an absent framework. This program instead uses the age/sex-appropriate research already cited above (Robinson et al. 2024/2025, Morton et al. 2018, Shaw/Bischof/Praet on collagen and tendon loading). What does carry over from ICONS regardless: the Isolated → Compound → Metabolic structural philosophy and RPE/RIR-based autoregulated progressive overload — both demographic-neutral principles, applied here on their own merits. Revisit this note if a Styku scan or weigh-in is ever added to his intake record.",
   },
@@ -401,12 +405,22 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'jake_poyner');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Jake_Poyner_3Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // No clientHighlight: first build, rebuilt from a client-supplied source
+  // program rather than a prior ICONS version — no documented PR/progress-
+  // since-last-version exists to surface. Omitted per spec rather than
+  // fabricated.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Jake_Poyner_3Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {
