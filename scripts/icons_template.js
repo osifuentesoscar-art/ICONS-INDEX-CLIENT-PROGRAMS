@@ -55,7 +55,7 @@
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   WidthType, BorderStyle, AlignmentType, VerticalAlign, ShadingType,
-  PageBreak, Header, Footer, TabStopType, TabStopPosition,
+  PageBreak, Header, Footer, TabStopType, TabStopPosition, PageNumber,
 } = require('docx');
 
 // ── PAGE SETUP (US Letter) ──────────────────────────────────────────────
@@ -1030,9 +1030,721 @@ async function buildImprovementDoc(data) {
   return Packer.toBuffer(doc);
 }
 
+// ════════════════════════════════════════════════════════════════════════
+// ICONS PERFORMANCE ASSESSMENT REPORT — box/card visual language
+// ════════════════════════════════════════════════════════════════════════
+// A distinct document type from buildDocument()/buildImprovementDoc() above
+// — the INITIAL BASELINE assessment a client receives after her first Styku
+// scan + full ICONS strength-testing battery, before a training plan is
+// built (see CLAUDE.md's "NEW CLIENT ONBOARDING" checklist, step 1). Built
+// to the exact structural/visual spec of the Anna Samuelsson ICONS
+// Performance Assessment reference document — Xolokan's confirmed standard
+// for this report type (see CLAUDE.md's "VFA (Visceral Fat Area)" section,
+// which already cites this same reference document by name).
+//
+// DELIBERATE VISUAL-LANGUAGE DEVIATION from buildDocument() above: this
+// report type uses colored background boxes/cards throughout (badge chips,
+// a Styku stat-card grid, a solid reference-comparison box, orange flagged-
+// row highlighting, dark numbered "Next Steps" cards, a tan methodology
+// appendix box). This is intentional and confirmed against the actual
+// reference PDF — do NOT "correct" it back to the compact-labeled-paragraph
+// convention that governs buildDocument(). The two document types are
+// allowed to look different; see CLAUDE.md for the full rationale.
+//
+// Uses CLAUDE.md's 8/17/2026-corrected science-layer language throughout:
+// ALST as a 2-tier trend metric (no graded "Optimal" tier above 5.5 kg/m²
+// for women), VFA as a single trend tag with a methodology caveat (not a
+// 4-tier risk table), and the Asymmetry Protocol's corrected ≥10% relative
+// trigger (not the retired 0.5 lb absolute one).
+
+const AR = {
+  dark: '1B1815',      // header band / strength-table header row / Next Step cards
+  card: 'EDE7DA',      // default box/card fill (warm tan)
+  cardAlt: 'E3DBC7',   // zebra-stripe alt fill on tables inside this doc type
+  flag: 'F6DDBB',      // flagged-row / priority-card fill (peach)
+  flagText: 'A6431C',  // flagged label/accent text (burnt orange)
+  green: '5B7A52',     // solid reference-group comparison box
+  novice: '8B6F3E',    // LEVEL pill — Novice
+  intermediate: '3C6B35', // LEVEL pill — Intermediate
+  advanced: HUES.blue.accent, // LEVEL pill — Advanced
+};
+
+// Inline footnote marker — small bold superscript bracket, e.g. "Fit [1]".
+function fnRun(n, opts = {}) {
+  if (n === undefined || n === null) return null;
+  return txt(` [${n}]`, { size: 12, superScript: true, bold: true, color: opts.color || AR.dark, font: FONT });
+}
+
+// A small filled "chip" of text (badge, LEVEL pill, FLAGGED tag) — run-level
+// shading rather than a bordered box, since docx has no rounded-corner
+// primitive; padding is simulated with leading/trailing spaces.
+function chipRun(text, bg, color, opts = {}) {
+  return txt(`  ${text}  `, { bold: true, size: opts.size || 13, color, font: FONT, shading: shade(bg) });
+}
+
+const LEVEL_COLOR = { Novice: AR.novice, Intermediate: AR.intermediate, Advanced: AR.advanced };
+
+// ── COVER BAND (report page 1) ──────────────────────────────────────────
+function assessmentCoverBand(client, badgeText) {
+  const w = [2600, 5240, 2600];
+  const row1 = new TableRow({
+    children: [
+      cell(
+        [para([txt('BRACE LIFE STUDIOS', { bold: true, size: 15, color: C.gold, characterSpacing: 10 })]),
+          para([txt('bracelifestudios.com', { size: 11, color: C.mid })])],
+        { fill: AR.dark, width: w[0], vAlign: VerticalAlign.TOP, margins: { top: 160, bottom: 40, left: 120, right: 40 } }
+      ),
+      cell([para([])], { fill: AR.dark, width: w[1] }),
+      cell(
+        [para([chipRun(badgeText || 'INITIAL BASELINE', C.gold, AR.dark)], { alignment: AlignmentType.RIGHT })],
+        { fill: AR.dark, width: w[2], vAlign: VerticalAlign.TOP, margins: { top: 160, bottom: 40, left: 40, right: 120 } }
+      ),
+    ],
+  });
+  const row2 = new TableRow({
+    children: [cell(
+      [para([txt('ICONS PERFORMANCE ASSESSMENT', { bold: true, size: 15, color: C.gold, characterSpacing: 20 })], { alignment: AlignmentType.CENTER, spacing: { before: 40 } })],
+      { fill: AR.dark, colSpan: 3, width: TW }
+    )],
+  });
+  const row3 = new TableRow({
+    children: [cell(
+      [para([txt(client.name.toUpperCase(), { bold: true, size: 34, color: C.white, characterSpacing: 10 })], { alignment: AlignmentType.CENTER, spacing: { before: 60, after: 40 } })],
+      { fill: AR.dark, colSpan: 3, width: TW }
+    )],
+  });
+  const metaText = `Assessment Date: ${client.assessmentDate}   |   Location: ${client.location}`;
+  const row4 = new TableRow({
+    children: [cell(
+      [para([txt(metaText, { size: 14, color: 'D8D2C6' })], { alignment: AlignmentType.CENTER, spacing: { after: 160 } })],
+      { fill: AR.dark, colSpan: 3, width: TW }
+    )],
+  });
+  return [fullWidthTable([row1, row2, row3, row4], w), spacer(140)];
+}
+
+// ── PAGE BAND (report pages 2–6, repeated per section) ───────────────────
+function assessmentPageBand(pageTitle, metaLine) {
+  const w = [2400, 5640, 2400];
+  const row = new TableRow({
+    children: [
+      cell(
+        [para([txt('BRACE LIFE STUDIOS', { bold: true, size: 14, color: C.gold, characterSpacing: 10 })]),
+          para([txt('bracelifestudios.com', { size: 10, color: C.mid })])],
+        { fill: AR.dark, width: w[0], vAlign: VerticalAlign.CENTER, margins: { top: 100, bottom: 100, left: 120, right: 40 } }
+      ),
+      cell(
+        [para([txt(pageTitle.toUpperCase(), { bold: true, size: 17, color: C.gold, characterSpacing: 10 })], { alignment: AlignmentType.CENTER })],
+        { fill: AR.dark, width: w[1], vAlign: VerticalAlign.CENTER, margins: { top: 100, bottom: 100 } }
+      ),
+      cell([para([])], { fill: AR.dark, width: w[2] }),
+    ],
+  });
+  const els = [fullWidthTable([row], w)];
+  if (metaLine) {
+    els.push(para([txt(metaLine, { size: 14, italics: true, color: C.mid })], { alignment: AlignmentType.CENTER, spacing: { before: 80, after: 140 } }));
+  } else {
+    els.push(spacer(140));
+  }
+  return els;
+}
+
+// ── GENERIC TAN/PEACH BOX (protocol intro, how-to-read, corrections) ─────
+function tanBox(label, body, opts = {}) {
+  const fill = opts.fill || AR.card;
+  const accent = opts.accent || C.gold;
+  const bodyEls = Array.isArray(body) ? body : [para([txt(body, { size: 16, color: C.dark })])];
+  const contentChildren = [];
+  if (label) contentChildren.push(para([txt(label, { bold: true, size: 16, color: opts.labelColor || AR.dark })], { spacing: { after: 60 } }));
+  contentChildren.push(...bodyEls);
+  const row = new TableRow({
+    children: [cell(contentChildren, {
+      fill,
+      width: TW,
+      margins: { top: 140, bottom: 140, left: 200, right: 200 },
+      borders: { top: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, bottom: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, left: { style: BorderStyle.SINGLE, size: 36, color: accent } },
+    })],
+  });
+  return [fullWidthTable([row], [TW]), spacer(120)];
+}
+
+// ── THREE PILLARS ROW (Aesthetics / Health / Biological Age) ─────────────
+const DEFAULT_ASSESSMENT_PILLARS = [
+  { title: 'AESTHETICS', sub: 'Shape, tone & symmetry goals' },
+  { title: 'HEALTH', sub: 'Strength, posture & joint integrity' },
+  { title: 'BIOLOGICAL AGE', sub: 'Longevity, independence & vitality' },
+];
+function pillarRow(pillars = DEFAULT_ASSESSMENT_PILLARS) {
+  const w = evenWidths(pillars.length);
+  const cells = pillars.map((p, i) => cell(
+    [
+      para([txt(p.title, { bold: true, size: 15, color: C.gold, characterSpacing: 10 })], { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
+      para([txt(p.sub, { size: 12, color: 'D8D2C6' })], { alignment: AlignmentType.CENTER }),
+    ],
+    { fill: AR.dark, width: w[i], margins: { top: 140, bottom: 140, left: 80, right: 80 } }
+  ));
+  return [fullWidthTable([new TableRow({ children: cells })], w), spacer(60)];
+}
+
+function biologicalAgeDisclaimer() {
+  return [para(
+    [txt('"Biological Age" here is a coaching framework built from strength, mobility, and body-composition trends over time — not a lab-measured biological age test (such as an epigenetic clock).', { italics: true, size: 13, color: C.mid })],
+    { spacing: { after: 140 } }
+  )];
+}
+
+// ── STYKU STAT-CARD GRID (4 cols × 2 rows) ────────────────────────────────
+// items: [{ value, label, sub, labelFootnote, subFootnote, highlight }]
+function statBoxGrid(items, colsPerRow = 4) {
+  const w = evenWidths(colsPerRow);
+  const rows = [];
+  for (let i = 0; i < items.length; i += colsPerRow) {
+    const rowItems = items.slice(i, i + colsPerRow);
+    const cells = rowItems.map((it, j) => {
+      const isDark = !!it.highlight;
+      const valueColor = isDark ? C.gold : C.dark;
+      const labelColor = isDark ? 'D8D2C6' : C.mid;
+      const labelRuns = [txt(it.label, { bold: true, size: 12, color: labelColor, characterSpacing: 6 })];
+      if (it.labelFootnote) labelRuns.push(fnRun(it.labelFootnote, { color: labelColor }));
+      const children = [
+        para([txt(String(it.value), { bold: true, size: 24, color: valueColor })], { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
+        para(labelRuns, { alignment: AlignmentType.CENTER }),
+      ];
+      if (it.sub) {
+        const subRuns = [txt(it.sub, { size: 11, color: labelColor })];
+        if (it.subFootnote) subRuns.push(fnRun(it.subFootnote, { color: labelColor }));
+        children.push(para(subRuns, { alignment: AlignmentType.CENTER, spacing: { before: 10 } }));
+      }
+      return cell(children, { fill: isDark ? AR.dark : AR.card, width: w[j], margins: { top: 140, bottom: 140, left: 60, right: 60 } });
+    });
+    // pad an incomplete final row with empty cells so column widths stay aligned
+    while (cells.length < colsPerRow) cells.push(cell([para([])], { fill: 'FFFFFF', width: w[cells.length] }));
+    rows.push(new TableRow({ children: cells }));
+  }
+  return [fullWidthTable(rows, w), spacer(100)];
+}
+
+// Standard 8-box Styku grid (Body Fat / Lean Mass / Fat Mass / Bone Mass /
+// BMI / BMR / Shape Score (highlighted) / VFA), matching the reference
+// document's exact card set and footnote assignments (1/2/3/4). VFA is
+// shown as a single trend tag (e.g. "Very Low") per CLAUDE.md's corrected
+// VFA framing, not the retired 4-tier risk table.
+function standardStykuStatItems(styku) {
+  return [
+    { value: `${styku.bodyFatPct}%`, label: 'BODY FAT %', sub: `Rank: ${styku.bodyFatRank}`, subFootnote: 1 },
+    { value: `${styku.leanMass} lbs`, label: 'LEAN MASS', sub: `${styku.leanMassPct}% of total` },
+    { value: `${styku.fatMass} lbs`, label: 'FAT MASS', sub: `${styku.fatMassPct != null ? styku.fatMassPct + '% of total' : ''}` },
+    { value: `${styku.boneMass} lbs`, label: 'BONE MASS', sub: `${styku.boneMassPct != null ? styku.boneMassPct + '% of total' : ''}` },
+    { value: styku.bmi, label: 'BMI', sub: styku.bmiLabel || '' },
+    { value: `${styku.bmr} cal/day`, label: 'BMR', labelFootnote: 2, sub: 'Revised Harris-Benedict estimate' },
+    { value: `${styku.shapeScore}/100`, label: 'SHAPE SCORE', labelFootnote: 3, sub: styku.shapeScoreLabel || '', highlight: true },
+    { value: `${styku.vfa} cm²`, label: 'VISCERAL FAT AREA', labelFootnote: 4, sub: styku.vfaTag || '' },
+  ];
+}
+
+// ── SOLID REFERENCE-GROUP COMPARISON BOX ──────────────────────────────────
+function solidBox(label, body, opts = {}) {
+  const fill = opts.fill || AR.green;
+  const row = new TableRow({
+    children: [cell(
+      [
+        para([txt(label, { bold: true, size: 14, color: C.white })], { spacing: { after: 60 } }),
+        para([txt(body, { size: 14, color: 'F0EEE6' })]),
+      ],
+      { fill, width: TW, margins: { top: 140, bottom: 140, left: 200, right: 200 } }
+    )],
+  });
+  return [fullWidthTable([row], [TW]), spacer(120)];
+}
+
+// ── SEGMENTAL / MEASUREMENT GRID — flexible list of {label, value} ───────
+// Reused for both "Segmental Lean Mass Distribution" (2 cols) and "3D Scan
+// Body Measurements" (3 cols) — a client's measurement set is inherently
+// variable, so this does not assume a fixed schema.
+function statRowGrid(items, cols = 2) {
+  if (!items || !items.length) return [];
+  const w = evenWidths(cols);
+  const rows = [];
+  for (let i = 0; i < items.length; i += cols) {
+    const rowItems = items.slice(i, i + cols);
+    const cells = rowItems.map((it, j) => cell(
+      [para([
+        txt(it.label, { size: 14, color: C.mid }),
+        txt('     ', { size: 14 }),
+        txt(String(it.value), { bold: true, size: 15, color: C.dark }),
+      ], { tabStops: [{ type: TabStopType.RIGHT, position: w[j] - 240 }] })],
+      { fill: (Math.floor(i / cols)) % 2 === 0 ? AR.card : 'FFFFFF', width: w[j], margins: { top: 80, bottom: 80, left: 160, right: 160 } }
+    ));
+    while (cells.length < cols) cells.push(cell([para([])], { fill: 'FFFFFF', width: w[cells.length] }));
+    rows.push(new TableRow({ children: cells }));
+  }
+  return [fullWidthTable(rows, w), spacer(100)];
+}
+
+// A single full-width highlighted row — used for the "Appendicular LST
+// Index" summary line under the segmental grid.
+function highlightRow(label, value, footnote) {
+  const labelRuns = [txt(label, { size: 14, color: C.mid })];
+  if (footnote) labelRuns.push(fnRun(footnote, { color: C.mid }));
+  const row = new TableRow({
+    children: [cell(
+      [para([
+        ...labelRuns,
+        txt('\t', { size: 14 }),
+        txt(String(value), { bold: true, size: 15, color: C.dark }),
+      ], { tabStops: [{ type: TabStopType.RIGHT, position: TW - 240 }] })],
+      { fill: AR.cardAlt, width: TW, margins: { top: 90, bottom: 90, left: 160, right: 160 } }
+    )],
+  });
+  return [fullWidthTable([row], [TW]), spacer(100)];
+}
+
+// ── STRENGTH ASSESSMENT TABLE ─────────────────────────────────────────────
+// rows: [{ num, exercise, weight, reps, pctBW, level, notes, flagged,
+//          notTested }]
+const STRENGTH_COLS = { NUM: 500, EXERCISE: 2600, WEIGHT: 1200, REPS: 900, PCTBW: 900, LEVEL: 1500, NOTES: 2840 };
+const STRENGTH_COL_WIDTHS = [STRENGTH_COLS.NUM, STRENGTH_COLS.EXERCISE, STRENGTH_COLS.WEIGHT, STRENGTH_COLS.REPS, STRENGTH_COLS.PCTBW, STRENGTH_COLS.LEVEL, STRENGTH_COLS.NOTES];
+function strengthAssessmentTable(rows, opts = {}) {
+  const headers = ['#', 'EXERCISE', 'WEIGHT', 'REPS', '% BW', 'LEVEL', 'NOTES / FLAGS'];
+  const headerFootnotes = { 4: 7, 5: 7 }; // % BW and LEVEL both point to footnote 7
+  const header = new TableRow({
+    children: headers.map((h, i) => {
+      const runs = [txt(h, { bold: true, size: i === 1 || i === 6 ? 14 : 12, color: C.gold })];
+      if (headerFootnotes[i]) runs.push(fnRun(headerFootnotes[i], { color: C.gold }));
+      return cell([para(runs, { alignment: i === 1 || i === 6 ? AlignmentType.LEFT : AlignmentType.CENTER })], { fill: AR.dark, width: STRENGTH_COL_WIDTHS[i] });
+    }),
+  });
+
+  const body = rows.map((r, i) => {
+    const dash = '—';
+    const muted = !!r.notTested;
+    const fill = r.flagged ? AR.flag : (muted ? 'F4F2EC' : (i % 2 === 0 ? AR.cardAlt : 'FFFFFF'));
+    const textColor = muted ? C.mid : C.dark;
+    const levelCell = (r.level && !muted)
+      ? [para([chipRun(r.level, LEVEL_COLOR[r.level] || C.mid, C.white, { size: 12 })], { alignment: AlignmentType.CENTER })]
+      : [para([txt(dash, { size: 14, color: C.mid })], { alignment: AlignmentType.CENTER })];
+    return new TableRow({
+      children: [
+        cell([para([txt(String(r.num), { size: 14, color: textColor })], { alignment: AlignmentType.CENTER })], { fill, width: STRENGTH_COLS.NUM }),
+        cell([para([txt(r.exercise, { bold: true, size: 16, color: muted ? C.mid : C.dark })])], { fill, width: STRENGTH_COLS.EXERCISE }),
+        cell([para([txt(r.weight || dash, { size: 14, color: textColor })], { alignment: AlignmentType.CENTER })], { fill, width: STRENGTH_COLS.WEIGHT }),
+        cell([para([txt(r.reps || dash, { size: 14, color: textColor })], { alignment: AlignmentType.CENTER })], { fill, width: STRENGTH_COLS.REPS }),
+        cell([para([txt(r.pctBW || dash, { size: 14, color: textColor })], { alignment: AlignmentType.CENTER })], { fill, width: STRENGTH_COLS.PCTBW }),
+        cell(levelCell, { fill, width: STRENGTH_COLS.LEVEL }),
+        cell([para([txt(r.notes || '', { size: 13, italics: !!r.notes, color: r.flagged ? AR.flagText : C.mid })])], { fill, width: STRENGTH_COLS.NOTES }),
+      ],
+    });
+  });
+
+  return [fullWidthTable([header, ...body], STRENGTH_COL_WIDTHS), spacer(100)];
+}
+
+function flagsSummaryBox(text) {
+  if (!text) return [];
+  const row = new TableRow({
+    children: [cell(
+      [para([
+        txt('FLAGS:  ', { bold: true, size: 15, color: AR.flagText }),
+        txt(text, { size: 15, color: AR.flagText }),
+      ])],
+      { fill: AR.flag, width: TW, margins: { top: 100, bottom: 100, left: 200, right: 200 } }
+    )],
+  });
+  return [fullWidthTable([row], [TW]), spacer(100)];
+}
+
+// ── EXERCISE BENEFIT LIBRARY (Aesthetics / Health / Biological Age) ──────
+// Default, reusable copy for the 10 core ICONS Baseline Testing Protocol
+// movements + the bonus Pull-Up test, keyed by canonical movement name.
+// Written to CLAUDE.md's corrected clinical framing from the start — no
+// "reduces osteoporosis risk" claim on Deadlift (a single assessment can't
+// confirm individual disease-risk reduction), no "strengthens the pelvic
+// floor" claim on Hip Thrust (current evidence supports co-activation, not
+// PFM-strength change, from heavy compound lifts alone — targeted pelvic-
+// floor training is what builds pelvic-floor strength).
+const EXERCISE_BENEFIT_LIBRARY = {
+  'Deadlift': {
+    aesthetics: 'Strengthens the posterior chain — glutes, hamstrings, and back — building a lifted, firm lower-body line.',
+    health: 'Builds core and spinal stability under load and reinforces the hip-hinge pattern that protects the low back in everyday lifting.',
+    bioAge: 'A bone-loading movement associated with maintained or improved bone mineral density in women 40+ — a meaningful input to long-term bone health, not a guarantee for any one person (a single assessment cannot confirm individual osteoporosis-risk reduction; that requires a bone-density scan).',
+    // No hardcoded footnote number here — footnote numbering is scoped to
+    // a specific client's document (see buildAssessmentReport's
+    // data.footnotes), so a calling script attaches the right number via
+    // benefitLinesFromLibrary('Deadlift', { bioAgeFootnote: N }).
+  },
+  'Back Squat': {
+    aesthetics: 'Develops toned, sculpted legs and glutes through a full, controlled range of motion.',
+    health: 'Builds lower-body strength and reinforces the hip/knee/ankle mobility that daily movement — stairs, floor transfers, carrying — depends on.',
+    bioAge: 'Maintains functional independence by reinforcing balance, joint integrity, and the strength needed to stand from a low position unassisted.',
+  },
+  'Overhead Press': {
+    aesthetics: 'Defines and shapes the shoulders, arms, and upper chest.',
+    health: 'Strengthens the shoulders and shoulder stabilizers, supporting upright posture indirectly through improved upper-back and shoulder-girdle strength.',
+    bioAge: 'Supports the overhead reaching strength daily life quietly depends on — a top shelf, a suitcase into an overhead bin, a grandchild lifted overhead.',
+  },
+  'Incline Dumbbell Press': {
+    aesthetics: 'Enhances chest and upper-body shape and firms the front of the shoulder.',
+    health: 'Strengthens the chest and shoulder complex and reinforces shoulder-joint stability through a controlled pressing range.',
+    bioAge: 'Helps maintain upper-body pushing strength for longevity — carrying, pushing open a heavy door, catching a fall.',
+  },
+  'Push-Ups': {
+    aesthetics: 'Develops lean, defined arms, chest, and shoulders using bodyweight alone.',
+    health: 'Engages the core to stabilize the spine through the movement — core-engaging bodyweight work like this is associated with reduced lower-back complaints.',
+    bioAge: 'Maintains the functional upper-body pressing strength everyday tasks — getting up off the floor, pushing a heavy cart — quietly depend on.',
+  },
+  'Farmers Carry': {
+    aesthetics: 'Builds a tight, upright carriage and grip/forearm definition.',
+    health: 'Trains the deep spinal stabilizers (multifidus, quadratus lumborum) and grip strength under load, supporting posture through every other lift in the program.',
+    bioAge: 'Grip strength and loaded-carry capacity are both independently associated with functional independence and fall resilience in older adults.',
+  },
+  'Hip Thrust': {
+    aesthetics: 'Lifts and shapes the glutes for a firm, rounded look.',
+    health: 'Reduces low-back strain by strengthening the glutes and posterior chain, and co-activates the deep core and pelvic floor.',
+    // No hardcoded footnote number — see the Deadlift entry's comment above.
+    healthCaveat: ' (co-activation is not the same as pelvic-floor strengthening — targeted pelvic-floor training, not heavy compound lifting alone, is what builds pelvic-floor strength.)',
+    bioAge: 'Maintains hip mobility and helps offset age-related muscle loss in one of the body\'s largest, most power-relevant muscle groups.',
+  },
+  'Single-Leg RDL': {
+    aesthetics: 'Tones and elongates the hamstrings and glutes while improving balance and symmetry.',
+    health: 'Enhances coordination and strengthens the stabilizing muscles around the hip, knee, and ankle on each side independently.',
+    bioAge: 'Single-leg control is directly linked to fall risk — this movement trains exactly the balance-under-load quality that protects functional independence with age.',
+  },
+  'Lunges': {
+    aesthetics: 'Shapes the legs and glutes while improving left/right symmetry.',
+    health: 'Improves knee and hip stability through a unilateral, functional loading pattern.',
+    bioAge: 'Maintains the lower-body strength that walking, stair climbing, and getting in and out of a car depend on.',
+  },
+  'Plank Hold': {
+    aesthetics: 'Tightens the waistline and improves visible core strength and control.',
+    health: 'Strengthens the entire core, supporting reduced back pain and improved posture under everyday load.',
+    bioAge: 'Supports spinal alignment and postural endurance — the ability to hold good posture through a full day, not just a single lift.',
+  },
+  'Pull-Ups': {
+    aesthetics: 'Builds a defined back and shoulder line — the "V-taper" most upper-body aesthetic goals point toward.',
+    health: 'Strengthens the lats, upper back, and grip, balancing the pressing volume that dominates most upper-body programs.',
+    bioAge: 'Relative bodyweight pulling strength is a strong, simple marker of overall upper-body strength reserve as training years accumulate.',
+  },
+};
+
+// Looks up default library copy for a canonical movement key and applies
+// any per-client overrides (e.g. a flag-specific rewrite of the Biological
+// Age or Health line — see Anna Samuelsson's Single-Leg RDL/Lunges, whose
+// Biological Age/Health lines were rewritten to reference a real flagged
+// finding rather than using the generic default copy).
+function getExerciseBenefits(canonicalKey, overrides = {}) {
+  const base = EXERCISE_BENEFIT_LIBRARY[canonicalKey] || { aesthetics: '', health: '', bioAge: '' };
+  return { ...base, ...overrides };
+}
+
+// Converts a getExerciseBenefits() result into benefitCard()'s `lines`
+// array shape, merging each line's optional `<field>Caveat` suffix (e.g.
+// Hip Thrust's healthCaveat, the co-activation-vs-strengthening
+// distinction) into the visible text and carrying its `<field>Footnote`
+// through as that line's footnote marker.
+function benefitLinesFromLibrary(canonicalKey, overrides = {}) {
+  const b = getExerciseBenefits(canonicalKey, overrides);
+  return [
+    { label: 'Aesthetics', text: (b.aesthetics || '') + (b.aestheticsCaveat || ''), footnote: b.aestheticsFootnote },
+    { label: 'Health', text: (b.health || '') + (b.healthCaveat || ''), footnote: b.healthFootnote },
+    { label: 'Biological Age', text: (b.bioAge || '') + (b.bioAgeCaveat || ''), footnote: b.bioAgeFootnote },
+  ];
+}
+
+// ── EXERCISE BENEFIT CARD (pages "What Each Lift Means") ─────────────────
+// card: { exercise, weightRepsLabel, flagged, flagTag, lines: [{label, text,
+//         footnote}], flagNote }
+// `lines` is the fully-resolved 3-line (Aesthetics/Health/Biological Age)
+// content for this card — build it via getExerciseBenefits() plus any
+// client-specific overrides before calling this.
+function benefitCard(card) {
+  const fill = card.flagged ? AR.flag : AR.card;
+  const accent = card.flagged ? AR.flagText : C.gold;
+  const children = [];
+  children.push(para([
+    txt(card.exercise, { bold: true, size: 17, color: C.dark }),
+    txt('\t', { size: 14 }),
+    txt(card.weightRepsLabel || '', { size: 13, color: C.mid }),
+  ], { tabStops: [{ type: TabStopType.RIGHT, position: TW - 400 }], spacing: { after: card.flagged ? 20 : 80 } }));
+  if (card.flagged) {
+    children.push(para([txt('■ FLAGGED', { bold: true, size: 12, color: AR.flagText })], { alignment: AlignmentType.RIGHT, spacing: { after: 80 } }));
+  }
+  (card.lines || []).forEach((l) => {
+    const bodyRuns = [txt(l.text, { size: 15, color: C.dark })];
+    if (l.footnote) bodyRuns.push(fnRun(l.footnote, { color: C.dark }));
+    children.push(...labeledPara(l.label, bodyRuns, accent, { spacingAfter: 60 }));
+  });
+  const row = new TableRow({
+    children: [cell(children, {
+      fill,
+      width: TW,
+      margins: { top: 140, bottom: 140, left: 200, right: 200 },
+      borders: { top: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, bottom: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, left: { style: BorderStyle.SINGLE, size: 36, color: accent } },
+    })],
+  });
+  return [fullWidthTable([row], [TW]), spacer(120)];
+}
+
+// ── TRAINER OBSERVATION / JASON'S PT NOTES CARDS ──────────────────────────
+// tone: 'positive' | 'priority' | 'neutral' | 'warning'
+const OBSERVATION_TONE = {
+  positive: { fill: AR.card, labelColor: AR.dark },
+  neutral: { fill: AR.card, labelColor: AR.dark },
+  priority: { fill: AR.flag, labelColor: AR.flagText },
+  warning: { fill: AR.flag, labelColor: AR.flagText },
+};
+function observationCard(obs) {
+  const t = OBSERVATION_TONE[obs.tone] || OBSERVATION_TONE.neutral;
+  const bodyRuns = [txt(obs.body, { size: 15, color: C.dark })];
+  (obs.footnotes || []).forEach((n) => bodyRuns.push(fnRun(n, { color: C.dark })));
+  const row = new TableRow({
+    children: [cell(
+      [
+        para([txt(obs.label, { bold: true, size: 15, color: t.labelColor })], { spacing: { after: 50 } }),
+        para(bodyRuns),
+      ],
+      { fill: t.fill, width: TW, margins: { top: 120, bottom: 120, left: 200, right: 200 } }
+    )],
+  });
+  return [fullWidthTable([row], [TW]), spacer(100)];
+}
+
+// ── NEXT STEP CARD (dark numbered card) ───────────────────────────────────
+function nextStepCard(number, title, body) {
+  const w = [900, TW - 900];
+  const numStr = String(number).padStart(2, '0');
+  const row = new TableRow({
+    children: [
+      cell([para([txt(numStr, { bold: true, size: 20, color: C.gold })], { alignment: AlignmentType.CENTER })], { fill: AR.dark, width: w[0], vAlign: VerticalAlign.CENTER }),
+      cell(
+        [
+          para([txt(title, { bold: true, size: 16, color: C.gold })], { spacing: { after: 40 } }),
+          para([txt(body, { size: 14, color: 'D8D2C6' })]),
+        ],
+        { fill: AR.dark, width: w[1], margins: { top: 100, bottom: 100, left: 100, right: 200 } }
+      ),
+    ],
+  });
+  return [fullWidthTable([row], w), spacer(80)];
+}
+
+// ── FOOTNOTES APPENDIX (final report page) ────────────────────────────────
+function footnotesList(footnotes) {
+  const els = [];
+  (footnotes || []).forEach((f) => {
+    els.push(para(
+      [txt(`${f.marker}. `, { bold: true, size: 14, color: C.dark }), txt(f.text, { size: 14, color: C.dark })],
+      { spacing: { after: 100 } }
+    ));
+  });
+  return els;
+}
+
+function correctionsSummaryBox(corrections) {
+  const body = (corrections && corrections.length)
+    ? corrections.map((c) => para([txt('•  ', { size: 14, color: AR.dark }), txt(c, { size: 14, color: C.dark })], { spacing: { after: 60 } }))
+    : [para([txt('First build — no prior version of this report exists to correct. This is the reference version going forward.', { size: 14, italics: true, color: C.mid })])];
+  return tanBox('Summary of Factual Corrections Made in This Revision', body, { fill: AR.card, accent: C.gold });
+}
+
+// ── JASON'S PT NOTES SECTION (optional) ───────────────────────────────────
+// jasonNotes: { intro, cards: [{ label, body, footnotes }] } — renders in
+// the same observationCard() style as Trainer Observations. Only render
+// when a script actually supplies real data for this client (see CLAUDE.md
+// / icons-expert.md's Studio Staff naming guidance) — do not fabricate a
+// clinical note for a client with none on file.
+function jasonNotesSection(jasonNotes) {
+  if (!jasonNotes) return [];
+  const els = [sectionTitle("Jason's PT Notes", AR.dark)];
+  if (jasonNotes.intro) {
+    els.push(para([txt(jasonNotes.intro, { size: 14, italics: true, color: C.mid })], { spacing: { after: 100 } }));
+  }
+  (jasonNotes.cards || []).forEach((c) => {
+    els.push(...observationCard({ tone: c.tone || 'neutral', label: c.label, body: c.body, footnotes: c.footnotes }));
+  });
+  return els;
+}
+
+// ── ASSESSMENT REPORT FOOTER (live "Page X of Y" field, not hardcoded) ───
+function assessmentFooter(client) {
+  const p = new Paragraph({
+    border: { top: { style: BorderStyle.SINGLE, size: 4, color: C.gold, space: 4 } },
+    spacing: { before: 80 },
+    alignment: AlignmentType.CENTER,
+    children: [
+      txt('BRACE LIFE STUDIOS  |  bracelifestudios.com  |  ICONS Performance System  |  Confidential Client Report   ', { size: 13, color: C.mid }),
+      txt('Page ', { size: 13, color: C.mid }),
+      new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 13, color: C.mid }),
+      txt(' of ', { size: 13, color: C.mid }),
+      new TextRun({ children: [PageNumber.TOTAL_PAGES], font: FONT, size: 13, color: C.mid }),
+      txt(`   |  ${client.name}  |  ${client.assessmentDate}`, { size: 13, color: C.mid }),
+    ],
+  });
+  return new Footer({ children: [p] });
+}
+
+// ── DOCUMENT ASSEMBLY ─────────────────────────────────────────────────────
+// data = {
+//   client: { name, assessmentDate, location, weightLbs },
+//   badge,                          // default 'INITIAL BASELINE'
+//   introText,                      // "What This Assessment Measures" body
+//   pillars,                        // optional override of the 3 pillar chips
+//   styku: { ...standardStykuStatItems() fields..., vfaTag, peerComparison },
+//   segmental: [{label,value}],     // e.g. Left Arm / Right Arm / Left Leg / Right Leg
+//   alstRow: { label, value, footnote },
+//   asymmetryNote: string,
+//   strength: { protocolIntro, rows: [...], flagsSummary, howToReadLabel, howToReadBody },
+//   benefitCards: [ ... ],          // see benefitCard() doc above
+//   cardsPerPage: 6,
+//   measurements: [{label,value}],
+//   measurementsNote: string,       // shown when measurements is empty
+//   observations: [{tone,label,body,footnotes}],
+//   jasonNotes: { intro, cards },   // optional
+//   nextSteps: [{title, body}],
+//   footnotes: [{marker, text}],
+//   corrections: [string],          // omit for a first build
+// }
+async function buildAssessmentReport(data) {
+  const client = data.client;
+  const children = [];
+
+  // ---- Page 1: Cover / Styku scan ----
+  children.push(...assessmentCoverBand(client, data.badge));
+  children.push(sectionTitle('What This Assessment Measures', C.gold));
+  children.push(para([txt(data.introText || DEFAULT_ASSESSMENT_INTRO, { size: 15, color: C.dark })], { spacing: { after: 140 } }));
+  children.push(...pillarRow(data.pillars));
+  children.push(...biologicalAgeDisclaimer());
+
+  if (data.styku) {
+    children.push(sectionTitle('Styku Body Composition Scan', C.gold));
+    children.push(para([txt(`Scanned: ${data.styku.scanDate}   |   Brace Life Studios`, { size: 13, italics: true, color: C.mid })], { spacing: { after: 100 } }));
+    children.push(...statBoxGrid(data.styku.items || standardStykuStatItems(data.styku)));
+    if (data.styku.peerComparison) {
+      children.push(...solidBox('Reference-Group Comparison  [5]', data.styku.peerComparison, { fill: AR.green }));
+    }
+  }
+
+  if (data.segmental && data.segmental.length) {
+    children.push(sectionTitle('Segmental Lean Mass Distribution', C.gold));
+    children.push(...statRowGrid(data.segmental, 2));
+    if (data.alstRow) children.push(...highlightRow(data.alstRow.label, data.alstRow.value, data.alstRow.footnote));
+    if (data.asymmetryNote) {
+      children.push(para([txt(data.asymmetryNote, { size: 13, color: C.mid })], { spacing: { after: 100 } }));
+    }
+  }
+
+  // ---- Page 2: Strength Assessment ----
+  if (data.strength) {
+    children.push(new Paragraph({ children: [new PageBreak()] }));
+    children.push(...assessmentPageBand('ICONS Index — Strength Assessment', `${client.name}  |  ${client.assessmentDate}  |  Brace Life Studios`));
+    if (data.strength.protocolIntro) {
+      children.push(...tanBox('ICONS Protocol', data.strength.protocolIntro, { fill: AR.card, accent: C.gold }));
+    }
+    children.push(sectionTitle('Assessment Results', C.gold));
+    children.push(...strengthAssessmentTable(data.strength.rows));
+    children.push(...flagsSummaryBox(data.strength.flagsSummary));
+    children.push(...tanBox(
+      data.strength.howToReadLabel || 'How to Read [7] % BW and Level',
+      data.strength.howToReadBody || DEFAULT_HOW_TO_READ,
+      { fill: AR.card, accent: C.gold }
+    ));
+  }
+
+  // ---- Pages 3–4: What Each Lift Means ----
+  if (data.benefitCards && data.benefitCards.length) {
+    const perPage = data.cardsPerPage || 6;
+    for (let i = 0; i < data.benefitCards.length; i += perPage) {
+      const chunk = data.benefitCards.slice(i, i + perPage);
+      children.push(new Paragraph({ children: [new PageBreak()] }));
+      const title = i === 0 ? `What Each Lift Means for ${client.name}` : `What Each Lift Means for ${client.name} (cont.)`;
+      children.push(...assessmentPageBand(title, `${client.name}  |  ICONS Performance System  |  Brace Life Studios`));
+      children.push(sectionTitle('Exercise Benefit Breakdown', C.gold));
+      chunk.forEach((c) => children.push(...benefitCard(c)));
+    }
+  }
+
+  // ---- Page 5: Body Measurements & Next Steps ----
+  children.push(new Paragraph({ children: [new PageBreak()] }));
+  children.push(...assessmentPageBand('Body Measurements & Next Steps', `${client.name}  |  ${client.assessmentDate}  |  Brace Life Studios`));
+  children.push(sectionTitle('3D Scan Body Measurements (Styku — all measurements in inches)', C.gold));
+  if (data.measurements && data.measurements.length) {
+    children.push(...statRowGrid(data.measurements, 3));
+  } else {
+    children.push(...tanBox(null, data.measurementsNote || 'Circumference measurements were not captured as part of this scan/intake session — add at the next Styku session to enable this section.', { fill: AR.card, accent: C.gold }));
+  }
+  if (data.observations && data.observations.length) {
+    children.push(sectionTitle('Trainer Observations & Programming Notes', C.gold));
+    data.observations.forEach((o) => children.push(...observationCard(o)));
+  }
+  children.push(...jasonNotesSection(data.jasonNotes));
+  if (data.nextSteps && data.nextSteps.length) {
+    children.push(sectionTitle('Your Next Steps', C.gold));
+    data.nextSteps.forEach((s, i) => children.push(...nextStepCard(i + 1, s.title, s.body)));
+  }
+
+  // ---- Page 6: Methodology & How to Read This Report ----
+  children.push(new Paragraph({ children: [new PageBreak()] }));
+  children.push(...assessmentPageBand('Methodology & How to Read This Report', `${client.name}  |  ICONS Performance System  |  Brace Life Studios`));
+  children.push(para([txt(
+    'This appendix documents the methodology and reference standards behind every number and claim above, so nothing in this report is stated more precisely than the underlying measurement actually supports. Superscript markers in the body of the report point to the notes below.',
+    { size: 14, color: C.dark }
+  )], { spacing: { after: 120 } }));
+  children.push(sectionTitle('Footnotes', C.gold));
+  children.push(...footnotesList(data.footnotes || DEFAULT_ASSESSMENT_FOOTNOTES(data)));
+  children.push(...correctionsSummaryBox(data.corrections));
+
+  const doc = new Document({
+    sections: [
+      {
+        properties: {
+          page: {
+            size: { width: PAGE_W, height: PAGE_H },
+            margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN },
+          },
+        },
+        footers: { default: assessmentFooter(client) },
+        children,
+      },
+    ],
+    styles: {
+      default: {
+        document: { run: { font: FONT, size: 17, color: C.dark } },
+      },
+    },
+  });
+
+  return Packer.toBuffer(doc);
+}
+
+const DEFAULT_ASSESSMENT_INTRO = 'The ICONS Index is a comprehensive strength and longevity assessment designed for women 40+ and 50+. It measures and tracks strength, movement quality, body composition, and overall fitness over time. This baseline establishes where you are today and provides a roadmap for measurable improvement. Metrics drawn from the 3D body scanner and strength testing are explained in plain language below, with a short note on how each should and shouldn\'t be read — see the methodology box on the final page for details.';
+
+const DEFAULT_HOW_TO_READ = '% Body Weight and Level reflect the working sets shown above — not a tested 1-rep max (1RM). Level (Novice/Intermediate/Advanced) is your coach\'s estimate, combining an ExRx 1RM-based reference table with a visual assessment of movement quality. Treat it as a training-history indicator, not a precise percentile ranking.';
+
+// Standing methodology footnote set — the actual numbers/values in [4]/[6]
+// should be reconciled with the specific client's own styku data by the
+// calling script; this default exists so a script that doesn't supply
+// data.footnotes still gets CLAUDE.md-accurate methodology language rather
+// than nothing at all.
+function DEFAULT_ASSESSMENT_FOOTNOTES(data) {
+  return [
+    { marker: 1, text: 'Body-fat "Rank" (e.g., Fit) is generated by Styku against its own norm-referenced comparison groups, drawn from self-selected clinical/fitness-testing populations — not a nationally representative sample. A population-representative comparison can shift a person\'s percentile substantially versus these vendor tables, even though the underlying body-fat % is identical.' },
+    { marker: 2, text: 'BMR is calculated with the Revised Harris-Benedict equation from height, weight, age, and sex — a population-average formula, not a measured value (only indirect calorimetry measures metabolic rate directly). Published accuracy studies show these formulas land within ±10% of measured resting metabolic rate for roughly half of people; treat the number as a useful planning estimate, not a precise reading.' },
+    { marker: 3, text: 'Shape Score is a Styku-proprietary composite of body fat %, a muscle-fat index, and waist-to-height ratio, designed for easy client communication. It has not been independently validated as a clinical health score — read it as a personal trend-tracking number, not a diagnostic one.' },
+    { marker: 4, text: 'Visceral Fat Area is shown as a single trend tag (e.g., "Very Low," the <70 cm² floor already used elsewhere in this system) rather than a multi-tier risk classification — no consensus body endorses one universal VFA threshold, published CT-derived cutoffs for elevated risk in women run considerably higher (commonly cited around 106 cm²+), and this scanner\'s own visceral-fat validation was performed against DXA in kilograms, not against CT in cm². Read this number as a personal trend to track over time, alongside waist circumference.' },
+    { marker: 5, text: 'Peer-comparison percentiles reflect Styku\'s own reference database for similar age/sex, drawn from self-selected fitness/clinical testing populations, not a nationally representative survey. A population-representative comparison can place the same body composition at a meaningfully different percentile.' },
+    { marker: 6, text: 'Appendicular Lean Soft Tissue (ALST) Index reflects the sex-specific EWGSOP2 reference range (women: <5.5 kg/m² is the low-muscle-mass screening cutoff). There is no separate female "Optimal" tier above that cutoff — a higher band once used for this (≥7.0 kg/m²) is EWGSOP2\'s MALE threshold, not a female one, and is not used in this report. ALM/ALMI from 3D optical scanning has not been independently validated against DXA in the published Styku validation study — read this number as a trend to track at future scans, not a precise classification.' },
+    { marker: 7, text: 'See the in-page note on "How to Read % BW and Level" on the Strength Assessment page.' },
+  ];
+}
+
 module.exports = {
   buildDocument,
   buildImprovementDoc, comparisonTable,
+  buildAssessmentReport,
+  assessmentCoverBand, assessmentPageBand, tanBox, pillarRow, biologicalAgeDisclaimer,
+  statBoxGrid, standardStykuStatItems, solidBox, statRowGrid, highlightRow,
+  strengthAssessmentTable, flagsSummaryBox,
+  EXERCISE_BENEFIT_LIBRARY, getExerciseBenefits, benefitLinesFromLibrary, benefitCard,
+  observationCard, nextStepCard, footnotesList, correctionsSummaryBox, jasonNotesSection,
   C,
   PAGE_W, PAGE_H, MARGIN, TW,
   buildHeader, buildFooter,
@@ -1047,4 +1759,5 @@ module.exports = {
   sectionTitle,
   epley1RM: (weight, reps) => Math.round(weight * (1 + reps / 30)),
   workingLoad: (oneRM, pct, roundTo = 5) => Math.round((oneRM * pct) / roundTo) * roundTo,
+  pctOfBodyweight: (weight, bodyweightLbs, roundTo = 1) => (weight && bodyweightLbs ? Math.round((weight / bodyweightLbs) * 100 / roundTo) * roundTo : null),
 };
