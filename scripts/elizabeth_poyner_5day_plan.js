@@ -252,6 +252,11 @@ const baselineNotes = [
     label: 'Calories & Energy Availability',
     body: 'BMR: 1,159 cal/day (current, per 8/7/2026 Week 8 Styku rescan). Total intake must SUPPORT training and muscle-building — avoid a deficit while building lean mass. RED-S risk: avoid chronic low energy availability; priority is muscle-building, not fat loss. Body composition changes as lean mass grows.',
   },
+  {
+    type: 'gold',
+    label: 'Bone-Loading Candidacy — LIFTMOR / T-Score Screening',
+    body: 'At 64 and postmenopausal, Elizabeth sits in the 55-65 bracket where LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth pursuing directly — framed as "bone investment," not added risk. Her Hex Deadlift and Hip Thrust content above already trains at or near LIFTMOR\'s ≥80% 1RM standard, so the training stimulus is already in place; a DEXA scan would confirm formal candidacy and give a T-score baseline to track. No DEXA/T-score data is currently on file. This same recommendation already appears in her separate Brace Life Improvement Report — added here too (8/17/2026, roster-wide research-coverage sweep) so it lives in the document she and her trainer actually train from week to week, not only in the progress-report file.',
+  },
 ];
 
 const days = [

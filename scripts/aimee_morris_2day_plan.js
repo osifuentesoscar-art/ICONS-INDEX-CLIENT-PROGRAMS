@@ -111,6 +111,16 @@ const baselineNotes = [
     label: 'Lunge Pattern Added — 8/13/2026',
     body: 'Reverse Lunge is added to Day B\'s primary squat block as a genuinely distinct lunge-pattern exercise. Previously, DB Split Squat was covering both the squat and lunge movement-pattern territory in this program — a stationary front-foot-elevated split squat and a true stepping reverse lunge train meaningfully differently, so this closes that gap rather than relying on one exercise to stand in for both. No baseline has been tested for this pattern; Week 1 starts at bodyweight for quality reps, consistent with the moderate-progression approach already used for every other newly-introduced movement in this program, and given her spinal stenosis history a reverse lunge (controlled step-back, no forward-stepping deceleration load) is the more conservative starting variant vs. a walking or curtsy lunge.',
   },
+  {
+    type: 'gold',
+    label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
+    body: 'At 48, Aimee sits in the 45–55 age bracket. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk, and directly relevant given real heavy Hex Bar Deadlift and Hip Thrust content already in her program. No DEXA/T-score data is currently on file to confirm candidacy either way. Every other 45-55/55-65 bracket client on the roster carries this note; it was missing here and is added now (8/17/2026, roster-wide research-coverage sweep).',
+  },
+  {
+    type: 'watch',
+    label: 'Perimenopausal Status — Not Assessed at Intake',
+    body: 'No menstrual irregularity, vasomotor symptoms (hot flashes/night sweats), sleep disruption, or mood-change data was reported at intake, and `isPostmenopausal` is left unset rather than fabricated either direction. Per CLAUDE.md\'s "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" guidance, this is the exact bracket/symptom-ambiguity window the guidance is written around — and given real heavy hip-thrust/deadlift content in this program, worth confirming at next intake given how load-bearing that determination is for the pelvic floor protocol. Revisit if symptom data becomes available.',
+  },
 ];
 
 const days = [
