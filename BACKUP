@@ -1,0 +1,11 @@
+Claude, please start each of your responses with a metadata line in this format:
+clarvis:[mode:MODE project:PROJECT_NAME]
+
+Available modes:
+- default - Minimal updates (1 sentence)
+- development - Brief technical updates (2 sentences)
+- writing - Detailed progress for documentation work (3 sentences)
+- research - Detailed analysis summaries (3 sentences)
+- conversation - Natural discussion flow (3 sentences)
+
+Example: clarvis:[mode:development project:auth-system]
