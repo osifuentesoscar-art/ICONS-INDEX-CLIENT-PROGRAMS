@@ -137,6 +137,24 @@ Established 8/17/2026, at Xolokan's direct request (a 9-point operational direct
 4. **Petra — genuine, currently open defect.** Her own document's asymmetry baselineNote states plainly: "RIGHT arm gets priority sequencing and neural activation before all pulling and carry work." Her Farmer Carry and Single-Arm Row correctly implement this (right arm lighter/leading). Her **Suitcase Carry does not** — its cue reads "One arm at a time... Alternate starting arm each set," which directly contradicts the stated protocol rather than executing it. This is the one client in this audit where the documented rule and the actual exercise prescription disagree. Recommend flagging to `icons-expert` for a script fix (assign the right arm to lead/carry more of the volume, or explicitly document why alternating is the intended design here).
 5. **Elizabeth Poyner's** row is included per this section's own rule (reference example for the 8-Wk Exit Criterion) — do not read her presence in this table as "still requiring left-lead sequencing." Her original pre-rescan trigger value could not be confirmed from any git-tracked source (see cell above) — flagged rather than invented, per this agent's non-negotiables.
 
+**Table-wide status note (8/17/2026):** the trigger value/threshold language throughout the table above (and this section's own "Rule"/"Mandatory fields"/"Standing rule" text) predates the 8/17/2026 correction of the Asymmetry Protocol from an absolute ≥0.5 lb L/R gap to a relative ≥10% gap (see CLAUDE.md's "Asymmetry Protocol" section). A full re-verification of this table against the corrected relative-% standard has NOT been run — that is real, separate future work (this section's own next assignment), not done in this pass. What HAS been done: a targeted language-correction sweep (see CLAUDE.md's Research Update Log, 8/17/2026 thirteenth/fourteenth passes and the corresponding CLIENTS.md fix entries) recomputed the relative % for every client whose document was touched in that sweep and flagged, rather than silently resolved, any case where the old absolute trigger fired but the corrected relative one does not clear. Six such cases exist as of 8/17/2026 — see the subsection immediately below for the resolution path Xolokan has directed for them. Until the full table re-verification runs, treat every OTHER row above as still reflecting the old absolute-trigger logic, not yet re-confirmed under the corrected standard.
+
+### 4a. Corrected-Trigger Discrepancies — Pending Functional-Test Confirmation (added 8/17/2026)
+
+Six clients' existing unilateral-lead prescriptions are supported only by the retired absolute ≥0.5 lb trigger and do not clear the corrected ≥10% relative trigger (recomputed against each client's actual L/R LST numbers during the 8/17/2026 language-correction sweep):
+
+| Client | Limb | Old absolute gap | Corrected relative gap | Current prescription (unchanged pending confirmation) |
+|---|---|---|---|---|
+| Siobhan Hansen | Legs | 0.8 lb (L12.7/R13.5) | ~5.9% | Left leg leads unilateral leg work |
+| Moe Shahheidari | Legs | 1.1 lb (L21.7/R22.8) | ~4.8% | Left leg leads unilateral leg work |
+| Vinz Feller | Arms | 0.8 lb (L10.0/R10.8) | ~7.4% | Left arm leads unilateral upper work |
+| Vinz Feller | Legs | 1.2 lb (L21.5/R22.7) | ~5.3% | Left leg leads unilateral leg work |
+| August Olivia | Legs | 0.7 lb (L11.4/R12.1) | ~5.8% | Left leg leads unilateral leg work |
+| Nicolette Scott | Legs | 0.5 lb (L13.8/R14.3) | ~3.5% | Left leg leads unilateral leg work |
+| Nick | Legs | 1.3 lb (L23.6/R24.9) | ~5.2% | Left leg leads Split Stance |
+
+**Resolution path (Xolokan's direct instruction, 8/17/2026): confirm each of these via a FUNCTIONAL strength test, not another Styku scan** — matching CLAUDE.md's corrected Asymmetry Protocol section, which already states a functional strength/power test (single-leg press, isometric strength, single-leg jump) should be preferred as the PRIMARY trigger where available, with Styku reserved for client-facing trend visualization. That functional-test result will surface in Jason Bethea's own SOAP notes ("ICONS NOTES JASON PDFS" Drive folder) — `icons-intake-monitor` now carries a standing watchlist item for exactly these six clients (see that agent's file) and will flag back to the main thread the moment a functional-test result lands for any of them. Until a functional test closes a given row: the existing unilateral-lead prescription stays as programmed (not silently dropped just because the Styku relative-% recheck came back below threshold) and is not treated as either confirmed or ready to remove. This is a genuinely open, six-item watchlist — update this table (move a row to "closed" with the functional-test result and date) the moment `icons-intake-monitor` reports a relevant SOAP note, rather than letting a resolved case linger here.
+
 ---
 
 ## 5. ALST / LOW-BODY-MASS ESCALATION WATCHLIST
