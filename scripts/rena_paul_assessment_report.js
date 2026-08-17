@@ -67,19 +67,21 @@
  * marker 8 covering CLAUDE.md's "3D Optical Scanning — Validity" finding
  * that segmental (arm/leg) composition is this scanner's least-validated
  * output (CCCs ~0.32-0.52 vs. DXA) — referenced from the Segmental Lean
- * Mass section's `asymmetryNote` via a `[8]` marker. (2) Footnote 9 (Hip
- * Thrust co-activation) previously cited "Skaug et al. 2024," a citation
- * that could not be independently verified against this system's vetted
- * science-layer sources (grep-confirmed absent from CLAUDE.md's Research
- * Update Log and Evidence-Based Science Layer). Removed the unverified
- * citation rather than leaving it in template language that will get
- * reused across the roster; the underlying co-activation-vs-strengthening
- * claim is retained, since it already follows from CLAUDE.md's existing
- * Pelvic Floor Protocol distinction between bracing/co-activation during
- * heavy lifting and dedicated pelvic-floor-muscle training. Flagged to
- * `icons-research-analyst` as a real follow-up: find and cite a verified
- * primary source for this specific claim, or fold the finding into
- * CLAUDE.md's Pelvic Floor Protocol section directly.
+ * Mass section's `asymmetryNote` via a `[8]` marker. (2) Footnote 10 (Hip
+ * Thrust co-activation, marker 9 at the time of the audit) cited "Skaug et
+ * al. 2024" with no year/journal/volume detail — the auditor flagged that
+ * this couldn't be verified against CLAUDE.md's vetted science-layer
+ * sources. Pulled the bare citation pending verification, then dispatched
+ * `icons-research-analyst` to check it properly rather than either leaving
+ * an unverified citation in roster-wide template language or discarding a
+ * possibly-real source. RESOLVED same day: the citation is real and
+ * correctly attributed — Skaug KL, Engh ME, Bø K, "Acute Effect of Heavy
+ * Weightlifting on the Pelvic Floor Muscles in Strength-Trained Women: An
+ * Experimental Crossover Study," Medicine & Science in Sports & Exercise
+ * 2024;56(1):37-43 — confirmed via CLAUDE.md's own Pelvic Floor Protocol
+ * section, now updated with this citation ("Co-activation during a lift ≠
+ * PFM strengthening," added 8/17/2026) and a matching Research Update Log
+ * entry (fifteenth pass). Footnote 10 below now cites it directly.
  *
  * JASON'S PT NOTES: deliberately NOT populated for this delivered document
  * — Rena has no in-house PT/rehab flag or SOAP-note data on file (no
@@ -246,7 +248,7 @@ function buildFootnotes() {
   return [
     ...DEFAULT_ASSESSMENT_FOOTNOTES(data),
     { marker: 9, text: 'Deadlift: the Biological Age line above describes a bone-loading benefit associated with maintained/improved bone mineral density in women 40+ — it does not claim to reduce Rena\'s individual osteoporosis risk, since a single assessment (with no bone-density scan on file) cannot confirm that for any one person.' },
-    { marker: 10, text: 'Hip Thrust: the Health line above describes deep-core/pelvic-floor co-activation during the lift, not pelvic-floor strengthening — heavy compound lifting alone is not a substitute for targeted pelvic-floor training, which is what builds pelvic-floor strength specifically.' },
+    { marker: 10, text: 'Hip Thrust: the Health line above describes deep-core/pelvic-floor co-activation during the lift, not pelvic-floor strengthening — heavy compound lifting alone is not a substitute for targeted pelvic-floor training, which is what builds pelvic-floor strength specifically. Skaug KL, Engh ME, Bø K, "Acute Effect of Heavy Weightlifting on the Pelvic Floor Muscles in Strength-Trained Women: An Experimental Crossover Study," Medicine & Science in Sports & Exercise 2024;56(1):37-43, found pelvic-floor-muscle strength was not significantly correlated with whole-body squat/deadlift strength in strength-trained women.' },
   ];
 }
 data.footnotes = buildFootnotes();
