@@ -285,6 +285,18 @@ function clientStats(stats) {
   )];
 }
 
+// Client View only — a short, warm line under the cover name reinforcing
+// the ICONS mission (quotes the same "not fragile... powerful, capable,
+// and still evolving" language already used verbatim elsewhere in this
+// system, e.g. Elizabeth Poyner's Improvement Report narrative). Kept
+// deliberately short and gender-neutral so it fits any client.
+function clientWelcomeLine() {
+  return [para(
+    [txt('This is your ICONS Index program — built for your body, your goals, and where you are right now. You’re not fragile. You’re powerful, capable, and still evolving.', { italics: true, size: 17, color: C.goldDeep })],
+    { alignment: AlignmentType.CENTER, spacing: { after: 140 } }
+  )];
+}
+
 function sectionTitle(title, color = C.gold) {
   return para(
     [txt(title, { bold: true, size: 17, color })],
@@ -774,8 +786,20 @@ function buildDayContent(day, client) {
 async function buildDocument(data) {
   const children = [];
   const client = data.client;
+  // Client View mode (added 8/17/2026): the same buildDocument() call, on
+  // the exact same `data` object, renders a client-safe copy of the
+  // program instead of the full trainer/audit-trail document — so the
+  // actual workout content (days/blocks/exercises/loads/Styku/baselines)
+  // can never drift between the two. Set `data.viewMode = 'client'` to
+  // activate. Only two things differ: (1) any baselineNotes item with
+  // `audience: 'internal'` is dropped (judgment-call/methodology/
+  // audit-trail notes meant for the trainer, not the client), and (2) an
+  // optional `data.clientHighlight: {label, body}` (a real PR/progress
+  // milestone) renders first, in the "milestone achieved" clearFlag style.
+  const isClientView = data.viewMode === 'client';
 
   children.push(...coverHeader(client.name, client.programTitle, client.subtitle));
+  if (isClientView) children.push(...clientWelcomeLine());
   if (client.stats && client.stats.length) children.push(...clientStats(client.stats));
 
   if (data.weekOverview) children.push(...weekOverview(data.weekOverview));
@@ -786,12 +810,17 @@ async function buildDocument(data) {
     children.push(...baselinesTable(data.baselines, data.baselinesTargetHeader));
   }
 
+  if (isClientView && data.clientHighlight) {
+    children.push(...clearFlag(data.clientHighlight.label, data.clientHighlight.body));
+  }
+
   if (data.baselineNotes) {
     const fnMap = {
       green: greenCallout, gold: goldCallout, red: redCallout, teal: tealCallout, blue: blueCallout, purple: purpleCallout,
       clinical: clinicalFlag, watch: watchFlag, clear: clearFlag,
     };
-    data.baselineNotes.forEach((n) => {
+    const notes = isClientView ? data.baselineNotes.filter((n) => n.audience !== 'internal') : data.baselineNotes;
+    notes.forEach((n) => {
       // n.render: an already-built paragraph array (e.g. the output of
       // maleNutritionNote()/testosteroneNote(), which — like goldCallout/
       // tealCallout — bake their own label/color internally) can be
@@ -980,7 +1009,7 @@ module.exports = {
   C,
   PAGE_W, PAGE_H, MARGIN, TW,
   buildHeader, buildFooter,
-  coverHeader, clientStats, weekOverview, baselinesTable, stykuBlock,
+  coverHeader, clientStats, clientWelcomeLine, weekOverview, baselinesTable, stykuBlock,
   nutritionBlock, proteinTargets, proteinBar, pelvicFloorCallout,
   weakerSide,
   maleProteinTargets, maleNutritionNote, testosteroneNote,

@@ -69,6 +69,30 @@ If asked to still name the file for Drive, the filename convention is unchanged:
 
 ---
 
+## CLIENT VIEW — CLIENT-FACING PROGRAM COPY (added 8/17/2026, at Xolokan's direct request)
+
+A second, shareable document per client — the actual program, in an encouraging ICONS-voice presentation, safe to send directly to the client. Xolokan maintains a **separate Google Drive folder** for these (distinct from "ICONS CLIENT PROGRAMS," which stays the trainer-facing archive) — deliver via the same `SendUserFile` manual-handoff pattern as every other deliverable (see "GOOGLE DRIVE — MANUAL HANDOFF ONLY" above); this document type does not change that policy.
+
+**Built from the exact same `buildDocument()` call, on the exact same `data` object, as the trainer document — never a separate hand-maintained copy.** This is deliberate: the workout content (days, blocks, exercises, sets/reps/load/tempo/rest/cues, Styku data, baselines, nutrition targets) is identical between the two documents by construction, so they can never silently drift apart. Only two things differ, controlled by `data.viewMode`:
+
+```javascript
+await buildDocument({ ...data })                        // trainer document — unchanged, default behavior
+await buildDocument({ ...data, viewMode: 'client' })     // client view — same content, filtered
+```
+
+When `viewMode: 'client'` is set:
+1. **Any `baselineNotes` item carrying `audience: 'internal'` is dropped.** Mark a note internal when it's written for the trainer/build-process, not the client — judgment-call reasoning ("Confirm with the trainer whether these were the same movement"), documentation-methodology notes ("Baselines Table Scope — Confirmed Tested Lifts Only"), or a screening-gap admission that reads awkwardly out of context ("Perimenopausal Status — Not Assessed at Intake"). A note stays visible by default — only mark it internal when it genuinely shouldn't reach the client, not reflexively. Genuinely client-facing content (PR callouts, clinical safety language like the pelvic floor protocol, encouraging baseline-battery summaries) should stay visible in both documents.
+2. **`data.clientHighlight: {label, body}` renders first, in the "milestone achieved" clearFlag style**, ahead of any other baselineNotes — for a real, documented PR or progress-since-last-version. **Never fabricate one.** Only set this field when there's an actual PR/improvement on record for that client (a new 1RM, a lean-mass gain, a closed asymmetry gap); omit it entirely for a first-build client with no prior version to compare against, rather than inventing filler encouragement.
+3. A short, warm welcome line renders on the cover (`clientWelcomeLine()`), quoting the same ICONS mission language already used verbatim elsewhere in this system.
+
+Everything else — page setup, color system, exercise tables, warm-up/cool-down/ICONS Note callouts, `proteinBar()`/`pelvicFloorCallout()` auto-inserts, the weekly summary — renders identically to the trainer document.
+
+**Output location:** same folder as the trainer document, `clients/<client_name>/`, filename `<ClientName>_<ProgramTitle>_Client_View.docx` (e.g. `Elizabeth_Poyner_5Day_Training_Plan_Client_View.docx`) — a client view is a per-client artifact, not a new top-level category like `trainer_education/` or `system_documents/`.
+
+**Standing rule going forward:** generate the client view alongside every new or materially updated trainer document, not just as a one-time rollout — the same build→audit→commit→deliver pipeline applies to both. See `icons-expert.md` for the corresponding standing instruction.
+
+---
+
 ## THE TEMPLATE ENGINE — `icons_template.js`
 
 **Location:** `scripts/icons_template.js`
