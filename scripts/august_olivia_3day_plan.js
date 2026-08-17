@@ -4,6 +4,33 @@
  *
  * Source data: Styku scan 8/5/2026, shoulder extension force test 6/1/2026,
  * baseline strength testing 8/5/2026 (client-reported).
+ *
+ * REVISION (8/17/2026, External Evidence Review response) — ASYMMETRY
+ * TRIGGER LANGUAGE CORRECTED: CLAUDE.md's Asymmetry Protocol section was
+ * corrected the same day from an absolute 0.5 lb trigger to a RELATIVE
+ * >=10% trigger. Recomputed the leg LST gap as a percentage of the larger
+ * side (the engine has no built-in %-relative helper yet):
+ *   - LEGS: 0.7 lb gap / 12.1 lbs = ~5.8% — DOES NOT meet the corrected
+ *     >=10% relative threshold, even though it cleared the old 0.5 lb
+ *     absolute trigger. Per the corrected standard's own retroactive-scope
+ *     note ("some clients' documented gaps may no longer clear 10%...
+ *     needs careful per-client verification, not a blanket rewrite"), the
+ *     existing left-leg-leads unilateral prescription is being LEFT IN
+ *     PLACE here rather than silently removed — this is a targeted
+ *     language-correction pass, not a re-determination of her programming.
+ *     FLAGGED FOR HUMAN REVIEW: whether August Olivia's leg unilateral-lead
+ *     assignment should be re-evaluated (e.g. against a functional
+ *     single-leg strength/power test, per the corrected standard's
+ *     preferred primary trigger) is a genuine open question, not resolved
+ *     by this pass.
+ *   - ARMS: 0.4 lb gap / 4.7 lbs = ~8.5% — also below the corrected
+ *     threshold (was already below the old 0.5 lb trigger too), so no
+ *     change to the existing monitor-only treatment.
+ *   - NOTE: the separate "Right Shoulder Force Deficit — 63.2% Asymmetry"
+ *     finding below (a shoulder extension force-plate test, not Styku LST)
+ *     is unaffected by this correction — it is a different measurement
+ *     entirely and clears any reasonable asymmetry threshold by a wide
+ *     margin; its right-shoulder-leads prescription is untouched.
  */
 
 const fs = require('fs');
@@ -85,7 +112,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Left Leg Lean Soft Tissue Asymmetry — 11.4 vs 12.1 lbs',
-    body: 'Gap of 0.7 lbs meets the ≥0.5 lb asymmetry threshold. LEFT leg leads all unilateral lower-body exercises. Log left vs. right loads separately in the coaching cue field. Reassess at the 8-week Styku rescan — asymmetry should reduce.',
+    body: 'Gap of 0.7 lbs — roughly 6% relative to the larger side. LEFT leg continues to lead all unilateral lower-body exercises. Log left vs. right loads separately in the coaching cue field. Reassess at the 8-week Styku rescan to confirm this gap remains worth addressing.',
   },
   {
     type: 'gold',

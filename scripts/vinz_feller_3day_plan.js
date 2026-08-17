@@ -118,6 +118,37 @@
  *     text (he's 50, correctly in 40-59) but fixes a latent mislabeling
  *     bug for a future 60+ male client.
  * See CLAUDE.md's engine-additions note for the underlying calc.
+ *
+ * REVISION (8/17/2026, External Evidence Review response) — ASYMMETRY
+ * TRIGGER LANGUAGE + VFA FRAMING CORRECTED (protein/nutrition language is
+ * OUT OF SCOPE for this pass — he is on the Male Client Programming
+ * Framework, which the review did not touch; see CLAUDE.md's "Protein
+ * Targets — Men" section, unchanged):
+ *   - Asymmetry: CLAUDE.md's Asymmetry Protocol section was corrected from
+ *     an absolute 0.5 lb trigger to a RELATIVE >=10% trigger. Recomputed
+ *     both of Vinz's gaps as a percentage of the larger side (the engine
+ *     has no built-in %-relative helper yet):
+ *       - ARMS: 0.8 lb gap / 10.8 lbs = ~7.4% — below the corrected >=10%
+ *         threshold, even though it cleared the old 0.5 lb absolute one.
+ *       - LEGS: 1.2 lb gap / 22.7 lbs = ~5.3% — likewise below the
+ *         corrected threshold.
+ *     Per the corrected standard's own retroactive-scope note ("some
+ *     clients' documented gaps may no longer clear 10%... needs careful
+ *     per-client verification, not a blanket rewrite"), the existing
+ *     left-side-leads unilateral prescription (both arms and legs) is
+ *     being LEFT IN PLACE here rather than silently removed — this is a
+ *     targeted language-correction pass, not a re-determination of his
+ *     programming. FLAGGED FOR HUMAN REVIEW: whether Vinz's unilateral-lead
+ *     assignment should be re-evaluated (e.g. against a functional
+ *     single-limb strength/power test, per the corrected standard's
+ *     preferred primary trigger) is a genuine open question for both arms
+ *     and legs, not resolved by this pass. Rendered language updated to
+ *     cite the relative % instead of the retired absolute trigger.
+ *   - VFA: CLAUDE.md's VFA section was corrected the same day to retire the
+ *     absolute risk-band table (<70/70-99/100-149/>=150 -> Very Low/Low/
+ *     Moderate/High Risk) in favor of trend-tracking language. Vinz's VFA
+ *     70.0 cm² note reworded accordingly — no longer labeled against a
+ *     risk band.
  */
 
 const fs = require('fs');
@@ -209,7 +240,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Scan Interpretation — Male Client Programming Framework (8/11/2026)',
-    body: "Lean Mass 115.5 lbs (70.1%), Fat Mass 43.6 lbs, Bone Mass 5.5 lbs (3.4%), BMR 1658 cal/day, Shape Score 69/100. ALST Index 7.55 kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Vinz sits comfortably above the line. VFA 70.0 cm² — the ICONS VFA risk table (<70 Very Low Risk / 70–99 Low Risk / 100–149 Moderate Risk / ≥150 High Risk cm²) is validated sex-independent and applies to him directly; 70.0 sits right at the boundary of the Low Risk band. BMI 23.6 falls in the WHO Normal range (18.5–24.9) — WHO BMI thresholds are not sex-specific. See the note below for why BMI, ALST, and body fat % need to be read together rather than any one in isolation.",
+    body: "Lean Mass 115.5 lbs (70.1%), Fat Mass 43.6 lbs, Bone Mass 5.5 lbs (3.4%), BMR 1658 cal/day, Shape Score 69/100. ALST Index 7.55 kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Vinz sits comfortably above the line. VFA 70.0 cm² is tracked here as a trend indicator rather than an absolute risk-band classification — no consensus body endorses a single cm² cutoff, so this reading is watched directionally at future rescans; the sex-independence of the underlying visceral-adiposity evidence still applies to him directly. BMI 23.6 falls in the WHO Normal range (18.5–24.9) — WHO BMI thresholds are not sex-specific. See the note below for why BMI, ALST, and body fat % need to be read together rather than any one in isolation.",
   },
   {
     type: 'watch',
@@ -219,7 +250,7 @@ const baselineNotes = [
   {
     type: 'watch',
     label: `${armWeakerSide === 'left' ? 'Left' : 'Right'}-Side Asymmetry — Arms & Legs`,
-    body: `Left Arm LST ${styku.leftArmLST} lbs vs Right Arm LST ${styku.rightArmLST} lbs (${(Math.abs(styku.leftArmLST - styku.rightArmLST)).toFixed(1)} lb gap, ${armWeakerSide} weaker) and Left Leg LST ${styku.leftLegLST} lbs vs Right Leg LST ${styku.rightLegLST} lbs (${(Math.abs(styku.leftLegLST - styku.rightLegLST)).toFixed(1)} lb gap, ${legWeakerSide} weaker) — the ${armWeakerSide} side reads weaker on both the upper and lower body. Standard ICONS asymmetry protocol applied: ${armWeakerSide} leads every unilateral exercise (single-arm row, split squat, single-leg RDL), the ${armWeakerSide}/weaker side is logged separately from the right in the coaching cue, and any suitcase-style anti-lateral-flexion carry work has the ${armWeakerSide} hand hold the load. Re-check both gaps at the 8-week Styku rescan — both should trend toward under 0.5 lbs.`,
+    body: `Left Arm LST ${styku.leftArmLST} lbs vs Right Arm LST ${styku.rightArmLST} lbs (${(Math.abs(styku.leftArmLST - styku.rightArmLST)).toFixed(1)} lb gap, roughly 7% relative to the larger side, ${armWeakerSide} weaker) and Left Leg LST ${styku.leftLegLST} lbs vs Right Leg LST ${styku.rightLegLST} lbs (${(Math.abs(styku.leftLegLST - styku.rightLegLST)).toFixed(1)} lb gap, roughly 5% relative, ${legWeakerSide} weaker) — the ${armWeakerSide} side reads weaker on both the upper and lower body. Standard ICONS asymmetry protocol applied as a coaching convention: ${armWeakerSide} leads every unilateral exercise (single-arm row, split squat, single-leg RDL), the ${armWeakerSide}/weaker side is logged separately from the right in the coaching cue, and any suitcase-style anti-lateral-flexion carry work has the ${armWeakerSide} hand hold the load. Both gaps are tracked closely at the 8-week Styku rescan to confirm this assignment still reflects a real, worth-addressing difference.`,
   },
   {
     type: 'purple',
@@ -476,7 +507,7 @@ const summary = {
   ],
   milestones4wk: 'Confirm all primary/secondary lifts are progressing cleanly at their prescribed RIR (add load only at top of rep range with clean form). Reduce pull-up assistance by at least one increment per grip. Left-leads unilateral work should show improving control and even tempo both sides.',
   milestones8wk: 'Target Hex Bar Deadlift 205–210 x 5, Back Squat/Hip Thrust 155–165 x 6, Incline Bench 55–60 x 8, Single-Arm Row 70–75 x 10–12/side, Farmers Carry 50–55 lbs/hand, Weighted Plank 15–20 lb plate x 2:00+, Push-Ups 32–35 reps. Pull-up assistance meaningfully reduced across all three grips.',
-  rescanNote: '8-week Styku re-scan — track ALST Index, VFA, Shape Score, and left/right arm & leg LST gap reduction (target: both gaps under 0.5 lbs), alongside the strength baselines table above.',
+  rescanNote: '8-week Styku re-scan — track ALST Index, VFA trend, Shape Score, and left/right arm & leg LST gap reduction (currently ~7% relative for arms, ~5% relative for legs), alongside the strength baselines table above.',
 };
 
 const data = {

@@ -52,9 +52,27 @@
  *     in isolation) — it's concordant with the body fat / lean mass
  *     findings, and the document says so directly.
  *
- * Asymmetry: legs cross the 0.5 lb Asymmetry Protocol trigger (1.1 lb gap,
- * left weaker via weakerSide()) and get the full unilateral-leads protocol;
- * arms do not (0.4 lb gap, below trigger) and are monitored only, not led.
+ * Asymmetry (REVISED 8/17/2026, External Evidence Review response — see
+ * CLAUDE.md's Asymmetry Protocol section, corrected the same day, from an
+ * absolute 0.5 lb trigger to a RELATIVE >=10% trigger): recomputed both
+ * gaps as a percentage of the larger side, since the engine has no built-in
+ * %-relative helper yet.
+ *   - LEGS: 1.1 lb gap / 22.8 lbs = ~4.8% — DOES NOT meet the corrected
+ *     >=10% relative threshold, even though it cleared the old 0.5 lb
+ *     absolute trigger. Per the corrected standard's retroactive-scope note
+ *     ("some clients' documented gaps may no longer clear 10%... needs
+ *     careful per-client verification, not a blanket rewrite"), the
+ *     existing left-leg-leads unilateral prescription is being LEFT IN
+ *     PLACE here rather than silently removed — this is a targeted
+ *     language-correction pass, not a re-determination of his programming.
+ *     FLAGGED FOR HUMAN REVIEW: whether Moe's leg unilateral-lead
+ *     assignment should be re-evaluated (e.g. against a functional
+ *     single-leg strength/power test, per the corrected standard's
+ *     preferred primary trigger) is a genuine open question, not resolved
+ *     by this pass.
+ *   - ARMS: 0.4 lb gap / 12.7 lbs = ~3.1% — also below the corrected
+ *     threshold, consistent with the existing monitor-only (no lead
+ *     assigned) treatment — no prescription change needed here.
  *
  * Nutrition: maleProteinTargets()/maleNutritionNote() called with
  * client.maleBodyFatConcern: true — his 31.6% At-Risk/Obese-tier body fat
@@ -131,7 +149,7 @@ const styku = {
 
 // weakerSide() — lower LST = weaker = leads unilateral work.
 const legWeakerSide = weakerSide(styku.leftLegLST, styku.rightLegLST); // 'left'
-const armGap = Math.abs(styku.leftArmLST - styku.rightArmLST); // 0.4 — below the 0.5 lb Asymmetry Protocol trigger
+const armGap = Math.abs(styku.leftArmLST - styku.rightArmLST); // 0.4 lb / ~3.1% relative — below the corrected >=10% Asymmetry Protocol trigger
 
 const baselines = [
   ['Hex Bar Deadlift', `175 x 8 (est. 1RM ${oneRM.deadlift})`, '8/11/2026', `${wk1.deadlift + 15}-${wk1.deadlift + 20} lbs x 5, progressive per RIR autoregulation`],
@@ -157,7 +175,7 @@ const baselineNotes = [
     // matching the Elizabeth Poyner precedent — the underlying clinical
     // content (ALST/VFA/BMI interpretation) is genuinely client-appropriate.
     label: 'Styku Scan Interpretation — Male Client Programming Framework (8/11/2026)',
-    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs (3.0%), BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 ("${styku.shapeScoreLabel}"). ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Moe sits comfortably above the line — this is the clinically-governing figure for his muscle-mass status, see the note below for how it relates to Styku's own internal flag. VFA ${styku.vfa} cm² falls in the ICONS VFA table's Low Risk band (70-99 cm²), validated sex-independent and applied to him directly. BMI ${styku.bmi} falls in the WHO Overweight range (25-29.9) — WHO BMI thresholds are not sex-specific, and unlike the "over-flagged muscular athlete" caution the Male Client Programming Framework raises for reading BMI in isolation, this BMI reading is concordant with — not contradicted by — his body fat % and lean mass findings below. There is no muscular-athlete false positive to correct for here.`,
+    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs (3.0%), BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 ("${styku.shapeScoreLabel}"). ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Moe sits comfortably above the line — this is the clinically-governing figure for his muscle-mass status, see the note below for how it relates to Styku's own internal flag. VFA ${styku.vfa} cm² is tracked here as a trend indicator rather than a fixed risk-band classification (CLAUDE.md's VFA section, corrected 8/17/2026) — no consensus body endorses a single absolute cm² cutoff, so this reading is watched directionally at future rescans rather than labeled against a risk band; the sex-independence of the underlying visceral-adiposity evidence still applies to him directly. BMI ${styku.bmi} falls in the WHO Overweight range (25-29.9) — WHO BMI thresholds are not sex-specific, and unlike the "over-flagged muscular athlete" caution the Male Client Programming Framework raises for reading BMI in isolation, this BMI reading is concordant with — not contradicted by — his body fat % and lean mass findings below. There is no muscular-athlete false positive to correct for here.`,
   },
   {
     type: 'watch',
@@ -171,7 +189,7 @@ const baselineNotes = [
   {
     type: 'watch',
     label: `${legWeakerSide === 'left' ? 'Left' : 'Right'}-Leg Asymmetry — Legs Above Trigger, Arms Below It`,
-    body: `Left Leg LST ${styku.leftLegLST} lbs vs Right Leg LST ${styku.rightLegLST} lbs — a ${(styku.rightLegLST - styku.leftLegLST).toFixed(1)} lb gap, above the 0.5 lb Asymmetry Protocol trigger. Standard ICONS protocol applied: the ${legWeakerSide} leg leads every unilateral leg exercise (single-leg RDL, any split-stance work), the ${legWeakerSide} side is logged separately from the right in the coaching cue, and any suitcase-style carry work has the ${legWeakerSide} hand hold the load. Left Arm LST ${styku.leftArmLST} lbs vs Right Arm LST ${styku.rightArmLST} lbs — only a ${armGap.toFixed(1)} lb gap, below the 0.5 lb trigger — monitor only this cycle; no unilateral lead is assigned for arm work. Re-check both gaps at the 8-week Styku rescan.`,
+    body: `Left Leg LST ${styku.leftLegLST} lbs vs Right Leg LST ${styku.rightLegLST} lbs — a ${(styku.rightLegLST - styku.leftLegLST).toFixed(1)} lb gap, roughly 5% relative to the larger side. Standard ICONS protocol applied as a coaching convention: the ${legWeakerSide} leg leads every unilateral leg exercise (single-leg RDL, any split-stance work), the ${legWeakerSide} side is logged separately from the right in the coaching cue, and any suitcase-style carry work has the ${legWeakerSide} hand hold the load — this assignment is being tracked closely at the next rescan to confirm it still reflects a real, worth-addressing difference. Left Arm LST ${styku.leftArmLST} lbs vs Right Arm LST ${styku.rightArmLST} lbs — only a ${armGap.toFixed(1)} lb gap, roughly 3% relative — monitor only this cycle; no unilateral lead is assigned for arm work. Re-check both gaps at the 8-week Styku rescan.`,
   },
   {
     type: 'clinical',
@@ -398,7 +416,7 @@ const summary = {
   ],
   milestones4wk: 'Confirm all primary/secondary lifts are progressing cleanly at their prescribed RIR (add load only at top of rep range with clean form). Rotator cuff/scapular strengthening block progresses from isometric to slow eccentric loading, fully pain-free. Left-leads unilateral leg work should show improving control and even tempo both sides.',
   milestones8wk: 'Target Hex Bar Deadlift 195-200 x 5, Incline Bench 35-40 x 8, Single-Arm Row 40+ lbs x 10-12/side, Farmers Carry 55-60 lbs/hand, Plank 1:45-2:00, Push-Ups 20-22 reps. Overhead Press and Assisted Pull-Ups showing real week-over-week load/assistance progression, fully pain-free through range. Rotator cuff strengthening block progressed into controlled concentric or early dynamic loading, per Jason Bethea\'s clearance.',
-  rescanNote: '8-week Styku re-scan — track ALST Index, VFA, Shape Score, body fat % trend, and left/right leg LST gap reduction (target: under 0.5 lbs), alongside the strength baselines table above and continued shoulder progress coordinated with Jason Bethea.',
+  rescanNote: '8-week Styku re-scan — track ALST Index, VFA trend, Shape Score, body fat % trend, and left/right leg LST gap reduction (currently ~5% relative to the larger side), alongside the strength baselines table above and continued shoulder progress coordinated with Jason Bethea.',
 };
 
 const data = {

@@ -50,9 +50,14 @@
  * Days 2 and 3 (squat/RDL/hip-thrust/carry content present) and is left to
  * fire naturally on both, never suppressed. proteinBar() also fires
  * automatically on every day given alstIndex 4.66 < 5.5.
- *   - weightKg 53.5 (118 lbs) x 2.0-2.2 g/kg (proteinTargets()'s
- *     ALST-At-Risk/50+ tier, both conditions true here) resolves to
- *     107-118g/day — matches her already-documented protein target exactly.
+ *   - weightKg 53.5 (118 lbs) x 2.0-2.2 g/kg (proteinTargets()'s ALST-At-Risk
+ *     tier — per CLAUDE.md's Protein Targets section, corrected 8/17/2026,
+ *     the escalation to the upper end of the 1.6-2.2 g/kg range is now
+ *     context-driven [energy deficit / heavy training load / ALST At-Risk],
+ *     NOT an age-band escalation; she qualifies on ALST At-Risk alone,
+ *     independent of her age) resolves to 107-118g/day — matches her
+ *     already-documented protein target exactly; no number changed here,
+ *     only the stated rationale for why the target sits where it does.
  *
  * ALST + BMI — CLAUDE.md's NAMED HIGHEST-PRIORITY COMBINATION: ALST 4.66
  * kg/m² (At-Risk, <5.5) + BMI 17.4 (Underweight, <18.5) is the specific
@@ -82,8 +87,34 @@
  * Carry, Day 3, per the Asymmetry Protocol's "weaker HAND holds the
  * suitcase load" rule). weakerSide(12.7, 13.5) [legs] resolves to 'left' —
  * left leg leads all unilateral leg work (Single-Leg Stance Squat and
- * Single-Leg RDL, Day 2; carried into Day 3's activation carryover). Both
- * gaps (0.8 lbs) sit above the 0.5 lb Asymmetry Protocol trigger.
+ * Single-Leg RDL, Day 2; carried into Day 3's activation carryover).
+ *
+ * REVISION (8/17/2026, External Evidence Review response — Asymmetry
+ * Protocol trigger corrected from an absolute 0.5 lb gap to a RELATIVE
+ * gap >= 10%, per CLAUDE.md's "Asymmetry Protocol" section corrected the
+ * same day): recomputed both gaps as a percentage of the larger side,
+ * since the engine has no built-in %-relative helper yet (see CLAUDE.md —
+ * "known gap, not yet built").
+ *   - ARMS: 0.8 lb gap / 7.0 lbs = ~11.4% — MEETS the corrected >=10%
+ *     relative threshold. Right-arm-leads prescription is retained and its
+ *     rationale updated to cite the relative-% standard instead of the
+ *     retired 0.5 lb absolute trigger.
+ *   - LEGS: 0.8 lb gap / 13.5 lbs = ~5.9% — DOES NOT meet the corrected
+ *     >=10% relative threshold, even though it cleared the old 0.5 lb
+ *     absolute trigger. Per the corrected standard's own retroactive-
+ *     scope note ("some clients' documented gaps may no longer clear
+ *     10%... needs careful per-client verification, not a blanket
+ *     rewrite"), the existing left-leg-leads unilateral prescription is
+ *     being LEFT IN PLACE here rather than silently removed — this is a
+ *     targeted language-correction pass, not a re-determination of her
+ *     programming. FLAGGED FOR HUMAN REVIEW: whether Siobhan's leg
+ *     unilateral-lead assignment should be re-evaluated (e.g. against a
+ *     functional single-leg strength/power test, per the corrected
+ *     standard's preferred primary trigger) is a genuine open question,
+ *     not resolved by this pass. Client-facing language for the leg gap
+ *     was reworded to avoid claiming it meets a trigger it does not,
+ *     while still stating the finding and the existing prescription
+ *     plainly.
  *
  * REVISION (8/13/2026, roster cross-check from icons-roster-analyst) — POWER
  * TRAINING ADDED, 55-65 BRACKET: CLAUDE.md's Power Training section places
@@ -213,18 +244,18 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Findings — Body Composition, VFA & Bone Mass',
-    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs, BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 — "${styku.shapeScoreLabel}." VFA ${styku.vfa} cm² falls in the ICONS VFA table's Low Risk band (70-99 cm²) but sits just above the <70 cm² Very Low Risk cutoff — worth tracking at the 8-week rescan alongside the composition priorities above rather than treated as a standalone concern on its own. BMI ${styku.bmi} is a clinical Underweight flag (<18.5) regardless of the "Fit" body-fat-percentage reading — see the governing sarcopenic-profile note above for how these findings interact.`,
+    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs, BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 — "${styku.shapeScoreLabel}." VFA ${styku.vfa} cm² is tracked here as a trend indicator, not a risk-band diagnosis — worth watching directionally at the 8-week rescan alongside the composition priorities above, rather than read against a fixed cm² cutoff. BMI ${styku.bmi} is a clinical Underweight flag (<18.5) regardless of the "Fit" body-fat-percentage reading — see the governing sarcopenic-profile note above for how these findings interact.`,
   },
   {
     type: 'watch',
     label: 'Segmental Asymmetry — Right Arm Leads Pull/Press, Left Leg Leads Unilateral Work',
-    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — a 0.8 lb gap, above the 0.5 lb Asymmetry Protocol trigger. RIGHT arm is weaker (lower LST) and leads every unilateral rowing/pressing exercise across this program (Single-Arm Row, Day 1; Suitcase Carry, Day 3 — the weaker hand holds the load, per the Asymmetry Protocol's anti-lateral-flexion rule). Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — also a 0.8 lb gap, above trigger. LEFT leg is weaker and leads every unilateral leg exercise (Single-Leg Stance Squat and Single-Leg RDL, Day 2; carried forward into Day 3's activation work). Reps/loads are logged per side; track both gaps at the 8-week Styku rescan.`,
+    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — a 0.8 lb gap, roughly 11% relative to the larger side. RIGHT arm is weaker (lower LST) and leads every unilateral rowing/pressing exercise across this program (Single-Arm Row, Day 1; Suitcase Carry, Day 3 — the weaker hand holds the load, per the Asymmetry Protocol's coaching convention). Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — also a 0.8 lb gap, roughly 6% relative to the larger side. LEFT leg continues to lead every unilateral leg exercise (Single-Leg Stance Squat and Single-Leg RDL, Day 2; carried forward into Day 3's activation work), with this gap tracked closely at the 8-week Styku rescan to confirm the lead assignment still reflects a real, worth-addressing difference. Reps/loads are logged per side throughout.`,
   },
   {
     type: 'gold',
     audience: 'internal',
     label: 'Age Bracket & Postmenopausal Status — 55-65 Bracket',
-    body: `At 59, Siobhan sits within CLAUDE.md's 55-65 "Postmenopausal" Age Bracket. isPostmenopausal is a confirmed, already-documented fact (not inferred from today's build), so pelvicFloorCallout() fires automatically on every day containing squat, deadlift/RDL, hip-thrust, or carry content — Days 2 and 3 in this program — and is left to fire naturally throughout, never suppressed. Protein escalates to the 2.0-2.2 g/kg ALST At-Risk/50+ tier: at her 53.5 kg bodyweight that resolves to 107-118g/day, matching her already-documented protein target exactly. Creatine is strongly indicated. LIFTMOR-style bone-loading candidacy (T-score < -1.0) is worth screening for as part of ongoing care, though no DEXA/T-score data is currently on file to confirm candidacy either way.`,
+    body: `At 59, Siobhan sits within CLAUDE.md's 55-65 "Postmenopausal" Age Bracket. isPostmenopausal is a confirmed, already-documented fact (not inferred from today's build), so pelvicFloorCallout() fires automatically on every day containing squat, deadlift/RDL, hip-thrust, or carry content — Days 2 and 3 in this program — and is left to fire naturally throughout, never suppressed. Protein escalates to the upper end of the 1.6-2.2 g/kg range on ALST At-Risk grounds (CLAUDE.md's Protein Targets section, corrected 8/17/2026 — the target is now context-driven [energy deficit / heavy training load / ALST At-Risk], not an age-band escalation; she qualifies on ALST At-Risk alone, independent of her age): at her 53.5 kg bodyweight that resolves to 107-118g/day, matching her already-documented protein target exactly — no number changed, only the stated rationale. Creatine is strongly indicated. LIFTMOR-style bone-loading candidacy (T-score < -1.0) is worth screening for as part of ongoing care, though no DEXA/T-score data is currently on file to confirm candidacy either way.`,
   },
   {
     type: 'gold',
@@ -319,7 +350,7 @@ const days = [
     subtitle: 'Squat · Single-Leg Stance Squat · Single-Leg RDL — Left Leg Leads',
     descriptor: 'MODERATE VOLUME DAY · LEFT-LEG ASYMMETRY PROTOCOL · MUSCLE-BUILDING PRIORITY',
     intensityLabel: '70% Day',
-    intensityPara: 'Moderate day — build clean volume without peak fatigue. Muscle-building is the primary physiological goal of this session given her ALST At-Risk status: every set here is real progressive resistance, not maintenance. Left leg leads every unilateral exercise per Styku\'s 0.8 lb segmental LST gap. Work at 2-3 RIR.',
+    intensityPara: 'Moderate day — build clean volume without peak fatigue. Muscle-building is the primary physiological goal of this session given her ALST At-Risk status: every set here is real progressive resistance, not maintenance. Left leg continues to lead every unilateral exercise per Styku\'s segmental LST reading. Work at 2-3 RIR.',
     warmUp: '5 min bike, banded lateral walk x10/side, glute bridge x10, standing hip abduction x10/side, bodyweight squat x8',
     blocks: [
       {
@@ -364,7 +395,7 @@ const days = [
       },
     ],
     coolDown: 'Couch stretch 30s/side, seated figure-4 hip stretch 30s/side, child\'s pose 45s',
-    iconsNote: 'Left leg leads every unilateral set this session — Styku shows a 0.8 lb segmental gap (12.7 vs 13.5 lbs), above the 0.5 lb asymmetry trigger. Track the gap at the 8-week rescan. Muscle-building remains the session\'s primary goal given ALST At-Risk status — no set here is filler.',
+    iconsNote: 'Left leg leads every unilateral set this session — Styku shows a 0.8 lb segmental gap (12.7 vs 13.5 lbs). Track the gap at the 8-week rescan. Muscle-building remains the session\'s primary goal given ALST At-Risk status — no set here is filler.',
   },
   {
     intensity: 80,
@@ -449,7 +480,7 @@ const days = [
       },
     ],
     coolDown: 'Couch stretch 30s/side, seated figure-4 hip stretch 30s/side, doorway chest stretch 20s/side (light), child\'s pose 45s',
-    iconsNote: 'Left leg leads every unilateral leg set, right hand leads the suitcase carry — both per Styku\'s 0.8 lb segmental gaps, above the 0.5 lb asymmetry trigger. Shoulder and pull work continue their pain-free progression from Day 1; sharp or pinching pain is still the stop signal, ordinary fatigue is not. Muscle-building stays the top priority — every block here is real progressive resistance.',
+    iconsNote: 'Left leg leads every unilateral leg set, right hand leads the suitcase carry — both per Styku\'s 0.8 lb segmental gaps. Shoulder and pull work continue their pain-free progression from Day 1; sharp or pinching pain is still the stop signal, ordinary fatigue is not. Muscle-building stays the top priority — every block here is real progressive resistance.',
   },
 ];
 
@@ -462,7 +493,7 @@ const summary = {
   ],
   milestones4wk: `Hex Bar Deadlift toward ${wk4.hexDL + 10} lbs x5, Squat toward ${wk4.squat + 5} lbs x6-8, Hip Thrust toward ${wk4.hipThrust + 5} lbs x8, all at 2-3 RIR. Overhead Press showing genuine week-over-week pain-free ROM expansion (not a fixed load target). Scapular block criteria (band pull-apart 3x15, 20s controlled dead hang) consistently clean — first checkpoint toward reduced pull-up assistance. Left-leg single-leg RDL/stance-squat loads matched toward parity with the right within 10%.`,
   milestones8wk: 'Hex Bar Deadlift, Squat, and Hip Thrust progressed from current tested baselines. Overhead Press fully pain-free through an expanded range, no sharp/pinching flags logged. Assisted Pull-Ups showing real reduced-assistance progression, gated release confirmed by scapular criteria being met. Plank hold past 1:30. Left/right leg and right/left arm LST gaps reduced from 0.8 lbs.',
-  rescanNote: `Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently ${styku.alstIndex} kg/m², At-Risk — the top clinical priority), BMI trend (currently ${styku.bmi}, Underweight), VFA (currently ${styku.vfa} cm², Low Risk — maintain), left/right leg and right/left arm LST gaps (baseline 0.8 lbs each, target under 0.5), lean mass (currently ${styku.leanMass} lbs — build), and continued shoulder/scapular progress.`,
+  rescanNote: `Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently ${styku.alstIndex} kg/m², At-Risk — the top clinical priority), BMI trend (currently ${styku.bmi}, Underweight), VFA (currently ${styku.vfa} cm², tracked as a trend indicator rather than a fixed risk band), left/right leg and right/left arm LST gaps (baseline 0.8 lbs each on both sides — right arm ~11% relative, left leg ~6% relative to the larger side; watch both directionally), lean mass (currently ${styku.leanMass} lbs — build), and continued shoulder/scapular progress.`,
 };
 
 const data = {
