@@ -418,7 +418,7 @@ const days = [
         exercises: [
           { name: 'Lat Pulldown (Wide Grip)', sets: '4', reps: '10–12', load: 'Moderate', tempo: '2-1-2', rest: '60s', cue: "Full stretch at top. Drive elbows to hip pockets. Don't shrug at top." },
           { name: 'Seated Cable Row', sets: '3', reps: '12–15', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Shoulder blades retract and depress at end range. Sit tall throughout.' },
-          { name: 'Wall Push-Up (Light Activation)', insight: 'Antagonist rotation — brief push touch between pull sets, no CNS tax', sets: '2', reps: '12–15', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Light chest/shoulder activation. Sub-maximal — prime the push pattern only.' },
+          { name: 'Wall Push-Up (Light Activation)', insight: 'Antagonist rotation — brief push touch between pull sets, no CNS tax', insightAudience: 'internal', sets: '2', reps: '12–15', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Light chest/shoulder activation. Sub-maximal — prime the push pattern only.' },
           { name: 'Face Pull (Band or Cable)', sets: '3', reps: '20', load: 'Light', tempo: '2-1-2', rest: '30s', cue: 'External rotation emphasis. Elbows at ear height. Rotator cuff health.' },
           { name: 'Band Pull-Apart', sets: '3', reps: '20', load: 'Light band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight. Pull to chest. Rear delt and mid-trap. Posture carry-over.' },
         ],

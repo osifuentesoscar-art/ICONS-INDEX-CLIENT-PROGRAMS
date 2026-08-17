@@ -655,7 +655,17 @@ function blockLabel(letter, title, colorKey, day, introLabel, intro) {
   return els;
 }
 
-function exTable(exercises, colorKey) {
+// isClientView: when true, an exercise's `flag`/`insight` sub-line is
+// skipped if that exercise also carries `flagAudience: 'internal'` /
+// `insightAudience: 'internal'` — the exercise-level counterpart to
+// baselineNotes' `audience: 'internal'` filter above. Needed because
+// `insight` sometimes carries build-rationale text written for a
+// trainer/auditor (e.g. "Antagonist rotation — ...", explaining why an
+// exercise was sequenced a certain way per CLAUDE.md's Antagonist
+// Rotation Rule) rather than something a client needs to read — see the
+// 8/17/2026 Client View pilot audit finding on Elizabeth Poyner's
+// document, which is what surfaced this gap.
+function exTable(exercises, colorKey, isClientView = false) {
   const hue = hueOf(colorKey);
   const headers = ['EXERCISE', 'SETS', 'REPS', 'LOAD', 'TEMPO', 'REST', 'COACHING CUE'];
   const header = new TableRow({
@@ -667,10 +677,10 @@ function exTable(exercises, colorKey) {
 
   const rows = exercises.map((ex, i) => {
     const nameParas = [para([txt(ex.name, { bold: true, size: 18, color: C.dark })])];
-    if (ex.flag) {
+    if (ex.flag && !(isClientView && ex.flagAudience === 'internal')) {
       nameParas.push(para([txt(ex.flag, { italics: true, size: 14, color: C.flagRed })]));
     }
-    if (ex.insight) {
+    if (ex.insight && !(isClientView && ex.insightAudience === 'internal')) {
       nameParas.push(para([txt(ex.insight, { italics: true, size: 14, color: C.mid })]));
     }
     let cueRuns = [txt(ex.cue || '', { size: 17, color: C.mid })];
@@ -750,7 +760,7 @@ function dayHasHeavyLoading(day) {
   );
 }
 
-function buildDayContent(day, client) {
+function buildDayContent(day, client, isClientView = false) {
   const els = [];
   const iv = ivOf(day.intensity);
   els.push(...dayHeader(day.intensity, day.title, day.subtitle, day.descriptor, day.badge));
@@ -774,7 +784,7 @@ function buildDayContent(day, client) {
 
   (day.blocks || []).forEach((block) => {
     els.push(...blockLabel(block.letter, block.title, block.color, day, block.introLabel, block.intro));
-    els.push(...exTable(block.exercises, block.color || iv.hue));
+    els.push(...exTable(block.exercises, block.color || iv.hue, isClientView));
   });
 
   if (day.coolDown) els.push(...labeledPara('Cool-Down', day.coolDown, C.blue));
@@ -840,7 +850,7 @@ async function buildDocument(data) {
 
   (data.days || []).forEach((day) => {
     children.push(new Paragraph({ children: [new PageBreak()] }));
-    children.push(...buildDayContent(day, client));
+    children.push(...buildDayContent(day, client, isClientView));
     if (data.includeProgressionBlock !== false) {
       children.push(...progressionBlock());
     }
