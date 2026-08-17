@@ -1769,8 +1769,20 @@ Measurement-validity problem (compounds the above): Styku's own published
   indefensible for a precise absolute cm² risk classification.
 
 CORRECTED APPROACH — track change over time for the individual client;
-  do not label an absolute VFA reading with a risk-band name ("Moderate
-  Risk," "High Risk") in any client document.
+  do not label an absolute VFA reading against the old 4-tier precision
+  table ("Moderate Risk," "High Risk," implying a specific graded
+  classification) in any client document. **Refined 8/17/2026 against the
+  Anna Samuelsson ICONS Performance Assessment reference document
+  (Xolokan's confirmed standard for this report type):** a short trend TAG
+  is fine — e.g. "Very Low" — provided it (a) reflects only the single
+  <70 cm² "Very Low" floor already used elsewhere in this system (not the
+  4-tier 70/100/150 table), and (b) is paired with the methodology caveat
+  every time (no universal VFA threshold exists; this device's own VFA
+  validation was against DXA in kg, not CT in cm²; read as a personal
+  trend, not a diagnosis). What's retired is presenting VFA as a precise,
+  multi-tier risk CLASSIFICATION on its own — a single low-stakes trend
+  tag with the caveat attached is the corrected house style, confirmed by
+  this reference document's own methodology-appendix footnote 4.
 Primary clinical-facing metric going forward: WAIST CIRCUMFERENCE, measured
   to protocol, against the IAS/ICCR (International Atherosclerosis Society/
   International Chair on Cardiometabolic Risk) consensus female thresholds:
