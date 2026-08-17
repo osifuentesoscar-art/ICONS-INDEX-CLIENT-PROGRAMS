@@ -211,6 +211,11 @@ const baselineNotes = [
     label: 'Judgment Call — DB Split Squat vs. Weighted Step-Up',
     body: `No exercise literally named "Split Squat" exists in Nancy's program. Weighted Step-Up (Day 3 Block A, a primary-strength-block loaded unilateral knee-dominant movement) is the closest analogous slot — closer than Day 1's Reverse Lunge or Day 3's Curtsy Lunge, both of which are deliberately light, corrective-context finishers where a heavier baseline-derived load would work against their actual purpose. The DB Split Squat baseline (${wk1.splitSquat} lbs/hand → ${wk4.splitSquat} lbs/hand) is used to inform Weighted Step-Up's Week 1 → Week 4 load on that basis.`,
   },
+  {
+    type: 'teal',
+    label: 'Perimenopausal Status — Not Assessed at Intake',
+    body: 'No menstrual irregularity, vasomotor symptoms (hot flashes/night sweats), sleep disruption, or mood-change data was reported at intake. Per CLAUDE.md\'s "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" guidance, perimenopausal symptoms can begin in the early-to-mid 30s, well before the ~45 average onset — "she\'s too young for this" is not a safe assumption to bring into a 35-45 bracket intake. Nancy is 38; isPostmenopausal is correctly left false since nothing was reported, not assumed false by age. Revisit if symptom data becomes available at a future session.',
+  },
 ];
 
 const days = [
