@@ -1933,7 +1933,7 @@ Output: `trainer_education/Becca_3Day_Training_Plan.docx`, `Brodie_3Day_Training
 
 ### Subagent Team (`.claude/agents/*.md`)
 
-Seven scoped subagents cover this system as of 8/13/2026 — one per structure built so far. Route a task to the one whose scope actually matches rather than doing everything in the main thread; each agent's own file has the operative detail, this is just the map:
+Eight scoped subagents cover this system as of 8/17/2026 — one per structure built so far. Route a task to the one whose scope actually matches rather than doing everything in the main thread; each agent's own file has the operative detail, this is just the map:
 
 | Agent | Owns | Does NOT own |
 |---|---|---|
@@ -1944,6 +1944,7 @@ Seven scoped subagents cover this system as of 8/13/2026 — one per structure b
 | `icons-doc-auditor` | Pre-delivery structural QA on `.docx`/`.pptx`/`.pdf` output (python-docx/pdfplumber checks, since rendered PDF audits are broken in this environment) | Building or editing deliverables — reports findings back, doesn't fix them itself |
 | `icons-intake-monitor` | Weekly read-only scan of the "ICONS CLIENT PROGRAMS" and "ICONS NOTES JASON PDFS" Drive folders — flags stale-document candidates and new SOAP-note data back to the main thread / `icons-expert` | Editing any document, uploading anything to Drive (the manual-handoff policy below still stands), resolving clinical conflicts itself |
 | `icons-roster-analyst` | Roster-wide category study — groups every client/athlete by actual age x sex bracket and checks whether each category is getting the strongest-evidenced method per the Method Selection Principle above; flags improvement candidates and roster-level patterns back to the main thread / `icons-expert` | Editing any document; literature research itself (that's `icons-research-analyst`/`icons-evidence-curator`); single-document structural QA (that's `icons-doc-auditor`) |
+| `icons-operations-analyst` | `CLIENT_OPERATIONS.md` — the Block 1 assessment gate, 8-week review ledger, clinical constraint register, asymmetry execution log standard, ALST/low-body-mass watchlist, nutrition protocol tracker, and special-population review checklist; verifies operational/process state against the real roster and keeps that file current | Client documents, science-layer research, single-document structural QA; and — explicitly — sending any actual notification or mechanically blocking a release, since no calendar/email/task-queue integration exists in this repo (see that file's own stated scope limitation) |
 
 **Standing practice — client roster completeness ("stay at standard across the board," added 8/13/2026 at Xolokan's direct request).** Triggered by Nancy Avitable's document being found with no `baselines[]` table and vague load placeholders throughout, despite real strength-testing data existing for her — a gap present since her first build, invisible to any diff-against-prior-version check since there was no earlier complete version to diff against. Two standing responses now cover this, not just the one-time fix:
 - **Build time** (`icons-expert`): read a client's full existing record (CLIENTS.md entry + current build script) before any build or revision — see that agent's file for the full rule.
