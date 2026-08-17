@@ -98,6 +98,33 @@ Everything else — page setup, color system, exercise tables, warm-up/cool-down
 
 ---
 
+## ICONS PERFORMANCE ASSESSMENT REPORT — INITIAL BASELINE STANDARD (added 8/17/2026, at Xolokan's direct request)
+
+A third document type, distinct from `buildDocument()` (training plan) and `buildImprovementDoc()` (before/after progress report): the INITIAL BASELINE report a client receives after her first Styku scan + full strength-testing battery, before her training plan is even built — this is what "NEW CLIENT ONBOARDING" checklist item 1 below refers to. Built by a new `buildAssessmentReport()` function in `icons_template.js`, modeled exactly on a reference document Xolokan supplied and confirmed as the standard ("this is how I want further client report standards to look") — a corrected "Anna Samuelsson — ICONS Performance Assessment" report.
+
+**Deliberately different visual language from the training-plan engine, on purpose — not a violation of the "no boxes" convention.** The training-plan engine's confirmed style (see "Visual language — confirmed from reference document" above) retired bordered/shaded callout boxes in favor of compact labeled paragraphs. The Assessment Report does the opposite by design: a dark header band, an 8-box Styku stat grid, colored callout boxes (Reference-Group Comparison, Trainer Observations, Next Steps), a strength-assessment table with flagged-row highlighting, and a tan methodology-appendix box. This is Xolokan's explicit, current standard for *this* document type specifically — the training-plan engine's "no boxes" rule is scoped to training plans and stays exactly as it was.
+
+### Structure (mirrors the reference document page-for-page)
+1. **Cover / Styku page** — three pillar badges (Aesthetics / Health / Biological Age) with a "Biological Age is a coaching framework, not a lab test" disclaimer, an 8-box Styku stat grid (Body Fat %/Lean Mass/Fat Mass/Bone Mass/BMI/BMR/Shape Score/VFA), a Reference-Group Comparison callout, and a Segmental Lean Mass Distribution section with the Asymmetry Protocol's corrected ≥10% relative-trigger language (not the retired 0.5lb absolute one).
+2. **Strength Assessment page** — the 10 core ICONS Baseline Testing Protocol movements + bonus Pull-Ups in a table (columns: #, Exercise, Weight, Reps, %BW, Level, Notes/Flags), with an honest "Not Tested Today" row for any untested movement (never fabricated), a flagged-row summary, and a "How to Read %BW and Level" explanatory box.
+3. **Exercise Benefit Breakdown pages** — one card per tested movement: Aesthetics/Health/Biological Age benefit copy, drawn from a reusable `EXERCISE_BENEFIT_LIBRARY` covering all 10 core movements + Pull-Ups, written to this file's corrected clinical framing (no "reduces osteoporosis risk" claim on Deadlift — bone-loading benefit only; no "strengthens the pelvic floor" claim on Hip Thrust — co-activation only, see the Pelvic Floor Protocol's "Co-activation during a lift ≠ PFM strengthening" addition above).
+4. **Body Measurements & Next Steps page** — a flexible circumference-measurement grid (not every client has every measurement; the grid handles a partial set gracefully), Trainer Observation cards, an optional Jason PT-notes section (see below), and numbered Next Steps cards (flexible count, not hardcoded to 4).
+5. **Methodology & How to Read This Report appendix** — a numbered footnotes list plus a "Summary of factual corrections" box for later revisions of the same client's report (omit/state "first build" when there's nothing to correct yet).
+
+### Jason's PT notes — a section within the same report, not a separate document
+Xolokan's explicit choice (confirmed 8/17/2026, when asked directly): Jason Bethea's SOAP-note summary renders as a **new section within the same Assessment Report**, placed after Trainer Observations and before Next Steps — not a separate companion document the way Client View is. Built via `jasonNotesSection()`, and only populated when real PT/rehab data exists for that client — inserting a placeholder into a client with no coordinated-care relationship with Jason would be decorative, not informative, per the same judgment-call standard the Studio Staff section already applies to naming him. When `icons-intake-monitor`'s weekly sweep of "ICONS NOTES JASON PDFS" surfaces new note data for a client who has (or should have) an Assessment Report, that's the trigger to populate or update this section — flag it the same way any other SOAP-note update gets flagged, per that agent's standing rules.
+
+### Footnotes are data, not auto-generated text
+`DEFAULT_ASSESSMENT_FOOTNOTES(data)` is exported and provides 8 shared, reusable footnotes (Body Fat Rank, BMR, Shape Score, VFA, Peer Comparison, ALST, %BW & Level, and segmental-composition reliability — the last citing the "3D Optical Scanning — Validity" section above) that apply to any client with no edits needed. A calling script extends this array with exercise-specific footnotes (numbered starting at 9) via `benefitLinesFromLibrary()`'s `{healthFootnote, bioAgeFootnote}` override parameters. **Never hand-duplicate the default 7-or-8 footnote text in a new script** — call `DEFAULT_ASSESSMENT_FOOTNOTES(data)` directly (an early mistake in the pilot build hand-duplicated it, creating a drift risk the first audit caught) — and **never cite a source in a footnote without independently verifying it first**, even one supplied in a reference document Xolokan provides directly — the pilot build's Hip Thrust footnote initially carried an uncited "Skaug et al. 2024" reference that `icons-doc-auditor` correctly flagged as absent from this file's science layer; it turned out to be real and has since been verified and properly cited both here (Pelvic Floor Protocol section) and in the footnote text itself, but that verification step is not optional just because a citation came from Xolokan's own source material.
+
+### Level (Novice/Intermediate/Advanced) is a coach judgment call, not a formula
+The reference document is explicit that Level "combines an ExRx 1RM-based reference table with a visual assessment of movement quality" — this is deliberately NOT a pure calculation. **Do not hardcode a fake ExRx percentile table into the engine.** Level is a per-exercise input field the document builder (ultimately the trainer) supplies, informed by the client's actual training history and movement quality on the day, not something `buildAssessmentReport()` computes from weight/reps/bodyweight alone.
+
+### Pilot and rollout status
+First built and piloted on Rena Paul (`clients/rena_paul/Rena_Paul_ICONS_Performance_Assessment.docx`, `scripts/rena_paul_assessment_report.js`) — chosen for having the most complete baseline data on file (full 8-box Styku scan + 9-of-10 core movements tested with real weights/reps). Independently audited via `icons-doc-auditor`, clean after two fixes (the footnote-duplication and unverified-citation issues above). **Not yet rolled out to the rest of the roster** — per the same "confirm the pilot before batch-producing" discipline already used for Client View's rollout, generating an Assessment Report for every other client with sufficient baseline data on file is real, separate follow-up work, not assumed to happen automatically.
+
+---
+
 ## THE TEMPLATE ENGINE — `icons_template.js`
 
 **Location:** `scripts/icons_template.js`
@@ -1847,6 +1874,35 @@ Language: "If you experience any leaking, heaviness, or pressure —
 Do NOT say: "train through it" or minimize symptoms
 Refer to pelvic floor PT when symptomatic
 
+Co-activation during a lift ≠ PFM strengthening (added 8/17/2026, verified
+  citation): heavy compound lifting (squat, deadlift, hip thrust) requires
+  the PFM to co-activate for intra-abdominal pressure and spinal stability,
+  and that co-activation is normal and well tolerated — but it is NOT the
+  same thing as building PFM strength. Skaug KL, Engh ME, Bø K, "Acute
+  Effect of Heavy Weightlifting on the Pelvic Floor Muscles in
+  Strength-Trained Women: An Experimental Crossover Study," Medicine &
+  Science in Sports & Exercise 2024;56(1):37-43 (n=47 nulliparous,
+  strength-trained women; back squat/deadlift at 75-85% 1RM vs. seated
+  rest, vaginal pressure + surface EMG measurement) found (1) heavy
+  weightlifting had no immediate adverse effect on the PFM relative to
+  rest — well tolerated, reinforcing the "symptom onset ≠ damage" framing
+  above — and (2) PFM strength was NOT significantly correlated with
+  whole-body maximal or relative strength (1RM or 1RM/bodyweight) in
+  either squat or deadlift, leading the authors to conclude that targeted
+  PFM training is necessary to actually improve PFM strength — heavy
+  lifting does not build it as a side effect. Practical takeaway: a
+  client's heavy-lifting program is not a substitute for targeted PFM
+  training (Kegels / a PFM-specific protocol) if continence or PFM
+  strength is itself a goal or concern — that stays a pelvic floor PT
+  referral, same posture as the rest of this section. Scope caveat: this
+  cohort was young (18-35), nulliparous, and already strength-trained —
+  not a direct replication of this file's core postmenopausal population
+  — but it is the most direct available evidence on this specific
+  co-activation-vs-strengthening question, and there is no mechanistic
+  reason to expect the finding (whole-body lifting strength and PFM
+  strength are physiologically distinct qualities) to reverse in an
+  older, postmenopausal, or postpartum population.
+
 Prevalence — why this deserves systematic, not passive, screening (added
   8/17/2026): reported symptom rates run high in lifting populations —
   urinary incontinence in 44% of female powerlifters, 50% of elite
@@ -2852,13 +2908,17 @@ Elizabeth Poyner's document (`scripts/elizabeth_poyner_5day_plan.js`) is the mos
 When a new client joins, build IN THIS ORDER:
 
 ```
-□ 1. ICONS Performance Assessment Report (.docx via icons_template.js)
-      - Styku scan block (stykuBlock)
-      - Strength baselines table
-      - Baseline narrative callouts (push-up protocol, pull-up protocol, scan notes, corrective priorities)
-      - Evidence-based nutrition block (nutritionBlock)
-      - Trainer observations (obs_card × 6–7)
-      - Next steps (step_card × 4)
+□ 1. ICONS Performance Assessment Report (.docx via buildAssessmentReport() —
+      see "ICONS PERFORMANCE ASSESSMENT REPORT — INITIAL BASELINE STANDARD"
+      above for the full spec; updated 8/17/2026, supersedes the old
+      obs_card/step_card sketch this checklist used to carry)
+      - 8-box Styku stat grid + Segmental Lean Mass Distribution (statBoxGrid, statRowGrid/highlightRow)
+      - Strength Assessment table, 10 core movements + bonus Pull-Ups (strengthAssessmentTable)
+      - Exercise Benefit Breakdown cards, Aesthetics/Health/Biological Age (benefitCard, EXERCISE_BENEFIT_LIBRARY)
+      - Body measurements grid + Trainer Observation cards (observationCard)
+      - Jason PT-notes section if a coordinated-care relationship exists (jasonNotesSection)
+      - Next Steps cards, flexible count (nextStepCard)
+      - Methodology & footnotes appendix (footnotesList, DEFAULT_ASSESSMENT_FOOTNOTES + exercise-specific extensions)
 
 □ 2. Training Plan PDF (reportlab)
       - Match day split to their schedule
@@ -2999,6 +3059,7 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 | Breast cancer survivorship / lymphedema | 8/17/2026 | Women, any bracket | **Zero roster clients — proactive only** |
 | Women 65+ bracket (as a whole) | never dedicated | Women 65+ | **Zero roster clients** — Elizabeth Poyner (64) is closest |
 | Male 60+ bracket (as a whole) | never dedicated | Men 60+ | **Zero roster clients** |
+| Pelvic Floor Protocol (bracing model, PFM co-activation vs. strengthening) | 8/17/2026 | Women, postmenopausal/heavy-loading | Well-represented (5 clients carry the callout) |
 
 **8/11/2026 — first pass.** Checked: postmenopausal resistance training/BMD, creatine (cognition + bone), protein/sarcopenia, perimenopause RT, the ACSM 2026 RIR citation itself, 20s/30s bone mass, ACL/neuromuscular training, fall-risk/power training 65+.
 - **Corrected:** Creatine's bone-density benefit was stated flatly ("bone (Hall et al. 2025)") — actual evidence is mixed, including a 2-year RCT in older women showing no BMD improvement over placebo. Softened to reflect the real uncertainty; cognition/strength/sleep claims stayed as-is since those are well-supported.
@@ -3107,13 +3168,21 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Corroborated with additions — Menstrual Cycle Training, confirmed the best-aligned protocol in the entire system.** ICONS's existing stance (no calendar-phase restrictions, RPE/RIR autoregulation, 3-cycle individual symptom tracking) matches current consensus almost point-for-point. Added independent corroboration from the 2025 UEFA menstrual-cycle-tracking consensus (which also specifies exactly a 3-cycle, 21-35-day-regular-cycle self-report window) and a 2025 scoping review finding calendar-based phase calculations specifically "are not accurate." One real downgrade: HRV moved from a decision input to an optional observational metric only — a 2024 RCT found HRV-guided individualization produced no significant advantage on any strength/hypertrophy/function outcome versus fixed scheduling. Added a menstrual-health red-flag referral trigger (absent/irregular/newly-lost periods → medical referral, not a programming adjustment) and confirmed the phase-ACL-risk question remains genuinely unresolved (not a basis for phase-based precautions) — the real, phase-independent elevated ACL risk in women is already addressed via the corrected universal neuromuscular circuit above.
 - Sources: [Examination Committee for "Obesity Disease," Japan (JASSO), VFA ≥100cm² CT-derived criterion, Circulation Journal 66:987-992] · [Kelley et al., VFA thresholds in women >45, Diabetes Care 26:1413] · [Polcrová et al., Kardiovize cohort VFA cutoffs, UCL Discovery] · [Ross et al., IAS/ICCR consensus, waist circumference thresholds, Nature Reviews Endocrinology 16:177-189] · [Bennett et al., Styku S100 validation against DXA, Clinical Nutrition 41:211-218] · [Tinsley et al., 3D optical scanning vs. 4-compartment model, Applied Physiology, Nutrition, and Metabolism 46:644-650] · [D'Souza & Phillips, female athlete protein targets, GSSI Sports Science Exchange #270, Nov 2025] · [Nunes et al., protein dose-response meta-analysis, Journal of Cachexia, Sarcopenia and Muscle 13:795-810] · [Jäger et al., ISSN protein position stand, JISSN 14:20] · [Shaw et al., collagen + vitamin C pre-load, American Journal of Clinical Nutrition 105:136-143] · [Bischof et al., collagen dose-response systematic review, Sports Medicine 54:2865-2888] · [Kirmse et al., collagen performance meta-analysis, Deutsche Zeitschrift für Sportmedizin 75:179-188] · [Refalo et al., RIR prediction accuracy, Journal of Strength and Conditioning Research 2024] · [Robinson et al., proximity-to-failure dose-response meta-regression, Sports Medicine 2024 (reused, already cited above)] · [Moesgaard et al., periodization meta-analysis, Sports Medicine 2022] · [Antonio et al., ISSN creatine common questions/misconceptions, JISSN 2021] · [Watson et al., LIFTMOR RCT, Journal of Bone and Mineral Research 2018] · [MEDEX-OP pelvic floor safety analysis, PMC12618346, 2025] · ["Strong, Steady and Straight" UK consensus statement, British Journal of Sports Medicine 2022;56:837] · [Colenso-Semple et al., menstrual cycle umbrella review, Frontiers in Sports and Active Living 2023] · [UEFA consensus on menstrual cycle tracking, BMJ Open Sport & Exercise Medicine 2025;11(3):e002769] · Source document: Brace Life / ICONS Methodology / External Evidence Review (uploaded 8/17/2026, prepared for Oscar Sifuentes, Operations Lead/Movement Architect).
 
+**8/17/2026 — fifteenth pass. Citation verification: "Skaug et al. 2024" (heavy compound lifting co-activates but does not strengthen the pelvic floor) — new pilot document type, Priority-flagged by `icons-doc-auditor`.** Triggered by the new ICONS Performance Assessment Report document type's Hip Thrust benefit copy (drawn from Xolokan's own uploaded reference document) citing "Skaug et al. 2024" for the claim that heavy compound lifting co-activates but does not itself strengthen the pelvic floor — a citation `icons-doc-auditor` flagged as absent from this file's citation trail and therefore unverified. The client-facing citation text had already been pulled from the pilot document pending this check (see `scripts/rena_paul_assessment_report.js`'s header comment), with the underlying claim retained unattributed as a reasonable inference from the existing Pelvic Floor Protocol. This pass verifies (or replaces) that citation directly.
+- **Verified — the citation is real, correctly attributed, and directly on-point (not a garbled or mis-cited reference).** Skaug KL, Engh ME, Bø K, "Acute Effect of Heavy Weightlifting on the Pelvic Floor Muscles in Strength-Trained Women: An Experimental Crossover Study," *Medicine & Science in Sports & Exercise* 2024;56(1):37-43. Confirmed via multiple independent search hits (PubMed/PMC record, the journal's own LWW/Ovid listing, and the 2023 ICS conference abstract that preceded the full publication) — journal, year, volume/issue/pages, and all three author names cross-checked and consistent across sources. n=47 nulliparous, strength-trained women (18-35), randomized crossover of 60 min heavy weightlifting — 4×4 back squat and deadlift at 75-85% 1RM — vs. 60 min seated rest, with vaginal pressure (PFM resting pressure/strength/endurance) and surface EMG measured before/after each condition. Two findings, both directly relevant: (1) heavy weightlifting had no immediate adverse effect on the PFM relative to rest — reinforcing, not contradicting, this file's existing "symptom onset ≠ damage, heavy lifting is well tolerated by the PFM" framing (added 8/17/2026, thirteenth pass); and (2) PFM strength showed **no statistically significant correlation** with whole-body maximal or relative strength (1RM or 1RM/bodyweight) in either squat or deadlift — the authors' own stated conclusion is that this implies **targeted PFM training is necessary to improve PFM strength**, i.e. heavy compound lifting does not build PFM strength as a side effect of building whole-body strength. This is essentially a verbatim match for the claim in the pilot document's original footnote — the citation was correct, just previously unverified in this system.
+- **Added:** a new paragraph, "Co-activation during a lift ≠ PFM strengthening," in the Pelvic Floor Protocol section of the Evidence-Based Science Layer, with the full citation and an honest scope caveat (the Skaug cohort is young, nulliparous, and already strength-trained — not a direct replication of this file's core postmenopausal population — but it is the most direct available evidence on this specific mechanistic question, and there is no reason to expect a physiologically distinct-qualities finding like this to reverse in an older population). Framed as a practical takeaway: a client's heavy-lifting program is not a substitute for targeted PFM training if continence/PFM strength is itself a goal, which stays a pelvic floor PT referral — consistent with, not a change to, this section's existing referral-not-diagnose posture.
+- **Categorization: Upgrade.** The underlying claim was already correctly stated in the pilot document and retained (unattributed) in CLAUDE.md's inference chain per the auditor's interim fix — this pass supplies the verified citation that was missing, rather than correcting a substantive error.
+- **Handback note:** per this agent's scope boundary, `scripts/rena_paul_assessment_report.js` and `scripts/icons_template.js` were NOT edited — the Hip Thrust footnote text in those files should be updated to cite Skaug KL, Engh ME, Bø K, *Medicine & Science in Sports & Exercise* 2024;56(1):37-43 directly, matching the language now in CLAUDE.md's Pelvic Floor Protocol section.
+- Sources: [Skaug KL, Engh ME, Bø K, "Acute Effect of Heavy Weightlifting on the Pelvic Floor Muscles in Strength-Trained Women: An Experimental Crossover Study," Medicine & Science in Sports & Exercise 2024;56(1):37-43 — journal listing](https://journals.lww.com/acsm-msse/fulltext/2024/01000/acute_effect_of_heavy_weightlifting_on_the_pelvic.5.aspx) (also [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC11805478/) and [Ovid/LWW full text](https://www.ovid.com/jnls/acsm-msse/fulltext/10.1249/mss.0000000000003275~acute-effect-of-heavy-weightlifting-on-the-pelvic-floor)) · [ICS 2023 Abstract #282, preceding conference abstract for the same study/authors](https://www.ics.org/2023/abstract/282) · [World Physiotherapy congress-proceeding listing, same study](https://world.physio/congress-proceeding/acute-effect-heavy-weightlifting-pelvic-floor-muscles-experimental-crossover)
+
 ---
 
 ## SCRIPTS QUICK REFERENCE
 
 | Script | Purpose | Output |
 |--------|---------|--------|
-| `icons_template.js` | Canonical docx engine | .docx via buildDocument() |
+| `icons_template.js` | Canonical docx engine | .docx via buildDocument() / buildImprovementDoc() / buildAssessmentReport() |
+| `rena_paul_assessment_report.js` | Rena Paul's ICONS Performance Assessment (pilot, 8/17/2026) | clients/rena_paul/Rena_Paul_ICONS_Performance_Assessment.docx |
 | `kelly_mulroy_plan.js` | Kelly's 5-day plan data | Kelly_Mulroy_5Day...v2.docx |
 | `siobhan_icons_report_v3.js` | Siobhan assessment report | Siobhan_Hansen_ICONS_Report_v3.docx |
 | `siobhan_3day_plan_v2.py` | Siobhan 3-day PDF | Siobhan_Hansen_3Day_Training_Plan.pdf |
