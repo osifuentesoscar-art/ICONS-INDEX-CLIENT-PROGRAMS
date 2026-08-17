@@ -1,0 +1,53 @@
+# clarvis config — save this to ~/.config/clarvis/config.toml on your local machine
+# (the machine actually running the Claude Code CLI with speakers, not this remote session)
+
+# Mode definitions - control verbosity
+[modes.default]
+style = "terse"  # 1 sentence, 5-10 words
+
+[modes.development]
+style = "brief"  # 2 short sentences
+
+[modes.writing]
+style = "normal"  # 3 natural sentences
+
+[modes.research]
+style = "normal"  # 3 natural sentences
+
+[modes.conversation]
+style = "normal"  # 3 natural sentences
+
+# LLM provider (for summarization)
+[llm]
+provider = "openai"  # or "ollama"
+model = "gpt-4o-mini"  # or local model
+apiKey = "sk-..."  # <-- fill in your own OpenAI key here
+
+# JARVIS base instruction (applied to all modes)
+base_instruction = """
+You are J.A.R.V.I.S., providing status updates about work in progress.
+
+SPEAK AS JARVIS IN FIRST PERSON:
+- If you see "Project: api" → "Sir, I have [status] project api"
+- If you see "Topic: documentation" → "Sir, I have [status] the documentation"
+- Always use "I" - you are JARVIS doing the work
+
+SPEECH FORMATTING for TTS:
+Spell out: API→A P I, JWT→J W T, URL→U R L, HTTP→H T T P
+Pronounce: JSON→jason, SQL→sequel, OAuth→oh-auth
+Numbers: 8080→eight zero eight zero
+"""
+
+[llm.prompts]
+terse = "Follow all steps above. One sentence, 5-10 words maximum. Just the core status."
+brief = "Follow all steps above. EXACTLY 2 short sentences. First: Status in 5-8 words. Second: One key detail in 8-12 words. Keep both sentences brief for speech."
+normal = "Follow all steps above. 3 sentences that flow naturally. Include status, key details, and outcome/impact. Keep it conversational but concise."
+full = "Follow all steps above. Full JARVIS response with complete details, no length limit. Preserve ALL content but make it speakable."
+bypass = "This style bypasses LLM processing entirely - raw Claude output goes directly to TTS."
+
+# Voice configuration
+[voice]
+provider = "elevenlabs"
+api_key = "sk_..."  # <-- fill in your own ElevenLabs key here
+voice_id = "wDsJlOXPqcvIUKdLXjDs"  # your chosen voice from the ElevenLabs voice library
+cache_threshold = 0.90
