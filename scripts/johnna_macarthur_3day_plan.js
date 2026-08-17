@@ -173,6 +173,7 @@ const baselineNotes = [
   },
   {
     type: 'teal',
+    audience: 'internal',
     label: 'Styku Findings — Body Composition & ALST',
     body: 'Body Fat 36.5% (58.6 lbs fat mass) — Styku\'s own "Average" classification (35–39.9% band). Lean Mass 96.6 lbs (60.2%) carries Styku\'s "Ideal Lean Mass" flag — a genuinely positive marker. Bone Mass 5.3 lbs (3.3%). BMI 23.7 — Normal (18.5–24.9). Shape Score 70/100 — Good. ALST Index 6.32 kg/m²: Styku\'s own report labels this binary "Not At-Risk," which is technically correct against the EWGSOP2 <5.5 kg/m² at-risk cutoff — but CLAUDE.md\'s governing 3-tier table for women (<5.5 At-Risk / 5.5–6.99 Normal — monitor / ≥7.0 Optimal) places 6.32 in the Normal — monitor tier, not Optimal. That more nuanced table is the clinically governing read used throughout this program, not Styku\'s pass/fail label — ALST is worth tracking at the 8-week rescan to confirm it is trending toward, not away from, the 7.0 Optimal threshold.',
   },
@@ -199,10 +200,11 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
-    body: 'At 54, Johnna sits in the 45–55 age bracket. Protein and creatine targets below reflect the 2.0–2.2 g/kg "50+" tier automatically (proteinTargets() resolves this from ageYears/weightKg), and creatine is strongly indicated by age alone regardless of ALST status. Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing on the current scan indicates low bone mass.',
+    body: 'At 54, Johnna sits in the 45–55 age bracket. Protein and creatine targets below reflect the 2.0–2.2 g/kg "50+" tier automatically, and creatine is strongly indicated by age alone regardless of ALST status. Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing on the current scan indicates low bone mass.',
   },
   {
     type: 'teal',
+    audience: 'internal',
     label: 'Perimenopausal Status — Not Assessed, isPostmenopausal Left False',
     body: 'No menstrual irregularity, vasomotor symptoms (hot flashes/night sweats), sleep disruption, or mood-change data was reported at intake. Per CLAUDE.md\'s "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" guidance, treating an unconfirmed 45–55-bracket client as pelvic-floor-cautious by default applies specifically WHEN those symptoms are reported — none were reported here, so isPostmenopausal is left false rather than escalated, and the pelvic floor callout correctly does not auto-fire despite squat, deadlift, hip thrust, and lunge content appearing across this program. Revisit this if symptom data becomes available at a future session.',
   },
@@ -419,12 +421,21 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'johnna_macarthur');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Johnna_Macarthur_3Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — no clientHighlight set: this is a
+  // first-build program with no prior version/PR on file to compare
+  // against, so per CLAUDE.md's Client View spec, nothing is fabricated.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Johnna_Macarthur_3Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

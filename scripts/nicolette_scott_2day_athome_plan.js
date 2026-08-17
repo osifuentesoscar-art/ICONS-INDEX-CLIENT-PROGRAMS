@@ -88,6 +88,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Summary — Full Scan Detail Lives in the Full-Gym Document',
+    audience: 'internal',
     body: 'ALST Index 5.52 kg/m² — Normal/monitor tier per CLAUDE.md\'s 3-tier table (NOT At-Risk), but only 0.02 kg/m² above the At-Risk cutoff — a genuine monitoring point for her 8-week rescan. VFA (Segmental Analysis) 20.1 cm² — Very Low Risk (correcting Styku\'s own "Low Risk" dashboard label; the separate raw "Visceral Fat 0.2" figure elsewhere on her scan is a different, non-cm² scale and is not used). BMI 18.6 — technically Normal, only 0.1 above the Underweight cutoff, noted as borderline and not flagged clinically. The complete Styku table (body fat, lean mass, bone mass, Shape Score, full segmental LST) lives in her companion 2-Day Full Gym Training Plan — the clinical facts and asymmetry protocol below apply identically here.',
   },
   {
@@ -98,6 +99,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket & Program Level',
+    audience: 'internal',
     body: 'At 35 — the literal boundary of the 20-35 and 35-45 brackets — no CLAUDE.md numeric threshold actually differs at this exact age, so the shared guidance applies directly: protein stays at the active-women-general 1.6 g/kg tier, creatine is indicated (not yet strongly indicated), full volume/frequency target, RIR-based autoregulation. This is a first build for a first-time-tested, early-intermediate client — technique-first, not advanced/elite periodization, same posture as the full-gym version.',
   },
   {
@@ -284,13 +286,28 @@ const data = {
   summary,
 };
 
+// Client View (added 8/17/2026): no `clientHighlight` set — same reasoning
+// as the full-gym companion document (first-build client, nothing to
+// compare against yet). 2 baselineNotes are internal-only (Styku Summary —
+// explicitly cites CLAUDE.md's 3-tier table and corrects Styku's own
+// dashboard label; Age Bracket & Program Level — cites CLAUDE.md's bracket-
+// boundary reasoning directly). No `insight`/`flag` fields exist anywhere in
+// this script, so no exercise-level filtering was needed, and no block
+// `intro` text references either internal-only note ("see note above"-style
+// dangling references), so nothing else needed rewording.
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'nicolette_scott');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Nicolette_Scott_2Day_AtHome_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Nicolette_Scott_2Day_AtHome_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

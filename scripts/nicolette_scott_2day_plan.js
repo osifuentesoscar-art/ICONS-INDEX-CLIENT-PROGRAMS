@@ -153,6 +153,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Findings — Interpretation & One Correction',
+    audience: 'internal',
     body: `Shape Score 85/100 (Excellent). Body Fat 26.6% (Fit — lower than 70% of peers). ALST Index 5.52 kg/m² lands in the Normal/monitor tier (5.5-6.99) per CLAUDE.md's 3-tier table, NOT At-Risk — but it sits only 0.02 kg/m² above the At-Risk cutoff, close enough to flag as a genuine monitoring point for her 8-week rescan rather than a present-day clinical flag. VFA (Segmental Analysis): 20.1 cm² — Styku's own dashboard labels this "Low Risk," but per CLAUDE.md's VFA table (<70 cm²) this correctly reads Very Low Risk. (A separate raw "Visceral Fat 0.2" figure on the Body Composition summary page is a different, non-cm² scale and is not used here.) BMI 18.6 — technically Normal but only 0.1 above the Underweight cutoff; noted as borderline, not flagged as clinical underweight (that threshold is <18.5, not crossed), and not combined with her ALST reading to imply a sarcopenic-obesity profile — that specific flag requires both conditions, and neither is met.`,
   },
   {
@@ -163,6 +164,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket — 35, the Boundary of 20-35 and 35-45',
+    audience: 'internal',
     body: 'At exactly 35, Nicolette sits on the literal boundary between "Foundation & Peak Bone Mass" and "Transition Onset." No CLAUDE.md numeric threshold actually differs between these two brackets at this exact age — protein stays at the active-women-general 1.6 g/kg tier (she is neither ALST At-Risk nor 40+), and creatine is indicated, not yet strongly indicated. This program applies the shared guidance directly: full volume/frequency target (>=10 sets/muscle/week across the week), no early escalation, RIR-based autoregulation throughout.',
   },
   {
@@ -173,6 +175,7 @@ const baselineNotes = [
   {
     type: 'green',
     label: 'Baseline Battery — Full 10-Pattern Coverage',
+    audience: 'internal',
     body: 'The "ICONS Index Full-Spectrum Progression Standard" is scoped to women 40-55 and does not apply to Nicolette at 35 (not applied here as a requirement). Her intake battery already covers all 10 core ICONS Baseline Testing Protocol patterns on its own merits — DB Split Squat stands in for the Lunges test. Pull-Ups (the bonus 11th test) were not tested and are not fabricated; introduce assisted pull-up testing once foundational pulling strength is established over the coming weeks.',
   },
   {
@@ -356,13 +359,29 @@ const data = {
   summary,
 };
 
+// Client View (added 8/17/2026): no `clientHighlight` set — this is a
+// first-build client with no prior version/PR on record to compare against,
+// so per CLAUDE.md's Client View spec ("never fabricate one") nothing is
+// invented here. 3 baselineNotes are internal-only (Styku Findings —
+// Interpretation & One Correction, Age Bracket boundary reasoning, Baseline
+// Battery Full-Spectrum-Standard scoping note) — all three explicitly name
+// CLAUDE.md/internal standards or correct Styku's own dashboard label, which
+// reads as audit/documentation content, not a client message. No `insight`
+// or `flag` fields exist anywhere in this script, so no exercise-level
+// filtering was needed.
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'nicolette_scott');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Nicolette_Scott_2Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Nicolette_Scott_2Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

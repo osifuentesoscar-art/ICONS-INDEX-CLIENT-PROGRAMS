@@ -178,16 +178,19 @@ const baselineNotes = [
   },
   {
     type: 'gold',
+    audience: 'internal',
     label: 'Age Bracket — 44 Years Is a Working Figure, Not Confirmed',
     body: 'Kayma\'s trainer confirmed she is in her 40s but did not supply an exact age. 44 is used here as a working figure, positioned at the boundary of CLAUDE.md\'s 35-45 "Transition Onset" and 45-55 "Perimenopause/Menopause Transition" brackets — treat the bracket-specific detail (LIFTMOR bone-loading candidacy screening, perimenopausal symptom monitoring) as provisional until her actual age is confirmed. What does not depend on resolving this: since she is confirmed in her 40s regardless of exactly where, the 40+ protein tier (1.8-2.0 g/kg/day) will apply once real weight data exists, whichever side of 44 she actually falls on.',
   },
   {
     type: 'gold',
+    audience: 'internal',
     label: 'Intake Gap — No Styku Scan, Weigh-In, or Baseline Battery on File',
     body: 'No Styku body-composition scan and no weight are on file, so protein/creatine targets and full clinical interpretation (ALST, VFA, BMI) are not calculated here — inventing them from an assumed weight would be fabrication, not programming. No tested strength battery (1RM/5RM) is on file either, so every load below is a descriptive band ("Heavy," "Moderate-Heavy," a working range in lbs/hand) rather than a percentage of a real number. Recommend running the standard 11-exercise ICONS Baseline Testing Protocol at her next session, alongside a Styku scan and weigh-in, so this document can be revised from descriptive to numeric prescriptions using epley1RM()/workingLoad() off real data.',
   },
   {
     type: 'teal',
+    audience: 'internal',
     label: 'Perimenopausal Status — Not Assessed, isPostmenopausal Left False',
     body: 'No menstrual irregularity, vasomotor symptoms (hot flashes/night sweats), sleep disruption, or mood-change data was reported at intake. Per CLAUDE.md\'s "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" guidance, treating an unconfirmed 45-55-bracket client as pelvic-floor-cautious by default applies specifically when those symptoms ARE reported — none were reported here, so isPostmenopausal is left false rather than escalated, and the pelvic floor callout correctly does not auto-fire. Revisit this if symptom data becomes available at a future session.',
   },
@@ -198,6 +201,7 @@ const baselineNotes = [
   },
   {
     type: 'gold',
+    audience: 'internal',
     label: 'ICONS Index Coverage Added — Push-Ups & Single-Leg RDL (8/13/2026)',
     body: 'Push-Ups and Single-Leg RDL were genuinely absent from this program — not just lightly touched — and are added to close that gap: Push-Up (Day A, Block D, loaded-carry/core/conditioning) and Single-Leg RDL (Day B, Block B, primary hinge/squat). Both use the same descriptive-band load convention already established throughout this document (no tested 1RM battery exists yet to derive numbers from), and both are placed to preserve the Antagonist Rotation Rule\'s no-3-consecutive-same-pattern standard within their block — not waived for her Advanced level, per CLAUDE.md\'s explicit note that heavier absolute loads at an advanced level make that rule\'s underlying accumulated-stress mechanism higher-stakes, not lower. Both should be included in her first ICONS Baseline Testing Protocol session so these descriptive bands can convert to real numbers alongside the rest of the program.',
   },
@@ -253,10 +257,10 @@ const days = [
         title: 'LOADED CARRY, CORE & CONDITIONING — HR-CAPPED',
         color: 'gold',
         introLabel: 'Cardiac-Safe Format — 160 BPM Ceiling',
-        intro: 'Energy becomes identity — the session\'s finish, respecting the 160 bpm cardiac ceiling throughout. Heavy carry work doubles as core and grip loading at a controlled pace; the kettlebell work closes the session at a moderate, HR-monitored pace, not an all-out finisher. Check the HR monitor between every set in this block — ease pace immediately if approaching 160 bpm. Push-Up is new this update — closes the program\'s previously-missing direct push-up coverage.',
+        intro: 'Energy becomes identity — the session\'s finish, respecting the 160 bpm cardiac ceiling throughout. Heavy carry work doubles as core and grip loading at a controlled pace; the kettlebell work closes the session at a moderate, HR-monitored pace, not an all-out finisher. Check the HR monitor between every set in this block — ease pace immediately if approaching 160 bpm.',
         exercises: [
           { name: 'Suitcase Carry (Single-Side, Heavy DB)', sets: '3+3', reps: '30 yds ea', load: '40–50 lbs', tempo: 'Controlled', rest: '60s', cue: 'Resist lateral lean, tall posture. Check HR monitor before switching sides.' },
-          { name: 'Push-Up (Weighted Vest or Tempo, Advanced Variation)', sets: '3', reps: '10–12', load: 'Bodyweight or light vest/plate', tempo: '3-1-1', rest: '45s', cue: 'New this update. Full brace, neutral spine, chest to floor. Add a light vest or slow the eccentric to 3-count for advanced loading — bodyweight-based, brief effort, minimal HR carryover into the next exercise.' },
+          { name: 'Push-Up (Weighted Vest or Tempo, Advanced Variation)', sets: '3', reps: '10–12', load: 'Bodyweight or light vest/plate', tempo: '3-1-1', rest: '45s', cue: 'Full brace, neutral spine, chest to floor. Add a light vest or slow the eccentric to 3-count for advanced loading — bodyweight-based, brief effort, minimal HR carryover into the next exercise.' },
           { name: 'Weighted Plank (Plate on Back)', sets: '3', reps: '30–45s', load: 'Light-Mod plate', tempo: 'Hold', rest: '45s', cue: 'Full brace, ribs down, no sag or pike. Isometric — minimal HR load.' },
           { name: 'Kettlebell Swing (Two-Hand, Moderate Pace)', sets: '3', reps: '12', load: 'Moderate KB', tempo: 'Controlled — not max effort', rest: '60s', cue: 'Hip hinge back, steady controlled pace. Check HR monitor after each set; stop the set early if approaching 160 bpm.' },
         ],
@@ -290,12 +294,12 @@ const days = [
         letter: 'B',
         title: 'PRIMARY HINGE & SQUAT — PEAK LOADS',
         introLabel: 'Load Target',
-        intro: 'The week\'s heaviest resistance work. Full recovery between every set — near-maximal loading, not fatigue accumulation. Advanced complexity: paused unilateral lunge and a peak-week trap bar pull. This block is not affected by the cardiac ceiling the way conditioning is — controlled heavy sets with full rest between them do not sustain HR the way continuous circuit work does — but the HR monitor stays on throughout regardless. Single-Leg RDL is new this update — closes the program\'s previously-missing unilateral hinge coverage, placed last so the block never stacks three consecutive hinge-pattern lifts (Front Rack Reverse Lunge breaks the run between the two hinge pairs).',
+        intro: 'The week\'s heaviest resistance work. Full recovery between every set — near-maximal loading, not fatigue accumulation. Advanced complexity: paused unilateral lunge and a peak-week trap bar pull. This block is not affected by the cardiac ceiling the way conditioning is — controlled heavy sets with full rest between them do not sustain HR the way continuous circuit work does — but the HR monitor stays on throughout regardless. Single-Leg RDL closes the block, rounding out the week\'s unilateral hinge work.',
         exercises: [
           { name: 'Trap Bar Deadlift', sets: '4', reps: '5', load: 'Heavy — near-maximal, 1 RIR', tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, symmetric setup, drive floor away hard. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Barbell Hip Thrust', sets: '4', reps: '6–8', load: 'Heavy — 1-2 RIR', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, full hip lockout, squeeze glutes hard at top. Exhale on exertion — do not hold your breath through the rep.' },
           { name: 'Front Rack Reverse Lunge (DB or BB)', sets: '3+3', reps: '6 ea', load: 'Moderate-Heavy', tempo: '3-1-1, 1s pause at bottom', rest: '75s', cue: 'Step back with control, front knee tracks over toes, pause at depth.' },
-          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8 ea', load: 'Moderate — 20–25 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'New this update. Slight bend in standing knee, hinge from the hip, reach toward floor, squeeze glute to return. Free hand may lightly touch a rack or wall for balance if needed early on — advanced target is unassisted. Left leg leads first.' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8 ea', load: 'Moderate — 20–25 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Slight bend in standing knee, hinge from the hip, reach toward floor, squeeze glute to return. Free hand may lightly touch a rack or wall for balance if needed early on — advanced target is unassisted. Left leg leads first.' },
         ],
       },
       {
@@ -349,12 +353,22 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'kayma_liburd');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Kayma_Liburd_2Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — no clientHighlight set: this is a
+  // from-scratch first build with no Styku/baseline battery on file yet
+  // (see "INTAKE GAPS" above), so there is no real PR/prior-version
+  // comparison to surface — nothing is fabricated here.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Kayma_Liburd_2Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

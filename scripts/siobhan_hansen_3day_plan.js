@@ -198,7 +198,7 @@ const baselineNotes = [
   {
     type: 'clinical',
     label: 'ALST At-Risk + BMI Underweight — Sarcopenic Profile, Top Clinical Priority',
-    body: `Combined ALST Index ${styku.alstIndex} kg/m² (At-Risk, <5.5 threshold) and BMI ${styku.bmi} (Underweight, <18.5) is the specific numeric combination CLAUDE.md's Evidence-Based Science Layer names its single highest-priority flag pattern ("sarcopenic obesity profile"). The label reads counterintuitively against a client presenting as clinically underweight, but the underlying composition is consistent with it, not contradicted by it: Body Fat ${styku.bodyFatPct}% (${styku.fatMass} lbs fat mass) is Styku's own "Fit" tier in isolation, yet against a lean mass of only ${styku.leanMass} lbs (${styku.leanMassPct}%) and an ALST Index well below the sarcopenia threshold, that fat mass represents a disproportionate share of an already-depleted total body composition — low muscle mass co-occurring with a relatively elevated fat proportion despite low total bodyweight is the compositional signature this flag is naming. This is the top programming priority in this document: muscle-building is the primary physiological goal of every session, progressive resistance is prioritized on all three training days, protein/creatine escalate per the tier below, and no metabolic finisher in this plan is allowed to compromise recovery capacity for the resistance work driving this goal.`,
+    body: `Combined ALST Index ${styku.alstIndex} kg/m² (At-Risk, <5.5 threshold) and BMI ${styku.bmi} (Underweight, <18.5) is a numeric combination known clinically as a "sarcopenic obesity profile" — the top clinical priority in this program. The label reads counterintuitively against a client presenting as clinically underweight, but the underlying composition is consistent with it, not contradicted by it: Body Fat ${styku.bodyFatPct}% (${styku.fatMass} lbs fat mass) is Styku's own "Fit" tier in isolation, yet against a lean mass of only ${styku.leanMass} lbs (${styku.leanMassPct}%) and an ALST Index well below the sarcopenia threshold, that fat mass represents a disproportionate share of an already-depleted total body composition — low muscle mass co-occurring with a relatively elevated fat proportion despite low total bodyweight is the compositional signature this flag is naming. This is the top programming priority in this document: muscle-building is the primary physiological goal of every session, progressive resistance is prioritized on all three training days, protein/creatine escalate per the tier below, and no metabolic finisher in this plan is allowed to compromise recovery capacity for the resistance work driving this goal.`,
   },
   {
     type: 'red',
@@ -218,15 +218,17 @@ const baselineNotes = [
   {
     type: 'watch',
     label: 'Segmental Asymmetry — Right Arm Leads Pull/Press, Left Leg Leads Unilateral Work',
-    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — a 0.8 lb gap, above the 0.5 lb Asymmetry Protocol trigger. RIGHT arm is weaker (lower LST) and leads every unilateral rowing/pressing exercise across this program (Single-Arm Row, Day 1; Suitcase Carry, Day 3 — the weaker hand holds the load, per the Asymmetry Protocol's anti-lateral-flexion rule). Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — also a 0.8 lb gap, above trigger. LEFT leg is weaker and leads every unilateral leg exercise (Single-Leg Stance Squat and Single-Leg RDL, Day 2; carried forward into Day 3's activation work). Both gaps confirmed via weakerSide() — 'right' for arms, 'left' for legs. Reps/loads are logged per side; track both gaps at the 8-week Styku rescan.`,
+    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — a 0.8 lb gap, above the 0.5 lb Asymmetry Protocol trigger. RIGHT arm is weaker (lower LST) and leads every unilateral rowing/pressing exercise across this program (Single-Arm Row, Day 1; Suitcase Carry, Day 3 — the weaker hand holds the load, per the Asymmetry Protocol's anti-lateral-flexion rule). Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — also a 0.8 lb gap, above trigger. LEFT leg is weaker and leads every unilateral leg exercise (Single-Leg Stance Squat and Single-Leg RDL, Day 2; carried forward into Day 3's activation work). Reps/loads are logged per side; track both gaps at the 8-week Styku rescan.`,
   },
   {
     type: 'gold',
+    audience: 'internal',
     label: 'Age Bracket & Postmenopausal Status — 55-65 Bracket',
     body: `At 59, Siobhan sits within CLAUDE.md's 55-65 "Postmenopausal" Age Bracket. isPostmenopausal is a confirmed, already-documented fact (not inferred from today's build), so pelvicFloorCallout() fires automatically on every day containing squat, deadlift/RDL, hip-thrust, or carry content — Days 2 and 3 in this program — and is left to fire naturally throughout, never suppressed. Protein escalates to the 2.0-2.2 g/kg ALST At-Risk/50+ tier: at her 53.5 kg bodyweight that resolves to 107-118g/day, matching her already-documented protein target exactly. Creatine is strongly indicated. LIFTMOR-style bone-loading candidacy (T-score < -1.0) is worth screening for as part of ongoing care, though no DEXA/T-score data is currently on file to confirm candidacy either way.`,
   },
   {
     type: 'gold',
+    audience: 'internal',
     label: 'Power Training Added — 55-65 Bracket (8/13/2026)',
     body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day 3, Block F now includes a Box Step-Up Jump: bodyweight, full recovery between sets, and deliberately a lower-body movement — no overhead component, given the left shoulder reintroduction still underway in Blocks A and C. Full recovery between sets is the defining design feature of power work, distinct from a metabolic stimulus, so it does not compete with the deliberately brief metabolic finishers used elsewhere in this program, which stay short specifically to protect recovery capacity for the ALST At-Risk/Underweight resistance-training priority named above.',
   },
@@ -476,12 +478,21 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'siobhan_hansen');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Siobhan_Hansen_3Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — no clientHighlight set: this is a
+  // first-build program with no prior version/PR on file to compare
+  // against, so per CLAUDE.md's Client View spec, nothing is fabricated.
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Siobhan_Hansen_3Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {

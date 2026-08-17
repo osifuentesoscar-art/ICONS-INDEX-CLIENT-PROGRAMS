@@ -203,11 +203,13 @@ const baselineNotes = [
   },
   {
     type: 'watch',
+    audience: 'internal',
     label: 'Menopausal Status — Unconfirmed, Flagged for Next Intake',
     body: 'No menopausal status was stated by the trainer at intake — isPostmenopausal is left unconfirmed here rather than fabricated. At 55, Mary is at or past the average age of menopause onset (~51), and this program includes real, heavy hip-thrust, squat, and deadlift loading — exactly the pattern the pelvic floor protocol exists to safeguard. Per CLAUDE.md\'s Perimenopausal Status guidance, the transition window itself (not just confirmed postmenopausal status) carries elevated stress-urinary-incontinence risk, so this is not a low-stakes unknown. Confirming her actual status is worth doing at the next intake conversation given how load-bearing that determination is for whether the pelvic floor safety callout should be running on every heavy day. Until confirmed, coach standard pelvic floor bracing and exhale-on-exertion cues verbally on all heavy hinge and squat work as a precaution, independent of what this document auto-generates.',
   },
   {
     type: 'gold',
+    audience: 'internal',
     label: 'Power Training Added — 55-65 Bracket (8/16/2026)',
     body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day A, Block D now includes a Trap Bar Jump: a light load well below her tested hinge working weights, moved with maximal intent, full recovery between sets. Full recovery is the defining design feature of power work, distinct from a metabolic stimulus, so it is sequenced before the Conditioning Finisher rather than after it — trained fresh, not stacked onto fatigue. Mary carries no clinical flag ruling out any particular movement, but a lower-body, non-overhead jump pattern was chosen as the more conservative default, consistent with how this same addition was made for her closest bracket-mates on the roster (Siobhan Hansen, Elizabeth Poyner), and because it pairs naturally with the hex bar equipment already in use on this day.',
   },
@@ -390,12 +392,24 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'mary_burfete');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Mary_Burfete_2Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  // Client View (added 8/17/2026) — no clientHighlight set: this is a
+  // first-build program with no prior version/PR on file to compare
+  // against, so per CLAUDE.md's Client View spec, nothing is fabricated.
+  // (Her baseline battery is strong, but these are first-ever tested
+  // numbers, not a documented improvement over a prior program version.)
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
+  const clientOutPath = path.join(outDir, 'Mary_Burfete_2Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
+
   console.log('Computed working loads:', {
     hexDL1RM, hexDL_wk1, hexDL_wk4,
     backSquat1RM, backSquat_wk1, backSquat_wk4,
