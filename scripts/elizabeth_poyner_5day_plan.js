@@ -255,7 +255,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Bone-Loading Candidacy — LIFTMOR / T-Score Screening',
-    body: 'At 64 and postmenopausal, Elizabeth sits in the 55-65 bracket where LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth pursuing directly — framed as "bone investment," not added risk. Her Hex Deadlift and Hip Thrust content above already trains at or near LIFTMOR\'s ≥80% 1RM standard, so the training stimulus is already in place; a DEXA scan would confirm formal candidacy and give a T-score baseline to track. No DEXA/T-score data is currently on file. This same recommendation already appears in her separate Brace Life Improvement Report — added here too (8/17/2026, roster-wide research-coverage sweep) so it lives in the document she and her trainer actually train from week to week, not only in the progress-report file.',
+    body: 'At 64 and postmenopausal, Elizabeth sits in the 55-65 bracket where LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth pursuing directly — framed as "bone investment," not added risk. Her Hex Deadlift and Hip Thrust content above already trains at or near LIFTMOR\'s ≥80% 1RM standard, so the training stimulus is already in place; a DEXA scan would confirm formal candidacy and give a T-score baseline to track. No DEXA/T-score data is currently on file.',
   },
 ];
 
@@ -507,6 +507,15 @@ const summary = {
   rescanNote: 'Scan completed. Weight 114 lbs (essentially flat vs. 115 lbs pre-scan — the 116–118 lb lean-gain target was not reached this cycle). ALST Index 5.85 kg/m² — Not At-Risk (Normal/monitor tier, just under the 7.0 Optimal threshold). Body Fat 27.1% (Fit — lower than 80% of peers). Lean Mass 78.4 lbs. Fat Mass 30.8 lbs. VFA 61.4 cm² — Very Low Risk. Shape Score 98/100 — Excellent. BMI 18.9. Segmental: Left Arm LST 6.2 lbs / Right Arm LST 6.4 lbs (0.2 lb gap — below the 0.5 lb asymmetry threshold). Left Leg LST 12.7 lbs / Right Leg LST 13.1 lbs (0.4 lb gap — below threshold, monitor only, no unilateral-lead protocol change indicated). Compare all 9 ICONS battery lifts against these new baselines heading into the next block.',
 };
 
+// Client View highlight (added 8/17/2026) — her most compelling
+// documented PR, matching the "New PR" language already in baselineNotes.
+// Only set when a real prior number exists to compare against (175 lbs,
+// per her training log) — never fabricated.
+const clientHighlight = {
+  label: 'New Deadlift PR',
+  body: 'You just set a new Hex Deadlift PR — 195 lbs × 5, up from your previous PR of 175 lbs. That\'s an estimated 1RM of 228 lbs. Every heavy set at this weight is a direct investment in your bone density.',
+};
+
 const data = {
   client,
   styku,
@@ -520,12 +529,18 @@ const data = {
 };
 
 async function main() {
-  const buffer = await buildDocument(data);
   const outDir = path.join(__dirname, '..', 'clients', 'elizabeth_poyner');
   fs.mkdirSync(outDir, { recursive: true });
+
+  const buffer = await buildDocument(data);
   const outPath = path.join(outDir, 'Elizabeth_Poyner_5Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
+
+  const clientBuffer = await buildDocument({ ...data, viewMode: 'client', clientHighlight });
+  const clientOutPath = path.join(outDir, 'Elizabeth_Poyner_5Day_Training_Plan_Client_View.docx');
+  fs.writeFileSync(clientOutPath, clientBuffer);
+  console.log('Wrote', clientOutPath);
 }
 
 main().catch((err) => {
