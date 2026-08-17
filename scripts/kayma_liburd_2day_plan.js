@@ -22,9 +22,15 @@
  *     "Transition Onset" and 45-55 "Perimenopause/Menopause Transition"
  *     brackets in CLAUDE.md's Age Bracket Programming Framework. This is
  *     flagged explicitly in baselineNotes rather than silently presented as
- *     a real intake value. Because she's confirmed in her 40s regardless of
- *     exactly where, the 40+ protein tier (1.8-2.0 g/kg) would apply either
- *     way once real weight data exists — noted for the future revision.
+ *     a real intake value. LANGUAGE CORRECTED 8/17/2026 (CLAUDE.md's
+ *     Protein Targets section, re-keyed from age to context): the prior
+ *     note here asserted an automatic "40+ tier (1.8-2.0 g/kg)" escalation
+ *     regardless of exactly where in her 40s she falls — that framing is
+ *     retired. The 1.6 g/kg baseline applies to her regardless of exact
+ *     age within her 40s; moving toward 2.2 g/kg/day is gated on a genuine
+ *     energy deficit, heavy training load, or ALST At-Risk status, not age
+ *     alone — none of which is confirmed on file for her yet, alongside the
+ *     missing weight data noted above.
  *   - No baselines table and no epley1RM()/workingLoad() calls anywhere —
  *     there is no tested 1RM/5RM battery to calculate working loads from.
  *     Every load prescription below uses descriptive bands ("Heavy",
@@ -180,7 +186,7 @@ const baselineNotes = [
     type: 'gold',
     audience: 'internal',
     label: 'Age Bracket — 44 Years Is a Working Figure, Not Confirmed',
-    body: 'Kayma\'s trainer confirmed she is in her 40s but did not supply an exact age. 44 is used here as a working figure, positioned at the boundary of CLAUDE.md\'s 35-45 "Transition Onset" and 45-55 "Perimenopause/Menopause Transition" brackets — treat the bracket-specific detail (LIFTMOR bone-loading candidacy screening, perimenopausal symptom monitoring) as provisional until her actual age is confirmed. What does not depend on resolving this: since she is confirmed in her 40s regardless of exactly where, the 40+ protein tier (1.8-2.0 g/kg/day) will apply once real weight data exists, whichever side of 44 she actually falls on.',
+    body: 'Kayma\'s trainer confirmed she is in her 40s but did not supply an exact age. 44 is used here as a working figure, positioned at the boundary of CLAUDE.md\'s 35-45 "Transition Onset" and 45-55 "Perimenopause/Menopause Transition" brackets — treat the bracket-specific detail (LIFTMOR bone-loading candidacy screening, perimenopausal symptom monitoring) as provisional until her actual age is confirmed. What does not depend on resolving this: the 1.6 g/kg/day protein baseline applies to her regardless of exactly where in her 40s she falls; moving toward 2.2 g/kg/day once real weight data exists is gated on a genuine energy deficit, heavy training load, or ALST At-Risk status — not age alone (corrected 8/17/2026, CLAUDE.md\'s Protein Targets section).',
   },
   {
     type: 'gold',
