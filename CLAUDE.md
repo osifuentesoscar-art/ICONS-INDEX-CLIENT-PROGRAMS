@@ -2265,6 +2265,25 @@ For age-specific programming emphasis (protein tier, creatine indication, bone l
 
 Standing practice (started 8/11/2026, at Xolokan's request): periodically re-research the Evidence-Based Science Layer against current literature, across every age bracket the roster has actually served (25–64 so far) and any bracket a future client might fall into, and fold verified findings back into this file — corrections as well as additions. Each entry below is one pass: what was checked, what changed, what was corroborated as-is (not touched), and sources. Do not add an entry for using the science layer to build a client doc — only for a pass that changed or verified the reference material itself.
 
+**Coverage Index (added 8/17/2026)** — a quick-scan reference so a pass can pick a genuinely under-served topic/bracket without re-reading all twelve prior entries below. Update this table's "Last Verified" column whenever a pass touches that topic; do not rewrite the dated log entries themselves. This exists specifically to counter "always re-researching the roster's most common bracket" — see `icons-research-analyst.md`'s "Coverage discipline" section.
+
+| Topic / Section | Last Verified | Population Scope | Roster Representation |
+|---|---|---|---|
+| Postmenopausal RT/BMD, ACSM RIR model, protein/sarcopenia, ACL/knee-valgus, fall-risk power | 8/11/2026 | Women, all brackets | Well-represented |
+| HRT/MHT, GLP-1, sleep & recovery, 35-45 onset | 8/11/2026 | Women 35-45+ | Well-represented |
+| Male Client Programming Framework | 8/11/2026 | Men, all brackets | Thin (20-39, 40-59 only — 60+ has zero roster clients as of 8/17/2026) |
+| Perimenopausal status screening ambiguity | 8/11/2026 | Women 35-55 | Well-represented |
+| Cardiovascular/cardiac considerations | 8/12/2026 | All, both sexes | Thin (1 client roster-wide) |
+| Rep-range/RIR vs. fixed 8-12 | 8/13/2026 | All | Well-represented |
+| Protein-tier trigger logic (age-50 OR-gate) | 8/13/2026 | Women 45-55 | Well-represented |
+| PNF / Niko Heers staff naming | 8/13/2026 | All (staff-capability, not clinical) | 2 clients (Moe Shahheidari, and others per fit) |
+| Postpartum & DRA | 8/14/2026 | Women, any bracket | **Zero roster clients — proactive only** |
+| Vitamin D & Calcium (bone cofactor) | 8/15/2026 | Women 55+ | Well-represented (referral-only content) |
+| Osteoarthritis (knee/hip) | 8/16/2026 | All, both sexes | **Zero roster clients — proactive only** |
+| Breast cancer survivorship / lymphedema | 8/17/2026 | Women, any bracket | **Zero roster clients — proactive only** |
+| Women 65+ bracket (as a whole) | never dedicated | Women 65+ | **Zero roster clients** — Elizabeth Poyner (64) is closest |
+| Male 60+ bracket (as a whole) | never dedicated | Men 60+ | **Zero roster clients** |
+
 **8/11/2026 — first pass.** Checked: postmenopausal resistance training/BMD, creatine (cognition + bone), protein/sarcopenia, perimenopause RT, the ACSM 2026 RIR citation itself, 20s/30s bone mass, ACL/neuromuscular training, fall-risk/power training 65+.
 - **Corrected:** Creatine's bone-density benefit was stated flatly ("bone (Hall et al. 2025)") — actual evidence is mixed, including a 2-year RCT in older women showing no BMD improvement over placebo. Softened to reflect the real uncertainty; cognition/strength/sleep claims stayed as-is since those are well-supported.
 - **Upgraded:** the 65+ bracket's fall-risk/functional-transfer bullet previously carried an explicit "not evidence-backed" caveat because no citation existed yet. A 2025 Mayo Clinic Proceedings study (~4,000 adults, 10+ yr follow-up) now gives that real evidentiary backing via power (not just strength) training — new "Power Training — Fall Risk & Longevity" subsection added, caveat removed, and the guidance extended down into the 55–65 bracket since power decline starts before 65.
