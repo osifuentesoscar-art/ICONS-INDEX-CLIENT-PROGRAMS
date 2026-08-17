@@ -48,14 +48,38 @@
  * CLAUDE.md's "Retroactive scope" note, not something to silently change
  * from inside a new report script).
  *
- * FOOTNOTES: 9 total. Footnotes 1-7 reuse the engine's DEFAULT_ASSESSMENT_
- * FOOTNOTES() generic methodology language verbatim (Body Fat Rank / BMR /
- * Shape Score / VFA / Peer Comparison / ALST / % BW & Level — all directly
- * applicable to Rena's data with no edits needed). Footnotes 8-9 are new,
- * exercise-specific caveats (Deadlift bone-loading claim scope; Hip Thrust
- * co-activation-vs-strengthening distinction) attached via
- * `benefitLinesFromLibrary()`'s override parameter, matching how Anna's
- * reference document's own footnotes 8-9 covered the identical two claims.
+ * FOOTNOTES: 10 total, via the engine's exported DEFAULT_ASSESSMENT_
+ * FOOTNOTES() (added 8/17/2026, post-audit fix — see below). Footnotes 1-8
+ * are the engine's shared default set (Body Fat Rank / BMR / Shape Score /
+ * VFA / Peer Comparison / ALST / % BW & Level / segmental-composition
+ * reliability — all directly applicable to Rena's data with no edits
+ * needed). Footnotes 9-10 are exercise-specific caveats (Deadlift
+ * bone-loading claim scope; Hip Thrust co-activation-vs-strengthening
+ * distinction) attached via `benefitLinesFromLibrary()`'s override
+ * parameter, matching how Anna's reference document's own footnotes 8-9
+ * covered the identical two claims (renumbered 9-10 here to make room for
+ * the new shared footnote 8).
+ *
+ * POST-AUDIT FIX (8/17/2026, independent icons-doc-auditor pass): two
+ * findings addressed. (1) The engine's DEFAULT_ASSESSMENT_FOOTNOTES() was
+ * previously unexported, so this script hand-duplicated footnotes 1-7 —
+ * a drift risk. Now exported and reused directly, plus extended with a new
+ * marker 8 covering CLAUDE.md's "3D Optical Scanning — Validity" finding
+ * that segmental (arm/leg) composition is this scanner's least-validated
+ * output (CCCs ~0.32-0.52 vs. DXA) — referenced from the Segmental Lean
+ * Mass section's `asymmetryNote` via a `[8]` marker. (2) Footnote 9 (Hip
+ * Thrust co-activation) previously cited "Skaug et al. 2024," a citation
+ * that could not be independently verified against this system's vetted
+ * science-layer sources (grep-confirmed absent from CLAUDE.md's Research
+ * Update Log and Evidence-Based Science Layer). Removed the unverified
+ * citation rather than leaving it in template language that will get
+ * reused across the roster; the underlying co-activation-vs-strengthening
+ * claim is retained, since it already follows from CLAUDE.md's existing
+ * Pelvic Floor Protocol distinction between bracing/co-activation during
+ * heavy lifting and dedicated pelvic-floor-muscle training. Flagged to
+ * `icons-research-analyst` as a real follow-up: find and cite a verified
+ * primary source for this specific claim, or fold the finding into
+ * CLAUDE.md's Pelvic Floor Protocol section directly.
  *
  * JASON'S PT NOTES: deliberately NOT populated for this delivered document
  * — Rena has no in-house PT/rehab flag or SOAP-note data on file (no
@@ -75,7 +99,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { buildAssessmentReport, benefitLinesFromLibrary, pctOfBodyweight } = require('./icons_template');
+const { buildAssessmentReport, benefitLinesFromLibrary, pctOfBodyweight, DEFAULT_ASSESSMENT_FOOTNOTES } = require('./icons_template');
 
 const BW = 116; // lbs, matches client.weightKg 52.6 in her training-plan script
 
@@ -120,7 +144,7 @@ const alstRow = {
 
 // Relative gaps: arms 0.1/6.4 ≈ 1.6%, legs 0.4/13.7 ≈ 2.9% — both well under
 // the corrected ≥10% relative Asymmetry Protocol trigger.
-const asymmetryNote = 'A left/right arm lean-mass difference of about 2% was observed (L 6.3 vs R 6.4 lbs), and a left/right leg difference of about 3% (L 13.3 vs R 13.7 lbs, right-dominant). Both fall well under the range research associates with meaningful strength asymmetry (commonly flagged at 10–15%+), so no unilateral-lead protocol is triggered from this scan alone — tracked as routine monitoring and confirmed again at the next rescan.';
+const asymmetryNote = 'A left/right arm lean-mass difference of about 2% was observed (L 6.3 vs R 6.4 lbs), and a left/right leg difference of about 3% (L 13.3 vs R 13.7 lbs, right-dominant).[8] Both fall well under the range research associates with meaningful strength asymmetry (commonly flagged at 10–15%+), so no unilateral-lead protocol is triggered from this scan alone — tracked as routine monitoring and confirmed again at the next rescan.';
 
 const strength = {
   protocolIntro: 'ICONS Protocol: 10 core movements + 1 bonus, assessed on weight lifted, reps, and movement quality. Reassessed every 8–12 weeks. Benchmarks: Aesthetics · Health · Biological Age | Mobility & flexibility assessed as part of the longevity factor.',
@@ -143,12 +167,12 @@ const strength = {
 };
 
 const benefitCards = [
-  { exercise: 'Deadlift (Hex or BB)', weightRepsLabel: '85 lbs · 5 reps', lines: benefitLinesFromLibrary('Deadlift', { bioAgeFootnote: 8 }) },
+  { exercise: 'Deadlift (Hex or BB)', weightRepsLabel: '85 lbs · 5 reps', lines: benefitLinesFromLibrary('Deadlift', { bioAgeFootnote: 9 }) },
   { exercise: 'Overhead Press (Seated DB)', weightRepsLabel: '15 lbs/hand · 5 reps', lines: benefitLinesFromLibrary('Overhead Press') },
   { exercise: 'Incline Dumbbell Press', weightRepsLabel: '20 lbs/hand · 5 reps', lines: benefitLinesFromLibrary('Incline Dumbbell Press') },
   { exercise: 'Push-Ups (Incline)', weightRepsLabel: 'Bodyweight · 10 reps', lines: benefitLinesFromLibrary('Push-Ups') },
   { exercise: 'Farmers Carry (DB, Both Hands)', weightRepsLabel: '30 lbs/hand · 4 sets, 25–30 yds', lines: benefitLinesFromLibrary('Farmers Carry') },
-  { exercise: 'Hip Thrust', weightRepsLabel: '85 lbs · 5 reps', lines: benefitLinesFromLibrary('Hip Thrust', { healthFootnote: 9 }) },
+  { exercise: 'Hip Thrust', weightRepsLabel: '85 lbs · 5 reps', lines: benefitLinesFromLibrary('Hip Thrust', { healthFootnote: 10 }) },
   { exercise: 'Single-Leg RDL (DB)', weightRepsLabel: '25 lbs/hand · 8 reps', lines: benefitLinesFromLibrary('Single-Leg RDL') },
   { exercise: 'Lunges (DB)', weightRepsLabel: '25 lbs/hand · 5 reps', lines: benefitLinesFromLibrary('Lunges') },
   { exercise: 'Plank Hold', weightRepsLabel: 'Bodyweight · 2:00 min', lines: benefitLinesFromLibrary('Plank Hold') },
@@ -213,27 +237,16 @@ const data = {
   // corrections intentionally omitted — first build.
 };
 
-// Build the 7 standard footnotes (matching the engine's own internal
-// default set verbatim), then append the two exercise-specific ones this
-// document actually uses (Deadlift bone-loading scope; Hip Thrust
-// co-activation distinction).
+// Use the engine's own exported default (1-8: Body Fat Rank / BMR / Shape
+// Score / VFA / Peer Comparison / ALST / % BW & Level / segmental-composition
+// reliability — all directly applicable to Rena's data with no edits needed),
+// then append two exercise-specific footnotes this document uses (Deadlift
+// bone-loading scope; Hip Thrust co-activation distinction), numbered 9-10.
 function buildFootnotes() {
-  // Re-derive the same 7 default footnotes the engine would use if
-  // data.footnotes were left undefined, then extend to 9. (The engine's
-  // DEFAULT_ASSESSMENT_FOOTNOTES() is an internal, unexported function by
-  // design — it's a document-default, not a general-purpose primitive —
-  // so this script defines its own 1-7 text here, matching that default
-  // verbatim, to keep the footnote list a single explicit array.)
   return [
-    { marker: 1, text: 'Body-fat "Rank" (e.g., Fit) is generated by Styku against its own norm-referenced comparison groups, drawn from self-selected clinical/fitness-testing populations — not a nationally representative sample. A population-representative comparison can shift a person\'s percentile substantially versus these vendor tables, even though the underlying body-fat % is identical.' },
-    { marker: 2, text: 'BMR is calculated with the Revised Harris-Benedict equation from height, weight, age, and sex — a population-average formula, not a measured value (only indirect calorimetry measures metabolic rate directly). Published accuracy studies show these formulas land within ±10% of measured resting metabolic rate for roughly half of people; treat the number as a useful planning estimate, not a precise reading.' },
-    { marker: 3, text: 'Shape Score is a Styku-proprietary composite of body fat %, a muscle-fat index, and waist-to-height ratio, designed for easy client communication. It has not been independently validated as a clinical health score — read it as a personal trend-tracking number, not a diagnostic one.' },
-    { marker: 4, text: 'Visceral Fat Area is shown as a single trend tag ("Very Low," the <70 cm² floor already used elsewhere in this system) rather than a multi-tier risk classification — no consensus body endorses one universal VFA threshold, published CT-derived cutoffs for elevated risk in women run considerably higher (commonly cited around 106 cm²+), and this scanner\'s own visceral-fat validation was performed against DXA in kilograms, not against CT in cm². Read this number as a personal trend to track over time, alongside waist circumference.' },
-    { marker: 5, text: 'Peer-comparison percentiles reflect Styku\'s own reference database for similar age/sex, drawn from self-selected fitness/clinical testing populations, not a nationally representative survey. A population-representative comparison can place the same body composition at a meaningfully different percentile.' },
-    { marker: 6, text: 'Appendicular Lean Soft Tissue (ALST) Index reflects the sex-specific EWGSOP2 reference range (women: <5.5 kg/m² is the low-muscle-mass screening cutoff). Rena\'s 5.94 kg/m² sits comfortably above that cutoff and within the normal reference range for women — there is no separate female "Optimal" tier above it; a higher band once used for this (≥7.0 kg/m²) is EWGSOP2\'s MALE threshold, not a female one, and is not used in this report. ALM/ALMI from 3D optical scanning has not been independently validated against DXA in the published Styku validation study — read this number as a trend to track at future scans, not a precise classification.' },
-    { marker: 7, text: 'See the in-page note on "How to Read % BW and Level" on the Strength Assessment page.' },
-    { marker: 8, text: 'Deadlift: the Biological Age line above describes a bone-loading benefit associated with maintained/improved bone mineral density in women 40+ — it does not claim to reduce Rena\'s individual osteoporosis risk, since a single assessment (with no bone-density scan on file) cannot confirm that for any one person.' },
-    { marker: 9, text: 'Hip Thrust: the Health line above describes deep-core/pelvic-floor co-activation during the lift, not pelvic-floor strengthening — current research (e.g., Skaug et al. 2024) finds no measurable pelvic-floor-muscle strength change from heavy compound lifts alone; only targeted pelvic-floor training builds pelvic-floor strength.' },
+    ...DEFAULT_ASSESSMENT_FOOTNOTES(data),
+    { marker: 9, text: 'Deadlift: the Biological Age line above describes a bone-loading benefit associated with maintained/improved bone mineral density in women 40+ — it does not claim to reduce Rena\'s individual osteoporosis risk, since a single assessment (with no bone-density scan on file) cannot confirm that for any one person.' },
+    { marker: 10, text: 'Hip Thrust: the Health line above describes deep-core/pelvic-floor co-activation during the lift, not pelvic-floor strengthening — heavy compound lifting alone is not a substitute for targeted pelvic-floor training, which is what builds pelvic-floor strength specifically.' },
   ];
 }
 data.footnotes = buildFootnotes();

@@ -1733,6 +1733,7 @@ function DEFAULT_ASSESSMENT_FOOTNOTES(data) {
     { marker: 5, text: 'Peer-comparison percentiles reflect Styku\'s own reference database for similar age/sex, drawn from self-selected fitness/clinical testing populations, not a nationally representative survey. A population-representative comparison can place the same body composition at a meaningfully different percentile.' },
     { marker: 6, text: 'Appendicular Lean Soft Tissue (ALST) Index reflects the sex-specific EWGSOP2 reference range (women: <5.5 kg/m² is the low-muscle-mass screening cutoff). There is no separate female "Optimal" tier above that cutoff — a higher band once used for this (≥7.0 kg/m²) is EWGSOP2\'s MALE threshold, not a female one, and is not used in this report. ALM/ALMI from 3D optical scanning has not been independently validated against DXA in the published Styku validation study — read this number as a trend to track at future scans, not a precise classification.' },
     { marker: 7, text: 'See the in-page note on "How to Read % BW and Level" on the Strength Assessment page.' },
+    { marker: 8, text: 'Segmental (left/right arm and leg) lean-mass figures are this scanner\'s least-validated output — cross-device comparisons against DXA show CCCs (concordance) on the order of 0.32-0.52 for segmental composition, well below the accuracy of whole-body totals. Read a segmental gap as a general trend to monitor, not a precise measurement; a functional strength test (single-leg press, isometric strength, single-leg jump) is preferred over the scan number alone before any programming change is made on the strength of a segmental finding.' },
   ];
 }
 
@@ -1745,6 +1746,7 @@ module.exports = {
   strengthAssessmentTable, flagsSummaryBox,
   EXERCISE_BENEFIT_LIBRARY, getExerciseBenefits, benefitLinesFromLibrary, benefitCard,
   observationCard, nextStepCard, footnotesList, correctionsSummaryBox, jasonNotesSection,
+  DEFAULT_ASSESSMENT_FOOTNOTES,
   C,
   PAGE_W, PAGE_H, MARGIN, TW,
   buildHeader, buildFooter,
