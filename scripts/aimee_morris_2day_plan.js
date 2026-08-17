@@ -177,7 +177,7 @@ const days = [
     subtitle: 'Deadlift · Press · Carry — Strength Emphasis & Hip Hinge Development',
     descriptor: 'STRENGTH EMPHASIS · HIP HINGE DEVELOPMENT · CARDIOVASCULAR FINISHER · 55–65 MIN',
     intensityLabel: "Day A's Purpose",
-    intensityPara: 'Hinge, press, and loaded carry work built around hip hinge development. Hex bar deadlift stays as the primary hinge lift for now, and all pressing is dumbbell-based — moderate progression means new patterns get added deliberately rather than all at once, even with the stenosis restriction cleared. The day closes with a Zone 2 or HIIT cardio finisher — the primary cardiovascular training stimulus in this 2-day/week program.',
+    intensityPara: 'Hinge, press, and loaded carry work built around hip hinge development. Hex bar deadlift stays as the primary hinge lift for now, and all pressing is dumbbell-based — moderate progression means new patterns get added deliberately rather than all at once, even with the stenosis restriction cleared. The day closes with a Zone 2 or HIIT cardio finisher — the primary cardiovascular training stimulus in this 2-day/week program. This program does not use the standard ICONS 60/70/80/90 day-intensity framework — with spinal stenosis history and moderate-progression pacing, load advances only as each newly-reintroduced movement proves clean, not on a fixed weekly % schedule; the badge color reflects the day\'s pattern focus, not an intensity percentage.',
     warmUp: '10 min: 5 min stationary bike or treadmill walk (Zone 2 — cardiovascular warm-in). Then hip hinge rehearsal: PVC or broomstick hip hinge drill 2×10 (spine neutral, hinge from hips not back), glute bridge 2×15, dead bug 2×8 each side (spine decompression before loading), cat-cow 10 slow reps, ankle circles 10 each.',
     blocks: [
       {
@@ -251,7 +251,7 @@ const days = [
     subtitle: 'Split Squat · Row · Pull-Up — Pulling Strength & Pull-Up Progression',
     descriptor: 'PULLING STRENGTH · PULL-UP PROGRESSION · METABOLIC CONDITIONING · 55–65 MIN',
     intensityLabel: "Day B's Purpose",
-    intensityPara: 'Squat, pull, and pull-up progression work using DB/KB-only lower-body loading (barbell back squat is still deferred — see baseline notes) and a metabolic conditioning circuit that doubles as the day\'s cardiovascular stimulus. Neutral-grip pull-up leads every session.',
+    intensityPara: 'Squat, pull, and pull-up progression work using DB/KB-only lower-body loading (barbell back squat is still deferred — see baseline notes) and a metabolic conditioning circuit that doubles as the day\'s cardiovascular stimulus. Neutral-grip pull-up leads every session. Same non-%-graded framework as Day A — progression is pattern-by-pattern, not a fixed weekly intensity schedule.',
     warmUp: '10 min: 5 min bike or treadmill walk (Zone 2 cardiovascular warm-in). Then: glute bridge 2×15, hip hinge rehearsal 2×10 (runs every session), goblet squat 2×10 light (30 lbs, depth focus), cat-cow 10, dead hang 20 seconds (shoulder decompression), band pull-aparts or arm circles 2×15.',
     blocks: [
       {
