@@ -291,6 +291,11 @@ clearFlag(label, body)
     coolDown: string,
     iconsNote: string,
     pelvicFloor?: false,             // set to suppress the auto pelvic-floor callout on this specific day
+    forcePelvicFloor?: true,         // added 8/17/2026 — renders the callout regardless of client.isPostmenopausal,
+                                      // for the Perimenopausal Status "unconfirmed but should be cautious" case
+                                      // (a 45-55 bracket client with ambiguous status and real heavy-loading
+                                      // content). See Mary Burfete's document for the reference usage — don't
+                                      // fabricate isPostmenopausal: true to get this effect; use this field instead.
     badge?: { label: string, sub?: string },  // overrides the day-header badge's default "{intensity}%" / "INTENSITY" text — for non-%-graded days (letter-named days, "BASE TEST"/"RE TEST" testing days) where showing the borrowed intensity value would misstate the day; pass sub: '' to omit the sub-label entirely. Color/accent still comes from `intensity`. See Aimee Morris's Day A/B badges and the Baseline-to-Rescan trainer program's Day 0/Day 4 badges for reference usage.
     blocks: [{
       letter: "A"|"B"|"C"|"D",

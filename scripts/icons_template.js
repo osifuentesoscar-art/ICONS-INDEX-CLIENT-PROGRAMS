@@ -370,7 +370,7 @@ function stykuBlock(styku) {
     ['Body Fat %', `${styku.bodyFatPct}% (${styku.bodyFatRank})`],
     ['Lean Mass', `${styku.leanMass} lbs (${styku.leanMassPct}%)`],
     ['Fat Mass', `${styku.fatMass} lbs`],
-    ['Bone Mass', `${styku.boneMass} lbs`],
+    ['Bone Mass (Styku est.)', `${styku.boneMass} lbs`],
     ['BMI', styku.bmi],
     ['BMR', `${styku.bmr} cal/day`],
   ];
@@ -783,7 +783,14 @@ function buildDayContent(day, client, isClientView = false) {
 
   if (day.warmUp) els.push(...labeledPara('Warm-Up', day.warmUp, C.warmGreen));
 
-  if (client && client.isPostmenopausal && day.pelvicFloor !== false && dayHasHeavyLoading(day)) {
+  // day.forcePelvicFloor: true renders the callout regardless of
+  // client.isPostmenopausal — for the CLAUDE.md "Perimenopausal Status —
+  // Screening Ambiguity" case: a 45-55-bracket client with unconfirmed
+  // status and real heavy-loading content should still get the written
+  // safety language, not rely on isPostmenopausal being fabricated true
+  // or on a purely verbal coaching workaround. Mirror of day.pelvicFloor:
+  // false (which suppresses the auto-insert on a specific day).
+  if (day.forcePelvicFloor === true || (client && client.isPostmenopausal && day.pelvicFloor !== false && dayHasHeavyLoading(day))) {
     els.push(...pelvicFloorCallout());
   }
 

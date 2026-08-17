@@ -205,7 +205,7 @@ const baselineNotes = [
     type: 'watch',
     audience: 'internal',
     label: 'Menopausal Status — Unconfirmed, Flagged for Next Intake',
-    body: 'No menopausal status was stated by the trainer at intake — isPostmenopausal is left unconfirmed here rather than fabricated. At 55, Mary is at or past the average age of menopause onset (~51), and this program includes real, heavy hip-thrust, squat, and deadlift loading — exactly the pattern the pelvic floor protocol exists to safeguard. Per CLAUDE.md\'s Perimenopausal Status guidance, the transition window itself (not just confirmed postmenopausal status) carries elevated stress-urinary-incontinence risk, so this is not a low-stakes unknown. Confirming her actual status is worth doing at the next intake conversation given how load-bearing that determination is for whether the pelvic floor safety callout should be running on every heavy day. Until confirmed, coach standard pelvic floor bracing and exhale-on-exertion cues verbally on all heavy hinge and squat work as a precaution, independent of what this document auto-generates.',
+    body: 'No menopausal status was stated by the trainer at intake — isPostmenopausal is left unconfirmed here rather than fabricated. At 55, Mary is at or past the average age of menopause onset (~51), and this program includes real, heavy hip-thrust, squat, and deadlift loading — exactly the pattern the pelvic floor protocol exists to safeguard. Per CLAUDE.md\'s Perimenopausal Status guidance, the transition window itself (not just confirmed postmenopausal status) carries elevated stress-urinary-incontinence risk, so this is not a low-stakes unknown. Confirming her actual status is worth doing at the next intake conversation given how load-bearing that determination is for whether the pelvic floor safety callout should be running on every heavy day. Fixed 8/17/2026: both heavy-loading days now carry the written Pelvic Floor Safety Note directly (via `day.forcePelvicFloor: true`, a new engine field for exactly this unconfirmed-but-cautious case), not just verbal coaching cues.',
   },
   {
     type: 'gold',
@@ -224,6 +224,7 @@ const days = [
     intensityLabel: "Day A's Purpose",
     intensityPara: `Control precedes power: every session opens with hip hinge activation before loading the two biggest hinge lifts in the program. Hex deadlift (${hexDL1RM} lb Epley 1RM off 155 lbs x5) and hip thrust (${hipThrust1RM} lb Epley 1RM off 90 lbs x5) both tested genuinely strong — this day builds directly on that strength while treating the hip-dominant work as a bone-density investment ahead of the 55-65 postmenopausal bracket. Closes with a conditioning finisher, the primary cardiovascular stimulus at 2 days/week.`,
     warmUp: '8 min: 3 min bike or brisk walk (Zone 2). Then: PVC hip hinge drill 2×10, glute bridge 2×15, band pull-apart 2×15, cat-cow 10 slow reps, arm circles 10 each direction.',
+    forcePelvicFloor: true, // Menopausal status unconfirmed (see baselineNotes) — per CLAUDE.md's Perimenopausal Status guidance, a 45-55 bracket client with ambiguous status and real heavy hinge/hip-thrust content should carry this in writing, not rely on verbal-only cueing.
     blocks: [
       {
         letter: 'A',
@@ -291,6 +292,7 @@ const days = [
     intensityLabel: "Day B's Purpose",
     intensityPara: 'Strength builds confidence: this day builds moderate volume across the squat, press, and pull-up patterns without stacking peak fatigue on top of Day A\'s heavier hinge work. Close-grip pull-up leads every session as the strongest and most shoulder-friendly of the three grips tested.',
     warmUp: '8 min: 3 min bike or treadmill walk (Zone 2). Then: glute bridge 2×15, goblet squat 2×10 light (depth focus), dead hang 20 seconds (shoulder decompression), band pull-apart 2×15, ankle circles 10 each.',
+    forcePelvicFloor: true, // Same rationale as Day A — heavy squat/split-squat content, menopausal status unconfirmed.
     blocks: [
       {
         letter: 'A',
