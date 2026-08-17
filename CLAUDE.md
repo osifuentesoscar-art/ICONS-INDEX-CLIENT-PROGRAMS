@@ -781,6 +781,127 @@ Genuine gap: no dedicated postmenopausal-women-specific OA-plus-heavy-
   section is.
 ```
 
+### Breast Cancer Survivorship & Resistance Training (2009-2025 evidence)
+```
+Why this section exists: confirmed via search of this file that breast
+  cancer, lymphedema, and mastectomy have never been mentioned here —
+  a genuine, previously-unaddressed gap, unlike OA/cardiac/postpartum
+  which at least had partial precedent (client philosophy language,
+  a live client) before their dedicated sections were built. Breast
+  cancer incidence is highest in exactly this file's core demographic —
+  median age at diagnosis is 60-62 (American Cancer Society, 2024-2025
+  Facts & Figures) — and there are over 4 million breast cancer
+  survivors in the US today. A future client with a mastectomy/lymph-
+  node-dissection history and lymphedema risk is a realistic, not
+  hypothetical, scenario for this roster, and the single most common
+  outdated instinct — restrict or avoid loading the affected-side arm
+  to "protect" it from lymphedema — is directly contradicted by the
+  evidence below, the same pattern already seen in this file's OA
+  section (train around a diagnosis, not through it, being the wrong
+  default).
+Foundational RCT — the finding that changed clinical practice: Schmitz
+  KH, Ahmed RL, Troxel A, et al., "Weight Lifting in Women with
+  Breast-Cancer-Related Lymphedema," New England Journal of Medicine
+  2009;361:664-673 (the PAL — Physical Activity and Lymphedema — trial,
+  n=141 women with STABLE existing lymphedema, twice-weekly slowly
+  progressive weight lifting with no imposed upper limit on load). Slow
+  progressive weight training did not worsen arm swelling, and the
+  weight-lifting group had roughly HALF as many lymphedema flare-ups
+  requiring intensive complete decongestive therapy as the control
+  group, with reduced symptom severity overall. This trial is why the
+  National Lymphedema Network's Medical Advisory Committee moved away
+  from blanket loading restrictions — "slowly progressive" describes
+  the RCT's own protocol design, not a permanent ceiling on load.
+Current evidence goes further — HIGH-intensity resistance training is
+  not just tolerated, it may be protective: a 2025 cohort study (EXERT-
+  BC/BCN/C, n=115 breast cancer survivors, thrice-weekly dose-escalated
+  resistance training over 3 months explicitly progressed toward
+  strength/hypertrophy, not kept conservative) found intense resistance
+  training was NOT associated with increased lymphedema symptoms, and
+  bioimpedance analysis showed significant reductions in extracellular
+  water and improved fluid balance — a potential therapeutic benefit,
+  not merely a safety finding (Iyengar NM, et al., JAMA Network Open
+  2025;8(6), PMID 40498485). A 2025 systematic review and dose-response
+  meta-analysis (Wang L, Liu Y, Zhang W, et al., Supportive Care in
+  Cancer 2025;33:395, 30 studies synthesized) found resistance training
+  overall reduces lymphedema (SMD -0.28, 95% CI -0.44 to -0.15) and
+  enhances upper/lower limb strength — and in dose-response analysis,
+  HIGH-intensity training (5-8RM, 4x/week, 120-180 min/week) showed a
+  LARGER lymphedema-reduction effect than moderate-to-low intensity
+  training (8-20RM, ≤3x/week, ≤120 min/week), with programs ≥12 weeks
+  outperforming shorter ones. Read together with the PAL trial, this
+  reframes "start light, progress slowly" as sound RIR-governed
+  practice for ANY new client (same as this file's standing approach
+  everywhere else), not as a special permanent restriction unique to
+  lymphedema risk.
+Standing guideline (no full 2025 replacement found — same "most current
+  version located, not superseded" caveat already used for the ACR 2019
+  OA guideline above): the ACSM 2019 Roundtable on Exercise Guidelines
+  for Cancer Survivors (update to the original 2010 roundtable) — general
+  dosing: aerobic training ≥3x/week, 20-30 min, moderate intensity, plus
+  resistance training 1-3x/week, 6-10 exercises, 1-4 sets, 8-15 reps at
+  ≥50-60% 1RM. This is a starting-point dosing floor, not a ceiling — the
+  2025 evidence above shows survivors tolerate and may benefit from
+  meaningfully higher intensity than this baseline once appropriately
+  progressed, consistent with this file's general "don't under-load"
+  philosophy (see Women & Strength Training section above).
+ICONS practical application:
+  - Do not default to restricting or avoiding loading on the affected-
+    side arm for a breast cancer survivor/lymphedema-risk client —
+    progressive resistance training (including unilateral carries,
+    rows, and presses on that side) is core evidence-based practice,
+    not a risk to train around. This mirrors the OA section's core
+    lesson: the historically "cautious" instinct is the outdated one.
+  - Progress load the same RIR-governed way every other client's
+    program does — "slowly progressive" is standard practice here
+    anyway, not a special lymphedema accommodation — and don't cap a
+    client's ceiling once she's tolerating load well just because of a
+    lymphedema history.
+  - Genuine interpretive caution for this file's existing Styku
+    Asymmetry Protocol specifically: `weakerSide()`/the L/R LST
+    comparison this file already uses elsewhere assumes an asymmetry
+    reflects a true strength/muscle-mass gap. For a lymphedema-risk or
+    lymphedema-affected client, the JAMA Network Open 2025 study above
+    found resistance training measurably changed EXTRACELLULAR WATER on
+    the affected side — meaning a Styku LST reading on that arm may be
+    confounded by fluid status, not muscle alone, in a way the protocol
+    was never validated against (its existing reference point, Kelly
+    Mulroy's leg data, has no comparable fluid-retention confound). Use
+    Styku's L/R comparison as one input, not the sole determinant of
+    "weaker side," for this specific population — cross-check against
+    reported swelling/heaviness and, where available, the coordinating
+    clinician's own measurements.
+  - Watch for the standing clinical flags — new/worsening swelling,
+    heaviness, tightness, or skin changes on the at-risk arm — as the
+    coachable regression signal, the same "stop and flag your coach,
+    this is common and treatable, never train through it" posture and
+    language already used in the Pelvic Floor Protocol above. An acute,
+    unmanaged flare should pause progression on that limb pending
+    clinician input, not be pushed through.
+  - Scope boundary, same pattern as the Postpartum/DRA section's pelvic-
+    floor-PT boundary: neither Jason Bethea's nor Niko Heers' in-house
+    scope has been confirmed to cover lymphedema-certified therapy (a
+    distinct specialty from general orthopedic PT or PNF stretch
+    therapy) or oncology-specific rehab. A symptomatic or newly-
+    diagnosed client stays an EXTERNAL referral to her oncologist,
+    surgeon, or a certified lymphedema therapist — do not imply in-house
+    coverage of this specialty without Xolokan's explicit confirmation.
+  - Compression garment use during exercise is a live clinical decision
+    (some cited trial protocols used one, some did not) that belongs to
+    the client's physician/lymphedema therapist, not something to
+    standardize here — same referral-not-diagnose posture used
+    throughout this file for anything requiring an individual clinical
+    determination this system isn't positioned to make.
+Genuine gap: no dedicated postmenopausal-women-specific (40-65 bracket)
+  RCT combining LIFTMOR-style ≥80% 1RM bone-loading protocols WITH
+  confirmed lymphedema risk was found in this pass — the high-intensity
+  evidence above (5-8RM, i.e. roughly 80-87% 1RM by standard %1RM/rep
+  tables) is close to LIFTMOR's loading zone but comes from lymphedema-
+  focused RCTs/cohorts, not a bone-density-primary study population.
+  Treat as strong supporting evidence that heavy loading is appropriate
+  for this population, not as a direct LIFTMOR replication.
+```
+
 ### Cardiovascular / Cardiac Considerations in Resistance Training (2023-2026 evidence)
 ```
 Why this section exists: every other clinical area this file handles
@@ -2219,6 +2340,15 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Genuine gap flagged, not filled with an invented number:** no dedicated postmenopausal-women-specific OA-plus-heavy-loading RCT replicating LIFTMOR's exact protocol (≥80% 1RM, 5×5, 2×/week) in a confirmed-OA population was found — the intensity/dosing evidence above comes from mixed-age, mixed-sex OA RCT pools, not this file's specific 40-65 bracket population. Documented as directly applicable OA-specific evidence, not a bracket-matched LIFTMOR replication.
 - Did not touch any client document — no current roster client has a documented OA diagnosis on file; this is proactive framework-building for when one is onboarded, same pattern as the Male Client Programming Framework and Postpartum/DRA passes. Also did not edit the ICONS Training Philosophy section's existing "joint lubrication" language — that's qualitative brand-voice prose, not a cited threshold, and out of this pass's scope; noting here only that the new subsection now gives it a real citation to point to if a future pass wants to add a cross-reference there.
 - Sources: [Optimal resistance training strategies for knee osteoarthritis symptom relief: a systematic review and network meta-analysis, 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12821314/) · [Optimizing resistance training for pain management in knee and hip osteoarthritis: a pairwise and dose–response meta-analysis, Frontiers in Public Health 2025](https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1623679/full) · [Training load and pain response during progressive resistance training in patients with hip osteoarthritis in the PROHIP trial, 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12547905/) · [Frydendal T, et al., "Total Hip Replacement or Resistance Training for Severe Hip Osteoarthritis," New England Journal of Medicine 2024](https://www.nejm.org/doi/abs/10.1056/NEJMoa2400141) · [Supervised, Heavy Resistance Training Is Tolerated and Potentially Beneficial in Women with Knee Pain and Knee Joint Hypermobility: A Case Series, Henriksen et al., Translational Sports Medicine](https://pmc.ncbi.nlm.nih.gov/articles/PMC11022762/) · [Efficacy and safety of resistance training for knee osteoarthritis and subsequent knee replacement: A systematic review and meta-analysis, 2026](https://www.sciencedirect.com/science/article/pii/S1877065726000254) · [2019 American College of Rheumatology/Arthritis Foundation Guideline for the Management of Osteoarthritis of the Hand, Hip, and Knee](https://pubmed.ncbi.nlm.nih.gov/31908149/) · [ACR's Latest Osteoarthritis Guidelines Address Benefits of Exercise](https://www.mdedge.com/familymedicine/article/49048/osteoarthritis/acrs-latest-osteoarthritis-guidelines-address-benefits) · [Estrogen Deficiency in Menopause: A Major Contributor to Cartilage Degeneration and Osteoarthritis: A Systematic Review and Meta-Analysis, Journal of Menopausal Medicine 2025](https://e-jmm.org/DOIx.php?id=10.6118%2Fjmm.25141) · [The intersection of aging and estrogen in osteoarthritis, npj Women's Health 2025](https://www.nature.com/articles/s44294-025-00063-1)
+
+**8/17/2026 — twelfth pass. Breast cancer survivorship & resistance training (including lymphedema risk) — new topic, first pass; genuine gap confirmed via search (zero prior mentions of "lymphedema"/"breast cancer"/"mastectomy"/"cancer survivor" anywhere in this file), despite breast cancer incidence peaking in exactly this file's core demographic.** Daily subagent check-in. Checked: whether current evidence still supports the historically cautious "avoid/restrict loading the affected-side arm to prevent lymphedema" instinct, the foundational RCT behind current clinical practice, 2025 evidence on high-intensity (not just moderate) resistance training specifically, and the standing ACSM exercise-oncology dosing guideline.
+- **Added (new subsection):** "Breast Cancer Survivorship & Resistance Training (2009-2025 evidence)," placed directly after Osteoarthritis and before Cardiovascular / Cardiac Considerations, grouping it with this file's other population/condition-specific resistance-training subsections. Key findings folded in: (1) the foundational PAL trial (Schmitz KH, Ahmed RL, Troxel A, et al., NEJM 2009;361:664-673, n=141 women with stable existing lymphedema) found slowly progressive twice-weekly weight lifting with no imposed load ceiling did not worsen swelling and roughly HALVED lymphedema flare-ups requiring intensive decongestive therapy versus controls — the RCT that moved the National Lymphedema Network away from blanket loading restrictions; (2) current evidence goes further than "safe" — a 2025 cohort study (EXERT-BC/BCN/C, n=115, Iyengar NM et al., JAMA Network Open 2025;8(6), PMID 40498485) found thrice-weekly dose-escalated resistance training explicitly progressed toward hypertrophy was NOT associated with increased lymphedema symptoms and produced measurable improvements in extracellular water/fluid balance — a potential therapeutic benefit, not merely a safety finding; (3) a 2025 systematic review and dose-response meta-analysis (Wang L, Liu Y, Zhang W, et al., Supportive Care in Cancer 2025;33:395, 30 studies) found resistance training reduces lymphedema overall (SMD -0.28) and that HIGH-intensity training (5-8RM, 4x/week, 120-180 min/week) had a LARGER lymphedema-reduction effect than moderate/low intensity, with ≥12-week programs outperforming shorter ones; (4) the standing ACSM 2019 exercise-oncology roundtable dosing guideline (no full 2025 replacement located, same "most current version found, not superseded" caveat already used for the ACR 2019 OA guideline) — treated here as a starting-point floor, not a ceiling, given how much higher intensity current evidence shows survivors tolerating.
+- **Practical application added:** do not default to restricting/avoiding loading on the affected-side arm; progress load the same RIR-governed way as any other client rather than treating "slowly progressive" as a special permanent lymphedema accommodation; watch for new/worsening swelling, heaviness, tightness, or skin changes as the coachable regression signal, using the same "stop and flag your coach, this is common and treatable" language already established in the Pelvic Floor Protocol; scope-bounded external referral for lymphedema-certified therapy and oncology rehab, since neither Jason Bethea's nor Niko Heers' confirmed in-house scope covers this specialty (same pattern as the Postpartum/DRA section's pelvic-floor-PT boundary); compression garment use during exercise left as a clinician decision, not standardized here.
+- **Genuine, non-obvious interpretive caution surfaced (not just a citation add):** this file's existing Styku Asymmetry Protocol / `weakerSide()` logic assumes an L/R LST gap reflects a true strength/muscle-mass difference — but the JAMA Network Open 2025 study found resistance training measurably changes EXTRACELLULAR WATER on a lymphedema-risk arm, meaning a Styku LST reading there may be confounded by fluid status in a way the protocol (built off Kelly Mulroy's leg data, no comparable fluid-retention confound) was never validated against. Documented as a caution to cross-check Styku's L/R comparison against reported symptoms/clinician measurements for this specific population, not a claim that the engine needs to change.
+- **Categorization: Add, not Correct.** Nothing prior in this file addressed breast cancer, lymphedema, or oncology rehab at all — pure gap-fill, following the same pattern as the OA pass: the "protect by restricting load" default instinct is directly contradicted by current evidence.
+- **Genuine gap flagged, not filled with an invented number:** no dedicated postmenopausal-women-specific (40-65 bracket) RCT combining LIFTMOR-style ≥80% 1RM bone-loading protocols WITH confirmed lymphedema risk was found — the high-intensity evidence above (5-8RM, roughly LIFTMOR's loading zone) comes from lymphedema-focused studies, not a bone-density-primary population. Treated as strong supporting evidence, not a direct LIFTMOR replication.
+- Did not touch any client document — no current roster client has a documented breast cancer/lymphedema history on file; this is proactive framework-building ahead of need, same pattern as the Male Client Programming Framework, Postpartum/DRA, and OA passes.
+- Sources: [Schmitz KH, Ahmed RL, Troxel A, et al., "Weight Lifting in Women with Breast-Cancer-Related Lymphedema," New England Journal of Medicine 2009;361:664-673](https://www.nejm.org/doi/full/10.1056/NEJMoa0810118) · [Iyengar NM, et al., "Resistance Training and Lymphedema in Breast Cancer Survivors," JAMA Network Open 2025;8(6), PMID 40498485](https://pmc.ncbi.nlm.nih.gov/articles/PMC12159776/) (also [JAMA Network](https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2835176)) · [Wang L, Liu Y, Zhang W, et al., "Effects of resistance training on breast cancer–related arm lymphedema: a systematic review and dose–response meta-analysis," Supportive Care in Cancer 2025;33:395](https://link.springer.com/article/10.1007/s00520-025-09448-z) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/40244422/)) · [Campbell KL, Winters-Stone KM, Wiskemann J, et al., "Exercise Guidelines for Cancer Survivors: Consensus Statement from International Multidisciplinary Roundtable," Medicine & Science in Sports & Exercise 2019;51(11):2375-2390](https://pubmed.ncbi.nlm.nih.gov/31626055/) · [ACSM Cancer & Exercise Resources](https://acsm.org/education-resources/trending-topics-resources/cancer/) · [American Cancer Society, Breast Cancer Facts & Figures 2024-2025 — median age at diagnosis](https://www.cancer.org/content/dam/cancer-org/research/cancer-facts-and-statistics/breast-cancer-facts-and-figures/2024/breast-cancer-facts-and-figures-2024.pdf) · [Intense Resistance Training for Breast Cancer Survivors With Lymphedema Risk, The ASCO Post, July 2025](https://ascopost.com/news/july-2025/intense-resistance-training-for-breast-cancer-survivors-with-lymphedema-risk/)
 
 ---
 
