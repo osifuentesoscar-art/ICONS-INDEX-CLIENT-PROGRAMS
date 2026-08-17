@@ -248,7 +248,7 @@ const days = [
         letter: 'C',
         title: 'Unilateral Strength Finishers',
         exercises: [
-          { name: 'Reverse Lunge (Start R to L)', sets: '3', reps: '8 each', load: 'bodyweight / light', tempo: '2-0-1', rest: '60s', cue: 'Step back with control; emphasise L push-off' },
+          { name: 'Reverse Lunge (Left-Led)', sets: '3', reps: '8 each', load: 'bodyweight / light', tempo: '2-0-1', rest: '60s', cue: 'Step back with control; emphasise L push-off', flag: 'Left corrective' },
           { name: 'Single-Leg Hip Bridge (Left Focus)', sets: '3', reps: '10', load: 'bodyweight', tempo: '2-0-1', rest: '45s', cue: 'Drive left glute; 1s pause top; no knee cave', flag: 'Left corrective' },
         ],
       },

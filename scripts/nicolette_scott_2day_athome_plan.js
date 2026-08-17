@@ -270,7 +270,7 @@ const summary = {
   ],
   milestones4wk: 'All lifts progressed on schedule within equipment limits. Push-up: 6-8 full floor reps. Plank: 1:30-1:45. Flag at check-in whether any DB-only lift (especially Hip Thrust) has hit its equipment ceiling before Week 4.',
   milestones8wk: 'Re-test the full 10-pattern battery in whichever setting (home or studio) she trains in most. If home equipment has not grown past the ~25-30 lb pair range, recommend a studio session or heavier dumbbells specifically for Hip Thrust and Goblet Squat, which are the two most equipment-capped lifts in this document.',
-  rescanNote: 'Styku rescan recommended at 8 weeks — see the full-gym document for the complete rescan tracking list (ALST, Shape Score, leg segmental gap). Identical here; not restated in full to avoid duplicating the same tracking note across both documents.',
+  rescanNote: 'Styku rescan recommended at 8 weeks — see the full-gym document for the complete rescan tracking list (ALST, BMI, Shape Score, leg segmental gap). Identical here; not restated in full to avoid duplicating the same tracking note across both documents.',
 };
 
 const data = {

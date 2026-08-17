@@ -341,7 +341,7 @@ const summary = {
   ],
   milestones4wk: `All tested lifts progressed on schedule: Hex DL ${dlWk4} lbs, Back Squat ${sqWk4} lbs, Hip Thrust ${htWk4} lbs, OHP ${ohpWk4} lbs/hand, Incline Press ${inclineWk4} lbs/hand, Single-Leg RDL ${slrdlWk4} lbs/hand. Push-up: 6-8 full floor reps. Plank: 1:30-1:45.`,
   milestones8wk: 'Re-test the full 10-pattern battery and establish new 1RM/working-baseline numbers via epley1RM()/workingLoad(). Introduce assisted pull-up testing (bonus 11th pattern) if pulling strength supports it. Reassess whether DB Split Squat or a true barbell/loaded lunge better fills the lunge-pattern slot going forward.',
-  rescanNote: 'Styku rescan recommended at 8 weeks — ALST Index (currently 5.52, close to the At-Risk boundary) is the top metric to watch; also track Shape Score (currently 85, Excellent — maintain) and the leg segmental gap (currently 0.5 lbs, right at the asymmetry trigger — should reduce with left-led unilateral programming).',
+  rescanNote: 'Styku rescan recommended at 8 weeks — ALST Index (currently 5.52, close to the At-Risk boundary) is the top metric to watch; also track BMI (currently 18.6, only 0.1 above the Underweight cutoff — watch it doesn\'t drop further as training volume increases), Shape Score (currently 85, Excellent — maintain), and the leg segmental gap (currently 0.5 lbs, right at the asymmetry trigger — should reduce with left-led unilateral programming).',
 };
 
 const data = {
