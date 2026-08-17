@@ -99,7 +99,11 @@ const baselineNotes = [
   {
     type: 'watch',
     label: 'Deferred to a Later Phase — Barbell Squat, Barbell Deadlift, Clean-to-Press',
-    body: 'A barbell back squat was tested at 55 lbs (recorded in the baselines table for reference) and a second provider\'s SOAP note (Stress Bar Clinical, 7/31/2026) prescribed a full Clean-to-Overhead-Press sequence. Per the trainer\'s "moderate progression" guidance, none of these are programmed yet: barbell back squat, conventional barbell deadlift, and clean-to-overhead-press are all higher axial-load or higher-skill/ballistic than anything currently in the program. DB Split Squat, Goblet Squat, Landmine Squat, and Hex Bar Deadlift remain the primary lower-body/hinge lifts. Revisit adding these once 3–4 weeks of the newly-reintroduced work (landmine squat, sit-ups, KB swing) is clean and symptom-free.',
+    // Client View (8/17/2026 audit fix): trimmed the internal provider/
+    // chart-documentation references ("second provider's SOAP note,"
+    // "Stress Bar Clinical," "per the trainer") — the deferral itself and
+    // its reasoning stay, since that's genuinely useful for Aimee to know.
+    body: 'A barbell back squat was tested at 55 lbs (recorded in the baselines table for reference), and a Clean-to-Overhead-Press sequence has also been discussed as a future addition. Per your moderate-progression plan, none of these are programmed yet: barbell back squat, conventional barbell deadlift, and clean-to-overhead-press are all higher axial-load or higher-skill/ballistic than anything currently in the program. DB Split Squat, Goblet Squat, Landmine Squat, and Hex Bar Deadlift remain the primary lower-body/hinge lifts. Revisit adding these once 3–4 weeks of the newly-reintroduced work (landmine squat, sit-ups, KB swing) is clean and symptom-free.',
   },
   {
     type: 'green',
@@ -123,16 +127,23 @@ const baselineNotes = [
     audience: 'internal',
   },
   {
+    // Client View (8/17/2026 audit fix): originally one note mixing
+    // genuinely client-appropriate LIFTMOR/bone-investment content with a
+    // trailing internal roster-audit sentence, then marked internal
+    // wholesale since the audience filter only operates per-note — which
+    // hid useful content a same-bracket sibling (Johanna Castillo) keeps
+    // visible. Split into two notes instead: this one stays visible.
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
-    body: 'At 48, Aimee sits in the 45–55 age bracket. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk, and directly relevant given real heavy Hex Bar Deadlift and Hip Thrust content already in her program. No DEXA/T-score data is currently on file to confirm candidacy either way. Every other 45-55/55-65 bracket client on the roster carries this note; it was missing here and is added now (8/17/2026, roster-wide research-coverage sweep).',
-    // Client View (added 8/17/2026): the LIFTMOR/bone-investment framing
-    // itself would be fine client-facing on its own, but this instance's
-    // trailing sentence ("Every other... client on the roster carries this
-    // note; it was missing here...") is a cross-client roster-audit
-    // admission — not something to reveal to the client directly. Marked
-    // internal rather than partially edited, since the audience filter
-    // only operates at the whole-note level.
+    body: 'At 48, Aimee sits in the 45–55 age bracket. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk, and directly relevant given real heavy Hex Bar Deadlift and Hip Thrust content already in her program. No DEXA/T-score data is currently on file to confirm candidacy either way.',
+  },
+  {
+    // The roster-audit admission trimmed out of the note above — genuinely
+    // internal (compares this document's completeness against other
+    // clients' documents), kept only for the trainer/build record.
+    type: 'watch',
+    label: 'Documentation Note — LIFTMOR Screening Added 8/17/2026',
+    body: 'Every other 45-55/55-65 bracket client on the roster carries the LIFTMOR screening note above; it was missing from this document and is added now (8/17/2026, roster-wide research-coverage sweep).',
     audience: 'internal',
   },
   {
@@ -247,7 +258,7 @@ const days = [
         letter: 'A',
         title: 'PRIMARY SQUAT STRENGTH',
         introLabel: 'Squat Progression Note',
-        intro: 'DB split squat and goblet squat remain the primary lower body movements on Day B. Landmine squat is new this update — the angled bar path is more forgiving than a straight barbell back squat, a good bridge exercise while barbell squatting itself is still deferred (see baseline notes). The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus. Reverse Lunge is new this update — a genuinely distinct lunge-pattern movement from DB Split Squat (see "Lunge Pattern Added" note), started at bodyweight.',
+        intro: 'DB split squat and goblet squat remain the primary lower body movements on Day B. Landmine squat is new this update — the angled bar path is more forgiving than a straight barbell back squat, a good bridge exercise while barbell squatting itself is still deferred (see baseline notes). The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus. Reverse Lunge is new this update — a genuinely distinct lunge-pattern movement from DB Split Squat, started at bodyweight.',
         exercises: [
           { name: 'DB Split Squat (Front Foot Elevated)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 25 lbs/hand → Wk4: 35 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Baseline 35 lbs ×3RM. Start at 25 lbs for 8 quality reps with full depth. Front foot elevated 2–4 inches increases range of motion. Front knee tracks over second toe. Left leg leads first. Add 2.5 lbs every 2 weeks.' },
           { name: 'Landmine Squat', sets: '3', reps: '10–12', load: 'Light-Mod — coach discretion', tempo: 'Controlled', rest: '75s', cue: 'New this update. Chest up, drive through heels, full ROM. Angled bar path loads the spine more forgivingly than a straight barbell — bridges toward barbell squatting once that\'s reintroduced.' },

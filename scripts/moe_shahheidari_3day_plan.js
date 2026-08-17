@@ -149,19 +149,24 @@ const baselines = [
 const baselineNotes = [
   {
     type: 'teal',
-    audience: 'internal', // Client View: documentation-methodology note — cross-references
-    // EWGSOP2 citation sourcing and another client's (Vinz Feller's) Styku reading by name;
-    // not appropriate to surface directly to Moe.
+    // Client View (8/17/2026 audit fix): previously marked audience:'internal'
+    // because it named Vinz Feller's Styku reading for comparison — but
+    // maleNutritionNote()'s auto-generated text hard-codes "(see the Styku
+    // interpretation note above)", which dangled once this note was hidden.
+    // Trimmed the cross-client comparison instead of hiding the whole note,
+    // matching the Elizabeth Poyner precedent — the underlying clinical
+    // content (ALST/VFA/BMI interpretation) is genuinely client-appropriate.
     label: 'Styku Scan Interpretation — Male Client Programming Framework (8/11/2026)',
-    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs (3.0%), BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 ("${styku.shapeScoreLabel}"). ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system, and for Vinz Feller's 7.55 kg/m² reading); Moe sits comfortably above the line — this is the clinically-governing figure for his muscle-mass status, see the note below for how it relates to Styku's own internal flag. VFA ${styku.vfa} cm² falls in the ICONS VFA table's Low Risk band (70-99 cm²), validated sex-independent and applied to him directly. BMI ${styku.bmi} falls in the WHO Overweight range (25-29.9) — WHO BMI thresholds are not sex-specific, and unlike the "over-flagged muscular athlete" caution the Male Client Programming Framework raises for reading BMI in isolation, this BMI reading is concordant with — not contradicted by — his body fat % and lean mass findings below. There is no muscular-athlete false positive to correct for here.`,
+    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs (3.0%), BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 ("${styku.shapeScoreLabel}"). ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Moe sits comfortably above the line — this is the clinically-governing figure for his muscle-mass status, see the note below for how it relates to Styku's own internal flag. VFA ${styku.vfa} cm² falls in the ICONS VFA table's Low Risk band (70-99 cm²), validated sex-independent and applied to him directly. BMI ${styku.bmi} falls in the WHO Overweight range (25-29.9) — WHO BMI thresholds are not sex-specific, and unlike the "over-flagged muscular athlete" caution the Male Client Programming Framework raises for reading BMI in isolation, this BMI reading is concordant with — not contradicted by — his body fat % and lean mass findings below. There is no muscular-athlete false positive to correct for here.`,
   },
   {
     type: 'watch',
-    audience: 'internal', // Client View: documentation-methodology note — explicitly compares
-    // Moe's scan interpretation against "Vinz Feller's document" by name; internal cross-client
-    // audit-trail language, not client-facing.
+    // Client View (8/17/2026 audit fix): same trim as above — was marked
+    // internal for naming "Vinz Feller's document" by name; that comparison
+    // removed, note kept visible since the ALST-vs-Styku-internal-flag
+    // reconciliation is genuinely useful for Moe to understand.
     label: "Body Fat % & Lean Mass — Styku's Internal Flags vs. the Clinical ALST Reading",
-    body: `Body Fat ${styku.bodyFatPct}% (${styku.fatMass} lbs fat mass) carries Styku's own classification of At-Risk (their internal, Mayo Clinic-based >28% threshold), and his peer comparison — higher body fat than 73% of Styku's men 40-49 comparison group — is labeled "High Risk" on Styku's own dashboard. Cross-checked against the ACE male body-fat-% reference table (Essential 2-5% / Athletes 6-13% / Fitness 14-17% / Acceptable 18-24% / Obese 25%+), 31.6% also falls in the Obese tier — the two scales agree here, a genuinely different situation from Vinz Feller's document, where Styku's "Average" peer-comparison label diverged from an ACE "Obese" reading. Styku's dashboard separately flags "Low Lean Mass" internally — this is Styku's own internal ranking, not the EWGSOP2 clinical ALST cutoff, and the two genuinely disagree: his ALST Index of ${styku.alstIndex} kg/m² reads Not At-Risk against the EWGSOP2 <7.0 kg/m² clinical threshold cited above. The clinically-governing figure is the EWGSOP2 ALST reading — he is not sarcopenic — but Styku's Low Lean Mass flag is still carried forward as a body-recomposition priority (build lean mass, reduce fat mass) rather than a red flag requiring an escalated protein tier on ALST grounds alone.`,
+    body: `Body Fat ${styku.bodyFatPct}% (${styku.fatMass} lbs fat mass) carries Styku's own classification of At-Risk (their internal, Mayo Clinic-based >28% threshold), and his peer comparison — higher body fat than 73% of Styku's men 40-49 comparison group — is labeled "High Risk" on Styku's own dashboard. Cross-checked against the ACE male body-fat-% reference table (Essential 2-5% / Athletes 6-13% / Fitness 14-17% / Acceptable 18-24% / Obese 25%+), 31.6% also falls in the Obese tier — the two scales agree here. Styku's dashboard separately flags "Low Lean Mass" internally — this is Styku's own internal ranking, not the EWGSOP2 clinical ALST cutoff, and the two genuinely disagree: his ALST Index of ${styku.alstIndex} kg/m² reads Not At-Risk against the EWGSOP2 <7.0 kg/m² clinical threshold cited above. The clinically-governing figure is the EWGSOP2 ALST reading — he is not sarcopenic — but Styku's Low Lean Mass flag is still carried forward as a body-recomposition priority (build lean mass, reduce fat mass) rather than a red flag requiring an escalated protein tier on ALST grounds alone.`,
   },
   {
     type: 'watch',

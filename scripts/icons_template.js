@@ -286,13 +286,18 @@ function clientStats(stats) {
 }
 
 // Client View only — a short, warm line under the cover name reinforcing
-// the ICONS mission (quotes the same "not fragile... powerful, capable,
-// and still evolving" language already used verbatim elsewhere in this
-// system, e.g. Elizabeth Poyner's Improvement Report narrative). Kept
-// deliberately short and gender-neutral so it fits any client.
+// the ICONS mission. Uses the Three Zone coaching cues (CLAUDE.md's "ICONS
+// TRAINING PHILOSOPHY" section) rather than the "You're not fragile..."
+// mantra used elsewhere in this system — that phrase is explicitly scoped
+// there to the women 40s-60s target population, and a Client View Client
+// audit (8/17/2026) found it firing unconditionally for male clients whose
+// own build scripts had separately, deliberately chosen not to use it (see
+// Jake Poyner's script). The three-zone cues are stated as genuinely
+// universal in CLAUDE.md — no sex/demographic scoping — so they're the
+// safe default for a line the engine inserts for every client.
 function clientWelcomeLine() {
   return [para(
-    [txt('This is your ICONS Index program — built for your body, your goals, and where you are right now. You’re not fragile. You’re powerful, capable, and still evolving.', { italics: true, size: 17, color: C.goldDeep })],
+    [txt('This is your ICONS Index program — built for your body, your goals, and where you are right now. Control precedes power. Strength builds confidence. Energy becomes identity.', { italics: true, size: 17, color: C.goldDeep })],
     { alignment: AlignmentType.CENTER, spacing: { after: 140 } }
   )];
 }

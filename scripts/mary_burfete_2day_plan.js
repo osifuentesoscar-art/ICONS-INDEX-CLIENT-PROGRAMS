@@ -189,7 +189,7 @@ const baselineNotes = [
   {
     type: 'watch',
     label: 'Segmental Asymmetry — Legs At Threshold, Protocol Triggered',
-    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — 0.1 lb gap, below the 0.5 lb asymmetry-protocol threshold — monitor only, no unilateral-lead requirement. Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — exactly 0.5 lbs, landing precisely AT the asymmetry-protocol trigger. Consistent with the Johanna Castillo precedent, an exact-threshold gap is treated as triggering the full protocol, not as a borderline non-trigger. LEFT leg (lower LST) is weaker and leads every unilateral leg exercise in this program — split stance squat, step-up, and single-leg RDL all list LEFT first below.`,
+    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — 0.1 lb gap, below the 0.5 lb asymmetry-protocol threshold — monitor only, no unilateral-lead requirement. Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — exactly 0.5 lbs, landing precisely AT the asymmetry-protocol trigger. An exact-threshold gap is treated as triggering the full protocol, not as a borderline non-trigger. LEFT leg (lower LST) is weaker and leads every unilateral leg exercise in this program — split stance squat, step-up, and single-leg RDL all list LEFT first below.`,
   },
   {
     type: 'gold',
@@ -296,7 +296,7 @@ const days = [
         letter: 'A',
         title: 'PRIMARY LOWER — SQUAT, SPLIT SQUAT & LUNGE',
         introLabel: `Back Squat & Split Stance Squat — Epley 1RM ${backSquat1RM} / ${splitSquat1RM} lbs`,
-        intro: `Back squat tested at 90 lbs for 5 reps; split stance DB squat tested at 17.5 lbs/hand for 5 reps. LEFT leg leads every unilateral exercise here — legs sit exactly at the 0.5 lb asymmetry-protocol trigger (14.6 vs 15.1 lbs), per the Johanna Castillo precedent. DB Reverse Lunge was not part of the initial testing battery — it closes the block as a new baseline, LEFT-led per the same asymmetry finding.`,
+        intro: `Back squat tested at 90 lbs for 5 reps; split stance DB squat tested at 17.5 lbs/hand for 5 reps. LEFT leg leads every unilateral exercise here — legs sit exactly at the 0.5 lb asymmetry-protocol trigger (14.6 vs 15.1 lbs). DB Reverse Lunge was not part of the initial testing battery — it closes the block as a new baseline, LEFT-led per the same asymmetry finding.`,
         exercises: [
           { name: 'Back Squat (Barbell or Loaded)', sets: '4', reps: '5–6', load: `Wk1: ${backSquat_wk1} lbs → Wk4: ${backSquat_wk4} lbs`, tempo: '3-1-1', rest: '90s', cue: 'Full depth, chest tall, drive knees out. Brace before descent, exhale on the drive up.' },
           { name: 'Split Stance Squat (DB) — LEFT Leads', sets: '3+3', reps: '8 ea', load: `Wk1: ${splitSquat_wk1} lbs/hand → Wk4: ${splitSquat_wk4} lbs/hand`, tempo: '2-1-1', rest: '75s', cue: 'LEFT (weaker) leg trains first every set. Rear foot elevated optional. Front knee tracks over toes.' },

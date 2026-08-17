@@ -242,8 +242,8 @@ const days = [
         letter: 'E',
         title: 'CONDITIONING FINISHER (CHOOSE ONE)',
         color: 'gold',
-        introLabel: 'New Addition — Not in the Original Source',
-        intro: 'The source program has no dedicated conditioning component — added here to round out general cardiovascular health and complete the Isolated → Compound → Metabolic structure. Kept low-impact and QL-safe; skip or shorten if fatigue from the session above is high.',
+        introLabel: 'Conditioning Finisher',
+        intro: 'A short, low-impact cardio finisher to round out today\'s session — kept easy and QL-safe. Skip or shorten if fatigue from the work above is high.',
         exercises: [
           { name: 'Stationary Bike — Easy Spin', sets: '1', reps: '10–15 min', load: 'Easy, conversational', tempo: 'Steady', rest: '—', cue: 'Zero spinal/trunk loading. Energy becomes identity — this is the low-key finish, not another hard block.' },
           { name: 'Treadmill — Incline Walk', sets: '1', reps: '10–15 min', load: 'Incline 6–10%', tempo: 'Steady', rest: '—', cue: 'No jarring impact, no trunk rotation. Good alternative if biking isn\'t available.' },
@@ -311,8 +311,8 @@ const days = [
         letter: 'E',
         title: 'CONDITIONING FINISHER (CHOOSE ONE)',
         color: 'gold',
-        introLabel: 'New Addition — Not in the Original Source',
-        intro: 'Same rationale as Day 1 — rounds out the conditioning gap in the source program. Kept optional given the unilateral work above.',
+        introLabel: 'Conditioning Finisher',
+        intro: 'Same easy, low-impact finisher as Day 1. Optional given the unilateral work above.',
         exercises: [
           { name: 'Stationary Bike — Easy Spin', sets: '1', reps: '10–15 min', load: 'Easy, conversational', tempo: 'Steady', rest: '—', cue: 'Zero spinal/trunk loading.' },
           { name: 'Treadmill — Incline Walk', sets: '1', reps: '10–15 min', load: 'Incline 6–10%', tempo: 'Steady', rest: '—', cue: 'No jarring impact, no trunk rotation.' },
