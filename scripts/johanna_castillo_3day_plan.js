@@ -20,6 +20,22 @@
  * carries a LIFTMOR bone-loading candidacy / T-score screening note; this
  * document had none. Added below, matching the established wording pattern
  * for her bracket (45-55, confirmed postmenopausal).
+ *
+ * REVISION (8/17/2026, language-only correction, per CLAUDE.md's corrected
+ * "ALST Index" and "Protein Targets — re-keyed from age to context" sections):
+ * this document previously labeled her ALST (7.23 kg/m²) "Optimal" and framed
+ * her protein target as an automatic "50+ tier" escalation. Neither framing
+ * is correct under the corrected standards — there is no female "Optimal"
+ * ALST tier above 5.5 kg/m² (7.0 kg/m² is EWGSOP2's MALE at-risk cutoff, not
+ * a female target), and the 2.0-2.2 g/kg protein escalation is now
+ * context-driven (energy deficit, heavy training load, or ALST At-Risk), not
+ * age/bracket-driven. Corrected the language throughout to "within normal
+ * reference range" / context-driven protein framing — no Styku numbers, load
+ * numbers, or exercise/training content were changed. `proteinTargets()` in
+ * icons_template.js has not yet been updated to the corrected logic (see
+ * CLAUDE.md's Research Update Log, 8/17/2026 pass), so the rendered
+ * nutrition block's actual g/day figure still reflects the prior formula
+ * pending that engine fix.
  */
 
 const fs = require('fs');
@@ -100,8 +116,8 @@ const baselines = [
 const baselineNotes = [
   {
     type: 'green',
-    label: 'ALST Index Optimal — 7.23 kg/m²',
-    body: 'Above the 7.0 kg/m² EWGSOP2 optimal threshold. This program layers strength maintenance under a fat-loss/cardiometabolic focus rather than muscle-building-primary — loads hold at tested baselines while the conditioning finisher does the heavy lifting on body composition.',
+    label: 'ALST Index Within Normal Reference Range — 7.23 kg/m²',
+    body: 'Well above the 5.5 kg/m² EWGSOP2 female at-risk cutoff — not At-Risk, and there is no higher "Optimal" tier above that threshold for women (EWGSOP2\'s 7.0 kg/m² cutoff is the separate MALE at-risk threshold, not a female target — corrected 8/17/2026, see CLAUDE.md\'s "ALST Index" section). Read this as a healthy number tracked as a trend over time, not a graded score. This program layers strength maintenance under a fat-loss/cardiometabolic focus rather than muscle-building-primary — loads hold at tested baselines while the conditioning finisher does the heavy lifting on body composition.',
   },
   {
     type: 'watch',
@@ -131,7 +147,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
-    body: 'At 51, Johanna sits in the 45–55 age bracket, confirmed postmenopausal. Protein and creatine targets already reflect the 2.0–2.2 g/kg "50+" tier (resolved automatically once age crosses 50), and creatine is strongly indicated by age and postmenopausal status alike. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk — though no DEXA/T-score data is currently on file to confirm candidacy either way.',
+    body: 'At 51, Johanna sits in the 45–55 age bracket, confirmed postmenopausal. Creatine is strongly indicated by age and postmenopausal status alike. Protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status — not for age or postmenopausal status alone (Johanna\'s ALST, 7.23 kg/m², is well within normal reference range). LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk — though no DEXA/T-score data is currently on file to confirm candidacy either way.',
   },
   {
     type: 'watch',
@@ -152,7 +168,7 @@ const days = [
     subtitle: 'Moderate Strength + Cardiometabolic Priority',
     descriptor: 'Moderate Strength · Volume Build · Conditioning Priority',
     intensityLabel: '70% Day',
-    intensityPara: 'Moderate strength, building volume without peak CNS demand. Loads sit on today\'s tested baselines (Hip Thrust, Seated OHP) while a conditioning finisher supports the VFA and body-fat priority from your Styku scan. This is strength maintenance layered under fat-loss focus, not muscle-building-primary — your ALST is already optimal at 7.23 kg/m².',
+    intensityPara: 'Moderate strength, building volume without peak CNS demand. Loads sit on today\'s tested baselines (Hip Thrust, Seated OHP) while a conditioning finisher supports the VFA and body-fat priority from your Styku scan. This is strength maintenance layered under fat-loss focus, not muscle-building-primary — your ALST is well within normal reference range at 7.23 kg/m².',
     warmUp: '5 min bike, band pull-aparts x15, bodyweight squat x10, glute bridge x10, arm circles x10/direction',
     blocks: [
       {
@@ -322,7 +338,7 @@ const summary = {
   ],
   milestones4wk: 'Squat 25–27.5 lbs × 8 @ 2–3 RIR. Trap bar deadlift 55–60 lbs × 6. Hip thrust progressing toward 70 lbs. Left-leg single-leg RDL load matched to right within 10%.',
   milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline. VFA and body fat % trending down from 142.7 cm² / 40.4%. Left/right leg LST gap reduced from 0.5 lbs. Hip thrust and OHP progressed from current working loads.',
-  rescanNote: 'Rebook Styku scan at 8 weeks. Track: VFA and body fat % direction, left/right leg LST gap (baseline 0.5 lb), right arm LST gap (baseline 0.3 lb, monitor for trigger), ALST maintenance (currently optimal at 7.23 kg/m²).',
+  rescanNote: 'Rebook Styku scan at 8 weeks. Track: VFA and body fat % direction, left/right leg LST gap (baseline 0.5 lb), right arm LST gap (baseline 0.3 lb, monitor for trigger), ALST maintenance (currently 7.23 kg/m², within normal reference range).',
 };
 
 const data = {

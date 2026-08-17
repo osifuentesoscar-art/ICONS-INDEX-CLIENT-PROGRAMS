@@ -36,10 +36,20 @@
  * Transition" bracket. This is a standard women's-bracket client — no
  * demographic-scope-exclusion content is needed (unlike Jake Poyner, Vinz
  * Feller, or Moe Shahheidari's male-framework documents).
- *   - weightKg/ageYears/alstIndex are all on file, so proteinTargets()
- *     resolves on its own: ageYears 54 >= 50 -> the 2.0-2.2 g/kg "50+" tier
- *     fires automatically (is50Plus branch in proteinTargets()); creatine is
- *     strongly indicated (age 40+ branch in nutritionBlock()).
+ *   - weightKg/ageYears/alstIndex are all on file. NOTE (corrected 8/17/2026,
+ *     per CLAUDE.md's "Protein Targets — re-keyed from age to context"
+ *     correction): the prior age-banded reading of this client as an
+ *     automatic "50+ tier" 2.0-2.2 g/kg escalation is retired — her ALST
+ *     (6.32 kg/m²) is within the normal reference range, not At-Risk, and
+ *     nothing on file documents a genuine energy deficit or heavy training
+ *     load, so per the corrected standard her protein target is context-
+ *     driven, not age-driven. `proteinTargets()` in icons_template.js has
+ *     not yet been updated to this corrected logic (see CLAUDE.md's Research
+ *     Update Log, 8/17/2026 pass) — the rendered nutrition block below still
+ *     reflects the prior formula pending that engine fix; the language in
+ *     this script has been corrected so it no longer asserts the retired
+ *     age-tier as the reason. Creatine remains strongly indicated at 40+
+ *     regardless (age-based creatine guidance is unaffected by this fix).
  *   - isPostmenopausal is left `false`/unconfirmed. No menstrual irregularity
  *     or vasomotor/sleep symptoms were reported at intake. Per CLAUDE.md's
  *     "Perimenopausal Status — Screening Ambiguity in a Non-Clinical
@@ -53,13 +63,15 @@
  *     never auto-fires despite squat/deadlift/hip-thrust/lunge content
  *     being present across all three days.
  *
- * ALST — GOVERNING READ IS THE 3-TIER TABLE, NOT STYKU'S BINARY LABEL:
- * Styku's own report labels ALST 6.32 kg/m² "Not At-Risk" (true against the
- * EWGSOP2 <5.5 kg/m² at-risk cutoff). CLAUDE.md's 3-tier women's table
- * (<5.5 At-Risk / 5.5-6.99 Normal — monitor / >=7.0 Optimal) is the more
- * nuanced, clinically governing read for this system and places 6.32 in
- * "Normal — monitor," not "Optimal." Presented that way throughout, per the
- * brief's explicit instruction not to just repeat Styku's binary label.
+ * ALST — CORRECTED 8/17/2026 (sex-conflation fix, see CLAUDE.md's "ALST
+ * Index" section): the prior 3-tier read used here (<5.5 At-Risk / 5.5-6.99
+ * Normal-monitor / >=7.0 Optimal) was wrong — 7.0 kg/m² is EWGSOP2's MALE
+ * at-risk cutoff, not a female "Optimal" tier; there is no graded "how good"
+ * scale for women above 5.5. Styku's own report labels ALST 6.32 kg/m² "Not
+ * At-Risk," which is correct against the EWGSOP2 <5.5 kg/m² female at-risk
+ * cutoff. Presented throughout as: within normal reference range, a trend
+ * metric tracked at rescan — not "Normal — monitor" (implying a lesser tier
+ * below some higher target) and not "Optimal" (a tier that doesn't exist).
  *
  * SQUAT & DEADLIFT — NOT TESTED, TODAY'S LOADS BECOME THE NEW BASELINE:
  * Neither lift was part of the initial battery. Following the Johanna
@@ -116,7 +128,7 @@ const client = {
   ageYears: 54,
   isPostmenopausal: false,
   bmr: 1430,
-  alstIndex: 6.32, // Normal — monitor tier (CLAUDE.md 3-tier table), not Optimal
+  alstIndex: 6.32, // Within normal reference range (>=5.5 kg/m²) — corrected 8/17/2026, no graded "Optimal" tier for women
 };
 
 const styku = {
@@ -175,12 +187,12 @@ const baselineNotes = [
     type: 'teal',
     audience: 'internal',
     label: 'Styku Findings — Body Composition & ALST',
-    body: 'Body Fat 36.5% (58.6 lbs fat mass) — Styku\'s own "Average" classification (35–39.9% band). Lean Mass 96.6 lbs (60.2%) carries Styku\'s "Ideal Lean Mass" flag — a genuinely positive marker. Bone Mass 5.3 lbs (3.3%). BMI 23.7 — Normal (18.5–24.9). Shape Score 70/100 — Good. ALST Index 6.32 kg/m²: Styku\'s own report labels this binary "Not At-Risk," which is technically correct against the EWGSOP2 <5.5 kg/m² at-risk cutoff — but CLAUDE.md\'s governing 3-tier table for women (<5.5 At-Risk / 5.5–6.99 Normal — monitor / ≥7.0 Optimal) places 6.32 in the Normal — monitor tier, not Optimal. That more nuanced table is the clinically governing read used throughout this program, not Styku\'s pass/fail label — ALST is worth tracking at the 8-week rescan to confirm it is trending toward, not away from, the 7.0 Optimal threshold.',
+    body: 'Body Fat 36.5% (58.6 lbs fat mass) — Styku\'s own "Average" classification (35–39.9% band). Lean Mass 96.6 lbs (60.2%) carries Styku\'s "Ideal Lean Mass" flag — a genuinely positive marker. Bone Mass 5.3 lbs (3.3%). BMI 23.7 — Normal (18.5–24.9). Shape Score 70/100 — Good. ALST Index 6.32 kg/m²: Styku\'s own report labels this binary "Not At-Risk," which is correct against the EWGSOP2 <5.5 kg/m² female at-risk cutoff — this system treats 5.5 kg/m² as the governing threshold, not a graded scale above it (EWGSOP2 sets no higher "Optimal" tier for women). ALST above 5.5 kg/m² is best read as within normal reference range and tracked as a trend metric, not a precision score — worth tracking again at the 8-week rescan simply to confirm it holds steady or continues trending upward, not against any higher numeric target.',
   },
   {
     type: 'watch',
     label: 'Peer-Comparison Tension — Body Fat % vs. "Moderate Risk" Band',
-    body: 'Compared against age-matched peers (women 50–59), Johnna\'s body fat % is lower than 75% of the comparison group — she is leaner than most peers in this bracket — yet Styku\'s own comparison band for that same result is labeled "Moderate Risk," 25th percentile. Read this as a population-relative marker, not a standalone clinical risk flag: VFA (82.7 cm², Low Risk) and ALST (6.32 kg/m², Normal — monitor) don\'t support an elevated cardiometabolic read on their own, and Lean Mass carries the positive "Ideal Lean Mass" flag noted above. The full picture is a healthy, monitor-tier profile, not one driven by any single number in isolation.',
+    body: 'Compared against age-matched peers (women 50–59), Johnna\'s body fat % is lower than 75% of the comparison group — she is leaner than most peers in this bracket — yet Styku\'s own comparison band for that same result is labeled "Moderate Risk," 25th percentile. Read this as a population-relative marker, not a standalone clinical risk flag: VFA (82.7 cm², Low Risk) and ALST (6.32 kg/m², within normal reference range) don\'t support an elevated cardiometabolic read on their own, and Lean Mass carries the positive "Ideal Lean Mass" flag noted above. The full picture is a healthy profile, not one driven by any single number in isolation.',
   },
   {
     type: 'watch',
@@ -200,7 +212,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
-    body: 'At 54, Johnna sits in the 45–55 age bracket. Protein and creatine targets below reflect the 2.0–2.2 g/kg "50+" tier automatically, and creatine is strongly indicated by age alone regardless of ALST status. Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing on the current scan indicates low bone mass.',
+    body: 'At 54, Johnna sits in the 45–55 age bracket. Creatine is strongly indicated by age alone regardless of ALST status. Protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status — not for age or bracket alone (her ALST, 6.32 kg/m², is within normal reference range, not At-Risk). Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing on the current scan indicates low bone mass.',
   },
   {
     type: 'teal',
@@ -405,7 +417,7 @@ const summary = {
   ],
   milestones4wk: `Goblet Squat 30–35 lbs x8, Trap Bar Deadlift 65–70 lbs x6 at 2–3 RIR. Hip Thrust progressing toward ${wk4.hipThrust + 5} lbs x8. Seated OHP at 15 lbs x8 pain-free (matching tested baseline) — progress only as shoulder ROM allows. Incline Dumbbell Press progressing from 12.5 lbs/hand toward 15 lbs/hand, pain-free. Left-leg single-leg RDL load matched toward parity with right within 10%.`,
   milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline (25 lbs / 55 lbs). Hip Thrust and OHP progressed from current working loads. Left/right leg LST gap reduced from 1.4 lbs. Plank hold past 50 seconds. Shoulder internal rotation strength improved with no pain flags logged.',
-  rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently 6.32 kg/m², Normal — monitor tier, not yet Optimal), VFA (currently 82.7 cm², Low Risk — maintain), left/right leg LST gap (baseline 1.4 lbs, target under 0.5), lean mass (currently 96.6 lbs, Ideal Lean Mass marker — maintain or build further).',
+  rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently 6.32 kg/m², within normal reference range), VFA (currently 82.7 cm², Low Risk — maintain), left/right leg LST gap (baseline 1.4 lbs, target under 0.5), lean mass (currently 96.6 lbs, Ideal Lean Mass marker — maintain or build further).',
 };
 
 const data = {

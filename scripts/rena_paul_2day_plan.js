@@ -14,9 +14,20 @@
  * by the trainer. At 45 she sits in the 45-55 "Perimenopause / Menopause
  * Transition" age bracket, but perimenopausal status itself is not
  * confirmed, so it is not fabricated here. weightKg/ageYears/alstIndex
- * are all from the scan, so proteinTargets()/creatine logic resolve on
- * their own (45yo, ALST 5.94 not At-Risk → "40+ tier", 1.8-2.0 g/kg;
- * creatine strongly indicated by age 40+ regardless).
+ * are all from the scan. NOTE (corrected 8/17/2026, per CLAUDE.md's
+ * "Protein Targets — re-keyed from age to context" correction): the prior
+ * age-banded reading of this client as an automatic "40+ tier" 1.8-2.0 g/kg
+ * escalation is retired — her ALST (5.94 kg/m²) is within normal reference
+ * range, not At-Risk, and nothing on file documents a genuine energy
+ * deficit or heavy training load, so per the corrected standard her
+ * protein target is context-driven, not age-driven. proteinTargets() in
+ * icons_template.js has not yet been updated to this corrected logic (see
+ * CLAUDE.md's Research Update Log, 8/17/2026 pass) — the rendered nutrition
+ * block below still reflects the prior formula pending that engine fix;
+ * the language in this script has been corrected so it no longer asserts
+ * the retired age-tier as the reason. Creatine remains strongly indicated
+ * by age 40+ regardless (age-based creatine guidance is unaffected by
+ * this fix).
  *
  * Segmental asymmetry: arms 0.1 lb gap, legs 0.4 lb gap — both under the
  * 0.5 lb asymmetry-protocol threshold, so no unilateral-lead requirement;
@@ -90,7 +101,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Findings — Excellent Baseline',
-    body: 'Shape Score 92/100 (Excellent). Body Fat 27.0% (Fit — lower than 70% of peers). ALST Index 5.94 kg/m² — Normal/monitor tier, just under the 7.0 Optimal threshold. VFA 26.3 cm² — Very Low Risk. BMI 20.5 — Normal range. No clinical body-composition flags on this scan.',
+    body: 'Shape Score 92/100 (Excellent). Body Fat 27.0% (Fit — lower than 70% of peers). ALST Index 5.94 kg/m² — within normal reference range (the 5.5 kg/m² EWGSOP2 female at-risk cutoff is the governing threshold; there is no higher "Optimal" tier above it for women). VFA 26.3 cm² — Very Low Risk. BMI 20.5 — Normal range. No clinical body-composition flags on this scan.',
   },
   {
     type: 'watch',
@@ -100,7 +111,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
-    body: 'At 45, Rena sits in the 45-55 age bracket, where heavy compound lifting is both a hormonal reset and an early bone-density investment ahead of the menopause transition — protein and creatine targets below reflect the 40+ tier, and bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing currently indicates low bone mass.',
+    body: 'At 45, Rena sits in the 45-55 age bracket, where heavy compound lifting is both a hormonal reset and an early bone-density investment ahead of the menopause transition — creatine is strongly indicated by age 40+ regardless, and protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status, not for age or bracket alone (her ALST, 5.94 kg/m², is within normal reference range). Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing currently indicates low bone mass.',
   },
   {
     type: 'gold',
@@ -256,7 +267,7 @@ const summary = {
   ],
   milestones4wk: 'All baseline lifts surpassed. Push-up: 8 full unassisted. Plank: 2:00 loaded. Pull-up assist level reduced across all 3 grips.',
   milestones8wk: 'Strength: Hex DL 110+ lbs ×5. Hip Thrust 110+ lbs ×5–6. OHP 20 lbs/hand ×8. Incline Press 27.5 lbs/hand ×8. Row 37.5–40 lbs ×8. Lunge 32.5 lbs/hand ×8. Carry 45–50 lbs/hand. Push-up 12+ full unassisted. Pull-up 8+ reps all grips, next assist-level reduction. Plank 2:15+ loaded.',
-  rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index trend (currently 5.94, Normal/monitor tier), Shape Score (currently 92, Excellent — maintain), and the leg segmental gap (currently 0.4 lbs, below threshold but worth confirming it isn\'t widening).',
+  rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index trend (currently 5.94 kg/m², within normal reference range), Shape Score (currently 92, Excellent — maintain), and the leg segmental gap (currently 0.4 lbs, below threshold but worth confirming it isn\'t widening).',
 };
 
 const data = {
