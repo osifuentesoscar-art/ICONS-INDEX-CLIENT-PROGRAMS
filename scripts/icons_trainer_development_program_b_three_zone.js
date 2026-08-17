@@ -85,7 +85,7 @@ const day1Isolated = {
       exercises: [
         { name: 'Terminal Knee Extension (TKE — Band)', insight: 'Trainer Insight: TKE is the fastest way to activate VMO before squatting. Use it always.', sets: '3', reps: '15 ea', load: 'Light band', tempo: '2-1-2', rest: '30s', cue: 'Band behind knee. Drive to full extension. VMO fires directly. Knee corrective.' },
         { name: 'Lateral Band Walk (Glute Med Activation)', insight: 'Trainer Insight: glute med drives knee tracking. Activate it before every bilateral squat session.', sets: '3', reps: '15 ea way', load: 'Mini-band above knees', tempo: 'Controlled', rest: '30s', cue: "Band above knees. Proud chest. Steps lateral — don't let knees cave inward." },
-        { name: 'Copenhagen Plank (Adductor)', insight: 'Trainer Insight: −41% groin injury risk (Harøy 2018). Program for every client.', sets: '3', reps: '20–30s ea', load: 'Bodyweight', tempo: 'Hold', rest: '45s', cue: 'Side plank. Top leg on bench. Adductor isometric. Hips stacked.' },
+        { name: 'Copenhagen Plank (Adductor)', insight: 'Trainer Insight: −41% weekly groin-problem risk, cluster-RCT (Harøy et al. 2019, BJSM). Program for every client.', sets: '3', reps: '20–30s ea', load: 'Bodyweight', tempo: 'Hold', rest: '45s', cue: 'Side plank. Top leg on bench. Adductor isometric. Hips stacked.' },
       ],
     },
     {
@@ -122,7 +122,7 @@ const day5Integrated = {
       letter: 'B', title: 'COMPOUND — PRIMARY HINGE', introLabel: null,
       intro: "Primary strength, at 80% — hard but clean, exactly the effort level where a client can still hear and apply your cue. This is the Compound Zone doing what it does best: building the strength and shape that make the rest of the session possible.",
       exercises: [
-        { name: 'Hex Bar Deadlift — Work Sets', insight: 'Trainer Insight: 3-sec eccentric is non-negotiable. This is where bone density is stimulated. Every client gets this.', sets: '4', reps: '5–6', load: '80% Est 1RM', tempo: '3-1-1', rest: '2 min', cue: 'Neutral spine. Hip-width stance. Drive floor away. Lock hips + knees at top.', rirNote: '1–2 RIR' },
+        { name: 'Hex Bar Deadlift — Work Sets', insight: 'Trainer Insight: 3-sec eccentric is non-negotiable. This is where bone density is stimulated. Every client gets this.', sets: '4', reps: '5–6', load: '80% Est 1RM', tempo: '3-1-1', rest: '2 min', cue: 'Neutral spine. Hip-width stance. Drive floor away. Lock hips + knees at top.', rirNote: '2 RIR — default proximity for a primary lift' },
         { name: 'Single-Arm DB Row (Heavy)', insight: 'Trainer Insight: log left vs right separately — you may find your own asymmetry', sets: '3', reps: '8–10', load: 'Heavy — 8RM', tempo: '3-1-2', rest: '60s', cue: 'Chest on bench. Full stretch at bottom — blade opens. Note L vs R.', rirNote: '2 RIR' },
       ],
     },
