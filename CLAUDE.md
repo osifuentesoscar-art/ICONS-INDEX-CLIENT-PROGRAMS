@@ -2133,6 +2133,8 @@ Average content per training day: ~856pt → ALWAYS splits across 2 pages
 
 ## NEW CLIENT ONBOARDING — DOCUMENT CHECKLIST
 
+**Mandatory research-coverage check (added 8/17/2026, at Xolokan's direct request — "client intake should auto-pull recent research on a client's condition").** Before building any new client's first document, or before a materially new condition/demographic surfaces for an existing client (a new clinical flag, a new age-bracket crossing, a first Styku scan revealing something new), check every clinical flag/condition/demographic on her intake — age bracket, sex, ALST/VFA/BMI status, any named condition (cardiac, OA, breast cancer/lymphedema, postpartum/DRA, GLP-1 use, etc.) — against CLAUDE.md's Evidence-Based Science Layer / Male Client Programming Framework. If a condition has no dedicated section yet, or the existing section is old enough to warrant a re-check against current literature, request a targeted `icons-research-analyst` pass on it BEFORE finalizing the document — do not proceed with zero or stale clinical grounding just because nothing flagged it yet. This is the same WebSearch-driven research pipeline that already built the Male Client Framework, Postpartum/DRA, Cardiac, OA, and Breast Cancer sections; it needs no new tooling, API, or key — only a guaranteed trigger at intake instead of an occasional one. See `.claude/agents/icons-expert.md` for the corresponding standing rule.
+
 When a new client joins, build IN THIS ORDER:
 
 ```
