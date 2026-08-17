@@ -185,7 +185,7 @@ const baselineNotes = [
 const days = [
   {
     intensity: 60,
-    badge: { label: '1', sub: 'DAY' },
+    badge: { label: '1', sub: 'RPE 6-8' }, // intensity level indicated via RPE range on the badge, not left as a bare day number
     title: 'DAY 1 — Glute Medius Reliability & Trunk Extensor Foundation',
     subtitle: 'Hip Abduction Symmetry · Isometric Trunk Extensor Capacity',
     descriptor: 'FOUNDATION DAY · REBUILD BILATERAL GLUTE MEDIUS OUTPUT · ISOMETRIC TRUNK BASE',
@@ -255,7 +255,7 @@ const days = [
   },
   {
     intensity: 70,
-    badge: { label: '2', sub: 'DAY' },
+    badge: { label: '2', sub: 'RPE 6-8' },
     title: 'DAY 2 — Right-Side Posterior Chain & Unilateral Symmetry',
     subtitle: 'Right Hip Extension & Lat Force Development',
     descriptor: 'RIGHT-BIASED UNILATERAL DAY · CLOSE THE FORCE-DEVELOPMENT GAP',
@@ -324,7 +324,7 @@ const days = [
   },
   {
     intensity: 80,
-    badge: { label: '3', sub: 'DAY' },
+    badge: { label: '3', sub: 'RPE 6-8' },
     title: 'DAY 3 — Integration, Rate of Force Development & Progression',
     subtitle: 'Dynamic Trunk Extension · Power & Symmetric Loaded Carries',
     descriptor: 'INTEGRATION DAY · FIRST DYNAMIC TRUNK EXTENSOR WORK · POWER/RFD',

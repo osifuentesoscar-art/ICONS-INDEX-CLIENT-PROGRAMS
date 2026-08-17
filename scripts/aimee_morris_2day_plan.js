@@ -172,7 +172,7 @@ const clientHighlight = {
 const days = [
   {
     intensity: 'AR',
-    badge: { label: 'A', sub: 'DAY' },
+    badge: { label: 'A', sub: 'MODERATE' }, // intensity level indicated on the badge itself, not just in intensityPara prose — see the non-%-graded explanation added there 8/17/2026
     title: 'DAY A — Hinge + Push + Core',
     subtitle: 'Deadlift · Press · Carry — Strength Emphasis & Hip Hinge Development',
     descriptor: 'STRENGTH EMPHASIS · HIP HINGE DEVELOPMENT · CARDIOVASCULAR FINISHER · 55–65 MIN',
@@ -246,7 +246,7 @@ const days = [
   },
   {
     intensity: 70,
-    badge: { label: 'B', sub: 'DAY' },
+    badge: { label: 'B', sub: 'MODERATE' },
     title: 'DAY B — Squat + Pull + Conditioning',
     subtitle: 'Split Squat · Row · Pull-Up — Pulling Strength & Pull-Up Progression',
     descriptor: 'PULLING STRENGTH · PULL-UP PROGRESSION · METABOLIC CONDITIONING · 55–65 MIN',
