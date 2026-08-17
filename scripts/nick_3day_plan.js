@@ -28,9 +28,17 @@
  *     exists for men per CLAUDE.md's documented gap, so no "optimal" label
  *     is invented for how far above the line he sits.
  *   - VFA — the scan's Segmental Analysis tab reports 9.7 cm² (Styku's own
- *     label: "Low Risk"); read directly against the ICONS VFA table
- *     (<70 cm² Very Low Risk), already confirmed sex-independent for Vinz
- *     Feller — 9.7 sits deep in the Very Low Risk band. NOTE: a separate,
+ *     label: "Low Risk"). LANGUAGE CORRECTED 8/17/2026, per CLAUDE.md's
+ *     "VFA (Visceral Fat Area) — reframed as trend metric 8/17/2026": the
+ *     old absolute risk-band table (<70/70-99/100-149/>=150 cm² -> Very
+ *     Low/Low/Moderate/High Risk, previously confirmed sex-independent and
+ *     already applied to Vinz Feller) is RETIRED — no consensus body
+ *     endorses a single VAT/VFA cutoff, and Styku's own VFA validation was
+ *     against DXA in KILOGRAMS, never in cm². This document previously
+ *     labeled 9.7 cm² "Very Low Risk" (itself a correction of Styku's own
+ *     "Low Risk" dashboard label) — both labels are now retired. 9.7 cm² is
+ *     presented purely as a trend/context figure to track at future
+ *     rescans, with no risk-band classification attached. NOTE: a separate,
  *     unrelated "Visceral Fat 0.1" figure appears on the scan's Body
  *     Composition summary page in a different, non-cm² scale — the
  *     Segmental Analysis tab's 9.7 cm² figure is the one directly
@@ -46,13 +54,22 @@
  *     inside). No composition-driven protein escalation is warranted the
  *     way Vinz's Obese-tier ACE finding required — `maleBodyFatConcern` is
  *     deliberately left unset below.
- *   - Segmental LST asymmetry: Left Arm 13.6 lbs / Right Arm 13.3 lbs (0.3
- *     lb gap) sits BELOW CLAUDE.md's 0.5 lb Asymmetry Protocol trigger —
- *     noted in the Styku interpretation but the weaker-side-leads rule is
- *     deliberately NOT applied to Single-Arm Row. Left Leg 23.6 lbs /
- *     Right Leg 24.9 lbs (1.3 lb gap) DOES meet the trigger — left leg
- *     leads Split Stance (Days 1 and 2), the program's only unilateral leg
- *     movement (see the two updated cue lines below).
+ *   - Segmental LST asymmetry — LANGUAGE CORRECTED 8/17/2026, per CLAUDE.md's
+ *     "Asymmetry Protocol — trigger corrected 8/17/2026" (old absolute
+ *     >=0.5 lb trigger replaced with a relative >=10% trigger): Left Arm
+ *     13.6 lbs / Right Arm 13.3 lbs (0.3 lb gap, ~2.2% relative) sits BELOW
+ *     the corrected >=10% trigger (also below the old 0.5 lb trigger — no
+ *     change here) — noted in the Styku interpretation but the weaker-
+ *     side-leads rule is deliberately NOT applied to Single-Arm Row. Left
+ *     Leg 23.6 lbs / Right Leg 24.9 lbs (1.3 lb gap, ~5.2% relative).
+ *     **FLAGGED DISCREPANCY**: this gap met the OLD 0.5 lb absolute
+ *     trigger (this document's original basis for "left leg leads"), but
+ *     does NOT clear the corrected >=10% relative trigger. Per this pass's
+ *     explicit instructions, the left-leg-leads Split Stance prescription
+ *     already programmed into Days 1-2 below is left UNCHANGED pending a
+ *     dedicated per-client review — this is a language correction (how the
+ *     trigger is described), not a silent resolution of whether the
+ *     protocol should still apply. Flagged to the main thread/icons-expert.
  *   - Real protein/creatine targets now come from `maleNutritionNote()` /
  *     `maleProteinTargets()` off `client.weightKg: 77.6` (171 lbs) and
  *     `client.ageYears: 25` — general resistance-trained range
@@ -187,8 +204,15 @@ const styku = {
 };
 
 // weakerSide() — lower LST = weaker = leads unilateral work.
-const armWeakerSide = weakerSide(styku.leftArmLST, styku.rightArmLST); // 'right' — 0.3 lb gap, below the 0.5 lb Asymmetry Protocol trigger
-const legWeakerSide = weakerSide(styku.leftLegLST, styku.rightLegLST); // 'left' — 1.3 lb gap, meets the trigger
+// Corrected 8/17/2026: trigger language recomputed as a relative % gap
+// (CLAUDE.md's corrected >=10% relative standard) rather than the old
+// absolute >=0.5 lb figure. Arm gap ~2.2% relative (below both standards).
+// Leg gap ~5.2% relative — met the OLD 0.5 lb trigger but does NOT clear
+// the corrected >=10% trigger; flagged discrepancy, see header comment —
+// the left-leg-leads Split Stance prescription is left unchanged pending
+// per-client review.
+const armWeakerSide = weakerSide(styku.leftArmLST, styku.rightArmLST); // 'right' — 0.3 lb gap (~2.2% relative), below the corrected >=10% trigger
+const legWeakerSide = weakerSide(styku.leftLegLST, styku.rightLegLST); // 'left' — 1.3 lb gap (~5.2% relative) — met old 0.5 lb trigger, does NOT meet corrected >=10% trigger (flagged discrepancy)
 
 const weekOverview = [
   { day: 'DAY 1', intensity: 60, focus: 'Hinge & New Baselines\nNeural Priming' },
@@ -215,12 +239,12 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Scan Interpretation — Male Client Programming Framework (8/13/2026)',
-    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs, BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 — Excellent. ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for Vinz Feller); Nick sits comfortably above the line. VFA ${styku.vfa} cm² (Segmental Analysis tab; a separate "Visceral Fat 0.1" figure on the Body Composition summary page is a different, non-cm² metric and is not used here) — the ICONS VFA table (<70 Very Low Risk / 70–99 Low Risk / 100–149 Moderate Risk / ≥150 High Risk cm²) is validated sex-independent and applies directly; 9.7 cm² sits deep in the Very Low Risk band. BMI ${styku.bmi} falls in the WHO Normal range (18.5–24.9) and reads correctly here — no muscular-athlete BMI caution needed. Body Fat ${styku.bodyFatPct}% reads lean under both systems this file cites: the ACE male table (14–17% Fitness / 18–24% Acceptable — sits right at that boundary) and Styku's own Mayo-Clinic-based band (12–20.9% "Fit," where 17.2% sits solidly inside) — no composition-driven protein escalation is warranted.`,
+    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs, BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 — Excellent. ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for Vinz Feller); Nick sits comfortably above the line. VFA ${styku.vfa} cm² (Segmental Analysis tab; a separate "Visceral Fat 0.1" figure on the Body Composition summary page is a different, non-cm² metric and is not used here) — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md's prior absolute VFA risk-band table (which this document previously cited to label this reading "Very Low Risk," itself a correction of Styku's own "Low Risk" dashboard label) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner's own validation limits (Styku's VFA output was validated against DXA in kilograms, never in cm²). BMI ${styku.bmi} falls in the WHO Normal range (18.5–24.9) and reads correctly here — no muscular-athlete BMI caution needed. Body Fat ${styku.bodyFatPct}% reads lean under both systems this file cites: the ACE male table (14–17% Fitness / 18–24% Acceptable — sits right at that boundary) and Styku's own Mayo-Clinic-based band (12–20.9% "Fit," where 17.2% sits solidly inside) — no composition-driven protein escalation is warranted.`,
   },
   {
     type: 'watch',
-    label: `${legWeakerSide === 'left' ? 'Left' : 'Right'}-Leg Asymmetry — Below Trigger on Arms, Applies on Legs`,
-    body: `Left Arm LST ${styku.leftArmLST} lbs vs Right Arm LST ${styku.rightArmLST} lbs (${(Math.abs(styku.leftArmLST - styku.rightArmLST)).toFixed(1)} lb gap, ${armWeakerSide} marginally lower) — this sits below CLAUDE.md's 0.5 lb Asymmetry Protocol trigger, so it's noted here but the weaker-side-leads rule is deliberately NOT applied to Single-Arm Row. Left Leg LST ${styku.leftLegLST} lbs vs Right Leg LST ${styku.rightLegLST} lbs (${(Math.abs(styku.leftLegLST - styku.rightLegLST)).toFixed(1)} lb gap, ${legWeakerSide} weaker) DOES meet the trigger — standard ICONS asymmetry protocol applied: left leg leads Split Stance (Days 1–2), the program's only unilateral leg movement, and is logged separately in the coaching cue. Re-check both gaps at Nick's next Styku rescan.`,
+    label: `Segmental Asymmetry — ${legWeakerSide === 'left' ? 'Left' : 'Right'} Leg Leads Split Stance`,
+    body: `Left Arm LST ${styku.leftArmLST} lbs vs Right Arm LST ${styku.rightArmLST} lbs (${(Math.abs(styku.leftArmLST - styku.rightArmLST)).toFixed(1)} lb gap, ~2.2% relative, ${armWeakerSide} marginally lower) — below CLAUDE.md's corrected >=10% relative Asymmetry Protocol trigger (also below the prior 0.5 lb absolute trigger — no change here), so it's noted here but the weaker-side-leads rule is deliberately NOT applied to Single-Arm Row. Left Leg LST ${styku.leftLegLST} lbs vs Right Leg LST ${styku.rightLegLST} lbs (${(Math.abs(styku.leftLegLST - styku.rightLegLST)).toFixed(1)} lb gap, ~5.2% relative, ${legWeakerSide} weaker) — left leg currently leads Split Stance (Days 1-2), the program's only unilateral leg movement, logged separately in the coaching cue. FLAGGED DISCREPANCY (8/17/2026 language-correction pass): this gap met the OLD 0.5 lb absolute trigger (this document's original basis for the left-leg-leads assignment), but does NOT clear CLAUDE.md's corrected >=10% relative trigger (per an external evidence review finding the old absolute trigger was firing on measurement noise). Per this pass's explicit instructions, the left-leg-leads Split Stance prescription is left UNCHANGED pending a dedicated per-client review — this is a trigger-logic language correction, not a silent resolution of whether the protocol should still apply. Flagged to the main thread/icons-expert. Re-check both gaps at Nick's next Styku rescan.`,
   },
   {
     type: 'purple',

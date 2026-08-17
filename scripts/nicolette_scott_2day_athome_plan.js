@@ -9,6 +9,19 @@
  * name-alias note) — not repeated verbatim here; only equipment-driven
  * differences are re-derived below.
  *
+ * LANGUAGE CORRECTED 8/17/2026 (matching the full-gym version's header
+ * comment): VFA risk-band labeling ("Very Low Risk" etc.) is retired per
+ * CLAUDE.md's corrected VFA framing — 20.1 cm² is now presented as a
+ * trend/context figure only. The Asymmetry Protocol trigger is corrected
+ * from an absolute >=0.5 lb L/R gap to a relative >=10% gap. Recomputed:
+ * the 0.5 lb leg gap (13.8 vs 14.3 lbs) is only ~3.5% relative — it met
+ * the OLD trigger exactly but does NOT clear the corrected >=10% standard.
+ * **FLAGGED DISCREPANCY**, same as the full-gym version — the left-leg-
+ * leads prescription already programmed into this document is left
+ * UNCHANGED pending a dedicated per-client review; only the trigger-logic
+ * language is corrected here. The 0.3 lb arm gap (~5% relative) stays
+ * below the trigger either way, no change there.
+ *
  * EQUIPMENT ASSUMPTION — stated explicitly and prominently in-document
  * (first baselineNote, a goldCallout) per this system's convention of
  * disclosing assumptions rather than burying them: dumbbells only, a
@@ -89,12 +102,18 @@ const baselineNotes = [
     type: 'teal',
     label: 'Styku Summary — Full Scan Detail Lives in the Full-Gym Document',
     audience: 'internal',
-    body: 'ALST Index 5.52 kg/m² — Normal/monitor tier per CLAUDE.md\'s 3-tier table (NOT At-Risk), but only 0.02 kg/m² above the At-Risk cutoff — a genuine monitoring point for her 8-week rescan. VFA (Segmental Analysis) 20.1 cm² — Very Low Risk (correcting Styku\'s own "Low Risk" dashboard label; the separate raw "Visceral Fat 0.2" figure elsewhere on her scan is a different, non-cm² scale and is not used). BMI 18.6 — technically Normal, only 0.1 above the Underweight cutoff, noted as borderline and not flagged clinically. The complete Styku table (body fat, lean mass, bone mass, Shape Score, full segmental LST) lives in her companion 2-Day Full Gym Training Plan — the clinical facts and asymmetry protocol below apply identically here.',
+    body: 'ALST Index 5.52 kg/m² — Normal/monitor tier per CLAUDE.md\'s 3-tier table (NOT At-Risk), but only 0.02 kg/m² above the At-Risk cutoff — a genuine monitoring point for her 8-week rescan. VFA (Segmental Analysis) 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md\'s prior absolute VFA risk-band table (which this document previously cited to label this reading "Very Low Risk," itself a correction of Styku\'s own "Low Risk" dashboard label) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner\'s own validation limits (the separate raw "Visceral Fat 0.2" figure elsewhere on her scan is a different, non-cm² scale and is not used). BMI 18.6 — technically Normal, only 0.1 above the Underweight cutoff, noted as borderline and not flagged clinically. The complete Styku table (body fat, lean mass, bone mass, Shape Score, full segmental LST) lives in her companion 2-Day Full Gym Training Plan — the clinical facts and asymmetry protocol below apply identically here.',
   },
   {
     type: 'watch',
-    label: 'Segmental Asymmetry — Legs Meet the Protocol Trigger, Arms Do Not',
-    body: 'Left Leg LST 13.8 lbs / Right Leg LST 14.3 lbs — 0.5 lb gap, meets the Asymmetry Protocol trigger exactly. Left leg is the weaker side and leads every unilateral leg exercise in this program — Single-Leg RDL and DB Split Squat, same as the full-gym version. Left Arm LST 5.8 lbs / Right Arm LST 6.1 lbs — 0.3 lb gap, below the 0.5 lb trigger; noted, but the weaker-side-leads rule is NOT applied to arm work (Single-Arm Row, Farmers Carry).',
+    label: 'Segmental Asymmetry — Left Leg Leads Unilateral Work',
+    body: 'Left Leg LST 13.8 lbs / Right Leg LST 14.3 lbs — left leg reads as the lighter/weaker side on this scan and leads every unilateral leg exercise in this program (Single-Leg RDL and DB Split Squat), same as the full-gym version. Left Arm LST 5.8 lbs / Right Arm LST 6.1 lbs — a smaller gap; no side-lead is applied to arm work (Single-Arm Row, Farmers Carry).',
+  },
+  {
+    type: 'watch',
+    label: 'Asymmetry Trigger Recalculation — Flagged Discrepancy (8/17/2026)',
+    audience: 'internal',
+    body: "CLAUDE.md's Asymmetry Protocol trigger was corrected 8/17/2026 from an absolute >=0.5 lb L/R gap to a relative >=10% gap (the old absolute trigger was firing on measurement noise, per an external evidence review). Recomputed against this client's actual numbers: Left Leg 13.8 lbs / Right Leg 14.3 lbs (0.5 lb gap) met the OLD trigger exactly but is only ~3.5% relative — it does NOT clear the corrected >=10% threshold. Left Arm 5.8 lbs / Right Arm 6.1 lbs (0.3 lb gap, ~5% relative) stays below the trigger either way, no change there. Per this pass's explicit instruction, the left-leg-leads prescription already programmed into this document's exercise blocks (Single-Leg RDL, DB Split Squat) is left UNCHANGED pending a dedicated per-client review — this note exists to make the discrepancy visible for that review, not to resolve it silently. Same discrepancy already flagged in the companion full-gym document. Flagged to the main thread/icons-expert.",
   },
   {
     type: 'gold',
@@ -168,7 +187,7 @@ const days = [
         title: 'LOADED CARRY, CORE & CONDITIONING',
         color: 'gold',
         introLabel: 'Format',
-        intro: 'Farmer carry and suitcase carry double as the primary cardiovascular stimulus at 2 days/week — a hallway, driveway, or office corridor is enough space. Carry with both hands evenly on the Farmer Carry; arm asymmetry (0.3 lb gap) sits below the 0.5 lb protocol trigger, so no side-lead is applied there.',
+        intro: 'Farmer carry and suitcase carry double as the primary cardiovascular stimulus at 2 days/week — a hallway, driveway, or office corridor is enough space. Carry with both hands evenly on the Farmer Carry; the arm-to-arm difference here is minor, so no side-lead is applied there.',
         exercises: [
           { name: 'Farmer Carry (DB, Both Hands)', sets: '3', reps: '25–30 yds', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs/hand', tempo: 'Controlled', rest: '75s', cue: 'Shoulders packed, chest tall, neutral neck. Carry evenly, both hands.' },
           { name: 'Plank Hold (Elbow)', sets: '2', reps: '1:00–1:10', load: 'Bodyweight', tempo: '—', rest: '60s', cue: 'Baseline 1:36. Hold at 1:00-1:10 in training — quality over max time.' },
@@ -223,7 +242,7 @@ const days = [
         letter: 'C',
         title: 'PRIMARY PULL STRENGTH',
         introLabel: 'Load Target',
-        intro: 'Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row (arm asymmetry sits below the 0.5 lb trigger). Same exercises and loads as the studio version — no equipment substitution needed here.',
+        intro: 'Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor. Same exercises and loads as the studio version — no equipment substitution needed here.',
         exercises: [
           { name: 'Single-Arm DB Row (Bench-Supported)', sets: '3', reps: '8 ea side', load: 'Wk1: 15 lbs → Wk4: 20 lbs', tempo: '3-1-2', rest: '60s', cue: 'One hand and knee on bench, flat back, drive elbow to hip.' },
           { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to lower ribs.' },

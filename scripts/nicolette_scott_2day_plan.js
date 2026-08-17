@@ -31,26 +31,43 @@
  *     At-Risk flag either. `client.alstIndex: 5.52` correctly leaves
  *     `proteinBar()` un-triggered (only fires <5.5).
  *   - VFA (Segmental Analysis, the authoritative cm² figure): 20.1 cm².
- *     Styku's own dashboard label says "Low Risk" — per CLAUDE.md's VFA
- *     table (<70 cm² = Very Low Risk), this is corrected to "Very Low
- *     Risk," the same correction already applied to Nick's and Elizabeth
- *     Poyner's documents. The separate raw "Visceral Fat 0.2" figure on the
- *     Body Composition summary page is a different, non-cm² scale — not
- *     used or interpreted anywhere in this document.
+ *     LANGUAGE CORRECTED 8/17/2026, per CLAUDE.md's "VFA (Visceral Fat
+ *     Area) — reframed as trend metric 8/17/2026": the old absolute
+ *     risk-band table (<70/70-99/100-149/>=150 cm² -> Very Low/Low/
+ *     Moderate/High Risk) is RETIRED — no consensus body endorses a single
+ *     VAT/VFA cutoff, and Styku's own VFA validation was against DXA in
+ *     KILOGRAMS, never in cm². This document previously labeled 20.1 cm²
+ *     "Very Low Risk" (itself a correction of Styku's own "Low Risk"
+ *     dashboard label) — both labels are now retired. 20.1 cm² is
+ *     presented purely as a trend/context figure to track at future
+ *     rescans, with no risk-band classification attached. The separate raw
+ *     "Visceral Fat 0.2" figure on the Body Composition summary page is a
+ *     different, non-cm² scale — not used or interpreted anywhere in this
+ *     document.
  *   - BMI 18.6 — technically Normal (18.5-24.9) but only 0.1 above the
  *     Underweight cutoff. Noted as borderline in the Styku interpretation,
  *     NOT flagged as clinical underweight (CLAUDE.md's actual threshold is
  *     <18.5, not crossed) and NOT combined with her ALST status to fabricate
  *     a "sarcopenic obesity profile" flag — that specific flag requires
  *     BOTH BMI<18.5 AND ALST<5.5, and neither condition is met here.
- *   - Segmental: Left Arm 5.8 lbs / Right Arm 6.1 lbs — 0.3 lb gap, BELOW
- *     the 0.5 lb Asymmetry Protocol trigger. Noted, but the weaker-side-
- *     leads rule is NOT applied to arm work (Single-Arm Row, Farmers
- *     Carry). Left Leg 13.8 lbs / Right Leg 14.3 lbs — 0.5 lb gap, MEETS
- *     the trigger exactly (treated as triggering, matching the Mary
- *     Burfete/Johanna Castillo precedent for an exact-threshold gap, not
- *     waived as borderline). `weakerSide(13.8, 14.3)` → 'left' — left leg
- *     leads every unilateral leg exercise (Single-Leg RDL, DB Split Squat).
+ *   - Segmental — LANGUAGE CORRECTED 8/17/2026, per CLAUDE.md's "Asymmetry
+ *     Protocol — trigger corrected 8/17/2026" (old absolute >=0.5 lb
+ *     trigger replaced with a relative >=10% trigger): Left Arm 5.8 lbs /
+ *     Right Arm 6.1 lbs — 0.3 lb gap, ~5% relative, below the corrected
+ *     >=10% trigger (also below the old 0.5 lb trigger — no change here).
+ *     Weaker-side-leads rule correctly NOT applied to arm work (Single-Arm
+ *     Row, Farmers Carry). Left Leg 13.8 lbs / Right Leg 14.3 lbs — 0.5 lb
+ *     gap, ~3.5% relative. **FLAGGED DISCREPANCY**: this gap met the OLD
+ *     0.5 lb absolute trigger exactly (this document's original basis for
+ *     "left leg leads"), but does NOT clear the corrected >=10% relative
+ *     trigger. Per this pass's explicit instructions, the left-leg-leads
+ *     prescription already programmed into the exercise blocks below is
+ *     left UNCHANGED pending a dedicated per-client review — this is a
+ *     language correction (how the trigger is described) not a silent
+ *     resolution of whether the protocol should still apply. Flagged to
+ *     the main thread/icons-expert. `weakerSide(13.8, 14.3)` → 'left'
+ *     (direction-only comparison, unaffected by this fix) still determines
+ *     which side reads weaker if/when the protocol is reconfirmed.
  *
  * AGE BRACKET — 35, the literal boundary between "20-35 Foundation & Peak
  * Bone Mass" and "35-45 Transition Onset." No CLAUDE.md numeric threshold
@@ -154,12 +171,18 @@ const baselineNotes = [
     type: 'teal',
     label: 'Styku Findings — Interpretation & One Correction',
     audience: 'internal',
-    body: `Shape Score 85/100 (Excellent). Body Fat 26.6% (Fit — lower than 70% of peers). ALST Index 5.52 kg/m² lands in the Normal/monitor tier (5.5-6.99) per CLAUDE.md's 3-tier table, NOT At-Risk — but it sits only 0.02 kg/m² above the At-Risk cutoff, close enough to flag as a genuine monitoring point for her 8-week rescan rather than a present-day clinical flag. VFA (Segmental Analysis): 20.1 cm² — Styku's own dashboard labels this "Low Risk," but per CLAUDE.md's VFA table (<70 cm²) this correctly reads Very Low Risk. (A separate raw "Visceral Fat 0.2" figure on the Body Composition summary page is a different, non-cm² scale and is not used here.) BMI 18.6 — technically Normal but only 0.1 above the Underweight cutoff; noted as borderline, not flagged as clinical underweight (that threshold is <18.5, not crossed), and not combined with her ALST reading to imply a sarcopenic-obesity profile — that specific flag requires both conditions, and neither is met.`,
+    body: `Shape Score 85/100 (Excellent). Body Fat 26.6% (Fit — lower than 70% of peers). ALST Index 5.52 kg/m² lands in the Normal/monitor tier (5.5-6.99) per CLAUDE.md's 3-tier table, NOT At-Risk — but it sits only 0.02 kg/m² above the At-Risk cutoff, close enough to flag as a genuine monitoring point for her 8-week rescan rather than a present-day clinical flag. VFA (Segmental Analysis): 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md's prior absolute VFA risk-band table (which this document previously cited to label this reading "Very Low Risk," itself a correction of Styku's own "Low Risk" dashboard label) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner's own validation limits (Styku's VFA output was validated against DXA in kilograms, never in cm²). (A separate raw "Visceral Fat 0.2" figure on the Body Composition summary page is a different, non-cm² scale and is not used here.) BMI 18.6 — technically Normal but only 0.1 above the Underweight cutoff; noted as borderline, not flagged as clinical underweight (that threshold is <18.5, not crossed), and not combined with her ALST reading to imply a sarcopenic-obesity profile — that specific flag requires both conditions, and neither is met.`,
   },
   {
     type: 'watch',
-    label: 'Segmental Asymmetry — Legs Meet the Protocol Trigger, Arms Do Not',
-    body: 'Left Leg LST 13.8 lbs / Right Leg LST 14.3 lbs — 0.5 lb gap, meets the Asymmetry Protocol trigger exactly. Left leg is the weaker side (lower LST) and leads every unilateral leg exercise in this program — Single-Leg RDL and DB Split Squat. Left Arm LST 5.8 lbs / Right Arm LST 6.1 lbs — 0.3 lb gap, below the 0.5 lb trigger; noted for monitoring, but the weaker-side-leads rule is NOT applied to arm work (Single-Arm Row, Farmers Carry) at this gap size.',
+    label: 'Segmental Asymmetry — Left Leg Leads Unilateral Work',
+    body: 'Left Leg LST 13.8 lbs / Right Leg LST 14.3 lbs — left leg reads as the lighter/weaker side on this scan and leads every unilateral leg exercise in this program (Single-Leg RDL and DB Split Squat) as a standard coaching convention. Left Arm LST 5.8 lbs / Right Arm LST 6.1 lbs — a smaller gap; no side-lead is applied to arm work (Single-Arm Row, Farmers Carry) at this size.',
+  },
+  {
+    type: 'watch',
+    label: 'Asymmetry Trigger Recalculation — Flagged Discrepancy (8/17/2026)',
+    audience: 'internal',
+    body: "CLAUDE.md's Asymmetry Protocol trigger was corrected 8/17/2026 from an absolute >=0.5 lb L/R gap to a relative >=10% gap (the old absolute trigger was firing on measurement noise — device error on Styku's segmental lean-mass reading runs 2.6-3.6x larger than the old 0.5 lb figure, per an external evidence review). Recomputed against this client's actual numbers: Left Leg 13.8 lbs / Right Leg 14.3 lbs (0.5 lb gap) met the OLD trigger exactly but is only ~3.5% relative — it does NOT clear the corrected >=10% threshold. Left Arm 5.8 lbs / Right Arm 6.1 lbs (0.3 lb gap, ~5% relative) stays below the trigger either way, no change there. Per this pass's explicit instruction, the left-leg-leads prescription already programmed into this document's exercise blocks (Single-Leg RDL, DB Split Squat) is left UNCHANGED pending a dedicated per-client review — this note exists to make the discrepancy visible for that review, not to resolve it silently. Flagged to the main thread/icons-expert.",
   },
   {
     type: 'gold',
@@ -182,6 +205,12 @@ const baselineNotes = [
     type: 'gold',
     label: 'Companion At-Home/Office Program',
     body: 'A companion 2-day at-home/office dumbbell-only training plan (no barbell, hex bar, cables, or pull-up bar) is also on file for days she cannot access the studio. The same Styku findings and asymmetry protocol apply there, with equipment-appropriate exercise substitutions and equipment-capped load targets — see her At-Home 2-Day Training Plan.',
+  },
+  {
+    type: 'watch',
+    label: 'ACL/Knee-Valgus Circuit — Framing Corrected, Full Dose Not Yet Built In',
+    audience: 'internal',
+    body: "Day B Block A's hip-abductor/thoracic activation work was previously framed as omitted because \"no elevated-risk ACL/knee-valgus finding is on file for Nicolette specifically\" — that framing is corrected per CLAUDE.md's \"ACL / Knee Valgus / Neuromuscular Injury-Prevention Circuit — trigger corrected 8/17/2026\": the corrective/neuromuscular circuit is now universal programming for this population, not gated behind a positive visual screen. The block's intro line was reworded accordingly. Note this activation block is still lighter than the full evidenced dose (20-30 min, 1-2x/week, sustained beyond 6 months) that standard calls for — flagged as a candidate addition for a future revision (a new weekly time allocation, not just added exercises) rather than expanded here without a dedicated program-structure change.",
   },
 ];
 
@@ -240,7 +269,7 @@ const days = [
         title: 'LOADED CARRY, CORE & CONDITIONING',
         color: 'gold',
         introLabel: 'Format',
-        intro: 'Farmer carry and plank close the session and double as the primary cardiovascular stimulus at 2 days/week. Carry with both hands evenly — arm asymmetry (0.3 lb gap) sits below the 0.5 lb protocol trigger, so no side-lead is applied to carry or row work.',
+        intro: 'Farmer carry and plank close the session and double as the primary cardiovascular stimulus at 2 days/week. Carry with both hands evenly — the arm-to-arm difference here is minor, so no side-lead is applied to carry or row work.',
         exercises: [
           { name: 'Farmer Carry (DB, Both Hands)', sets: '3', reps: '25–30 yds', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs/hand', tempo: 'Controlled', rest: '75s', cue: 'Shoulders packed, chest tall, neutral neck. Carry evenly, both hands.' },
           { name: 'Plank Hold (Elbow)', sets: '2', reps: '1:00–1:10', load: 'Bodyweight', tempo: '—', rest: '60s', cue: 'Baseline 1:36. Hold at 1:00-1:10 in training — quality over max time.' },
@@ -266,7 +295,7 @@ const days = [
         title: 'CONTROL & ALIGNMENT',
         color: 'gold',
         introLabel: 'Why',
-        intro: 'Primes the hip abductors and thoracic spine ahead of squat and lunge loading — general movement-quality preparation, not a dedicated corrective circuit (no elevated-risk ACL/knee-valgus finding is on file for Nicolette specifically).',
+        intro: 'Primes the hip abductors and thoracic spine ahead of squat and lunge loading — general movement-quality preparation that\'s standard here for every client, building lower-limb control and knee-pain resilience regardless of how she moves on a screen.',
         exercises: [
           { name: 'Standing Hip Abduction (Bodyweight)', sets: '2', reps: '12 ea side', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Hips level, no torso lean, controlled tempo both directions.' },
           { name: 'Band Pull-Apart', sets: '2', reps: '15', load: 'Light band', tempo: '2-1-2', rest: '30s', cue: 'Shoulder height, squeeze shoulder blades, control the return.' },
@@ -295,7 +324,7 @@ const days = [
         letter: 'C',
         title: 'PRIMARY PULL STRENGTH',
         introLabel: 'Load Target',
-        intro: 'Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row (arm asymmetry sits below the 0.5 lb trigger).',
+        intro: 'Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor.',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '3', reps: '8 ea side', load: 'Wk1: 15 lbs → Wk4: 20 lbs', tempo: '3-1-2', rest: '60s', cue: 'Bench-supported, flat back, drive elbow to hip, full stretch at bottom.' },
           { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to lower ribs.' },
@@ -344,7 +373,7 @@ const summary = {
   ],
   milestones4wk: `All tested lifts progressed on schedule: Hex DL ${dlWk4} lbs, Back Squat ${sqWk4} lbs, Hip Thrust ${htWk4} lbs, OHP ${ohpWk4} lbs/hand, Incline Press ${inclineWk4} lbs/hand, Single-Leg RDL ${slrdlWk4} lbs/hand. Push-up: 6-8 full floor reps. Plank: 1:30-1:45.`,
   milestones8wk: 'Re-test the full 10-pattern battery and establish new 1RM/working-baseline numbers via epley1RM()/workingLoad(). Introduce assisted pull-up testing (bonus 11th pattern) if pulling strength supports it. Reassess whether DB Split Squat or a true barbell/loaded lunge better fills the lunge-pattern slot going forward.',
-  rescanNote: 'Styku rescan recommended at 8 weeks — ALST Index (currently 5.52, close to the At-Risk boundary) is the top metric to watch; also track BMI (currently 18.6, only 0.1 above the Underweight cutoff — watch it doesn\'t drop further as training volume increases), Shape Score (currently 85, Excellent — maintain), and the leg segmental gap (currently 0.5 lbs, right at the asymmetry trigger — should reduce with left-led unilateral programming).',
+  rescanNote: 'Styku rescan recommended at 8 weeks — ALST Index (currently 5.52, close to the At-Risk boundary) is the top metric to watch; also track BMI (currently 18.6, only 0.1 above the Underweight cutoff — watch it doesn\'t drop further as training volume increases), Shape Score (currently 85, Excellent — maintain), and the leg segmental LST gap (currently 0.5 lbs, roughly 3-4% of the total reading — track the percentage change at rescan, not just the raw lb figure, and reassess whether left-led unilateral programming is still the right call once updated numbers are in).',
 };
 
 const data = {
