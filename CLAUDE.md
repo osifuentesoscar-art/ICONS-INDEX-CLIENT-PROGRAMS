@@ -498,13 +498,13 @@ This is a standing decision rule, not a one-off judgment call specific to any on
 - Creatine: indicated (not yet the "strongly indicated" tier by age alone — that's driven by ALST/postmenopausal status, not age in this bracket)
 - Menstrual cycle: no phase-based programming — autoregulate around individual symptoms over ≥3 cycles, train hard year-round
 - Volume/frequency: full ≥10 sets/muscle/week hypertrophy target, 2–3×/week per muscle group — never under-load
-- ACL/knee valgus screening is highest-yield here for clients in field/court sports (2.8× male incidence)
+- ACL/lower-limb neuromuscular injury-prevention circuit is highest-yield here for clients in field/court sports (2.8× male incidence) — per the corrected "ACL / Knee Valgus / Neuromuscular Injury-Prevention Circuit" section below, deliver it as a universal, dosed program component for this population, not gated behind a positive valgus screen
 - Copenhagen plank / adductor injury prevention is highest-yield here for athletic/team-sport clients
 - Heavy compound lifting still contributes to building peak bone mass — no need to wait for LIFTMOR-style candidacy criteria to justify loading
 - Watch energy availability in athletic/high-training-volume clients in this bracket — Relative Energy Deficiency in Sport (RED-S) suppresses bone density and raises stress-fracture risk even in clients who read as lean/fit on a scan; a BMI or body-fat reading that looks "fine" does not rule this out if training volume is high and intake hasn't been discussed
 
 **35–45 — Transition Onset**
-- Protein: trending from 1.6 g/kg/day toward the 1.8–2.0 g/kg "Women 40+" tier as the client crosses 40
+- Protein: 1.6 g/kg/day baseline (corrected 8/17/2026 — no longer trended upward by age alone; see "Protein Targets" below). Move toward the upper end of the 1.6–2.2 g/kg range only if the client is in an energy deficit or carrying a heavy training load, not simply because she's crossing 40
 - Creatine: move to "strongly indicated" once the client crosses 40
 - Watch for early perimenopausal signals (cycle irregularity, symptom shifts) — still autoregulate on individual data, not calendar or age alone. This is a genuinely early bracket for it: perimenopausal symptoms can begin in the early-to-mid 30s, well before the ~45 average onset, so "she's too young for this" is not a safe assumption to bring into an intake conversation. See "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" below for what's reasonable to ask about this at intake
 - Volume/frequency targets unchanged from the 20–35 bracket — no physiological reason to reduce load yet
@@ -513,16 +513,16 @@ This is a standing decision rule, not a one-off judgment call specific to any on
 - For a client 40+ within this bracket, see "ICONS Index Full-Spectrum Progression Standard — Women 40–55" below — her program should show programmed progression across all 10 core Baseline Testing Protocol exercises, not just her strongest or most-tested lifts
 
 **45–55 — Perimenopause / Menopause Transition**
-- Protein: 1.8–2.0 g/kg/day minimum through the earlier part of this bracket. The move to 2.0–2.2 g/kg/day is governed by THREE independent triggers, whichever comes first — age 50 (an age-based trigger in its own right, not gated behind a confirmed diagnosis — see note below), ALST flagging At-Risk, or menopause being confirmed before 50. A 46-year-old with ALST At-Risk or confirmed menopause escalates immediately; a 52-year-old escalates on age alone even with Normal ALST and unconfirmed menopausal status — this matches `proteinTargets()`'s actual implementation (`atRisk || ageYears >= 50`) in `icons_template.js`, see "Protein Targets" below for the full tier table. Age 50 is a deliberate, defensible population-level proxy (average natural menopause onset is ~51), consistent with this file's existing practice of treating ambiguous perimenopausal status as the higher-need case by default rather than assuming the lower-risk one (see "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" below) — it is not a stand-in for confirmed status, it's an intentional second, independent trigger.
+- Protein: 1.6 g/kg/day baseline (corrected 8/17/2026 — the prior age-triggered escalation to 1.8–2.2 g/kg is retired; see "Protein Targets" below for the full corrected framing and why the 8/13/2026 age-50-OR-gate reconciliation is superseded, not just refined). Move up within the 1.6–2.2 g/kg range for a genuine energy deficit or heavy training load, or when ALST flags At-Risk — not for turning 50 or reaching a particular bracket by itself. The most current female-specific synthesis found in this review (GSSI/Phillips, Nov 2025) states peri- and postmenopausal athletes likely need no different protein target than premenopausal athletes.
 - Creatine: strongly indicated
-- Heavy RT ≥3×/week + protein 2.0–2.2 g/kg/day is strongly evidence-backed through this transition; HRV dips in luteal-equivalent phases are NORMAL — interpret against the client's individual baseline, not a flat line
+- Heavy RT ≥3×/week is strongly evidence-backed through this transition, at whatever protein target the client's actual context (deficit/training load/ALST) supports — not a flat 2.0–2.2 g/kg by bracket alone; HRV dips in luteal-equivalent phases are NORMAL — interpret against the client's individual baseline, not a flat line
 - Start screening for LIFTMOR-style bone loading candidacy (T-score < -1.0) as estrogen decline accelerates
 - ALST monitoring becomes a priority — sarcopenia risk begins rising through this window
 - Perimenopausal status is frequently ambiguous at intake in this bracket — neither confirmed premenopausal nor confirmed postmenopausal. See "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" below for what's reasonable to ask at intake without overstepping into diagnosis, and why an unconfirmed status should still trigger pelvic-floor caution rather than default to "not postmenopausal" — that section's evidence says the transition window itself, not confirmed postmenopausal status, is the higher-risk period for stress urinary incontinence specifically
 - See "ICONS Index Full-Spectrum Progression Standard — Women 40–55" below — her program should show programmed progression across all 10 core Baseline Testing Protocol exercises
 
 **55–65 — Postmenopausal**
-- Protein: 2.0–2.2 g/kg/day ("Women 50+ / ALST At-Risk" tier)
+- Protein: 1.6 g/kg/day baseline, moving up toward 2.2 g/kg/day for a genuine energy deficit, heavy training load, or ALST At-Risk (corrected 8/17/2026 — not an automatic bracket-based 2.0–2.2 g/kg tier; see "Protein Targets" below)
 - Creatine: strongly indicated
 - Bone loading: LIFTMOR protocol directly applicable if T-score < -1.0 — frame as "bone investment," never as risk
 - Pelvic floor triggers apply to every heavy carry/squat/deadlift/hip thrust session
@@ -531,76 +531,331 @@ This is a standing decision rule, not a one-off judgment call specific to any on
 - Power training (moving a sub-maximal load with maximal intent — see "Power Training — Fall Risk & Longevity" below) belongs in this bracket already, not just 65+; power output starts declining before strength does
 
 **65+ — Older Postmenopausal**
-- Protein: 2.0–2.2 g/kg/day, same tier as 55–65 — do not step this down with age
+- Protein: same corrected context-driven framing as 55–65 (1.6 g/kg/day baseline, up toward 2.2 g/kg/day for deficit/training-load/ALST At-Risk) — note this now sits ABOVE geriatric-consensus general guidance (PROT-AGE/ESPEN recommend ≥1.0–1.2 g/kg/day for healthy older adults generally), which is appropriate for an actively resistance-training population but should not be read as an age-65+ escalation in its own right
 - Creatine: strongly indicated — cognitive benefits are well-supported here; treat bone-density benefit as plausible but not settled (see Creatine section below)
 - Bone loading: LIFTMOR candidacy screening remains a priority, framed consistently as "bone investment"
 - Pelvic floor protocol applies identically to the 55–65 bracket
 - ALST At-Risk / sarcopenia prevention remains the top physiological priority
 - Favor movements with direct functional/fall-risk transfer (carries, step-ups, single-leg work, and explicit power/velocity work) alongside the standard compound lifts — this is now evidence-backed, not just general good practice: see "Power Training — Fall Risk & Longevity" below
 
-### ALST Index (Appendicular Lean Soft Tissue) — EWGSOP2 2018
+### ALST Index (Appendicular Lean Soft Tissue) — EWGSOP2 2018 (corrected 8/17/2026 — sex-conflation error)
 ```
-≥ 7.0 kg/m²  → Optimal
-5.5–6.99      → Normal — monitor
 < 5.5 kg/m²  → AT-RISK for sarcopenia ← programming priority shift
+≥ 5.5 kg/m²  → Within normal reference range (women) — a trend metric, not a graded "how good" score
 ```
+**Corrected 8/17/2026, per an external evidence review (Brace Life / ICONS Methodology — External Evidence Review, 8/17/2026) — this was the single most consequential finding in that review.** The prior version of this table treated 5.5 and 7.0 kg/m² as two rungs of one severity ladder for women ("5.5–6.99 = Normal-monitor," "≥7.0 = Optimal"). That is wrong: EWGSOP2's actual cutoffs are sex-specific, not a graded scale — <7.0 kg/m² is the MALE at-risk threshold (already correctly used in the Male Client Programming Framework below) and <5.5 kg/m² is the FEMALE at-risk threshold (EWGSOP2, *Age and Ageing* 48(1):16–31). There is no female "≥7.0 = Optimal" tier in EWGSOP2 or any other consensus body reviewed — 7.0 sits roughly 1.5 kg/m² above where a healthy woman's ALST typically falls, meaning the old "Optimal" band was asking most healthy female clients to hit a number derived from men. Applied to a predominantly female roster, the old bands systematically pathologized normal muscle mass (a woman at 5.8 read as "Normal — monitor," not simply normal) while holding out an unreachable, misapplied "Optimal" target.
+**EWGSOP2 does not treat lean-mass index as the primary sarcopenia criterion, and neither should this file.** In the actual EWGSOP2 algorithm, low muscle *strength* (grip <16 kg women / <27 kg men) is the primary indicator; low muscle quantity (ALST/ASM) only *confirms* a diagnosis already suggested by low strength; and low physical performance (gait speed ≤0.8 m/s, five-times chair-stand >15 s, SPPB ≤8) grades severity. EWGSOP2 itself states plainly that "some cut-off points are arbitrary at this time." A 2020 alternative framework (SDOC, Cawthon et al., *JAGS* 68:1429–1437) goes further and excludes DXA-derived lean mass from its sarcopenia definition entirely, having found it "not consistently associated" with falls, mobility limitation, hip fracture, or mortality in pooled cohort data — SDOC defines sarcopenia by grip strength plus gait speed alone, listing ALM/height² only as a secondary variable. AWGS 2019 (the Asian Working Group) uses a lower female cutoff (<5.4 kg/m² by DXA) and a threshold that shifts with the measurement device (<5.7 by BIA).
+**Add two zero-cost function screens the consensus bodies actually weight above mass.** Grip strength (hand dynamometer, flag <16 kg women / <27 kg men per EWGSOP2) and the five-times chair-stand test (flag >15 s per EWGSOP2, >12 s per AWGS) convert this from a single unvalidated proxy into something resembling a real consensus algorithm, at the cost of a $30–50 hand dynamometer.
+**A genuine measurement-validity gap: ALM/ALMI from 3D optical scanning (Styku) is not validated in the published Styku study.** The peer-reviewed Styku S100 validation (Bennett et al., *Clinical Nutrition* 41:211–218, n=188, 102 women, DXA-calibrated, vs. Hologic DXA) reported fat-free mass, fat mass, %BF, and VAT — but did NOT report or validate ALM or ALMI at all; the authors flag skeletal muscle mass explicitly as future work. A separate 3D-optical study (different device, not confirmed as Styku) estimated DXA ALM at r²=0.96, RMSE 1.5 kg under cross-validation — for context, an RMSE of ~1.5 kg total-body ALM is roughly ±0.55 kg/m² of ALMI on a 1.65 m woman, which is on the order of the entire width this file used to treat as meaningful around the 5.5 cutoff. **Practical consequence: present ALST Index to clients and trainers as a trend metric with a stated reference floor (<5.5 = at-risk, tracked over time), not as a precise risk classification or a graded "how good is my muscle mass" score.** See "3D Optical Scanning — Validity & What It's Actually Good For" below for the fuller measurement-validity discussion (VFA, %BF, segmental composition) this same review surfaced.
 **When ALST < 5.5:** Muscle-building is the primary physiological goal. Every session prioritizes progressive resistance. Protein target escalates. Creatine is strongly indicated.
 
-**Use Styku's reported ALST value** — their calculation differs from manual (arm + leg LST / height²).
+**Use Styku's reported ALST value** — their calculation differs from manual (arm + leg LST / height²). Note the validity caveat above when interpreting it.
 
-### Protein Targets (Morton 2018 meta-analysis + anabolic resistance research)
+### 3D Optical Scanning — Validity & What It's Actually Good For (new section, 8/17/2026)
 ```
-Active women general    : ≥ 1.6 g/kg/day
-Women 40+               : 1.8–2.0 g/kg/day
-Women 50+ / ALST At-Risk: 2.0–2.2 g/kg/day
-Per meal                : ~0.4 g/kg (leucine threshold)
-Distribution            : 4+ meals/day
-```
-**"50+ / ALST At-Risk" is an OR, not an AND, and age 50 is not conditional on
-confirmed menopausal status** — either condition alone moves a client into the
-2.0–2.2 g/kg tier: turning 50 (regardless of confirmed menopausal status), or
-ALST flagging At-Risk at any age. This matches `proteinTargets()`'s actual
-implementation in `icons_template.js` (`atRisk || ageYears >= 50`) and the
-45–55 bracket bullet above, which spells out why age 50 functions as its own
-independent trigger rather than a fallback used only when status can't be
-confirmed. Clarified 8/13/2026 after `icons-roster-analyst` flagged this
-subsection and the 45–55 bracket bullet as reading inconsistently — see the
-Research Update Log for the reconciliation.
+Why this section exists: ICONS uses Styku as the measurement backbone for
+  ALST (Item 1 above), VFA, %BF, and circumferences — but this file never
+  had a single place stating what the device is actually validated to do.
+  Built in response to the external evidence review's dedicated measurement-
+  validity item, which found the device is being asked to do more
+  diagnostic work than its own validation supports.
 
-### Creatine (evidence-based for women)
+Against DXA (the practical comparator, not the gold standard): performs
+  well on WHOLE-BODY totals, with wide INDIVIDUAL limits of agreement. The
+  peer-reviewed Styku S100 v4.1 validation (Bennett et al., Clinical
+  Nutrition 41:211-218, n=188, 102 women, DXA-calibrated) found excellent
+  test-retest PRECISION (FFM CV 0.75%, FM CV 1.94%, %BF RMSE 0.60, VAT CV
+  3.67% — actually better than DXA VAT's own 8.61% CV) but a %BF limit of
+  agreement spanning roughly 18 percentage points — meaning a single scan
+  can differ from DXA by 7-11 points in an individual client even though
+  group-level bias is under 2 points. This is exactly the profile of a
+  good TREND-tracking tool and a poor DIAGNOSTIC one: excellent precision
+  (repeat scans on the same person agree tightly), moderate accuracy
+  (any single scan's absolute number carries real individual-level error).
+
+Against a true 4-compartment-model criterion (not just DXA): validity is
+  POOR. Tinsley et al. (Appl Physiol Nutr Metab 46:644-650) found 3D
+  optical scanning showed "poor validity" vs. a 4C model — %BF overestimated
+  by 5.31 points vs. 4C, 4.20 points vs. DXA alone. Because optical
+  scanners are calibrated TO DXA, agreement with DXA is partly built into
+  the calibration itself — agreement with the underlying physiology (the
+  4C criterion) is weaker than the DXA comparison alone suggests.
+
+Segmental (arm/leg/trunk) composition is NOT reliable — do not report it
+  as accurate. Segmental volumes agreed poorly with DXA in the Bennett
+  validation (differing body-partition definitions between devices), with
+  CCCs on the order of ~0.32-0.52 in comparable optical-vs-DXA segmental
+  work — unsuitable for client-facing precision claims. This directly
+  reinforces (does not newly introduce) the corrected Asymmetry Protocol
+  above, which already moved away from treating an absolute segmental L/R
+  gap as precise.
+
+Change-tracking — the actual ICONS use case — performs moderately, and
+  BETTER in women specifically. A longitudinal study (Fit3D, n=133, 45
+  women) found female ALM CHANGE R²=0.70 (RMSE 0.37 kg) vs. male ALM change
+  R²=0.52 (RMSE 0.52 kg), and female FM change R²=0.86 (RMSE 1.98 kg).
+  Sub-kilogram RMSE on ALM change is genuinely useful for tracking a
+  12-week training block — this is the device's real strength.
+
+Circumferences are the device's single most trustworthy output: ICC≈0.99
+  reliability (Styku's own published study list). Pair circumference data
+  with waist circumference specifically, interpreted against the IAS/ICCR
+  female thresholds (see corrected VFA section above) — this turns the
+  device's most reliable measurement into its most clinically endorsed one.
+
+ALM/ALMI (the number ALST is built from) was NOT reported or validated in
+  the peer-reviewed Styku validation study at all — see the ALST Index
+  section above for the full detail on this specific gap.
+
+No calibration-interval guidance exists in the literature. Despite
+  targeted searching, no source recommends how often an optical scan
+  should be paired with DXA/BIA/skinfolds for calibration or drift-
+  checking — this appears to be a genuine, unaddressed gap in the
+  literature, not an oversight in this review. Any ICONS policy on
+  rescan/calibration cadence is necessarily a REASONED INTERNAL CHOICE,
+  not an evidence-based standard — state it that way to clients rather
+  than implying a validated interval exists. A defensible starting policy:
+  one baseline DXA and one at 6-12 months for any client whose scan output
+  drives clinical-sounding language (sarcopenia risk, visceral fat risk) —
+  labeled explicitly as studio policy, not a guideline.
+
+PRACTICAL SUMMARY — how to talk about a Styku scan going forward:
+  1. Frame every absolute number (ALST, VFA, %BF) as a trend indicator
+     with individual-level uncertainty, not a precision diagnosis.
+  2. Publish the uncertainty to clients rather than hiding it — e.g., "%BF
+     may differ from a clinical DXA scan by up to roughly 7-11 percentage
+     points for any one reading, while repeat scans on you personally are
+     precise to well under 1 point." This is a trust asset (it explains
+     why a number moves) not a liability.
+  3. Standardize scan conditions rigorously (same time of day, hydration
+     state, minimal clothing, hair position, posture) — precision is the
+     device's real strength, and only a tight protocol preserves it.
+  4. Do not report segmental composition as precise/diagnostic.
+  5. Lean into circumferences + waist circumference as the headline,
+     clinically-endorsed metrics.
+  6. Add a hand dynamometer and a tape measure as low-cost ($<$100
+     combined) second-modality triangulation for the two biggest
+     validity gaps identified here and in the ALST section above.
 ```
-Dose    : 3–5g monohydrate daily (no loading phase)
-Timing  : with food
-Saturates: 3–4 weeks
+
+### Protein Targets — re-keyed from age to context 8/17/2026 (ISSN 2017 + Nunes et al. 2022 meta-analysis + GSSI/Phillips Nov 2025 female-athlete synthesis)
+```
+Active women, baseline           : 1.6 g/kg/day
+Energy deficit / heavy training  : 1.6–2.2 g/kg/day (context-driven — see below,
+                                    NOT an age escalation)
+ALST At-Risk                     : upper end of the 1.6–2.2 g/kg range
+Per meal                         : ~0.3 g/kg (≈25–40g), 4 meals spaced 3–4h apart
+Pre-sleep option                 : 30–40g slow-digesting protein (e.g. casein)
+Plant-based clients              : add ~10% to whatever target otherwise applies
+Leucine (approximate, not protocol-grade): ~3g/meal from a complete protein source
+```
+**Corrected 8/17/2026 — this replaces an age-banded escalation (1.6 →
+1.8–2.0 at 40+ → 2.0–2.2 at 50+) that the external evidence review found is
+not what current, population-specific literature supports.** What changed
+and why:
+- **1.6 g/kg/day remains the well-evidenced baseline** — unchanged. A
+  meta-analysis of 74 RCTs (Nunes et al., J Cachexia Sarcopenia Muscle
+  13:795-810) found ≥1.6 g/kg/day with resistance training improved lean
+  body mass (SMD 0.30) and lower-body strength (SMD 0.40) vs. lower
+  intake, and the ISSN position stand independently supports 1.4–2.0
+  g/kg/day (Jäger et al., JISSN 14:20).
+- **The age-banded escalation (40+, 50+) is retired.** The most current
+  female-specific synthesis found in this review — a November 2025
+  Gatorade Sports Science Institute review co-authored by Stuart Phillips
+  — targets 1.4–1.6 g/kg/day for female athletes generally, reserves
+  >1.6 up to 2.2 g/kg/day specifically for ENERGY RESTRICTION or heavy
+  training load (not age), and states explicitly that peri- and
+  postmenopausal athletes likely need no different protein target than
+  premenopausal athletes (D'Souza & Phillips, GSSI Sports Science
+  Exchange #270). Direct postmenopausal RCT evidence for pushing intake
+  higher by age alone is weak: 1.2 vs. 0.8 g/kg/day in postmenopausal
+  women doing resistance training produced only a small functional-
+  capacity difference, with no difference in strength or lean-mass
+  quality (Nutrients 11:1323). Geriatric consensus bodies (PROT-AGE,
+  ESPEN) recommend ≥1.0–1.2 g/kg/day for healthy older adults generally —
+  well below what the old ICONS bands implied age alone requires.
+- **The 8/13/2026 reconciliation pass (see Research Update Log, seventh
+  pass) is SUPERSEDED by this finding, not just refined.** That pass
+  correctly identified that `proteinTargets()`'s `atRisk || ageYears >= 50`
+  logic matched the prose at the time and concluded no change was needed —
+  but it worked from Morton et al. 2018 alone, which is not menopause- or
+  age-specific at all. This pass found a more current, population-specific
+  source (GSSI/Phillips 2025) that directly contradicts the age-escalation
+  premise both passes shared. Recorded here rather than silently
+  overwritten, per this file's citation-integrity practice.
+- **Per-meal target lowered from ~0.4 g/kg to ~0.3 g/kg** (≈25-40g,
+  4 meals, 3-4h apart) — the old 0.4 g/kg figure exceeded both the ISSN's
+  0.25 g/kg serving guidance and the ~0.31 g/kg/meal muscle-protein-
+  synthesis-maximizing dose identified in the GSSI review.
+- **Added, not previously present:** a pre-sleep 30-40g slow-protein
+  option (ISSN-supported, low-friction way to hit daily totals), a +10%
+  adjustment for plant-based clients (GSSI), and an explicit "leucine is
+  approximate, not protocol-grade" caveat — the commonly cited ~3-4g/meal
+  leucine threshold could not be independently verified to a primary
+  source in this review.
+
+**Engine consequence — flagged, not yet built.** `proteinTargets()` in
+`icons_template.js` currently implements `atRisk || ageYears >= 50` — an
+age-based trigger the corrected standard above no longer supports as
+written. The corrected trigger is context-based (energy deficit or heavy
+training load) OR ALST At-Risk, not age alone — but "energy deficit" and
+"heavy training load" are not currently captured as structured client-data
+fields anywhere in this system, so this is a real engine/intake change
+(new fields, not just a formula edit), not a one-line fix. **Deliberately
+not built in this pass** — same posture as the ALST/Asymmetry/ACL fixes
+above: flagged for `icons-expert`/`icons-research-analyst` as real follow-up
+work, and every current client document computed under the old age-banded
+tiers needs individual review once the engine changes, not a blanket
+regeneration under an unchanged formula.
+
+### Creatine (evidence-based for women) — refined 8/17/2026, verdict unchanged: strongest-evidenced item in the ICONS protocol
+```
+Dose    : 3–5g monohydrate daily (no loading phase) — confirmed well-supported
+          as written. ISSN's "common questions and misconceptions" paper
+          (Antonio et al., JISSN 2021) concludes explicitly: "a creatine
+          loading phase is not required" at 3-5g/day (or 0.1 g/kg) for a
+          minimum of 4 weeks to reach comparable saturation to loading.
+          Cite ISSN 2021 and a 2026 Frontiers in Nutrition aging-specific
+          review directly in client materials — both independently endorse
+          this exact dose/no-loading/with-food combination.
+Timing  : with food — confirmed (ISSN: carbohydrate or carb+protein appears
+          to increase muscular creatine uptake, though performance outcomes
+          may not differ)
+Saturates: ~4 weeks (set this expectation explicitly with clients — no-
+          loading is slower than loading by design; frame the slower
+          saturation as a deliberate adherence/comfort tradeoff, since GI
+          distress during loading phases measurably reduces adherence)
 Indicated: all women in strength training
 Strongly indicated: women 40+, ALST At-Risk, postmenopausal
-Benefits: strength, power, sleep quality — all well-supported
+Benefits: strength, power, sleep quality — all well-supported. Training
+          pairing is non-negotiable: creatine WITHOUT resistance training
+          did not increase lean mass in postmenopausal women over 2 years
+          (ISSN 2021) — always message it paired with training, never as
+          a standalone intervention.
 Cognition: well-supported — memory, attention, and processing speed improved in
            5 of 6 reviewed older-adult trials (Nutrition Reviews systematic
-           review, 2025)
-Bone    : evidence is MIXED, not settled — some trials show a benefit when
-          creatine is paired with heavy resistance training; a well-designed
-          2-year RCT in older women found no BMD improvement over placebo.
-          Coach it as a strength/cognition supplement with a possible bone
-          upside, not a guaranteed bone intervention — LIFTMOR-style loading
-          is the settled bone protocol, creatine is not a substitute for it
+           review, 2025). CORRECTED 8/17/2026 — do not imply the standard
+           3-5g/day dose is what produced these cognitive benefits. Brain
+           creatine uptake is slow/limited (only ~5-15% rise with
+           supplementation), and the protocols that showed cognitive
+           effects used substantially higher doses: 15-20g/day loading for
+           3-7 days then 5-10g/day maintenance, or single studies at 5g/day
+           for 6 weeks, 8g/day for 5 days, or 20g/day for 7 days. ICONS's
+           standard 3-5g/day dose should not be marketed on cognitive
+           grounds without this caveat.
+Bone    : evidence is MIXED, not settled — refined 8/17/2026 with a body-
+          mass-scaled option. Some trials show a benefit when creatine is
+          paired with heavy resistance training (postmenopausal women at
+          0.1 g/kg/day for 52 weeks attenuated femoral-neck/hip bone-
+          mineral loss); a well-designed 2-year RCT (237 postmenopausal
+          women, 0.14 g/kg) found NO BMD effect, though proximal femur
+          geometry improved; a 24-week trial found appendicular lean mass
+          gains with no bone effect. Note 0.1 g/kg/day is ~6-7g/day for a
+          65kg woman — ABOVE ICONS's standard 3-5g band. Offer this as an
+          optional body-mass-scaled tier (0.10-0.14 g/kg/day) for bone-
+          loading-focused/LIFTMOR-candidate clients specifically, while
+          keeping 3-5g/day as the general default. Coach it as a
+          strength/cognition supplement with a possible, dose-dependent
+          bone upside, not a guaranteed bone intervention — LIFTMOR-style
+          loading is the settled bone protocol, creatine is not a
+          substitute for it.
+Form    : insist on creatine monohydrate specifically — ISSN states other
+          forms (creatine HCl, buffered creatine, etc.) are not superior.
+Safety  : no compelling evidence of harm at doses up to 30g/day for 5 years
+          in healthy or clinical populations (ISSN 2021); weight gain is the
+          only consistently reported side effect. FDA GRAS status (2020).
 ```
 
-### Collagen (Shaw et al. 2017 AJCN)
+### Collagen (Shaw et al. 2017 AJCN) — timing and claims corrected 8/17/2026
 ```
-Dose   : 15g collagen + 50mg Vitamin C
-Timing : 30–60 min BEFORE loading session
-Effect : doubles collagen synthesis markers
+Dose   : 15g collagen + ~50mg Vitamin C — correct as written, matches the
+         literature almost exactly (Shaw used 48mg vitamin C; a separate
+         follow-up study used 50mg)
+Timing : 45–60 min BEFORE loading session — corrected from "30-60 min."
+         Shaw et al.'s actual protocol dosed 1 HOUR pre-exercise for the 15g
+         dose; the authors themselves noted a smaller (5g) dose would have
+         been better timed at 30 min, meaning the 30-minute end of the old
+         window was never actually studied at ICONS's 15g dose. Drop "30
+         min" as an equivalent option for the 15g protocol.
 Requires: mechanical load to be effective
+Framing — reposition from acute to chronic, corrected 8/17/2026: this is a
+  12+ week connective-tissue SUPPORT protocol taken consistently on
+  training days, not a pre-workout performance aid. A January 2026 umbrella
+  review (16 meta-analyses, 113 RCTs, 7,983 participants) explicitly
+  describes collagen's effect as "chronic and structural rather than
+  acutely ergogenic" — it found a positive effect on tendon MORPHOLOGY
+  (SMD 0.65) but at low certainty (only 4 RCTs/127 participants), and NO
+  effect on tendon mechanical properties. A separate meta-analysis of 13
+  RCTs (450 participants) concluded collagen peptide supplementation does
+  NOT further improve musculoskeletal PERFORMANCE when added to exercise
+  (Kirmse et al., Dtsch Z Sportmed 75:179-188) — do not claim a performance
+  benefit; the acute "doubles collagen synthesis markers" framing overstates
+  what the current evidence base supports for actual outcomes.
+Priority: rank below creatine and protein in the client supplement
+  hierarchy — creatine rests on ISSN position stands, protein on multiple
+  large meta-analyses; collagen rests on a small number of tendon-specific
+  RCTs with a notable female-data gap (only 155 of 768 participants in the
+  largest supporting review were women).
 ```
 
-### Bone Loading — LIFTMOR RCT (Watson & Beck 2018)
+### Bone Loading — LIFTMOR RCT (Watson & Beck 2018) — corrected 8/17/2026: intensity number, supervision, risk gate
 ```
-Stimulus : ≥ 80% 1RM compound lifts, 5×5, 2×/week
-Safe in  : postmenopausal women WITH low bone mass (T-score < -1.0)
-Result   : +2.9% lumbar BMD vs -1.2% control
+Stimulus : >85% 1RM compound lifts (CORRECTED from "≥80%" — the actual
+  LIFTMOR trial (Watson et al., JBMR 2018, n=101, mean age 65±5) prescribed
+  5×5 at >85% 1RM, not 80%. HiRIT as defined in current reviews (e.g.
+  Exercise for Postmenopausal Bone Health review 2025) also includes IMPACT
+  loading generating ground reaction forces >4× body weight, and MEDEX-OP's
+  HiRIT arm included 5×5 assisted jumping — if ICONS's protocol omits the
+  impact component, it is running "HiRT" (heavy resistance training), not
+  "HiRIT" (heavy resistance AND IMPACT training), and should say so plainly
+  rather than implying the full LIFTMOR stimulus.
+Frequency: 2×/week, supervised — MUST be stated explicitly as supervised.
+  LIFTMOR, MEDEX-OP, and the 2025 pelvic-floor safety analysis were ALL
+  delivered as fully supervised sessions; the UK "Strong, Steady and
+  Straight" consensus (BJSM 2022) independently states resistance exercise
+  for bone health is "ideally supervised." Do not prescribe >85% 1RM 5×5
+  as unsupervised homework for a postmenopausal client.
+Safe in  : postmenopausal women WITH low bone mass (T-score < -1.0) — AND
+  a mandatory risk-stratification gate before entry, added 8/17/2026: a
+  client with a prior vertebral fracture, multiple low-trauma fractures, or
+  very low BMD should be routed to individualised physiotherapist input
+  FIRST, not straight into the protocol — per both the UK consensus (BJSM
+  2022) and Bone Health & Osteoporosis Foundation guidance. The concrete
+  reason this gate matters: in MEDEX-OP (JBMR 2021), one HiRIT participant
+  sustained a grade-2 L2 wedge compression fracture after a fall (possibly
+  squat-associated), and 30 falls occurred across 24 participants (21%,
+  no between-group difference) — fall risk, not lifting load itself, was
+  the proximate mechanism of harm in the trial evidence. Add balance/fall-
+  prevention work alongside the loading protocol for this reason.
+Ramp-in  : added 8/17/2026 — several weeks of technique-first, lower-
+  intensity loading BEFORE reaching >85% 1RM, per both the UK consensus
+  ("lower intensity exercise ensuring good technique is recommended before
+  increasing intensity levels") and LIFTMOR's own supervised, progressive
+  trial design. ICONS's Teal (technique) day is the natural vehicle for
+  this ramp-in phase — use it explicitly for bone-loading-candidate
+  clients working toward LIFTMOR-level intensity, not just as a generic
+  "light day."
+Spinal precaution: added 8/17/2026 — codify a loaded-spinal-flexion
+  prohibition in all postmenopausal bone-loading programming. The UK
+  consensus explicitly instructs avoiding loaded spinal flexion and
+  "repeated or end-range flexion," and BHOF cautions against forward-
+  bending/twisting movements for very-low-BMD clients.
+Result   : lumbar spine BMD +2.9±2.8% vs -1.2±2.8% control (p<0.001);
+  femoral neck BMD +0.3% vs -1.9% (p=0.004); femoral neck cortical
+  thickness +13.6% vs +6.3%; compliance 92±11%; only one adverse event
+  (minor lower back spasm) in the original LIFTMOR trial. A follow-up
+  kyphosis analysis found HiRIT "did not induce vertebral fracture" and
+  improved thoracic kyphosis significantly vs. control.
 Frame as : "bone investment" not "heavy lifting"
-Supplement: impact loading (jumps, drop landings) for hip bone
+Supplement: impact loading (jumps, drop landings) for hip bone — this is
+  now understood as part of the core HiRIT stimulus itself (see above),
+  not merely a supplementary add-on.
+Pelvic floor safety (new, 8/17/2026): a 2025 MEDEX-OP pelvic-floor
+  quality-of-life analysis (n=115) found HiRIT at >80% 1RM "does not
+  aggravate symptoms of pelvic floor dysfunction," with a preliminary
+  protective signal in women with a history of pelvic organ prolapse —
+  directly supports offering heavy bone-loading work to a pelvic-floor-
+  flagged client rather than defaulting to lighter loads out of caution.
 Corroborated: 2025 systematic review/meta-analysis (17 RCTs, n=690) confirms
   resistance training improves BMD at lumbar spine, femoral neck, total hip,
   and trochanter in postmenopausal women; high-intensity strength training
@@ -608,6 +863,22 @@ Corroborated: 2025 systematic review/meta-analysis (17 RCTs, n=690) confirms
   aerobic + resistance training is the single most effective modality for
   lumbar BMD specifically — worth defaulting to for clients who already do
   cardio elsewhere in their week, not an either/or against the lifting.
+Evidence-base transparency (added 8/17/2026): be honest with clients that
+  the strongest supporting data come from one research group's trial line
+  (Watson et al./Griffith University/The Bone Clinic) plus that group's
+  own real-world clinic data — no independent replication RCT outside
+  that research line was located in this review. This does not undercut
+  the protocol; it's a transparency practice consistent with how this file
+  already flags other single-research-line evidence elsewhere.
+Divergence from conservative professional guidance: the UK "Strong, Steady
+  and Straight" consensus (BJSM 2022) is more conservative than LIFTMOR,
+  recommending an 8-12RM formulation (not >85% 1RM 5×5) as the practical
+  default outside a specialized clinic setting, while acknowledging
+  "supervised progressive resistance training at higher intensity is
+  likely to have greatest effects on BMD." Read as: LIFTMOR's intensity is
+  the evidence-backed ceiling for a supervised, risk-screened client;
+  8-12RM is the safer default where supervision or risk-screening is
+  less certain.
 ```
 
 ### Vitamin D & Calcium Supplementation — Bone Health Cofactor (2024-2025 evidence)
@@ -1269,13 +1540,19 @@ Caution: this describes properly dosed, RIR-managed training — it is not
   the RIR model above is what keeps the dose in the beneficial range.
 ```
 
-### Progressive Overload — RIR Model (ACSM 2026)
+### Progressive Overload — RIR Model (ACSM 2026) — precision claims corrected 8/17/2026
 ```
 Training to momentary failure does NOT consistently improve strength/hypertrophy.
 Use RIR (Reps In Reserve) language:
-  3+ RIR → warm-up / pattern set
-  2 RIR  → moderate working set
-  1 RIR  → hard working set (primary strength sets)
+  3+ RIR → warm-up / technique / submaximal band (a single band, not a
+           precise target — see precision note below)
+  2 RIR  → moderate working set — DEFAULT proximity for PRIMARY lifts
+           (corrected 8/17/2026: strength gains were largely unrelated to
+           estimated RIR in a 2024 dose-response meta-regression, so 1 RIR
+           is not a stronger strength driver than 2 RIR — use 2 RIR as the
+           default and reserve 1 RIR for hypertrophy-priority accessory
+           work, not primary lifts)
+  1 RIR  → hard working set — hypertrophy-priority ACCESSORY work
   0 RIR  → near-failure (use sparingly)
 
 Add weight when: top of rep range + 2 RIR + clean form
@@ -1292,6 +1569,46 @@ lifting is well-supported for bone density and strength in perimenopausal/
 menopausal women specifically; training to failure or near-failure has no
 evidence base in this population for ANY outcome — reinforces, not just
 generalizes, the RIR standard for the 45–55 bracket specifically.
+
+RIR PRECISION — corrected 8/17/2026, this is a refinement not a reversal.
+  RIR-based autoregulation still ranks above fixed-percentage prescription:
+  a 2025 network meta-analysis (Journal of Exercise Science & Fitness)
+  ranked autoregulated methods by SUCRA for back-squat 1RM — APRE
+  (autoregulatory progressive resistance exercise) 93.0%, RPE/RIR-based
+  66.8%, velocity-based 27.0%, traditional percentage-based last at 13.2%
+  — but the same analysis found no moderate/large effect size BETWEEN any
+  of these methods, so the advantage is directional, not categorical.
+  RIR itself is accurate to roughly ±1 rep in TRAINED lifters near failure
+  (Refalo et al., JSCR 2024: absolute error 0.65±0.78 reps at 75% 1RM, no
+  relationship to sex/training experience/strength level) but accuracy
+  DEGRADES the further a set is from failure (a 2024 scoping review, 31
+  studies/N=855: "RIR becomes less accurate the farther a lifter is from
+  failure") and novice-client evidence is genuinely conflicting rather
+  than simply "less accurate" — treat novice RIR reports as lower-
+  confidence, not just noisier. Practical consequence: do not present 3
+  RIR vs. 4 RIR vs. 5 RIR as meaningfully different targets — collapse
+  everything above 2 RIR into one "technique/submaximal" band (see table
+  above), and reserve RIR-precision claims for the 0-2 RIR range where the
+  measured accuracy actually supports them.
+Calibration protocol — new, add for every new client: on one submaximal
+  set per new exercise, have the client call her own RIR, then take that
+  set to true failure and record the discrepancy. Repeat until absolute
+  error is ≤1 rep for two consecutive sessions before trusting her RIR
+  calls for load-progression decisions. This mirrors standard research
+  practice — 78% of studies reviewed (24 of 31) used a familiarisation
+  session before collecting RIR data (Perceptual and Motor Skills, 2024
+  scoping review) — and is a genuine process gap this file didn't
+  previously specify.
+Velocity-based training (VBT): a legitimate niche tool, not a general
+  upgrade. A January 2026 systematic review/meta-analysis (17 studies,
+  n=348) found VBT outperforms percentage-based training for jump
+  performance and change-of-direction, but showed no significant advantage
+  for maximal strength or sprinting. Do not invest in VBT for general
+  strength/hypertrophy clients — reserve it for athletic/power-focused
+  clients where jump/COD outcomes specifically matter.
+Adopt APRE-style set-to-set load adjustment on primary lifts (the
+  top-ranked method above) as the preferred within-session autoregulation
+  approach, rather than adjusting load only between sessions.
 ```
 
 ### Why Not Just Fix Every Exercise At 8–12 Reps? (checked 8/13/2026)
@@ -1346,33 +1663,142 @@ Volume: ≥10 sets/muscle/week for hypertrophy (ACSM 2026)
 NEVER under-load: women are systematically under-loaded in most programs
 ```
 
-### Menstrual Cycle Training
+### Menstrual Cycle Training — confirmed 8/17/2026 as the best-aligned protocol in the whole system, with refinements added
 ```
 Evidence: Colenso-Semple, Phillips et al. 2023 (umbrella review) — 
-  NO reliable influence of cycle phase on strength adaptations.
+  NO reliable influence of cycle phase on strength adaptations. Concludes
+  plainly: "the development of RET prescriptions based on cyclical
+  hormonal changes is not an evidence-based approach." CORROBORATED
+  independently 8/17/2026 by the 2025 UEFA consensus on menstrual-cycle
+  tracking (BMJ Open Sport & Exercise Medicine 2025;11(3):e002769, 82
+  agreed statements), which likewise rejects universal phase-based
+  programming and — matching ICONS almost exactly — specifies that
+  "cyclical symptoms should be self-reported for at least three
+  consecutive menstrual cycles," defining a regular cycle as 21-35 days.
+  A separate 2025 scoping review (Int J Sports Sci Coach) adds that
+  calendar-based phase CALCULATIONS specifically "are not accurate" —
+  worth stating to a client using a cycle-tracking app that predicts
+  phase from calendar dates alone.
 Practice: Train hard year-round. Use RPE/RIR-based autoregulation.
-  Autoregulate around INDIVIDUAL symptoms over ≥3 cycles — not calendar.
-Perimenopause/menopause: Heavy RT ≥3×/week + protein 2.0–2.2 g/kg is 
-  strongly evidence-backed. HRV dips in luteal phase are NORMAL — 
-  interpret vs individual baseline not a flat line.
+  Autoregulate around INDIVIDUAL symptoms over ≥3 consecutive cycles
+  (formalized 8/17/2026 to match UEFA 2025's exact wording) — not
+  calendar or app-predicted phase. Add an explicit disclaimer against
+  letting a calendar/app-predicted phase drive any programming decision.
+Perimenopause/menopause: Heavy RT ≥3×/week is strongly evidence-backed at
+  whatever protein target the client's actual context supports (corrected
+  8/17/2026 — see "Protein Targets" above; no longer a flat 2.0-2.2 g/kg
+  by bracket). HRV dips in luteal phase are NORMAL — interpret vs
+  individual baseline not a flat line. HRV downgraded 8/17/2026 from a
+  decision input to an optional observational metric only: a 2024 RCT
+  (n=21 older women, 7 weeks) comparing HRV-individualized recovery
+  against fixed scheduling found no significant between-group advantage
+  on ANY strength, hypertrophy, or function outcome measured — symptom
+  logs plus RIR/RPE should remain the operative autoregulation signals,
+  not HRV readings.
+ACL/injury risk by phase: remains genuinely unresolved, not settled either
+  direction (added 8/17/2026) — a 2023 systematic review found it
+  "inconclusive whether a particular cycle phase predisposes women to
+  greater non-contact ACL injury risk," at very-low certainty. Do NOT add
+  phase-based ACL precautions on this basis. The real, phase-INDEPENDENT
+  elevated ACL risk in women (~5x incidence) is already addressed through
+  the universal neuromuscular circuit — see the corrected "ACL / Knee
+  Valgus / Neuromuscular Injury-Prevention Circuit" section above.
+Menstrual-health red-flag referral (added 8/17/2026): absent, irregular,
+  or newly-lost periods should prompt medical referral, not a programming
+  adjustment. Note that resumption of menses alone does not confirm
+  ovulatory recovery — three or more cycles shorter than 36 days is a more
+  reliable indicator (2025 Female Athlete Triad Coalition consensus
+  update) — worth knowing for a client returning from an eating-disorder
+  or RED-S history (see the RED-S note in the 20-35 bracket above).
 ```
 
-### Asymmetry Protocol (Styku segmental data)
-```
-When Styku shows L/R gap ≥ 0.5 lbs in arms or legs:
-1. Lead with WEAKER side on ALL unilateral exercises
-2. Log left vs right separately in coaching cue / flag field
-3. Suitcase carry: carry in weaker HAND (anti-lateral-flexion trains opposite)
-4. Track at 8-week Styku rescan — asymmetry should reduce
-```
-`weakerSide(leftLST, rightLST)` (exported from `icons_template.js`) now does the "lower LST = weaker" comparison itself — returns `'left'|'right'|'even'` — use it instead of hand-deriving weaker side in comments.
+### Asymmetry Protocol (Styku segmental data) — trigger corrected 8/17/2026
 
-### VFA (Visceral Fat Area) Thresholds
+**The prior 0.5 lb absolute trigger was firing on measurement noise, not real asymmetry.** Per an external evidence review (Brace Life / ICONS Methodology — External Evidence Review, 8/17/2026): 0.5 lb ≈ 0.23 kg. The Shape Up! Adults study (n=634) found 3D-optical-vs-DXA accuracy error of 0.27 kg RMSE for female arm fat-free mass and 0.61–0.69 kg for female leg fat-free mass — meaning the device's own error on LEG lean mass is roughly 2.6–3.6× *larger* than the entire 0.5 lb trigger, and the arm error sits at or above it. The injury-prevention literature that actually links asymmetry to outcomes uses thresholds an order of magnitude higher: Bishop et al.'s review found 27 of 30 studies used a 10–15% asymmetry threshold, and Guan et al.'s prospective-cohort review links ≥15% strength/power asymmetry to injury risk. No published validation of Styku-derived left/right regional lean-soft-tissue mass against DXA or MRI was located in that review — a real, stated gap, not neutral.
+
+**Corrected standard:**
 ```
-< 70 cm²   → Very Low Risk
-70–99 cm²  → Low Risk
-100–149 cm²→ Moderate Risk (cardiometabolic flag)
-≥ 150 cm²  → High Risk
+1. Trigger on a RELATIVE gap ≥ 10% between limbs (matching the 10-15% convention
+   used in the injury literature), not an absolute lb figure — AND the gap must
+   exceed the studio's own measured test-retest CV for that scan/region if that
+   data exists (no published source gives a device-specific calibration interval,
+   so this is a studio policy, stated as one, not an evidence-backed standard).
+2. Prefer a functional strength/power test (single-leg press, isometric strength,
+   single-leg jump) as the PRIMARY asymmetry trigger where one is available —
+   the evidence-linked thresholds come from strength/power asymmetry studies,
+   not imaging-derived lean mass. Use Styku for client-facing progress
+   visualization, where it is far less error-sensitive (see "3D Optical
+   Scanning — Validity" below).
+3. Lead with the WEAKER side on unilateral exercises — but present this as a
+   defensible COACHING CONVENTION (it caps the stronger side's volume at what
+   the weaker side can match), not a research-backed rule. No source located in
+   this review establishes that unilateral-work set-ordering (weaker side first
+   vs. any other order) changes outcomes.
+4. Log left vs right separately in coaching cue / flag field.
+5. Suitcase carry: carry in the weaker HAND, per the same coaching-convention framing as #3.
+6. Track at 8-week Styku rescan — a real, evidence-backed dose: 6-10 weeks of
+   corrective unilateral work at 1-2 sessions/week reduced measured asymmetry in
+   the meta-analyzed RCTs this review cites.
+```
+`weakerSide(leftLST, rightLST)` (exported from `icons_template.js`) still does the "lower LST = weaker" direction comparison — that logic is unaffected by this fix — but the function does not yet compute or gate on a %-relative threshold; it returns `'left'|'right'|'even'` off the raw values passed to it. **Known gap, not yet built:** the engine has no %-based trigger helper today. Until one exists, computing whether a gap actually clears the new ≥10% relative threshold is a manual step for whoever builds a client's document — do not treat `weakerSide()` returning a non-`'even'` result as confirmation the corrected trigger is met; check the percentage yourself.
+
+**Retroactive scope — deliberately not done in this pass.** Every current client document was built against the OLD 0.5 lb absolute trigger; a full recalculation of whose asymmetry protocol should actually still be active under the new ≥10% relative standard is a real, separate body of work (some clients' documented gaps may no longer clear 10%; some may still clear it easily) that needs careful per-client verification against real data, not a blanket rewrite tonight. This is `icons-roster-analyst`'s or `icons-operations-analyst`'s natural next assignment — see CLIENT_OPERATIONS.md's Asymmetry Execution Log Standard, which should get a "trigger recomputed under corrected threshold" column added when that pass runs.
+
+### VFA (Visceral Fat Area) — reframed as trend metric 8/17/2026, not a risk-band classification
+```
+Prior banded table (< 70 Very Low / 70–99 Low / 100–149 Moderate / ≥150 High)
+  is RETIRED as a risk classification. Corrected per the external evidence
+  review: no consensus body endorses a single VAT/VFA threshold — published
+  CT-derived cutoffs span roughly 82–140 cm² across studies (Kardiovize
+  cohort, n=2,052), and the JASSO/CT-derived ≥100 cm² figure this file's old
+  "Moderate Risk" line was built on has mediocre discriminative performance
+  at that boundary (sensitivity 0.69/specificity 0.62). In women SPECIFICALLY,
+  risk-relevant CT thresholds run considerably higher than the old ICONS
+  band assumed — Kelley et al. (Diabetes Care 26:1413) found ≥106 cm² marking
+  elevated risk (not 100) and ≥163 cm² marking substantially greater risk in
+  women >45; the Kardiovize cohort's median VFA for women was 89.8 cm²,
+  meaning a typical, unremarkable woman sat inside ICONS's old "Low" band
+  near its top edge. The old "<70 Very Low / 70–99 Low" bands have no
+  identified consensus basis — 70-99 cm² spans the population median.
+Measurement-validity problem (compounds the above): Styku's own published
+  validation compared its VAT output against DXA VAT IN KILOGRAMS (0.1±0.2 kg
+  bias, CCC 0.81) — never against CT or MRI, and never in cm² (Bennett et
+  al., Clinical Nutrition 41:211-218). This system was reporting a CT-derived
+  cm² threshold sourced from a device validated only against DXA in kg —
+  defensible for TREND (DXA VAT itself tracks MRI well, R²=0.91 in women),
+  indefensible for a precise absolute cm² risk classification.
+
+CORRECTED APPROACH — track change over time for the individual client;
+  do not label an absolute VFA reading with a risk-band name ("Moderate
+  Risk," "High Risk") in any client document.
+Primary clinical-facing metric going forward: WAIST CIRCUMFERENCE, measured
+  to protocol, against the IAS/ICCR (International Atherosclerosis Society/
+  International Chair on Cardiometabolic Risk) consensus female thresholds:
+  ≥80 cm (elevated) / ≥90 cm / ≥105 cm / ≥115 cm, BMI-specific (Ross et al.,
+  Nat Rev Endocrinol 16:177-189) — an international consensus panel actually
+  recommends this metric for routine clinical use, unlike VAT/VFA itself
+  ("VAT mass is not routinely measured in clinical settings" — same
+  source). Costs a tape measure; add it to intake alongside the Styku scan.
+If an absolute VFA reading is still shown to a client (e.g. as scan-report
+  context), state plainly: (1) it is a trend indicator, not a diagnosis;
+  (2) the ~100 cm² figure some literature cites is a CT-derived screening
+  value with real but modest accuracy (JASSO); (3) in women, elevated-risk
+  CT thresholds are generally described as running higher, closer to
+  106 cm²+, than the old ICONS band implied; (4) this specific scanner's
+  own VFA validation was against DXA in kilograms, not cm², so an absolute
+  cm² reading against any risk table should be treated as approximate.
+Never present a VFA reading alone as a cardiometabolic verdict — Framingham
+  data shows visceral fat's cardiometabolic association is real (and
+  stronger in women than men, β 8.36 vs 4.24 for the VAT-glucose
+  relationship) but that same analysis publishes no clinical cutoff to
+  classify an individual against.
+
+**Retroactive scope — deliberately not done in this pass**, same posture as
+  the ALST/Asymmetry/ACL fixes above: existing client documents/CLIENTS.md
+  entries that quote an absolute "Moderate Risk"/"High Risk" VFA label are
+  not swept and rewritten here — flagged for `icons-roster-analyst`/
+  `icons-expert` as real follow-up work, since it touches already-delivered
+  clinical framing per client.
 ```
 
 ### BMI Clinical Flags (use alongside body fat %)
@@ -1384,14 +1810,88 @@ When Styku shows L/R gap ≥ 0.5 lbs in arms or legs:
 BMI < 18.5 + ALST < 5.5 = sarcopenic obesity profile — highest priority
 ```
 
-### Pelvic Floor (postmenopausal + heavy loading)
+### Pelvic Floor (postmenopausal + heavy loading) — bracing model corrected 8/17/2026
 ```
 Triggers: heavy carries, squats, deadlifts, hip thrusts at high loads
-Protocol: brace BEFORE lifting, exhale on exertion
+Protocol: intra-abdominal pressure strategy SCALES WITH LOAD — it is not a single
+  blanket rule. Corrected per POGP (Pelvic, Obstetric and Gynaecological
+  Physiotherapy) 2024 clinical commentary (Prevett & Moore), which establishes a
+  graded hierarchy and states outright that a permanent "no breath-holding"
+  prohibition is "not appropriate":
+    - Lighter/warm-up work        → free breathing
+    - Moderate working sets       → exhale on exertion (the default cue)
+    - Heaviest working sets       → a brief, controlled brace is normal and
+                                     appropriate — this MAY include a short
+                                     breath-hold through the sticking point,
+                                     the same way this file's Cardiovascular
+                                     section already distinguishes brief bracing
+                                     from sustained breath-holding for a
+                                     completely different (cardiac) reason.
+  Do NOT prescribe a blanket "never hold your breath" rule — that is the
+  corrected error, not the standing guidance. What remains an error is
+  SUSTAINED breath-holding across multiple reps or an entire set.
 Language: "If you experience any leaking, heaviness, or pressure — 
            stop and flag your coach. This is common and treatable."
 Do NOT say: "train through it" or minimize symptoms
 Refer to pelvic floor PT when symptomatic
+
+Prevalence — why this deserves systematic, not passive, screening (added
+  8/17/2026): reported symptom rates run high in lifting populations —
+  urinary incontinence in 44% of female powerlifters, 50% of elite
+  powerlifters/weightlifters (23% reporting prolapse symptoms), prolapse
+  reports of 59.7% among women lifting >50kg vs. 15.2% among those lifting
+  ≤15kg. A scoping review (Bø et al., Int Urogynecology J 2023;34:1153-64)
+  found symptomatic POP prevalence 0-23% across sport populations and
+  identified parity (not just heavy lifting) as the main associated
+  factor. At this prevalence, passive self-disclosure will miss most
+  cases — add a short intake/periodic screening questionnaire rather than
+  waiting for a client to volunteer symptoms: which movements provoke
+  leakage, at what %1RM/rep range, at what point in the lift, drops vs.
+  full emptying, belt use and its effect, recent training-volume or
+  body-weight changes, and menstrual regularity.
+Symptom onset ≠ damage, and treatment works (added 8/17/2026): per POGP
+  2024, "symptom onset in this context can be seen as a sign of bodily
+  readiness for RT loads rather than a sign of damage or dysfunction" —
+  reassure, don't alarm. There is high-level evidence supporting pelvic
+  floor muscle (PFM) training to improve incontinence symptoms, and
+  leaking can reflect hypertonicity from OVER-recruitment rather than
+  weakness — differentiating "needs strengthening" from "needs
+  coordination/appropriate recruitment" is the actual clinical first step,
+  which is exactly why this stays a PT referral rather than a default
+  "just do more Kegels" response.
+Do not cue maximal pelvic-floor contraction by default (added 8/17/2026):
+  the pelvic floor is a reflexive muscle group and should not necessarily
+  be cued to fully engage during every brace. If a client is asymptomatic
+  and doesn't report pelvic-floor engagement, it is not necessary to cue
+  a PFM contraction. Only cue a pre-brace PFM contraction specifically
+  when leakage comes with a bearing-down sensation.
+Exhale-on-exertion is a symptom-triggered tool, not a population-wide
+  rule (added 8/17/2026): for a client who reports leaking, have her
+  accumulate training volume BELOW her symptom threshold using exhale-on-
+  exertion first; once coordination improves over a period of volume
+  accumulation, progressively trial a stronger graded brace (which may
+  include a brief breath-hold) rather than holding her at exhale-on-
+  exertion indefinitely once she's ready to progress.
+Valsalva red-flag screen (added 8/17/2026): the graded brace above is
+  characterized as low-risk in the absence of significant cardiovascular
+  disease, with described side effects (subconjunctival hemorrhage,
+  presyncope, syncope from longer breath-holds) as generally transient
+  and benign — but screen for cardiovascular disease before permitting
+  braced breath-holds, and if a client repeatedly experiences presyncope,
+  syncope, or subconjunctival hemorrhage, switch her to exhale-on-exertion
+  only and refer for cardiac assessment. Cross-references this file's
+  Cardiovascular section above, which already treats brief bracing as
+  low-risk for a cleared, stable client.
+
+Engine: `pelvicFloorCallout()` in icons_template.js was updated 8/17/2026 to
+  match this corrected language — see that function for the exact client-
+  facing wording. This is a language/framing correction, not a change to who
+  the callout applies to or when it fires (still `isPostmenopausal` +
+  matching exercise, or `day.forcePelvicFloor: true`) — every client document
+  using this callout inherits the fix automatically on next regeneration, no
+  per-client clinical re-determination needed (unlike the ALST/asymmetry
+  fixes above, which do require per-client review before any retroactive
+  change).
 ```
 
 ### Postpartum Return to Training & Diastasis Recti Abdominis (DRA) — 2025 evidence (new subsection, checked 8/14/2026)
@@ -1527,32 +2027,125 @@ Engine note (flagged for future engine work, not built in this pass —
   urgent, but the pattern is now documented here for whenever one does.
 ```
 
-### ACL / Knee Valgus (women 2.8× male incidence — team ball sports meta-analysis 2022)
+### ACL / Knee Valgus / Neuromuscular Injury-Prevention Circuit — trigger corrected 8/17/2026
 ```
-Cause: hip abductor / glute med weakness → dynamic knee collapse
-Screen: single-leg squat drop test (does knee cave medially?)
+Cause: hip abductor / glute med weakness → dynamic knee collapse (this
+  mechanism explanation is fine and stays — what's corrected below is
+  whether visually screening for it should GATE the corrective circuit)
 Fix: lateral band walks, terminal knee extensions, Spanish squat,
-     Copenhagen plank, single-leg step-downs
+     Copenhagen plank, single-leg step-downs — a Nordic hamstring /
+     eccentric hamstring component should be added where not already
+     present (see Nordic Hamstring note below — this is a distinct,
+     separately-evidenced addition, not a Copenhagen substitute)
 Banded squats: band above knees creates proprioceptive cue to push OUT
-Protocol: corrective circuit before every squat session
 
-Updated 2025 meta-analyses (female team-sport athletes): neuromuscular
-training reduces ACL injury risk ~50% and overall knee injury risk ~22%.
-Critical practical finding: compliance (≥75% session adherence) predicts
-outcomes better than program complexity does. Coaching implication — a
-short, simple 4-exercise corrective circuit run every single session beats
-an elaborate 8-exercise circuit that gets skipped when time is short. Don't
-add correctives to look thorough; add the minimum set a client will
-actually complete every time.
+CORRECTED TRIGGER — do not screen-gate the circuit. Prior guidance
+  conditioned the corrective circuit on visually observing knee valgus on a
+  single-leg-squat or drop-landing screen. This is not supported: a
+  prospective study of 880 elite female athletes (JOSPT 2021) concluded
+  visual assessment of the vertical drop jump and single-leg squat "cannot
+  predict who will sustain a future noncontact ACL injury," and Nilstad et
+  al. ("Kiss goodbye to the 'kissing knees,'" Sports Biomechanics 2021)
+  found no association between frontal-plane inward knee motion and future
+  non-contact ACL injury across 74 new ACL injuries. Meanwhile the
+  intervention itself works at the population level regardless of who
+  visually screens positive: Lauersen et al. (BJSM 2018;52:1557) found
+  strength training reduced sports injuries with a rate ratio of 0.338 (95%
+  CI 0.238–0.480, I²=0%, high-certainty), a ~64% reduction in ACL injuries
+  in the underlying Waldén data, and a 75% reduction in anterior knee pain.
+  A 2025 meta-analysis of 24 RCTs in adolescents/young athletes (search to
+  Nov 2024) found overall lower-limb injury RR 0.73 and knee-injury RR
+  0.72. Net effect of screen-gating: ICONS was withholding an effective,
+  population-level intervention from exactly the clients the screen missed
+  (i.e., most clients who will actually sustain a future non-contact ACL
+  injury don't visually fail the screen). **Make the corrective/
+  neuromuscular circuit universal — every client gets it — rather than
+  conditional on a positive visual screen.** Retain the single-leg-squat/
+  drop-landing screen only as a coaching/technique tool (useful for
+  correcting an obvious form fault), and stop describing it as risk
+  prediction — it isn't one.
+
+Evidenced dose (do not undershoot this): 20–30 minutes, 1–2×/week,
+  sustained beyond 6 months (2025 NMT meta-analysis, 24 RCTs). A short
+  pre-squat circuit tacked onto a training day will likely fall short of
+  this dose — build it as a standing program component with its own
+  weekly time allocation, not just a few minutes before squats. FIFA 11+
+  program reviews report ~30–46% injury reduction, explicitly dependent on
+  adherence (2025 review, PMC12856364).
+
+Adherence is the dominant moderator — track it. A meta-analysis (HSS
+  Journal 2023;19:154–62, 15 studies) found high adherence (≥76% of
+  prescribed sessions completed) associated with a 64% ACL injury risk
+  reduction, dose-responsive. Set a ≥76% session-completion target and
+  track it per client the same way ICONS tracks load progression — this is
+  likely the single highest-leverage change available in this protocol
+  area. A short, simple circuit a client actually completes every time
+  beats an elaborate one that gets skipped when time is short.
+
+Nordic hamstring / eccentric hamstring — add if not already present. A
+  systematic review/meta-analysis of 8,459 athletes (BJSM 2019;53:1362)
+  found Nordic hamstring programs roughly halve hamstring-injury rates —
+  among the strongest single-exercise effects in the injury-prevention
+  literature, and a distinct muscle group/mechanism from the Copenhagen
+  plank's adductor focus, so this is an addition, not interchangeable.
+
+Framing: describe this as general lower-limb injury and knee-pain
+  prevention (where the strongest, highest-certainty evidence actually
+  lies — the 75% anterior-knee-pain reduction and the general injury-rate
+  reduction) rather than as ACL-specific risk screening, since the
+  screening tools ICONS has access to cannot do that.
+
+**Retroactive scope — deliberately not done in this pass.** Converting
+  every existing client's screen-gated corrective circuit into a universal,
+  dosed, adherence-tracked standing program component is real structural
+  work across the roster (a new weekly time allocation, not just added
+  exercises), not a one-line rewrite — the same "correct the standard now,
+  roll out to real client documents deliberately and separately" posture
+  already applied to the ALST and Asymmetry Protocol fixes above. Flagged
+  for `icons-roster-analyst`/`icons-expert` as a real follow-up: audit
+  which current client documents still frame the corrective circuit as
+  screen-conditional, and which have room in their weekly schedule for a
+  standing 20–30 min/1–2x-week allocation (this may not fit every client's
+  existing day count without displacing something else — a per-client
+  judgment call, not a blanket insert).
 ```
 
-### Copenhagen Plank (adductor strengthening)
+### Copenhagen Plank (adductor strengthening) — citation and protocol corrected 8/17/2026
 ```
 Target: adductor longus. EMG ~108% MVIC — extremely effective.
-Protocol: 3×/week × 6–8 weeks preseason, then 1×/week maintenance
-Dose: progressive hold time starting 15–25s, building to 45s
-Effect: -41% groin injury risk (Harøy et al. 2018, BJSM)
-Coaching: side plank, top leg on bench, adductor holds the position
+
+CITATION WARNING — do not cite the retracted 2025 meta-analysis. A
+  "Copenhagen Adduction Exercise" systematic review/meta-analysis published
+  in Scandinavian Journal of Medicine & Science in Sports (2025) was
+  formally RETRACTED (retraction notice 2026 Apr;36(4):e70287, retracted
+  article record PMC12363431) and must never be cited as evidence anywhere
+  in this system. Confirmed via repo-wide search (8/17/2026) that this
+  retracted paper is not currently cited anywhere in this file or in any
+  client/trainer script — nothing to purge as of this pass — but flag it
+  immediately if it surfaces in any future research pass or document draft.
+
+Valid primary evidence: Harøy et al., cluster-randomised controlled trial,
+  BJSM 2019;53:150 (corrected from "2018" — the actual cluster-RCT is the
+  2019 paper; 2018 was likely conflating publication/preprint dates). 35
+  semiprofessional Norwegian teams (intervention 18 teams/339 players;
+  control 17 teams/313 players). Average weekly groin-problem prevalence
+  13.5% (95% CI 12.3–14.7) vs. 21.3% (95% CI 20.0–22.6) in control — a 41%
+  lower risk of reporting groin problems (OR 0.59, 95% CI 0.40–0.86,
+  p=0.008), rising to 47% in the per-protocol analysis; an 18% reduction in
+  SUBSTANTIAL groin problems specifically was not statistically
+  significant — be precise about which endpoint the 41% figure describes
+  when citing it to a trainer or client.
+
+Protocol (regrounded on the actual Harøy et al. 2019 design — corrected
+  from the prior hold-time-progression description, which did not match
+  the source trial): one set per side per session, three progression
+  levels selected by PAIN RESPONSE (start at level 3; regress a level if
+  groin pain exceeds 3/10), 2–3×/week for ≥6 weeks in a build/preseason
+  phase, then 1×/week for in-season maintenance — takes under 5 minutes
+  per session in the source trial.
+Coaching: side plank, top leg on bench, adductor holds the position;
+  regress the progression level (not just the hold time) if pain exceeds
+  3/10, per the source protocol's own pain-guided design.
 ```
 
 ---
@@ -1570,8 +2163,8 @@ Built 8/11/2026 in response to Xolokan's explicit request, after Jake Poyner's a
 **20–39 — Foundation**
 - No unique physiological trigger in this window; apply standard resistance-training protocol (ACSM 2026 RIR model, ≥10 sets/muscle/week hypertrophy target, sex-neutral) at full intensity.
 - Protein/creatine/ALST: see thresholds below — no age-based escalation needed yet.
-- The women's ACL/knee-valgus corrective-priority emphasis in this file (2.8× female incidence, dedicated corrective circuit before every squat session) is a *female-elevated-risk* finding specific to the cited meta-analysis — do not apply that same weighting/priority to a male client by default. General movement-quality coaching (single-leg squat drop screen, correcting an obvious fault) still applies to anyone; the elevated-risk corrective-circuit emphasis does not transfer.
-- Copenhagen plank / adductor injury prevention is sex-neutral (Harøy et al. 2018 studied male and female athletes) and remains highest-yield for athletic/team-sport clients in this bracket regardless of sex.
+- The women's ACL/knee-valgus corrective-priority emphasis in this file (2.8× female incidence, a universal neuromuscular circuit per the corrected trigger above) is a *female-elevated-risk* finding specific to the cited meta-analysis — do not apply that same weighting/priority to a male client by default. General movement-quality coaching (correcting an obvious fault observed during training) still applies to anyone; the elevated-risk/mandatory-circuit emphasis does not transfer.
+- Copenhagen plank / adductor injury prevention is sex-neutral (Harøy et al. 2019 cluster-RCT, BJSM 53:150, studied male and female athletes) and remains highest-yield for athletic/team-sport clients in this bracket regardless of sex.
 
 **40–59 — Midlife Androgen Decline & Sarcopenia Onset**
 - Protein: reasonable to trend toward the upper end of the general resistance-trained-male range (see below) as anabolic resistance with age is a real, if more gradual, phenomenon in men too — there just isn't a single hormonal-transition trigger the way "crossing 40" or "postmenopausal" functions for women, so treat this as a soft trend, not a hard tier change.
@@ -1984,7 +2577,7 @@ Every training day follows this exact sequence:
 
 ---
 
-## ICONS INTENSITY FRAMEWORK
+## ICONS INTENSITY FRAMEWORK — status and rollout corrected 8/17/2026
 
 | Day | % | Color | Philosophy |
 |-----|---|-------|-----------|
@@ -1994,6 +2587,60 @@ Every training day follows this exact sequence:
 | 90% | Red | Peak intensity — near-maximal. Rest fully between sets. |
 | AR  | Blue | Active recovery — no PRs, no AMRAP, feel better leaving |
 | Off | Gray | Rest day — week overview only, no training day page |
+
+**Verdict from the external evidence review: well-supported in structure,
+needs training-status tiering and de-emphasis of the Red day.** The
+undulating-intensity logic is real (Moesgaard et al., Sports Medicine 2022,
+meta-analysis of 35 volume-equated studies: periodized training beat
+non-periodized for 1RM, ES 0.31; undulating beat linear, ES 0.31), and the
+80%/Gold anchor sits exactly on ACSM 2026's strength recommendation
+(~80% 1RM). But two corrections:
+- **The periodization benefit is concentrated in TRAINED clients, not
+  beginners.** Moesgaard's subgroup split found the effect present in
+  trained participants (ES 0.61) but essentially absent/non-significant in
+  untrained participants (ES 0.06) — and beginners make up a real share of
+  a studio's roster. **For a client in her first ~6 months, run a
+  simplified two-day rotation (Gold ≈80% + Green ≈70%) hitting each major
+  muscle group ≥2×/week, rather than the full five-color rotation** — this
+  matches ACSM 2026's floor recommendation (≥2 sessions/muscle group
+  weekly) without implying a precision of dose-response that doesn't
+  exist for a novice. Introduce the full five-color undulating rotation
+  once a client is past the novice phase, where undulating periodization
+  does outperform linear.
+- **Restrict Red (90%) days to clients with an actual testing or
+  competition reason.** No source in this review supports 90% 1RM work as
+  NECESSARY for general strength or hypertrophy outcomes in a recreational
+  client — ACSM 2026's strength anchor is ~80% 1RM, and complex
+  periodization "did not consistently impact outcomes for the average
+  healthy adult" (ACSM 2026, "Consistency Beats Complexity"). This is a
+  caveat, not a safety finding — no source reviewed evaluated 90% days as
+  unsafe for recreational clients, only as unnecessary for the outcomes
+  ICONS is training for outside a genuine test/peak context.
+- **Keep the color system as client-facing communication and adherence
+  branding** — it is legitimate and effective for that purpose — but do
+  not sell it internally or to a client as an "optimal" physiological
+  distribution; ACSM 2026 does not support that precision claim for the
+  average adult.
+- **Add an explicit weekly volume audit alongside the intensity coloring.**
+  ICONS's day framework specifies intensity (%1RM) but not volume, and
+  ACSM 2026's actual dosing guidance is volume-specific: ~10 sets/muscle/
+  week for hypertrophy, 2-3 sets/exercise for strength, 30-70% 1RM moved
+  with intent for power. Check color days against weekly per-muscle set
+  counts, not just percentages — a client can hit every intensity color
+  correctly and still be under- or over-volumed for her goal.
+- **Add power work (30-70% 1RM moved with intent) to Green/Teal days for
+  older clients** per ACSM 2026's power prescription — this is currently
+  absent from the intensity taxonomy as described, and is distinct from
+  (additive to) the existing "Power Training — Fall Risk & Longevity"
+  section's sub-maximal-load-moved-with-maximal-intent protocol.
+
+**Retroactive scope — deliberately not done in this pass.** Tiering the
+existing roster by training status (who gets the simplified 2-day rotation
+vs. the full 5-color rotation) and auditing existing client documents for
+90% Red days without a testing/competition rationale is real per-client
+review work, not a blanket rewrite — flagged for `icons-roster-analyst`/
+`icons-expert` as follow-up, consistent with the deferred-rollout pattern
+used for the P1 fixes above.
 
 ---
 
@@ -2305,14 +2952,16 @@ cd /mnt/skills/public/docx && python scripts/office/soffice.py --headless --conv
 
 For age-specific programming emphasis (protein tier, creatine indication, bone loading candidacy, etc.), see "Age Bracket Programming Framework" under Evidence-Based Science Layer above — the thresholds below are the underlying numbers that framework references.
 
+**Table under active revision (8/17/2026)** — the external evidence review flagged ALST, VFA, protein, and bone-load framing for refinement; those rows are being updated as each fix lands (see the Research Update Log for the full writeup). Treat any row not yet marked "corrected" below as the pre-review version, still in use pending its own fix.
+
 | Metric | At-Risk | Normal | Optimal |
 |--------|---------|--------|---------|
-| ALST (kg/m²) | < 5.5 | 5.5–6.99 | ≥ 7.0 |
-| VFA (cm²) | ≥ 100 | 70–99 | < 70 |
+| ALST (kg/m², women — corrected 8/17/2026) | < 5.5 | ≥ 5.5 (normal reference range — no graded "Optimal" tier; see ALST Index section above) | — |
+| VFA — corrected 8/17/2026 | *(retired as a risk-band table — see "VFA (Visceral Fat Area)" section above; track change over time per client, use waist circumference against IAS/ICCR thresholds as the primary clinical-facing metric)* |||
 | BMI | < 18.5 or ≥ 30 | 18.5–24.9 | 20–23 |
-| Protein (g/kg/day) | < 1.6 | 1.6–1.8 | 2.0–2.2 (50+) |
+| Protein (g/kg/day) — corrected 8/17/2026 | < 1.6 | 1.6 (baseline, active women) | 1.6–2.2 (context-driven: energy deficit or heavy training load, NOT an age-band escalation — see "Protein Targets" section above) |
 | Weekly sets/muscle | < 6 | 6–9 | ≥ 10 |
-| Bone load (%1RM) | < 70% | 70–79% | ≥ 80% |
+| Bone load (%1RM) — corrected 8/17/2026 | < 70% | 70–84% (8-12RM formulation, UK consensus default) | > 85%, supervised only, risk-gated (actual LIFTMOR intensity — see "Bone Loading" section above) |
 
 ---
 
@@ -2425,6 +3074,26 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Genuine gap flagged, not filled with an invented number:** no dedicated postmenopausal-women-specific (40-65 bracket) RCT combining LIFTMOR-style ≥80% 1RM bone-loading protocols WITH confirmed lymphedema risk was found — the high-intensity evidence above (5-8RM, roughly LIFTMOR's loading zone) comes from lymphedema-focused studies, not a bone-density-primary population. Treated as strong supporting evidence, not a direct LIFTMOR replication.
 - Did not touch any client document — no current roster client has a documented breast cancer/lymphedema history on file; this is proactive framework-building ahead of need, same pattern as the Male Client Programming Framework, Postpartum/DRA, and OA passes.
 - Sources: [Schmitz KH, Ahmed RL, Troxel A, et al., "Weight Lifting in Women with Breast-Cancer-Related Lymphedema," New England Journal of Medicine 2009;361:664-673](https://www.nejm.org/doi/full/10.1056/NEJMoa0810118) · [Iyengar NM, et al., "Resistance Training and Lymphedema in Breast Cancer Survivors," JAMA Network Open 2025;8(6), PMID 40498485](https://pmc.ncbi.nlm.nih.gov/articles/PMC12159776/) (also [JAMA Network](https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2835176)) · [Wang L, Liu Y, Zhang W, et al., "Effects of resistance training on breast cancer–related arm lymphedema: a systematic review and dose–response meta-analysis," Supportive Care in Cancer 2025;33:395](https://link.springer.com/article/10.1007/s00520-025-09448-z) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/40244422/)) · [Campbell KL, Winters-Stone KM, Wiskemann J, et al., "Exercise Guidelines for Cancer Survivors: Consensus Statement from International Multidisciplinary Roundtable," Medicine & Science in Sports & Exercise 2019;51(11):2375-2390](https://pubmed.ncbi.nlm.nih.gov/31626055/) · [ACSM Cancer & Exercise Resources](https://acsm.org/education-resources/trending-topics-resources/cancer/) · [American Cancer Society, Breast Cancer Facts & Figures 2024-2025 — median age at diagnosis](https://www.cancer.org/content/dam/cancer-org/research/cancer-facts-and-statistics/breast-cancer-facts-and-figures/2024/breast-cancer-facts-and-figures-2024.pdf) · [Intense Resistance Training for Breast Cancer Survivors With Lymphedema Risk, The ASCO Post, July 2025](https://ascopost.com/news/july-2025/intense-resistance-training-for-breast-cancer-survivors-with-lymphedema-risk/)
+
+**8/17/2026 — thirteenth pass. External Evidence Review response, batch 1 (Priority 1 items) — ALST sex-conflation, Styku asymmetry trigger, pelvic-floor breathing rule, ACL/knee-valgus screening trigger.** Triggered by Xolokan uploading a full external methodology review ("Brace Life / ICONS Methodology / External Evidence Review," prepared for Oscar Sifuentes, Operations Lead/Movement Architect) checking 13 ICONS protocol elements against 2018-2026 peer-reviewed literature, with an instruction to adjust the system accordingly. This entry covers the four items the review flagged Priority 1 (most severe/highest-consequence); Priority 2/3 items and the downstream client-document sweep are separate, not-yet-started follow-up passes.
+- **Corrected — ALST Index sex-conflation error.** The ALST Index table previously listed `≥7.0 kg/m² → Optimal` as a three-tier women's scale (At-Risk / Normal / Optimal). 7.0 kg/m² is EWGSOP2's MALE low-muscle-mass cutoff, not a female "optimal" threshold — it was misapplied as a top female tier. Corrected to a 2-tier structure (`<5.5 At-Risk` / `≥5.5 within normal reference range — a trend metric, not a graded score`), with new prose explaining EWGSOP2 treats lean mass as a confirmatory criterion (grip strength is primary), that EWGSOP2's own cutoffs are stated as "partly arbitrary," that SDOC (2020) excludes DXA lean mass from its definition entirely, and recommending grip strength/five-times-chair-stand as complementary function screens. Also flagged a genuine, unresolved gap: Styku's own ALM/ALMI output has not been validated against DXA (Bennett et al., Clinical Nutrition 41:211-218, did not validate ALM/ALMI) — present ALST as a trend metric, not a precision risk classification. Updated the Quick Reference table's ALST row to match, with a note flagging the rest of that table as under active revision. **Retroactive scope, deliberately deferred:** did not re-audit every existing client document's ALST-tier language against the corrected framing — that's separate future work, given the clinical-determination stakes of touching already-delivered client documents.
+- **Corrected — Styku Asymmetry Protocol trigger.** The prior protocol triggered on any absolute L/R gap ≥0.5 lbs. The review's cited measurement-error data (Shape Up! Adults study) shows device error 2.6–3.6x larger than that trigger, meaning it was very likely firing on scan noise rather than real asymmetry a majority of the time. Corrected to a relative-percentage trigger (≥10% gap, per Bishop et al./Guan et al., with ≥15% specifically linked to injury risk in that literature) and above the studio's own measured scan coefficient of variation — explicitly labeled studio policy pending a real calibration study, not itself an evidence-backed number. Added a preference for a functional strength/power test as the primary trigger where available, and relabeled "weaker side leads" as coaching convention rather than a research-backed rule. Flagged that `weakerSide()` in the engine still does direction-only comparison with no %-relative-threshold computation — a known engine gap, not built in this pass. **Retroactive scope, deliberately deferred:** recalculating every current client's asymmetry-protocol status under the new ≥10% standard is separate future work (conceptually `icons-roster-analyst`/`icons-operations-analyst`'s scope), not a blanket rewrite done here.
+- **Corrected — pelvic floor "no breath-holding" rule.** The engine's `pelvicFloorCallout()` (icons_template.js) and CLAUDE.md's Pelvic Floor section both previously prescribed a blanket "no breath-holding" rule. Per POGP (Pelvic, Obstetric and Gynaecological Physiotherapy) 2024 clinical commentary (Prevett & Moore), a permanent breath-hold prohibition is explicitly "not appropriate" — intra-abdominal pressure strategy should scale with load: free breathing on lighter work, exhale-on-exertion as the default, and a brief, controlled brace (which may include a short breath-hold) as normal and appropriate on the heaviest working sets. Corrected both the engine function's client-facing text and CLAUDE.md's prose to the graded model, cross-referenced against the existing Cardiovascular section's already-correct brief-brace-vs.-sustained-breath-hold distinction. **This fix required no per-client clinical re-determination** (unlike the two items above) since it's a language/framing correction to when the same callout fires, not a change to who it applies to — so it WAS rolled out immediately: regenerated all 5 affected client documents (Mary Burfete, Kayma Liburd, Siobhan Hansen, Johanna Castillo, Elizabeth Poyner — everyone with `isPostmenopausal: true` or `forcePelvicFloor: true`), both trainer and Client View copies, and spot-verified the corrected text landed in the regenerated .docx XML.
+- **Corrected — ACL/knee-valgus screening trigger.** The prior protocol gated the corrective/neuromuscular circuit on a positive visual single-leg-squat/drop-landing screen. This is not supported: a prospective study of 880 elite female athletes (JOSPT 2021) found visual assessment of the vertical drop jump/single-leg squat "cannot predict who will sustain a future noncontact ACL injury," and Nilstad et al. ("Kiss goodbye to the 'kissing knees,'" Sports Biomechanics 2021) found no association between frontal-plane knee motion and future ACL injury across 74 real injuries — while the intervention itself is strongly evidenced at the population level regardless of screen status (Lauersen et al., BJSM 2018;52:1557, RR 0.338 for sports injuries; a 2025 meta-analysis of 24 RCTs, lower-limb injury RR 0.73). Net effect of the old trigger: withholding an effective intervention from most of the clients who would actually benefit, since most future ACL injuries occur in people who don't visually fail the screen. Rewrote the section to make the circuit universal rather than screen-gated, retaining the screen only as a coaching/technique tool; added the evidenced dose (20-30 min, 1-2x/week, sustained beyond 6 months); added an adherence-tracking requirement (≥76% session completion, HSS Journal 2023, dose-responsive with a 64% ACL-risk reduction at that threshold); and added a Nordic hamstring/eccentric hamstring recommendation (BJSM 2019;53:1362, ~50% hamstring-injury-rate reduction) as a distinct addition, not a Copenhagen-plank substitute. **Retroactive scope, deliberately deferred:** converting every existing client's screen-gated circuit into a universal, dosed, adherence-tracked standing program component is real structural work (a new weekly time allocation, potentially displacing existing content) — flagged for `icons-roster-analyst`/`icons-expert` as separate follow-up, not done blanket in this pass.
+- **Also checked and cleared — retracted Copenhagen citation.** The review flagged that a 2025 "Copenhagen Adduction Exercise" systematic review/meta-analysis (Scandinavian Journal of Medicine & Science in Sports) was formally retracted (2026 retraction notice, PMC12363431) and must never be cited. Repo-wide search (CLAUDE.md and every client/trainer script) confirmed this retracted paper is NOT currently cited anywhere in this system — the existing Copenhagen Plank citation was already the valid Harøy et al. cluster-RCT, just mislabeled "2018" instead of "2019" (BJSM 2019;53:150). Corrected the year in all 3 locations it appears (Copenhagen Plank section, 20-35 bracket cross-reference, Male Framework cross-reference) and reworded the Copenhagen Plank protocol itself to match the source trial's actual pain-guided, three-progression-level design (previously described as hold-time progression, which didn't match Harøy et al.'s real protocol) — added an explicit citation-warning paragraph naming the retracted paper so it can't be accidentally introduced in a future research pass.
+- Sources: [Lauersen JB, Andersen TE, Andersen LB, "Strength training as superior, dose-dependent and safe prevention of acute and overuse sports injuries: a systematic review, qualitative analysis and meta-analysis," British Journal of Sports Medicine 2018;52:1557-1563](https://bjsm.bmj.com/content/52/24/1557) · [Prospective study of visual assessment of vertical drop jump and single-leg squat for future noncontact ACL injury prediction in elite female athletes, Journal of Orthopaedic & Sports Physical Therapy 2021](https://www.jospt.org/) · [Nilstad A, et al., "Kiss goodbye to the 'kissing knees': no association between frontal plane inward knee motion and risk of future noncontact ACL injury in elite female athletes," Sports Biomechanics 2021](https://pubmed.ncbi.nlm.nih.gov/) · [Neuromuscular training and lower-limb/knee injury risk in adolescent and young athletes, meta-analysis of 24 RCTs, 2025](https://pmc.ncbi.nlm.nih.gov/) · [FIFA 11+ program effectiveness review, 2025, PMC12856364](https://pmc.ncbi.nlm.nih.gov/articles/PMC12856364/) · [Adherence and ACL injury risk reduction dose-response meta-analysis, HSS Journal 2023;19:154-162](https://journals.sagepub.com/home/HSS) · [Attia AK, et al., systematic review and meta-analysis, Nordic hamstring exercise and hamstring injury rates, British Journal of Sports Medicine 2019;53:1362](https://bjsm.bmj.com/) · [Retraction notice, Copenhagen Adduction Exercise systematic review/meta-analysis, Scandinavian Journal of Medicine & Science in Sports 2026 Apr;36(4):e70287, PMC12363431](https://pmc.ncbi.nlm.nih.gov/articles/PMC12363431/) · [Harøy J, et al., "The Adductor Strengthening Programme prevents groin problems among male football players: a cluster-randomised controlled trial," British Journal of Sports Medicine 2019;53:150-157](https://bjsm.bmj.com/content/53/3/150) · [Prevett C, Moore IS, "Return to running and impact loading after childbirth: current clinical commentary" / POGP 2024 pelvic-floor bracing clinical commentary](https://pogp.csp.org.uk/) · Source document: Brace Life / ICONS Methodology / External Evidence Review (uploaded 8/17/2026, prepared for Oscar Sifuentes, Operations Lead/Movement Architect).
+
+**8/17/2026 — fourteenth pass. External Evidence Review response, batch 2 (Priority 2 and Priority 3 items) — VFA, protein, collagen, 3D optical scanning validity (new section), RIR precision, intensity framework, creatine, LIFTMOR, menstrual cycle.** Direct continuation of the thirteenth pass (same source document), covering the remaining 9 of 13 protocol items the review checked.
+- **Corrected — VFA (Visceral Fat Area).** Retired the absolute risk-band table (<70/70-99/100-149/≥150 → Very Low/Low/Moderate/High Risk) — no consensus body endorses a single VAT/VFA cutoff (published CT-derived thresholds span 82-140 cm² across studies), and in women specifically, risk-relevant CT thresholds run considerably higher than ICONS's old bands assumed (Kelley et al.: ≥106 cm² marks elevated risk in women, not 100; population median VFA for women in one large cohort was 89.8 cm², meaning a typical woman sat inside ICONS's old "Low" band). Compounding problem: Styku's own VFA validation was against DXA VAT in KILOGRAMS, never in cm² and never against CT/MRI — the device was reporting a CT-derived threshold it was never validated to reproduce in those units. Reframed VFA as a trend metric tracked per-individual over time rather than an absolute risk classification, and added waist circumference (IAS/ICCR female thresholds: 80/90/105/115 cm) as the primary clinical-facing metric — an actual international consensus panel recommends this metric for routine use, unlike VAT/VFA itself.
+- **Corrected — Protein Targets, the most consequential item in this batch.** Retired the age-banded escalation (1.6 baseline → 1.8-2.0 at 40+ → 2.0-2.2 at 50+/ALST At-Risk) in favor of a context-driven range: 1.6 g/kg/day baseline, moving up to 2.2 g/kg/day for genuine energy deficit or heavy training load, or ALST At-Risk — NOT for age/bracket alone. The most current female-specific synthesis found (GSSI/Phillips, Nov 2025) states peri- and postmenopausal athletes likely need no different protein target than premenopausal athletes — directly contradicting the age-escalation premise. **This explicitly SUPERSEDES the 8/13/2026 seventh-pass reconciliation** (which concluded the age-50 OR-gate was correct) — that pass worked from Morton et al. 2018 alone, which is not menopause-specific; this pass found a more current, population-specific source that overturns the shared premise both passes worked from. Recorded transparently per this file's citation-integrity practice rather than silently overwritten. Also lowered the per-meal target (~0.4→~0.3 g/kg), added a pre-sleep 30-40g protein option and a +10% plant-based adjustment, and softened the leucine claim to "approximate, not protocol-grade." **Engine consequence flagged, not built:** `proteinTargets()` in icons_template.js implements the now-retired `atRisk || ageYears >= 50` age trigger; the corrected trigger needs "energy deficit" and "heavy training load" as new structured client-data fields, not just a formula edit — flagged for `icons-expert`/`icons-research-analyst` as real follow-up, with every current client's computed protein target needing individual review once the engine changes (not a blanket regeneration under an unchanged formula).
+- **Corrected — Collagen timing and claims.** Narrowed the pre-session timing window from "30-60 min" to "45-60 min" for the 15g dose — Shaw et al.'s actual protocol dosed 1 hour pre-exercise for 15g, and the 30-minute end was never studied at that dose (the source paper's own note was that a SMALLER 5g dose would have been better timed at 30 min). Repositioned the rationale from acute/pre-workout to chronic/structural — a Jan 2026 umbrella review (16 meta-analyses, 113 RCTs) explicitly found no effect on tendon mechanical properties and describes collagen's effect as "chronic and structural rather than acutely ergogenic"; a separate meta-analysis of 13 RCTs found collagen does NOT further improve musculoskeletal performance when added to exercise. Reprioritized collagen below creatine and protein in the client supplement hierarchy given the comparatively thin evidence base (a small number of tendon-specific RCTs, notable female-data gap).
+- **Added (new section) — "3D Optical Scanning — Validity & What It's Actually Good For."** This system never had a single place stating what Styku is actually validated to do, despite using it as the measurement backbone for ALST, VFA, %BF, and circumferences. New section covers: excellent test-retest PRECISION but wide individual-level limits of agreement vs. DXA (~±7-11 percentage points on a single %BF reading); POOR validity against a true 4-compartment-model criterion (optical scanners are calibrated to DXA, so DXA agreement is partly circular); segmental (arm/leg/trunk) composition is NOT reliable for client reporting (CCCs ~0.32-0.52); change-tracking — the device's actual real-world use case — performs moderately and BETTER in women specifically (female ALM change R²=0.70); circumferences are the device's most trustworthy output (ICC≈0.99); and no calibration-interval guidance exists anywhere in the literature, so any ICONS rescan/DXA-pairing cadence is a reasoned internal policy, not an evidence-based standard, and should be stated to clients that way.
+- **Corrected — RIR precision claims.** RIR-based autoregulation still ranks above fixed-percentage prescription (2025 network meta-analysis: APRE 93.0% SUCRA vs. RPE/RIR 66.8% vs. percentage-based 13.2%), but accuracy degrades the farther a set is from failure, and novice-client accuracy evidence is genuinely conflicting. Collapsed everything above 2 RIR into a single "technique/submaximal" band rather than treating 3/4/5+ RIR as meaningfully distinct targets, and reserved RIR-precision claims for the 0-2 RIR range where measured accuracy (±0.65 reps in trained lifters, Refalo et al. 2024) actually supports them. Changed the DEFAULT proximity for PRIMARY lifts from 1 RIR to 2 RIR — a 2024 dose-response meta-regression found strength gains largely unrelated to estimated RIR, so 1 RIR is not the stronger strength driver ICONS's old tiering implied; reserved 1 RIR for hypertrophy-priority accessory work instead. Added a formal RIR calibration protocol for new clients (call RIR on a submaximal set, then take it to true failure and record the discrepancy, repeat until ≤1 rep error for two sessions) and a note that velocity-based training shows no significant strength advantage over percentage-based training — not worth adopting for general clients, reserve for athletic/power-focused ones.
+- **Corrected — Intensity framework (Teal/Green/Gold/Red/Blue).** Structure and the 80%/Gold anchor are confirmed well-supported (Moesgaard et al. 2022: undulating periodization beats linear; ACSM 2026's strength anchor is ~80% 1RM). Two corrections: the periodization benefit is concentrated in TRAINED clients (ES 0.61) and essentially absent in untrained ones (ES 0.06) — added a simplified two-day rotation (Gold+Green only) for clients in their first ~6 months, reserving the full five-color rotation for post-novice clients; and restricted Red (90%) days to clients with an actual testing/competition reason, since no source reviewed supports 90% 1RM as NECESSARY for general strength/hypertrophy outcomes in a recreational client. Added a weekly-volume-audit requirement (ACSM 2026 specifies volume, not just intensity) and a power-work addition (30-70% 1RM moved with intent) for Green/Teal days with older clients. **Retroactive scope, deliberately deferred:** training-status tiering of the existing roster and auditing existing 90%-day programming for a testing/competition rationale is per-client review work, flagged for follow-up rather than done blanket here.
+- **Refined (verdict unchanged, strongest-evidenced item) — Creatine.** 3-5g/day, no loading, with food remains correctly the standard — ISSN 2021 explicitly endorses exactly this. Added: an explicit ~4-week saturation-timeline expectation for clients; a caution not to imply the standard dose drives the cited cognitive benefits (those protocols used 15-20g/day loading then 5-10g/day maintenance, well above ICONS's 3-5g); an optional body-mass-scaled tier (0.10-0.14 g/kg/day, ~6-7g for a 65kg woman) for bone-loading-focused/LIFTMOR-candidate clients specifically, since that's the dose used in the 52-week postmenopausal femoral-neck BMD trials; and an explicit "must be paired with resistance training" framing, since creatine alone did not increase lean mass in postmenopausal women over 2 years.
+- **Corrected — LIFTMOR bone-loading protocol.** Fixed the intensity descriptor from "≥80% 1RM" to ">85% 1RM" (the actual LIFTMOR trial's prescription) in the live protocol section and the Quick Reference table, and noted HiRIT's impact-loading component (ground reaction forces >4x body weight, e.g. assisted jumps) is part of the core stimulus, not a mere supplement — omitting it means ICONS is running "HiRT," not "HiRIT." Added: an explicit supervision requirement (LIFTMOR, MEDEX-OP, and the pelvic-floor safety trial were all fully supervised — do not prescribe as unsupervised homework); a mandatory risk-stratification gate (prior vertebral fracture/multiple low-trauma fractures/very-low BMD routes to individualized PT first — the concrete reason: a MEDEX-OP participant sustained a vertebral fracture after a fall, with 30 falls across 21% of participants, making fall risk rather than lifting load the proximate harm mechanism in the trial evidence); a formal technique-first ramp-in phase before reaching >85% 1RM (ICONS's Teal day is the natural vehicle); a loaded-spinal-flexion prohibition; and 2025 pelvic-floor safety data (HiRIT at >80% 1RM does NOT aggravate pelvic-floor dysfunction symptoms, with a preliminary protective signal in prior-prolapse clients) supporting heavy bone-loading work for pelvic-floor-flagged clients rather than defaulting to caution.
+- **Corroborated with additions — Menstrual Cycle Training, confirmed the best-aligned protocol in the entire system.** ICONS's existing stance (no calendar-phase restrictions, RPE/RIR autoregulation, 3-cycle individual symptom tracking) matches current consensus almost point-for-point. Added independent corroboration from the 2025 UEFA menstrual-cycle-tracking consensus (which also specifies exactly a 3-cycle, 21-35-day-regular-cycle self-report window) and a 2025 scoping review finding calendar-based phase calculations specifically "are not accurate." One real downgrade: HRV moved from a decision input to an optional observational metric only — a 2024 RCT found HRV-guided individualization produced no significant advantage on any strength/hypertrophy/function outcome versus fixed scheduling. Added a menstrual-health red-flag referral trigger (absent/irregular/newly-lost periods → medical referral, not a programming adjustment) and confirmed the phase-ACL-risk question remains genuinely unresolved (not a basis for phase-based precautions) — the real, phase-independent elevated ACL risk in women is already addressed via the corrected universal neuromuscular circuit above.
+- Sources: [Examination Committee for "Obesity Disease," Japan (JASSO), VFA ≥100cm² CT-derived criterion, Circulation Journal 66:987-992] · [Kelley et al., VFA thresholds in women >45, Diabetes Care 26:1413] · [Polcrová et al., Kardiovize cohort VFA cutoffs, UCL Discovery] · [Ross et al., IAS/ICCR consensus, waist circumference thresholds, Nature Reviews Endocrinology 16:177-189] · [Bennett et al., Styku S100 validation against DXA, Clinical Nutrition 41:211-218] · [Tinsley et al., 3D optical scanning vs. 4-compartment model, Applied Physiology, Nutrition, and Metabolism 46:644-650] · [D'Souza & Phillips, female athlete protein targets, GSSI Sports Science Exchange #270, Nov 2025] · [Nunes et al., protein dose-response meta-analysis, Journal of Cachexia, Sarcopenia and Muscle 13:795-810] · [Jäger et al., ISSN protein position stand, JISSN 14:20] · [Shaw et al., collagen + vitamin C pre-load, American Journal of Clinical Nutrition 105:136-143] · [Bischof et al., collagen dose-response systematic review, Sports Medicine 54:2865-2888] · [Kirmse et al., collagen performance meta-analysis, Deutsche Zeitschrift für Sportmedizin 75:179-188] · [Refalo et al., RIR prediction accuracy, Journal of Strength and Conditioning Research 2024] · [Robinson et al., proximity-to-failure dose-response meta-regression, Sports Medicine 2024 (reused, already cited above)] · [Moesgaard et al., periodization meta-analysis, Sports Medicine 2022] · [Antonio et al., ISSN creatine common questions/misconceptions, JISSN 2021] · [Watson et al., LIFTMOR RCT, Journal of Bone and Mineral Research 2018] · [MEDEX-OP pelvic floor safety analysis, PMC12618346, 2025] · ["Strong, Steady and Straight" UK consensus statement, British Journal of Sports Medicine 2022;56:837] · [Colenso-Semple et al., menstrual cycle umbrella review, Frontiers in Sports and Active Living 2023] · [UEFA consensus on menstrual cycle tracking, BMJ Open Sport & Exercise Medicine 2025;11(3):e002769] · Source document: Brace Life / ICONS Methodology / External Evidence Review (uploaded 8/17/2026, prepared for Oscar Sifuentes, Operations Lead/Movement Architect).
 
 ---
 

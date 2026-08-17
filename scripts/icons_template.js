@@ -594,10 +594,15 @@ function testosteroneNote(client) {
 // ── PELVIC FLOOR CALLOUT ──────────────────────────────────────────────
 // Mandatory on every training day page for postmenopausal clients —
 // triggers: heavy carries, squats, deadlifts, hip thrusts at high loads.
+// Language corrected 8/17/2026 (POGP 2024 clinical commentary, Prevett & Moore) —
+// a blanket "no breath-holding" rule is not appropriate; intra-abdominal pressure
+// strategy scales with load: free breathing on lighter work, exhale-on-exertion as
+// the default, and a brief, controlled brace (which may include a short breath-hold)
+// is normal and appropriate on the heaviest working sets.
 function pelvicFloorCallout() {
   return watchFlag(
     'Pelvic Floor Safety Note',
-    'Brace before lifting, exhale on exertion — no breath-holding. If you experience any leaking, heaviness, or pressure, stop and flag your coach. This is common and treatable.'
+    'Match your bracing to the load: breathe freely on lighter sets, exhale on exertion as your default, and use a brief, controlled brace on your heaviest working sets. If you experience any leaking, heaviness, or pressure, stop and flag your coach. This is common and treatable.'
   );
 }
 
