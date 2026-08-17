@@ -16,6 +16,20 @@
  * picking one. ageYears=55 already trends proteinTargets()/nutritionBlock()
  * into the 50+ tier (2.0-2.2 g/kg) and creatine "strongly indicated"
  * automatically — no manual override needed for those two.
+ * PROTEIN ENGINE NOTE (8/17/2026): CLAUDE.md's Protein Targets section was
+ * corrected 8/17/2026 to re-key the 2.0-2.2 g/kg escalation from age alone
+ * to context (genuine energy deficit, heavy training load, or ALST
+ * At-Risk) — `proteinTargets()`'s `atRisk || ageYears >= 50` logic is a
+ * known, not-yet-built engine gap per that correction (flagged there for
+ * future engine/intake work, since "energy deficit"/"heavy training load"
+ * aren't yet structured client-data fields). Left UNCHANGED here rather
+ * than hand-overridden: the nutrition block's rendered "50+ tier" label
+ * still reflects the engine's actual current (unmodified) computation, so
+ * rewriting only this comment/baselineNote would create an internal
+ * mismatch against what the document itself displays. Worth noting Mary's
+ * elevated target is independently well-supported under the corrected,
+ * context-driven standard too — her ALST sits only 0.02 kg/m² from the
+ * At-Risk line, and this program carries real heavy training load.
  *
  * isPostmenopausal is left false/unset — no menopausal status was stated by
  * the trainer, so it is not fabricated here (same posture as Rena Paul's
@@ -26,19 +40,35 @@
  * actual status at next intake is explicitly worth doing given how
  * load-bearing that determination is for the pelvic floor protocol.
  *
- * ALST Index 5.52 kg/m² falls in the women's "Normal — monitor" tier
- * (5.5-6.99) per CLAUDE.md's 3-tier table, but only 0.02 kg/m² above the
- * <5.5 At-Risk cutoff — flagged explicitly as genuinely borderline rather
- * than reported as comfortably clear. This does NOT trip
- * client.alstIndex < 5.5, so proteinBar() is correctly NOT auto-inserted
- * per day by buildDocument() — the borderline status is documented in
- * baselineNotes/Styku findings instead, not forced into the per-day engine
- * trigger that's reserved for confirmed At-Risk clients.
+ * ALST Index 5.52 kg/m² sits within the women's normal reference range
+ * (>= 5.5 kg/m²), but only 0.02 kg/m² above the <5.5 At-Risk cutoff —
+ * flagged explicitly as genuinely borderline rather than reported as
+ * comfortably clear. This does NOT trip client.alstIndex < 5.5, so
+ * proteinBar() is correctly NOT auto-inserted per day by buildDocument() —
+ * the borderline status is documented in baselineNotes/Styku findings
+ * instead, not forced into the per-day engine trigger that's reserved for
+ * confirmed At-Risk clients.
+ * LANGUAGE CORRECTED 8/17/2026 (CLAUDE.md's External Evidence Review): the
+ * prior version of this comment (and the matching baselineNote/rescanNote
+ * body text below) described this as the "Normal — monitor" middle rung of
+ * a 3-tier table (<5.5 At-Risk / 5.5-6.99 Normal-monitor / >=7.0 Optimal).
+ * That 3-tier table is retired — 7.0 kg/m² is EWGSOP2's MALE at-risk
+ * cutoff, not a female "Optimal" threshold, so there is no graded tier
+ * above 5.5 for a woman. ALST is now presented as a trend metric with a
+ * single reference floor (<5.5 At-Risk / >=5.5 normal reference range),
+ * not a 3-rung scale — same 5.52 kg/m² number, corrected framing only.
  *
- * VFA 62.0 cm² — CLAUDE.md's own VFA table (<70 cm² = Very Low Risk) places
- * this in the more favorable Very Low Risk band; Styku's own dashboard tag
- * on the scan reads "Low Risk," but the correct, more precise tier from our
- * reference table is used here instead of the coarser Styku label.
+ * VFA 62.0 cm² — LANGUAGE CORRECTED 8/17/2026: CLAUDE.md's VFA risk-band
+ * table (<70/70-99/100-149/>=150 -> Very Low/Low/Moderate/High Risk) is
+ * retired entirely, not just recalibrated — no consensus body endorses a
+ * single VAT/VFA cm² cutoff, and Styku's own VFA validation was against
+ * DXA in KILOGRAMS, never in cm². The prior version of this comment (and
+ * the matching baselineNote/rescanNote text below) labeled 62.0 cm² "Very
+ * Low Risk" as the "correct, more precise tier" against Styku's own "Low
+ * Risk" dashboard tag — that framing is now itself the error being
+ * corrected, not a fix over Styku's label. VFA is presented as a trend
+ * metric to track at future scans, with no risk-band label applied to
+ * either Styku's tag or ICONS's own (now-retired) table.
  *
  * Segmental asymmetry: arms 0.1 lb gap (below the 0.5 lb asymmetry-protocol
  * threshold — monitor only). Legs: Left 14.6 / Right 15.1 lbs — exactly
@@ -184,7 +214,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Findings — Composition & Risk Bands',
-    body: 'Shape Score 65/100 (Needs Improvement). Body Fat 35.5% (49.6 lbs fat mass) — Styku\'s own scan classification reads "Average" (35-39.9% band). Lean Mass 85.2 lbs (61.1%) — Styku flags this "Ideal Lean Mass." BMI 21.2 — Normal range (18.5-24.9). ALST Index 5.52 kg/m² — falls in the Normal/monitor tier per our 3-tier table (<5.5 At-Risk / 5.5-6.99 Normal-monitor / ≥7.0 Optimal), but only 0.02 kg/m² above the At-Risk cutoff — genuinely borderline, and worth close attention at the next rescan rather than treated as comfortably clear. VFA 62.0 cm² — Very Low Risk per our precise VFA table (<70 cm² threshold); Styku\'s own dashboard tag on this scan reads "Low Risk," but our table\'s more precise banding places her in the more favorable Very Low Risk tier — using the correct, more precise tier here rather than Styku\'s coarser label.',
+    body: 'Shape Score 65/100 (Needs Improvement). Body Fat 35.5% (49.6 lbs fat mass) — Styku\'s own scan classification reads "Average" (35-39.9% band). Lean Mass 85.2 lbs (61.1%) — Styku flags this "Ideal Lean Mass." BMI 21.2 — Normal range (18.5-24.9). ALST Index 5.52 kg/m² — within the normal reference range (≥5.5 kg/m²), but only 0.02 kg/m² above the At-Risk cutoff — genuinely borderline, and worth close attention at the next rescan rather than treated as comfortably clear; ALST is tracked here as a trend metric, not a graded score. VFA 62.0 cm² — a low reading, worth tracking as a trend at future scans rather than assigned a precise risk-band label.',
   },
   {
     type: 'watch',
@@ -194,7 +224,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket Boundary — 45-55 / 55-65',
-    body: 'At 55, Mary sits directly on the boundary between the 45-55 (Perimenopause/Menopause Transition) and 55-65 (Postmenopausal) age brackets. Protein and creatine targets below already reflect the 50+ escalation (2.0-2.2 g/kg, creatine strongly indicated) appropriate to either bracket. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing now rather than waiting — both brackets converge on bone density as a priority as estrogen decline accelerates.',
+    body: 'At 55, Mary sits directly on the boundary between the 45-55 (Perimenopause/Menopause Transition) and 55-65 (Postmenopausal) age brackets. Protein and creatine targets below sit at the upper end of the working range (2.0-2.2 g/kg, creatine strongly indicated) — supported by her borderline ALST reading (0.02 kg/m² above the At-Risk cutoff) and the heavy training load carried in this program. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing now rather than waiting — both brackets converge on bone density as a priority as estrogen decline accelerates.',
   },
   {
     type: 'gold',
@@ -378,7 +408,7 @@ const summary = {
   ],
   milestones4wk: 'All baseline lifts surpassed. Push-up: 7 full unassisted. Plank: 2:00+ loaded. Pull-up assist level reduced across all 3 grips. Seated Overhead Press progressing from 15 toward 20 lbs/hand; Incline Dumbbell Press from 20 toward 25 lbs/hand; DB Reverse Lunge from 15 toward 20 lbs/hand (LEFT leads) — all three newly established this week.',
   milestones8wk: `Strength: Hex DL ${hexDL_wk4 + 15}+ lbs ×5. Hip Thrust ${hipThrust_wk4 + 10}+ lbs ×5–6. Back Squat ${backSquat_wk4 + 10}+ lbs ×5–6. Bench ${bench_wk4 + 5}+ lbs ×6–8. Row ${row_wk4 + 5}+ lbs ×8. Split Stance Squat ${splitSquat_wk4 + 5}+ lbs/hand ×8. Sled Push distance/resistance increased. Push-up 10+ full unassisted. Pull-up 8+ reps all grips, next assist-level reduction. Plank 2:15+ loaded.`,
-  rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index closely given the current 5.52 kg/m² reading sits only 0.02 kg/m² above the At-Risk cutoff (do not assume it stays clear of the threshold without confirming), VFA trend (currently 62.0 cm², Very Low Risk — maintain), and the leg segmental gap (currently exactly 0.5 lbs, at the asymmetry-protocol trigger — should trend down with the LEFT-leads unilateral protocol). Also worth revisiting at next intake: confirming actual menopausal status, given its direct relevance to the pelvic floor protocol on this program\'s heavy hinge/squat days.',
+  rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index closely given the current 5.52 kg/m² reading sits only 0.02 kg/m² above the At-Risk cutoff (do not assume it stays clear of the threshold without confirming; ALST is tracked as a trend metric, not a graded score), VFA trend (currently 62.0 cm² — track as a trend rather than a risk-band label), and the leg segmental gap (currently exactly 0.5 lbs, at the asymmetry-protocol trigger — should trend down with the LEFT-leads unilateral protocol). Also worth revisiting at next intake: confirming actual menopausal status, given its direct relevance to the pelvic floor protocol on this program\'s heavy hinge/squat days.',
 };
 
 const data = {

@@ -21,6 +21,18 @@
  * exceptional current baselines/PRs but have no exact prior number on
  * file, so they're described narratively rather than given a fabricated
  * "before" table value.
+ *
+ * LANGUAGE CORRECTION (8/17/2026, per CLAUDE.md's External Evidence Review
+ * corrections — targeted framing fix only, no comparison numbers touched):
+ * the "New Baselines Established" narrative labeled VFA 61.4 cm² as "Very
+ * Low Risk" and ALST 5.85 kg/m² as flatly "Not At-Risk" with no further
+ * qualification. CLAUDE.md's VFA risk-band table is retired entirely (no
+ * absolute cm² reading gets a risk-band label in any client document any
+ * longer) and the ALST table no longer implies a graded "how good" score
+ * above the At-Risk line. Reworded both to trend-metric framing — same
+ * numbers, corrected description only. See the same-day header revision
+ * in `scripts/elizabeth_poyner_5day_plan.js` for the parallel fix (plus
+ * the LIFTMOR ">85% 1RM" correction, which doesn't apply to this document).
  */
 
 const fs = require('fs');
@@ -62,7 +74,7 @@ const data = {
     {
       type: 'teal',
       label: 'New Baselines Established (8/7/2026)',
-      body: 'The 2/7/2026 scan did not include segmental analysis, so ALST Index, VFA, and Shape Score have no prior comparison point — they are newly established at this rescan and become the tracking baseline going forward: ALST Index 5.85 kg/m² (Not At-Risk), VFA 61.4 cm² (Very Low Risk), Shape Score 98/100 (Excellent), BMI 18.9.',
+      body: 'The 2/7/2026 scan did not include segmental analysis, so ALST Index, VFA, and Shape Score have no prior comparison point — they are newly established at this rescan and become the tracking baseline going forward: ALST Index 5.85 kg/m² (Not At-Risk — within normal reference range, tracked as a trend metric), VFA 61.4 cm² (a low reading, worth tracking as a trend at future scans), Shape Score 98/100 (Excellent), BMI 18.9.',
     },
     {
       type: 'blue',
