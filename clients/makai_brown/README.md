@@ -1,5 +1,12 @@
 # Makai Brown — Intake Pending, No Build Yet
 
+**⚠ DO NOT APPLY STANDARD/DEFAULT PROGRAMMING (Xolokan, 8/18/2026).** She has
+an active, currently-inflamed left knee (see `CLIENTS.md` for the full
+finding). Whenever a real training document is eventually built for her, it
+must be programmed around this limitation from the start — clinically-led
+first, standard ICONS structure second — not built to the default template
+with restrictions patched on afterward.
+
 **Status:** Intake Pending (added 8/18/2026). Makai Brown has a real, documented
 coordinated-care relationship on file via Jason Bethea's in-house PT SOAP-note
 archive (see CLAUDE.md's "STUDIO STAFF — IN-HOUSE PT & STRETCH THERAPY"

@@ -10,10 +10,11 @@ be fabricated to fill that gap.
 
 **Data-quality flag:** the DOB currently on file for her (2026-05-08) is
 almost certainly a data-entry error — it falls roughly three months before
-today's date, not a plausible adult date of birth. It has been left exactly
-as documented rather than silently corrected, and no age has been computed
-from it. See `CLIENTS.md`'s entry for her — this needs a corrected DOB from
-the practice before age/bracket placement can be trusted.
+today's date, not a plausible adult date of birth. Per Xolokan's direct
+instruction (8/18/2026), it's left **blank** in `CLIENTS.md` rather than
+displayed, so it isn't mistaken for real data; no age has been computed. This
+needs a corrected DOB from the practice before age/bracket placement can be
+trusted.
 
 This folder exists per this repo's convention that a client folder is
 created once a client is being actively tracked, even before a document is

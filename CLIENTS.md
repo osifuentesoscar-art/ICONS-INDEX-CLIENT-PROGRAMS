@@ -351,7 +351,7 @@ Confirmed by Xolokan 8/18/2026: every name appearing in Jason Bethea's SOAP-note
 
 ### Brandice Daniels
 - **Status:** Intake Pending — no training plan built. No Styku scan, no ICONS Baseline Testing Protocol strength battery on file.
-- **DOB on file: 2026-05-08 — flagged as a likely data-entry error, not corrected or used.** That date is roughly three months before today (8/18/2026) and is not a plausible adult date of birth. Left exactly as documented on the note rather than silently corrected; **no age was computed from it.** Needs a corrected DOB from the practice before this field is trustworthy for anything (age-bracket placement included).
+- **DOB: left blank pending correction (Xolokan, 8/18/2026).** The note-on-file value (2026-05-08) is not a plausible adult date of birth — roughly three months before today — and has been deliberately omitted here rather than displayed, to avoid it being mistaken for real data. No age computed. Needs a corrected DOB from the practice before this field can be filled in.
 - Sex Female (stated on note); age unknown pending DOB correction.
 - **Practitioner/note on file:** Jason Bethea (CSCS) directly, dated 2026-08-06 (SOAP_BrandiceDaniels_2026-08-06.pdf).
 - **Session summary:** A routine strength/conditioning session — landmine squats, decline sit-ups, single-leg glute bridge, hammer curls, and assault bike intervals. No clinical flags or red-flag findings documented in this note. Two coaching notes on file, not clinical issues: she had difficulty with decline sit-ups (flagged to revisit), and single-leg glute bridge reps weren't kept unilateral-consistent (she alternated legs mid-set rather than completing all reps on one side before switching) — a form/protocol note for next session. Plan on file: next session progresses to upper push work, with a recovery note for extra hydration/protein/creatine.
@@ -372,6 +372,7 @@ Confirmed by Xolokan 8/18/2026: every name appearing in Jason Bethea's SOAP-note
 - **ICONS Index:** not yet completed — awaiting baseline Styku scan / strength battery.
 
 ### Makai Brown
+- **⚠ DO NOT APPLY STANDARD/DEFAULT PROGRAMMING (Xolokan, 8/18/2026).** She has an active, currently-inflamed left knee — see finding below. Any future build for her must be programmed around this specific limitation from day one, not the standard ICONS template with modifications bolted on after the fact. Treat her the way this file treats any acute/active injury elsewhere in the system (e.g. Jake Poyner's QL tendinosis program) — clinically-led programming first, standard structure second.
 - **Status:** Intake Pending — no training plan built. No Styku scan, no ICONS Baseline Testing Protocol strength battery on file.
 - DOB 1977-05-28 → **Age 49** | Sex Female — sits in the **45–55 Perimenopause/Menopause Transition** Age Bracket Programming Framework bracket by age/sex alone; no menopausal-status, weight, or clinical-flag data exists yet to say anything further.
 - **Practitioner/note on file:** Jason Bethea (CSCS) directly, dated 2026-08-06 (SOAP_MakaiBrown_2026-08-06.pdf).
