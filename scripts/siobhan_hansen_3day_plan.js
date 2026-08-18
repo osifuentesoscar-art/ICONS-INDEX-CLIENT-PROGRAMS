@@ -195,7 +195,88 @@
  * visible in both the trainer document and Client View regardless of that
  * note's audience.
  *
- * REVISION (8/18/2026, Client View audience-leak fix — audit finding): the
+ * REVISION (8/18/2026, fourth pass, same day — ICONS BLOCK METHOD PILOT,
+ * per CLAUDE.md's "ICONS Block Method — Standing Session Architecture"
+ * section added the same day; Siobhan is the roster pilot, chosen for
+ * having all three of the method's data sources rich and current: full
+ * Styku scan, fresh Jason Bethea SOAP note with prescribed exercises AND
+ * two active clinical findings, and a tested baseline battery). Each day
+ * restructured onto the standing five-slot order (Corrective → Primary
+ * Compound → Accessory → Jason's Exercise → Secondary Compound), with the
+ * pre-existing carries/core/power/finisher blocks retained as standing
+ * post-architecture blocks after slot 5 (the spec's Three-Zone mapping
+ * explicitly allows finishers to close a day after the secondary
+ * compound; carries/core/power have no named slot — reported as a pilot
+ * friction finding, not silently dropped). Per-day mapping:
+ *   DAY 1 (upper/press-pull day → shoulder correctives lead):
+ *     Slot 1 = Blocks A+B (shoulder reintroduction corrective + scapular
+ *     gate — her double corrective coverage spans two blocks; compressing
+ *     them into one would blur the gate's distinct clinical identity).
+ *     Slot 1 consumes ALL of Jason's Day-1-applicable content (I's-T's-W's,
+ *     Quadruped Shoulder Press, Floor Row on Foam Roller — all three are
+ *     shoulder/postural correctives per his note). Slot 2 = Block C
+ *     (Seated DB OHP, the reintroduction primary). Slot 3 = Block D
+ *     (Incline Push-Up, moved up from old Block E — hypertrophy-priority
+ *     press accessory, rirNote corrected 2→1 RIR per the corrected tiers;
+ *     no clinical flag on the incline-press pattern). Slot 4 = OMITTED —
+ *     all applicable Jason content already consumed by slot 1, and the
+ *     two placements considered were both rejected: Floor Row in slot 4
+ *     would create a 3-consecutive-pull run into slot 5 (floor row →
+ *     Kieser pulldown → SA row), and placing hip-side Jason content
+ *     (kickback/crab walk) on Day 1 would silently raise her active-
+ *     tendinitis rehab-exercise frequency from 2x to 3x/week — a clinical
+ *     dosing decision that belongs to Jason, not this restructure. Slot 5
+ *     = Block E (Kieser Pulldown + Single-Arm DB Row, right-led — pull,
+ *     antagonist to the press primary). Block F finisher unchanged.
+ *   DAY 2 (lower day → hip correctives lead):
+ *     Slot 1 = Block A unchanged (clamshell, bird dog, Crab Walk static
+ *     Elvis-knee [Jason], Glute Kickback TG L10 [Jason] — both hip-side
+ *     Jason exercises stay slot-1 priming, exactly as his note used them).
+ *     Slot 2 = Block B, Squat only (SL Stance Squat split out). Slot 3 =
+ *     new Block C, Single-Leg Stance Squat (left-led) — unilateral squat
+ *     accessory supporting the primary; rirNote kept at 2 RIR despite the
+ *     accessory-slot 1-RIR default, a deliberate clinical override given
+ *     the active left-hip tendinitis flag + fixed %1RM ramp. Slot 4 = new
+ *     Block D, Floor Row on Foam Roller (Jason — shoulder-side exercise
+ *     NOT consumed by this day's hip-focused slot 1; gives the documented
+ *     postural-dysfunction finding a second weekly touch, gives this
+ *     otherwise lower-only day its one upper-back pull, and lands as a
+ *     textbook antagonist break between the squat-pattern work above and
+ *     the hinge below). Slot 5 = Block E, Single-Leg RDL (left-led) —
+ *     hinge, different pattern from the squat primary. Block F finisher
+ *     unchanged.
+ *   DAY 3 (posterior-chain day → hip correctives lead):
+ *     Slot 1 = Block A unchanged (clamshell, standing hip abduction,
+ *     Glute Kickback [Jason] — kickback stays slot-1 priming here, as
+ *     before; moving it to slot 4 would stack Hex DL → Hip Thrust →
+ *     Kickback as 3 consecutive hip-extension exercises). Slot 2 = Block
+ *     B, Hex Bar Deadlift only (rirNote aligned '1-2 RIR' → '2 RIR' per
+ *     the corrected primary-lift default). Slot 3 = new Block C, DB Hip
+ *     Thrust — glute hypertrophy accessory in the allowed primary+
+ *     accessory posterior-chain pairing; 2 RIR kept (same hip-flag
+ *     clinical override as Day 2's accessory). Slot 4 = new Block D,
+ *     I's-T's-W's Prone Modified (Jason — shoulder-side, not consumed by
+ *     this day's slot 1; primes the shoulder immediately before the
+ *     pressing check-in below, mirroring Day 1's corrective-before-
+ *     pressing discipline). Slot 5 = Block E, Shoulder & Pull Check-In
+ *     (Standing DB OHP + Kieser Pulldown — press+pull secondary, Index-
+ *     serving via the OHP reintroduction, kept early enough to be run
+ *     fresh rather than after carries). Blocks F (carries) / G (core) /
+ *     H (power) / I (finisher) retained post-architecture, relative order
+ *     unchanged; internal power-training note and intro cross-references
+ *     updated from Block F/G to H/I.
+ * NO clinical content changed: all 6 left-hip flags, the shoulder
+ * reintroduction protocol, the scapular gate, both asymmetry leads, the
+ * pelvic-floor auto-fire days (2 and 3 — exercise-name trigger set
+ * unchanged on both), proteinBar auto-fire, and all Wk1→Wk4 loads
+ * survive verbatim. The only prescription-detail changes are the two
+ * RIR-tier alignments noted above, both implementing the corrected RIR
+ * standard the method itself specifies. A new internal baselineNote
+ * documents the restructure; nothing about it appears in the Client View.
+ *
+ * REVISION (8/18/2026, third pass, same day — Client View audience-leak
+ * fix, audit finding; chronologically PRECEDES the Block Method pilot
+ * pass documented above, which was appended out of physical order): the
  * two same-day editing passes above left build-process language in fields
  * that have NO audience filter and therefore render in the Client View.
  * Fixed: (1) the left-hip clinical note's opening sourcing clause ("New
@@ -294,7 +375,7 @@ const baselines = [
   ['Single-Leg RDL', `25 lbs x 5 (Epley 1RM ≈${oneRM.slRDL} lbs)`, '7/29/2026', `Wk1: ${wk1.slRDL} lbs/side x6 → Wk4: ${wk4.slRDL} lbs/side x6 — left leg leads`],
   ['Single-Leg Stance Squat', `12 lbs x 5 (Epley 1RM ≈${oneRM.slStanceSquat} lbs)`, '7/29/2026', `Wk1: ${wk1.slStanceSquat} lbs x6 → Wk4: ${wk4.slStanceSquat} lbs x6 — left leg leads`],
   ['Overhead Press', 'Not Tested — Reintroducing After Prior Suspension', '7/29/2026', 'Progressive strengthening, pain-free ROM only — load builds week to week, autoregulated by RIR, not a fixed %1RM table'],
-  ['Single-Arm Row', '20 lbs (reference load, reps not recorded)', '7/29/2026', 'Build progressively at 1-2 RIR — right arm leads (weaker side)'],
+  ['Single-Arm Row', '20 lbs (reference load, reps not recorded)', '7/29/2026', 'Build progressively at 2 RIR — right arm leads (weaker side)'],
   ['Farmers Carry', '25 lbs/hand', '7/29/2026', 'Hold at 25-30 lbs/hand for volume; add 5 lbs/hand at the 8-week retest if quality holds'],
   ['Incline Push-Up', '10 reps (bodyweight)', '7/29/2026', 'Target 14-16 clean reps by Week 8'],
   ['Plank Hold', '1:04 (64 sec)', '7/29/2026', 'Target 1:30-1:45 by Week 8'],
@@ -338,7 +419,7 @@ const baselineNotes = [
     type: 'gold',
     audience: 'internal',
     label: 'Power Training Added — 55-65 Bracket (8/13/2026)',
-    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day 3, Block F now includes a Box Step-Up Jump: bodyweight, full recovery between sets, and deliberately a lower-body movement — no overhead component, given the left shoulder reintroduction still underway in Blocks A and C. Full recovery between sets is the defining design feature of power work, distinct from a metabolic stimulus, so it does not compete with the deliberately brief metabolic finishers used elsewhere in this program, which stay short specifically to protect recovery capacity for the ALST At-Risk/Underweight resistance-training priority named above.',
+    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day 3, Block H (relettered from F in the 8/18/2026 Block Method restructure) includes a Box Step-Up Jump: bodyweight, full recovery between sets, and deliberately a lower-body movement — no overhead component, given the left shoulder reintroduction still underway on Days 1 and 3. Full recovery between sets is the defining design feature of power work, distinct from a metabolic stimulus, so it does not compete with the deliberately brief metabolic finishers used elsewhere in this program, which stay short specifically to protect recovery capacity for the ALST At-Risk/Underweight resistance-training priority named above.',
   },
   {
     type: 'red',
@@ -359,6 +440,12 @@ const baselineNotes = [
     // filename/date), same category already marked internal elsewhere in
     // this file. The exercises/warm-up content themselves stay fully visible.
     audience: 'internal',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Pilot (8/18/2026)',
+    body: 'This document is the roster pilot for the ICONS Block Method standing session architecture (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound; see CLAUDE.md). Restructure is organizational only — every clinical element (left-hip tendinitis flags on all 6 hip-loaded exercises, shoulder reintroduction protocol, scapular gate, both asymmetry leads, pelvic-floor auto-fire on Days 2-3, protein bar on all days) and every Wk1→Wk4 load survives verbatim. What moved: Day 1 — Incline Push-Up promoted to the accessory slot ahead of the pull block (1 RIR per corrected accessory tier); slot 4 omitted (all Jason content consumed by the corrective slot; a slot-4 Floor Row would stack 3 consecutive pulls, and adding hip-side Jason work to Day 1 would raise rehab-exercise frequency to 3x/week — Jason\'s call, not ours). Day 2 — Squat/SL Stance Squat split into primary/accessory blocks; Floor Row on Foam Roller added as the Jason slot (2nd weekly touch of the postural finding, antagonist break between squat and hinge patterns). Day 3 — Hex DL/Hip Thrust split into primary/accessory blocks (Hex DL RIR aligned to 2 RIR primary default); I\'s-T\'s-W\'s added as the Jason slot priming the check-in; check-in reframed as the secondary compound; carries/core/power/finisher retained as post-architecture standing blocks (no named slot in the five-slot format — a pilot friction finding). Accessory-slot RIR held at 2 (not the 1-RIR default) on both hip-flagged accessories (SL Stance Squat, Hip Thrust) as a deliberate clinical override during active tendinitis rehab.',
   },
 ];
 
@@ -412,23 +499,23 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'PULL STRENGTH — RIGHT ARM LEADS',
-        color: 'purple',
+        title: 'ACCESSORY — INCLINE PUSH-UP PROTOCOL',
+        color: 'green',
         introLabel: 'Load Target',
-        intro: 'Kieser Pulldown is her active pull-strength pathway exercise while pull-up loading stays gated — track progression in Kieser units on the same machine, not converted to a free-weight number. Single-Arm Row is led by the right arm (weaker side, per Styku LST).',
+        intro: 'Baseline 10 reps, bodyweight — the muscle-building accessory behind today\'s pressing work, in a controlled, non-overhead range that is well-tolerated alongside the shoulder reintroduction above. Worked hard: this is a hypertrophy-priority set, taken to 1 rep in reserve.',
         exercises: [
-          { name: 'Kieser Pulldown', sets: '3', reps: '10-12', load: 'Kieser 13.5 units, build weekly on same machine', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.' },
-          { name: 'Single-Arm DB Row (Right-Led)', sets: '3', reps: '10/side', load: '20 lbs (reference), build progressively', tempo: '2-1-2', rest: '75s', flag: 'Right arm weaker (Styku) — leads every set', cue: 'Right arm first. Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
+          { name: 'Incline Push-Up', sets: '3', reps: '8-10', load: 'bodyweight (bench)', tempo: '3-1-1', rest: '60s', cue: 'Baseline 10 reps. Hands under shoulders, chest to bench, brace.', rirNote: '1 RIR' },
         ],
       },
       {
         letter: 'E',
-        title: 'PUSH ACCESSORY — INCLINE PUSH-UP PROTOCOL',
-        color: 'green',
+        title: 'SECONDARY COMPOUND — PULL STRENGTH (RIGHT ARM LEADS)',
+        color: 'purple',
         introLabel: 'Load Target',
-        intro: 'Baseline 10 reps, bodyweight — controlled, non-overhead pressing range that is well-tolerated alongside the shoulder reintroduction work above.',
+        intro: 'The day\'s second compound pattern — pulling, rotating away from the pressing work above. Kieser Pulldown is her active pull-strength pathway exercise while pull-up loading stays gated — track progression in Kieser units on the same machine, not converted to a free-weight number. Single-Arm Row is led by the right arm (weaker side, per Styku LST).',
         exercises: [
-          { name: 'Incline Push-Up', sets: '3', reps: '8-10', load: 'bodyweight (bench)', tempo: '3-1-1', rest: '60s', cue: 'Baseline 10 reps. Hands under shoulders, chest to bench, brace.', rirNote: '2 RIR' },
+          { name: 'Kieser Pulldown', sets: '3', reps: '10-12', load: 'Kieser 13.5 units, build weekly on same machine', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.' },
+          { name: 'Single-Arm DB Row (Right-Led)', sets: '3', reps: '10/side', load: '20 lbs (reference), build progressively', tempo: '2-1-2', rest: '75s', flag: 'Right arm weaker (Styku) — leads every set', cue: 'Right arm first. Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -468,25 +555,43 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — SQUAT & SINGLE-LEG STANCE SQUAT (LEFT-LED)',
+        title: 'PRIMARY STRENGTH — SQUAT',
         introLabel: 'Load Target',
-        intro: `Squat tested at 25 lbs x5 (Epley 1RM ≈${oneRM.squat} lbs) — Week 1 trains at ${wk1.squat} lbs, climbing to ${wk4.squat} lbs by Week 4. Single-Leg Stance Squat tested at 12 lbs x5 (Epley 1RM ≈${oneRM.slStanceSquat} lbs) — Week 1 trains at ${wk1.slStanceSquat} lbs, climbing to ${wk4.slStanceSquat} lbs — left leg leads every set.`,
+        intro: `Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.squat} lbs) — Week 1 trains at ${wk1.squat} lbs, climbing to ${wk4.squat} lbs by Week 4.`,
         exercises: [
           { name: 'Squat', sets: '3', reps: '6-8', load: `Wk1: ${wk1.squat} lbs → Wk4: ${wk4.squat} lbs`, tempo: '3-1-1', rest: '90s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Elbows tracking, chest tall, full comfortable depth.', rirNote: '2 RIR' },
-          { name: 'Single-Leg Stance Squat (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slStanceSquat} lbs → Wk4: ${wk4.slStanceSquat} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set; left hip in active tendinitis rehab, stop at sharp/pinching pain', cue: 'Left leg first. Slow controlled descent, knee tracks mid-foot.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
+        title: 'ACCESSORY — SINGLE-LEG STANCE SQUAT (LEFT-LED)',
+        introLabel: 'Load Target',
+        intro: `The unilateral accessory directly behind today's squat — same knee-dominant pattern, worked one leg at a time with the left leading. Tested at 12 lbs x5 (Epley 1RM ≈${oneRM.slStanceSquat} lbs) — Week 1 trains at ${wk1.slStanceSquat} lbs, climbing to ${wk4.slStanceSquat} lbs by Week 4. Held at 2 reps in reserve — the left-hip rehab governs how hard this is pushed, not a hypertrophy default.`,
+        exercises: [
+          { name: 'Single-Leg Stance Squat (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slStanceSquat} lbs → Wk4: ${wk4.slStanceSquat} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set; left hip in active tendinitis rehab, stop at sharp/pinching pain', cue: 'Left leg first. Slow controlled descent, knee tracks mid-foot.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'PT-LED POSTURAL PULL — FLOOR ROW ON FOAM ROLLER',
+        color: 'red',
+        introLabel: 'Why',
+        intro: 'Carried into this session from her PT-led work with Jason Bethea, Brace Life\'s in-house Trainer/Physical Therapist — an unstable-surface, core-integrated pulling accessory supporting the documented left-shoulder postural work. It gives this lower-body day its one upper-back touch, and deliberately rotates the movement pattern between the squat work above and the hinge work below.',
+        exercises: [
+          { name: 'Floor Row on Foam Roller', sets: '2', reps: '10-12', load: 'light band or DB', tempo: '2-1-2', rest: '30s', cue: 'Row variant performed lying prone over a foam roller — unstable-surface, core-integrated pulling accessory. Pull to hip, squeeze shoulder blade, no compensatory shrug.' },
+        ],
+      },
+      {
+        letter: 'E',
         title: 'SECONDARY COMPOUND — SINGLE-LEG RDL (LEFT-LED)',
         introLabel: 'Load Target',
-        intro: `Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.slRDL} lbs) — Week 1 trains at ${wk1.slRDL} lbs/side, climbing to ${wk4.slRDL} lbs/side by Week 4. Left leg leads every set.`,
+        intro: `The day's second compound pattern — a hip hinge, rotating off the knee-dominant squat work above. Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.slRDL} lbs) — Week 1 trains at ${wk1.slRDL} lbs/side, climbing to ${wk4.slRDL} lbs/side by Week 4. Left leg leads every set.`,
         exercises: [
           { name: 'Single-Leg RDL (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slRDL} lbs → Wk4: ${wk4.slRDL} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set; left hip in active tendinitis rehab, stop at sharp/pinching pain', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
         ],
       },
       {
-        letter: 'D',
+        letter: 'F',
         title: 'METABOLIC FINISHER',
         color: 'gold',
         introLabel: 'Why',
@@ -522,27 +627,45 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — HEX BAR DEADLIFT & HIP THRUST',
+        title: 'PRIMARY STRENGTH — HEX BAR DEADLIFT',
         introLabel: 'Load Target',
-        intro: `Hex Bar Deadlift tested at 85 lbs x5 (Epley 1RM ≈${oneRM.hexDL} lbs) — Week 1 trains at ${wk1.hexDL} lbs, climbing to ${wk4.hexDL} lbs by Week 4. Hip Thrust tested at 35 lbs x5 (Epley 1RM ≈${oneRM.hipThrust} lbs) — Week 1 trains at ${wk1.hipThrust} lbs, climbing to ${wk4.hipThrust} lbs.`,
+        intro: `Her strongest tested lift. Tested at 85 lbs x5 (Epley 1RM ≈${oneRM.hexDL} lbs) — Week 1 trains at ${wk1.hexDL} lbs, climbing to ${wk4.hexDL} lbs by Week 4.`,
         exercises: [
-          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${wk1.hexDL} lbs → Wk4: ${wk4.hexDL} lbs`, tempo: '2-0-1', rest: '2 min', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Neutral spine, brace hard, push floor away evenly.', rirNote: '1-2 RIR' },
-          { name: 'DB Hip Thrust', sets: '3', reps: '8', load: `Wk1: ${wk1.hipThrust} lbs → Wk4: ${wk4.hipThrust} lbs`, tempo: '2-1-2', rest: '90s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive through heels, glutes lock at top.', rirNote: '2 RIR' },
+          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${wk1.hexDL} lbs → Wk4: ${wk4.hexDL} lbs`, tempo: '2-0-1', rest: '2 min', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Neutral spine, brace hard, push floor away evenly.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'SHOULDER & PULL CHECK-IN — CONTINUED REINTRODUCTION',
+        title: 'ACCESSORY — DB HIP THRUST (GLUTE BUILD)',
+        introLabel: 'Load Target',
+        intro: `The glute-building accessory directly behind the deadlift — same posterior chain, isolated harder at the hip. Tested at 35 lbs x5 (Epley 1RM ≈${oneRM.hipThrust} lbs) — Week 1 trains at ${wk1.hipThrust} lbs, climbing to ${wk4.hipThrust} lbs by Week 4. Held at 2 reps in reserve — the left-hip rehab governs how hard this is pushed, not a hypertrophy default.`,
+        exercises: [
+          { name: 'DB Hip Thrust', sets: '3', reps: '8', load: `Wk1: ${wk1.hipThrust} lbs → Wk4: ${wk4.hipThrust} lbs`, tempo: '2-1-2', rest: '90s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive through heels, glutes lock at top.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'PT-LED SHOULDER PREP — I\'S-T\'S-W\'S (PRONE, MODIFIED)',
         color: 'red',
         introLabel: 'Why',
-        intro: 'A brief continued check-in, not a full repeat of Day 1\'s corrective block — confirms the reintroduction is progressing cleanly before the next Day 1 session. Same pain-monitoring rule applies: sharp/pinching pain stops the set, ordinary fatigue does not.',
+        intro: 'Carried into this session from her PT-led work with Jason Bethea — the same modified shoulder activation used in Day 1\'s corrective block, positioned here to prime the left shoulder immediately before the pressing check-in below. Control precedes power on this day too.',
+        exercises: [
+          { name: "I's-T's-W's (Prone, Modified)", sets: '2', reps: '8/side (one arm)', load: '5 lb DB', tempo: 'controlled', rest: '30s', flag: 'Left shoulder — reduced ROM on the W/Y sweep portion, per documented session modification', cue: 'Performed one arm at a time in a hinge stance (documented modification from the standard bilateral-prone version). Reduced range on the W/Y sweep — pain-free range only.' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'SECONDARY COMPOUND — SHOULDER & PULL CHECK-IN',
+        color: 'red',
+        introLabel: 'Why',
+        intro: 'The day\'s second compound pattern — pressing and pulling, rotating off the hip-dominant work above. A brief continued check-in, not a full repeat of Day 1\'s corrective block — confirms the reintroduction is progressing cleanly before the next Day 1 session, and is run here rather than later so the shoulder is checked fresh, not fatigued. Same pain-monitoring rule applies: sharp/pinching pain stops the set, ordinary fatigue does not.',
         exercises: [
           { name: 'Standing DB Overhead Press', sets: '2', reps: '6-8', load: 'continue from Day 1 working load', tempo: '2-0-2', rest: '90s', flag: 'Left shoulder — pain-free range only', cue: 'Same working load as Day 1 unless pain-free range has clearly expanded.', rirNote: '2 RIR' },
           { name: 'Kieser Pulldown', sets: '2', reps: '10-12', load: 'continue from Day 1 Kieser units', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.' },
         ],
       },
       {
-        letter: 'D',
+        letter: 'F',
         title: 'LOADED CARRIES — ASYMMETRY PROTOCOL',
         color: 'gold',
         introLabel: 'Load Target',
@@ -553,7 +676,7 @@ const days = [
         ],
       },
       {
-        letter: 'E',
+        letter: 'G',
         title: 'CORE — PLANK PROTOCOL',
         color: 'green',
         introLabel: 'Load Target',
@@ -564,16 +687,16 @@ const days = [
         ],
       },
       {
-        letter: 'F',
+        letter: 'H',
         title: 'POWER TRAINING — LOWER BODY (55-65 BRACKET)',
         introLabel: 'Why',
-        intro: 'Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity in older women more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. This is deliberately a lower-body movement, not overhead, given the shoulder reintroduction still underway in Blocks A and C. Full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it does not compete with Block G\'s deliberately brief finisher below.',
+        intro: 'Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity in older women more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. This is deliberately a lower-body movement, not overhead, given the shoulder reintroduction still underway in Blocks D and E. Full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it does not compete with Block I\'s deliberately brief finisher below.',
         exercises: [
           { name: 'Box Step-Up Jump (Submaximal, Full Recovery)', sets: '3', reps: '3', load: 'bodyweight, low box (~10-12")', tempo: 'explosive up, soft controlled landing', rest: '120s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive up with real intent, land soft and controlled. Full recovery — not a metabolic set.' },
         ],
       },
       {
-        letter: 'G',
+        letter: 'I',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'Closing conditioning, kept low-impact and brief given the volume of the day and the ALST At-Risk/Underweight recovery priority.',
