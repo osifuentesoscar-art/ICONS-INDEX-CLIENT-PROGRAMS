@@ -514,6 +514,7 @@ Every client's program should be filtered through the age bracket below, layered
 
 - **Male clients** (e.g. Jake Poyner, Vinz Feller): a real, cited framework now exists for this — see "MALE CLIENT PROGRAMMING FRAMEWORK" immediately after this Evidence-Based Science Layer section. Use its ALST/protein/creatine/testosterone/VFA/BMI/bone-loading thresholds rather than reporting raw Styku numbers with no clinical interpretation, and rather than reaching for the women's numeric thresholds by default.
 - **A population neither framework covers** (a client meaningfully younger than 20-35, e.g. an adolescent, or any other genuinely out-of-scope case): apply the sex-neutral structural philosophy (three-zone Isolated→Compound→Metabolic build, RIR/RPE autoregulation, corrective-before-compound sequencing) since that transfers, and explicitly flag in the client's document which numeric thresholds were NOT applied and why — the same way Jake Poyner's and Vinz Feller's programs each carry a dedicated note explaining the scope decision rather than burying it in code. Per the standing trigger at the top of the Male Client Programming Framework section, treat onboarding a client from any such population as the moment to research and build out that population's framework in this file, not just document the gap and move on.
+- **A client with NO demographic data at all** (no age, no sex on file, no scan — only trainer-observed movement constraints; e.g. Sarah, built 8/18/2026, and several of the 8/18 intake-pending SOAP-note clients whose notes state neither DOB nor sex): this is a THIRD case, distinct from the two above, and it was previously unhandled — added 8/18/2026. The two bullets above both assume you know enough about the client to determine that she or he falls outside a framework. Here you cannot determine which framework applies at all, which means the correct posture is not "pick the nearest bracket and proceed cautiously" — it is to apply only what is genuinely sex- and age-neutral and say so explicitly. **What transfers with no demographic data:** the three-zone Isolated→Compound→Metabolic structure, RIR/RPE autoregulation and the RIR calibration protocol, corrective-before-compound sequencing, the Antagonist Rotation Rule, full-ROM-with-control coaching, and progression governed by observed performance and symptom response rather than by any threshold. **What must NOT be applied, and must be stated as not applied in the document:** every numeric threshold in this layer without exception — ALST cutoffs (sex-specific), protein g/kg tiers (require weight AND a context determination), creatine indication tiers (age/status-driven), LIFTMOR candidacy, VFA/BMI interpretation, pelvic floor auto-triggers, the Full-Spectrum Progression Standard, and the ICONS Intensity Framework's novice-vs-trained tiering (which requires knowing training age). A no-data client's document should carry a single explicit scope note naming this — the same way Jake Poyner's and Vinz Feller's do for the male-scope case — rather than quietly shipping a program whose thresholds were all silently skipped. **This is a data gap, not a population gap**, so unlike the bullet below it does NOT trigger a research pass to build a new framework — there is no population to research. It triggers an INTAKE request instead: age and sex are the two fields that unlock the most downstream clinical content per unit of effort, and asking for them should be the default follow-up on any no-data build.
 - **The "ICONS Index Full-Spectrum Progression Standard" (all 10 core Baseline Testing Protocol exercises must show programmed progression)** is scoped to women 40–55 specifically (see that standard, under "ICONS BASELINE TESTING PROTOCOL" below) — the same non-transfer rule applies: don't silently extend that specific mandate to women outside 40–55 or to male clients without a dedicated research pass validating it for that population first.
 
 This is a standing decision rule, not a one-off judgment call specific to any one client.
@@ -1113,6 +1114,188 @@ Genuine gap: no dedicated postmenopausal-women-specific OA-plus-heavy-
   OA-specific evidence with a strong RCT count behind it) but not as a
   bracket-matched replication of LIFTMOR the way the core Bone Loading
   section is.
+```
+
+### Scoliosis & Resistance Training (2015-2025 evidence — new section, 8/18/2026)
+```
+Why this section exists: confirmed via repo-wide search that scoliosis had
+  ZERO prior coverage anywhere in this file, despite spinal-loading topics
+  (bone loading, loaded spinal flexion, pelvic floor bracing, lumbar
+  positioning) being covered extensively. Triggered by the mandatory
+  research-coverage check at NEW CLIENT ONBOARDING: Samantha Swan (28,
+  intake-pending, no plan built yet) has a documented left-sided scoliosis
+  with a directional preference and a documented loaded-hip-hinge
+  intolerance in Jason Bethea's SOAP-note archive. Written BEFORE her
+  document is built, which is the point of that check.
+
+READ THIS FIRST — the honest state of the evidence, which is NOT the same
+  as OA or lymphedema. This file's two most recent condition sections (OA,
+  breast-cancer/lymphedema) both concluded that the historically cautious
+  "restrict load to protect the structure" instinct is the outdated one,
+  contradicted by strong RCT evidence. DO NOT pattern-match that conclusion
+  onto scoliosis. No RCT of progressive resistance training in adults with
+  scoliosis was located in this pass — not a positive one, not a negative
+  one. The honest position is that the evidence is thin in BOTH directions:
+  there is no good evidence that heavy compound lifting harms a skeletally
+  mature adult with scoliosis, and no good evidence that it is safe at
+  LIFTMOR-style intensity either. Say that plainly rather than borrowing
+  confidence from an adjacent section.
+
+Scope distinction that matters more here than in any other section: nearly
+  all scoliosis exercise evidence is in ADOLESCENT idiopathic scoliosis
+  (AIS), during growth, with Cobb-angle progression as the primary
+  outcome. A skeletally mature adult is a different clinical problem —
+  the goals are pain, function, and quality of life, not curve
+  correction — and AIS trial results do not transfer cleanly. Three
+  distinct populations, do not conflate: (1) AIS (growth phase, where
+  the RCTs are); (2) adult idiopathic scoliosis (ADIS — an adolescent-
+  onset curve carried into adulthood, which is the likely picture for a
+  28-year-old client); (3) adult degenerative/de novo scoliosis (a
+  curve arising after skeletal maturity from disc/facet degeneration,
+  more common in this file's 55-65/65+ brackets and closer in character
+  to the Osteoarthritis section above than to AIS).
+
+Standing guideline: the 2016 SOSORT guidelines (Society on Scoliosis
+  Orthopaedic and Rehabilitation Treatment) remain the most current full
+  guideline set located in this pass — same "most current version found,
+  not superseded" caveat already used for the ACR 2019 OA guideline and
+  the ACSM 2019 exercise-oncology roundtable. A SOSORT 2025 congress was
+  held (Dubrovnik) but no published 2025 guideline replacement was
+  found. Note the 2016 guidelines are explicitly scoped to "idiopathic
+  scoliosis DURING GROWTH" — they are an adolescent document being used
+  as the nearest available reference for adults, which is itself a
+  stated limitation, not a silent assumption.
+PSSE (Physiotherapeutic Scoliosis-Specific Exercises) is the SOSORT-
+  endorsed umbrella term covering the recognized schools (Schroth, SEAS,
+  BSPTS, FITS, Lyon, Side Shift, DoboMed). Its four consensus principles:
+  auto-correction in three dimensions, training in activities of daily
+  living, stabilization of the corrected posture, and patient education.
+  SOSORT specifies PSSE programs be designed by a therapist trained in
+  the specific approach and individualized to the client's curve pattern
+  — i.e., PSSE is NOT something an ICONS trainer designs; it is the
+  coordinating clinician's domain, and ICONS's job is to build strength
+  work that respects it. Same referral-not-prescribe posture used
+  throughout this file.
+
+Adult-specific evidence — thin, but it exists and it is directionally
+  positive: Negrini A, Negrini MG, Donzelli S, Romano M, Zaina F,
+  Negrini S, "Scoliosis-Specific exercises can reduce the progression of
+  severe curves in adult idiopathic scoliosis: a long-term cohort
+  study," Scoliosis 2015;10:20 (ISICO, Milan). Retrospective cohort,
+  n=34 adults with ADIS (5 men, 29 women, mean age 38.0±11.0), treated
+  exclusively with SEAS auto-correction-based exercises at ≥2 sessions/
+  week of 45 min. Flag the design honestly when citing it: retrospective,
+  small, single-institute, no control arm, and from the research group
+  that developed SEAS — the same single-research-line transparency
+  caveat this file already applies to LIFTMOR/Watson et al. It is the
+  clearest adult-specific evidence located, not a strong one.
+Directional preference / auto-correction is an evidence-consistent
+  concept, not a trainer improvisation. Auto-correction — actively
+  reducing the deformity through three-dimensional postural realignment
+  — is the defining principle of the Schroth method and of PSSE
+  generally, and asymmetric spinal-stabilization exercise deliberately
+  targeting the concave-side paraspinals is a described, trialed
+  approach in AIS RCTs (e.g. Schroth + asymmetric spinal stabilization
+  vs. control, adolescent RCTs, PMC11644102 / PMC10838577). Practical
+  consequence for ICONS: when a coordinating clinician documents a
+  directional preference (a movement direction that opens the concavity
+  and is tolerated, vs. one that closes it and provokes symptoms), that
+  is a legitimate clinical finding to program around — treat it the same
+  way this file treats a physician-issued cardiac HR ceiling: the
+  clinician's specific finding is authoritative, and ICONS's job is to
+  build around it, not to re-derive or override it. Concretely: a
+  bilateral or symmetric drill performed to the WRONG side can itself be
+  the provoker (documented in Samantha Swan's note — a bear-crawl
+  lateral-flexion drill run toward the closing side provoked symptoms
+  mid-session), so a scoliosis client's document must state the
+  direction explicitly on any lateral-flexion/rotation exercise rather
+  than leaving side selection to whoever runs the session.
+
+Axial load — what the evidence actually supports, and what it doesn't.
+  The strongest mechanistic data located is a subject-specific
+  musculoskeletal modeling study (Frontiers in Bioengineering and
+  Biotechnology 2020;8:159, n=24 mild-to-moderate AIS, models built from
+  spatially calibrated biplanar radiographs): the spinal deformity alone
+  produced a ~10% increase in compressive force at the curve apex in
+  unloaded standing, and apical compressive force then rose by 50-62%
+  under a simulated 10%-bodyweight load, 77-94% at 15% BW, and 103-128%
+  at 20% BW. The important feature is the NON-LINEARITY — apex load
+  amplifies faster than the external load does. What this justifies:
+  preferring load vectors that bypass axial spinal compression (hip-belt/
+  Kaiser belt-harness squat, trap-bar or supported hinge variants,
+  goblet/split-stance patterns, machine-supported work) for a client
+  whose symptoms are provoked by axial loading. What this does NOT
+  justify: declaring squats/deadlifts contraindicated in scoliosis
+  generally. It is a modeling study, in adolescents, predicting FORCES —
+  not a clinical study measuring curve progression, pain, or injury in a
+  trained adult. No study located links resistance-training axial load
+  to curve progression or injury in skeletally mature adults.
+  IMPORTANT INTERACTION with the 20-35 bracket (peak bone mass): this
+  file's 20-35 bracket bullet states heavy compound lifting contributes
+  to building peak bone mass, and that window closes permanently. For a
+  young adult client with scoliosis, systematically routing around axial
+  load protects symptoms but also removes exactly the axial stimulus the
+  peak-bone-mass window depends on. This is a real, unresolved tradeoff,
+  not something to resolve silently in either direction — name it in the
+  client's document, keep meaningful load in the program via non-axial
+  vectors and impact/power work where tolerated, and treat it as a
+  question for the coordinating clinician rather than a trainer's call.
+
+ICONS practical application:
+  - Program from the documented directional preference and symptom
+    provokers, not from a generic scoliosis exercise blacklist. There is
+    no evidence base supporting a fixed list of banned exercises for
+    scoliosis; there IS a defensible basis for respecting an individual
+    client's clinician-documented provoking patterns.
+  - A load vector that bypasses a documented provoker (e.g. a hip-belt
+    squat for an axial-load-intolerant client) is a legitimate PRIMARY
+    lower-body tool with its own progression, not a permanent
+    regression or a placeholder until "real" squatting returns. Write
+    it that way in the document — progress it with real Wk1→Wk4 numbers
+    per this file's load-field convention.
+  - State the side explicitly on every lateral-flexion, rotation, and
+    unilateral exercise for a scoliosis client. Wrong-side execution is
+    a documented, real provoking mechanism, and the standard `flag`
+    field (italic red sub-line under the exercise name) is the right
+    place for it.
+  - Hinge intolerance is a constraint on the LOADED hinge pattern
+    specifically, not a reason to abandon posterior-chain training —
+    substitute supported/reduced-ROM or non-axial hinge variants and
+    hip-extension work (glute bridge, hip thrust, back extension to
+    tolerance) rather than leaving the pattern unprogrammed. Note this
+    intersects the ICONS Index Full-Spectrum Progression Standard's
+    10-movement mandate, which requires programmed progression on
+    Deadlift and Single-Leg RDL — that standard is scoped to women
+    40-55, so it does not bind a 28-year-old client, but for a
+    hinge-intolerant client who IS in the 40-55 bracket, the
+    substitution must be a genuine programmed hinge-pattern
+    alternative, not silence on the pattern.
+  - Red-flag referral, unchanged from the rest of this file's posture:
+    new radicular symptoms (leg pain, numbness, tingling), a sudden
+    change in pain intensity or distribution, or a previously-tolerated
+    tool becoming painful → stop and refer to the coordinating
+    clinician. Curve measurement, imaging interpretation, bracing, and
+    surgical-threshold decisions are never ICONS's to make.
+  - Scope boundary: PSSE is a certified specialty (school-specific
+    training). Neither Jason Bethea's nor Niko Heers' in-house scope has
+    been confirmed to include PSSE/Schroth certification — do not imply
+    in-house PSSE capability without Xolokan's explicit confirmation,
+    same boundary already applied to pelvic floor PT and lymphedema
+    therapy. Jason's documented management of a scoliosis client is real
+    coordinated care and should be named as such; describing it as PSSE
+    specifically would be an unverified claim.
+Genuine gaps, stated rather than filled: (1) no RCT of progressive
+  resistance training in adults with scoliosis, at any intensity; (2) no
+  evidence on whether heavy axial loading affects curve progression
+  after skeletal maturity; (3) no data on scoliosis + LIFTMOR-style
+  bone-loading protocols, which is the direct unanswered question for a
+  future postmenopausal client with a degenerative curve; (4) the
+  paraspinal thermal-regulation hypothesis in Samantha Swan's note
+  (simultaneous car AC + seat warmer on the low back interfering with
+  autonomic paraspinal tone regulation) was NOT verifiable in the
+  literature in this pass — it is the practitioner's working
+  hypothesis, and should be carried as that, not repeated in any
+  client-facing document as an established mechanism.
 ```
 
 ### Breast Cancer Survivorship & Resistance Training (2009-2025 evidence)
@@ -3069,11 +3252,15 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 | PNF / Niko Heers staff naming | 8/13/2026 | All (staff-capability, not clinical) | 2 clients (Moe Shahheidari, and others per fit) |
 | Postpartum & DRA | 8/14/2026 | Women, any bracket | **Zero roster clients — proactive only** |
 | Vitamin D & Calcium (bone cofactor) | 8/15/2026 | Women 55+ | Well-represented (referral-only content) |
-| Osteoarthritis (knee/hip) | 8/16/2026 | All, both sexes | **Zero roster clients — proactive only** |
-| Breast cancer survivorship / lymphedema | 8/17/2026 | Women, any bracket | **Zero roster clients — proactive only** |
-| Women 65+ bracket (as a whole) | never dedicated | Women 65+ | **Zero roster clients** — Elizabeth Poyner (64) is closest |
+| Osteoarthritis (knee/hip) | 8/16/2026 | All, both sexes | **No longer proactive-only (updated 8/18/2026)** — still zero *confirmed* OA diagnoses, but 6 intake-pending clients now carry knee-joint presentations the section speaks to: Bevy Smith (61, chronic right meniscus tear), Christina Alesci (47, chronic right knee, no imaging), Makai Brown (49, active inflamed left knee), Jerilan Greene (left anterior knee, VMO insufficiency), Danielle Purfey (49, bilateral knee discomfort on lunge), Heather Dolland (knee constraint: no deep flexion/impact/heavy load). See note below table. |
+| Breast cancer survivorship / lymphedema | 8/17/2026 | Women, any bracket | **Zero roster clients — proactive only** (unchanged as of 8/18/2026) |
+| Scoliosis & resistance training | 8/18/2026 | All; adult vs. adolescent scope distinction is critical | 1 client (Samantha Swan, 28, intake-pending, no plan built) |
+| Women 65+ bracket (as a whole) | never dedicated | Women 65+ | **Zero roster clients** — Bevy Smith (61) and Elizabeth Poyner (64) are closest |
 | Male 60+ bracket (as a whole) | never dedicated | Men 60+ | **Zero roster clients** |
+| Women 20-35 bracket (as a whole) | never dedicated | Women 20-35 | Thin — Samantha Swan (28) is the clearest current case; peak-bone-mass window content has never had a dedicated pass |
 | Pelvic Floor Protocol (bracing model, PFM co-activation vs. strengthening) | 8/17/2026 | Women, postmenopausal/heavy-loading | Well-represented (5 clients carry the callout) |
+
+**Note on the OA row (8/18/2026):** none of the six clients above has a documented OA diagnosis, and the section must not be applied to them as though they do — a meniscus tear, a VMO-insufficiency pattern, and an acutely inflamed knee are three different clinical problems, and only the first is closely OA-adjacent (degenerative meniscal pathology and knee OA overlap substantially in a 61-year-old). What the roster shift actually means is narrower and worth stating precisely: the OA section's single most transferable finding — that reflexively unloading a painful knee joint is the outdated default, and that progressive resistance training including heavier loading is core management rather than a risk to train around — now has real clients it bears on, so a future pass should verify it against *these* presentations (meniscus tear specifically, and patellofemoral/VMO-pattern anterior knee pain specifically) rather than assuming knee-OA evidence covers them. Neither meniscus tear nor patellofemoral pain has its own coverage in this file. That is the highest-value next research pass in this domain — flagged, not run today.
 
 **8/11/2026 — first pass.** Checked: postmenopausal resistance training/BMD, creatine (cognition + bone), protein/sarcopenia, perimenopause RT, the ACSM 2026 RIR citation itself, 20s/30s bone mass, ACL/neuromuscular training, fall-risk/power training 65+.
 - **Corrected:** Creatine's bone-density benefit was stated flatly ("bone (Hall et al. 2025)") — actual evidence is mixed, including a 2-year RCT in older women showing no BMD improvement over placebo. Softened to reflect the real uncertainty; cognition/strength/sleep claims stayed as-is since those are well-supported.
@@ -3188,6 +3375,23 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Categorization: Upgrade.** The underlying claim was already correctly stated in the pilot document and retained (unattributed) in CLAUDE.md's inference chain per the auditor's interim fix — this pass supplies the verified citation that was missing, rather than correcting a substantive error.
 - **Handback note:** per this agent's scope boundary, `scripts/rena_paul_assessment_report.js` and `scripts/icons_template.js` were NOT edited — the Hip Thrust footnote text in those files should be updated to cite Skaug KL, Engh ME, Bø K, *Medicine & Science in Sports & Exercise* 2024;56(1):37-43 directly, matching the language now in CLAUDE.md's Pelvic Floor Protocol section.
 - Sources: [Skaug KL, Engh ME, Bø K, "Acute Effect of Heavy Weightlifting on the Pelvic Floor Muscles in Strength-Trained Women: An Experimental Crossover Study," Medicine & Science in Sports & Exercise 2024;56(1):37-43 — journal listing](https://journals.lww.com/acsm-msse/fulltext/2024/01000/acute_effect_of_heavy_weightlifting_on_the_pelvic.5.aspx) (also [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC11805478/) and [Ovid/LWW full text](https://www.ovid.com/jnls/acsm-msse/fulltext/10.1249/mss.0000000000003275~acute-effect-of-heavy-weightlifting-on-the-pelvic-floor)) · [ICS 2023 Abstract #282, preceding conference abstract for the same study/authors](https://www.ics.org/2023/abstract/282) · [World Physiotherapy congress-proceeding listing, same study](https://world.physio/congress-proceeding/acute-effect-heavy-weightlifting-pelvic-floor-muscles-experimental-crossover)
+
+**8/18/2026 — sixteenth pass. Scoliosis & resistance training (new topic, first pass — genuine gap, zero prior coverage) + Demographic Scope Rule "no data at all" case + Coverage Index roster-representation refresh.** Triggered by the daily subagent check-in following the 8/18 onboarding of 10 intake-pending clients from Jason Bethea's SOAP-note archive. Ran under the mandatory research-coverage check at NEW CLIENT ONBOARDING: Samantha Swan (28, intake-pending) has a documented left-sided scoliosis with a directional preference and loaded-hip-hinge intolerance, and no document has been built for her yet — this is the intended timing for that check, before a build rather than after.
+- **Added (new subsection):** "Scoliosis & Resistance Training," placed between Osteoarthritis and Breast Cancer Survivorship (grouping it with the other condition-specific loading sections). Confirmed via repo-wide search that scoliosis had zero prior coverage anywhere in this file, despite extensive spinal-loading content elsewhere (LIFTMOR's loaded-spinal-flexion prohibition, pelvic floor bracing, lumbar positioning).
+- **Deliberately did NOT pattern-match the OA/lymphedema conclusion, and said so explicitly in the section.** The two most recent condition sections both concluded that the cautious "restrict load to protect the structure" instinct is the outdated one, contradicted by strong RCT evidence. That conclusion does not transfer here: no RCT of progressive resistance training in adults with scoliosis was located at any intensity — not positive, not negative. The section states plainly that the evidence is thin in both directions. Flagging this as the substantive judgment call of the pass, since the tempting write-up (a third "the cautious instinct is wrong" section) would have been unsupported.
+- **Key scope distinction folded in:** nearly all scoliosis exercise evidence is adolescent idiopathic scoliosis (AIS) during growth, with Cobb-angle progression as the outcome — a different clinical problem from a skeletally mature adult, where the goals are pain/function/QoL. Three populations separated in the section (AIS / adult idiopathic carried forward from adolescence / adult degenerative de novo), with a note that adult degenerative scoliosis is closer in character to the Osteoarthritis section than to AIS and is the form likelier to appear in this file's 55-65/65+ brackets.
+- **Standing guideline, with the usual not-superseded caveat:** the 2016 SOSORT guidelines remain the most current full set located (a SOSORT 2025 congress was held; no published 2025 guideline replacement found) — and they are explicitly scoped to scoliosis "during growth," i.e. an adolescent document being used as the nearest available adult reference. Stated as a limitation rather than assumed away. PSSE's four consensus principles (3D auto-correction, ADL training, stabilization of corrected posture, patient education) documented, with the boundary that PSSE program design belongs to a school-trained clinician, not an ICONS trainer.
+- **Adult-specific evidence located and cited with honest design caveats:** Negrini A, et al., Scoliosis 2015;10:20 (ISICO, Milan) — retrospective cohort, n=34 adults with adult idiopathic scoliosis (5M/29F, mean age 38.0±11.0), SEAS auto-correction exercises ≥2×/week × 45 min. Flagged as retrospective, small, single-institute, uncontrolled, and authored by the group that developed SEAS — the same single-research-line transparency caveat this file already applies to LIFTMOR/Watson et al.
+- **Verified that the practitioner's directional-preference finding is evidence-consistent, not improvisation.** Auto-correction is the defining principle of Schroth/PSSE, and concave-side-targeted asymmetric spinal stabilization is a trialed approach in AIS RCTs. Practical rule added: a clinician-documented directional preference is authoritative for ICONS to build around, treated the same way a physician-issued cardiac HR ceiling already is — and side must be stated explicitly on every lateral-flexion/rotation/unilateral exercise in a scoliosis client's document, since wrong-side execution is a documented real provoking mechanism (it happened mid-session in Samantha Swan's own note).
+- **Axial load — quantified the mechanism without overclaiming it.** Cited the strongest mechanistic source located (Frontiers in Bioengineering and Biotechnology 2020;8:159, n=24 AIS, subject-specific musculoskeletal models from biplanar radiographs): deformity alone raises apex compressive force ~10% unloaded, then +50-62% at a 10%-bodyweight load, +77-94% at 15%, +103-128% at 20% — the notable feature being non-linear amplification. Stated precisely what this does support (preferring non-axial load vectors — hip-belt/Kaiser belt-harness squat, supported hinge variants — for an axial-load-provoked client) and what it does not (declaring squats/deadlifts contraindicated in scoliosis: it is a modeling study, in adolescents, predicting forces, not measuring curve progression or injury in trained adults).
+- **Compound-profile finding, per the per-client research mode — a real unresolved tradeoff named rather than silently resolved:** this file's 20-35 bracket states heavy compound lifting builds peak bone mass in a window that closes permanently. For a 28-year-old with scoliosis, systematically routing around axial load protects symptoms while removing exactly the axial stimulus that window depends on. Documented as a genuine tension to name in the client's document and route to the coordinating clinician, not a call for a trainer or this file to make in either direction.
+- **Scope boundary added, consistent with existing precedent:** PSSE/Schroth is a certified specialty; neither Jason Bethea's nor Niko Heers' confirmed in-house scope includes it. Jason's documented management of this client is real coordinated care and should be named as such, but describing it as PSSE specifically would be an unverified claim — same boundary already applied to pelvic floor PT and lymphedema therapy.
+- **Explicitly not verified, flagged as hypothesis:** the paraspinal thermal-regulation idea in the SOAP note (simultaneous car AC + seat warmer interfering with autonomic paraspinal tone regulation) could not be substantiated in the literature in this pass. Recorded in the section as the practitioner's working hypothesis, with an instruction that it must not appear in any client-facing document as an established mechanism.
+- **Added (process gap, not a literature finding) — Demographic Scope Rule now handles "no demographic data at all" as a distinct third case.** Surfaced by Sarah's 8/18 build (no age, no sex, no scan — only trainer-observed movement constraints) and by several of the 8/18 SOAP-note clients whose notes state neither DOB nor sex. The rule's existing two bullets both presuppose knowing enough about a client to determine she falls outside a framework; here you cannot determine which framework applies at all. Added an explicit list of what genuinely transfers with zero demographic data (three-zone structure, RIR/RPE autoregulation and calibration, corrective-before-compound sequencing, Antagonist Rotation, symptom/performance-governed progression) versus what must not be applied and must be stated as not applied (every numeric threshold without exception, including the Intensity Framework's novice-vs-trained tiering, which needs training age). Key distinction drawn: this is a DATA gap, not a POPULATION gap, so unlike the adjacent bullet it does not trigger a framework-building research pass — there is no population to research. It triggers an intake request instead, with age and sex identified as the two fields that unlock the most downstream clinical content.
+- **Updated — Coverage Index roster-representation column.** Osteoarthritis moved off "zero roster clients — proactive only": six intake-pending clients now carry knee-joint presentations. Added a precision note below the table rather than overstating the shift — none of the six has a documented OA diagnosis, and a meniscus tear, a VMO-insufficiency pattern, and an acutely inflamed knee are three different clinical problems. What genuinely changed is that the OA section's most transferable finding (reflexive unloading of a painful knee is the outdated default) now has real clients it bears on. Breast cancer survivorship confirmed unchanged at zero. Added rows for Scoliosis and for the Women 20-35 bracket (never dedicated, and now thin-but-real via Samantha Swan); updated the Women 65+ row to note Bevy Smith (61) alongside Elizabeth Poyner (64).
+- **Flagged as the highest-value next pass in this domain, not run today:** neither meniscus tear nor patellofemoral/VMO-pattern anterior knee pain has any coverage in this file, and four of the six knee-presentation clients above fall into one of those two categories rather than OA proper. Assuming the OA section covers them would be exactly the kind of silent extrapolation this file's Demographic Scope Rule exists to prevent.
+- Did not touch any client document, build script, or `CLIENTS.md` — per this agent's non-negotiables. Two items flagged back to the main thread/`icons-expert` for their scope: (1) Samantha Swan's eventual build should carry explicit side-labeling on lateral-flexion/rotation/unilateral work and should present her belt-harness squat as a progressing primary tool with real Wk1→Wk4 loads, not a placeholder regression; (2) Sarah's already-built document should be checked for whether it carries the explicit no-data scope note the corrected Demographic Scope Rule now requires.
+- Sources: [2016 SOSORT guidelines: orthopaedic and rehabilitation treatment of idiopathic scoliosis during growth, Scoliosis and Spinal Disorders](https://scoliosisjournal.biomedcentral.com/articles/10.1186/s13013-017-0145-8) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5795289/)) · [Berdishevsky H, et al., "Physiotherapy scoliosis-specific exercises – a comprehensive review of seven major schools," Scoliosis and Spinal Disorders 2016;11:20](https://link.springer.com/article/10.1186/s13013-016-0076-9) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4973373/)) · [Negrini A, Negrini MG, Donzelli S, Romano M, Zaina F, Negrini S, "Scoliosis-Specific exercises can reduce the progression of severe curves in adult idiopathic scoliosis: a long-term cohort study," Scoliosis 2015;10:20](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4537533/) (also [Springer](https://link.springer.com/article/10.1186/s13013-015-0044-9)) · [Spinal Compressive Forces in Adolescent Idiopathic Scoliosis With and Without Carrying Loads: A Musculoskeletal Modeling Study, Frontiers in Bioengineering and Biotechnology 2020;8:159](https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2020.00159/full) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7062648/)) · [Schroth and Asymmetric Spinal Stabilization Exercises' Effectiveness on Back Pain and Trunk Muscle Endurance in Adolescents' Idiopathic Scoliosis: A Randomized Controlled Trial](https://pmc.ncbi.nlm.nih.gov/articles/PMC11644102/) · [Outcomes of 12 Weeks of Schroth and Asymmetric Spinal Stabilization Exercises on Cobb Angle, Angle of Trunk Rotation, and Quality of Life in Adolescent Boys with Idiopathic Scoliosis: A Randomized-controlled Trial](https://pmc.ncbi.nlm.nih.gov/articles/PMC10838577/) · [Schroth Physiotherapeutic Scoliosis-Specific Exercise (PSSE) Trials—Systematic Review of Methods and Recommendations for Future Research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10297476/) · [Evaluating exercise therapies in adolescent idiopathic scoliosis: a systematic review with Bayesian network meta-analysis, PeerJ 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC11967429/) · [Treatment of idiopathic scoliosis with conservative methods based on exercises: a systematic review and meta-analysis, Frontiers in Sports and Active Living 2024](https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2024.1492241/full) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/39763485/))
 
 ---
 
