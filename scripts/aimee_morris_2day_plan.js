@@ -60,6 +60,38 @@
  * source, whose own Day A/B badge cells are blank color swatches with no
  * text at all. day.intensityLabel is also set to a day-specific phrase
  * ("Day A's Purpose" / "Day B's Purpose") for the same reason.
+ *
+ * Updated 8/18/2026, from a new real SOAP note (SOAP_AimeeMorris_2026-08-10.pdf,
+ * Jason Bethea, distinct from the 7/31/2026 template-source note above -- the
+ * full prior record, this header comment and CLIENTS.md's entry, was read in
+ * full before touching anything, per the standing rule). Two durable
+ * additions:
+ *   1. Single-Leg Reverse Hyper -- a new corrective/assessment movement
+ *      introduced specifically to assess pelvic control and hip-extension
+ *      quality. Added as a 4th exercise to Day A, Block A ("Hip Hinge
+ *      Corrective") -- the most natural home given the block already exists
+ *      to build/assess hip hinge and pelvic control quality before loaded
+ *      hinge work, and directly ties to the standing "Hip Hinge Pattern --
+ *      Underdeveloped" watch flag. Bodyweight/bench-supported, low reps,
+ *      quality over load, consistent with every other newly-introduced
+ *      movement in this program. Block A is a corrective/activation block,
+ *      not a Compound-zone block, so the Antagonist Rotation Rule doesn't
+ *      bind its sequencing the same way -- added at the end of the existing
+ *      3-drill sequence.
+ *   2. Hex Bar Deadlift progression target, 95 lbs -> 135 lbs over 6-8
+ *      weeks, now explicitly documented by her PT. Checked the existing
+ *      load field first (Block B: 'Wk1: 95 lbs -> Wk4: 120 lbs') -- it is
+ *      NOT flat/vague, and its trajectory (+25 lbs over 4 weeks) is
+ *      compatible with, not contradicted by, the longer 6-8 week PT target
+ *      (135 lbs is a realistic continuation of the same ~5-7.5 lbs/week
+ *      pace two-to-four weeks further out). So the Wk1->Wk4 numbers
+ *      themselves are left untouched; the new, more precise long-arc target
+ *      is added additively (baselines table target column, Block B intro,
+ *      and summary.milestones8wk, which previously stated only an
+ *      approximate "130+ lbs").
+ * A DOMS-driven single-session substitution noted in the same SOAP note
+ * (SL Deadlift -> walking reach) was a one-off accommodation for that
+ * session only, not a standing program change -- deliberately not added.
  */
 
 const fs = require('fs');
@@ -155,6 +187,18 @@ const baselineNotes = [
     // task brief's own flagging of this exact note as a strong candidate).
     audience: 'internal',
   },
+  {
+    type: 'green',
+    label: 'PT Update — 8/10/2026 Session (Jason Bethea)',
+    body: 'New SOAP note (SOAP_AimeeMorris_2026-08-10.pdf, a real session note, distinct from the 7/31/2026 template-source note above) documents two durable additions: (1) Single-Leg Reverse Hyper, introduced as an assessment tool for pelvic control/hip-extension quality — added to Day A, Block A\'s hip hinge corrective work below. (2) An explicit Hex Bar Deadlift progression target of 95 lbs → 135 lbs over 6–8 weeks — this document\'s existing Wk1→Wk4 progression (95→120 lbs) is the compatible near-term step on that same trajectory, not a conflicting number (see the baselines table and Block B intro below for the full target). A DOMS-driven single-session substitution noted in the same session (SL Deadlift → walking reach) was a one-off accommodation for that session only, not carried into the standing program.',
+    // Client View: cites internal session-documentation detail (SOAP note
+    // filename/date), same category already trimmed/marked internal
+    // elsewhere in this file (the "Reintroduced This Update" note above).
+    // The Single-Leg Reverse Hyper exercise itself and the Hex Bar Deadlift
+    // target both stay fully visible in Block A / Block B / the baselines
+    // table / summary.milestones8wk regardless of this note's audience.
+    audience: 'internal',
+  },
 ];
 
 // Client View highlight (added 8/17/2026) — her most significant real,
@@ -190,13 +234,14 @@ const days = [
           { name: 'PVC Hip Hinge Drill (Wall Touch)', sets: '2', reps: '10', load: 'Bodyweight / PVC', tempo: '3-2-1', rest: '30s', cue: 'Stand 1 foot from wall. PVC along spine (3 contact points: head, mid-back, tailbone). Hinge hips back to touch wall. If any contact point breaks, the hinge is wrong. This is the single most important corrective in the plan.' },
           { name: 'Kettlebell Deadhinge (Hip Hinge Pattern)', sets: '2', reps: '8', load: '20–25 lbs KB', tempo: '3-1-1', rest: '30s', cue: 'KB between feet. Hinge back to grip, drive hips forward to lockout. Not a squat — if knees track over toes, the pattern is wrong. Groove the hinge before loading the hex bar.' },
           { name: 'Single-Leg Hip Hinge (Bodyweight)', sets: '2', reps: '8 ea', load: 'Bodyweight', tempo: '3-1-1', rest: '30s', cue: 'One leg, hinge from the hip, reach toward the floor. Develops hip hinge on each side independently. Left and right equal sets.' },
+          { name: 'Single-Leg Reverse Hyper (Bench-Supported, Assessment)', sets: '2', reps: '8 ea', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'New PT assessment tool. Hips at bench edge, one leg extends behind on a controlled hip-extension arc, opposite leg braces. Watch for pelvic rotation or lumbar compensation each side; quality over load.', flag: 'PT assessment — pelvic control / hip-extension quality' },
         ],
       },
       {
         letter: 'B',
         title: 'PRIMARY HINGE STRENGTH',
         introLabel: 'Deadlift Baseline — 105 lbs ×3RM',
-        intro: 'Week 1 backs down to 95 lbs ×4×4. The 3RM baseline means technique may be under pressure at higher loads. Given the spinal stenosis, form is the absolute priority over load. Hip hinge corrective runs before every set. Add 5 lbs per week when all sets complete with clean hip hinge mechanics. Hex bar only — no conventional barbell. Hip thrust is new this block — hip-dominant and fully spine-safe, it reinforces the hip hinge pattern without any axial load.',
+        intro: 'Week 1 backs down to 95 lbs ×4×4. The 3RM baseline means technique may be under pressure at higher loads. Given the spinal stenosis, form is the absolute priority over load. Hip hinge corrective runs before every set. Add 5 lbs per week when all sets complete with clean hip hinge mechanics. Hex bar only — no conventional barbell. Hip thrust is new this block — hip-dominant and fully spine-safe, it reinforces the hip hinge pattern without any axial load. Your PT has set an explicit longer-arc target of 95 → 135 lbs over 6–8 weeks — this program\'s Wk1→Wk4 progression (95→120 lbs) is the compatible first step toward that goal.',
         exercises: [
           { name: 'Hex Bar Deadlift', sets: '4', reps: '4–6', load: 'Wk1: 95 lbs → Wk4: 120 lbs', tempo: '2-1-1', rest: '90s', cue: 'Hex bar reduces lumbar shear vs conventional deadlift — appropriate for spinal stenosis. Stand centered. Hinge hips back to grip handles. Drive floor away. Hips and shoulders rise together. Lockout at top. Hip hinge drill before each set.' },
           { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5―6', load: 'Wk1: 80 lbs → Wk4: 105 lbs', tempo: '2-1-2', rest: '90s', cue: 'New baseline 95 lbs. Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Hip-dominant — no axial spinal load, one of the safest heavy-loading options for spinal stenosis.' },
@@ -312,7 +357,7 @@ const days = [
 ];
 
 const baselines = [
-  ['Hex Deadlift', '105 lbs', '3 RM', 'Wk1: 95 lbs ×4×4 (hip hinge form first) → Wk4: 120 lbs ×4. Spine-safe: hex bar only, no conventional barbell.'],
+  ['Hex Deadlift', '105 lbs', '3 RM', 'Wk1: 95 lbs ×4×4 (hip hinge form first) → Wk4: 120 lbs ×4. Spine-safe: hex bar only, no conventional barbell. PT-documented target: 95 → 135 lbs over 6–8 weeks — this 4-week table is the compatible near-term step on that trajectory.'],
   ['Hip Thrust', '95 lbs', '5 RM (est.)', 'New baseline. Wk1: 80 lbs ×6 → Wk4: 105 lbs ×5–6. Hip-dominant, no axial spinal load — ideal for spinal stenosis.'],
   ['Single-Leg RDL', '25 lbs / hand', '8 reps', 'Wk1: 22.5 lbs ×10 → Wk4: 30 lbs ×8. Left and right equal sets. Most important hip hinge developer.'],
   ['DB Split Squat', '35 lbs / hand', '3 RM', 'Wk1: 25 lbs ×8 (form + depth focus at lower load) → Wk4: 35 lbs ×8. 3RM suggests form may break at max — train sub-max.'],
@@ -340,7 +385,7 @@ const summary = {
     ['Wk 4', '—', 'Day A & B', 'Hex DL 120 lbs ×4×4 / Hip Thrust 105 lbs ×5–6 / Split Squat 32.5 lbs ×8', 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.'],
   ],
   milestones4wk: 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.',
-  milestones8wk: 'Strength: Hex DL 130+ lbs ×4. Hip Thrust 115+ lbs ×5–6. OHP 22.5 lbs/hand ×8. Incline 22.5 lbs/hand ×8. Flat Press 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Landmine Squat progressing in load. Goblet 45 lbs ×10. SL-RDL 32.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:30. Sit-up/bicycle crunch and KB swing clean and symptom-free for 3–4+ weeks. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads. Revisit barbell back squat, conventional barbell deadlift, and clean-to-overhead-press for reintroduction once the above is consistent.',
+  milestones8wk: 'Strength: Hex DL progressing toward the PT-documented 95→135 lbs / 6–8 week target (Wk4 program checkpoint 120 lbs). Hip Thrust 115+ lbs ×5–6. OHP 22.5 lbs/hand ×8. Incline 22.5 lbs/hand ×8. Flat Press 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Landmine Squat progressing in load. Goblet 45 lbs ×10. SL-RDL 32.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:30. Single-Leg Reverse Hyper: clean, controlled hip extension with no pelvic rotation either side. Sit-up/bicycle crunch and KB swing clean and symptom-free for 3–4+ weeks. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads. Revisit barbell back squat, conventional barbell deadlift, and clean-to-overhead-press for reintroduction once the above is consistent.',
   rescanNote: 'No Styku scan is on file for this client — reassess at 8 weeks via baseline lift retest, pull-up assist-level reduction, and resting heart rate trend rather than a body-composition rescan.',
 };
 

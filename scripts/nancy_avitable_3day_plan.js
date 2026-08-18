@@ -117,6 +117,23 @@
  * of 3 identical-pattern exercises anywhere in the document. No resequence
  * was needed. Documented here rather than silently doing nothing, per the
  * instruction to actually check, not assume clean.
+ *
+ * Updated 8/18/2026, from a new real SOAP note (SOAP_NancyAvitable_2026-08-12.pdf,
+ * Jason Bethea, upper-body carry/press session explicitly framed around her
+ * documented running-knee-health/fat-loss/lower-body-strength goals --
+ * continuity, no conflicts with anything already programmed). The full
+ * prior record (this header comment and CLIENTS.md's entry) was read in
+ * full first, per the standing rule. One new pattern from the note --
+ * half-kneeling eccentric push-up -- was reviewed for placement: it fits
+ * cleanly as a 3rd exercise in Day 2, Block A ("Push/Pull"), alongside
+ * Incline DB Press (push) and Single-Arm Row (pull). Sequence becomes
+ * push -> pull -> push, which never stacks 3 consecutive same-pattern
+ * exercises -- Antagonist Rotation Rule compliant, no resequence needed.
+ * Added as routine supplementary content (task explicitly framed this as
+ * not urgent), bodyweight, no baseline weight/rep data given so no
+ * baselines[] row was added -- consistent with how her other bodyweight
+ * accessory exercises (Face Pulls, Nordic Hamstring, Curtsy Lunge, etc.)
+ * are not tracked in that table either.
  */
 
 const fs = require('fs');
@@ -220,6 +237,12 @@ const baselineNotes = [
     audience: 'internal',
     body: 'No menstrual irregularity, vasomotor symptoms (hot flashes/night sweats), sleep disruption, or mood-change data was reported at intake. Per CLAUDE.md\'s "Perimenopausal Status — Screening Ambiguity in a Non-Clinical Context" guidance, perimenopausal symptoms can begin in the early-to-mid 30s, well before the ~45 average onset — "she\'s too young for this" is not a safe assumption to bring into a 35-45 bracket intake. Nancy is 38; isPostmenopausal is correctly left false since nothing was reported, not assumed false by age. Revisit if symptom data becomes available at a future session.',
   },
+  {
+    type: 'green',
+    label: 'PT Update — 8/12/2026 Session (Jason Bethea)',
+    audience: 'internal',
+    body: 'New SOAP note (SOAP_NancyAvitable_2026-08-12.pdf) — an upper-body carry/press session explicitly framed around Nancy\'s documented running-knee-health/fat-loss/lower-body-strength goals, continuity with no conflicts against anything already programmed. One new pattern, half-kneeling eccentric push-up, is added to Day 2 Block A (Push/Pull) as a push-pattern accessory alongside Incline DB Press and Single-Arm Row — push→pull→push sequencing, Antagonist Rotation Rule compliant, no resequence needed.',
+  },
 ];
 
 const days = [
@@ -282,6 +305,7 @@ const days = [
         exercises: [
           { name: 'Incline DB Press', sets: '4', reps: '8', load: `Wk1: ${wk1.chestPress} lbs/hand → Wk4: ${wk4.chestPress} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Control descent', flag: 'Load informed by DB Chest Press baseline — see note', flagAudience: 'internal' },
           { name: 'Single-Arm Row', sets: '4', reps: '8 each', load: `Wk1: ${wk1.row} lbs → Wk4: ${wk4.row} lbs`, tempo: '2-0-1', rest: '60s', cue: 'Pull to the hip; maintain neutral spine' },
+          { name: 'Half-Kneeling Eccentric Push-Up', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '4-0-1', rest: '45s', cue: 'Half-kneeling stance (one knee down); slow 4-sec controlled lower, drive back up. New — PT-introduced tempo/control accessory.' },
         ],
       },
       {
