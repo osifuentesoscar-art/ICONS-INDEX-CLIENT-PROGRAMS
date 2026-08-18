@@ -55,6 +55,48 @@
  * the new 8-week baseline, documented as such in the baselines table and
  * the Block A intro, and the exercise's load field now uses the same
  * Wk1->Wk4 format as the rest of the document.
+ *
+ * REVISION (8/18/2026) — RIR INSTRUMENTATION ADDED. This program previously
+ * carried ZERO proximity-to-failure prescriptions anywhere: no `rirNote`
+ * field and no 'RIR' string of any kind, grep-confirmed. Every working set
+ * had load, tempo, rest and a coaching cue but nothing telling the trainer
+ * where the set should actually land relative to failure — so the heaviest
+ * lifts in the document were effectively ungoverned.
+ *
+ * 19 `rirNote` prescriptions added, assigned by exercise ROLE per CLAUDE.md's
+ * corrected RIR Model (8/17/2026), not applied uniformly:
+ *   - 2 RIR on primary compound lifts (hex deadlift, hip thrust, seated OHP,
+ *     incline chest press, reverse lunge, single-arm row, all three assisted
+ *     pull-up grips, step-up, full push-up attempt). NOTE the corrected
+ *     default: 2 RIR, not the retired 1 RIR — a 2024 dose-response meta-
+ *     regression found strength gains largely unrelated to estimated RIR.
+ *   - 1 RIR reserved for genuinely hypertrophy-priority accessory/isolation
+ *     work only (lateral raise, incline push-up, tricep dip). No primary
+ *     lift in this document reads 1 RIR.
+ *   - 3+ RIR (a single technique/submaximal band, deliberately NOT split
+ *     into 3 vs 4 vs 5 — RIR accuracy degrades the further a set sits from
+ *     failure) on the goblet squat while its first baseline is being
+ *     established, the face pull, and the metabolic circuit.
+ *   - NO RIR target at all on distance/time/quality-governed work: farmer
+ *     carry, both plank holds, Pallof press, the max-rep circuit push-up
+ *     (already form-governed by its own cue), and the Day A cardiovascular
+ *     finisher, which is HR-governed. Matches how Elizabeth Poyner's and
+ *     Mary Burfete's documents handle their own carries and isometrics.
+ *   - No power/velocity work exists in this program (no jumps, throws or
+ *     sled sprints), so the "Not RIR-governed — end the set if bar speed
+ *     drops" prescription used on Mary Burfete's trap bar jump has no
+ *     applicable exercise here and was correctly not inserted.
+ * 0 RIR (near-failure) is used nowhere in this program.
+ *
+ * Also added a client-visible gold baselineNote ('How Hard Each Set Should
+ * Feel — Reps In Reserve') explaining the scale, the tiers as used in HER
+ * program specifically, which movements deliberately carry no target, and
+ * CLAUDE.md's RIR calibration protocol (call your own RIR, take the set to
+ * failure, compare; her RIR calls become trustworthy for load progression
+ * once she is within one rep two sessions running). That calibration step
+ * is specified for every NEW client and Rena is one — it was missing.
+ * NO loads, sets, reps, tempos, rests, exercise selection, or block
+ * structure were touched in this pass.
  */
 
 const fs = require('fs');
@@ -102,6 +144,11 @@ const baselineNotes = [
     body: 'Rena tested well above typical new-client baselines: 85 lb Hex Deadlift and 85 lb Hip Thrust for 5 reps each, a 2:00 plank hold, and 5 reps per grip on assisted pull-ups (close, standard, and wide). This program starts her at meaningful working loads rather than conservative ones — the evidence is clear that women are systematically under-loaded in most programs, and her baseline does not call for a cautious ramp-up.',
   },
   {
+    type: 'gold',
+    label: 'How Hard Each Set Should Feel — Reps In Reserve (RIR)',
+    body: 'Every working set in this program carries an RIR target — the number of clean reps you could still have completed at the moment you racked the weight. 2 RIR is the default on the primary lifts (hex deadlift, hip thrust, overhead press, incline press, reverse lunge, single-arm row, and the assisted pull-ups): finish each set with two good reps left, not grinding. 1 RIR is used only on the accessory and isolation work where muscle growth rather than peak strength is the goal — lateral raise, incline push-up, tricep dip. 3+ RIR marks everything deliberately sub-maximal: the goblet squat while its first baseline is being set, the face pull, and the metabolic circuit — and there is no meaningful difference between 3, 4 and 5 there, so do not chase a precise number. Training to true failure is not required and is not the goal on any lift in this program. Loaded carries, plank holds and the Pallof press carry no RIR target at all — those are governed by distance, time and bracing quality, not by how many reps are left. Calibration for the first few weeks: on one sub-maximal set of a movement, call out the RIR you believe you have left, then take that set to true failure and compare. Once your call lands within one rep two sessions running, your RIR is reliable enough to drive load increases on its own.',
+  },
+  {
     type: 'teal',
     label: 'Styku Findings — Excellent Baseline',
     body: 'Shape Score 92/100 (Excellent). Body Fat 27.0% (Fit — lower than 70% of peers). ALST Index 5.94 kg/m² — within normal reference range (the 5.5 kg/m² EWGSOP2 female at-risk cutoff is the governing threshold; there is no higher "Optimal" tier above it for women). VFA 26.3 cm² — a "Very Low" reading on the ICONS trend scale, and read as exactly that: a personal trend figure to follow scan over scan, not a diagnosis. No universal VFA threshold exists in the clinical literature, and this scanner\'s visceral-fat output was validated against DXA in kilograms rather than CT in cm², so the absolute number carries real individual-level uncertainty. BMI 20.5 — Normal range. No clinical body-composition flags on this scan.',
@@ -139,9 +186,9 @@ const days = [
         introLabel: 'Hex Deadlift & Hip Thrust Baseline — 85 lbs ×5 Each',
         intro: 'Both lifts tested at 85 lbs for 5 reps — a genuinely strong starting point. Week 1 trains at 75 lbs to lock in hip hinge mechanics under load before adding weight; by Week 4 both lifts move past baseline. Hip hinge drill from the warm-up carries into every set.',
         exercises: [
-          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: 'Wk1: 75 lbs → Wk4: 95 lbs', tempo: '2-1-1', rest: '90s', cue: 'Hinge hips back to grip, drive floor away, hips and shoulders rise together. Strong baseline — own the pattern before pushing load.' },
-          { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5―6', load: 'Wk1: 75 lbs → Wk4: 95–100 lbs', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Hip-dominant — a direct bone-density investment.' },
-          { name: 'DB Lateral Raise', sets: '3', reps: '12―15', load: '8―10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Lateral delt. Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.' },
+          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: 'Wk1: 75 lbs → Wk4: 95 lbs', tempo: '2-1-1', rest: '90s', cue: 'Hinge hips back to grip, drive floor away, hips and shoulders rise together. Strong baseline — own the pattern before pushing load.', rirNote: '2 RIR' },
+          { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5―6', load: 'Wk1: 75 lbs → Wk4: 95–100 lbs', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Hip-dominant — a direct bone-density investment.', rirNote: '2 RIR' },
+          { name: 'DB Lateral Raise', sets: '3', reps: '12―15', load: '8―10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Lateral delt. Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.', rirNote: '1 RIR — hypertrophy-priority isolation' },
         ],
       },
       {
@@ -150,9 +197,9 @@ const days = [
         introLabel: 'Overhead & Incline Press Baseline',
         intro: 'Seated overhead press (15 lbs/hand ×5) and incline chest press (20 lbs/hand ×5) both tested clean. Week 1 trains slightly below baseline for volume; both climb past baseline by Week 4.',
         exercises: [
-          { name: 'DB Overhead Press (Seated)', sets: '4', reps: '8', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 15 lbs ×5RM. Seated: back supported, spine neutral. Press overhead, arms alongside ears. Core braced throughout.' },
-          { name: 'Incline DB Chest Press (30–45°)', sets: '4', reps: '8', load: 'Wk1: 17.5 lbs/hand → Wk4: 22.5–25 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 20 lbs ×5RM. 30–45° incline. Full range, control the descent, drive up without arching off the bench.' },
-          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 22.5 lbs → Wk4: 30 lbs', tempo: '3-1-1', rest: '75s', cue: 'Baseline 25 lbs ×8. Slight knee bend, hinge from hip, feel hamstring load. Left and right equal sets — builds hip hinge control unilaterally.' },
+          { name: 'DB Overhead Press (Seated)', sets: '4', reps: '8', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 15 lbs ×5RM. Seated: back supported, spine neutral. Press overhead, arms alongside ears. Core braced throughout.', rirNote: '2 RIR' },
+          { name: 'Incline DB Chest Press (30–45°)', sets: '4', reps: '8', load: 'Wk1: 17.5 lbs/hand → Wk4: 22.5–25 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 20 lbs ×5RM. 30–45° incline. Full range, control the descent, drive up without arching off the bench.', rirNote: '2 RIR' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 22.5 lbs → Wk4: 30 lbs', tempo: '3-1-1', rest: '75s', cue: 'Baseline 25 lbs ×8. Slight knee bend, hinge from hip, feel hamstring load. Left and right equal sets — builds hip hinge control unilaterally.', rirNote: '2 RIR — balance is the limiter here, not fatigue' },
         ],
       },
       {
@@ -196,9 +243,9 @@ const days = [
         introLabel: 'DB Lunge Baseline — 25 lbs ×5',
         intro: 'Lunge tested at 25 lbs/hand for 5 reps — a solid unilateral strength baseline. Goblet squat was not part of the initial testing battery — today\'s working load becomes the new 8-week baseline — and step-up rounds out the bilateral and unilateral lower-body volume for the week.',
         exercises: [
-          { name: 'DB Reverse Lunge', sets: '3+3', reps: '8 ea', load: 'Wk1: 20 lbs/hand → Wk4: 27.5–30 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 25 lbs ×5RM. Step back with control, front knee tracks over toes, drive through the front heel to stand.' },
-          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '10―12', load: 'Wk1: 30 lbs → Wk4: 40 lbs', tempo: '3-1-1', rest: '75s', cue: 'Not tested — establishing baseline. DB held at chest. Full depth, chest tall, elbows inside knees at bottom.' },
-          { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Balances the pressing volume from Day A.' },
+          { name: 'DB Reverse Lunge', sets: '3+3', reps: '8 ea', load: 'Wk1: 20 lbs/hand → Wk4: 27.5–30 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 25 lbs ×5RM. Step back with control, front knee tracks over toes, drive through the front heel to stand.', rirNote: '2 RIR' },
+          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '10―12', load: 'Wk1: 30 lbs → Wk4: 40 lbs', tempo: '3-1-1', rest: '75s', cue: 'Not tested — establishing baseline. DB held at chest. Full depth, chest tall, elbows inside knees at bottom.', rirNote: '3+ RIR — new baseline, technique first' },
+          { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Balances the pressing volume from Day A.', rirNote: '3+ RIR — shoulder health, quality over load' },
         ],
       },
       {
@@ -207,11 +254,11 @@ const days = [
         introLabel: 'Pull-Up Baseline — 5 Reps Each Grip (Assisted)',
         intro: 'Five clean reps per grip on assisted pull-ups is a strong starting point across close, standard, and wide grip. Close grip leads every session — least shoulder strain, easiest to add volume to first. Single-arm row builds on the 30 lb ×5 baseline.',
         exercises: [
-          { name: 'Assisted Pull-Up — Close Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'LEADS every session. Full hang at bottom, chin over bar at top, controlled 3-second descent. Add 1 rep every 2 weeks.' },
-          { name: 'Assisted Pull-Up — Standard Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'Standard overhand grip, shoulder-width. Same quality as close grip. Second grip in the rotation.' },
-          { name: 'Assisted Pull-Up — Wide Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '75s', cue: 'Wide overhand grip — greatest lat stretch at bottom, hardest of the three. Full range, no partial reps.' },
-          { name: 'Single-Arm DB Row', sets: '4', reps: '8', load: 'Wk1: 25 lbs → Wk4: 32.5–35 lbs', tempo: '3-1-2', rest: '60s', cue: 'Baseline 30 lbs ×5RM. Bench-supported, flat back. Drive elbow to hip, full stretch at bottom.' },
-          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '15―20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Excellent glute and quad developer without spine loading.' },
+          { name: 'Assisted Pull-Up — Close Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'LEADS every session. Full hang at bottom, chin over bar at top, controlled 3-second descent. Add 1 rep every 2 weeks.', rirNote: '2 RIR — set the assist level so this holds' },
+          { name: 'Assisted Pull-Up — Standard Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'Standard overhand grip, shoulder-width. Same quality as close grip. Second grip in the rotation.', rirNote: '2 RIR' },
+          { name: 'Assisted Pull-Up — Wide Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '75s', cue: 'Wide overhand grip — greatest lat stretch at bottom, hardest of the three. Full range, no partial reps.', rirNote: '2 RIR — add assist here if needed' },
+          { name: 'Single-Arm DB Row', sets: '4', reps: '8', load: 'Wk1: 25 lbs → Wk4: 32.5–35 lbs', tempo: '3-1-2', rest: '60s', cue: 'Baseline 30 lbs ×5RM. Bench-supported, flat back. Drive elbow to hip, full stretch at bottom.', rirNote: '2 RIR' },
+          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '15―20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Excellent glute and quad developer without spine loading.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -221,9 +268,9 @@ const days = [
         introLabel: 'Push-Up Baseline — 10 Reps Incline',
         intro: 'Ten reps on an incline is a strong bridge point toward full floor push-ups. Week 1 continues building incline volume while starting the first full-floor attempts.',
         exercises: [
-          { name: 'Incline Push-Up (Hands Elevated)', sets: '3', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Baseline 10 reps. Hands on bench or box, full chest to bench level, controlled descent. Progress by lowering the incline height each week.' },
-          { name: 'Full Push-Up (Floor Attempt)', sets: '3', reps: 'Max (target 6–8)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt full push-ups, stop 2 reps before form breaks. Neutral spine throughout — no sag or pike.' },
-          { name: 'Tricep Dip (Bench)', sets: '3', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '45s', cue: 'Hands on bench behind body, lower until elbows reach 90°, drive back up. Complements pressing and push-up volume.' },
+          { name: 'Incline Push-Up (Hands Elevated)', sets: '3', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Baseline 10 reps. Hands on bench or box, full chest to bench level, controlled descent. Progress by lowering the incline height each week.', rirNote: '1 RIR — hypertrophy-priority accessory' },
+          { name: 'Full Push-Up (Floor Attempt)', sets: '3', reps: 'Max (target 6–8)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt full push-ups, stop 2 reps before form breaks. Neutral spine throughout — no sag or pike.', rirNote: '2 RIR — form is the limiter, not fatigue' },
+          { name: 'Tricep Dip (Bench)', sets: '3', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '45s', cue: 'Hands on bench behind body, lower until elbows reach 90°, drive back up. Complements pressing and push-up volume.', rirNote: '1 RIR — hypertrophy-priority isolation' },
         ],
       },
       {
@@ -233,8 +280,8 @@ const days = [
         introLabel: 'Cardio Protocol',
         intro: "Day B's cardiovascular work is a metabolic circuit rather than dedicated cardio — the strength-plus-conditioning combination most effective for body composition at 2 days/week. After 3 rounds: 10-minute finisher — stationary bike easy spin, treadmill Zone 2 walk, or rowing machine easy pace.",
         exercises: [
-          { name: 'Goblet Squat (Light, Continuous)', sets: '3 rounds', reps: '15', load: '20―25 lbs', tempo: '2-0-1', rest: '15s then next', cue: 'Sub-maximal load, continuous reps. Focus is metabolic — keep moving into the next exercise.' },
-          { name: 'DB Row (Both Arms, Bent Over)', sets: '3 rounds', reps: '12', load: '20―25 lbs', tempo: '2-1-2', rest: '15s then next', cue: 'Hip hinge, pull both DBs to ribs. Lighter than Day B primary row — metabolic pull volume.' },
+          { name: 'Goblet Squat (Light, Continuous)', sets: '3 rounds', reps: '15', load: '20―25 lbs', tempo: '2-0-1', rest: '15s then next', cue: 'Sub-maximal load, continuous reps. Focus is metabolic — keep moving into the next exercise.', rirNote: '3+ RIR throughout the circuit — metabolic, never near-failure' },
+          { name: 'DB Row (Both Arms, Bent Over)', sets: '3 rounds', reps: '12', load: '20―25 lbs', tempo: '2-1-2', rest: '15s then next', cue: 'Hip hinge, pull both DBs to ribs. Lighter than Day B primary row — metabolic pull volume.', rirNote: '3+ RIR' },
           { name: 'Push-Up (Max or Incline)', sets: '3 rounds', reps: 'Max', load: 'Bodyweight', tempo: '3-0-1', rest: '15s then next', cue: 'Full or incline — whatever allows quality reps. Stop 1 rep before form breaks.' },
           { name: 'Plank Hold', sets: '3 rounds', reps: '45–60s', load: 'Bodyweight', tempo: '—', rest: '90s rest', cue: 'Full brace. Rest 90 seconds after plank, then begin next round. 3 full rounds of the complete circuit.' },
         ],
