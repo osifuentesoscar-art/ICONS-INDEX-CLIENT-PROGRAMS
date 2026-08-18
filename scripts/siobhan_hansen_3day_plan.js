@@ -133,6 +133,33 @@
  * priority (see the sarcopenic-profile baselineNote). The prior Block F
  * (Metabolic Finisher) is renumbered to Block G; nothing else on Day 3
  * changed.
+ *
+ * REVISION (8/18/2026, Jason Bethea SOAP-note sweep — new clinical finding,
+ * NOT previously documented anywhere in this file or in CLIENTS.md): a new
+ * SOAP note (SOAP_SiobhanHansen_2026-08-06.pdf, Stress Bar Clinical, dated
+ * 2026-08-06) documents an active "Hip & Pelvis — Overuse/Chronic · Left ·
+ * severity 4 · Tendinitis" finding, with the subjective note "Still in the
+ * rehab stage for left hip." This is a genuinely new, currently-rehabbing
+ * clinical flag, added as an ADDITION — nothing else in this document was
+ * removed or changed. Coordinated with Jason Bethea (Brace Life's in-house
+ * Trainer/Physical Therapist), per the Studio Staff naming convention. The
+ * same note also documents a left shoulder finding ("Mobility & Function ·
+ * Left · severity 3 · Postural dysfunction") — this is CONTINUITY with the
+ * already-documented left-shoulder overhead-reintroduction priority above,
+ * not a new finding, and required no action.
+ *   Added: (1) a new clinical-priority baselineNote (red) naming the
+ *   finding, the rehab stage, and Jason Bethea's coordinating role; (2) a
+ *   caution clause on Day 2 Block A's ("Hip & Single-Leg Stance Activation")
+ *   intro, since that block is literally hip-focused; (3) exercise-level
+ *   `flag` text on every directly hip-loaded exercise across Day 2
+ *   (Squat, Single-Leg Stance Squat, Single-Leg RDL) and Day 3 (Hex Bar
+ *   Deadlift, DB Hip Thrust, Box Step-Up Jump), matching the exact
+ *   sharp/pinching-pain-vs-ordinary-fatigue pattern already used for her
+ *   left shoulder flags; (4) a closing clause on both Day 2's and Day 3's
+ *   iconsNote. No load numbers, sets/reps, or existing clinical content
+ *   (shoulder flag, scapular gate, asymmetry protocol) were changed —
+ *   this is purely additive caution language layered onto already-existing
+ *   hip-loading content.
  */
 
 const fs = require('fs');
@@ -263,6 +290,11 @@ const baselineNotes = [
     label: 'Power Training Added — 55-65 Bracket (8/13/2026)',
     body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day 3, Block F now includes a Box Step-Up Jump: bodyweight, full recovery between sets, and deliberately a lower-body movement — no overhead component, given the left shoulder reintroduction still underway in Blocks A and C. Full recovery between sets is the defining design feature of power work, distinct from a metabolic stimulus, so it does not compete with the deliberately brief metabolic finishers used elsewhere in this program, which stay short specifically to protect recovery capacity for the ALST At-Risk/Underweight resistance-training priority named above.',
   },
+  {
+    type: 'red',
+    label: 'Left Hip — Overuse/Chronic Tendinitis, Active Rehab Stage (Coordinated with Jason Bethea)',
+    body: `New finding (SOAP note dated 8/6/2026, not previously documented anywhere in this program): "Hip & Pelvis — Overuse/Chronic · Left · Severity 4 · Tendinitis," with the note "Still in the rehab stage for left hip." Coordinated with Jason Bethea, Brace Life's in-house Trainer/Physical Therapist. This is an active, currently-rehabbing finding, not a historical footnote — it directly overlaps with real left-side hip-loading content already in this program: left leg leads every unilateral leg exercise on Day 2 (Squat, Single-Leg Stance Squat, Single-Leg RDL) and Day 3's hip-dominant work (Hex Bar Deadlift, DB Hip Thrust, Box Step-Up Jump). None of that content is removed — per this system's "strengthen with precautions, not restrictions" principle, the hip stays trained, but every set of that loaded work now carries explicit pain-monitoring language: sharp, pinching, or catching pain anywhere in the front/side of the left hip is the stop signal — regress load, range, or substitute the exercise and flag Jason Bethea; ordinary muscular fatigue or normal training soreness is not a stop signal. Hip activation work in Day 2 Block A and Day 3 Block A (banded clamshell, hip abduction, bird dog) is unaffected — light, controlled activation work is generally well-tolerated in a rehabbing-tendinitis presentation and is not restricted here.`,
+  },
 ];
 
 const days = [
@@ -358,7 +390,7 @@ const days = [
         title: 'HIP & SINGLE-LEG STANCE ACTIVATION',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Primes glute medius and hip stabilizers ahead of the loaded single-leg work below — left leg leads throughout given the segmental LST gap.',
+        intro: 'Primes glute medius and hip stabilizers ahead of the loaded single-leg work below — left leg leads throughout given the segmental LST gap. Left hip is in active rehab for overuse tendinitis (coordinated with Jason Bethea) — this activation work is well-tolerated, but every loaded exercise below is pain-monitored: sharp/pinching/catching hip pain is the stop signal, ordinary fatigue is not.',
         exercises: [
           { name: 'Banded Clamshell', sets: '2', reps: '15/side', load: 'mini band', tempo: '2-1-2', rest: '30s', cue: 'Hips stacked, heels together, squeeze glute med at top.' },
           { name: 'Bird Dog', sets: '2', reps: '8/side', load: 'bodyweight', tempo: '2-2-2', rest: '30s', cue: 'Neutral spine, reach long, no hip rotation.' },
@@ -370,8 +402,8 @@ const days = [
         introLabel: 'Load Target',
         intro: `Squat tested at 25 lbs x5 (Epley 1RM ≈${oneRM.squat} lbs) — Week 1 trains at ${wk1.squat} lbs, climbing to ${wk4.squat} lbs by Week 4. Single-Leg Stance Squat tested at 12 lbs x5 (Epley 1RM ≈${oneRM.slStanceSquat} lbs) — Week 1 trains at ${wk1.slStanceSquat} lbs, climbing to ${wk4.slStanceSquat} lbs — left leg leads every set.`,
         exercises: [
-          { name: 'Squat', sets: '3', reps: '6-8', load: `Wk1: ${wk1.squat} lbs → Wk4: ${wk4.squat} lbs`, tempo: '3-1-1', rest: '90s', cue: 'Elbows tracking, chest tall, full comfortable depth.', rirNote: '2 RIR' },
-          { name: 'Single-Leg Stance Squat (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slStanceSquat} lbs → Wk4: ${wk4.slStanceSquat} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set', cue: 'Left leg first. Slow controlled descent, knee tracks mid-foot.', rirNote: '2 RIR' },
+          { name: 'Squat', sets: '3', reps: '6-8', load: `Wk1: ${wk1.squat} lbs → Wk4: ${wk4.squat} lbs`, tempo: '3-1-1', rest: '90s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Elbows tracking, chest tall, full comfortable depth.', rirNote: '2 RIR' },
+          { name: 'Single-Leg Stance Squat (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slStanceSquat} lbs → Wk4: ${wk4.slStanceSquat} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set; left hip in active tendinitis rehab, stop at sharp/pinching pain', cue: 'Left leg first. Slow controlled descent, knee tracks mid-foot.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -380,7 +412,7 @@ const days = [
         introLabel: 'Load Target',
         intro: `Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.slRDL} lbs) — Week 1 trains at ${wk1.slRDL} lbs/side, climbing to ${wk4.slRDL} lbs/side by Week 4. Left leg leads every set.`,
         exercises: [
-          { name: 'Single-Leg RDL (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slRDL} lbs → Wk4: ${wk4.slRDL} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
+          { name: 'Single-Leg RDL (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slRDL} lbs → Wk4: ${wk4.slRDL} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set; left hip in active tendinitis rehab, stop at sharp/pinching pain', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -395,7 +427,7 @@ const days = [
       },
     ],
     coolDown: 'Couch stretch 30s/side, seated figure-4 hip stretch 30s/side, child\'s pose 45s',
-    iconsNote: 'Left leg leads every unilateral set this session — Styku shows a 0.8 lb segmental gap (12.7 vs 13.5 lbs). Track the gap at the 8-week rescan. Muscle-building remains the session\'s primary goal given ALST At-Risk status — no set here is filler.',
+    iconsNote: 'Left leg leads every unilateral set this session — Styku shows a 0.8 lb segmental gap (12.7 vs 13.5 lbs). Track the gap at the 8-week rescan. Muscle-building remains the session\'s primary goal given ALST At-Risk status — no set here is filler. Left hip is in active tendinitis rehab (coordinated with Jason Bethea) — every loaded lower-body set today is pain-monitored; sharp or pinching hip pain stops the set, ordinary fatigue does not.',
   },
   {
     intensity: 80,
@@ -411,7 +443,7 @@ const days = [
         title: 'HIP ACTIVATION CARRYOVER',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Same hip-activation priority carried forward from Day 2, condensed here to prime glute medius and hip external rotators before the heavy hinge work below.',
+        intro: 'Same hip-activation priority carried forward from Day 2, condensed here to prime glute medius and hip external rotators before the heavy hinge work below. Left hip remains in active tendinitis rehab (coordinated with Jason Bethea) — every loaded exercise in this session is pain-monitored: sharp/pinching/catching hip pain is the stop signal, ordinary fatigue is not.',
         exercises: [
           { name: 'Banded Clamshell', sets: '2', reps: '12/side', load: 'mini band', tempo: '2-1-2', rest: '30s', cue: 'Heels together, squeeze glute med at top.' },
           { name: 'Standing Banded Hip Abduction', sets: '2', reps: '10/side', load: 'band', tempo: '2-0-1', rest: '30s', cue: 'Tall posture, drive knee out, no torso lean.' },
@@ -423,8 +455,8 @@ const days = [
         introLabel: 'Load Target',
         intro: `Hex Bar Deadlift tested at 85 lbs x5 (Epley 1RM ≈${oneRM.hexDL} lbs) — Week 1 trains at ${wk1.hexDL} lbs, climbing to ${wk4.hexDL} lbs by Week 4. Hip Thrust tested at 35 lbs x5 (Epley 1RM ≈${oneRM.hipThrust} lbs) — Week 1 trains at ${wk1.hipThrust} lbs, climbing to ${wk4.hipThrust} lbs.`,
         exercises: [
-          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${wk1.hexDL} lbs → Wk4: ${wk4.hexDL} lbs`, tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, brace hard, push floor away evenly.', rirNote: '1-2 RIR' },
-          { name: 'DB Hip Thrust', sets: '3', reps: '8', load: `Wk1: ${wk1.hipThrust} lbs → Wk4: ${wk4.hipThrust} lbs`, tempo: '2-1-2', rest: '90s', cue: 'Drive through heels, glutes lock at top.', rirNote: '2 RIR' },
+          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${wk1.hexDL} lbs → Wk4: ${wk4.hexDL} lbs`, tempo: '2-0-1', rest: '2 min', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Neutral spine, brace hard, push floor away evenly.', rirNote: '1-2 RIR' },
+          { name: 'DB Hip Thrust', sets: '3', reps: '8', load: `Wk1: ${wk1.hipThrust} lbs → Wk4: ${wk4.hipThrust} lbs`, tempo: '2-1-2', rest: '90s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive through heels, glutes lock at top.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -466,7 +498,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity in older women more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. This is deliberately a lower-body movement, not overhead, given the shoulder reintroduction still underway in Blocks A and C. Full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it does not compete with Block G\'s deliberately brief finisher below.',
         exercises: [
-          { name: 'Box Step-Up Jump (Submaximal, Full Recovery)', sets: '3', reps: '3', load: 'bodyweight, low box (~10-12")', tempo: 'explosive up, soft controlled landing', rest: '120s', cue: 'Drive up with real intent, land soft and controlled. Full recovery — not a metabolic set.' },
+          { name: 'Box Step-Up Jump (Submaximal, Full Recovery)', sets: '3', reps: '3', load: 'bodyweight, low box (~10-12")', tempo: 'explosive up, soft controlled landing', rest: '120s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive up with real intent, land soft and controlled. Full recovery — not a metabolic set.' },
         ],
       },
       {
@@ -480,7 +512,7 @@ const days = [
       },
     ],
     coolDown: 'Couch stretch 30s/side, seated figure-4 hip stretch 30s/side, doorway chest stretch 20s/side (light), child\'s pose 45s',
-    iconsNote: 'Left leg leads every unilateral leg set, right hand leads the suitcase carry — both per Styku\'s 0.8 lb segmental gaps. Shoulder and pull work continue their pain-free progression from Day 1; sharp or pinching pain is still the stop signal, ordinary fatigue is not. Muscle-building stays the top priority — every block here is real progressive resistance.',
+    iconsNote: 'Left leg leads every unilateral leg set, right hand leads the suitcase carry — both per Styku\'s 0.8 lb segmental gaps. Shoulder and pull work continue their pain-free progression from Day 1; sharp or pinching pain is still the stop signal, ordinary fatigue is not. Muscle-building stays the top priority — every block here is real progressive resistance. Left hip remains in active tendinitis rehab (coordinated with Jason Bethea) — the Hex Bar Deadlift, DB Hip Thrust, and Box Step-Up Jump above are the day\'s heaviest hip-loading content and are pain-monitored the same way: sharp/pinching/catching hip pain stops the set.',
   },
 ];
 
