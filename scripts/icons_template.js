@@ -461,7 +461,7 @@ function nutritionBlock(client) {
         : 'Age 40+.';
     els.push(...clinicalFlag(
       'Creatine — Strongly Indicated',
-      `${reason} Prescribe 3–5g creatine monohydrate daily with food, no loading phase. Saturates in 3–4 weeks. Well-supported for strength, power, and cognition; bone-density evidence is mixed, not settled — a possible upside alongside LIFTMOR-style loading, not a substitute for it.`
+      `${reason} 3–5g creatine monohydrate daily with food, no loading phase. Saturates in 3–4 weeks. Well-supported for strength, power, and cognition; bone-density evidence is mixed, not settled — a possible upside alongside LIFTMOR-style loading, not a substitute for it.`
     ));
   } else {
     els.push(...tealCallout(
@@ -472,7 +472,7 @@ function nutritionBlock(client) {
 
   els.push(...blueCallout(
     'Collagen Protocol',
-    '15g collagen peptides + 50mg Vitamin C, taken 30–60 minutes before the loading session. Doubles collagen synthesis markers when paired with mechanical load (Shaw et al. 2017).'
+    '15g collagen peptides + 50mg Vitamin C, taken 45–60 minutes before the loading session. A connective-tissue support protocol taken consistently on training days over 12+ weeks — the benefit is structural and builds over time, not a pre-workout performance boost. Requires mechanical load to work. Ranks below protein and creatine in priority (Shaw et al. 2017).'
   ));
 
   return els;
