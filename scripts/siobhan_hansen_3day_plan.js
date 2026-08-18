@@ -480,9 +480,10 @@ const days = [
         title: 'SCAPULAR STRENGTH — PULL-UP PATHWAY GATE',
         color: 'purple',
         introLabel: 'Why',
-        intro: 'Trainer instruction: "Before doing pull ups needs scapula strength." This dedicated block is the strengthening protocol itself, not a warm-up throwaway, and gates her Assisted Pull-Up progression (tested at intake — 5 reps x close, standard, wide grip — see baselines table). Loaded progression on pull-ups is deferred until this block\'s own criteria are consistently clean: band pull-aparts 3x15 and a controlled 20-second scapular dead hang with no compensatory shrug.',
+        intro: 'Trainer instruction: "Before doing pull ups needs scapula strength." This dedicated block is the strengthening protocol itself, not a warm-up throwaway, and gates her Assisted Pull-Up progression (tested at intake — 5 reps x close, standard, wide grip — see baselines table). Loaded progression on pull-ups is deferred until this block\'s own criteria are consistently clean: band pull-aparts 3x15 and a controlled 20-second scapular dead hang with no compensatory shrug. Expert retraction options for the coach running the session — rotate by what her control shows that day rather than repeating one drill: band pull-apart, retraction-depression hold, scapular push-up, prone I\'s-T\'s-W\'s (her Day 3 modification applies), face pull, wall slide with lift-off, chest-supported scap-retraction row.',
         exercises: [
           { name: 'Scapular Retraction & Depression Hold', sets: '3', reps: '10', load: 'bodyweight', tempo: '2s hold', rest: '30s', cue: 'Pull shoulder blades down and back, hold, no shrug.' },
+          { name: 'Scapular Push-Up', sets: '2', reps: '10-12', load: 'bodyweight', tempo: 'controlled', rest: '30s', flag: 'Left shoulder — quadruped regression if plank position provokes', cue: 'Arms locked, move only the shoulder blades — protract and retract through full comfortable range.' },
           { name: 'Band Pull-Apart', sets: '3', reps: '15', load: 'light-mod band', tempo: '2-1-2', rest: '30s', cue: 'Squeeze shoulder blades together, arms stay near shoulder height.' },
           { name: 'Scapular Dead Hang (Assisted, Controlled)', sets: '2', reps: '15-20s', load: 'bodyweight, assisted', tempo: 'hold', rest: '45s', cue: 'Active scapular engagement, not a passive hang — shoulders set, not shrugged.' },
           { name: 'Assisted Pull-Up (Baseline Reference — Not Yet Progressing)', sets: '1', reps: '5', load: 'assisted, close/standard/wide grip', tempo: 'controlled', rest: '60s', flag: 'Gated — hold at tested baseline until scapular criteria above are consistently met', cue: 'Full hang to chin-over-bar; log clean reps per grip, do not chase volume yet.' },
@@ -495,6 +496,7 @@ const days = [
         intro: 'Never load-tested, so there is no 1RM to build a percentage table from. Progression is autoregulated entirely by pain-free range of motion and RIR — start light, add load only when full pain-free range and 2 RIR are both met with clean form.',
         exercises: [
           { name: 'Seated DB Overhead Press', sets: '3', reps: '6-8', load: 'self-select ~3-5 lbs, build weekly', tempo: '2-0-2', rest: '90s', flag: 'Left shoulder — progress only within pain-free range', cue: 'Ribs stacked over hips, press within comfortable range only.', rirNote: '2 RIR' },
+          { name: 'Plank Shoulder Taps (Static Hold)', sets: '2', reps: '8-10 taps/side', load: 'bodyweight', tempo: 'slow, controlled', rest: '45s', flag: 'Left shoulder — regress to quadruped position if the plank loads it painfully', cue: 'Hold the push-up position, hips level — tap slow, the hold is the exercise. Anchors the shoulder closed-chain right after pressing.' },
         ],
       },
       {
