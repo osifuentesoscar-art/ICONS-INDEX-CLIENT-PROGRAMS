@@ -469,6 +469,49 @@ Daisy Dominguez → Shoulder rehab
 
 ---
 
+## KNOWN ISSUES — ARCHITECTURE AUDIT (2026-08-18)
+
+Fix these before onboarding a partner or generating another partnership briefing. If you (the agent) are asked to work on any file mentioned below, fix the underlying issue, not just the symptom.
+
+```
+1. DUPLICATE CLIENT RECORD — August Olivia exists in two places.
+   - clients/august_olivia/  (underscore, LEGACY) — built by scripts/august_olivia_3day_plan.js;
+     the .docx output sits directly in clients/ instead of deliverables/.
+   - clients/august-olivia/  (hyphen, CURRENT) — the real pipeline: intake.md → data.json →
+     deliverables/august-olivia/{.docx,.pdf} via generate.mjs.
+   ACTION: Treat clients/august-olivia/ as the single source of truth. After confirming its
+   data.json has everything the legacy version had, delete clients/august_olivia/ and
+   scripts/august_olivia_3day_plan.js.
+
+2. DUPLICATE TEMPLATE ENGINE — schema-drift risk.
+   scripts/icons_template.js (645 lines) is called "canonical" by this file and by
+   docs/ICONS_System_Prompt.md. But the automated pipeline (generate.mjs → 
+   my-agent/engine/render.cjs) actually renders through a SEPARATE file,
+   my-agent/engine/icons_template.cjs (625 lines). A brand/schema fix applied to one will not
+   propagate to the other.
+   ACTION: Keep my-agent/engine/icons_template.cjs (it's the one actually wired into
+   automation). Deprecate/delete scripts/icons_template.js and update every doc reference
+   (this file, docs/ICONS_System_Prompt.md, CLIENTS.md) to point at the real engine.
+
+3. MISSING SPECIALIST AGENTS — partner-facing claims outrun the code.
+   Partnership materials describe 7 running roles (coordinating ICONS Expert +
+   Clinical Research Analyst, Evidence Curator, Trainer Education, Document Auditor,
+   Intake Monitor, Roster Analyst) operating daily. Only ONE agent is defined
+   (.claude/agents/icons-expert.md), and the only automation
+   (.github/workflows/generate-icons-docs.yml) triggers on push to clients/** or manual
+   dispatch — there is no `schedule:` trigger, so nothing runs autonomously/daily yet.
+   ACTION: Either build the six missing roles as real subagents + a scheduled workflow, or
+   scale back partner-facing claims to match what's actually automated today.
+
+4. REPO HYGIENE — unrelated personal-tool files at repo root.
+   BACKUP, JARVIS, Clsrvis, Preque, hook, "clarvis_config (1).toml" are leftover setup notes
+   for an unrelated third-party tool (a Claude Code TTS status-narrator called "Clarvis") —
+   not part of ICONS.
+   ACTION: Delete these or move them outside the repo before anyone else clones it.
+```
+
+---
+
 ## DOCUMENT STRUCTURE — PER DAY PAGE
 
 Every training day follows this exact sequence:
