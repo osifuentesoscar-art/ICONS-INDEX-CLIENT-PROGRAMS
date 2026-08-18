@@ -148,7 +148,7 @@ A **⭐ Priority Client** designation (first used 8/11/2026, for August Olivia, 
 - **Also on file as:** "Ren Itch" (email renitchka@gmail.com) — confirmed same client; this is the name her Styku scan is registered under. Client-facing documents use "Rena Paul"; match on either name when searching Styku/Drive records for her.
 - Age 45 | 5'3" | 116 lbs | Scan: 8/8/2026 | Menopausal status not stated — not fabricated (falls in the 45–55 age bracket by age alone, but isPostmenopausal is left false pending confirmation)
 - Body Fat 27.0% (Fit) | BMI 20.5 (Normal) | Shape Score 92/100 (Excellent) | ALST Index 5.94 kg/m² (within normal reference range — corrected 8/17/2026, no graded "Optimal" tier above 5.5 kg/m² for women; the document's prior "Normal/monitor tier" read is retired) | VFA 26.3 cm² (Very Low Risk)
-- Segmental: L Arm 6.3 / R Arm 6.4 lbs (0.1 lb gap) · L Leg 13.3 / R Leg 13.7 lbs (0.4 lb gap) — both below the 0.5 lb asymmetry-protocol threshold, no unilateral-lead protocol triggered; leg gap flagged as monitor-only since it's closer to the threshold
+- Segmental: L Arm 6.3 / R Arm 6.4 lbs (0.1 lb gap, ~1.6% relative) · L Leg 13.3 / R Leg 13.7 lbs (0.4 lb gap, ~2.9% relative) — both well below the corrected ≥10% relative asymmetry-protocol trigger (corrected 8/17/2026; this line previously cited the retired 0.5 lb absolute threshold — conclusion unchanged under either standard), no unilateral-lead protocol triggered; leg gap monitor-only at rescan
 - Protein target: 95–105g/day (1.8–2.0 g/kg — figure reflects `proteinTargets()`'s current age-tier formula (`atRisk || ageYears >= 40`); NOT yet updated to CLAUDE.md's 8/17/2026 corrected context-driven standard, which would no longer escalate on age/bracket alone given her ALST reads within normal reference range — see script header for the full note) | Creatine strongly indicated (age 40+)
 - Strong baseline battery (all tested 8/8/2026): Hex DL 85×5, Hip Thrust 85×5, SL-RDL 25×8, DB Lunge 25×5, Single-Arm Row 30×5, Seated OHP 15×5, Incline DB Chest Press 20×5, Farmer Carry 30/hand, Plank 2:00, Incline Push-Up ×10, Assisted Pull-Up 5 reps × close/standard/wide grip
 - **Updated 8/12/2026** (retroactive Antagonist Rotation Rule audit): two blocks had three consecutive same-pattern exercises. Day A Block A ("Primary Hinge Strength": Hex DL → Hip Thrust → SL-RDL) swapped SL-RDL with DB Lateral Raise from Block B — now Hex DL → Hip Thrust → DB Lateral Raise (compliant). Day B Block A ("Primary Lower — Lunge & Squat": Reverse Lunge → Goblet Squat → Step-Up) swapped Step-Up with Face Pull from Block B — now Reverse Lunge → Goblet Squat → Face Pull (compliant). The pull-up grip-progression trio (Block B) and the push-up/dip progression block (Block C) are confirmed EXEMPT per CLAUDE.md and were left untouched. `icons-doc-auditor` independently diffed the full document (script + rendered docx, including shading) against the pre-fix version — confirmed exactly these 2 row swaps, nothing else changed.
@@ -439,6 +439,33 @@ Confirmed by Xolokan 8/18/2026: every name appearing in Jason Bethea's SOAP-note
 - **Practitioner/note on file:** Stress Bar Clinical (CSCS), dated 2026-08-11 (SOAP_HeatherDolland_2026-08-11.pdf) — her first documented live training session, following a July 7 baseline intake that is not itself on file.
 - **Session summary:** Two standing constraints established at the July 7 baseline and respected throughout this session — a knee constraint (avoid deep flexion, high impact, heavy load) and a back constraint (no heavy axial loading). This session was built entirely around a Total Gym (an incline slide-board machine that offloads a portion of bodyweight) at Level 7, used for single-leg lunge, single-leg glute bridge, and leg raise work specifically because it caps knee-flexion depth and removes axial spinal load; supplemented with off-machine anti-rotation/lateral core work (plank shoulder taps, band crab walks) and an assisted single-leg squat progression. A defined level-based progression (7 → 8 → 9 → 10 over 4–6 weeks) is documented, with explicit regression rules — drop a level and hold two clean sessions before progressing again if either constraint is provoked.
 - **ICONS Index:** not yet completed — awaiting baseline Styku scan / strength battery.
+
+## Legacy Pre-Repo Clients — Triage Pending (added 8/18/2026)
+
+CLAUDE.md's legacy "Other Clients" block still lists three names against pre-repo
+`/mnt/user-data/outputs/` paths, with zero presence in this file or `clients/` until now.
+Today's precedent (all of Jason Bethea's caseload is ICONS; every name in the archive is a
+real client) means these three deserve the same triage the 10 intake-pending clients got —
+tracked here rather than left invisible in a legacy block. **Their original documents are
+NOT on file in this repo** — migration waits on Xolokan uploading each original, per the
+Siobhan Hansen / Elizabeth Poyner / Kelly Mulroy migration precedent. Do NOT rebuild any of
+them from the one-line legacy descriptions alone; those are titles, not content.
+
+### Kerry Chandler
+- **Status:** Legacy — pre-repo "2-day plan" exists (per CLAUDE.md's legacy block) but is not on file here.
+- **Confirmed active client:** appears in the "January 2026 — ICONS assessment assignments" Drive sheet (assigned trainer Salim, PAR-Q DONE) and in the "Divide & Conquer — Client Assignments" schedule (sessions w/ Brodie, Salim, Oscar). Not a stale name.
+- Awaiting: original document upload → migrate to engine per standard practice; current intake data (scan/battery) unknown.
+
+### Daisy Auger Dominguez
+- **Status:** Legacy — pre-repo "Shoulder rehab" document exists (per CLAUDE.md's legacy block, as "Daisy Dominguez") but is not on file here.
+- **Confirmed active client:** appears in the "January 2026 — ICONS assessment assignments" sheet (trainer Ellie) and the "Divide & Conquer" schedule (sessions w/ Becca, Hara). Also appears in a January 2026 late-cancel log. Full name per those sheets: Daisy Auger Dominguez.
+- **Clinical note:** the legacy title says "shoulder rehab" — if a coordinated-care relationship exists, Jason Bethea's SOAP archive is the place to check at the next sweep; no note for her surfaced in the 8/18 batch.
+- Awaiting: original document upload; current shoulder status.
+
+### Audrey Harnagel
+- **Status:** Legacy — pre-repo documents exist per CLAUDE.md's legacy block ("Wedding week diet + 3-day home + upper sculpt") but are not on file here.
+- **Activity unconfirmed:** unlike the two above, she does not appear in the January 2026 assessment/scheduling sheets reviewed so far — she may be a former client. Worth Xolokan confirming her status before any migration effort; a wedding-week program also suggests a time-boxed engagement that may simply be complete.
+- Awaiting: Xolokan's confirmation (active / former), then originals if active.
 
 ## System Files
 - `scripts/icons_template.js` — canonical `.docx` template engine (`buildDocument()`), per `/CLAUDE.md` spec.
