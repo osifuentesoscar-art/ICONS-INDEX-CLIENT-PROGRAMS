@@ -160,6 +160,40 @@
  *   (shoulder flag, scapular gate, asymmetry protocol) were changed —
  *   this is purely additive caution language layered onto already-existing
  *   hip-loading content.
+ *
+ * REVISION (8/18/2026, second pass, same day — full-detail enhancement
+ * pass, Xolokan's direct request: mine the FULL raw content of the same
+ * 8/6/2026 SOAP note for durable Isolated-zone/accessory/activation value,
+ * not just the one headline clinical finding already added above). Full
+ * prior record (this header and CLIENTS.md's entry) re-read in full first,
+ * per the standing rule. This note documents a genuinely rich activation/
+ * corrective circuit covering BOTH of her documented issues (left shoulder,
+ * left hip):
+ *   1. Stick mobility drill warm-up (shoulder passovers, overhead squat
+ *      with stick, hip openers) — her actual session opener. Added to Day
+ *      1's warm-up, the day already carrying the shoulder-reintroduction
+ *      priority; not repeated on Days 2/3 to avoid redundant bloat, but a
+ *      hip-opener-only line is separately added to Day 2's warm-up given
+ *      the active left-hip tendinitis rehab there (see #2 below).
+ *   2. Hip-side content (Crab Walk — Static Elvis Knee/Internal Rotation
+ *      variant, her actual performed modification rather than the standard
+ *      walking version — and Glute Kickback, Total Gym Level 10/50 lb, a
+ *      real load reading) added to Day 2 Block A and Day 3 Block A, the
+ *      two existing "hip activation" blocks, directly reinforcing the
+ *      active left-hip tendinitis rehab already documented above.
+ *   3. Shoulder/postural content (Floor Row on Foam Roller — an unstable-
+ *      surface, core-integrated pulling accessory; I's-T's-W's Prone, with
+ *      her actual documented modification — 5 lb DBs, 8 reps one arm in a
+ *      hinge stance, reduced ROM on the W/Y sweep; Quadruped Shoulder
+ *      Press, a closed-chain activation drill) added to Day 1 Block A
+ *      ("Shoulder Reintroduction — Corrective Priority"), the existing
+ *      Isolated-zone shoulder corrective block, directly reinforcing the
+ *      documented left-shoulder postural-dysfunction finding.
+ * A new baselineNote (marked internal — cites SOAP-note session detail,
+ * same pattern as the existing clinical-priority note above) documents
+ * this addition; the exercises/warm-up content themselves stay fully
+ * visible in both the trainer document and Client View regardless of that
+ * note's audience.
  */
 
 const fs = require('fs');
@@ -295,6 +329,15 @@ const baselineNotes = [
     label: 'Left Hip — Overuse/Chronic Tendinitis, Active Rehab Stage (Coordinated with Jason Bethea)',
     body: `New finding (SOAP note dated 8/6/2026, not previously documented anywhere in this program): "Hip & Pelvis — Overuse/Chronic · Left · Severity 4 · Tendinitis," with the note "Still in the rehab stage for left hip." Coordinated with Jason Bethea, Brace Life's in-house Trainer/Physical Therapist. This is an active, currently-rehabbing finding, not a historical footnote — it directly overlaps with real left-side hip-loading content already in this program: left leg leads every unilateral leg exercise on Day 2 (Squat, Single-Leg Stance Squat, Single-Leg RDL) and Day 3's hip-dominant work (Hex Bar Deadlift, DB Hip Thrust, Box Step-Up Jump). None of that content is removed — per this system's "strengthen with precautions, not restrictions" principle, the hip stays trained, but every set of that loaded work now carries explicit pain-monitoring language: sharp, pinching, or catching pain anywhere in the front/side of the left hip is the stop signal — regress load, range, or substitute the exercise and flag Jason Bethea; ordinary muscular fatigue or normal training soreness is not a stop signal. Hip activation work in Day 2 Block A and Day 3 Block A (banded clamshell, hip abduction, bird dog) is unaffected — light, controlled activation work is generally well-tolerated in a rehabbing-tendinitis presentation and is not restricted here.`,
   },
+  {
+    type: 'green',
+    label: 'PT Update — 8/6/2026 Session, Additional Activation & Accessory Detail (Jason Bethea)',
+    body: 'The same SOAP note above (SOAP_SiobhanHansen_2026-08-06.pdf) documented a fuller PT-led warm-up and activation circuit covering both her left shoulder and left hip findings. Folded in this update: (1) a full-body PVC-stick mobility routine (shoulder passovers, overhead squat with stick, hip openers) used as her actual session opener, added to Day 1\'s warm-up, with a hip-opener line also added to Day 2\'s warm-up given the active hip rehab there; (2) Crab Walk (Static Elvis Knee/Internal Rotation — her actual performed modification, not the standard walking version) and Glute Kickback (Total Gym Level 10, 50 lbs) added to the existing hip-activation blocks on Day 2 and Day 3, directly reinforcing the left-hip tendinitis rehab; (3) Floor Row on Foam Roller, I\'s-T\'s-W\'s (Prone, with her documented modification — 5 lb DBs, one arm in a hinge stance, reduced ROM on the W/Y sweep), and Quadruped Shoulder Press added to Day 1\'s existing shoulder corrective block, directly reinforcing the left-shoulder postural-dysfunction finding.',
+    // Client View: cites internal session-documentation detail (SOAP note
+    // filename/date), same category already marked internal elsewhere in
+    // this file. The exercises/warm-up content themselves stay fully visible.
+    audience: 'internal',
+  },
 ];
 
 const days = [
@@ -305,19 +348,22 @@ const days = [
     descriptor: 'TECHNIQUE DAY · SHOULDER CARE PRIORITY · PULL-UP PATHWAY GATED',
     intensityLabel: '60% Day',
     intensityPara: 'Technique day — form over load, no PRs. Overhead pressing is being actively, carefully reintroduced today after a prior period of full suspension; the corrective and scapular blocks below earn that reintroduction before any pressing happens. Muscle-building remains the session\'s primary goal given her ALST At-Risk status — every block here is real progressive-resistance work, not filler. Work every set at 3+ RIR.',
-    warmUp: '5 min bike, band pull-apart x15, scapular wall slide x10, arm circles x10/direction (pain-free range only), cat-cow x8',
+    warmUp: '5 min bike, band pull-apart x15, scapular wall slide x10, arm circles x10/direction (pain-free range only), cat-cow x8. PT-documented stick mobility circuit (from the 8/6 session, used as her actual opener): PVC/stick shoulder passovers 2x10 (front-to-back overhead pass, pain-free range only), overhead squat with stick 2x8, hip openers (90/90 or open-book) 8 each side.',
     blocks: [
       {
         letter: 'A',
         title: 'SHOULDER REINTRODUCTION — CORRECTIVE PRIORITY',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Left shoulder overhead work was previously suspended due to pain; it is now being actively reintroduced under close pain-monitoring, not avoided. This block earns pain-free control through rotation and controlled flexion before any pressing — "control precedes power." Sharp or pinching pain is the stop signal here, clearly distinct from normal training fatigue.',
+        intro: 'Left shoulder overhead work was previously suspended due to pain; it is now being actively reintroduced under close pain-monitoring, not avoided. This block earns pain-free control through rotation and controlled flexion before any pressing — "control precedes power." Sharp or pinching pain is the stop signal here, clearly distinct from normal training fatigue. Floor Row on Foam Roller, I\'s-T\'s-W\'s, and Quadruped Shoulder Press are added this update — real PT-led postural/scapular activation content directly reinforcing the documented left-shoulder postural-dysfunction finding.',
         exercises: [
           { name: 'Band External Rotation (Elbow at Side)', sets: '3', reps: '12/side', load: 'light band', tempo: '2-1-2', rest: '45s', flag: 'Left shoulder — stop at sharp/pinching pain, not fatigue', cue: 'Elbow pinned to ribs, rotate within pain-free range only.' },
           { name: 'Band Internal Rotation (Elbow at Side)', sets: '3', reps: '12/side', load: 'light band', tempo: '2-1-2', rest: '45s', flag: 'Respect current ROM — never force end-range', cue: 'Small controlled arc, stop well short of any pinch.' },
           { name: 'Controlled Shoulder Flexion Raise', sets: '2', reps: '10', load: '2-3 lbs / light band', tempo: '3-1-2', rest: '45s', flag: 'Left side — pain-free range only, first overhead reintroduction rep', cue: 'Raise only to the point before any pinch, slow controlled return.' },
           { name: 'Scapular Wall Slide', sets: '2', reps: '10', load: 'bodyweight', tempo: 'controlled', rest: '30s', cue: 'Ribs down, slide within comfortable range, low back flat.' },
+          { name: 'Floor Row on Foam Roller', sets: '2', reps: '10-12', load: 'light band or DB', tempo: '2-1-2', rest: '30s', cue: 'New this update. Row variant performed lying prone over a foam roller — unstable-surface, core-integrated pulling accessory. Pull to hip, squeeze shoulder blade, no compensatory shrug.' },
+          { name: "I's-T's-W's (Prone, Modified)", sets: '2', reps: '8/side (one arm)', load: '5 lb DB', tempo: 'controlled', rest: '30s', flag: 'Left shoulder — reduced ROM on the W/Y sweep portion, per documented session modification', cue: 'Performed one arm at a time in a hinge stance (documented modification from the standard bilateral-prone version). Reduced range on the W/Y sweep — pain-free range only.' },
+          { name: 'Quadruped Shoulder Press', sets: '2', reps: '8-10/side', load: 'bodyweight', tempo: 'controlled', rest: '30s', cue: 'New this update. Closed-chain shoulder activation — hands in quadruped position, press through the shoulder blade. Complements Block B\'s scapular work.' },
         ],
       },
       {
@@ -383,17 +429,19 @@ const days = [
     descriptor: 'MODERATE VOLUME DAY · LEFT-LEG ASYMMETRY PROTOCOL · MUSCLE-BUILDING PRIORITY',
     intensityLabel: '70% Day',
     intensityPara: 'Moderate day — build clean volume without peak fatigue. Muscle-building is the primary physiological goal of this session given her ALST At-Risk status: every set here is real progressive resistance, not maintenance. Left leg continues to lead every unilateral exercise per Styku\'s segmental LST reading. Work at 2-3 RIR.',
-    warmUp: '5 min bike, banded lateral walk x10/side, glute bridge x10, standing hip abduction x10/side, bodyweight squat x8',
+    warmUp: '5 min bike, banded lateral walk x10/side, glute bridge x10, standing hip abduction x10/side, bodyweight squat x8, hip openers (90/90 or open-book) 8 each side (from the PT-documented stick mobility circuit, see Day 1 — relevant here given the active left-hip rehab).',
     blocks: [
       {
         letter: 'A',
         title: 'HIP & SINGLE-LEG STANCE ACTIVATION',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Primes glute medius and hip stabilizers ahead of the loaded single-leg work below — left leg leads throughout given the segmental LST gap. Left hip is in active rehab for overuse tendinitis (coordinated with Jason Bethea) — this activation work is well-tolerated, but every loaded exercise below is pain-monitored: sharp/pinching/catching hip pain is the stop signal, ordinary fatigue is not.',
+        intro: 'Primes glute medius and hip stabilizers ahead of the loaded single-leg work below — left leg leads throughout given the segmental LST gap. Left hip is in active rehab for overuse tendinitis (coordinated with Jason Bethea) — this activation work is well-tolerated, but every loaded exercise below is pain-monitored: sharp/pinching/catching hip pain is the stop signal, ordinary fatigue is not. Crab Walk and Glute Kickback are added this update, both real PT-led hip-extension/glute-med activation directly reinforcing the hip rehab.',
         exercises: [
           { name: 'Banded Clamshell', sets: '2', reps: '15/side', load: 'mini band', tempo: '2-1-2', rest: '30s', cue: 'Hips stacked, heels together, squeeze glute med at top.' },
           { name: 'Bird Dog', sets: '2', reps: '8/side', load: 'bodyweight', tempo: '2-2-2', rest: '30s', cue: 'Neutral spine, reach long, no hip rotation.' },
+          { name: 'Crab Walk (Static Elvis Knee, Internal Rotation)', sets: '2', reps: '10/side', load: 'mini band, above knees', tempo: 'controlled', rest: '30s', flag: 'Left hip — active tendinitis rehab; documented static variant, not the standard walking version', cue: 'New this update. Documented session modification: static Elvis-knee, internal-rotation hold rather than the standard walking crab walk — glute med activation without added hip-loading distance.' },
+          { name: 'Glute Kickback (Cable/Banded)', sets: '2', reps: '10/side', load: 'Total Gym Level 10 (≈50 lbs)', tempo: '2-1-2', rest: '30s', cue: 'New this update — real load from the 8/6 session. Hip extension, squeeze glute at end range, avoid lumbar extension/compensation.' },
         ],
       },
       {
@@ -443,10 +491,11 @@ const days = [
         title: 'HIP ACTIVATION CARRYOVER',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Same hip-activation priority carried forward from Day 2, condensed here to prime glute medius and hip external rotators before the heavy hinge work below. Left hip remains in active tendinitis rehab (coordinated with Jason Bethea) — every loaded exercise in this session is pain-monitored: sharp/pinching/catching hip pain is the stop signal, ordinary fatigue is not.',
+        intro: 'Same hip-activation priority carried forward from Day 2, condensed here to prime glute medius and hip external rotators before the heavy hinge work below. Left hip remains in active tendinitis rehab (coordinated with Jason Bethea) — every loaded exercise in this session is pain-monitored: sharp/pinching/catching hip pain is the stop signal, ordinary fatigue is not. Glute Kickback carries forward from Day 2 — real PT-led hip-extension activation directly priming today\'s Hex Bar Deadlift and Hip Thrust work.',
         exercises: [
           { name: 'Banded Clamshell', sets: '2', reps: '12/side', load: 'mini band', tempo: '2-1-2', rest: '30s', cue: 'Heels together, squeeze glute med at top.' },
           { name: 'Standing Banded Hip Abduction', sets: '2', reps: '10/side', load: 'band', tempo: '2-0-1', rest: '30s', cue: 'Tall posture, drive knee out, no torso lean.' },
+          { name: 'Glute Kickback (Cable/Banded)', sets: '2', reps: '10/side', load: 'Total Gym Level 10 (≈50 lbs)', tempo: '2-1-2', rest: '30s', cue: 'Carried forward from Day 2 — real load from the 8/6 session. Hip extension, squeeze glute at end range, avoid lumbar extension/compensation, directly priming the Hex Bar Deadlift/Hip Thrust hip-extension pattern below.' },
         ],
       },
       {

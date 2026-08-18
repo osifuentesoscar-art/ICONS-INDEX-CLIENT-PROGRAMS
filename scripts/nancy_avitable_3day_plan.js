@@ -134,6 +134,48 @@
  * baselines[] row was added -- consistent with how her other bodyweight
  * accessory exercises (Face Pulls, Nordic Hamstring, Curtsy Lunge, etc.)
  * are not tracked in that table either.
+ *
+ * Updated 8/18/2026, second pass, same day (full-detail enhancement pass,
+ * Xolokan's direct request -- mine the FULL raw content of the same
+ * 8/12/2026 SOAP note for durable Isolated-zone/accessory/activation
+ * value, not just the eccentric push-up already added above). Full prior
+ * record (this header and CLIENTS.md's entry) re-read in full first, per
+ * the standing rule. The note's remaining content is explicitly framed by
+ * the PT as direct running-economy transfer given Nancy's documented
+ * running-knee-health goal -- that framing is preserved in Block B's intro
+ * below rather than treated as generic upper-body accessory work.
+ *   - Day 2 warm-up: arm bike (1 min forward + 1 min backward -- the
+ *     backward direction deliberately engages the posterior shoulder
+ *     differently, per the note) and a mobility-stick shoulder circuit
+ *     (overhead pass-throughs, ER with stick, reach + drive, 2x8-10 each)
+ *     added ahead of the existing band pull-apart/thoracic-rotation warm-up.
+ *   - Day 2, Block A ("Push/Pull"): Standing Resistance Band Chest Press
+ *     added as a 4th exercise (no bench support -- real core anti-rotation
+ *     demand distinct from the existing Incline DB Press). Sequence becomes
+ *     push -> pull -> push -> push (Incline DB Press, Single-Arm Row,
+ *     Half-Kneeling Eccentric Push-Up, Standing Band Chest Press) -- the
+ *     last two are 2 consecutive push-pattern exercises, never 3 --
+ *     Antagonist Rotation Rule compliant, no resequence needed.
+ *   - Day 2, Block B ("Accessory"): DB Deadlift -> Farmer Carry Combo,
+ *     Static Overhead DB Hold (Walking), and Landmine Shoulder Press
+ *     added. Landmine Shoulder Press is deliberately sequenced BETWEEN the
+ *     two carry-type additions (Face Pulls -> Farmer Carry -> Landmine
+ *     Shoulder Press -> DB Deadlift+Carry Combo -> Static OH DB Hold
+ *     Walking) specifically to avoid stacking 3 consecutive loaded-carry-
+ *     pattern exercises (Farmer Carry, DB Deadlift+Carry Combo, and Static
+ *     OH DB Hold Walking are all carry-pattern) -- the same violation
+ *     pattern the Trainer Development Program's retroactive audit found
+ *     and fixed for a near-identical 3-carries-in-a-row stack. With the
+ *     press inserted, the run is carry(1) -> push -> carry(1) -> carry(1),
+ *     max 2 consecutive, compliant.
+ * No new baselines[] rows added -- none of this content carries specific
+ * tested weight/rep data (consistent with how her other bodyweight/band
+ * accessory exercises are handled); loads are described qualitatively,
+ * matching the existing "moderate"/"light-mod" convention already used
+ * elsewhere in this document for untested accessory work. A new internal
+ * baselineNote documents the addition; the exercises/warm-up content
+ * themselves stay fully visible in both the trainer document and Client
+ * View regardless of that note's audience.
  */
 
 const fs = require('fs');
@@ -243,6 +285,12 @@ const baselineNotes = [
     audience: 'internal',
     body: 'New SOAP note (SOAP_NancyAvitable_2026-08-12.pdf) — an upper-body carry/press session explicitly framed around Nancy\'s documented running-knee-health/fat-loss/lower-body-strength goals, continuity with no conflicts against anything already programmed. One new pattern, half-kneeling eccentric push-up, is added to Day 2 Block A (Push/Pull) as a push-pattern accessory alongside Incline DB Press and Single-Arm Row — push→pull→push sequencing, Antagonist Rotation Rule compliant, no resequence needed.',
   },
+  {
+    type: 'green',
+    label: 'PT Update — 8/12/2026 Session, Additional Activation & Accessory Detail (Jason Bethea)',
+    audience: 'internal',
+    body: 'The same SOAP note above documented a fuller upper-body carry/press circuit than the eccentric push-up alone captured — explicitly framed by the PT as direct running-economy transfer given Nancy\'s running-knee-health goal (see Block B\'s intro below). Folded in this update: (1) arm bike warm-up (1 min forward + 1 min backward) and a mobility-stick shoulder circuit, added to Day 2\'s warm-up; (2) Standing Resistance Band Chest Press, a core-anti-rotation pressing accessory, added to Day 2 Block A; (3) DB Deadlift → Farmer Carry Combo, Static Overhead DB Hold (Walking), and Landmine Shoulder Press added to Day 2 Block B — the press is deliberately sequenced between the two carry-pattern additions to avoid stacking 3 consecutive loaded-carry exercises (Farmer Carry / DB Deadlift+Carry Combo / Static OH Hold Walking are all carry-pattern), per the Antagonist Rotation Rule.',
+  },
 ];
 
 const days = [
@@ -295,26 +343,32 @@ const days = [
     descriptor: 'Lower Load — Mobility Emphasis',
     intensityLabel: '60% Day',
     intensityPara: 'Lower overall load; emphasise shoulder and thoracic mobility.',
-    warmUp: 'Band pull-aparts, thoracic rotations, 3×10 scapular push-ups',
+    warmUp: 'Arm bike 1 min forward + 1 min backward (upper-body cardio + shoulder circulation — the backward direction deliberately engages the posterior shoulder differently, per the 8/12 PT session). Mobility stick shoulder circuit: overhead pass-throughs 2x8-10, external rotation with stick 2x8-10, reach + drive 2x8-10. Then: band pull-aparts, thoracic rotations, 3×10 scapular push-ups.',
     blocks: [
       {
         letter: 'A',
         title: 'Push / Pull',
         introLabel: 'Load Target',
-        intro: `Incline DB Press Week 1 load is informed by the 8/13 baseline test ("DB Chest Press," 15 lbs). Single-Arm Row loads directly off its own matching baseline (30 lbs x10, Epley 1RM ≈${oneRM.row} lbs).`,
+        intro: `Incline DB Press Week 1 load is informed by the 8/13 baseline test ("DB Chest Press," 15 lbs). Single-Arm Row loads directly off its own matching baseline (30 lbs x10, Epley 1RM ≈${oneRM.row} lbs). Standing Resistance Band Chest Press is added this update — a core-anti-rotation pressing accessory (no bench support) from the 8/12 PT session.`,
         exercises: [
           { name: 'Incline DB Press', sets: '4', reps: '8', load: `Wk1: ${wk1.chestPress} lbs/hand → Wk4: ${wk4.chestPress} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Control descent', flag: 'Load informed by DB Chest Press baseline — see note', flagAudience: 'internal' },
           { name: 'Single-Arm Row', sets: '4', reps: '8 each', load: `Wk1: ${wk1.row} lbs → Wk4: ${wk4.row} lbs`, tempo: '2-0-1', rest: '60s', cue: 'Pull to the hip; maintain neutral spine' },
           { name: 'Half-Kneeling Eccentric Push-Up', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '4-0-1', rest: '45s', cue: 'Half-kneeling stance (one knee down); slow 4-sec controlled lower, drive back up. New — PT-introduced tempo/control accessory.' },
+          { name: 'Standing Resistance Band Chest Press', sets: '3', reps: '10-12', load: 'light-mod band', tempo: '2-1-2', rest: '45s', cue: 'New this update. No bench support — standing, anti-rotation core demand throughout the press. Press straight ahead, resist trunk rotation, control the return.' },
         ],
       },
       {
         letter: 'B',
         title: 'Accessory',
         color: 'gold',
+        introLabel: 'Why',
+        intro: 'Face Pulls lead for rear-delt/rotator health. DB Deadlift → Farmer Carry Combo and Static Overhead DB Hold (Walking) are added this update — both explicitly framed by the PT as direct running-economy transfer, given Nancy\'s documented running-knee-health goal: grip, gait, and anti-lateral-flexion core demand under load carry over directly to running mechanics. Landmine Shoulder Press is sequenced between the two carry-pattern additions to avoid stacking 3 consecutive loaded-carry exercises in a row (Antagonist Rotation Rule).',
         exercises: [
           { name: 'Face Pulls', sets: '3', reps: '15', load: 'band', tempo: '2-0-1', rest: '45s', cue: 'High elbows; squeeze rear delts' },
           { name: 'Farmer Carry', sets: '3', reps: '30s', load: 'moderate', tempo: '—', rest: '60s', cue: 'Tall posture; tight core' },
+          { name: 'Landmine Shoulder Press', sets: '3', reps: '8-10/side', load: 'light-mod — coach discretion', tempo: '2-1-2', rest: '60s', cue: 'New this update. Scap-friendly unilateral press — landmine angle reduces shoulder impingement risk vs. a straight vertical press.' },
+          { name: 'DB Deadlift → Farmer Carry Combo', sets: '3', reps: '6-8 DL into 20-30 yd carry', load: 'moderate — coach discretion', tempo: 'controlled', rest: '75s', cue: 'New this update. Hinge into an immediate loaded carry — grip, gait, and anti-lateral-flexion core demand in one continuous drill. PT-framed as direct running-economy transfer.', insight: 'Running-economy transfer, per the 8/12 PT session — hinge + loaded-carry combination targets the same grip/gait/core-stability qualities that support running mechanics.' },
+          { name: 'Static Overhead DB Hold (Walking)', sets: '2-3', reps: '20-30 yd', load: 'light-mod DB — coach discretion', tempo: 'controlled walk', rest: '60s', cue: 'New this update. Overhead isometric hold while walking — shoulder stability, thoracic extension, core anti-extension, and gait control combined. PT-framed as direct running-economy transfer.' },
         ],
       },
     ],
