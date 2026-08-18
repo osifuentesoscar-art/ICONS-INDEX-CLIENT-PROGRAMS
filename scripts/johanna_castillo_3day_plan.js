@@ -59,17 +59,59 @@
  *     discrepancy explicitly for that review.
  *   - Styku section added: this script previously had no `styku` key at
  *     all, so the document rendered no scan data even though its own
- *     prose references "your Styku scan" repeatedly. See the note at the
- *     top of `baselineNotes` for why this is composed from primitives
- *     rather than the standard `stykuBlock()` call.
+ *     prose references "your Styku scan" repeatedly. Rendered at that
+ *     point from engine primitives, because only six of the twelve
+ *     fields `stykuBlock()` interpolates were on record.
  *   - ALST note split per the Client View standard: the clinical read
  *     stays client-visible; the CLAUDE.md citation and dated-correction
  *     admission move to a companion audience:'internal' note.
+ *
+ * REVISION (8/18/2026, later same day — SOURCE STYKU PDF SUPPLIED, Styku
+ * section converted to the standard engine block; no training content,
+ * loads, exercise selection, or block structure changed):
+ *   Xolokan supplied Johanna's source Styku PDF (scan date 8/7/2026,
+ *   Brace Life Studios), which carries all twelve fields `stykuBlock()`
+ *   renders. The values-on-record substitute section composed earlier
+ *   today from `sectionTitle()`/`tealCallout()` primitives, and its
+ *   companion audience:'internal' "fields not on file" note, are both
+ *   removed as obsolete; the document now passes a standard `styku: {}`
+ *   object to `buildDocument()` and renders the normal twelve-field
+ *   scan grid in its standard position (before the baselines table),
+ *   matching every other scanned client on the roster.
+ *
+ *   Three interpretation points, all preserved from this morning's
+ *   science-layer sweep rather than reverted to Styku's raw dashboard
+ *   labels:
+ *     - ALST 7.23 kg/m² is carried as within the normal female reference
+ *       range (>=5.5), tracked as a trend metric. It is NOT labeled
+ *       "Optimal" — 7.0 kg/m² is EWGSOP2's MALE at-risk cutoff, and
+ *       7.23 is precisely the value that would have reproduced that
+ *       retired sex-conflation error. Styku's own "Not At-Risk" tag is
+ *       consistent with the corrected framing.
+ *     - VFA 142.7 cm² keeps the "Elevated, Tracked as a Trend" framing
+ *       with the methodology caveat and waist circumference named as the
+ *       primary clinical-facing metric. Styku's dashboard "High Risk"
+ *       band label is deliberately not introduced; `stykuBlock()` renders
+ *       the raw cm² value with no risk label, which is the preferred
+ *       presentation under the corrected standard.
+ *     - Body Fat 40.4% carries Styku's own "At-Risk" BODY-FAT rank
+ *       verbatim in `bodyFatRank`. That is a body-composition ranking,
+ *       not an ALST/sarcopenia flag, and the surrounding note now says
+ *       so explicitly so the two cannot be read as the same finding.
+ *   Her BMI (29.5) is now a real reported field rather than an inferred
+ *   figure, and reproduces exactly from her documented 5'4"/172 lbs.
+ *   Per CLAUDE.md, Styku's own computed ALST is used as reported rather
+ *   than recomputed from the segmental values.
+ *
+ *   Circumference data from the same PDF (waist, hip, chest, limb girths,
+ *   android/gynoid mass) is on file in CLIENTS.md but deliberately NOT
+ *   rendered here — a measurements table is a separate document change,
+ *   not part of this swap.
  */
 
 const fs = require('fs');
 const path = require('path');
-const { buildDocument, sectionTitle, tealCallout, C } = require('./icons_template');
+const { buildDocument } = require('./icons_template');
 
 const client = {
   name: 'Johanna Castillo',
@@ -80,6 +122,7 @@ const client = {
   weightKg: 78.0,
   ageYears: 51,
   isPostmenopausal: true,
+  bmr: 1451,
   alstIndex: 7.23,
 };
 
@@ -142,39 +185,41 @@ const baselines = [
   ['Trap Bar Deadlift', 'Not Tested — Established This Week', 'This Week', 'Wk1 working load 45 lbs × 6 (Day 2 Block B) — becomes the new 8-week baseline'],
 ];
 
-// Styku section (added 8/18/2026). This script previously carried no
-// `styku` key at all, so the rendered document showed no scan data
-// whatsoever while its own prose referenced "your Styku scan" throughout
-// — the same defect class as Nancy Avitable's missing baselines table.
+// Styku body composition scan — full twelve-field record, transcribed from
+// the source Styku PDF supplied 8/18/2026 (scan date 8/7/2026, Brace Life
+// Studios). This replaces the values-on-record substitute section composed
+// earlier the same day from engine primitives, which existed only because
+// six of these twelve fields were not yet on record and `stykuBlock()`
+// interpolates all twelve unconditionally.
 //
-// Composed from the engine's own primitives (`sectionTitle` + a teal
-// labeled paragraph) rather than the standard `stykuBlock()` call for one
-// reason only: `stykuBlock()` renders all twelve of its fields
-// unconditionally, and only six of Johanna's scan values are on record
-// (body fat %, ALST, VFA, and the four segmental LST figures). Passing it
-// a partial object would print "undefined" into a client-facing document,
-// and nothing here is derived, estimated, or filled in to avoid that. Once
-// the missing fields are supplied from her source Styku PDF, replace this
-// with a standard `styku: {...}` object on `data` — see the internal note
-// below for the exact list of what is missing.
-const stykuSection = {
-  render: [
-    sectionTitle('Styku Body Composition Scan', C.teal),
-    ...tealCallout(
-      'Scan Values on Record',
-      'Body Fat 40.4% (Styku\'s own At-Risk classification) · ALST Index 7.23 kg/m² · Visceral Fat Area 142.7 cm² · Segmental lean soft tissue — Left Arm 8.7 lbs / Right Arm 8.4 lbs, Left Leg 17.5 lbs / Right Leg 18.0 lbs. These are the figures every clinical note in this document is built from: the fat-loss and cardiometabolic emphasis, the conditioning finisher on each training day, and the per-side logging on unilateral work all trace back to them.'
-    ),
-  ],
+// Values are carried exactly as Styku reports them, with two deliberate
+// framing decisions handled in the notes below rather than in this object:
+// her ALST (7.23 kg/m²) is Styku's own computed figure and is used as
+// reported per CLAUDE.md rather than recomputed from the segmental values
+// (a manual arms+legs/height^2 gives ~9.0, which is expected), and her VFA
+// is passed as a raw cm² value with no risk-band label attached.
+const styku = {
+  scanDate: '8/7/2026',
+  bodyFatPct: 40.4,
+  bodyFatRank: 'At-Risk',
+  leanMass: 97.7,
+  leanMassPct: 56.9,
+  fatMass: 69.4,
+  boneMass: 4.7,
+  bmi: 29.5,
+  bmr: 1451,
+  vfa: 142.7,
+  shapeScore: 54,
+  shapeScoreLabel: 'Needs Improvement',
+  alstIndex: 7.23,
+  leftArmLST: 8.7,
+  rightArmLST: 8.4,
+  leftLegLST: 17.5,
+  rightLegLST: 18.0,
+  peerComparison: 'Lower body fat than 20% of your peers',
 };
 
 const baselineNotes = [
-  stykuSection,
-  {
-    type: 'watch',
-    audience: 'internal',
-    label: 'Styku Record — Fields Not on File',
-    body: 'Her record carries body fat %, ALST Index, VFA, and the full segmental LST set, but NOT Lean Mass, Lean Mass %, Fat Mass, Bone Mass, BMI, BMR, Shape Score, or the scan date — which is why this document renders a values-on-record section instead of the standard eight-field Styku table used for every other scanned client on the roster. Nothing was derived or estimated to fill those gaps (her documented 5\'4" / 172 lbs would yield a BMI near 29.5, but Styku\'s own reported BMI is not on file and no inferred figure has been placed into a scan table). Request the missing fields from her source Styku PDF; once supplied, swap this section for a standard `stykuBlock()` call in the build script.',
-  },
   {
     type: 'green',
     label: 'ALST Index Within Normal Reference Range — 7.23 kg/m²',
@@ -193,8 +238,8 @@ const baselineNotes = [
   },
   {
     type: 'watch',
-    label: 'Body Fat 40.4% At-Risk',
-    body: 'Tracked alongside VFA as the cardiometabolic/fat-loss priority for this block. Reassess at the 8-week Styku rescan.',
+    label: 'Body Fat 40.4% — Styku Body-Fat Rank At-Risk',
+    body: 'This is Styku\'s own body-fat ranking, a body-composition figure — separate from the ALST lean-mass reading above, which is within normal reference range. Tracked alongside VFA as the cardiometabolic/fat-loss priority for this block, which is what the conditioning finisher on each training day is built for. Her BMI reads 29.5, in the standard overweight band and just under the 30 cutoff; read it alongside body composition rather than on its own. Reassess all three at the 8-week Styku rescan.',
   },
   {
     type: 'teal',
@@ -416,6 +461,7 @@ const summary = {
 
 const data = {
   client,
+  styku,
   weekOverview,
   baselines,
   baselineNotes,
@@ -434,15 +480,16 @@ async function main() {
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
 
-  // Client View (added 8/17/2026) — same data object, filtered. Four
+  // Client View (added 8/17/2026) — same data object, filtered. Three
   // notes are marked audience: 'internal': the "Baselines Table Scope"
-  // build-methodology note, the "Styku Record — Fields Not on File"
-  // build-process note, the ALST sex-conflation-correction citation, and
-  // the 8/18/2026 asymmetry-trigger discrepancy flag. The client-facing
-  // clinical content each of those sits beside (the ALST read, the
-  // segmental lean-mass prescriptions, the Styku values on record) stays
-  // visible in both documents. No real documented PR/progress-since-last-
-  // version exists on file for her, so no clientHighlight is set.
+  // build-methodology note, the ALST sex-conflation-correction citation,
+  // and the 8/18/2026 asymmetry-trigger discrepancy flag. (A fourth,
+  // recording which Styku fields were missing, was removed 8/18/2026 once
+  // the source scan PDF arrived.) The client-facing clinical content each
+  // of those sits beside — the ALST read, the segmental lean-mass
+  // prescriptions, and the full Styku scan grid itself — stays visible in
+  // both documents. No real documented PR/progress-since-last-version
+  // exists on file for her, so no clientHighlight is set.
   const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
   const clientOutPath = path.join(outDir, 'Johanna_Castillo_3Day_Training_Plan_Client_View.docx');
   fs.writeFileSync(clientOutPath, clientBuffer);

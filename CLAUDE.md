@@ -2667,14 +2667,26 @@ Siobhan Hansen  → MIGRATED 8/12/2026 into this repo's clients/scripts structur
   Protein target: 107–118g/day | Creatine: strongly indicated
   Program (current): 3-day, engine-built — see CLIENTS.md for the full breakdown
 
-Kelly Mulroy    → /mnt/user-data/outputs/Kelly_Mulroy_5Day_Training_Plan_v2.docx
+Kelly Mulroy    → MIGRATED 8/18/2026 into this repo's clients/scripts structure — see
+                  `clients/kelly_mulroy/Kelly_Mulroy_5Day_Training_Plan.docx` /
+                  `scripts/kelly_mulroy_5day_plan.js` and CLIENTS.md's "Kelly Mulroy" entry
+                  for the current, engine-built version. Her original deliverable is
+                  preserved byte-identical as the engine's XML-audit standard at
+                  `system_documents/reference/` (SHA-256 recorded there) — that artifact,
+                  not her live program, is what the engine is audited against going forward.
   Age: 35 | 5'4" | 152 lbs | Tue/Wed/Thu/Fri gym + Sun active recovery
   Scan: 6/17/2026 | BF: 36.4% | Lean: 92.0 lbs | Shape: 61/100
-  ALST: not yet At-Risk | Leg asymmetry: L 15.7 vs R 16.5 lbs
-  Flags: Knee valgus (squat), hip hinge / adductor weakness
+  ALST: not At-Risk | Leg asymmetry: L 15.7 vs R 16.5 lbs (0.8 lb = ~5.0% relative —
+    does NOT clear the corrected ≥10% trigger; see CLIENTS.md)
+  Flags: Knee valgus (squat), hip hinge / adductor weakness; lumbar hinge-tolerance
+    finding with an explicit stop-signal (Jason Bethea, 7/29–8/11/2026)
   Correctives: banded squat, TKE, Copenhagen plank every session
   Program: 5-day progressive intensity (60/70/80/90%/AR)
-  Baselines: DL 55–65 lbs, Squat 25 lbs, OHP 25 lbs×3RM, Carry 35 lbs/hand
+  Baselines (CORRECTED 8/18/2026 — the prior line here listed "DL 55–65 lbs, Squat 25 lbs,"
+    neither of which is a tested baseline: 55–65 is her Thursday TRAINING LOAD, and no squat
+    baseline of any kind exists anywhere in her document. Verified against the actual
+    deliverable during her 8/18 engine migration): OHP 25 lbs×3RM, DB Row, Push-Up,
+    Plank Hold, Farmer Carry 35 lbs/hand, Assisted Pull-Up — six rows, see CLIENTS.md.
 
 Elizabeth Poyner → MIGRATED 8/14/2026 into this repo's clients/scripts structure — see
                     `clients/elizabeth_poyner/Elizabeth_Poyner_5Day_Training_Plan.docx` /
@@ -2689,13 +2701,22 @@ Elizabeth Poyner → MIGRATED 8/14/2026 into this repo's clients/scripts structu
   Program: 5-day (Tue Upper / Wed Glute-Ham / Thu Heavy Lower / Fri Prep / Sat Fast-Twitch)
   Pelvic floor note: mandatory every heavy carry / hip thrust / deadlift day (auto-inserted)
 
-Sarah           → /mnt/user-data/outputs/Sarah_Training_Plan_Client_Version.docx
+Sarah           → SUPERSEDED 8/18/2026. Rebuilt from scratch as `clients/sarah/Sarah_2Day_Training_Plan.docx`
+                  / `scripts/sarah_2day_plan.js` — see CLIENTS.md's "Sarah" entry. **Do NOT merge the
+                  outline below back into her current program.** It is retained only as a historical
+                  record of the pre-repo version. Real constraints since relayed by her trainer Nick
+                  (no cable machine, nothing above 20 lbs, avoid the bench, fast-paced/high-rep/low-rest,
+                  limited lower-back and hamstring mobility, struggles to hold a flat back through a
+                  hinge, squats to just above parallel) rule out most of what this outline specifies —
+                  the bench work, the cable pull, and the heavy squat+OHP superset are all now
+                  explicitly excluded by trainer direction, not by equipment availability.
   Virtual 2-day program | Athletic strength focus
   Day A: Power + Strength (lateral primer, squat+OHP superset, bench, cable pull, core)
   Day B: Athletic Strength (RDL, row+cable pull superset, incline+lateral, carry, arms)
   Key: lateral lunge + lateral deadlift as Day A primer (NOT explosive — controlled)
        Cable pulldown replaces assisted pull-up
-       Single-arm DB row only in superset (no standalone)
+       Single-arm DB row only in superset (no standalone) ← the one detail carried
+       forward into her current build, since it remains compatible
 ```
 
 ### Other Clients (legacy documents)
