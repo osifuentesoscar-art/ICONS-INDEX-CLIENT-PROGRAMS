@@ -338,6 +338,66 @@
  *   RIR convention on all carry/complex work: distance- and quality-
  *   governed, no RIR target, stated as such per exercise — an RIR count
  *   is meaningless on a gait-based quality movement.
+ *
+ * REVISION (8/18/2026, sixth pass, same day — EXTERNAL REVIEW APPLICATION,
+ * Xolokan-commissioned external review of her Client View at commit 4ee7acc
+ * + delta audit; four actionable gaps applied, one clinical question
+ * documented-but-not-applied):
+ *   1. CALORIC SURPLUS (new gold baselineNote, client-visible, placed
+ *      directly after the sarcopenic-profile clinical note): the plan
+ *      prescribed protein grams (107-118g/day) but never stated the energy
+ *      condition muscle-building depends on. For an underweight (BMI 17.4)
+ *      + ALST At-Risk client, a modest consistent surplus (~350-480
+ *      kcal/day above maintenance, monitored/adjusted at rescan, not fixed
+ *      for 8 weeks) is now stated explicitly, with a registered-dietitian
+ *      referral phrased as an offer. No TDEE/absolute-kcal total is
+ *      computed or stated — her BMR (1230) is not maintenance, and
+ *      fabricating a maintenance number would be exactly the kind of
+ *      invented figure this system prohibits.
+ *   2. PLANNED DELOAD — WEEK 5 (new blue baselineNote, client-visible,
+ *      placed directly after the left-hip clinical note): the program ran
+ *      continuous progressive loading to Week 8 with two active injury
+ *      sites. Week 5 — immediately after the Week 4 strength check, per
+ *      the 4-week reassessment cadence — is now a planned deload: same
+ *      exercises, sets reduced roughly a third, all work in the 3+ RIR
+ *      technique/submaximal band, loads HELD at Week 3-4 levels (the
+ *      standard add-weight progression rule pauses for the week), then
+ *      Weeks 6-8 rebuild from the Week 4 loads toward the retest/rescan.
+ *      RECONCILIATION with existing progression language: every Wk1→Wk4
+ *      load field describes only the first 4-week block and needed no
+ *      change; summary.milestones4wk, milestones8wk, and rescanNote were
+ *      each updated to state the Wk4-check → Wk5-deload → Wk6-8-rebuild
+ *      arc so no field implies unbroken linear loading through 8 weeks.
+ *   3. BONE DENSITY (new gold baselineNote, client-visible, placed after
+ *      the teal Styku note; modeled on Elizabeth Poyner's "Bone-Loading
+ *      Candidacy" note): postmenopausal + low body weight are two stacked
+ *      osteoporosis risk factors and the document never mentioned bone
+ *      density client-side (the internal Age Bracket note's LIFTMOR line
+ *      was trainer-only). New note recommends a physician conversation —
+ *      clinical risk assessment (FRAX or similar), DXA if indicated —
+ *      framed as "bone investment," never alarm; honestly states her
+ *      current intensities peak ~85% e1RM at Wk4, below LIFTMOR's >85%
+ *      threshold and appropriate for where she is, with the T-score
+ *      result shaping the long-term loading plan. Referral-not-diagnose
+ *      throughout.
+ *   4. SLEEP/RECOVERY (new blue baselineNote, client-visible, brief):
+ *      zero recovery language existed in a plan for a recovery-limited
+ *      client. One warm note per CLAUDE.md's Sleep & Recovery section —
+ *      RT itself measurably improves sleep quality; for her, sleep is
+ *      where the stimulated muscle gets built.
+ *   5. HIP PAIN RULE — DOCUMENTED ONLY, DELIBERATELY NOT CHANGED (new
+ *      internal baselineNote): the review correctly notes her binary
+ *      stop-signal (sharp/pinching = stop) is more conservative than the
+ *      graded tendinopathy loading model (Silbernagel pain-monitoring:
+ *      pain up to ~5/10 acceptable during loading if it settles within
+ *      24h and isn't trending worse). That stop-signal is Jason Bethea's
+ *      clinical call — per the never-silently-merge-clinical-conflicts
+ *      rule, ALL existing stop-signal language stays verbatim; the
+ *      question is recorded for Jason via the normal SOAP-note channel
+ *      and logged in CLIENTS.md as pending his input.
+ * No exercise, load, set/rep, flag, or existing clinical content changed
+ * in this pass — additions 1-4 are notes plus the three summary-field
+ * reconciliation edits listed under #2.
  */
 
 const fs = require('fs');
@@ -437,6 +497,11 @@ const baselineNotes = [
     body: `Combined ALST Index ${styku.alstIndex} kg/m² (At-Risk, <5.5 threshold) and BMI ${styku.bmi} (Underweight, <18.5) is a numeric combination known clinically as a "sarcopenic obesity profile" — the top clinical priority in this program. The label reads counterintuitively against a client presenting as clinically underweight, but the underlying composition is consistent with it, not contradicted by it: Body Fat ${styku.bodyFatPct}% (${styku.fatMass} lbs fat mass) is Styku's own "Fit" tier in isolation, yet against a lean mass of only ${styku.leanMass} lbs (${styku.leanMassPct}%) and an ALST Index well below the sarcopenia threshold, that fat mass represents a disproportionate share of an already-depleted total body composition — low muscle mass co-occurring with a relatively elevated fat proportion despite low total bodyweight is the compositional signature this flag is naming. This is the top programming priority in this document: muscle-building is the primary physiological goal of every session, progressive resistance is prioritized on all three training days, protein/creatine escalate per the tier below, and no metabolic finisher in this plan is allowed to compromise recovery capacity for the resistance work driving this goal.`,
   },
   {
+    type: 'gold',
+    label: 'Eating Enough Is Part of This Program — Modest Energy Surplus',
+    body: `The protein target below (107-118g/day) supplies the building blocks; total energy decides whether the body is allowed to build with them. At 118 lbs with an At-Risk lean-mass reading, muscle-building requires eating above maintenance — protein alone cannot do it at maintenance intake or below. The working starting point is a modest, consistent surplus of roughly 350-480 calories per day above her usual maintenance intake — not a fixed rule for the full eight weeks: it gets checked against the body-composition and strength trends at the rescan and adjusted from there, the same way every load in this plan is. This is not a meal plan and not a weight-gain alarm — it is the same training-support logic as the protein and creatine targets already in place: for Siobhan specifically, given the At-Risk lean-mass reading and low body weight, eating enough is part of the training program itself, not a separate project. Given her profile, a conversation with a registered dietitian is a genuinely worthwhile option — offered here as support for making the surplus easy and sustainable, and something her coach can help arrange whenever she'd like.`,
+  },
+  {
     type: 'red',
     label: 'Left Shoulder — Overhead Work Actively Reintroduced After Prior Suspension',
     body: `Previously documented left shoulder pain on overhead raising led to overhead pressing being fully suspended. The current trainer note — "Over Head Left Side Raising Shoulder Pain... Strengthen overhead (Not Tested)" — is an intentional progression, not a silent reversal of that caution: overhead work is now being actively, carefully reintroduced under close pain-monitoring, following the same "strengthen with precautions, not restrictions" principle already established for shoulder flags in this system. Every session with overhead pressing (Day 1, with a brief continued check-in on Day 3) opens with a dedicated Isolated-zone shoulder corrective/prep block — external/internal rotation, scapular stability, controlled shoulder flexion — sequenced BEFORE any pressing, per "control precedes power." Because overhead press was never load-tested, its progression is autoregulated by pain-free range of motion and RIR, not a fixed %1RM table — there is no baseline 1RM to build a percentage table from. Pain-monitoring language is explicit and consistent throughout: sharp or pinching pain during a set, or pain lasting beyond 24 hours, is the real stop signal — regress the range or substitute the exercise; ordinary muscular fatigue or normal training soreness is expected and is not a stop signal.`,
@@ -450,6 +515,11 @@ const baselineNotes = [
     type: 'teal',
     label: 'Styku Findings — Body Composition, VFA & Bone Mass',
     body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs, BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 — "${styku.shapeScoreLabel}." VFA ${styku.vfa} cm² is tracked here as a trend indicator, not a risk-band diagnosis — worth watching directionally at the 8-week rescan alongside the composition priorities above, rather than read against a fixed cm² cutoff. BMI ${styku.bmi} is a clinical Underweight flag (<18.5) regardless of the "Fit" body-fat-percentage reading — see the governing sarcopenic-profile note above for how these findings interact.`,
+  },
+  {
+    type: 'gold',
+    label: 'Bone Density — A Conversation Worth Raising With Her Physician (Bone Investment)',
+    body: `At 59, postmenopausal, and at a low body weight, two established bone-density risk factors sit together in her profile — which makes this a conversation genuinely worth raising with her physician: a clinical bone-health risk assessment (FRAX or similar) and, if her physician finds it indicated, a DXA scan. This is bone investment, not alarm — the result directly informs how her Hex Bar Deadlift and Hip Thrust work gets framed and progressed over the long term. A T-score below -1.0 would make her a candidate for a formal bone-loading progression built on exactly the lifts already in this program; a healthy reading simply confirms the current plan as it stands. Stated honestly: her current working intensities — peaking around 85% of estimated 1RM at Week 4 — sit below the >85% threshold the strongest bone-loading trial evidence used, and that is exactly appropriate for where she is right now, with a shoulder reintroduction and a hip rehab both underway. A T-score result is what would shape whether, when, and how the long-term loading plan builds toward that standard. Nothing in today's program waits on the scan — her deadlift and hip-thrust work is already real, progressive bone-loading stimulus at her current level.`,
   },
   {
     type: 'watch',
@@ -474,6 +544,11 @@ const baselineNotes = [
     body: `Current clinical finding: "Hip & Pelvis — Overuse/Chronic · Left · Severity 4 · Tendinitis," with the note "Still in the rehab stage for left hip." Coordinated with Jason Bethea, Brace Life's in-house Trainer/Physical Therapist. This is an active, currently-rehabbing finding, not a historical footnote — it directly overlaps with real left-side hip-loading content already in this program: left leg leads every unilateral leg exercise on Day 2 (Squat, Single-Leg Stance Squat, Single-Leg RDL) and Day 3's hip-dominant work (Hex Bar Deadlift, DB Hip Thrust, Box Step-Up Jump). None of that content is removed — per this system's "strengthen with precautions, not restrictions" principle, the hip stays trained, but every set of that loaded work now carries explicit pain-monitoring language: sharp, pinching, or catching pain anywhere in the front/side of the left hip is the stop signal — regress load, range, or substitute the exercise and flag Jason Bethea; ordinary muscular fatigue or normal training soreness is not a stop signal. Hip activation work in Day 2 Block A and Day 3 Block A (banded clamshell, hip abduction, bird dog) is unaffected — light, controlled activation work is generally well-tolerated in a rehabbing-tendinitis presentation and is not restricted here.`,
   },
   {
+    type: 'blue',
+    label: 'Planned Deload — Week 5, Directly After the Week 4 Strength Check',
+    body: `This program deliberately includes one lighter week, and it is planned, not a reaction to anything going wrong. Week 5 — immediately after the Week 4 strength check — is a structured deload: the same exercises and the same movement patterns, with sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), and loads held at Week 3-4 levels rather than climbing — the usual add-weight rule pauses for this one week. With a shoulder in active reintroduction and a hip in active rehab, this is how the program protects both healing sites while the strength built in Weeks 1-4 consolidates. One light week costs nothing that matters: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days of resuming. Weeks 6-8 then rebuild from the Week 4 loads toward the Week 8 retest and rescan.`,
+  },
+  {
     type: 'gold',
     audience: 'internal',
     label: 'Source of the Left Hip Finding — Documentation Provenance',
@@ -489,10 +564,21 @@ const baselineNotes = [
     audience: 'internal',
   },
   {
+    type: 'blue',
+    label: 'Sleep — Where the Training Turns Into Muscle',
+    body: 'One quiet part of this program deserves naming: sleep. The sessions here stimulate muscle; sleep is where that muscle actually gets built — and with a shoulder and a hip both healing alongside a muscle-building priority, her recovery hours are doing real work every night, not just resting. The encouraging part runs both directions: consistent resistance training itself measurably improves sleep quality, so the plan supports the nights as much as the nights support the plan. Protect sleep the way the sessions are protected — it is part of the program, not adjacent to it.',
+  },
+  {
     type: 'gold',
     audience: 'internal',
     label: 'Session Architecture — ICONS Block Method Pilot (8/18/2026, incl. Slot 6)',
     body: 'This document is the roster pilot for the ICONS Block Method standing session architecture (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound — Integration; see CLAUDE.md — the sixth slot was added 8/18/2026, same day as the pilot, and is applied here too). Restructure is organizational only — every clinical element (left-hip tendinitis flags on all 6 originally hip-loaded exercises, shoulder reintroduction protocol, scapular gate, both asymmetry leads, protein bar on all days) and every Wk1→Wk4 load survives verbatim. Five-slot mapping: Day 1 — Incline Push-Up promoted to the accessory slot ahead of the pull block (1 RIR per corrected accessory tier); slot 4 omitted (all Jason content consumed by the corrective slot; a slot-4 Floor Row would stack 3 consecutive pulls, and adding hip-side Jason work to Day 1 would raise rehab-exercise frequency to 3x/week — Jason\'s call, not ours). Day 2 — Squat/SL Stance Squat split into primary/accessory blocks; Floor Row on Foam Roller added as the Jason slot (2nd weekly touch of the postural finding, antagonist break between squat and hinge patterns). Day 3 — Hex DL/Hip Thrust split into primary/accessory blocks (Hex DL RIR aligned to 2 RIR primary default); I\'s-T\'s-W\'s added as the Jason slot priming the check-in; check-in reframed as the secondary compound. Accessory-slot RIR held at 2 (not the 1-RIR default) on both hip-flagged accessories (SL Stance Squat, Hip Thrust) as a deliberate clinical override during active tendinitis rehab. SLOT 6 (Third Compound — Integration, applied fifth pass same day — resolves the pilot\'s original "carries/core/power have no named slot" friction finding): Day 1 gains Block F, Suitcase Carry right-led (15-20 lbs, anchored to the Day 3 suitcase prescription/tested Farmers Carry baseline, no invented number) — this brings carry content to Day 1, so pelvicFloorCallout() now auto-fires on ALL THREE days (previously 2-3 only; correct per the amended spec, not a bug). Day 2 gains Block F, Hinge-to-Carry Complex (DB Deadlift x5 → Farmers Carry, 2 sets, deliberately light 15-20 lbs/hand — integrates the day\'s patterns into braced gait without adding heavy hip-extension volume during active rehab; carries the standard left-hip flag, making 7 flagged hip-loaded exercises total). Day 3\'s Blocks F/G/H (carries/core/power) retitled as its integration work, content unchanged except Farmers Carry rirNote aligned from \'2 RIR\' to the carry convention. All carry/complex work is distance/quality-governed with no RIR target, stated per exercise. Metabolic finishers still close each day after the integration work.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Clinical Question for Jason Bethea — Graded vs. Binary Hip Pain Rule (Pending, 8/18/2026)',
+    body: 'Recorded from the 8/18/2026 external review of this document, for Jason Bethea via the normal SOAP-note channel — deliberately NOT applied here. Her left-hip stop-signal is currently binary (sharp/pinching pain = stop the set), which is more conservative than the evidence-based graded tendinopathy loading model (Silbernagel pain-monitoring: pain up to ~5/10 acceptable DURING loading, provided it settles within 24 hours and is not trending worse week to week). The binary rule is Jason\'s clinical call as the coordinating in-house PT for her active left-hip tendinitis rehab — per the never-silently-merge-clinical-conflicts rule, every instance of the sharp/pinching stop-signal language in this document stays verbatim pending his input. If he adopts a graded model, the update touches all 7 hip-flagged exercises\' flag text plus the Day 2/Day 3 block intros and ICONS Notes in one pass. Status: question pending; do not change the pain rule without his documented answer.',
   },
 ];
 
@@ -786,9 +872,9 @@ const summary = {
     ['Day 2', '70%', 'Lower Body — Left-Led Unilateral Foundation', 'Squat · Single-Leg Stance Squat · Single-Leg RDL · Hinge-to-Carry', `Loads build off tested baselines (Squat Epley 1RM ≈${oneRM.squat} lbs); left leg leads every unilateral set per 0.8 lb Styku gap; closing complex stays light, quality-governed.`],
     ['Day 3', '80%', 'Posterior Chain — Full-Body Strength', 'Hex Bar Deadlift · Hip Thrust · Farmers/Suitcase Carry', `Loads build off tested baselines (Deadlift Epley 1RM ≈${oneRM.hexDL} lbs); right hand leads suitcase carry, left leg leads unilateral work.`],
   ],
-  milestones4wk: `Hex Bar Deadlift toward ${wk4.hexDL + 10} lbs x5, Squat toward ${wk4.squat + 5} lbs x6-8, Hip Thrust toward ${wk4.hipThrust + 5} lbs x8, all at 2-3 RIR. Overhead Press showing genuine week-over-week pain-free ROM expansion (not a fixed load target). Scapular block criteria (band pull-apart 3x15, 20s controlled dead hang) consistently clean — first checkpoint toward reduced pull-up assistance. Left-leg single-leg RDL/stance-squat loads matched toward parity with the right within 10%.`,
-  milestones8wk: 'Hex Bar Deadlift, Squat, and Hip Thrust progressed from current tested baselines. Overhead Press fully pain-free through an expanded range, no sharp/pinching flags logged. Assisted Pull-Ups showing real reduced-assistance progression, gated release confirmed by scapular criteria being met. Plank hold past 1:30. Left/right leg and right/left arm LST gaps reduced from 0.8 lbs.',
-  rescanNote: `Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently ${styku.alstIndex} kg/m², At-Risk — the top clinical priority), BMI trend (currently ${styku.bmi}, Underweight), VFA (currently ${styku.vfa} cm², tracked as a trend indicator rather than a fixed risk band), left/right leg and right/left arm LST gaps (baseline 0.8 lbs each on both sides — right arm ~11% relative, left leg ~6% relative to the larger side; watch both directionally), lean mass (currently ${styku.leanMass} lbs — build), and continued shoulder/scapular progress.`,
+  milestones4wk: `Hex Bar Deadlift toward ${wk4.hexDL + 10} lbs x5, Squat toward ${wk4.squat + 5} lbs x6-8, Hip Thrust toward ${wk4.hipThrust + 5} lbs x8, all at 2-3 RIR. Overhead Press showing genuine week-over-week pain-free ROM expansion (not a fixed load target). Scapular block criteria (band pull-apart 3x15, 20s controlled dead hang) consistently clean — first checkpoint toward reduced pull-up assistance. Left-leg single-leg RDL/stance-squat loads matched toward parity with the right within 10%. Week 4 closes with the strength check; Week 5 that follows is the planned deload week — same exercises, reduced sets, loads held (see the deload note above) — before Weeks 6-8 rebuild.`,
+  milestones8wk: 'Hex Bar Deadlift, Squat, and Hip Thrust progressed from current tested baselines — through the Week 4 check, the planned Week 5 deload (loads held, sets reduced), and the Weeks 6-8 rebuild toward the retest. Overhead Press fully pain-free through an expanded range, no sharp/pinching flags logged. Assisted Pull-Ups showing real reduced-assistance progression, gated release confirmed by scapular criteria being met. Plank hold past 1:30. Left/right leg and right/left arm LST gaps reduced from 0.8 lbs.',
+  rescanNote: `Rebook Styku scan at 8 weeks — it lands at the end of the Weeks 6-8 rebuild that follows the planned Week 5 deload, so the scan reads a fully rebuilt, consolidated block rather than a mid-deload dip. Track: ALST Index trend (currently ${styku.alstIndex} kg/m², At-Risk — the top clinical priority), BMI trend (currently ${styku.bmi}, Underweight — read alongside the energy-surplus note above: the goal is lean-mass-driven weight gain, not weight loss), VFA (currently ${styku.vfa} cm², tracked as a trend indicator rather than a fixed risk band), left/right leg and right/left arm LST gaps (baseline 0.8 lbs each on both sides — right arm ~11% relative, left leg ~6% relative to the larger side; watch both directionally), lean mass (currently ${styku.leanMass} lbs — build), and continued shoulder/scapular progress.`,
 };
 
 const data = {
