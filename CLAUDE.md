@@ -519,6 +519,21 @@ The standing per-day block order for every client training program, stated by Xo
 5. SECONDARY COMPOUND  — a second compound lift, in a different movement pattern
                           from the primary (which the Antagonist Rotation Rule
                           already all but requires)
+6. THIRD COMPOUND —      the session's closer: a compound movement or short
+   INTEGRATION            compound complex that pulls the day's patterns together
+                          into one integrated, full-body expression — a loaded
+                          carry, a hinge-to-carry or squat-to-press complex, or a
+                          power expression of the day's primary pattern where the
+                          client's bracket calls for power work. Added 8/18/2026
+                          (Xolokan: "a third compound block that pulls everything
+                          together"), and it resolves the pilot's named-slot gap:
+                          carries, core-integrated compound work, and bracket-
+                          mandated power work now live HERE by default rather
+                          than floating in unnamed post-architecture blocks.
+                          Metabolic finishers may still follow it. Clinical
+                          constraints govern selection as everywhere else (e.g.
+                          a carry triggers the pelvic floor callout for a
+                          postmenopausal client — that's correct, not a bug).
 ```
 
 **Design requirements, all four stated by Xolokan as part of the method:**
