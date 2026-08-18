@@ -361,27 +361,59 @@ function baselinesTable(rows, targetHeaderLabelOrHeaders = '8-WEEK TARGET') {
 }
 
 // ── STYKU BLOCK ────────────────────────────────────────────────────────
+// Partial-field behavior (added 8/18/2026): a styku object may carry any
+// SUBSET of the standard scan fields — a missing field's row is omitted
+// entirely, never interpolated as a literal "undefined". Motivating
+// precedent: Johanna Castillo's 8/18/2026 build, where only 6 of the 12
+// fields were on record and this function's unconditional interpolation
+// forced a hand-composed substitute section; several intake-pending
+// clients are expected to arrive with similarly partial scan records.
+// Rules:
+//   - A field is "missing" when null/undefined; 0 is a real value.
+//   - Sub-label fields (bodyFatRank, leanMassPct, shapeScoreLabel) drop
+//     only their own parenthetical/suffix, not the parent row.
+//   - Segmental L/R pairs render only when BOTH sides are present — a
+//     one-sided LST comparison is meaningless. If both pairs are absent,
+//     no segmental rows render at all.
+//   - A missing scanDate omits the date line — never fabricated or
+//     defaulted. The section still renders.
+// A COMPLETE object renders identically to the pre-8/18/2026 output (the
+// two-column split below reproduces the historical fixed 6/6 layout) —
+// verified empirically via regenerate-and-diff against Johanna Castillo,
+// Mary Burfete, Siobhan Hansen, and August Olivia (all full-scan clients).
 function stykuBlock(styku) {
+  const has = (v) => v !== undefined && v !== null;
   const els = [sectionTitle('Styku Body Composition Scan', C.teal)];
-  els.push(para([txt(`Scan Date: ${styku.scanDate}`, { size: 14, italics: true, color: C.mid })], { spacing: { after: 80 } }));
+  if (has(styku.scanDate)) {
+    els.push(para([txt(`Scan Date: ${styku.scanDate}`, { size: 14, italics: true, color: C.mid })], { spacing: { after: 80 } }));
+  }
 
   const colWidths = [5220, 5220];
-  const leftCol = [
-    ['Body Fat %', `${styku.bodyFatPct}% (${styku.bodyFatRank})`],
-    ['Lean Mass', `${styku.leanMass} lbs (${styku.leanMassPct}%)`],
-    ['Fat Mass', `${styku.fatMass} lbs`],
-    ['Bone Mass (Styku est.)', `${styku.boneMass} lbs`],
-    ['BMI', styku.bmi],
-    ['BMR', `${styku.bmr} cal/day`],
-  ];
-  const rightCol = [
-    ['VFA (Visceral Fat)', `${styku.vfa} cm²`],
-    ['Shape Score', `${styku.shapeScore}/100 — ${styku.shapeScoreLabel}`],
-    ['ALST Index', `${styku.alstIndex} kg/m²`],
-    ['Left Arm LST', `${styku.leftArmLST} lbs`],
-    ['Right Arm LST', `${styku.rightArmLST} lbs`],
-    ['Left / Right Leg LST', `${styku.leftLegLST} / ${styku.rightLegLST} lbs`],
-  ];
+  const entries = [];
+  if (has(styku.bodyFatPct)) entries.push(['Body Fat %', `${styku.bodyFatPct}%${has(styku.bodyFatRank) ? ` (${styku.bodyFatRank})` : ''}`]);
+  if (has(styku.leanMass)) entries.push(['Lean Mass', `${styku.leanMass} lbs${has(styku.leanMassPct) ? ` (${styku.leanMassPct}%)` : ''}`]);
+  if (has(styku.fatMass)) entries.push(['Fat Mass', `${styku.fatMass} lbs`]);
+  if (has(styku.boneMass)) entries.push(['Bone Mass (Styku est.)', `${styku.boneMass} lbs`]);
+  if (has(styku.bmi)) entries.push(['BMI', styku.bmi]);
+  if (has(styku.bmr)) entries.push(['BMR', `${styku.bmr} cal/day`]);
+  if (has(styku.vfa)) entries.push(['VFA (Visceral Fat)', `${styku.vfa} cm²`]);
+  if (has(styku.shapeScore)) entries.push(['Shape Score', `${styku.shapeScore}/100${has(styku.shapeScoreLabel) ? ` — ${styku.shapeScoreLabel}` : ''}`]);
+  if (has(styku.alstIndex)) entries.push(['ALST Index', `${styku.alstIndex} kg/m²`]);
+  if (has(styku.leftArmLST) && has(styku.rightArmLST)) {
+    entries.push(['Left Arm LST', `${styku.leftArmLST} lbs`]);
+    entries.push(['Right Arm LST', `${styku.rightArmLST} lbs`]);
+  }
+  if (has(styku.leftLegLST) && has(styku.rightLegLST)) {
+    entries.push(['Left / Right Leg LST', `${styku.leftLegLST} / ${styku.rightLegLST} lbs`]);
+  }
+
+  // Two-column split: left column takes the first ceil(n/2) entries. With
+  // all 12 present this is exactly the historical 6-left/6-right layout
+  // (Body Fat → BMR left; VFA → Leg LST right) — the backward-compatibility
+  // hard requirement.
+  const splitAt = Math.ceil(entries.length / 2);
+  const leftCol = entries.slice(0, splitAt);
+  const rightCol = entries.slice(splitAt);
   const rows = [];
   for (let i = 0; i < Math.max(leftCol.length, rightCol.length); i++) {
     const l = leftCol[i], r = rightCol[i];
@@ -392,8 +424,10 @@ function stykuBlock(styku) {
       ],
     }));
   }
-  els.push(fullWidthTable(rows, colWidths));
-  els.push(spacer(100));
+  if (rows.length) {
+    els.push(fullWidthTable(rows, colWidths));
+    els.push(spacer(100));
+  }
   if (styku.peerComparison) {
     els.push(...tealCallout('Peer Comparison', styku.peerComparison));
   }
