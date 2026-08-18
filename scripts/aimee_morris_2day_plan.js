@@ -92,6 +92,63 @@
  * A DOMS-driven single-session substitution noted in the same SOAP note
  * (SL Deadlift -> walking reach) was a one-off accommodation for that
  * session only, not a standing program change -- deliberately not added.
+ *
+ * Updated 8/18/2026, second pass, same day (full-detail enhancement pass,
+ * Xolokan's direct request -- mine the FULL raw session content of the
+ * same 8/10/2026 SOAP note for durable Isolated-zone/accessory/activation
+ * value, not just the one or two headline findings already added above).
+ * Full prior record (this header and CLIENTS.md's entry) re-read in full
+ * first, per the standing rule. Five additions, all real documented
+ * session content, none invented beyond a direct carry-over of a stated
+ * value:
+ *   1. Stick mobility drill warm-up (shoulder passovers, overhead squat
+ *      with stick, hip openers) -- her actual PT session opener. Added to
+ *      Day A's warm-up, which already runs hip-hinge rehearsal and now
+ *      also carries direct overhead-pressing content (DB Overhead Press,
+ *      Incline DB Press) in Block C -- the shoulder-passover/overhead-
+ *      squat-with-stick components are a genuine value-add there, not
+ *      redundant with the existing hip-hinge-specific drills.
+ *   2. Kettlebell Hip-Hinge Hang (20 lb, isometric hold at hinge-bottom,
+ *      neutral spine, lats engaged) -- added as a 5th exercise to Day A
+ *      Block A ("Hip Hinge Corrective"), the natural home for a hinge-
+ *      pattern activation drill given the block already exists to build
+ *      hip-hinge quality before loaded work. Deliberately isometric (no
+ *      eccentric load), consistent with the block's quality-over-load
+ *      ethos. Duration not specified in the note -- described in
+ *      breath-count terms (a standard, non-arbitrary isometric cueing
+ *      convention) rather than inventing a specific second count.
+ *   3. Glute Kickback (Band or Cable, 2-3x12/side) -- confirmed via direct
+ *      grep this is NOT already present anywhere in the document (the
+ *      existing "Keiser/DB Kickback" line in Day B Block C is a TRICEP
+ *      kickback -- elbow extension -- not a glute/hip-extension movement,
+ *      a different exercise entirely despite the similar name). Added as
+ *      a 6th exercise to Day A Block A, reinforcing the same hip-extension
+ *      quality the new Single-Leg Reverse Hyper already assesses.
+ *   4. Standing Hip-Hinge Back Fly (light DBs, 2x10-12, rear delt/upper
+ *      back) and Around-the-World Lateral Raise (3-5 lb, full ROM shoulder
+ *      abduction) -- real postural/shoulder activation used the same
+ *      session. Added to Day A's warm-up alongside the stick mobility
+ *      routine rather than into Block C's compound press work -- Day A's
+ *      primary press block (OHP, Incline Press) is a Compound-zone block
+ *      already carrying a full antagonist-safe sequence (2 presses, hinge
+ *      break, lateral raise); stacking 2 more shoulder-isolation moves
+ *      there would risk crowding a block that already works, and these
+ *      are activation-intent moves (light load, postural/rear-delt
+ *      priming ahead of the heavier pressing later in the session) --
+ *      textbook Isolated-zone pre-compound content, which is what the
+ *      warm-up slot is for.
+ *   5. Walking Reach (SL DL simulation) -- NOT added as a program exercise
+ *      (the DOMS-driven substitution itself was already correctly
+ *      excluded above as a one-off). Documented instead as an available,
+ *      named low-fatigue regression option directly on the Single-Leg RDL
+ *      exercise (Day A, Block C) via its `insight` field, so a future
+ *      high-fatigue day has a stated fallback on file rather than an
+ *      improvised one -- same spirit as Nicolette Scott's documented
+ *      equipment-capped substitutions.
+ * New baselineNote added (marked internal -- cites SOAP-note session
+ * detail, same pattern as the existing PT Update note above) documenting
+ * items 1-5; the exercises themselves stay fully visible in both the
+ * trainer document and Client View regardless of that note's audience.
  */
 
 const fs = require('fs');
@@ -199,6 +256,16 @@ const baselineNotes = [
     // table / summary.milestones8wk regardless of this note's audience.
     audience: 'internal',
   },
+  {
+    type: 'green',
+    label: 'PT Update — 8/10/2026 Session, Additional Activation & Accessory Detail (Jason Bethea)',
+    body: 'The same SOAP note above (SOAP_AimeeMorris_2026-08-10.pdf) documented a fuller PT-led warm-up and activation circuit than the headline additions alone captured. Folded in this update: (1) a full-body PVC-stick mobility routine (shoulder passovers, overhead squat with stick, hip openers) used as her actual session opener, added to Day A\'s warm-up; (2) Kettlebell Hip-Hinge Hang, an isometric hinge-position hold, added to Day A Block A alongside the dynamic hinge drills; (3) Glute Kickback (band or cable), added to Day A Block A — genuinely new, not already covered by the Day B "Keiser/DB Kickback" line, which is a tricep kickback; (4) Standing Hip-Hinge Back Fly and Around-the-World Lateral Raise, real postural/shoulder activation from the same session, added to Day A\'s warm-up as pre-compound priming ahead of the day\'s heavier pressing work; (5) Walking Reach documented as a named low-fatigue regression option on the Single-Leg RDL exercise (not programmed as a standing swap — a DOMS-driven one-off accommodation, per the note above).',
+    // Client View: cites internal session-documentation detail (SOAP note
+    // filename/date), same category already marked internal elsewhere in
+    // this file (the "Reintroduced This Update" and prior "PT Update"
+    // notes). The exercises/warm-up content themselves stay fully visible.
+    audience: 'internal',
+  },
 ];
 
 // Client View highlight (added 8/17/2026) — her most significant real,
@@ -222,19 +289,21 @@ const days = [
     descriptor: 'STRENGTH EMPHASIS · HIP HINGE DEVELOPMENT · CARDIOVASCULAR FINISHER · 55–65 MIN',
     intensityLabel: "Day A's Purpose",
     intensityPara: 'Hinge, press, and loaded carry work built around hip hinge development. Hex bar deadlift stays as the primary hinge lift for now, and all pressing is dumbbell-based — moderate progression means new patterns get added deliberately rather than all at once, even with the stenosis restriction cleared. The day closes with a Zone 2 or HIIT cardio finisher — the primary cardiovascular training stimulus in this 2-day/week program. This program does not use the standard ICONS 60/70/80/90 day-intensity framework — with spinal stenosis history and moderate-progression pacing, load advances only as each newly-reintroduced movement proves clean, not on a fixed weekly % schedule; the badge color reflects the day\'s pattern focus, not an intensity percentage.',
-    warmUp: '10 min: 5 min stationary bike or treadmill walk (Zone 2 — cardiovascular warm-in). Then hip hinge rehearsal: PVC or broomstick hip hinge drill 2×10 (spine neutral, hinge from hips not back), glute bridge 2×15, dead bug 2×8 each side (spine decompression before loading), cat-cow 10 slow reps, ankle circles 10 each.',
+    warmUp: '10 min: 5 min stationary bike or treadmill walk (Zone 2 — cardiovascular warm-in). Then hip hinge rehearsal: PVC or broomstick hip hinge drill 2×10 (spine neutral, hinge from hips not back), glute bridge 2×15, dead bug 2×8 each side (spine decompression before loading), cat-cow 10 slow reps, ankle circles 10 each. PT-documented stick mobility circuit (from the 8/10 session): PVC/stick shoulder passovers 2×10 (front-to-back overhead pass, shoulder mobility prep ahead of today\'s pressing work), overhead squat with stick 2×8 (integrated hip/shoulder mobility), hip openers (90/90 or open-book) 8 each side. Shoulder/postural activation: standing hip-hinge back fly 2×10-12 (light DBs, rear delt/upper back, postural anti-hunch), around-the-world lateral raise 2×10 (3-5 lb, full ROM shoulder abduction, shoulders down away from ears).',
     blocks: [
       {
         letter: 'A',
         title: 'HIP HINGE CORRECTIVE (BEFORE EVERY DEADLIFT SET)',
         color: 'red',
         introLabel: 'Hip Hinge Cue',
-        intro: 'Hip hinge needs improvement. This means Aimee is currently bending from the lumbar spine rather than hinging from the hip joint. Under load, this puts direct stress on the stenosis. These drills run before every deadlift set until the hinge is reflexive. Hip hinge cue: push the hips BACK toward the wall behind you, not down toward the floor.',
+        intro: 'Hip hinge needs improvement. This means Aimee is currently bending from the lumbar spine rather than hinging from the hip joint. Under load, this puts direct stress on the stenosis. These drills run before every deadlift set until the hinge is reflexive. Hip hinge cue: push the hips BACK toward the wall behind you, not down toward the floor. Kettlebell Hip-Hinge Hang and Glute Kickback are added this update — an isometric hinge-position hold and a targeted hip-extension isolation drill, both reinforcing the same hip-hinge/hip-extension quality this block exists to build.',
         exercises: [
           { name: 'PVC Hip Hinge Drill (Wall Touch)', sets: '2', reps: '10', load: 'Bodyweight / PVC', tempo: '3-2-1', rest: '30s', cue: 'Stand 1 foot from wall. PVC along spine (3 contact points: head, mid-back, tailbone). Hinge hips back to touch wall. If any contact point breaks, the hinge is wrong. This is the single most important corrective in the plan.' },
           { name: 'Kettlebell Deadhinge (Hip Hinge Pattern)', sets: '2', reps: '8', load: '20–25 lbs KB', tempo: '3-1-1', rest: '30s', cue: 'KB between feet. Hinge back to grip, drive hips forward to lockout. Not a squat — if knees track over toes, the pattern is wrong. Groove the hinge before loading the hex bar.' },
+          { name: 'Kettlebell Hip-Hinge Hang (Isometric)', sets: '2', reps: '3-5 controlled breaths (hold)', load: '20 lbs KB', tempo: '—', rest: '30s', cue: 'New this update. Hold at the bottom of the hinge position — neutral spine, lats engaged, no eccentric loading. Builds hinge-position control and time-under-tension awareness without adding load stress before the working sets.' },
           { name: 'Single-Leg Hip Hinge (Bodyweight)', sets: '2', reps: '8 ea', load: 'Bodyweight', tempo: '3-1-1', rest: '30s', cue: 'One leg, hinge from the hip, reach toward the floor. Develops hip hinge on each side independently. Left and right equal sets.' },
           { name: 'Single-Leg Reverse Hyper (Bench-Supported, Assessment)', sets: '2', reps: '8 ea', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'New PT assessment tool. Hips at bench edge, one leg extends behind on a controlled hip-extension arc, opposite leg braces. Watch for pelvic rotation or lumbar compensation each side; quality over load.', flag: 'PT assessment — pelvic control / hip-extension quality' },
+          { name: 'Glute Kickback (Band or Cable)', sets: '2-3', reps: '12/side', load: 'Band or cable — light-mod', tempo: 'Controlled', rest: '30s', cue: 'New this update. Standing or quadruped hip extension, squeeze glute at end range, avoid lumbar extension/compensation. Isolated hip-extension activation reinforcing the hinge and hip thrust patterns above.' },
         ],
       },
       {
@@ -257,7 +326,7 @@ const days = [
         exercises: [
           { name: 'DB Overhead Press (Seated)', sets: '4', reps: '10', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs', tempo: '2-1-1', rest: '75s', cue: 'Updated baseline 17.5 lbs ×5RM. Wk1 starts at 15 lbs for 10 reps. Seated: back supported, spine neutral. Press overhead, arms alongside ears. Core braced throughout. Add 2.5 lbs every 2 weeks.' },
           { name: 'Incline DB Press (30–45°)', sets: '4', reps: '10―12', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs', tempo: '3-1-1', rest: '75s', cue: 'Updated baseline 15 lbs ×8 reps. Primary chest movement. 30–45° incline. Elbows at 45°. Full range, squeeze at top. Safe for spinal stenosis — no axial load.' },
-          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 22.5 lbs → Wk4: 30 lbs', tempo: '3-1-1', rest: '75s', cue: 'Updated baseline 25 lbs ×8. Slight knee bend, hinge from hip, feel hamstring load. Return by squeezing glute. Left and right equal. The most effective hip hinge developer in this plan — single-leg removes the compensation that two-leg hinging allows.' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 22.5 lbs → Wk4: 30 lbs', tempo: '3-1-1', rest: '75s', cue: 'Updated baseline 25 lbs ×8. Slight knee bend, hinge from hip, feel hamstring load. Return by squeezing glute. Left and right equal. The most effective hip hinge developer in this plan — single-leg removes the compensation that two-leg hinging allows.', insight: 'Documented low-fatigue regression option: Walking Reach (a hip-hinge reach pattern without the single-leg balance demand) — available on a high-DOMS/high-fatigue day; not a standing swap, use only as needed.' },
           { name: 'DB Lateral Raise', sets: '3', reps: '12―15', load: '8―10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Lateral delt. Arms slightly bent. Raise to shoulder height. 1-second hold at top. Slow 2-second lower. Short rest maintains heart rate for fat loss.' },
         ],
       },
