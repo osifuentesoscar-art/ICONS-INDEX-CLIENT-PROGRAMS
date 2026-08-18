@@ -85,6 +85,13 @@
  * numeric thresholds are applied — the Male Client Programming Framework's
  * real, cited thresholds are used throughout instead, per CLAUDE.md's
  * Demographic Scope Rule.
+ *
+ * REVISION (8/18/2026, Client View audience-leak fix — audit finding): the
+ * Styku interpretation note's VFA sentence carried a "(CLAUDE.md's VFA
+ * section, corrected 8/17/2026)" citation into the Client View. SPLIT per
+ * the Aimee Morris LIFTMOR precedent — the trend-indicator clinical framing
+ * stays visible; the standard citation and correction date moved to a new
+ * audience:'internal' note. No exercise, load, or clinical-content change.
  */
 
 const fs = require('fs');
@@ -175,7 +182,13 @@ const baselineNotes = [
     // matching the Elizabeth Poyner precedent — the underlying clinical
     // content (ALST/VFA/BMI interpretation) is genuinely client-appropriate.
     label: 'Styku Scan Interpretation — Male Client Programming Framework (8/11/2026)',
-    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs (3.0%), BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 ("${styku.shapeScoreLabel}"). ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Moe sits comfortably above the line — this is the clinically-governing figure for his muscle-mass status, see the note below for how it relates to Styku's own internal flag. VFA ${styku.vfa} cm² is tracked here as a trend indicator rather than a fixed risk-band classification (CLAUDE.md's VFA section, corrected 8/17/2026) — no consensus body endorses a single absolute cm² cutoff, so this reading is watched directionally at future rescans rather than labeled against a risk band; the sex-independence of the underlying visceral-adiposity evidence still applies to him directly. BMI ${styku.bmi} falls in the WHO Overweight range (25-29.9) — WHO BMI thresholds are not sex-specific, and unlike the "over-flagged muscular athlete" caution the Male Client Programming Framework raises for reading BMI in isolation, this BMI reading is concordant with — not contradicted by — his body fat % and lean mass findings below. There is no muscular-athlete false positive to correct for here.`,
+    body: `Lean Mass ${styku.leanMass} lbs (${styku.leanMassPct}%), Fat Mass ${styku.fatMass} lbs, Bone Mass ${styku.boneMass} lbs (3.0%), BMR ${styku.bmr} cal/day, Shape Score ${styku.shapeScore}/100 ("${styku.shapeScoreLabel}"). ALST Index ${styku.alstIndex} kg/m² — EWGSOP2 2018's male low-muscle-mass cutoff is <7.0 kg/m² AT-RISK / ≥7.0 kg/m² Not At-Risk (the same source already used for the women's 5.5 kg/m² threshold in this system); Moe sits comfortably above the line — this is the clinically-governing figure for his muscle-mass status, see the note below for how it relates to Styku's own internal flag. VFA ${styku.vfa} cm² is tracked here as a trend indicator rather than a fixed risk-band classification — no consensus body endorses a single absolute cm² cutoff, so this reading is watched directionally at future rescans rather than labeled against a risk band; the sex-independence of the underlying visceral-adiposity evidence still applies to him directly. BMI ${styku.bmi} falls in the WHO Overweight range (25-29.9) — WHO BMI thresholds are not sex-specific, and unlike the "over-flagged muscular athlete" caution the Male Client Programming Framework raises for reading BMI in isolation, this BMI reading is concordant with — not contradicted by — his body fat % and lean mass findings below. There is no muscular-athlete false positive to correct for here.`,
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'VFA Framing — Standard Basis for the Trend-Indicator Language',
+    body: 'The VFA framing in the Styku interpretation note above follows CLAUDE.md\'s VFA section as corrected 8/17/2026, which retired the prior four-tier absolute risk-band table (<70 / 70-99 / 100-149 / ≥150 cm²) in favor of per-client trend tracking. Rationale, for the record: no consensus body endorses a single VAT/VFA cm² cutoff, and Styku\'s own published VFA validation was against DXA in kilograms rather than CT in cm², so an absolute cm² reading should not be presented as a graded risk classification. Waist circumference against the IAS/ICCR thresholds is the preferred clinical-facing metric if that measurement is ever collected for him.',
   },
   {
     type: 'watch',

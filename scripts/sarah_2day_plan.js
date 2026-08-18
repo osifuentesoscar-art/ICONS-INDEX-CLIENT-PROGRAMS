@@ -145,6 +145,15 @@
  * 4-week check-in with Nick (load/rep tolerance, squat depth, hip-hinge
  * control) as the reassessment mechanism — not a Styku rescan, since no
  * Styku scan exists for her to begin with.
+ *
+ * REVISION (8/18/2026, Client View audience-leak fix — audit finding): Day A
+ * Block A's intro opened with "Judgment call, stated here rather than left
+ * implicit:" — build-rationale language in an unfiltered `intro` field.
+ * Reworded as coaching context. Third-person self-references in
+ * client-visible fields also converted to second person (equipment note,
+ * Block B intros on both days, rescanNote), since a Client View should
+ * address the client directly. Internal-marked notes left as-is. No
+ * exercise, load, set/rep, or structural change.
  */
 
 const fs = require('fs');
@@ -178,7 +187,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Equipment — Full Home Gym, By Trainer Design',
-    body: 'Sarah has access to a full home gym — confirmed, not an assumption. This program deliberately draws on dumbbells and/or kettlebells up to 20 lbs (a hard ceiling set by Nick, not a limit of what equipment exists), a resistance band, bodyweight, a step/box, and the pull-up bar and squat rack as stable anchors for banded pulling work. Two pieces of equipment Sarah has access to are intentionally NOT used anywhere in this program — by Nick’s direct coaching choice, not because they’re unavailable: the cable machine, and the bench. These are deliberate decisions about what works best for Sarah right now, not workarounds for missing equipment — if that ever changes, flag it to your coach so the program can be adjusted.',
+    body: 'You have access to a full home gym — confirmed, not an assumption. This program deliberately draws on dumbbells and/or kettlebells up to 20 lbs (a hard ceiling set by Nick, not a limit of what equipment exists), a resistance band, bodyweight, a step/box, and the pull-up bar and squat rack as stable anchors for banded pulling work. Two pieces of equipment you have access to are intentionally NOT used anywhere in this program — by Nick’s direct coaching choice, not because they’re unavailable: the cable machine, and the bench. These are deliberate decisions about what works best for you right now, not workarounds for missing equipment — if that ever changes, flag it to your coach so the program can be adjusted.',
   },
   {
     type: 'gold',
@@ -220,7 +229,7 @@ const days = [
         title: 'CONTROL & ACTIVATION — BEFORE THE CIRCUIT',
         color: 'gold',
         introLabel: 'Why',
-        intro: 'Control precedes power: this block wakes the glutes and shoulders and rehearses hip-hinge control at a genuinely light, brief dose before any loaded circuit work begins — straight sets, not circuit pace, generous rest between sets. Includes the one short-ROM hip-hinge pattern-maintenance drill in this program (DB RDL, Short-ROM). Judgment call, stated here rather than left implicit: DB Hip Thrust and Glute Bridge already carry Sarah’s primary hip-extension training role throughout this program precisely because they don’t require a sustained flat-back hinge under load — but a brief, technique-only, mid-shin-range hinge rehearsal (not a working strength lift) keeps the pattern itself from going completely untrained, at a dose and load low enough that her current hip-hinge/hamstring limitation stays the priority, not an afterthought.',
+        intro: 'Control precedes power: this block wakes the glutes and shoulders and rehearses hip-hinge control at a genuinely light, brief dose before any loaded circuit work begins — straight sets, not circuit pace, generous rest between sets. It includes the one short-ROM hip-hinge pattern-maintenance drill in this program (DB RDL, Short-ROM). Hip Thrust and Glute Bridge carry your primary hip-extension training throughout this program precisely because they don’t ask for a sustained flat-back hinge under load — but a brief, technique-only, mid-shin-range hinge rehearsal (not a working strength lift) keeps the hinge pattern itself from going completely untrained, at a dose and load light enough that your current hip-hinge and hamstring mobility stays the priority.',
         exercises: [
           { name: 'Glute Bridge (Bodyweight)', sets: '2', reps: '15', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Full hip extension, squeeze glutes hard at the top, no low-back arch.' },
           { name: 'Band Pull-Apart', sets: '2', reps: '15', load: 'Light-Moderate Band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight, squeeze shoulder blades together, control the release.' },
@@ -235,7 +244,7 @@ const days = [
         letter: 'B',
         title: 'MAIN CIRCUIT — SQUAT, HIP THRUST & PRESS/ROW SUPERSET',
         introLabel: 'Format',
-        intro: 'Continuous circuit — 3-4 rounds, ~15-20s to move between exercises, ~60-90s rest after completing a full round before repeating. Squat to your own comfortable depth (typically just above parallel is completely normal) — quality over depth, never force further range than control allows. This is house philosophy, not a Sarah-specific accommodation: "Long where you move, tight where you hold" is how full range of motion is coached across this entire program, for every client. DB Hip Thrust uses the step/box — the only exercise in this program that needs an elevated surface. Standing Press and Single-Arm Row run as a superset — no rest between the two, straight from one into the other — carried forward from Sarah’s prior programming preference that single-arm row never stands alone.',
+        intro: 'Continuous circuit — 3-4 rounds, ~15-20s to move between exercises, ~60-90s rest after completing a full round before repeating. Squat to your own comfortable depth (typically just above parallel is completely normal) — quality over depth, never force further range than control allows. This is house philosophy, not a one-off accommodation: "Long where you move, tight where you hold" is how full range of motion is coached across this entire program, for every client. DB Hip Thrust uses the step/box — the only exercise in this program that needs an elevated surface. Standing Press and Single-Arm Row run as a superset — no rest between the two, straight from one into the other — carried forward from your own prior programming preference that single-arm row never stands alone.',
         exercises: [
           { name: 'Goblet Squat (Light DB/KB or Bodyweight)', sets: '3-4 rounds', reps: '15-20', load: 'Bodyweight or ≤20 lb DB/KB', tempo: 'Controlled', rest: '15-20s then next', cue: 'Squat to your comfortable depth — quality over depth, never force further range.', rirNote: '2-3 RIR' },
           { name: 'DB Hip Thrust (Elevated on Step/Box)', sets: '3-4 rounds', reps: '15-20', load: '≤20 lb DB across hips', tempo: 'Controlled', rest: '15-20s then next', cue: 'Upper back on the step/box, drive through heels, full hip extension at the top.', rirNote: '2-3 RIR' },
@@ -295,7 +304,7 @@ const days = [
         letter: 'B',
         title: 'MAIN CIRCUIT — HIP THRUST, SQUAT, FLOOR PRESS & PULLDOWN',
         introLabel: 'Format',
-        intro: 'Continuous circuit — 3-4 rounds, ~15-20s between exercises, ~60-90s after each full round. Floor press replaces bench press — lying on the floor or a mat, not a bench, per Sarah’s preference; the floor itself limits the descent, which also keeps the shoulder range conservative. Banded lat pulldown replaces any cable-machine pulldown — no cable machine anywhere in this program.',
+        intro: 'Continuous circuit — 3-4 rounds, ~15-20s between exercises, ~60-90s after each full round. Floor press replaces bench press — lying on the floor or a mat, not a bench, per your preference; the floor itself limits the descent, which also keeps the shoulder range conservative. Banded lat pulldown replaces any cable-machine pulldown — no cable machine anywhere in this program.',
         exercises: [
           { name: 'DB Hip Thrust (Elevated on Step/Box)', sets: '3-4 rounds', reps: '15-20', load: '≤20 lb DB across hips', tempo: 'Controlled', rest: '15-20s then next', cue: 'Upper back on the step/box, drive through heels, full extension at top.', rirNote: '2-3 RIR' },
           { name: 'Goblet Squat (Light DB/KB or Bodyweight)', sets: '3-4 rounds', reps: '15-20', load: 'Bodyweight or ≤20 lb DB/KB', tempo: 'Controlled', rest: '15-20s then next', cue: 'Squat to your comfortable depth — quality over depth, never force further range.', rirNote: '2-3 RIR' },
@@ -334,7 +343,7 @@ const summary = {
   ],
   milestones4wk: 'Check in with Nick at 4 weeks — this program’s reassessment mechanism, since no Styku scan or strength-testing battery exists to re-test instead. Confirm: has squat depth or hip-hinge control changed, is the short-ROM hinge drill (Day A, Block A) still needed at the same conservative dose, and which circuit exercises are approaching the 20 lb equipment ceiling versus still progressing on reps/rounds.',
   milestones8wk: 'If lower back and hamstring mobility have genuinely improved by 8 weeks, revisit with Nick whether a slightly longer-range hip hinge becomes appropriate, or whether the current hip-thrust-led approach continues to be the better fit — either is a legitimate outcome, not a target to force. If several circuit exercises have hit the 20 lb ceiling, that’s the moment to discuss with Nick whether the ceiling itself should move, since equipment access is not the limiting factor.',
-  rescanNote: 'No Styku scan exists for Sarah, so there is no 8-12 week body-composition rescan to schedule. The 4-week check-in with Nick above is this program’s actual reassessment mechanism, per this program’s standard 4-week strength-reassessment cadence.',
+  rescanNote: 'There is no Styku scan on file yet, so there is no 8-12 week body-composition rescan to schedule. The 4-week check-in with Nick above is this program’s actual reassessment mechanism, per this program’s standard 4-week strength-reassessment cadence.',
 };
 
 const data = {
