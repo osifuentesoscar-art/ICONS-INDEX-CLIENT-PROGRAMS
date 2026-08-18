@@ -1147,7 +1147,13 @@ function assessmentCoverBand(client, badgeText) {
       { fill: AR.dark, colSpan: 3, width: TW }
     )],
   });
-  const metaText = `Assessment Date: ${client.assessmentDate}   |   Location: ${client.location}`;
+  // Partial-field guard (8/18/2026 — see standardStykuStatItems()): only
+  // the meta parts that actually exist are printed; a missing date or
+  // location is omitted, never rendered as "undefined" or defaulted.
+  const metaParts = [];
+  if (client.assessmentDate !== undefined && client.assessmentDate !== null) metaParts.push(`Assessment Date: ${client.assessmentDate}`);
+  if (client.location !== undefined && client.location !== null) metaParts.push(`Location: ${client.location}`);
+  const metaText = metaParts.join('   |   ');
   const row4 = new TableRow({
     children: [cell(
       [para([txt(metaText, { size: 14, color: 'D8D2C6' })], { alignment: AlignmentType.CENTER, spacing: { after: 160 } })],
@@ -1230,6 +1236,13 @@ function biologicalAgeDisclaimer() {
 // ── STYKU STAT-CARD GRID (4 cols × 2 rows) ────────────────────────────────
 // items: [{ value, label, sub, labelFootnote, subFootnote, highlight }]
 function statBoxGrid(items, colsPerRow = 4) {
+  // Partial-field guard (8/18/2026 — see standardStykuStatItems()'s comment
+  // block): drop any item whose primary value is missing (null/undefined —
+  // 0 is a real value), and render nothing at all for an empty set rather
+  // than an empty zero-row table. Covers caller-supplied item arrays
+  // (data.styku.items) the same way as the standard set.
+  items = (items || []).filter((it) => it.value !== undefined && it.value !== null);
+  if (!items.length) return [];
   const w = evenWidths(colsPerRow);
   const rows = [];
   for (let i = 0; i < items.length; i += colsPerRow) {
@@ -1263,17 +1276,36 @@ function statBoxGrid(items, colsPerRow = 4) {
 // document's exact card set and footnote assignments (1/2/3/4). VFA is
 // shown as a single trend tag (e.g. "Very Low") per CLAUDE.md's corrected
 // VFA framing, not the retired 4-tier risk table.
+// Partial-field behavior (added 8/18/2026, mirroring stykuBlock()'s fix —
+// same motivating precedent: Johanna Castillo's 8/18/2026 build, where a
+// partial scan record met unconditional interpolation; several of the 10
+// intake-pending clients onboarded 8/18/2026 are expected to arrive with
+// similarly partial records, and the Assessment Report is onboarding
+// checklist item 1). Rules, matching stykuBlock() exactly:
+//   - A field is "missing" when null/undefined; 0 is a real value.
+//   - A stat box whose PRIMARY value is missing is omitted from the grid
+//     entirely — never rendered as a literal "undefined", never as an
+//     empty card. statBoxGrid() lays out fewer-than-8 boxes cleanly: it
+//     chunks into rows of 4 and pads an incomplete final row with
+//     borderless white cells (blank space, not visible empty boxes).
+//   - Sub-label fields (bodyFatRank, leanMassPct) drop only their own
+//     suffix line, not the parent box — the same rule the already-guarded
+//     fatMassPct/boneMassPct/bmiLabel/shapeScoreLabel/vfaTag subs follow.
+// A COMPLETE object renders identically to the pre-8/18/2026 output —
+// verified empirically via regenerate-and-diff on Rena Paul's Assessment
+// Report (the pilot, and the only one built so far).
 function standardStykuStatItems(styku) {
-  return [
-    { value: `${styku.bodyFatPct}%`, label: 'BODY FAT %', sub: `Rank: ${styku.bodyFatRank}`, subFootnote: 1 },
-    { value: `${styku.leanMass} lbs`, label: 'LEAN MASS', sub: `${styku.leanMassPct}% of total` },
-    { value: `${styku.fatMass} lbs`, label: 'FAT MASS', sub: `${styku.fatMassPct != null ? styku.fatMassPct + '% of total' : ''}` },
-    { value: `${styku.boneMass} lbs`, label: 'BONE MASS', sub: `${styku.boneMassPct != null ? styku.boneMassPct + '% of total' : ''}` },
-    { value: styku.bmi, label: 'BMI', sub: styku.bmiLabel || '' },
-    { value: `${styku.bmr} cal/day`, label: 'BMR', labelFootnote: 2, sub: 'Revised Harris-Benedict estimate' },
-    { value: `${styku.shapeScore}/100`, label: 'SHAPE SCORE', labelFootnote: 3, sub: styku.shapeScoreLabel || '', highlight: true },
-    { value: `${styku.vfa} cm²`, label: 'VISCERAL FAT AREA', labelFootnote: 4, sub: styku.vfaTag || '' },
-  ];
+  const has = (v) => v !== undefined && v !== null;
+  const items = [];
+  if (has(styku.bodyFatPct)) items.push({ value: `${styku.bodyFatPct}%`, label: 'BODY FAT %', sub: has(styku.bodyFatRank) ? `Rank: ${styku.bodyFatRank}` : '', subFootnote: 1 });
+  if (has(styku.leanMass)) items.push({ value: `${styku.leanMass} lbs`, label: 'LEAN MASS', sub: has(styku.leanMassPct) ? `${styku.leanMassPct}% of total` : '' });
+  if (has(styku.fatMass)) items.push({ value: `${styku.fatMass} lbs`, label: 'FAT MASS', sub: `${styku.fatMassPct != null ? styku.fatMassPct + '% of total' : ''}` });
+  if (has(styku.boneMass)) items.push({ value: `${styku.boneMass} lbs`, label: 'BONE MASS', sub: `${styku.boneMassPct != null ? styku.boneMassPct + '% of total' : ''}` });
+  if (has(styku.bmi)) items.push({ value: styku.bmi, label: 'BMI', sub: styku.bmiLabel || '' });
+  if (has(styku.bmr)) items.push({ value: `${styku.bmr} cal/day`, label: 'BMR', labelFootnote: 2, sub: 'Revised Harris-Benedict estimate' });
+  if (has(styku.shapeScore)) items.push({ value: `${styku.shapeScore}/100`, label: 'SHAPE SCORE', labelFootnote: 3, sub: styku.shapeScoreLabel || '', highlight: true });
+  if (has(styku.vfa)) items.push({ value: `${styku.vfa} cm²`, label: 'VISCERAL FAT AREA', labelFootnote: 4, sub: styku.vfaTag || '' });
+  return items;
 }
 
 // ── SOLID REFERENCE-GROUP COMPARISON BOX ──────────────────────────────────
@@ -1296,7 +1328,12 @@ function solidBox(label, body, opts = {}) {
 // Body Measurements" (3 cols) — a client's measurement set is inherently
 // variable, so this does not assume a fixed schema.
 function statRowGrid(items, cols = 2) {
-  if (!items || !items.length) return [];
+  // Partial-field guard (8/18/2026 — see standardStykuStatItems()): an item
+  // whose value is missing (null/undefined; 0 is real) is dropped rather
+  // than rendered as "undefined" — relevant when a calling script maps a
+  // partial scan record straight into segmental/measurement rows.
+  items = (items || []).filter((it) => it.value !== undefined && it.value !== null);
+  if (!items.length) return [];
   const w = evenWidths(cols);
   const rows = [];
   for (let i = 0; i < items.length; i += cols) {
@@ -1610,7 +1647,9 @@ function assessmentFooter(client) {
       new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 13, color: C.mid }),
       txt(' of ', { size: 13, color: C.mid }),
       new TextRun({ children: [PageNumber.TOTAL_PAGES], font: FONT, size: 13, color: C.mid }),
-      txt(`   |  ${client.name}  |  ${client.assessmentDate}`, { size: 13, color: C.mid }),
+      // Partial-field guard (8/18/2026): only present parts are appended —
+      // a missing assessmentDate never prints as "undefined" in the footer.
+      txt(' ' + [client.name, client.assessmentDate].filter((p) => p !== undefined && p !== null && p !== '').map((p) => `  |  ${p}`).join(''), { size: 13, color: C.mid }),
     ],
   });
   return new Footer({ children: [p] });
@@ -1640,6 +1679,13 @@ function assessmentFooter(client) {
 async function buildAssessmentReport(data) {
   const client = data.client;
   const children = [];
+  // Partial-field helpers (8/18/2026 — Johanna Castillo precedent; see
+  // standardStykuStatItems()'s comment block for the full rules). has()
+  // treats 0 as a real value; metaLine() joins only the parts that exist,
+  // so a missing assessmentDate never prints as a literal "undefined" in
+  // a page band.
+  const has = (v) => v !== undefined && v !== null;
+  const metaLine = (...parts) => parts.filter((p) => has(p) && p !== '').join('  |  ');
 
   // ---- Page 1: Cover / Styku scan ----
   children.push(...assessmentCoverBand(client, data.badge));
@@ -1649,18 +1695,38 @@ async function buildAssessmentReport(data) {
   children.push(...biologicalAgeDisclaimer());
 
   if (data.styku) {
-    children.push(sectionTitle('Styku Body Composition Scan', C.gold));
-    children.push(para([txt(`Scanned: ${data.styku.scanDate}   |   Brace Life Studios`, { size: 13, italics: true, color: C.mid })], { spacing: { after: 100 } }));
-    children.push(...statBoxGrid(data.styku.items || standardStykuStatItems(data.styku)));
-    if (data.styku.peerComparison) {
-      children.push(...solidBox('Reference-Group Comparison  [5]', data.styku.peerComparison, { fill: AR.green }));
+    // Partial-scan behavior (8/18/2026, Johanna Castillo precedent): the
+    // "Scanned:" date line renders only when a scan date actually exists —
+    // never fabricated or defaulted; the attribution line still reads
+    // grammatically without the date clause. Stat boxes with missing
+    // primary values are omitted (see standardStykuStatItems()). A styku
+    // object that yields NO renderable content at all (no date, no stat
+    // items, no peer comparison) skips this section entirely rather than
+    // leaving an orphaned section title — a deliberate graceful-omission
+    // choice, not a throw, since data.styku has always been optional on
+    // this path (a scan-less report simply never renders this section).
+    const stykuItems = (data.styku.items || standardStykuStatItems(data.styku))
+      .filter((it) => has(it.value));
+    if (has(data.styku.scanDate) || stykuItems.length || data.styku.peerComparison) {
+      children.push(sectionTitle('Styku Body Composition Scan', C.gold));
+      if (has(data.styku.scanDate)) {
+        children.push(para([txt(`Scanned: ${data.styku.scanDate}   |   Brace Life Studios`, { size: 13, italics: true, color: C.mid })], { spacing: { after: 100 } }));
+      }
+      if (stykuItems.length) children.push(...statBoxGrid(stykuItems));
+      if (data.styku.peerComparison) {
+        children.push(...solidBox('Reference-Group Comparison  [5]', data.styku.peerComparison, { fill: AR.green }));
+      }
     }
   }
 
-  if (data.segmental && data.segmental.length) {
+  // Segmental section gates on rows that actually carry a value (8/18/2026
+  // partial-field guard), and the ALST summary row requires a real value —
+  // never an "undefined" highlight line.
+  const segmentalItems = (data.segmental || []).filter((it) => has(it.value));
+  if (segmentalItems.length) {
     children.push(sectionTitle('Segmental Lean Mass Distribution', C.gold));
-    children.push(...statRowGrid(data.segmental, 2));
-    if (data.alstRow) children.push(...highlightRow(data.alstRow.label, data.alstRow.value, data.alstRow.footnote));
+    children.push(...statRowGrid(segmentalItems, 2));
+    if (data.alstRow && has(data.alstRow.value)) children.push(...highlightRow(data.alstRow.label, data.alstRow.value, data.alstRow.footnote));
     if (data.asymmetryNote) {
       children.push(para([txt(data.asymmetryNote, { size: 13, color: C.mid })], { spacing: { after: 100 } }));
     }
@@ -1669,7 +1735,7 @@ async function buildAssessmentReport(data) {
   // ---- Page 2: Strength Assessment ----
   if (data.strength) {
     children.push(new Paragraph({ children: [new PageBreak()] }));
-    children.push(...assessmentPageBand('ICONS Index — Strength Assessment', `${client.name}  |  ${client.assessmentDate}  |  Brace Life Studios`));
+    children.push(...assessmentPageBand('ICONS Index — Strength Assessment', metaLine(client.name, client.assessmentDate, 'Brace Life Studios')));
     if (data.strength.protocolIntro) {
       children.push(...tanBox('ICONS Protocol', data.strength.protocolIntro, { fill: AR.card, accent: C.gold }));
     }
@@ -1698,10 +1764,11 @@ async function buildAssessmentReport(data) {
 
   // ---- Page 5: Body Measurements & Next Steps ----
   children.push(new Paragraph({ children: [new PageBreak()] }));
-  children.push(...assessmentPageBand('Body Measurements & Next Steps', `${client.name}  |  ${client.assessmentDate}  |  Brace Life Studios`));
+  children.push(...assessmentPageBand('Body Measurements & Next Steps', metaLine(client.name, client.assessmentDate, 'Brace Life Studios')));
   children.push(sectionTitle('3D Scan Body Measurements (Styku — all measurements in inches)', C.gold));
-  if (data.measurements && data.measurements.length) {
-    children.push(...statRowGrid(data.measurements, 3));
+  const measurementItems = (data.measurements || []).filter((it) => has(it.value));
+  if (measurementItems.length) {
+    children.push(...statRowGrid(measurementItems, 3));
   } else {
     children.push(...tanBox(null, data.measurementsNote || 'Circumference measurements were not captured as part of this scan/intake session — add at the next Styku session to enable this section.', { fill: AR.card, accent: C.gold }));
   }
@@ -1757,7 +1824,12 @@ const DEFAULT_HOW_TO_READ = '% Body Weight and Level reflect the working sets sh
 // should be reconciled with the specific client's own styku data by the
 // calling script; this default exists so a script that doesn't supply
 // data.footnotes still gets CLAUDE.md-accurate methodology language rather
-// than nothing at all.
+// than nothing at all. Partial-field audit (8/18/2026): verified this
+// default set interpolates NO styku/client fields — all 8 notes are static
+// text (it takes `data` for signature symmetry only), so a partial scan
+// record cannot print "undefined" here. Keep it that way: if a future
+// footnote needs a client-specific number, guard it per the rules in
+// standardStykuStatItems()'s comment block.
 function DEFAULT_ASSESSMENT_FOOTNOTES(data) {
   return [
     { marker: 1, text: 'Body-fat "Rank" (e.g., Fit) is generated by Styku against its own norm-referenced comparison groups, drawn from self-selected clinical/fitness-testing populations — not a nationally representative sample. A population-representative comparison can shift a person\'s percentile substantially versus these vendor tables, even though the underlying body-fat % is identical.' },
