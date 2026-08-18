@@ -370,7 +370,7 @@ const weekOverview = [
 
 const baselines = [
   ['Hex Bar Deadlift', `85 lbs x 5 (Epley 1RM ≈${oneRM.hexDL} lbs)`, '7/29/2026', `Wk1: ${wk1.hexDL} lbs x5 → Wk4: ${wk4.hexDL} lbs x5 — 75%→85% 1RM ramp`],
-  ['Squat', `25 lbs x 5 (Epley 1RM ≈${oneRM.squat} lbs)`, '7/29/2026', `Wk1: ${wk1.squat} lbs x5 → Wk4: ${wk4.squat} lbs x5`],
+  ['Squat', `25 lbs x 5 (Epley 1RM ≈${oneRM.squat} lbs)`, '7/29/2026', `Wk1: ${wk1.squat} lbs x6-8 → Wk4: ${wk4.squat} lbs x6-8 — matches the programmed 3x6-8`],
   ['Hip Thrust (DB)', `35 lbs x 5 (Epley 1RM ≈${oneRM.hipThrust} lbs)`, '7/29/2026', `Wk1: ${wk1.hipThrust} lbs x8 → Wk4: ${wk4.hipThrust} lbs x8`],
   ['Single-Leg RDL', `25 lbs x 5 (Epley 1RM ≈${oneRM.slRDL} lbs)`, '7/29/2026', `Wk1: ${wk1.slRDL} lbs/side x6 → Wk4: ${wk4.slRDL} lbs/side x6 — left leg leads`],
   ['Single-Leg Stance Squat', `12 lbs x 5 (Epley 1RM ≈${oneRM.slStanceSquat} lbs)`, '7/29/2026', `Wk1: ${wk1.slStanceSquat} lbs x6 → Wk4: ${wk4.slStanceSquat} lbs x6 — left leg leads`],
@@ -456,7 +456,7 @@ const days = [
     subtitle: 'Overhead Pressing Actively Reintroduced · Scapular Strength Gates Pull-Up Progression',
     descriptor: 'TECHNIQUE DAY · SHOULDER CARE PRIORITY · PULL-UP PATHWAY GATED',
     intensityLabel: '60% Day',
-    intensityPara: 'Technique day — form over load, no PRs. Overhead pressing is being actively, carefully reintroduced today after a prior period of full suspension; the corrective and scapular blocks below earn that reintroduction before any pressing happens. Muscle-building remains the session\'s primary goal given her ALST At-Risk status — every block here is real progressive-resistance work, not filler. Work every set at 3+ RIR.',
+    intensityPara: 'Technique day — form over load, no PRs. Overhead pressing is being actively, carefully reintroduced today after a prior period of full suspension; the corrective and scapular blocks below earn that reintroduction before any pressing happens. Muscle-building remains the session\'s primary goal given her ALST At-Risk status — every block here is real progressive-resistance work, not filler. Effort is tiered by block today: corrective and scapular work stays comfortably submaximal (3+ RIR), the reintroduced press works at 2 RIR inside pain-free range, and the one hypertrophy-priority accessory set (incline push-up) is the only work taken to 1 rep in reserve.',
     warmUp: '5 min bike, band pull-apart x15, scapular wall slide x10, arm circles x10/direction (pain-free range only), cat-cow x8. PT-led stick mobility circuit, used as the session opener: PVC/stick shoulder passovers 2x10 (front-to-back overhead pass, pain-free range only), overhead squat with stick 2x8, hip openers (90/90 or open-book) 8 each side.',
     blocks: [
       {
@@ -514,7 +514,7 @@ const days = [
         introLabel: 'Load Target',
         intro: 'The day\'s second compound pattern — pulling, rotating away from the pressing work above. Kieser Pulldown is her active pull-strength pathway exercise while pull-up loading stays gated — track progression in Kieser units on the same machine, not converted to a free-weight number. Single-Arm Row is led by the right arm (weaker side, per Styku LST).',
         exercises: [
-          { name: 'Kieser Pulldown', sets: '3', reps: '10-12', load: 'Kieser 13.5 units, build weekly on same machine', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.' },
+          { name: 'Kieser Pulldown', sets: '3', reps: '10-12', load: 'Kieser 13.5 units, build weekly on same machine', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.', rirNote: '2 RIR' },
           { name: 'Single-Arm DB Row (Right-Led)', sets: '3', reps: '10/side', load: '20 lbs (reference), build progressively', tempo: '2-1-2', rest: '75s', flag: 'Right arm weaker (Styku) — leads every set', cue: 'Right arm first. Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
         ],
       },
@@ -661,7 +661,7 @@ const days = [
         intro: 'The day\'s second compound pattern — pressing and pulling, rotating off the hip-dominant work above. A brief continued check-in, not a full repeat of Day 1\'s corrective block — confirms the reintroduction is progressing cleanly before the next Day 1 session, and is run here rather than later so the shoulder is checked fresh, not fatigued. Same pain-monitoring rule applies: sharp/pinching pain stops the set, ordinary fatigue does not.',
         exercises: [
           { name: 'Standing DB Overhead Press', sets: '2', reps: '6-8', load: 'continue from Day 1 working load', tempo: '2-0-2', rest: '90s', flag: 'Left shoulder — pain-free range only', cue: 'Same working load as Day 1 unless pain-free range has clearly expanded.', rirNote: '2 RIR' },
-          { name: 'Kieser Pulldown', sets: '2', reps: '10-12', load: 'continue from Day 1 Kieser units', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.' },
+          { name: 'Kieser Pulldown', sets: '2', reps: '10-12', load: 'continue from Day 1 Kieser units', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.', rirNote: '2 RIR' },
         ],
       },
       {
