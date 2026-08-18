@@ -291,6 +291,53 @@
  * added; (4) both warm-up fields reworded off "PT-documented ... from the
  * 8/6 session, used as her actual opener" to "PT-led ... used as the session
  * opener." No exercise, load, set/rep, or clinical-content change.
+ *
+ * REVISION (8/18/2026, fifth pass, same day — BLOCK METHOD SLOT 6 APPLIED,
+ * per CLAUDE.md commit 3429cbd adding "THIRD COMPOUND — INTEGRATION" to the
+ * ICONS Block Method: the session's closer, a compound movement or short
+ * compound complex pulling the day's patterns together — carries, core-
+ * integrated compound work, and bracket-mandated power work now live here
+ * by default instead of floating in unnamed post-architecture blocks.
+ * This resolves the pilot's own friction finding from the fourth pass.):
+ *   DAY 1 — NEW Block F, "Full-Body Integration — Suitcase Carry
+ *     (Right-Led)": integrates the day's scapular setting (Blocks A-B),
+ *     grip/pull strength (Block E), and tall pressing posture (Block C)
+ *     under gait. Right hand holds the load per the Asymmetry Protocol
+ *     (right arm weaker — same rule as Day 3's suitcase carry). Load
+ *     15-20 lbs — anchored to her existing Day 3 suitcase prescription,
+ *     itself derived from the tested 25 lbs/hand Farmers Carry baseline;
+ *     no invented number. CONSEQUENCE: the carry brings Day 1 into
+ *     pelvicFloorCallout()'s trigger set, so the callout now auto-fires
+ *     on ALL THREE days (previously Days 2-3 only) — correct behavior
+ *     per the amended spec, not a bug; the internal Age Bracket note and
+ *     the visible asymmetry note were both updated to match (no stale
+ *     "Days 2 and 3" / "Suitcase Carry, Day 3" references left dangling).
+ *     Metabolic finisher relettered F→G.
+ *   DAY 2 — NEW Block F, "Full-Body Integration — Hinge-to-Carry
+ *     Complex" (DB Deadlift x5 → Farmers Carry 20-30 yd, one continuous
+ *     complex row, 2 sets, 15-20 lbs/hand — deliberately light): the day
+ *     already carries substantial hip-extension volume during active
+ *     left-hip tendinitis rehab, so the closer integrates the day's
+ *     squat/hinge patterns into braced gait WITHOUT piling on heavy
+ *     hip-extension sets. Carries the standard left-hip flag (the hinge
+ *     pickup is hip-loaded, and walking under load with a rehabbing hip
+ *     warrants the pain-monitoring language regardless). Antagonist walk:
+ *     SL RDL (hinge) → complex (hinge pickup, then carry) = 2 consecutive
+ *     hinge exercises then a carry — within the two-in-a-row allowance.
+ *     Metabolic finisher relettered F→G.
+ *   DAY 3 — no content moved; Blocks F (carries), G (core), H (power)
+ *     RETITLED as the day's integration work ("Full-Body Integration —
+ *     Loaded Carries / Core Under Load / Power Expression"), formalizing
+ *     what the day already did — these were exactly the orphaned
+ *     post-architecture blocks the slot-6 amendment names. Letters F/G/H/I
+ *     unchanged (no reletter; the power note's Block H reference and the
+ *     H-intro's Block I reference both stay accurate). One prescription-
+ *     detail alignment: DB Farmers Carry rirNote '2 RIR' → the carry
+ *     convention ("Distance & quality governed — no RIR target"),
+ *     matching the treatment stated on both new integration blocks.
+ *   RIR convention on all carry/complex work: distance- and quality-
+ *   governed, no RIR target, stated as such per exercise — an RIR count
+ *   is meaningless on a gait-based quality movement.
  */
 
 const fs = require('fs');
@@ -407,13 +454,13 @@ const baselineNotes = [
   {
     type: 'watch',
     label: 'Segmental Asymmetry — Right Arm Leads Pull/Press, Left Leg Leads Unilateral Work',
-    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — a 0.8 lb gap, roughly 11% relative to the larger side. RIGHT arm is weaker (lower LST) and leads every unilateral rowing/pressing exercise across this program (Single-Arm Row, Day 1; Suitcase Carry, Day 3 — the weaker hand holds the load, per the Asymmetry Protocol's coaching convention). Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — also a 0.8 lb gap, roughly 6% relative to the larger side. LEFT leg continues to lead every unilateral leg exercise (Single-Leg Stance Squat and Single-Leg RDL, Day 2; carried forward into Day 3's activation work), with this gap tracked closely at the 8-week Styku rescan to confirm the lead assignment still reflects a real, worth-addressing difference. Reps/loads are logged per side throughout.`,
+    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — a 0.8 lb gap, roughly 11% relative to the larger side. RIGHT arm is weaker (lower LST) and leads every unilateral rowing/pressing exercise across this program (Single-Arm Row, Day 1; Suitcase Carry, Days 1 and 3 — the weaker hand holds the load, per the Asymmetry Protocol's coaching convention). Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — also a 0.8 lb gap, roughly 6% relative to the larger side. LEFT leg continues to lead every unilateral leg exercise (Single-Leg Stance Squat and Single-Leg RDL, Day 2; carried forward into Day 3's activation work), with this gap tracked closely at the 8-week Styku rescan to confirm the lead assignment still reflects a real, worth-addressing difference. Reps/loads are logged per side throughout.`,
   },
   {
     type: 'gold',
     audience: 'internal',
     label: 'Age Bracket & Postmenopausal Status — 55-65 Bracket',
-    body: `At 59, Siobhan sits within CLAUDE.md's 55-65 "Postmenopausal" Age Bracket. isPostmenopausal is a confirmed, already-documented fact (not inferred from today's build), so pelvicFloorCallout() fires automatically on every day containing squat, deadlift/RDL, hip-thrust, or carry content — Days 2 and 3 in this program — and is left to fire naturally throughout, never suppressed. Protein escalates to the upper end of the 1.6-2.2 g/kg range on ALST At-Risk grounds (CLAUDE.md's Protein Targets section, corrected 8/17/2026 — the target is now context-driven [energy deficit / heavy training load / ALST At-Risk], not an age-band escalation; she qualifies on ALST At-Risk alone, independent of her age): at her 53.5 kg bodyweight that resolves to 107-118g/day, matching her already-documented protein target exactly — no number changed, only the stated rationale. Creatine is strongly indicated. LIFTMOR-style bone-loading candidacy (T-score < -1.0) is worth screening for as part of ongoing care, though no DEXA/T-score data is currently on file to confirm candidacy either way.`,
+    body: `At 59, Siobhan sits within CLAUDE.md's 55-65 "Postmenopausal" Age Bracket. isPostmenopausal is a confirmed, already-documented fact (not inferred from today's build), so pelvicFloorCallout() fires automatically on every day containing squat, deadlift/RDL, hip-thrust, or carry content — all three days in this program, since the 8/18/2026 integration blocks brought carry content to Day 1 (previously Days 2-3 only) — and is left to fire naturally throughout, never suppressed. Protein escalates to the upper end of the 1.6-2.2 g/kg range on ALST At-Risk grounds (CLAUDE.md's Protein Targets section, corrected 8/17/2026 — the target is now context-driven [energy deficit / heavy training load / ALST At-Risk], not an age-band escalation; she qualifies on ALST At-Risk alone, independent of her age): at her 53.5 kg bodyweight that resolves to 107-118g/day, matching her already-documented protein target exactly — no number changed, only the stated rationale. Creatine is strongly indicated. LIFTMOR-style bone-loading candidacy (T-score < -1.0) is worth screening for as part of ongoing care, though no DEXA/T-score data is currently on file to confirm candidacy either way.`,
   },
   {
     type: 'gold',
@@ -444,8 +491,8 @@ const baselineNotes = [
   {
     type: 'gold',
     audience: 'internal',
-    label: 'Session Architecture — ICONS Block Method Pilot (8/18/2026)',
-    body: 'This document is the roster pilot for the ICONS Block Method standing session architecture (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound; see CLAUDE.md). Restructure is organizational only — every clinical element (left-hip tendinitis flags on all 6 hip-loaded exercises, shoulder reintroduction protocol, scapular gate, both asymmetry leads, pelvic-floor auto-fire on Days 2-3, protein bar on all days) and every Wk1→Wk4 load survives verbatim. What moved: Day 1 — Incline Push-Up promoted to the accessory slot ahead of the pull block (1 RIR per corrected accessory tier); slot 4 omitted (all Jason content consumed by the corrective slot; a slot-4 Floor Row would stack 3 consecutive pulls, and adding hip-side Jason work to Day 1 would raise rehab-exercise frequency to 3x/week — Jason\'s call, not ours). Day 2 — Squat/SL Stance Squat split into primary/accessory blocks; Floor Row on Foam Roller added as the Jason slot (2nd weekly touch of the postural finding, antagonist break between squat and hinge patterns). Day 3 — Hex DL/Hip Thrust split into primary/accessory blocks (Hex DL RIR aligned to 2 RIR primary default); I\'s-T\'s-W\'s added as the Jason slot priming the check-in; check-in reframed as the secondary compound; carries/core/power/finisher retained as post-architecture standing blocks (no named slot in the five-slot format — a pilot friction finding). Accessory-slot RIR held at 2 (not the 1-RIR default) on both hip-flagged accessories (SL Stance Squat, Hip Thrust) as a deliberate clinical override during active tendinitis rehab.',
+    label: 'Session Architecture — ICONS Block Method Pilot (8/18/2026, incl. Slot 6)',
+    body: 'This document is the roster pilot for the ICONS Block Method standing session architecture (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound — Integration; see CLAUDE.md — the sixth slot was added 8/18/2026, same day as the pilot, and is applied here too). Restructure is organizational only — every clinical element (left-hip tendinitis flags on all 6 originally hip-loaded exercises, shoulder reintroduction protocol, scapular gate, both asymmetry leads, protein bar on all days) and every Wk1→Wk4 load survives verbatim. Five-slot mapping: Day 1 — Incline Push-Up promoted to the accessory slot ahead of the pull block (1 RIR per corrected accessory tier); slot 4 omitted (all Jason content consumed by the corrective slot; a slot-4 Floor Row would stack 3 consecutive pulls, and adding hip-side Jason work to Day 1 would raise rehab-exercise frequency to 3x/week — Jason\'s call, not ours). Day 2 — Squat/SL Stance Squat split into primary/accessory blocks; Floor Row on Foam Roller added as the Jason slot (2nd weekly touch of the postural finding, antagonist break between squat and hinge patterns). Day 3 — Hex DL/Hip Thrust split into primary/accessory blocks (Hex DL RIR aligned to 2 RIR primary default); I\'s-T\'s-W\'s added as the Jason slot priming the check-in; check-in reframed as the secondary compound. Accessory-slot RIR held at 2 (not the 1-RIR default) on both hip-flagged accessories (SL Stance Squat, Hip Thrust) as a deliberate clinical override during active tendinitis rehab. SLOT 6 (Third Compound — Integration, applied fifth pass same day — resolves the pilot\'s original "carries/core/power have no named slot" friction finding): Day 1 gains Block F, Suitcase Carry right-led (15-20 lbs, anchored to the Day 3 suitcase prescription/tested Farmers Carry baseline, no invented number) — this brings carry content to Day 1, so pelvicFloorCallout() now auto-fires on ALL THREE days (previously 2-3 only; correct per the amended spec, not a bug). Day 2 gains Block F, Hinge-to-Carry Complex (DB Deadlift x5 → Farmers Carry, 2 sets, deliberately light 15-20 lbs/hand — integrates the day\'s patterns into braced gait without adding heavy hip-extension volume during active rehab; carries the standard left-hip flag, making 7 flagged hip-loaded exercises total). Day 3\'s Blocks F/G/H (carries/core/power) retitled as its integration work, content unchanged except Farmers Carry rirNote aligned from \'2 RIR\' to the carry convention. All carry/complex work is distance/quality-governed with no RIR target, stated per exercise. Metabolic finishers still close each day after the integration work.',
   },
 ];
 
@@ -522,6 +569,16 @@ const days = [
       },
       {
         letter: 'F',
+        title: 'FULL-BODY INTEGRATION — SUITCASE CARRY (RIGHT-LED)',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — one movement that pulls today\'s work together: the scapular setting built in Blocks A-B, the grip and pulling strength from Block E, and the tall pressing posture from Block C, all held at once under gait. The weaker (right) hand holds the load, the same rule as Day 3\'s suitcase carry. Distance and movement quality govern this work, not an RIR target — add load only when every yard stays tall and level.',
+        exercises: [
+          { name: 'Suitcase Carry (Right-Led)', sets: '2', reps: '20-30 yd/side', load: '15-20 lbs', tempo: 'controlled', rest: '60s', flag: 'Right hand holds the weight — weaker arm (Styku)', cue: 'Right hand loaded. Shoulders set, ribs stacked, resist the lean.', rirNote: 'Distance & quality governed — no RIR target' },
+        ],
+      },
+      {
+        letter: 'G',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'A short, low-impact finisher — kept brief given the ALST At-Risk/Underweight priority above, so conditioning volume never competes with recovery capacity for the resistance work driving this plan.',
@@ -531,7 +588,7 @@ const days = [
       },
     ],
     coolDown: 'Doorway chest stretch 20s/side (light, pain-free only), cross-body shoulder stretch 20s/side (light), child\'s pose 45s',
-    iconsNote: 'Overhead pressing is being actively reintroduced today, not restricted — this is progressive strengthening within her current pain-free range. Sharp or pinching pain is the stop signal; ordinary fatigue and normal soreness are fine and expected. Scapular strength work is gating her pull-up progression, not a placeholder — hold Assisted Pull-Ups at the tested baseline until the block\'s own criteria are consistently met.',
+    iconsNote: 'Overhead pressing is being actively reintroduced today, not restricted — this is progressive strengthening within her current pain-free range. Sharp or pinching pain is the stop signal; ordinary fatigue and normal soreness are fine and expected. Scapular strength work is gating her pull-up progression, not a placeholder — hold Assisted Pull-Ups at the tested baseline until the block\'s own criteria are consistently met. The closing suitcase carry puts today\'s scapular and postural work to use under load — right hand holds the weight, every yard tall and level.',
   },
   {
     intensity: 70,
@@ -594,6 +651,16 @@ const days = [
       },
       {
         letter: 'F',
+        title: 'FULL-BODY INTEGRATION — HINGE-TO-CARRY COMPLEX',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound complex — a light hip hinge flowing straight into a loaded walk, integrating today\'s squat and hinge patterns into upright, braced gait. Loads stay deliberately light: this closes the session with quality movement, not more heavy hip-extension volume on a day that already carries plenty of it, out of respect for the left-hip rehab. Distance and movement quality govern this work, not an RIR target.',
+        exercises: [
+          { name: 'Hinge-to-Carry Complex (DB Deadlift → Farmers Carry)', sets: '2', reps: '5 + 20-30 yd', load: '15-20 lbs/hand', tempo: 'controlled', rest: '75s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Hinge to pick the DBs up clean, walk tall, hinge to set down.', rirNote: 'Distance & quality governed — no RIR target' },
+        ],
+      },
+      {
+        letter: 'G',
         title: 'METABOLIC FINISHER',
         color: 'gold',
         introLabel: 'Why',
@@ -604,7 +671,7 @@ const days = [
       },
     ],
     coolDown: 'Couch stretch 30s/side, seated figure-4 hip stretch 30s/side, child\'s pose 45s',
-    iconsNote: 'Left leg leads every unilateral set this session — Styku shows a 0.8 lb segmental gap (12.7 vs 13.5 lbs). Track the gap at the 8-week rescan. Muscle-building remains the session\'s primary goal given ALST At-Risk status — no set here is filler. Left hip is in active tendinitis rehab (coordinated with Jason Bethea) — every loaded lower-body set today is pain-monitored; sharp or pinching hip pain stops the set, ordinary fatigue does not.',
+    iconsNote: 'Left leg leads every unilateral set this session — Styku shows a 0.8 lb segmental gap (12.7 vs 13.5 lbs). Track the gap at the 8-week rescan. Muscle-building remains the session\'s primary goal given ALST At-Risk status — no set here is filler. Left hip is in active tendinitis rehab (coordinated with Jason Bethea) — every loaded lower-body set today is pain-monitored, including the closing hinge-to-carry complex; sharp or pinching hip pain stops the set, ordinary fatigue does not. The complex stays light on purpose — it is quality movement under load, not extra hip-extension volume.',
   },
   {
     intensity: 80,
@@ -668,21 +735,21 @@ const days = [
       },
       {
         letter: 'F',
-        title: 'LOADED CARRIES — ASYMMETRY PROTOCOL',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRIES (ASYMMETRY PROTOCOL)',
         color: 'gold',
         introLabel: 'Load Target',
-        intro: 'Farmers Carry tested bilaterally at 25 lbs/hand. Suitcase Carry adds the Asymmetry Protocol\'s single-hand rule directly — the weaker (right) hand holds the load, training anti-lateral-flexion through the opposite side.',
+        intro: 'The session\'s closing compound work begins here — the carries pull the day\'s hinge and hip-extension strength into upright, braced gait. Farmers Carry tested bilaterally at 25 lbs/hand. Suitcase Carry adds the Asymmetry Protocol\'s single-hand rule directly — the weaker (right) hand holds the load, training anti-lateral-flexion through the opposite side. Distance and movement quality govern the carries, not an RIR target.',
         exercises: [
-          { name: 'DB Farmers Carry', sets: '3', reps: '30-40 yd', load: '25 lbs/hand', tempo: 'controlled', rest: '60s', cue: 'Tall posture, ribs down, quick tight steps.', rirNote: '2 RIR' },
+          { name: 'DB Farmers Carry', sets: '3', reps: '30-40 yd', load: '25 lbs/hand', tempo: 'controlled', rest: '60s', cue: 'Tall posture, ribs down, quick tight steps.', rirNote: 'Distance & quality governed — no RIR target' },
           { name: 'Suitcase Carry (Right-Led)', sets: '2', reps: '20-30 yd/side', load: '15-20 lbs', tempo: 'controlled', rest: '45s', flag: 'Right hand holds the weight — weaker arm (Styku)', cue: 'Right hand loaded. Resist leaning — ribs stacked over hips.' },
         ],
       },
       {
         letter: 'G',
-        title: 'CORE — PLANK PROTOCOL',
+        title: 'FULL-BODY INTEGRATION — CORE UNDER LOAD (PLANK PROTOCOL)',
         color: 'green',
         introLabel: 'Load Target',
-        intro: 'Progression from the tested 1:04 plank baseline, paired with anti-rotation core work supporting posture under all the compound lifts above.',
+        intro: 'Core work as part of the session\'s integrated close — progression from the tested 1:04 plank baseline, paired with anti-rotation work supporting posture under all the compound lifts above.',
         exercises: [
           { name: 'Plank Hold', sets: '3', reps: '45-60s', load: 'bodyweight', tempo: 'hold', rest: '45s', cue: 'Baseline 1:04. Ribs down, glutes tight, breathe steady.' },
           { name: 'Half-Kneeling Pallof Press', sets: '2', reps: '10/side', load: 'light band', tempo: '2s hold', rest: '30s', cue: 'Resist rotation, ribs stacked over hips.' },
@@ -690,9 +757,9 @@ const days = [
       },
       {
         letter: 'H',
-        title: 'POWER TRAINING — LOWER BODY (55-65 BRACKET)',
+        title: 'FULL-BODY INTEGRATION — POWER EXPRESSION (55-65 BRACKET)',
         introLabel: 'Why',
-        intro: 'Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity in older women more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. This is deliberately a lower-body movement, not overhead, given the shoulder reintroduction still underway in Blocks D and E. Full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it does not compete with Block I\'s deliberately brief finisher below.',
+        intro: 'The final piece of the session\'s integrated close: a power expression of the day\'s lower-body work. Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity in older women more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. This is deliberately a lower-body movement, not overhead, given the shoulder reintroduction still underway in Blocks D and E. Full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it does not compete with Block I\'s deliberately brief finisher below.',
         exercises: [
           { name: 'Box Step-Up Jump (Submaximal, Full Recovery)', sets: '3', reps: '3', load: 'bodyweight, low box (~10-12")', tempo: 'explosive up, soft controlled landing', rest: '120s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive up with real intent, land soft and controlled. Full recovery — not a metabolic set.' },
         ],
@@ -715,8 +782,8 @@ const days = [
 const summary = {
   subtitle: 'Siobhan Hansen  ·  ICONS Index  ·  3-Day Sarcopenia-Priority Strength Build  ·  Week 1',
   rows: [
-    ['Day 1', '60%', 'Upper Body — Shoulder Reintroduction & Scapular Foundation', 'Overhead Press · Kieser Pulldown · Single-Arm Row', 'Overhead press progresses only via pain-free ROM + RIR; scapular criteria (band pull-apart 3x15, 20s dead hang) gate pull-up loading.'],
-    ['Day 2', '70%', 'Lower Body — Left-Led Unilateral Foundation', 'Squat · Single-Leg Stance Squat · Single-Leg RDL', `Loads build off tested baselines (Squat Epley 1RM ≈${oneRM.squat} lbs); left leg leads every unilateral set per 0.8 lb Styku gap.`],
+    ['Day 1', '60%', 'Upper Body — Shoulder Reintroduction & Scapular Foundation', 'Overhead Press · Kieser Pulldown · Single-Arm Row · Suitcase Carry', 'Overhead press progresses only via pain-free ROM + RIR; scapular criteria (band pull-apart 3x15, 20s dead hang) gate pull-up loading; closing suitcase carry right-led, quality-governed.'],
+    ['Day 2', '70%', 'Lower Body — Left-Led Unilateral Foundation', 'Squat · Single-Leg Stance Squat · Single-Leg RDL · Hinge-to-Carry', `Loads build off tested baselines (Squat Epley 1RM ≈${oneRM.squat} lbs); left leg leads every unilateral set per 0.8 lb Styku gap; closing complex stays light, quality-governed.`],
     ['Day 3', '80%', 'Posterior Chain — Full-Body Strength', 'Hex Bar Deadlift · Hip Thrust · Farmers/Suitcase Carry', `Loads build off tested baselines (Deadlift Epley 1RM ≈${oneRM.hexDL} lbs); right hand leads suitcase carry, left leg leads unilateral work.`],
   ],
   milestones4wk: `Hex Bar Deadlift toward ${wk4.hexDL + 10} lbs x5, Squat toward ${wk4.squat + 5} lbs x6-8, Hip Thrust toward ${wk4.hipThrust + 5} lbs x8, all at 2-3 RIR. Overhead Press showing genuine week-over-week pain-free ROM expansion (not a fixed load target). Scapular block criteria (band pull-apart 3x15, 20s controlled dead hang) consistently clean — first checkpoint toward reduced pull-up assistance. Left-leg single-leg RDL/stance-squat loads matched toward parity with the right within 10%.`,
