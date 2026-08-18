@@ -789,6 +789,110 @@ work, and every current client document computed under the old age-banded
 tiers needs individual review once the engine changes, not a blanket
 regeneration under an unchanged formula.
 
+### Energy Availability & Caloric Surplus for Lean-Mass Gain (2013-2023 evidence — new section, 8/18/2026)
+```
+Why this section exists: the Protein Targets section above is thorough, but
+  nothing anywhere in this file stated that hypertrophy requires adequate
+  TOTAL energy, not just adequate protein — a real gap surfaced by the
+  Block Method pilot review: an underweight (BMI 17.4), ALST At-Risk
+  client had protein and creatine prescribed with no eat-above-maintenance
+  instruction at all. The file's own RED-S note (20-35 bracket) already
+  acknowledges under-fueling risk without giving any surplus protocol.
+  Confirmed via repo-wide search: "surplus"/"caloric"/"maintenance
+  calories" had zero prior science-layer coverage.
+
+The principle: a g/kg protein target hit inside an unintentional energy
+  deficit undercuts itself — protein and total energy are COMPLEMENTARY
+  levers, not substitutes. The Protein Targets section's "energy deficit"
+  trigger (escalate protein when cutting) is the mirror image of this
+  section: a client whose GOAL is lean-mass gain should not be in a
+  deficit at all, intentional or accidental.
+
+Evidence on surplus size — the honest state: the ~350-500 kcal/day
+  "modest surplus" convention has mechanistic backing and practice
+  precedent, but NO validated dose-response "sweet spot" exists.
+  - Slater et al. (Frontiers in Nutrition 2019;6:131 — Slater, Dieter,
+    Marsh, Helms, Shaw, Iraki) reviewed the question directly: the energy
+    stored in 1 kg of skeletal muscle is ~5,000-5,200 kJ, and common
+    recommendations run ~1,500-2,000 kJ/day (~360-480 kcal) in weight-
+    stable athletes, up to an additional ~4,000 kJ/day for clients who
+    struggle to gain — but the authors state plainly these estimates have
+    NEVER been validated in a resistance-training population. Cite the
+    convention as a reasoned starting point, not an evidenced dose.
+  - Garthe et al. (European Journal of Sport Science 2013, n=39 elite
+    athletes, 8-12 weeks, 4x/week strength training): a counseled ~506±84
+    kcal/day surplus produced +2.7 kg body mass (+1.7 kg fat-free mass,
+    +1.1 kg fat mass) — more total gain than ad libitum eating, but with
+    a real fat-mass cost; the authors' own caution is that excess intake
+    in a gain phase "should be considered carefully due to undesirable
+    increases in body fat." Also practically useful: a majority of
+    athletes reportedly failed to hit weight-gain targets even ON the
+    prescribed 500 kcal plan — a prescribed surplus is a starting point
+    that requires monitoring and adjustment, not a set-and-forget number.
+  - Bigger is not better: a parallel-groups trial in trained lifters
+    (Helms and colleagues — Sports Medicine - Open 2023;9, "Effect of
+    Small and Large Energy Surpluses on Strength, Muscle, and Skinfold
+    Thickness," maintenance vs. 5% vs. 15% surplus, 8 weeks, small sample
+    — 17 completers, flag this when citing) found the larger surplus
+    primarily accelerated FAT gain (skinfold thickness), with no clear
+    additional hypertrophy or strength benefit over the smaller surplus.
+    A modest surplus (~5-10% above maintenance, roughly the 350-500 kcal
+    convention) is the defensible default; a large surplus is not a
+    faster route to muscle for a non-novice.
+
+When a surplus instruction belongs IN the client document (not just in a
+  trainer's head): (1) underweight BMI (<18.5) — this client's document
+  should carry an explicit eat-above-maintenance instruction alongside
+  her protein/creatine targets, full stop; (2) ALST At-Risk where muscle-
+  building is the stated primary goal; (3) any stated lean-mass goal with
+  FLAT body-composition trends across rescans (lean mass not moving
+  despite adequate protein and progressive training = the energy side is
+  the likeliest missing lever). Conversely, a GLP-1 client is typically
+  in a deficit BY DESIGN — her lever is protein adequacy inside the
+  deficit (see GLP-1 section below), not a surplus; do not conflate the
+  two cases.
+
+BMR is not an intake target — a live documentation risk in this system:
+  client documents quote Styku BMR (resting energy) prominently. BMR is
+  below maintenance BY DEFINITION (maintenance = BMR x activity factor);
+  a client who reads her BMR as "my calories" is eating in a deficit.
+  Any document that states a BMR figure for a muscle-building client
+  should state alongside it that total intake must sit ABOVE maintenance,
+  not at BMR.
+
+Monitoring-and-adjust framing, not fixed prescription: track scale-weight
+  trend plus Styku rescan lean-vs-fat trend (the device's genuine
+  strength is change-tracking — see "3D Optical Scanning — Validity"
+  above; female fat-mass and ALM change tracking are its best-performing
+  outputs). If weight is flat over 3-4 weeks on the starting surplus,
+  adjust upward; if fat is accumulating disproportionately, trim. This is
+  the same trend-metric posture this file already applies to ALST/VFA.
+
+Underweight / older-adult / sarcopenic specifics — thin, stated honestly:
+  no validated sarcopenic-specific surplus dose exists. The combined-
+  intervention literature in sarcopenic older adults (protein/ONS/creatine
+  + resistance training meta-analyses) supports supplementation WITH
+  training for lean mass and strength but does not establish a kcal
+  surplus number. The nearest citable anchor is the ESPEN geriatric
+  guideline's guiding value of ~30 kcal/kg body weight/day for older
+  persons, individually adjusted (Volkert et al., Clinical Nutrition
+  2019; ESPEN practical guideline update 2022) — a clinical-nutrition
+  reference point, not a hypertrophy prescription. Anabolic-resistance
+  literature justifies the protein/leucine emphasis already in this file
+  but was not found to justify a DIFFERENT surplus size for older
+  clients — apply the same modest-surplus + monitor-and-adjust approach.
+
+Referral boundary, same posture as HRT/GLP-1/TRT: a clinically
+  underweight client (BMI <18.5) warrants a physician/dietitian
+  conversation IN ADDITION to the training-side surplus instruction —
+  unexplained low body weight has differential causes (malabsorption,
+  thyroid, disordered eating, RED-S) that are not ours to rule out. The
+  ICONS document states the training-nutrition principle (eat above
+  maintenance to build muscle, here's a defensible starting range) and
+  names the referral; it does not write a meal plan or diagnose why the
+  client is underweight.
+```
+
 ### Creatine (evidence-based for women) — refined 8/17/2026, verdict unchanged: strongest-evidenced item in the ICONS protocol
 ```
 Dose    : 3–5g monohydrate daily (no loading phase) — confirmed well-supported
@@ -1913,6 +2017,116 @@ Practical takeaway: locking every exercise in every program to 8-12 reps
   wrong as ONE reasonable range a Compound-zone hypertrophy block might use
   — it's wrong as a universal rule applied to every exercise regardless of
   goal.
+```
+
+### Deload / Planned Recovery Weeks (2011-2026 evidence — new section, 8/18/2026)
+```
+Why this section exists: this file has extensive intensity, volume, and
+  RIR guidance but had ZERO deload coverage — no cadence, no protocol, no
+  statement of what a lighter week costs or protects (confirmed via
+  repo-wide search: the only prior "deload" appearances in this system
+  were one client script's Week-4 row and one sentence in the deep-
+  reference doc). Surfaced by the Block Method pilot review: a client
+  with two active injury sites was running continuous progressive loading
+  to Week 8 with no lighter week anywhere in the program.
+
+What a deload is: ~1 week of deliberately reduced training stress —
+  reduced sets and/or load and/or proximity to failure — while KEEPING
+  the same movements and the week's day structure. It is not a week off
+  (that is training cessation, a different intervention), and it is not
+  the same thing as an Active Recovery day: an AR day is a within-week
+  recovery day; a deload is a whole reduced week.
+
+Evidence — practice base is strong, direct RCT base is thin; say so:
+  - Expert consensus: Bell et al., "Integrating Deloading into Strength
+    and Physique Sports Training Programmes: An International Delphi
+    Consensus Approach," Sports Medicine - Open 2023;9:87 (3-round Delphi,
+    34 coaches round 1) — defines deloading as a purposeful reduction in
+    training demand to manage fatigue and enhance preparedness for
+    subsequent training, and states outright the strategy is ubiquitous
+    yet under-researched.
+  - What practitioners actually do: Bell et al., "Deloading Practices in
+    Strength and Physique Sports: A Cross-sectional Survey," Sports
+    Medicine - Open 2024 (n=246 competitive strength/physique athletes,
+    181M/65F): ALL respondents deloaded; typical deload 6.4±1.7 days,
+    every 5.6±2.3 weeks; prescribed proactively (pre-planned) or
+    proactive-plus-autoregulated, triggered by fatigue, performance
+    stall, or elevated soreness. This — not an RCT — is the source of
+    the "roughly every 5-6 weeks" convention; cite it as survey/practice
+    evidence, not trial evidence. (Companion qualitative coach study:
+    Bell et al., Frontiers in Sports and Active Living 2022.)
+  - What a light week costs: Coleman et al., "Gaining more from doing
+    less?", PeerJ 2024;12:e16777 — 9-week supervised RT in resistance-
+    trained lifters (≥1 yr experience), with the mid-point "deload" arm
+    operationalized as a FULL WEEK OF TRAINING CESSATION (complete rest —
+    note this is a harsher intervention than a true reduced-load deload).
+    Result: no appreciable difference in lower-body hypertrophy, power,
+    or local muscular endurance vs. continuous training; the continuous
+    group gained more lower-body STRENGTH within the 9-week window. Read:
+    even a complete week off costs no measurable muscle — the cost is
+    some short-horizon strength progress.
+  - What an ACTIVE (reduced-load) deload costs: a 2026 within-subject
+    randomized study (Scientific Reports, n=19 untrained young men,
+    8 weeks, deload = volume/frequency cut to 1x/week, 2 sets, in weeks
+    4 and 8) found similar hypertrophy AND strength-endurance vs.
+    continuous training — reducing volume/load for a week did not hinder
+    adaptation.
+  - Strength lost to a break returns quickly: Ogasawara et al. (Clinical
+    Physiology and Functional Imaging 2011; and a 6-month follow-up
+    study, 2013) found repeated 3-WEEK full training cessations produced
+    similar 15- and 24-week muscle CSA and 1RM outcomes vs. continuous
+    training, with 20-25% fewer total sessions — no significant CSA/1RM
+    loss even across a 3-week break, and retraining gains matched initial
+    gains (the "resensitization" hypothesis). Practical meaning: a
+    client's fear of losing progress in ONE light week has no evidentiary
+    basis; even far longer interruptions recover.
+  Honest gaps: both deload RCTs are short (8-9 weeks, single deload) and
+  in young men — one untrained, one trained. No women-specific, older-
+  adult, or postmenopausal deload RCT was located in this pass; the
+  cadence numbers are survey/consensus practice evidence. Apply the
+  protocol below as well-reasoned practice consistent with the trial
+  evidence that exists, not as a bracket-matched validated protocol.
+
+ICONS deload protocol:
+  Cadence : schedule a deload week roughly every 4-6 training weeks of
+            continuous progressive loading. HOUSE PATTERN: place it
+            immediately AFTER the Week 4 peak-test/strength-reassessment
+            (see "Reassessment Cadence" below) — the deload absorbs test
+            fatigue and starts the next block fresh, and the 4-week
+            reassessment clock gives every program a natural, pre-existing
+            slot so no separate calendar is needed.
+  Content : same movements, same day structure. Cut working sets roughly
+            in half; drop loads to ~50-70% of normal working loads;
+            everything lives in the 3+ RIR "technique/submaximal" band
+            (see RIR Model above) — no 0-2 RIR sets, no PRs, no AMRAP.
+            These specific percentages are practice convention (consistent
+            with the survey/Delphi volume-and-load-reduction methods),
+            not trial-derived — the trial evidence above says the precise
+            depth of the reduction is unlikely to matter for hypertrophy.
+  Who gets it PROACTIVELY scheduled (non-negotiable, written into the
+            program): rehab-flagged/coordinated-care clients and clients
+            carrying active injury sites under progressive loading (the
+            triggering case); clients running continuous progression
+            8+ weeks; older/recovery-limited clients (65+ bracket, or
+            anyone whose recovery signals — sleep, soreness, session
+            quality — run chronically marginal). For these clients the
+            deload is exactly the connective-tissue/fatigue relief valve
+            the Antagonist Rotation Rule provides within a session,
+            applied at the mesocycle scale.
+  Who can AUTOREGULATE it instead: a robust, well-recovering client may
+            run the survey's combined model — a planned slot every 4-6
+            weeks that gets pulled forward on triggers (performance
+            stall, unusual soreness, disrupted sleep) or pushed back a
+            week if all signals are green. Novice clients on the
+            simplified two-day rotation (see ICONS Intensity Framework)
+            accumulate less fatigue at their loads — autoregulate rather
+            than force a calendar deload.
+  Client framing: "reload," not "lost week" — same positive-framing
+            discipline as "bone investment." The evidence line for a
+            hesitant client: a light week costs no muscle and only
+            briefly-recoverable peak strength, while unbroken hard
+            loading is where soreness, joint stress, and stalls
+            accumulate.
 ```
 
 ### Women & Strength Training (Roberts, Nuckols & Krieger 2020, JSCR)
@@ -3333,6 +3547,8 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 | Male 60+ bracket (as a whole) | never dedicated | Men 60+ | **Zero roster clients** |
 | Women 20-35 bracket (as a whole) | never dedicated | Women 20-35 | Thin — Samantha Swan (28) is the clearest current case; peak-bone-mass window content has never had a dedicated pass |
 | Pelvic Floor Protocol (bracing model, PFM co-activation vs. strengthening) | 8/17/2026 | Women, postmenopausal/heavy-loading | Well-represented (5 clients carry the callout) |
+| Deload / planned recovery weeks | 8/18/2026 | All (direct RCTs are young-male only — no women/older-adult deload RCT exists) | Roster-wide — every client on continuous progressive loading; flagged via the Block Method pilot review (Siobhan Hansen: two active injury sites, 8 weeks, no lighter week) |
+| Energy availability / caloric surplus for lean-mass gain | 8/18/2026 | All; underweight/ALST At-Risk focus | Directly live — Siobhan Hansen (BMI 17.4, ALST At-Risk) is the triggering case; complements (does not duplicate) the RED-S bullet and GLP-1 section |
 
 **Note on the OA row (8/18/2026):** none of the six clients above has a documented OA diagnosis, and the section must not be applied to them as though they do — a meniscus tear, a VMO-insufficiency pattern, and an acutely inflamed knee are three different clinical problems, and only the first is closely OA-adjacent (degenerative meniscal pathology and knee OA overlap substantially in a 61-year-old). What the roster shift actually means is narrower and worth stating precisely: the OA section's single most transferable finding — that reflexively unloading a painful knee joint is the outdated default, and that progressive resistance training including heavier loading is core management rather than a risk to train around — now has real clients it bears on, so a future pass should verify it against *these* presentations (meniscus tear specifically, and patellofemoral/VMO-pattern anterior knee pain specifically) rather than assuming knee-OA evidence covers them. Neither meniscus tear nor patellofemoral pain has its own coverage in this file. That is the highest-value next research pass in this domain — flagged, not run today.
 
@@ -3466,6 +3682,14 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Flagged as the highest-value next pass in this domain, not run today:** neither meniscus tear nor patellofemoral/VMO-pattern anterior knee pain has any coverage in this file, and four of the six knee-presentation clients above fall into one of those two categories rather than OA proper. Assuming the OA section covers them would be exactly the kind of silent extrapolation this file's Demographic Scope Rule exists to prevent.
 - Did not touch any client document, build script, or `CLIENTS.md` — per this agent's non-negotiables. Two items flagged back to the main thread/`icons-expert` for their scope: (1) Samantha Swan's eventual build should carry explicit side-labeling on lateral-flexion/rotation/unilateral work and should present her belt-harness squat as a progressing primary tool with real Wk1→Wk4 loads, not a placeholder regression; (2) Sarah's already-built document should be checked for whether it carries the explicit no-data scope note the corrected Demographic Scope Rule now requires.
 - Sources: [2016 SOSORT guidelines: orthopaedic and rehabilitation treatment of idiopathic scoliosis during growth, Scoliosis and Spinal Disorders](https://scoliosisjournal.biomedcentral.com/articles/10.1186/s13013-017-0145-8) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5795289/)) · [Berdishevsky H, et al., "Physiotherapy scoliosis-specific exercises – a comprehensive review of seven major schools," Scoliosis and Spinal Disorders 2016;11:20](https://link.springer.com/article/10.1186/s13013-016-0076-9) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4973373/)) · [Negrini A, Negrini MG, Donzelli S, Romano M, Zaina F, Negrini S, "Scoliosis-Specific exercises can reduce the progression of severe curves in adult idiopathic scoliosis: a long-term cohort study," Scoliosis 2015;10:20](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4537533/) (also [Springer](https://link.springer.com/article/10.1186/s13013-015-0044-9)) · [Spinal Compressive Forces in Adolescent Idiopathic Scoliosis With and Without Carrying Loads: A Musculoskeletal Modeling Study, Frontiers in Bioengineering and Biotechnology 2020;8:159](https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2020.00159/full) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7062648/)) · [Schroth and Asymmetric Spinal Stabilization Exercises' Effectiveness on Back Pain and Trunk Muscle Endurance in Adolescents' Idiopathic Scoliosis: A Randomized Controlled Trial](https://pmc.ncbi.nlm.nih.gov/articles/PMC11644102/) · [Outcomes of 12 Weeks of Schroth and Asymmetric Spinal Stabilization Exercises on Cobb Angle, Angle of Trunk Rotation, and Quality of Life in Adolescent Boys with Idiopathic Scoliosis: A Randomized-controlled Trial](https://pmc.ncbi.nlm.nih.gov/articles/PMC10838577/) · [Schroth Physiotherapeutic Scoliosis-Specific Exercise (PSSE) Trials—Systematic Review of Methods and Recommendations for Future Research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10297476/) · [Evaluating exercise therapies in adolescent idiopathic scoliosis: a systematic review with Bayesian network meta-analysis, PeerJ 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC11967429/) · [Treatment of idiopathic scoliosis with conservative methods based on exercises: a systematic review and meta-analysis, Frontiers in Sports and Active Living 2024](https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2024.1492241/full) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/39763485/))
+
+**8/18/2026 — seventeenth pass, same day (second dated entry per this log's same-day convention; the sixteenth pass was this morning's scoliosis section). Deload/planned recovery weeks + energy availability/caloric surplus for lean-mass gain — two new topics, first pass each; both genuine gaps confirmed via repo-wide search before writing.** Triggered by an external review of the Block Method pilot (Siobhan Hansen), which surfaced that (a) this file had extensive intensity/volume/RIR guidance but ZERO deload coverage anywhere (the only prior "deload" appearances in this system: one Week-4 row in Jake Poyner's script and one sentence in the deep-reference doc), and (b) nothing anywhere stated that hypertrophy requires adequate TOTAL energy, not just protein — despite an underweight (BMI 17.4), ALST At-Risk client having protein/creatine prescribed with no eat-above-maintenance instruction, and despite the file's own RED-S bullet already acknowledging under-fueling risk without any surplus protocol behind it.
+- **Added (new subsection): "Deload / Planned Recovery Weeks,"** placed directly after "Why Not Just Fix Every Exercise At 8–12 Reps?" (grouping it with the RIR/progressive-overload material it governs). Key findings folded in: (1) practice/consensus base is strong but the direct RCT base is thin, and the section says so — the "roughly every 5-6 weeks" cadence comes from Bell et al.'s 2024 cross-sectional survey of 246 competitive strength/physique athletes (all respondents deloaded; typical deload 6.4±1.7 days every 5.6±2.3 weeks, proactive or proactive-plus-autoregulated), backed by the same group's 2023 international Delphi consensus (Sports Medicine - Open 9:87) and 2022 qualitative coach study — survey/consensus evidence, cited as such, not trial evidence; (2) what a light week costs: Coleman et al. 2024 (PeerJ 12:e16777, 9-week RT in trained lifters) found a mid-point week of FULL TRAINING CESSATION — noted explicitly in the section as a harsher intervention than a true reduced-load deload — produced no difference in lower-body hypertrophy, power, or local endurance, with only lower-body strength favoring continuous training within the 9-week window; a 2026 within-subject randomized study (Scientific Reports, n=19 untrained young men) found a true ACTIVE deload (volume/frequency reduction at weeks 4 and 8) produced similar hypertrophy AND strength-endurance vs. continuous training; (3) Ogasawara et al. (2011 Clinical Physiology and Functional Imaging; 2013 six-month comparison) found even repeated 3-WEEK full cessations matched continuous training's 15/24-week CSA and 1RM outcomes with 20-25% fewer sessions — the evidentiary basis for telling a hesitant client that one light week costs no muscle and only briefly-recoverable peak strength. ICONS protocol codified: deload roughly every 4-6 training weeks, house pattern = the week immediately AFTER the Week 4 peak-test/strength-reassessment (the existing 4-week cadence gives every program a natural slot); same movements/day structure, sets roughly halved, loads ~50-70%, everything in the 3+ RIR band (reduction depths labeled practice convention, not trial-derived); PROACTIVE scheduling non-negotiable for rehab-flagged/active-injury-site clients (the triggering case), 8+ week continuous-progression programs, and older/recovery-limited clients, with autoregulated timing acceptable for robust well-recovering clients and novices on the simplified two-day rotation. Client framing: "reload," per the existing positive-framing discipline. Honest gap stated: both deload RCTs are short, single-deload, young-male studies (one untrained, one trained) — no women-specific, older-adult, or postmenopausal deload RCT was located.
+- **Added (new subsection): "Energy Availability & Caloric Surplus for Lean-Mass Gain,"** placed directly after Protein Targets (before Creatine). Key findings folded in: (1) the ~350-500 kcal/day modest-surplus convention has mechanistic backing but NO validated dose-response "sweet spot" — Slater et al. (Frontiers in Nutrition 2019;6:131) put the energy stored in 1 kg of muscle at ~5,000-5,200 kJ and common recommendations at ~1,500-2,000 kJ/day (~360-480 kcal), while stating plainly these estimates have never been validated in a resistance-training population — the section cites the convention as a reasoned starting point, not an evidenced dose; (2) Garthe et al. (European Journal of Sport Science 2013, n=39 elite athletes, 8-12 weeks): a counseled ~506±84 kcal/day surplus produced +2.7 kg body mass (+1.7 kg FFM, +1.1 kg fat) — more total gain than ad libitum but with a real fat cost, and with reported failure of many athletes to hit gain targets even on the prescribed plan, grounding the section's monitor-and-adjust (not set-and-forget) framing; (3) bigger is not better — the Helms-group parallel-groups trial (Sports Medicine - Open 2023;9, maintenance vs. 5% vs. 15% surplus in trained lifters, 17 completers, small-sample flag stated) found the larger surplus primarily accelerated fat gain with no clear additional hypertrophy/strength benefit. Codified when a surplus instruction belongs IN a client's document (underweight BMI <18.5 — non-negotiable; ALST At-Risk with muscle-building as primary goal; stated lean-mass goal with flat rescan trends), explicitly distinguished from the GLP-1 deficit-by-design case; added a "BMR is not an intake target" documentation caution (client documents quote Styku BMR prominently, and BMR is below maintenance by definition); stated the older-adult/sarcopenic gap honestly — no validated sarcopenic-specific surplus dose exists, the combined protein/ONS/creatine-plus-RT meta-analytic literature supports supplementation-with-training but establishes no kcal number, and the nearest citable anchor is ESPEN's geriatric guiding value of ~30 kcal/kg/day, individually adjusted (Volkert et al., Clinical Nutrition 2019; practical guideline update 2022) — a clinical-nutrition reference, not a hypertrophy prescription; and set the referral boundary (clinically underweight client → physician/dietitian conversation in addition to the training-side instruction, same referral-not-prescribe posture as HRT/GLP-1/TRT).
+- **Looked for but could not verify, stated rather than filled:** (1) any women-specific, postmenopausal, or older-adult deload RCT — none located; (2) a validated surplus "sweet spot" or lean:fat-optimizing surplus dose in any population — Slater et al. themselves flag this as an unfilled gap; (3) a sarcopenic/underweight-older-adult-specific surplus size — the anabolic-resistance literature justifies the existing protein/leucine emphasis but was not found to justify a different surplus magnitude; (4) Coleman et al. 2024's exact participant count was reported inconsistently across secondary sources (39 vs. 50), so the section describes the cohort qualitatively (resistance-trained, ≥1 year experience) rather than risking a wrong n — the finding itself is consistently reported across all sources checked.
+- **Updated:** Coverage Index — two new rows (Deload / planned recovery weeks; Energy availability / caloric surplus), both Last Verified 8/18/2026, both noting the Siobhan Hansen trigger and the young-male-only scope of the direct deload RCTs.
+- Did not touch any client document or script — Siobhan Hansen's document is being updated separately by `icons-expert` with client-specific versions of both items; these sections are the standing reference that update and all future builds cite. Flag back to the main thread/`icons-expert`: any OTHER current client matching the proactive-deload criteria (active injury sites under continuous progressive loading, 8+ week continuous progression) or the surplus-instruction criteria (BMI <18.5, ALST At-Risk with muscle-building primary) should pick these up at their next revision per the existing "touch it, bring it current" practice — not via a blanket sweep today.
+- Sources: [Bell L, et al., "Deloading Practices in Strength and Physique Sports: A Cross-sectional Survey," Sports Medicine - Open 2024](https://link.springer.com/article/10.1186/s40798-024-00691-y) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/38499934/) and [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10948666/)) · [Bell L, et al., "Integrating Deloading into Strength and Physique Sports Training Programmes: An International Delphi Consensus Approach," Sports Medicine - Open 2023;9:87](https://link.springer.com/article/10.1186/s40798-023-00633-0) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10511399/)) · [Bell L, Nolan D, et al., "'You can't shoot another bullet until you've reloaded the gun': Coaches' perceptions, practices and experiences of deloading in strength and physique sports," Frontiers in Sports and Active Living 2022](https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2022.1073223/full) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/36619355/)) · [Coleman M, et al., "Gaining more from doing less? The effects of a one-week deload period during supervised resistance training on muscular adaptations," PeerJ 2024;12:e16777](https://peerj.com/articles/16777/) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10809978/)) · [Effects of deload periods in resistance training on muscle hypertrophy and strength endurance in untrained young men using a randomized within subject design, Scientific Reports 2026](https://www.nature.com/articles/s41598-026-40612-5) · [Ogasawara R, et al., "Effects of periodic and continued resistance training on muscle CSA and strength in previously untrained men," Clinical Physiology and Functional Imaging 2011](https://onlinelibrary.wiley.com/doi/10.1111/j.1475-097X.2011.01031.x) · [Ogasawara R, et al., "Comparison of muscle hypertrophy following 6-month of continuous and periodic strength training," 2013](https://www.semanticscholar.org/paper/Comparison-of-muscle-hypertrophy-following-6-month-Ogasawara-Yasuda/fa1e518decb3fe6a603573d510dc4ae7b0bed2d3) · [Slater GJ, Dieter BP, Marsh DJ, Helms ER, Shaw G, Iraki J, "Is an Energy Surplus Required to Maximize Skeletal Muscle Hypertrophy Associated With Resistance Training," Frontiers in Nutrition 2019;6:131](https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2019.00131/full) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6710320/)) · [Garthe I, Raastad T, et al., "Effect of nutritional intervention on body composition and performance in elite athletes," European Journal of Sport Science 2013](https://www.tandfonline.com/doi/full/10.1080/17461391.2011.643923) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/23679146/)) · ["Effect of Small and Large Energy Surpluses on Strength, Muscle, and Skinfold Thickness in Resistance-Trained Individuals: A Parallel Groups Design," Sports Medicine - Open 2023](https://link.springer.com/article/10.1186/s40798-023-00651-y) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10620361/)) · [Volkert D, et al., "ESPEN guideline on clinical nutrition and hydration in geriatrics," Clinical Nutrition 2019](https://pubmed.ncbi.nlm.nih.gov/30005900/) (also [ESPEN practical guideline update 2022](https://www.clinicalnutritionjournal.com/article/S0261-5614(22)00034-6/fulltext)) · [The effects of nutritional supplementation on older sarcopenic individuals who engage in resistance training: a meta-analysis, PMC 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10167299/)
 
 ---
 
