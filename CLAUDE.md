@@ -500,6 +500,42 @@ Coaching cue: *"No muscle group works alone three times in a row."*
 
 `icons-expert` applies this at build time when constructing a day's blocks; `icons-doc-auditor` spot-checks it on delivery (see that agent's standing checklist).
 
+### ICONS Block Method — Standing Session Architecture (added 8/18/2026, Xolokan's direct instruction)
+
+The standing per-day block order for every client training program, stated by Xolokan 8/18/2026 as *the* method for the programming ("every client should be unique to this format"):
+
+```
+1. CORRECTIVE          — client-specific corrective/activation work, sourced from
+                          the client's actual findings (Jason Bethea's SOAP notes,
+                          Styku asymmetry, movement flags) — never generic filler
+2. PRIMARY COMPOUND    — the day's main lift, drawn from / progressing the
+                          10 core ICONS Index movements
+3. ACCESSORY           — hypertrophy-focused accessory work supporting the primary
+4. JASON'S EXERCISE    — CONDITIONAL: if the client has a documented exercise from
+                          Jason Bethea's SOAP notes on file, it slots here — keeping
+                          in-session continuity with his in-house PT work. Omitted
+                          entirely (not replaced with filler) for a client with no
+                          Jason exercise on file.
+5. SECONDARY COMPOUND  — a second compound lift, in a different movement pattern
+                          from the primary (which the Antagonist Rotation Rule
+                          already all but requires)
+```
+
+**Design requirements, all four stated by Xolokan as part of the method:**
+1. **It must improve the ICONS Index.** Primary/secondary compound selection is drawn from the 10 core Baseline Testing Protocol movements (or their documented programmatic substitutes), with real programmed progression — the architecture exists to move the client's Index numbers, not just to fill a session. (The Full-Spectrum Progression Standard's all-10-movements mandate remains its own separately-scoped rule for women 40–55; this architecture serves Index improvement for every client regardless of bracket.)
+2. **Hypertrophy in all muscle groups, bodybuilding format.** Across the program's week, every major muscle group gets genuine hypertrophy-oriented volume (the ≥10 sets/muscle/week target where the client's day count supports it), programmed in a bodybuilding format — straight sets, controlled tempo, the corrected RIR tiers (2 RIR primaries / 1 RIR hypertrophy-priority accessories).
+3. **Built from all angles.** Multi-angle selection within each muscle group across the week — e.g. pressing across incline/flat/overhead planes, pulling across vertical/horizontal/angle variations, hip work across hinge/thrust/abduction patterns — not the same angle repeated. This is exercise *selection* guidance layered inside the block architecture; the Antagonist Rotation Rule continues to govern *order*.
+4. **Smooth.** Sequencing flows — no awkward equipment or position jumps mid-block, transitions read as one continuous session. Judgment call at build time, spot-checked at audit.
+
+**Uniqueness mandate:** every client's implementation of this format is built from that client's own three data sources — **Styku scan** (composition priorities, asymmetry), **Jason's SOAP notes** (correctives, tolerances, staged constraints, the slot-4 exercise), and **ICONS Index results** (tested baselines → working loads via `epley1RM()`/`workingLoad()`). Same skeleton, no two identical programs.
+
+**What this does NOT override:**
+- **Clinically-led clients stay clinically-led.** A client whose record carries a binding clinical constraint (Makai Brown's do-not-standard-program flag, a staged return ladder, a stop-signal) gets the clinician's structure FIRST, this architecture fitted around it — per the intake-pending build rules in `icons-expert.md`.
+- **Trainer-directed formats stand.** Sarah's fast-paced/high-rep circuit format is her trainer Nick's explicit direction and is not converted to bodybuilding format by default; the block *order* principle (corrective → primary → accessory → secondary) still informs her circuit sequencing where compatible.
+- The Three-Zone philosophy maps directly onto this (Corrective = Isolated zone, blocks 2–5 = Compound zone, existing metabolic finishers may still close a day after the secondary compound where programmed); the Antagonist Rotation Rule, RIR model, and all Science Layer thresholds apply unchanged inside it.
+
+**Rollout status:** piloted first on one fully-instrumented client before roster-wide application, per the same confirm-the-pilot-before-batch-producing discipline used for Client View and the Assessment Report. See CLIENTS.md for which clients have been restructured to this architecture and when.
+
 ---
 
 ## EVIDENCE-BASED SCIENCE LAYER
