@@ -369,7 +369,7 @@ const days = [
         exercises: [
           { name: 'DB Single-Arm Row', insight: 'Wk1: 40 lbs · Wk4 target: 45–50 lbs', sets: '4', reps: '8–10', load: '40–45 lbs', tempo: '3-1-2', rest: '60s', cue: 'Chest on pad. Drive elbow to hip. Full stretch at bottom.', rirNote: '2 RIR' },
           { name: 'Push-Ups (Full Floor)', insight: 'Baseline 28 reps — controlled at 20. Wk3: add vest', sets: '4', reps: '18–20', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Full lockout at top. 3-sec descent. Stop 2 reps before failure.', rirNote: '2 RIR — not to failure' },
-          { name: 'Incline DB Press (30–45°)', sets: '3', reps: '10–12', load: '20–25 lbs', tempo: '3-1-1', rest: '60s', cue: 'Elbows at 45°. Squeeze chest at top. Full range every rep.' },
+          { name: 'Incline DB Press (30–45°)', sets: '3', reps: '10–12', load: '20–25 lbs', tempo: '3-1-1', rest: '60s', cue: 'Elbows at 45°. Squeeze chest at top. Full range every rep.', rirNote: '1 RIR — hypertrophy-priority accessory' },
         ],
       },
       {

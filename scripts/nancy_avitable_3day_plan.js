@@ -176,6 +176,51 @@
  * baselineNote documents the addition; the exercises/warm-up content
  * themselves stay fully visible in both the trainer document and Client
  * View regardless of that note's audience.
+ *
+ * Updated 8/18/2026, third pass, same day (warm-up content-drift closeout,
+ * confirmed daily-check-in findings -- the Aimee Morris defect class). Full
+ * prior record (this header + CLIENTS.md entry) re-read in full first.
+ * Three fixes, per the standing rule that a loaded, rep-prescribed movement
+ * belongs in an exercise-table row, never in `warmUp` prose:
+ *   1. Day 1 warm-up's "dynamic lateral band walks (2x20)" PROMOTED to a
+ *      real Lateral Band Walk row, first position in Day 1 Block A
+ *      (Activation/Corrective, red) -- it is a named component of the
+ *      ACL/knee-valgus corrective circuit, and Nancy is a runner whose #1
+ *      goal is running knee health. Block A intro updated to name the
+ *      knee-health corrective context. Deliberately NOT the full roster-
+ *      wide 20-30 min universal-circuit rollout (that remains CLAUDE.md's
+ *      documented deferred item) -- this fixes only the unaudited prose
+ *      instance in her document. Antagonist Rotation judgment: Block A is
+ *      an Isolated-zone corrective block deliberately concentrated on left
+ *      glute med / frontal-plane hip work -- three same-region correctives
+ *      in a row is that block's stated purpose, explicitly within
+ *      CLAUDE.md's corrective-block judgment carve-out, not a Compound-
+ *      zone violation. No resequence.
+ *   2. Day 3 warm-up's "2 sets light RDLs" PROMOTED (option taken: promote,
+ *      not remove -- Day 3 is her 80% lower day with heavy squatting and a
+ *      posterior-chain block, so a light hinge ramp is genuinely useful
+ *      priming, and it was prescribed content) into a new Day 3 Block A
+ *      "Hinge Priming" (gold, warm-up/priming context), with load stated
+ *      as ~50% of Day 1's RDL working load and a technique/submaximal-band
+ *      rirNote. Existing Day 3 blocks re-lettered A->B, B->C, C->D.
+ *      Antagonist Rotation re-walk with the new row: RDL-ramp (hinge) ->
+ *      Back Squat (knee) -> Weighted Step-Up (knee) -> Hip Thrust (hip) ->
+ *      Nordic (hamstring) -> Cable Hip Abduction (frontal) -> Curtsy Lunge
+ *      -- no 3 consecutive same-pattern anywhere. Compliant.
+ *   3. Day 1 RDL's `load: 'moderate'` (her known 8/13 vague-placeholder
+ *      issue) replaced with an honest structured instruction: "Establish
+ *      Wk1 load at first session -- record" plus a rirNote anchoring the
+ *      establishment effort (2 RIR). NO real tested RDL number exists to
+ *      anchor a progression to -- the 8/13 Hex Deadlift (135x8) was
+ *      deliberately NOT mapped onto RDL (mechanically distinct lift, see
+ *      above), and no other hinge rep-max is on file. Nothing invented; a
+ *      tested RDL baseline is flagged as still needed in CLIENTS.md.
+ * Remaining warm-up content verified against the rule: Day 1 single-leg
+ * glute bridges (bodyweight activation), Day 2 arm bike/mobility-stick
+ * circuit/band pull-aparts/scapular push-ups (unloaded or bodyweight, all
+ * re-checked today), Day 3 hip hinge drill (movement rehearsal, clarified
+ * as empty bar/PVC) and band side steps (no rep prescription, activation)
+ * -- all legitimately stay in `warmUp`.
  */
 
 const fs = require('fs');
@@ -226,11 +271,11 @@ const weekOverview = [
 ];
 
 const baselines = [
-  ['Back Squat', `95 lbs x 8 (Epley 1RM ≈${oneRM.backSquat} lbs)`, '8/13/2026', `Wk1: ${wk1.backSquat} lbs x5 → Wk4: ${wk4.backSquat} lbs x5 — Day 3 Block A primary strength lift`],
+  ['Back Squat', `95 lbs x 8 (Epley 1RM ≈${oneRM.backSquat} lbs)`, '8/13/2026', `Wk1: ${wk1.backSquat} lbs x5 → Wk4: ${wk4.backSquat} lbs x5 — Day 3 Block B primary strength lift`],
   ['Single-Arm DB Row', `30 lbs x 10 (Epley 1RM ≈${oneRM.row} lbs)`, '8/13/2026', `Wk1: ${wk1.row} lbs x8 → Wk4: ${wk4.row} lbs x8 — Day 2 Block A`],
   ['Goblet Squat', '40 lbs w/ 10-sec isometric hold x 10 (isometric-loaded — not run through Epley formula)', '8/13/2026', `Wk1: ${wk1.gobletSquat} lbs x6-8 (tempo) → Wk4: ${wk4.gobletSquat} lbs x6-8 — Day 1 Block B, adjusted for the program's tempo-rep format vs. the tested hold format`],
   ['DB Chest Press', '15 lbs (reps not recorded — working/reference load, not a rep-max)', '8/13/2026', `Informs Day 2 Block A Incline DB Press Wk1: ${wk1.chestPress} lbs/hand → Wk4: ${wk4.chestPress} lbs/hand`],
-  ['DB Split Squat', `17.5 lbs/hand x 10 (Epley 1RM ≈${oneRM.splitSquat} lbs)`, '8/13/2026', `Informs Day 3 Block A Weighted Step-Up Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`],
+  ['DB Split Squat', `17.5 lbs/hand x 10 (Epley 1RM ≈${oneRM.splitSquat} lbs)`, '8/13/2026', `Informs Day 3 Block B Weighted Step-Up Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`],
   ['Hex Deadlift (Trap Bar)', `135 lbs x 8 (Epley 1RM ≈${oneRM.hexDL} lbs)`, '8/13/2026', 'Reference baseline only — no matching slot; NOT used to inform Romanian Deadlift (mechanically distinct lift, different load capacity). Revisit if a dedicated hex-bar deadlift slot is added.'],
   ['Overhead Press', `17.5 lbs x 10 (Epley 1RM ≈${oneRM.ohp} lbs) — format as reported, no seated/standing qualifier given`, '8/13/2026', 'Reference baseline only — no existing press slot beyond Incline DB Press; not force-fit as a 3rd pressing exercise.'],
   ['Sled Push', '135 lbs', '8/13/2026', 'Reference baseline only — not one of the 10 core ICONS Baseline Testing Protocol movements (distance/effort push, not a rep-max); no existing slot.'],
@@ -271,7 +316,7 @@ const baselineNotes = [
     type: 'watch',
     label: 'Judgment Call — DB Split Squat vs. Weighted Step-Up',
     audience: 'internal',
-    body: `No exercise literally named "Split Squat" exists in Nancy's program. Weighted Step-Up (Day 3 Block A, a primary-strength-block loaded unilateral knee-dominant movement) is the closest analogous slot — closer than Day 1's Reverse Lunge or Day 3's Curtsy Lunge, both of which are deliberately light, corrective-context finishers where a heavier baseline-derived load would work against their actual purpose. The DB Split Squat baseline (${wk1.splitSquat} lbs/hand → ${wk4.splitSquat} lbs/hand) is used to inform Weighted Step-Up's Week 1 → Week 4 load on that basis.`,
+    body: `No exercise literally named "Split Squat" exists in Nancy's program. Weighted Step-Up (Day 3 Block B, a primary-strength-block loaded unilateral knee-dominant movement) is the closest analogous slot — closer than Day 1's Reverse Lunge or Day 3's Curtsy Lunge, both of which are deliberately light, corrective-context finishers where a heavier baseline-derived load would work against their actual purpose. The DB Split Squat baseline (${wk1.splitSquat} lbs/hand → ${wk4.splitSquat} lbs/hand) is used to inform Weighted Step-Up's Week 1 → Week 4 load on that basis.`,
   },
   {
     type: 'teal',
@@ -291,6 +336,12 @@ const baselineNotes = [
     audience: 'internal',
     body: 'The same SOAP note above documented a fuller upper-body carry/press circuit than the eccentric push-up alone captured — explicitly framed by the PT as direct running-economy transfer given Nancy\'s running-knee-health goal (see Block B\'s intro below). Folded in this update: (1) arm bike warm-up (1 min forward + 1 min backward) and a mobility-stick shoulder circuit, added to Day 2\'s warm-up; (2) Standing Resistance Band Chest Press, a core-anti-rotation pressing accessory, added to Day 2 Block A; (3) DB Deadlift → Farmer Carry Combo, Static Overhead DB Hold (Walking), and Landmine Shoulder Press added to Day 2 Block B — the press is deliberately sequenced between the two carry-pattern additions to avoid stacking 3 consecutive loaded-carry exercises (Farmer Carry / DB Deadlift+Carry Combo / Static OH Hold Walking are all carry-pattern), per the Antagonist Rotation Rule.',
   },
+  {
+    type: 'gold',
+    label: 'Warm-Up Content Promoted to Tracked Rows — 8/18/2026',
+    audience: 'internal',
+    body: 'Per the standing warm-up content-drift rule (a loaded, rep-prescribed movement belongs in an exercise-table row, not warmUp prose): (1) Day 1\'s "dynamic lateral band walks (2×20)" is now a tracked Lateral Band Walk row leading Block A — a named ACL/knee-valgus corrective-circuit component, and Nancy is a runner whose #1 goal is running knee health; the full 20-30 min/1-2x-week universal-circuit rollout remains CLAUDE.md\'s deferred roster-wide item, this fixes only the unaudited prose instance. (2) Day 3\'s "2 sets light RDLs" is now a Hinge Priming block (new Block A; prior blocks re-lettered B/C/D) loaded at ~50% of Day 1\'s RDL working load. (3) Day 1 RDL\'s vague "moderate" load replaced with an explicit establish-and-record instruction — NO tested RDL baseline exists (the 8/13 Hex Deadlift was deliberately not mapped onto RDL, mechanically distinct lift), so nothing was invented. Trainer: set the Wk1 RDL load at 2 RIR at the next session, record it here, and capture a tested RDL number at the next baseline battery.',
+  },
 ];
 
 const days = [
@@ -301,15 +352,16 @@ const days = [
     descriptor: 'Left-Side Corrective Emphasis',
     intensityLabel: '70% Day',
     intensityPara: 'Prioritise left-side unloading and glute med activation to correct the 17.5% hip abduction asymmetry flagged above.',
-    warmUp: '5–7 min cycle + dynamic lateral band walks (2×20) + single-leg glute bridges 2×10 each side',
+    warmUp: '5–7 min cycle + single-leg glute bridges 2×10 each side',
     blocks: [
       {
         letter: 'A',
         title: 'Activation / Corrective',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Two exercises to re-balance left glute med activation.',
+        intro: 'Three exercises to re-balance left glute med activation and support running knee health — lateral hip strength directly supports knee tracking on every run.',
         exercises: [
+          { name: 'Lateral Band Walk', sets: '2', reps: '20 steps ea. dir.', load: 'mini-band — light-mod', tempo: 'controlled', rest: '30s', cue: 'Knees track over toes; keep band tension', flag: 'Knee-health corrective — runner priority' },
           { name: 'Side-Lying Hip Abduction (Slow)', sets: '3', reps: '12', load: 'bodyweight', tempo: '3-0-1', rest: '45s', cue: 'Lead with heel; no pelvic tilt; 1-2s hold top', flag: 'Left focus' },
           { name: 'Banded Standing Hip Abduction (Left Emphasis)', sets: '3', reps: '10', load: 'band', tempo: '2-0-1', rest: '30s', cue: 'Drive lateral glute; 2s hold; +2 reps left', flag: 'Left corrective' },
         ],
@@ -321,7 +373,7 @@ const days = [
         intro: 'Build bilateral strength while preserving left control. Goblet Squat Week 1 load is informed by the 8/13 baseline test (40 lbs w/ 10-sec hold x10) — adjusted for this block\'s tempo-rep format, not a literal repeat of the isometric test load.',
         exercises: [
           { name: 'Goblet Squat', sets: '4', reps: '6-8', load: `Wk1: ${wk1.gobletSquat} lbs → Wk4: ${wk4.gobletSquat} lbs`, tempo: '2-0-2', rest: '90s', cue: 'Braced core; track knees; depth to parallel', rirNote: '2 RIR' },
-          { name: 'Romanian Deadlift', sets: '3', reps: '8', load: 'moderate', tempo: '2-0-2', rest: '90s', cue: 'Hinge at hips; feel posterior chain tension' },
+          { name: 'Romanian Deadlift', sets: '3', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-2', rest: '90s', cue: 'Hinge at hips; feel posterior chain tension', rirNote: '2 RIR — use to set Wk1 load' },
         ],
       },
       {
@@ -382,10 +434,20 @@ const days = [
     descriptor: 'Higher Intensity — Left-Volume Maintenance',
     intensityLabel: '80% Day',
     intensityPara: 'Higher intensity to drive strength adaptations; include left-volume maintenance.',
-    warmUp: 'Barbell hip hinge drill, 2 sets light RDLs, activation band side steps',
+    warmUp: 'Hip hinge drill (empty bar or PVC — movement rehearsal), activation band side steps',
     blocks: [
       {
         letter: 'A',
+        title: 'Hinge Priming',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'Light hinge priming before the heavy work — wake up the posterior chain without spending strength. This is preparation, not a work set.',
+        exercises: [
+          { name: 'Romanian Deadlift (Light Ramp-Up)', sets: '2', reps: '8', load: '~50% of Day 1 RDL working load', tempo: '2-0-2', rest: '60s', cue: 'Crisp hinge; prime hamstrings — no grind', rirNote: '3+ RIR — technique/submaximal' },
+        ],
+      },
+      {
+        letter: 'B',
         title: 'Strength Core',
         introLabel: 'Load Target',
         intro: `Back Squat tested at 95 lbs x8 (Epley 1RM ≈${oneRM.backSquat} lbs) — Week 1 trains at ${wk1.backSquat} lbs, climbing to ${wk4.backSquat} lbs by Week 4. Weighted Step-Up Week 1 load is informed by the DB Split Squat baseline (${wk1.splitSquat} lbs/hand).`,
@@ -395,7 +457,7 @@ const days = [
         ],
       },
       {
-        letter: 'B',
+        letter: 'C',
         title: 'Posterior Chain',
         exercises: [
           { name: 'Hip Thrust', sets: '4', reps: '8', load: 'moderate-heavy', tempo: '2-0-1', rest: '90s', cue: 'Full hip extension; hold 1s top' },
@@ -403,7 +465,7 @@ const days = [
         ],
       },
       {
-        letter: 'C',
+        letter: 'D',
         title: 'Left-Side Volume Finishers',
         color: 'red',
         exercises: [
@@ -443,12 +505,14 @@ const data = {
 // Client View (added 8/17/2026): no `clientHighlight` is set — Nancy's new
 // 8/13/2026 strength battery is a first-time test, not a documented
 // before/after PR or a prior-version comparison, so per CLAUDE.md's Client
-// View spec ("never fabricate one") nothing is invented here. The 4 internal
+// View spec ("never fabricate one") nothing is invented here. The 7 internal
 // baselineNotes above (New Strength Baseline Battery, both Judgment Call
-// notes, Perimenopausal Status — Not Assessed) and the 2 flag lines that
+// notes, Perimenopausal Status — Not Assessed, the two 8/18 PT-update notes,
+// and the 8/18 warm-up-promotion note) and the 2 flag lines that
 // dangle-reference those judgment-call notes ("...— see note") are filtered
 // out of this view; everything else (Styku finding, asymmetry watch/
-// corrective flags, all day/block/exercise content) renders unchanged.
+// corrective flags, all day/block/exercise content — including the promoted
+// Lateral Band Walk and Hinge Priming rows) renders unchanged.
 async function main() {
   const outDir = path.join(__dirname, '..', 'clients', 'nancy_avitable');
   fs.mkdirSync(outDir, { recursive: true });
