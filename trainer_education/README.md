@@ -19,6 +19,23 @@ All four now include a compact male-client scope-awareness addition (added 8/11/
 
 Case-study/scenario content in these modules should name Brace Life's in-house staff (Jason Bethea, Trainer/Physical Therapist; Niko Heers, Stretch Therapist) the same way real client documents do as of 8/11/26 — see CLAUDE.md's "STUDIO STAFF" section. A rehab-referral callout still using generic "pending PT clearance" language is stale, not a style choice.
 
+### Delta module — `ICONS_Trainer_Update_Aug2026_What_Changed.html` (added 8/18/2026)
+
+| File | Purpose | Structure |
+|---|---|---|
+| `ICONS_Trainer_Update_Aug2026_What_Changed.html` | Remediation for trainers who certified **before 8/17/2026** | 6 sections, ~25 min. Eleven corrections in explicit OLD → NEW form, then a scored 10-question recertification check (80%, 8/10) that unlocks a lead-coach sign-off section. |
+
+**Who this is for — and who it isn't.** This is a *remediation path*, not a new onboarding step:
+
+- **Existing trainers who passed a gate in A, B or C before 8/17/2026** — take this. The 8/17 external evidence review changed the correct answers to several knowledge-check questions they were scored on, and the corrected modules read as though they were always correct, so re-reading one never tells a trainer which of their answers used to be different. That gap is exactly what this module closes.
+- **New trainers** — skip it entirely. Modules A, B and C already carry every correction in their teaching content *and* their `data-correct` answers; a trainer certifying today learns the corrected standard first time through and has no old answer to unlearn.
+
+**The eleven corrections it covers** (each verified against CLAUDE.md's current text at build time; sourced from the 13th/14th/15th Research Update Log passes): RIR default on primary lifts 1 → **2 RIR** (1 RIR now reserved for hypertrophy-priority accessory work, and everything above 2 RIR collapses into one technique/submaximal band) · LIFTMOR intensity ≥80% → **>85% 1RM**, plus mandatory supervision, a risk-stratification gate, a technique-first ramp-in and a loaded-spinal-flexion prohibition · the five-color intensity week is **not** the novice default (first ~6 months = simplified Gold + Green rotation; Red 90% days need a genuine testing/competition rationale) · ALST retired from a 3-tier women's table to **2 tiers** (≥7.0 "Optimal" was EWGSOP2's *male* cutoff, never a female optimal tier — flagged in-module as the single most consequential correction) · asymmetry trigger 0.5 lb absolute → **≥10% relative** (the old trigger was smaller than the scanner's own margin of error) · VFA 4-tier risk table retired → **personal trend metric**, waist circumference primary · Styku scans generally = precise scan-to-scan, imprecise on any single absolute reading, with **segmental per-limb composition explicitly not reportable as precise** · pelvic floor blanket "never hold your breath" → **graded bracing model** (sustained breath-holding across reps remains the error) · knee/ACL corrective circuit screen-gated → **universal**, 20–30 min, 1–2×/week, ≥76% adherence target · protein age bands retired → **context-driven** 1.6 g/kg baseline, per-meal ~0.4 → **~0.3 g/kg** · collagen 30–60 → **45–60 min** pre-load and repositioned from acute performance aid to chronic 12+ week connective-tissue support, ranking below protein and creatine.
+
+**Gate and sign-off.** One gate, in Section 5: 10 questions, four options each, one correct, threshold 80% — 8/10 passes, 7/10 fails, matching the displayed "80% (8/10)" exactly. Every question carries a distractor that is precisely what the trainer would have been scored *correct* on before 8/17/2026, so a miss identifies which specific old standard is still stuck rather than just producing a low score. Passing unlocks Section 6 (the only locked section in the file) — which is a **lead-coach-observed live sign-off**, not a self-certification: the quiz unlocks the page, it does not sign anyone off. Section 6 also states plainly that this module supersedes the corresponding content in A/B/C, and tells trainers to *flag* stale thresholds in existing client documents rather than editing them (protein targets still on the retired age tiers, and asymmetry protocols established under the old 0.5 lb trigger, are the two named cases).
+
+Expect further delta modules as the standing science-layer re-check cadence produces more material corrections — see CLAUDE.md's Research Update Log.
+
 ## Format 2 — Physical "Train the Trainer" `.docx` programs (trainers run the workouts on themselves)
 
 Built via `buildDocument()` in `scripts/icons_template.js` — never hand-composed. "You cannot coach what you haven't felt." Carries `insight` sub-lines (italic gray "Trainer Insight: ...") explaining the clinical rationale behind each exercise, distinct from the clinical-red `flag` field.
@@ -57,6 +74,8 @@ Build scripts: `scripts/becca_3day_plan.js`, `scripts/brodie_3day_plan.js`, `scr
 1. `ICONS_Trainer_Learning_Module.html` (repo root) — ungated foundation, 5 modules, ~100 min total.
 2. Pick **one** gated HTML variant (A, B, or C) based on what the lead coach wants reinforced — they teach the same content through different structures, not different content.
 3. `ICONS_Trainer_Development_Program.docx` (or a variant, at the lead coach's discretion) — physical, felt experience of the client-facing method.
+
+`ICONS_Trainer_Update_Aug2026_What_Changed.html` is also deliberately not part of this path — a new trainer starting today learns the corrected standards first time through A/B/C and has nothing to unlearn. Hand it only to a trainer who certified before 8/17/2026.
 
 Format 3 is deliberately not part of this path — it's not a generic teaching step handed to any new trainer, it's an individualized program for a specific named trainer/athlete once their own baseline testing is on file (see "Format 3" above). Don't hand a new trainer one of the 5 named athlete programs as an onboarding step.
 
