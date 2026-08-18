@@ -29,9 +29,12 @@
  * by age 40+ regardless (age-based creatine guidance is unaffected by
  * this fix).
  *
- * Segmental asymmetry: arms 0.1 lb gap, legs 0.4 lb gap — both under the
- * 0.5 lb asymmetry-protocol threshold, so no unilateral-lead requirement;
- * noted as monitor-only in baselineNotes (legs closer to the threshold).
+ * Segmental asymmetry: arms 0.1 lb gap (~2% relative), legs 0.4 lb gap
+ * (~3% relative) — both well under the corrected >=10% RELATIVE
+ * asymmetry-protocol trigger (CLAUDE.md, 8/17/2026; the prior absolute
+ * 0.5 lb figure is retired), so no unilateral-lead requirement; noted as
+ * monitor-only in baselineNotes. Citation updated 8/18/2026 — the
+ * conclusion is unchanged in either direction, only the standard cited.
  *
  * Baseline battery is strong across the board (85 lb Hex Deadlift x5, 85 lb
  * Hip Thrust x5, 2:00 plank, 5 reps/grip on assisted pull-ups) — program
@@ -101,12 +104,12 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Styku Findings — Excellent Baseline',
-    body: 'Shape Score 92/100 (Excellent). Body Fat 27.0% (Fit — lower than 70% of peers). ALST Index 5.94 kg/m² — within normal reference range (the 5.5 kg/m² EWGSOP2 female at-risk cutoff is the governing threshold; there is no higher "Optimal" tier above it for women). VFA 26.3 cm² — Very Low Risk. BMI 20.5 — Normal range. No clinical body-composition flags on this scan.',
+    body: 'Shape Score 92/100 (Excellent). Body Fat 27.0% (Fit — lower than 70% of peers). ALST Index 5.94 kg/m² — within normal reference range (the 5.5 kg/m² EWGSOP2 female at-risk cutoff is the governing threshold; there is no higher "Optimal" tier above it for women). VFA 26.3 cm² — a "Very Low" reading on the ICONS trend scale, and read as exactly that: a personal trend figure to follow scan over scan, not a diagnosis. No universal VFA threshold exists in the clinical literature, and this scanner\'s visceral-fat output was validated against DXA in kilograms rather than CT in cm², so the absolute number carries real individual-level uncertainty. BMI 20.5 — Normal range. No clinical body-composition flags on this scan.',
   },
   {
     type: 'watch',
     label: 'Segmental Asymmetry — Below Threshold, Monitor',
-    body: 'Arms: Left 6.3 lbs / Right 6.4 lbs — 0.1 lb gap. Legs: Left 13.3 lbs / Right 13.7 lbs — 0.4 lb gap, right-dominant. Both gaps sit under the 0.5 lb asymmetry-protocol threshold, so no formal unilateral-lead requirement is triggered — but the leg gap is close enough to flag for monitoring at the next rescan.',
+    body: 'Arms: Left 6.3 lbs / Right 6.4 lbs — 0.1 lb gap. Legs: Left 13.3 lbs / Right 13.7 lbs — 0.4 lb gap, right-dominant. Both gaps compute to roughly 2–3% relative, well under the ≥10% relative difference the asymmetry protocol treats as meaningful, so no formal unilateral-lead requirement is triggered — the leg gap is still worth confirming at the next rescan to make sure it isn\'t widening.',
   },
   {
     type: 'gold',
@@ -267,7 +270,7 @@ const summary = {
   ],
   milestones4wk: 'All baseline lifts surpassed. Push-up: 8 full unassisted. Plank: 2:00 loaded. Pull-up assist level reduced across all 3 grips.',
   milestones8wk: 'Strength: Hex DL 110+ lbs ×5. Hip Thrust 110+ lbs ×5–6. OHP 20 lbs/hand ×8. Incline Press 27.5 lbs/hand ×8. Row 37.5–40 lbs ×8. Lunge 32.5 lbs/hand ×8. Carry 45–50 lbs/hand. Push-up 12+ full unassisted. Pull-up 8+ reps all grips, next assist-level reduction. Plank 2:15+ loaded.',
-  rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index trend (currently 5.94 kg/m², within normal reference range), Shape Score (currently 92, Excellent — maintain), and the leg segmental gap (currently 0.4 lbs, below threshold but worth confirming it isn\'t widening).',
+  rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index trend (currently 5.94 kg/m², within normal reference range), Shape Score (currently 92, Excellent — maintain), and the leg segmental gap (currently 0.4 lbs, roughly 3% relative — well below the ≥10% trigger, but worth confirming it isn\'t widening).',
 };
 
 const data = {

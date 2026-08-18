@@ -102,7 +102,7 @@ const baselineNotes = [
     type: 'teal',
     label: 'Styku Summary — Full Scan Detail Lives in the Full-Gym Document',
     audience: 'internal',
-    body: 'ALST Index 5.52 kg/m² — Normal/monitor tier per CLAUDE.md\'s 3-tier table (NOT At-Risk), but only 0.02 kg/m² above the At-Risk cutoff — a genuine monitoring point for her 8-week rescan. VFA (Segmental Analysis) 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md\'s prior absolute VFA risk-band table (which this document previously cited to label this reading "Very Low Risk," itself a correction of Styku\'s own "Low Risk" dashboard label) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner\'s own validation limits (the separate raw "Visceral Fat 0.2" figure elsewhere on her scan is a different, non-cm² scale and is not used). BMI 18.6 — technically Normal, only 0.1 above the Underweight cutoff, noted as borderline and not flagged clinically. The complete Styku table (body fat, lean mass, bone mass, Shape Score, full segmental LST) lives in her companion 2-Day Full Gym Training Plan — the clinical facts and asymmetry protocol below apply identically here.',
+    body: 'ALST Index 5.52 kg/m² — within the normal reference range (>=5.5 kg/m²), NOT At-Risk, but only 0.02 kg/m² above the At-Risk cutoff — genuinely borderline and a real monitoring point for her 8-week rescan; ALST is tracked here as a trend metric, not a graded score, and no higher tier exists above the 5.5 kg/m² cutoff for women — the 7.0 kg/m² figure previously used as an upper tier is EWGSOP2\'s separate MALE at-risk threshold, not a female target. VFA (Segmental Analysis) 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md\'s prior absolute VFA risk-band table (which this document previously cited to assign this reading a risk-band label of its own, itself a correction of the band Styku\'s dashboard prints for it) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner\'s own validation limits (the separate raw "Visceral Fat 0.2" figure elsewhere on her scan is a different, non-cm² scale and is not used). BMI 18.6 — technically Normal, only 0.1 above the Underweight cutoff, noted as borderline and not flagged clinically. The complete Styku table (body fat, lean mass, bone mass, Shape Score, full segmental LST) lives in her companion 2-Day Full Gym Training Plan — the clinical facts and asymmetry protocol below apply identically here.',
   },
   {
     type: 'watch',
@@ -308,8 +308,8 @@ const data = {
 // Client View (added 8/17/2026): no `clientHighlight` set — same reasoning
 // as the full-gym companion document (first-build client, nothing to
 // compare against yet). 2 baselineNotes are internal-only (Styku Summary —
-// explicitly cites CLAUDE.md's 3-tier table and corrects Styku's own
-// dashboard label; Age Bracket & Program Level — cites CLAUDE.md's bracket-
+// explicitly cites CLAUDE.md's corrected ALST/VFA standards and corrects
+// Styku's own dashboard label; Age Bracket & Program Level — cites CLAUDE.md's bracket-
 // boundary reasoning directly). No `insight`/`flag` fields exist anywhere in
 // this script, so no exercise-level filtering was needed, and no block
 // `intro` text references either internal-only note ("see note above"-style

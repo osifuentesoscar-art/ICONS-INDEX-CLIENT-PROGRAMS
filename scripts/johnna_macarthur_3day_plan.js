@@ -149,13 +149,17 @@ const styku = {
   rightArmLST: 8.5,
   leftLegLST: 16.8,
   rightLegLST: 18.2,
-  peerComparison: 'Lower body fat than 75% of women 50-59 (25th percentile) — leaner than most peers, though Styku\'s own comparison band labels this result "Moderate Risk." Read alongside the Ideal Lean Mass marker and VFA Low Risk finding below rather than in isolation.',
+  peerComparison: 'Lower body fat than 75% of women 50-59 (25th percentile) — leaner than most peers, though Styku\'s own comparison band labels this result "Moderate Risk." Read alongside the Ideal Lean Mass marker and the VFA trend figure below rather than in isolation.',
 };
 
 // weakerSide() replaces hand-derived weaker-side comments — lower LST =
-// weaker = leads unilateral work. Legs sit well above the 0.5 lb asymmetry-
-// protocol trigger (1.4 lb gap); arms sit below it (0.1 lb gap, monitor
-// only) and are not run through the unilateral-lead protocol.
+// weaker = leads unilateral work. Legs carry the larger gap (1.4 lbs,
+// ~7.7% relative) and lead unilateral work; arms are effectively even
+// (0.1 lb, ~1.2%) and are not run through the unilateral-lead protocol.
+// NOTE (8/18/2026): neither gap clears CLAUDE.md's corrected >=10%
+// RELATIVE asymmetry trigger (the prior absolute 0.5 lb figure is
+// retired). The left-led prescription below is deliberately UNCHANGED
+// pending a per-client clinical review — see the internal baselineNote.
 const legWeakerSide = weakerSide(styku.leftLegLST, styku.rightLegLST); // 'left'
 
 const weekOverview = [
@@ -192,12 +196,23 @@ const baselineNotes = [
   {
     type: 'watch',
     label: 'Peer-Comparison Tension — Body Fat % vs. "Moderate Risk" Band',
-    body: 'Compared against age-matched peers (women 50–59), Johnna\'s body fat % is lower than 75% of the comparison group — she is leaner than most peers in this bracket — yet Styku\'s own comparison band for that same result is labeled "Moderate Risk," 25th percentile. Read this as a population-relative marker, not a standalone clinical risk flag: VFA (82.7 cm², Low Risk) and ALST (6.32 kg/m², within normal reference range) don\'t support an elevated cardiometabolic read on their own, and Lean Mass carries the positive "Ideal Lean Mass" flag noted above. The full picture is a healthy profile, not one driven by any single number in isolation.',
+    body: 'Compared against age-matched peers (women 50–59), Johnna\'s body fat % is lower than 75% of the comparison group — she is leaner than most peers in this bracket — yet Styku\'s own comparison band for that same result is labeled "Moderate Risk," 25th percentile. Read this as a population-relative marker, not a standalone clinical risk flag: VFA (82.7 cm² — a mid-range figure tracked as a personal trend, not assigned a risk band) and ALST (6.32 kg/m², within normal reference range) don\'t support an elevated cardiometabolic read on their own, and Lean Mass carries the positive "Ideal Lean Mass" flag noted above. The full picture is a healthy profile, not one driven by any single number in isolation.',
+  },
+  {
+    type: 'teal',
+    label: 'VFA 82.7 cm² — Tracked as a Trend',
+    body: 'Presented as a personal trend figure to follow scan over scan rather than assigned a risk band: no consensus body endorses a single visceral-fat cutoff, published thresholds vary widely across studies, and this scanner\'s visceral-fat output was validated against DXA in kilograms rather than CT in cm² — so the absolute number carries real individual-level uncertainty. Waist circumference, measured to protocol, is the primary clinical-facing metric going forward; add it at the next scan and track the two together.',
   },
   {
     type: 'watch',
     label: 'Segmental Asymmetry — Left Leg Leads (Arms Monitor Only)',
-    body: `Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — a 1.4 lb gap, well above the 0.5 lb asymmetry-protocol trigger. LEFT leg is weaker (lower LST) and leads every unilateral lower-body exercise across this program; reps/loads are logged per side. Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — only a 0.1 lb gap, below the 0.5 lb trigger, so arms are tracked as routine monitoring only with no formal unilateral-lead requirement.`,
+    body: `Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — the left leg reads as the lighter/weaker side on this scan and leads every unilateral lower-body exercise across this program; reps/loads are logged per side. Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — a difference small enough to read as routine scan-to-scan variation, so arms are tracked as monitoring only with no formal unilateral-lead requirement.`,
+  },
+  {
+    type: 'watch',
+    audience: 'internal',
+    label: 'Asymmetry Trigger Recalculation — Flagged Discrepancy (8/18/2026)',
+    body: 'CLAUDE.md\'s Asymmetry Protocol trigger was corrected 8/17/2026 from an absolute 0.5 lb L/R gap to a relative ≥10% gap, because the old absolute figure was firing on measurement noise. Recomputed against this client\'s actual numbers: Left Leg 16.8 lbs / Right Leg 18.2 lbs is a 1.4 lb gap — the largest currently on the roster — but ~7.7% relative, so it cleared the OLD absolute trigger comfortably and still falls short of the corrected ≥10% threshold. Arms (8.4 vs 8.5 lbs, ~1.2% relative) sit below it either way. Per the Nicolette Scott precedent, the left-leg-leads prescription already programmed into this document (Single-Leg RDL, DB Reverse Lunge, Step-Up) is left UNCHANGED pending a dedicated per-client clinical review — this note makes the discrepancy visible for that review rather than resolving it silently, and a functional single-leg strength or power test is the preferred primary trigger going forward. Flagged to the main thread / icons-expert.',
   },
   {
     type: 'gold',
@@ -346,7 +361,7 @@ const days = [
     subtitle: 'Hip Thrust · Single-Leg RDL (Left-Led) · Lunge · Carry',
     descriptor: 'PRIMARY STRENGTH DAY · LEFT-LEG ASYMMETRY PROTOCOL · TESTED BASELINES',
     intensityLabel: '80% Day',
-    intensityPara: 'Primary strength day, built on Johnna\'s strongest tested numbers (Hip Thrust 55 lbs x8, Epley 1RM ≈70 lbs). Left leg leads every unilateral set per Styku\'s 1.4 lb segmental LST gap (16.8 vs 18.2 lbs) — well above the 0.5 lb asymmetry-protocol trigger. Hip activation carries forward from earlier in the week into every rep here.',
+    intensityPara: 'Primary strength day, built on Johnna\'s strongest tested numbers (Hip Thrust 55 lbs x8, Epley 1RM ≈70 lbs). Left leg leads every unilateral set — segmental lean mass reads lighter on the left (16.8 vs 18.2 lbs), so the left side sets the working load and the right matches it. Hip activation carries forward from earlier in the week into every rep here.',
     warmUp: '5 min bike, 90/90 hip switch x5/side, banded lateral walk x10/side, glute bridge x10, bodyweight squat x10',
     blocks: [
       {
@@ -404,7 +419,7 @@ const days = [
       },
     ],
     coolDown: 'Couch stretch 30s/side, 90/90 seated hip rotation hold 30s/side, doorway chest stretch 20s/side (light), child\'s pose 45s',
-    iconsNote: 'Left leg leads every unilateral set this session — Styku shows a 1.4 lb segmental gap (16.8 vs 18.2 lbs), well above the 0.5 lb asymmetry trigger. Track the gap at the 8-week rescan. Hip activation and tibia/inner-thigh work carry forward from earlier sessions; keep shoulder work pain-free per the internal-rotation protocol established on Day 2.',
+    iconsNote: 'Left leg leads every unilateral set this session — Styku shows the left leg lighter by 1.4 lbs (16.8 vs 18.2 lbs), the largest segmental difference on her scan. Track the gap at the 8-week rescan. Hip activation and tibia/inner-thigh work carry forward from earlier sessions; keep shoulder work pain-free per the internal-rotation protocol established on Day 2.',
   },
 ];
 
@@ -417,7 +432,7 @@ const summary = {
   ],
   milestones4wk: `Goblet Squat 30–35 lbs x8, Trap Bar Deadlift 65–70 lbs x6 at 2–3 RIR. Hip Thrust progressing toward ${wk4.hipThrust + 5} lbs x8. Seated OHP at 15 lbs x8 pain-free (matching tested baseline) — progress only as shoulder ROM allows. Incline Dumbbell Press progressing from 12.5 lbs/hand toward 15 lbs/hand, pain-free. Left-leg single-leg RDL load matched toward parity with right within 10%.`,
   milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline (25 lbs / 55 lbs). Hip Thrust and OHP progressed from current working loads. Left/right leg LST gap reduced from 1.4 lbs. Plank hold past 50 seconds. Shoulder internal rotation strength improved with no pain flags logged.',
-  rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently 6.32 kg/m², within normal reference range), VFA (currently 82.7 cm², Low Risk — maintain), left/right leg LST gap (baseline 1.4 lbs, target under 0.5), lean mass (currently 96.6 lbs, Ideal Lean Mass marker — maintain or build further).',
+  rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently 6.32 kg/m², within normal reference range), VFA (currently 82.7 cm² — track the direction of travel rather than a risk band, and pair it with a waist-circumference measurement at the next scan), left/right leg LST gap (baseline 1.4 lbs, ≈8% relative — track the percentage narrowing, not just the raw pounds), lean mass (currently 96.6 lbs, Ideal Lean Mass marker — maintain or build further).',
 };
 
 const data = {

@@ -36,11 +36,40 @@
  * CLAUDE.md's Research Update Log, 8/17/2026 pass), so the rendered
  * nutrition block's actual g/day figure still reflects the prior formula
  * pending that engine fix.
+ *
+ * REVISION (8/18/2026, science-layer language sweep — completion pass; no
+ * training content, loads, or exercise selection changed):
+ *   - VFA: the client-visible "Moderate Cardiometabolic Risk / 100-149 cm²
+ *     moderate-risk band" label is removed. CLAUDE.md retired that entire
+ *     4-tier VFA table 8/17/2026 — no consensus body endorses a single
+ *     VFA cutoff, and Styku's own visceral-fat output was validated
+ *     against DXA in KILOGRAMS, never CT in cm². Her 142.7 cm² reading is
+ *     genuinely elevated and is still stated plainly as such (no false
+ *     reassurance) — it is simply framed as a personal trend figure with
+ *     the methodology caveat and waist circumference named as the primary
+ *     clinical-facing metric going forward.
+ *   - Asymmetry: the retired absolute 0.5 lb trigger is removed from all
+ *     client-visible copy (baselineNotes, Day 2 intensityPara, Day 2
+ *     Block C intro, Day 3 intensityPara/iconsNote, milestones8wk,
+ *     rescanNote). Recomputed under the corrected >=10% RELATIVE trigger,
+ *     her legs (17.5 vs 18.0 lbs) are only ~2.8% apart and do NOT clear
+ *     it. Per the Nicolette Scott precedent, the LEFT-LED PRESCRIPTION IS
+ *     LEFT UNCHANGED — that is a per-client clinical decision, not a
+ *     language fix — and a new audience:'internal' note documents the
+ *     discrepancy explicitly for that review.
+ *   - Styku section added: this script previously had no `styku` key at
+ *     all, so the document rendered no scan data even though its own
+ *     prose references "your Styku scan" repeatedly. See the note at the
+ *     top of `baselineNotes` for why this is composed from primitives
+ *     rather than the standard `stykuBlock()` call.
+ *   - ALST note split per the Client View standard: the clinical read
+ *     stays client-visible; the CLAUDE.md citation and dated-correction
+ *     admission move to a companion audience:'internal' note.
  */
 
 const fs = require('fs');
 const path = require('path');
-const { buildDocument } = require('./icons_template');
+const { buildDocument, sectionTitle, tealCallout, C } = require('./icons_template');
 
 const client = {
   name: 'Johanna Castillo',
@@ -113,16 +142,54 @@ const baselines = [
   ['Trap Bar Deadlift', 'Not Tested — Established This Week', 'This Week', 'Wk1 working load 45 lbs × 6 (Day 2 Block B) — becomes the new 8-week baseline'],
 ];
 
+// Styku section (added 8/18/2026). This script previously carried no
+// `styku` key at all, so the rendered document showed no scan data
+// whatsoever while its own prose referenced "your Styku scan" throughout
+// — the same defect class as Nancy Avitable's missing baselines table.
+//
+// Composed from the engine's own primitives (`sectionTitle` + a teal
+// labeled paragraph) rather than the standard `stykuBlock()` call for one
+// reason only: `stykuBlock()` renders all twelve of its fields
+// unconditionally, and only six of Johanna's scan values are on record
+// (body fat %, ALST, VFA, and the four segmental LST figures). Passing it
+// a partial object would print "undefined" into a client-facing document,
+// and nothing here is derived, estimated, or filled in to avoid that. Once
+// the missing fields are supplied from her source Styku PDF, replace this
+// with a standard `styku: {...}` object on `data` — see the internal note
+// below for the exact list of what is missing.
+const stykuSection = {
+  render: [
+    sectionTitle('Styku Body Composition Scan', C.teal),
+    ...tealCallout(
+      'Scan Values on Record',
+      'Body Fat 40.4% (Styku\'s own At-Risk classification) · ALST Index 7.23 kg/m² · Visceral Fat Area 142.7 cm² · Segmental lean soft tissue — Left Arm 8.7 lbs / Right Arm 8.4 lbs, Left Leg 17.5 lbs / Right Leg 18.0 lbs. These are the figures every clinical note in this document is built from: the fat-loss and cardiometabolic emphasis, the conditioning finisher on each training day, and the per-side logging on unilateral work all trace back to them.'
+    ),
+  ],
+};
+
 const baselineNotes = [
+  stykuSection,
+  {
+    type: 'watch',
+    audience: 'internal',
+    label: 'Styku Record — Fields Not on File',
+    body: 'Her record carries body fat %, ALST Index, VFA, and the full segmental LST set, but NOT Lean Mass, Lean Mass %, Fat Mass, Bone Mass, BMI, BMR, Shape Score, or the scan date — which is why this document renders a values-on-record section instead of the standard eight-field Styku table used for every other scanned client on the roster. Nothing was derived or estimated to fill those gaps (her documented 5\'4" / 172 lbs would yield a BMI near 29.5, but Styku\'s own reported BMI is not on file and no inferred figure has been placed into a scan table). Request the missing fields from her source Styku PDF; once supplied, swap this section for a standard `stykuBlock()` call in the build script.',
+  },
   {
     type: 'green',
     label: 'ALST Index Within Normal Reference Range — 7.23 kg/m²',
-    body: 'Well above the 5.5 kg/m² EWGSOP2 female at-risk cutoff — not At-Risk, and there is no higher "Optimal" tier above that threshold for women (EWGSOP2\'s 7.0 kg/m² cutoff is the separate MALE at-risk threshold, not a female target — corrected 8/17/2026, see CLAUDE.md\'s "ALST Index" section). Read this as a healthy number tracked as a trend over time, not a graded score. This program layers strength maintenance under a fat-loss/cardiometabolic focus rather than muscle-building-primary — loads hold at tested baselines while the conditioning finisher does the heavy lifting on body composition.',
+    body: 'Well above the 5.5 kg/m² EWGSOP2 female at-risk cutoff — not At-Risk, and there is no higher "Optimal" tier above that threshold for women. Read this as a healthy number tracked as a trend over time, not a graded score. This program layers strength maintenance under a fat-loss/cardiometabolic focus rather than muscle-building-primary — loads hold at tested baselines while the conditioning finisher does the heavy lifting on body composition.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'ALST Threshold Basis — Female Cutoff, Sex-Conflation Correction',
+    body: 'The ALST framing above reflects CLAUDE.md\'s "ALST Index" section as corrected 8/17/2026: the prior three-tier women\'s scale wrongly presented EWGSOP2\'s 7.0 kg/m² figure as a female "Optimal" target, when 7.0 is the separate MALE at-risk threshold — there is no female Optimal tier in EWGSOP2 or any consensus body reviewed. Only the <5.5 kg/m² female at-risk floor applies to Johanna, and per the same correction, ALST should be presented as a trend metric rather than a precise risk classification (Styku\'s own ALM/ALMI output is not validated in its published validation study).',
   },
   {
     type: 'watch',
-    label: 'VFA 142.7 cm² — Moderate Cardiometabolic Risk',
-    body: 'Falls in the 100–149 cm² moderate-risk band. Drives the metabolic finisher on every training day — brisk, sustainable conditioning, not max-effort testing.',
+    label: 'VFA 142.7 cm² — Elevated, Tracked as a Trend',
+    body: 'A genuinely elevated reading, and one of the two findings driving the conditioning finisher on every training day — brisk, sustainable work, not max-effort testing. Read it as a personal trend figure to follow scan over scan rather than a graded risk classification: no consensus body endorses a single visceral-fat cutoff, published thresholds vary widely, and this scanner\'s visceral-fat output was validated against DXA in kilograms rather than CT in cm², so the absolute number carries real individual-level uncertainty. Waist circumference, measured to protocol, is the primary clinical-facing metric going forward — add it at the next scan and track the two together.',
   },
   {
     type: 'watch',
@@ -131,13 +198,19 @@ const baselineNotes = [
   },
   {
     type: 'teal',
-    label: 'Left Leg Asymmetry — 17.5 vs 18.0 lbs LST',
-    body: 'Gap of 0.5 lbs meets the asymmetry protocol trigger. LEFT leg leads every unilateral lower-body exercise. Log left vs. right loads separately.',
+    label: 'Segmental Lean Mass — Left Leg Leads Unilateral Work',
+    body: 'Left Leg 17.5 lbs / Right Leg 18.0 lbs — the left leg reads as the lighter side on this scan and leads every unilateral lower-body exercise in this program, which caps the stronger side at what the weaker side can match. Log left and right loads separately, and recheck both figures at the next rescan.',
   },
   {
     type: 'teal',
-    label: 'Right Arm — 8.4 vs 8.7 lbs LST (Monitor Only)',
-    body: 'Gap of 0.3 lbs sits below the 0.5 lb asymmetry-protocol threshold. Logged per side on single-arm row and suitcase carry as routine monitoring, not a formal lead-side prescription.',
+    label: 'Segmental Lean Mass — Arms (Monitor Only)',
+    body: 'Left Arm 8.7 lbs / Right Arm 8.4 lbs — a small difference, well inside the range read as routine scan-to-scan variation. Logged per side on the single-arm row and suitcase carry as monitoring only; no lead-side prescription is applied to upper-body work.',
+  },
+  {
+    type: 'watch',
+    audience: 'internal',
+    label: 'Asymmetry Trigger Recalculation — Flagged Discrepancy (8/18/2026)',
+    body: 'CLAUDE.md\'s Asymmetry Protocol trigger was corrected 8/17/2026 from an absolute 0.5 lb L/R gap to a relative ≥10% gap — the old absolute figure was firing on measurement noise, since device error on Styku\'s segmental lean-mass readings runs several times larger than half a pound. Recomputed against this client\'s actual numbers: Left Leg 17.5 lbs / Right Leg 18.0 lbs is a 0.5 lb gap but only ~2.8% relative, so it met the OLD absolute trigger exactly and does NOT clear the corrected ≥10% threshold. Arms (8.7 vs 8.4 lbs, ~3.4% relative) sit below the trigger either way. Per the Nicolette Scott precedent, the left-leg-leads prescription already programmed into Day 2 Block C (Single-Leg RDL, Reverse Lunge) is left UNCHANGED pending a dedicated per-client clinical review — this note exists to make the discrepancy visible for that review, not to resolve it silently. A functional single-leg strength or power test is the preferred primary trigger going forward. Flagged to the main thread / icons-expert.',
   },
   {
     type: 'gold',
@@ -225,7 +298,7 @@ const days = [
     subtitle: 'Squat & Deadlift Introduction + Left-Leg Asymmetry Protocol',
     descriptor: 'Technique Day · Lighter Loads · Full Attention to Form',
     intensityLabel: '60% Day',
-    intensityPara: 'Squat and deadlift were not tested in the initial battery, so today\'s loads are deliberately light and become the new 8-week baseline. Left leg leads every unilateral set — Styku segmental LST shows a 0.5 lb deficit (17.5 vs 18.0 lbs), exactly at the asymmetry protocol trigger. Work every set at 3+ RIR.',
+    intensityPara: 'Squat and deadlift were not tested in the initial battery, so today\'s loads are deliberately light and become the new 8-week baseline. Left leg leads every unilateral set — segmental lean mass reads lighter on the left (17.5 vs 18.0 lbs), so the left side sets the working load and the right matches it. Work every set at 3+ RIR.',
     warmUp: '5 min bike, hip circles x10/direction, banded lateral walk x10/side, bodyweight squat x10, glute bridge x10',
     blocks: [
       {
@@ -252,7 +325,7 @@ const days = [
         letter: 'C',
         title: 'UNILATERAL LEG — LEFT-LED',
         introLabel: 'Why',
-        intro: 'Styku scan shows a 0.5 lb left-leg deficit (L 17.5 / R 18.0) — at the asymmetry trigger threshold. Left leg leads every set below; log reps per side.',
+        intro: 'Segmental lean mass reads lighter on the left (L 17.5 / R 18.0 lbs), so the left leg leads every set below and sets the working load. Log reps per side.',
         exercises: [
           { name: 'Single-Leg RDL', sets: '3', reps: '6/side', load: '22.5 lbs/hand', tempo: '3-1-1', rest: '60s', flag: 'Left leg weaker (Styku) — leads every set', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
           { name: 'Reverse Lunge', sets: '3', reps: '8/side', load: 'bodyweight', tempo: '2-1-1', rest: '60s', flag: 'Left leg leads', cue: 'Left leg first. Knee tracks over mid-foot.', rirNote: '2 RIR' },
@@ -278,7 +351,7 @@ const days = [
     subtitle: 'Pressing/Pulling Strength + Metabolic Finisher',
     descriptor: 'Moderate Strength · Volume Build · Conditioning Priority',
     intensityLabel: '70% Day',
-    intensityPara: 'Moderate strength, building pressing/pulling volume without peak CNS demand. Single-arm row and suitcase carry are logged per side given the marginal right-arm deficit on Styku (0.3 lb gap — below the formal 0.5 lb trigger, tracked as routine monitoring).',
+    intensityPara: 'Moderate strength, building pressing/pulling volume without peak CNS demand. Single-arm row and suitcase carry are logged per side given the marginal right-arm difference on Styku (8.4 vs 8.7 lbs — a small gap tracked as routine monitoring, not a lead-side prescription).',
     warmUp: '5 min bike, band pull-apart x15, scapular wall slide x10, arm circles x10/direction',
     blocks: [
       {
@@ -325,7 +398,7 @@ const days = [
       },
     ],
     coolDown: 'Doorway chest stretch 30s/side, lat stretch 30s/side, cat-cow x8',
-    iconsNote: 'Log single-arm row and suitcase carry reps per side — right arm is marginally lighter on Styku (8.4 vs 8.7 lbs) though below the formal asymmetry trigger. Keep bracing on the suitcase carry, as flagged above.',
+    iconsNote: 'Log single-arm row and suitcase carry reps per side — right arm is marginally lighter on Styku (8.4 vs 8.7 lbs), tracked as routine monitoring rather than a formal lead-side protocol. Keep bracing on the suitcase carry, as flagged above.',
   },
 ];
 
@@ -337,8 +410,8 @@ const summary = {
     ['3', '70%', 'Upper Body & Posterior Chain', 'Bent-Over DB Row', 'Single-arm row & suitcase carry tracked per side — monitor right-arm gap'],
   ],
   milestones4wk: 'Squat 25–27.5 lbs × 8 @ 2–3 RIR. Trap bar deadlift 55–60 lbs × 6. Hip thrust progressing toward 70 lbs. Left-leg single-leg RDL load matched to right within 10%.',
-  milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline. VFA and body fat % trending down from 142.7 cm² / 40.4%. Left/right leg LST gap reduced from 0.5 lbs. Hip thrust and OHP progressed from current working loads.',
-  rescanNote: 'Rebook Styku scan at 8 weeks. Track: VFA and body fat % direction, left/right leg LST gap (baseline 0.5 lb), right arm LST gap (baseline 0.3 lb, monitor for trigger), ALST maintenance (currently 7.23 kg/m², within normal reference range).',
+  milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline. VFA and body fat % trending down from 142.7 cm² / 40.4%. Left/right leg lean-mass gap (currently 17.5 vs 18.0 lbs) holding steady or narrowing. Hip thrust and OHP progressed from current working loads.',
+  rescanNote: 'Rebook Styku scan at 8 weeks. Track: VFA and body fat % direction, left/right leg LST gap (currently 17.5 vs 18.0 lbs, roughly 3% — track the percentage, not the raw pounds), arm LST gap (currently 8.7 vs 8.4 lbs, monitor only), ALST maintenance (currently 7.23 kg/m², within normal reference range).',
 };
 
 const data = {
@@ -361,11 +434,15 @@ async function main() {
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
 
-  // Client View (added 8/17/2026) — same data object, filtered. The
-  // "Baselines Table Scope" note above is marked audience: 'internal'
-  // (build-methodology language, "confirm with the trainer..."); no real
-  // documented PR/progress-since-last-version exists on file for her, so
-  // no clientHighlight is set.
+  // Client View (added 8/17/2026) — same data object, filtered. Four
+  // notes are marked audience: 'internal': the "Baselines Table Scope"
+  // build-methodology note, the "Styku Record — Fields Not on File"
+  // build-process note, the ALST sex-conflation-correction citation, and
+  // the 8/18/2026 asymmetry-trigger discrepancy flag. The client-facing
+  // clinical content each of those sits beside (the ALST read, the
+  // segmental lean-mass prescriptions, the Styku values on record) stays
+  // visible in both documents. No real documented PR/progress-since-last-
+  // version exists on file for her, so no clientHighlight is set.
   const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
   const clientOutPath = path.join(outDir, 'Johanna_Castillo_3Day_Training_Plan_Client_View.docx');
   fs.writeFileSync(clientOutPath, clientBuffer);

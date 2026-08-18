@@ -31,6 +31,45 @@
  *     is unaffected by this correction — it is a different measurement
  *     entirely and clears any reasonable asymmetry threshold by a wide
  *     margin; its right-shoulder-leads prescription is untouched.
+ *
+ * REVISION (8/18/2026) — RIR PRESCRIPTION PASS: eight loaded exercise rows
+ * carried a bare numeric load with no proximity-to-failure target anywhere
+ * (DB Goblet Squat, DB RDL, Seated DB OH Press and Incline Push-Up on Day 1;
+ * DB Split Squat and Single-Leg RDL on Day 2; Incline Push-Up and Single-Arm
+ * DB Row on Day 3). All eight now carry a `rirNote`, assigned per exercise
+ * role and per the day's own stated intensity rather than stamped uniformly:
+ *   - 2 RIR on primary lifts (Goblet Squat, RDL, Hip Thrust, Day 3 OH Press,
+ *     Single-Arm DB Row) — CLAUDE.md's corrected RIR Model (8/17/2026) makes
+ *     2 RIR the DEFAULT for primary lifts, since a 2024 dose-response
+ *     meta-regression found strength gains largely unrelated to estimated
+ *     RIR, so 1 RIR is not a stronger strength driver.
+ *   - 1 RIR reserved for genuinely hypertrophy-priority accessory work
+ *     (Day 3 Incline Push-Up, the accessory to that day's primary press).
+ *   - 3+ RIR (the single collapsed "technique/submaximal" band — the
+ *     corrected standard explicitly does not distinguish 3 vs. 4 vs. 5,
+ *     since RIR accuracy degrades further from failure) on Day 2's
+ *     technique/corrective day and on Day 1's flagged-shoulder press.
+ * Also corrected two exercises already carrying the superseded "1–2 RIR"
+ * range on a PRIMARY lift (Day 1 Barbell Hip Thrust, Day 3 Seated DB OH
+ * Press) to a clean 2 RIR, plus the four matching "@ 1–2 RIR" primary-lift
+ * targets in `baselines[]` (Back Squat, Seated OH Press) and
+ * `summary.milestones4wk`/`milestones8wk`, so the load targets and the
+ * exercise rows no longer contradict each other.
+ * DELIBERATELY NOT GIVEN AN RIR TARGET: plank holds and both farmer carries
+ * (time/distance/grip-governed, not proximity-to-failure governed), and the
+ * corrective/activation work in Day 2 Block A (banded lateral walk,
+ * single-leg balance) — consistent with how Elizabeth Poyner's document
+ * treats its own carries and isometrics.
+ * DAY 2 JUDGMENT CALL, stated rather than buried: DB Split Squat is the
+ * "PRIMARY UNILATERAL" lift of its block, which the 2-RIR default would
+ * normally cover — but Day 2 is the deliberate 60% technique/corrective day
+ * ("Technique & Corrective Day — Lighter Loads, No PRs" in its own
+ * descriptor, "No PRs today" in its ICONS Note), and its whole purpose is
+ * closing the leg asymmetry under control. Prescribing 2 RIR there would
+ * contradict the day's stated intent and flatten the week's intensity
+ * variation. Assigned the technique/submaximal band instead, matching the
+ * house precedent on Elizabeth Poyner's own 60% day (Romanian Deadlift,
+ * "3 RIR — sub-maximal").
  */
 
 const fs = require('fs');
@@ -83,8 +122,8 @@ const weekOverview = [
 
 const baselines = [
   ['Deadlift', 'N/A — Not Yet Tested', '8/5/2026', 'Establish baseline Week 1'],
-  ['Back Squat (DB Goblet)', '35 lb × 5', '8/5/2026', '45–50 lb × 5 @ 1–2 RIR'],
-  ['Seated OH Press (DB)', '12 lb × 5', '8/5/2026', '15 lb × 5 @ 1–2 RIR'],
+  ['Back Squat (DB Goblet)', '35 lb × 5', '8/5/2026', '45–50 lb × 5 @ 2 RIR'],
+  ['Seated OH Press (DB)', '12 lb × 5', '8/5/2026', '15 lb × 5 @ 2 RIR'],
   ['Incline Push-Up', '5 reps', '8/5/2026', '8–10 reps, progress incline'],
   ['DB Farmer Carry', '25 lb / hand', '8/5/2026', '30–35 lb / hand'],
   ['Hip Thrust', '45 lb × 5', '8/5/2026', '65–75 lb × 5'],
@@ -137,7 +176,7 @@ const days = [
         introLabel: 'Load Target',
         intro: 'Goblet position, DB held at chest. Full-Body Foundation lift for the day — own the depth and bracing pattern before adding load.',
         exercises: [
-          { name: 'DB Goblet Squat', sets: '3', reps: '5', load: '35 lb', tempo: '3-1-1', rest: '90s', cue: 'Chest tall, sit hips back, knees track over toes.' },
+          { name: 'DB Goblet Squat', sets: '3', reps: '5', load: '35 lb', tempo: '3-1-1', rest: '90s', cue: 'Chest tall, sit hips back, knees track over toes.', rirNote: '2 RIR' },
           { name: 'Bodyweight Squat (pattern set)', sets: '1', reps: '10', load: 'BW', tempo: '2-0-1', rest: '—', cue: 'Warm-up pattern set before loaded work.', rirNote: '3+ RIR' },
         ],
       },
@@ -147,8 +186,8 @@ const days = [
         introLabel: 'Why',
         intro: 'Hip thrust and RDL build the posterior chain that supports every lift on the baseline sheet.',
         exercises: [
-          { name: 'Barbell Hip Thrust', sets: '3', reps: '5', load: '45 lb', tempo: '2-1-1', rest: '90s', cue: 'Chin tucked, ribs down, drive through heels.', rirNote: '1–2 RIR' },
-          { name: 'DB Romanian Deadlift', sets: '3', reps: '5', load: '17.5 lb/hand', tempo: '3-1-1', rest: '75s', cue: 'Soft knees, hinge hips back, feel hamstring stretch.' },
+          { name: 'Barbell Hip Thrust', sets: '3', reps: '5', load: '45 lb', tempo: '2-1-1', rest: '90s', cue: 'Chin tucked, ribs down, drive through heels.', rirNote: '2 RIR' },
+          { name: 'DB Romanian Deadlift', sets: '3', reps: '5', load: '17.5 lb/hand', tempo: '3-1-1', rest: '75s', cue: 'Soft knees, hinge hips back, feel hamstring stretch.', rirNote: '2 RIR' },
         ],
       },
       {
@@ -158,8 +197,8 @@ const days = [
         introLabel: 'Shoulder Note',
         intro: 'Right shoulder leads at reduced load with strict control — see clinical flag above.',
         exercises: [
-          { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12 lb', tempo: '2-0-2', rest: '75s', flag: 'Right shoulder leads — control tempo, no press-out compensation.', cue: 'Ribs down, press straight overhead, avoid arching.' },
-          { name: 'Incline Push-Up', sets: '3', reps: '5–6', load: 'BW, bench', tempo: '3-0-1', rest: '60s', cue: 'Hands under shoulders, hips level, full lockout.' },
+          { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12 lb', tempo: '2-0-2', rest: '75s', flag: 'Right shoulder leads — control tempo, no press-out compensation.', cue: 'Ribs down, press straight overhead, avoid arching.', rirNote: '3+ RIR — sub-maximal, flagged shoulder' },
+          { name: 'Incline Push-Up', sets: '3', reps: '5–6', load: 'BW, bench', tempo: '3-0-1', rest: '60s', cue: 'Hands under shoulders, hips level, full lockout.', rirNote: '2 RIR' },
           { name: 'Plank Hold', sets: '3', reps: '40–45s', load: 'BW', tempo: '—', rest: '45s', cue: 'Ribs down, glutes on, straight line head to heel.' },
         ],
       },
@@ -193,7 +232,7 @@ const days = [
         introLabel: 'Load Target',
         intro: 'Left leg leads every set — always perform the left-side rep first while freshest.',
         exercises: [
-          { name: 'DB Split Squat', sets: '3', reps: '5 each leg', load: 'Light DB', tempo: '3-1-1', rest: '75s', flag: 'Left leg leads — log load/reps L vs R separately.', cue: 'Left leg first. Torso tall, back knee soft-tap.' },
+          { name: 'DB Split Squat', sets: '3', reps: '5 each leg', load: 'Light DB', tempo: '3-1-1', rest: '75s', flag: 'Left leg leads — log load/reps L vs R separately.', cue: 'Left leg first. Torso tall, back knee soft-tap.', rirNote: '3+ RIR — technique day, no PRs' },
           { name: 'DB Suitcase Farmer Carry', sets: '3', reps: '20 yd each hand', load: '25 lb', tempo: '—', rest: '60s', cue: 'Ribs stacked over hips, no side lean, tight grip.' },
         ],
       },
@@ -202,7 +241,7 @@ const days = [
         title: 'ACCESSORY',
         color: 'gold',
         exercises: [
-          { name: 'Single-Leg RDL (hand-supported)', sets: '2', reps: '5 each leg', load: 'BW / light DB', tempo: '3-1-1', rest: '60s', flag: 'Left leg leads.', cue: 'Hinge from hip, square hips to the floor.' },
+          { name: 'Single-Leg RDL (hand-supported)', sets: '2', reps: '5 each leg', load: 'BW / light DB', tempo: '3-1-1', rest: '60s', flag: 'Left leg leads.', cue: 'Hinge from hip, square hips to the floor.', rirNote: '3+ RIR — technique day' },
           { name: 'Copenhagen Plank (bench, top leg)', sets: '2', reps: '15–20s each side', load: 'BW', tempo: '—', rest: '30s', cue: 'Side plank, top shin on bench, hold level hips.' },
         ],
       },
@@ -225,8 +264,8 @@ const days = [
         introLabel: 'Shoulder Note',
         intro: 'Right shoulder leads every set at a reduced, controlled load — see clinical flag on page 1.',
         exercises: [
-          { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12–13 lb', tempo: '2-0-2', rest: '90s', flag: 'Right shoulder leads at reduced load — strict tempo.', cue: 'Right arm first. Ribs down, straight overhead path.', rirNote: '1–2 RIR' },
-          { name: 'Incline Push-Up', sets: '3', reps: '6–8', load: 'BW, bench', tempo: '3-0-1', rest: '60s', cue: 'Lower bench height only if form holds clean.' },
+          { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12–13 lb', tempo: '2-0-2', rest: '90s', flag: 'Right shoulder leads at reduced load — strict tempo.', cue: 'Right arm first. Ribs down, straight overhead path.', rirNote: '2 RIR' },
+          { name: 'Incline Push-Up', sets: '3', reps: '6–8', load: 'BW, bench', tempo: '3-0-1', rest: '60s', cue: 'Lower bench height only if form holds clean.', rirNote: '1 RIR' },
         ],
       },
       {
@@ -235,7 +274,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Single-arm row trains the weaker right shoulder unilaterally under full control.',
         exercises: [
-          { name: 'Single-Arm DB Row', sets: '3', reps: '6 each arm', load: '15–17.5 lb', tempo: '2-1-1', rest: '75s', flag: 'Right arm leads — log load L vs R separately.', cue: 'Right first. Flat back, pull elbow to hip.' },
+          { name: 'Single-Arm DB Row', sets: '3', reps: '6 each arm', load: '15–17.5 lb', tempo: '2-1-1', rest: '75s', flag: 'Right arm leads — log load L vs R separately.', cue: 'Right first. Flat back, pull elbow to hip.', rirNote: '2 RIR' },
           { name: 'Band Pull-Apart', sets: '2', reps: '12–15', load: 'Light band', tempo: '2-1-2', rest: '45s', cue: 'Squeeze shoulder blades, control the return.' },
         ],
       },
@@ -261,8 +300,8 @@ const summary = {
     ['2', '60%', 'Lower Unilateral & Corrective', 'DB Split Squat', 'No PRs — left leg leads, close the leg gap'],
     ['3', '80%', 'Upper Push/Pull + Core', 'Seated DB OH Press', 'Right shoulder leads at controlled load'],
   ],
-  milestones4wk: 'Squat 40–42.5 lb × 5 @ 1–2 RIR. Hip thrust 55–60 lb × 5. Plank 60s. Right shoulder unilateral load within 20% of left on single-arm row.',
-  milestones8wk: 'Squat 45–50 lb × 5 @ 1–2 RIR. Deadlift and lunge baselines established and progressing. Plank 70–75s. Left/right leg LST gap reduced from 0.7 lbs.',
+  milestones4wk: 'Squat 40–42.5 lb × 5 @ 2 RIR. Hip thrust 55–60 lb × 5. Plank 60s. Right shoulder unilateral load within 20% of left on single-arm row.',
+  milestones8wk: 'Squat 45–50 lb × 5 @ 2 RIR. Deadlift and lunge baselines established and progressing. Plank 70–75s. Left/right leg LST gap reduced from 0.7 lbs.',
   rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend toward 5.5 kg/m², body fat % direction, left/right leg LST gap, and right shoulder force output vs. left on the extension test.',
 };
 

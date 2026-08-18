@@ -184,6 +184,58 @@
  * pending new client-data fields not yet captured anywhere in this system)
  * — this document carries no hand-written narrative asserting the retired
  * age-tier reasoning as clinical fact, so nothing needed correcting there.
+ *
+ * REVISION (8/18/2026) — RIR TIER INVERSION FIX + LIFTMOR CONDITIONS:
+ *   1. RIR TIERS WERE INVERTED relative to CLAUDE.md's corrected RIR Model
+ *      (8/17/2026, which made 2 RIR the DEFAULT for PRIMARY lifts and
+ *      reserved 1 RIR for hypertrophy-priority ACCESSORY work, on the basis
+ *      that a 2024 dose-response meta-regression found strength gains
+ *      largely unrelated to estimated RIR). This document had the two tiers
+ *      effectively swapped: the heaviest primary lifts sat at 1 RIR while
+ *      accessory work sat correctly at 2 RIR. Corrected:
+ *        - Hex Bar Deadlift (Thu, 5x3-5, the program's heaviest lift):
+ *          '1 RIR on work sets' -> '2 RIR on work sets — not to failure'
+ *        - Split Stance Hex DL (Wed, primary): '1 RIR on last set' ->
+ *          '2 RIR on last set'
+ *        - Hip Thrust (Wed, the day's headline PR lift): '1-2 RIR' -> '2 RIR'
+ *      Every other rirNote in the document was checked exercise by exercise
+ *      and left alone: Tuesday's DB Overhead Press sits in a block titled
+ *      'SECONDARY HYPERTROPHY — ACCESSORY UPPER' at 3x8-10, which is
+ *      genuinely the 1-RIR accessory tier — the blurred '1-2 RIR' RANGE was
+ *      tightened to '1 RIR — hypertrophy-priority accessory' to state the
+ *      tier cleanly, NOT moved to 2 RIR. Friday's 60% day keeps its '3 RIR —
+ *      sub-maximal' / '3 RIR' notes: that is the corrected standard's single
+ *      collapsed technique/submaximal band, correctly applied.
+ *   2. LIFTMOR CONDITIONS — verified genuinely absent, then added. CLAUDE.md's
+ *      8/17/2026 LIFTMOR correction added four requirements beyond the
+ *      intensity number. This document already had the intensity right
+ *      (>85% 1RM, corrected 8/17/2026 above). The other four were confirmed
+ *      MISSING by extracting the full rendered .docx via python-docx and
+ *      searching all five day pages — zero hits for 'supervis', 'spinal
+ *      flexion', 'fracture', 'BMD', 'ramp', 'physiotherap'. The only adjacent
+ *      content was two exercise-level technique cues (Sled Push: "Don't round
+ *      lower back"; Seated Cable Row: "No rounding"), which are per-exercise
+ *      coaching, not a stated programmatic prohibition. Added:
+ *        - Supervision, technique-first ramp-in (naming Friday's 60% day as
+ *          the standing vehicle, per CLAUDE.md's own suggestion), and the
+ *          loaded-spinal-flexion prohibition -> a NEW adjacent watch-type
+ *          baselineNote, 'Bone-Loading Protocol — Supervision, Ramp-In &
+ *          Spinal Precaution'.
+ *        - The risk-stratification gate (prior vertebral fracture / multiple
+ *          low-trauma fractures / very low BMD -> individualised
+ *          physiotherapist input FIRST) plus the fall-prevention rationale
+ *          -> appended to the EXISTING 'Bone-Loading Candidacy — LIFTMOR /
+ *          T-Score Screening' note, where the DEXA/T-score discussion it
+ *          gates already lives.
+ *      Jason Bethea is deliberately NOT named in the referral language:
+ *      Elizabeth has no documented coordinated-care relationship with him
+ *      anywhere in CLIENTS.md (verified), so naming him would be an
+ *      unverified claim rather than a documentation upgrade. Generic
+ *      'individualised physiotherapist assessment' is used instead, matching
+ *      CLAUDE.md's own LIFTMOR wording.
+ *      Both additions are left client-visible (no audience: 'internal') —
+ *      this is clinical safety content in the same category as the pelvic
+ *      floor protocol, which CLAUDE.md explicitly keeps visible in both views.
  */
 
 const fs = require('fs');
@@ -282,7 +334,20 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Bone-Loading Candidacy — LIFTMOR / T-Score Screening',
-    body: 'At 64 and postmenopausal, Elizabeth sits in the 55-65 bracket where LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth pursuing directly — framed as "bone investment," not added risk. Her Hex Deadlift and Hip Thrust progression builds toward and, by Week 3–4, reaches LIFTMOR\'s actual >85% 1RM standard, so the training stimulus is already in place; a DEXA scan would confirm formal candidacy and give a T-score baseline to track. No DEXA/T-score data is currently on file.',
+    body: 'At 64 and postmenopausal, Elizabeth sits in the 55-65 bracket where LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth pursuing directly — framed as "bone investment," not added risk. Her Hex Deadlift and Hip Thrust progression builds toward and, by Week 3–4, reaches LIFTMOR\'s actual >85% 1RM standard, so the training stimulus is already in place; a DEXA scan would confirm formal candidacy and give a T-score baseline to track. No DEXA/T-score data is currently on file. Risk-stratification gate, to run before the DEXA result is acted on either way: a prior vertebral fracture, multiple low-trauma fractures, or a very low BMD reading routes to individualised physiotherapist assessment FIRST — that assessment comes before heavier loading, not alongside it. Nothing on file indicates any of these for Elizabeth, which is exactly what the scan would confirm. Balance and fall-prevention work belongs alongside the loading protocol rather than instead of it: in the trial evidence for this protocol, a fall — not the lifting load itself — was the proximate mechanism behind the single vertebral fracture recorded.',
+  },
+  {
+    // ADDED 8/18/2026 — the three standing conditions CLAUDE.md's corrected
+    // LIFTMOR section (8/17/2026) requires alongside the intensity number,
+    // which this document already had right at >85% 1RM but which were
+    // otherwise absent from all five day pages (verified via python-docx
+    // extraction of the full rendered document, not just a script grep).
+    // Deliberately NOT marked audience: 'internal' — this is genuine
+    // client-facing clinical safety content, the same category as the
+    // pelvic floor protocol, and it should reach her, not just her trainer.
+    type: 'watch',
+    label: 'Bone-Loading Protocol — Supervision, Ramp-In & Spinal Precaution',
+    body: 'Three standing conditions apply wherever Hex Deadlift or Hip Thrust loading reaches LIFTMOR intensity (>85% 1RM — Weeks 3–4 of this cycle). SUPERVISION: the trials this protocol comes from were delivered as fully supervised sessions, and heavy 5×5 work above 85% 1RM is never programmed here as unsupervised homework — every Week 3–4 peak-loading set is coached in person. TECHNIQUE-FIRST RAMP-IN: Weeks 1–2 sit deliberately below that intensity by design (Hex DL 180–190 lbs, roughly 79–83% of the 228 lb estimated 1RM) so mechanics are locked in before the heaviest loads arrive, and Friday\'s 60% day is the standing vehicle for that technique work throughout the cycle — it is a deliberate part of the bone-loading protocol, not simply a light day. LOADED SPINAL FLEXION: no loaded forward bending, no rounding under load, and no repeated or end-range spinal flexion on any lift in this program. Neutral spine is the non-negotiable position on every deadlift, hinge, carry, row, and sled push — if it cannot be held, the set ends there regardless of the number on the bar.',
   },
 ];
 
@@ -311,7 +376,7 @@ const days = [
         letter: 'B',
         title: 'SECONDARY HYPERTROPHY — ACCESSORY UPPER',
         exercises: [
-          { name: 'DB Overhead Press', insight: 'Baseline 20 lbs × 5. Wk4 target: 22.5–25 lbs', sets: '3', reps: '8–10', load: '20 lbs', tempo: '2-1-1', rest: '60s', cue: 'Neutral grip. Press to lockout. Arms alongside ears. Core braced.', rirNote: '1–2 RIR' },
+          { name: 'DB Overhead Press', insight: 'Baseline 20 lbs × 5. Wk4 target: 22.5–25 lbs', sets: '3', reps: '8–10', load: '20 lbs', tempo: '2-1-1', rest: '60s', cue: 'Neutral grip. Press to lockout. Arms alongside ears. Core braced.', rirNote: '1 RIR — hypertrophy-priority accessory' },
           { name: 'Seated Cable / Band Row', sets: '3', reps: '12–15', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Sit tall. Shoulder blades squeeze at end range. No rounding.' },
           { name: 'Face Pull / Band Pull-Apart', sets: '3', reps: '15–20', load: 'Light band', tempo: '2-1-2', rest: '30s', cue: 'Arms at ear height. External rotation at end. Primary posture movement.' },
           { name: 'Tricep Overhead Extension', sets: '3', reps: '12–15', load: 'Light-Mod', tempo: '2-0-2', rest: '45s', cue: 'Elbows close to head. Full stretch at bottom. Elbow integrity under load.' },
@@ -344,8 +409,8 @@ const days = [
         introLabel: null,
         intro: 'Hip Thrust: NEW PR baseline 145 lbs × 5. Wk1 working load: 135 lbs. Pelvic floor note: exhale on the drive up every rep. Split Stance Hex DL: 165 lbs PR → Wk1 working load 155 lbs.',
         exercises: [
-          { name: 'Hip Thrust (Barbell or DB)', insight: 'PR 145 lbs × 5 · Wk1: 135 · Wk2: 145 · Wk4: 155–160 lbs', sets: '4', reps: '6–8', load: '135 lbs', tempo: '2-2-1', rest: '90s', cue: 'Upper back on bench. Drive through heels. 2-sec hold at top. Exhale on drive.', rirNote: '1–2 RIR' },
-          { name: 'Split Stance Hex DL', insight: 'PR 165 lbs × 5 · Wk1: 155 · Wk2: 160 · Wk4: 175–180 lbs', sets: '4', reps: '5–6 ea', load: '155 lbs', tempo: '3-1-1', rest: '90s', cue: 'Hinge from hip — not squat. Hamstring stretch, not lower back.', rirNote: '1 RIR on last set' },
+          { name: 'Hip Thrust (Barbell or DB)', insight: 'PR 145 lbs × 5 · Wk1: 135 · Wk2: 145 · Wk4: 155–160 lbs', sets: '4', reps: '6–8', load: '135 lbs', tempo: '2-2-1', rest: '90s', cue: 'Upper back on bench. Drive through heels. 2-sec hold at top. Exhale on drive.', rirNote: '2 RIR' },
+          { name: 'Split Stance Hex DL', insight: 'PR 165 lbs × 5 · Wk1: 155 · Wk2: 160 · Wk4: 175–180 lbs', sets: '4', reps: '5–6 ea', load: '155 lbs', tempo: '3-1-1', rest: '90s', cue: 'Hinge from hip — not squat. Hamstring stretch, not lower back.', rirNote: '2 RIR on last set' },
           { name: 'Lateral Band Walk', sets: '3', reps: '12 ea way', load: 'Light band', tempo: 'Controlled', rest: '30s', cue: 'Band above knees. Proud chest. Steps lateral, maintain tension.' },
         ],
       },
@@ -390,7 +455,7 @@ const days = [
         introLabel: null,
         intro: 'Hex DL: NEW PR 195 lbs × 5. Est 1RM 228 lbs. Wk1: 180 lbs (79% 1RM). Add 10 lbs each week. Wk4 peak test: 210–215 lbs. This is the highest-priority bone-density movement in this program.',
         exercises: [
-          { name: 'Hex Bar Deadlift', insight: 'PR 195 lbs × 5 · Est 1RM 228 · Wk1: 180 · Wk2: 190 · Wk3: 200 · Wk4: 210–215', sets: '5', reps: '3–5', load: '180 lbs', tempo: '3-1-1', rest: '2 min', cue: 'Neutral spine. Hip-width stance. Drive the floor away. Lock knees and hips at top.', rirNote: '1 RIR on work sets — not to failure' },
+          { name: 'Hex Bar Deadlift', insight: 'PR 195 lbs × 5 · Est 1RM 228 · Wk1: 180 · Wk2: 190 · Wk3: 200 · Wk4: 210–215', sets: '5', reps: '3–5', load: '180 lbs', tempo: '3-1-1', rest: '2 min', cue: 'Neutral spine. Hip-width stance. Drive the floor away. Lock knees and hips at top.', rirNote: '2 RIR on work sets — not to failure' },
           { name: 'Back Squat or Goblet Squat', sets: '4', reps: '6–8', load: '50–70 lbs', tempo: '3-1-1', rest: '90s', cue: 'Knees track toes. Depth to parallel. Chest tall throughout.', rirNote: '2 RIR' },
           { name: 'Sled Push', insight: 'Add 10 lbs each week · Wk4 target: 140–150 lbs', sets: '4', reps: '20 yds', load: '110–120 lbs', tempo: 'Explosive', rest: '90s', cue: "Low drive position. Full hip extension each stride. Don't round lower back." },
         ],

@@ -22,13 +22,20 @@
  *
  * STYKU INTERPRETATION — verified against CLAUDE.md's actual thresholds,
  * not taken at face value from Styku's own dashboard labels:
- *   - ALST Index 5.52 kg/m² — Styku labels "Not At-Risk." Per CLAUDE.md's
- *     3-tier women's table (<5.5 At-Risk / 5.5-6.99 Normal-monitor / >=7.0
- *     Optimal), 5.52 correctly lands in the Normal/monitor tier, NOT
- *     At-Risk. It sits only 0.02 kg/m² above the At-Risk cutoff — stated
- *     honestly as a genuine monitoring point for her 8-week rescan, not
- *     rounded up into a false sense of security and not fabricated into an
- *     At-Risk flag either. `client.alstIndex: 5.52` correctly leaves
+ *   - ALST Index 5.52 kg/m² — Styku labels "Not At-Risk." LANGUAGE
+ *     CORRECTED 8/18/2026, per CLAUDE.md's "ALST Index" section as
+ *     corrected 8/17/2026: this document previously read 5.52 against a
+ *     3-tier women's table (<5.5 At-Risk / 5.5-6.99 Normal-monitor /
+ *     >=7.0 Optimal). That table was a sex-conflation error — 7.0 kg/m²
+ *     is EWGSOP2's separate MALE at-risk threshold, never a female
+ *     "Optimal" target — and the corrected female standard is a single
+ *     cutoff: <5.5 At-Risk, >=5.5 within the normal reference range, read
+ *     as a trend metric with no graded tier above it. Her 5.52 sits only
+ *     0.02 kg/m² above that cutoff — stated honestly as a genuine
+ *     monitoring point for her 8-week rescan, not rounded up into a false
+ *     sense of security and not fabricated into an At-Risk flag either.
+ *     Wording matched to Mary Burfete's document, which carries the
+ *     identical 5.52 reading. `client.alstIndex: 5.52` correctly leaves
  *     `proteinBar()` un-triggered (only fires <5.5).
  *   - VFA (Segmental Analysis, the authoritative cm² figure): 20.1 cm².
  *     LANGUAGE CORRECTED 8/17/2026, per CLAUDE.md's "VFA (Visceral Fat
@@ -171,7 +178,7 @@ const baselineNotes = [
     type: 'teal',
     label: 'Styku Findings — Interpretation & One Correction',
     audience: 'internal',
-    body: `Shape Score 85/100 (Excellent). Body Fat 26.6% (Fit — lower than 70% of peers). ALST Index 5.52 kg/m² lands in the Normal/monitor tier (5.5-6.99) per CLAUDE.md's 3-tier table, NOT At-Risk — but it sits only 0.02 kg/m² above the At-Risk cutoff, close enough to flag as a genuine monitoring point for her 8-week rescan rather than a present-day clinical flag. VFA (Segmental Analysis): 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md's prior absolute VFA risk-band table (which this document previously cited to label this reading "Very Low Risk," itself a correction of Styku's own "Low Risk" dashboard label) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner's own validation limits (Styku's VFA output was validated against DXA in kilograms, never in cm²). (A separate raw "Visceral Fat 0.2" figure on the Body Composition summary page is a different, non-cm² scale and is not used here.) BMI 18.6 — technically Normal but only 0.1 above the Underweight cutoff; noted as borderline, not flagged as clinical underweight (that threshold is <18.5, not crossed), and not combined with her ALST reading to imply a sarcopenic-obesity profile — that specific flag requires both conditions, and neither is met.`,
+    body: `Shape Score 85/100 (Excellent). Body Fat 26.6% (Fit — lower than 70% of peers). ALST Index 5.52 kg/m² — within the normal reference range (>=5.5 kg/m²), NOT At-Risk, but only 0.02 kg/m² above the At-Risk cutoff — genuinely borderline, and worth close attention at the next rescan rather than treated as comfortably clear; ALST is tracked here as a trend metric, not a graded score, and no higher tier exists above the 5.5 kg/m² cutoff for women — the 7.0 kg/m² figure previously used as an upper tier is EWGSOP2's separate MALE at-risk threshold, not a female target. VFA (Segmental Analysis): 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md's prior absolute VFA risk-band table (which this document previously cited to assign this reading a risk-band label of its own, itself a correction of the band Styku's dashboard prints for it) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner's own validation limits (Styku's VFA output was validated against DXA in kilograms, never in cm²). (A separate raw "Visceral Fat 0.2" figure on the Body Composition summary page is a different, non-cm² scale and is not used here.) BMI 18.6 — technically Normal but only 0.1 above the Underweight cutoff; noted as borderline, not flagged as clinical underweight (that threshold is <18.5, not crossed), and not combined with her ALST reading to imply a sarcopenic-obesity profile — that specific flag requires both conditions, and neither is met.`,
   },
   {
     type: 'watch',
