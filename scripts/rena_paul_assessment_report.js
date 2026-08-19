@@ -149,7 +149,7 @@ const alstRow = {
 const asymmetryNote = 'A left/right arm lean-mass difference of about 2% was observed (L 6.3 vs R 6.4 lbs), and a left/right leg difference of about 3% (L 13.3 vs R 13.7 lbs, right-dominant).[8] Both fall well under the range research associates with meaningful strength asymmetry (commonly flagged at 10–15%+), so no unilateral-lead protocol is triggered from this scan alone — tracked as routine monitoring and confirmed again at the next rescan.';
 
 const strength = {
-  protocolIntro: 'ICONS Protocol: 10 core movements + 1 bonus, assessed on weight lifted, reps, and movement quality. Reassessed every 8–12 weeks. Benchmarks: Aesthetics · Health · Biological Age | Mobility & flexibility assessed as part of the longevity factor.',
+  protocolIntro: 'ICONS Protocol: 10 core movements + 1 bonus, assessed on weight lifted, reps, and movement quality. Strength is re-checked every 4 weeks against the program\'s Week 4 targets; the full body-composition rescan runs on its own longer 8–12 week cycle. Benchmarks: Aesthetics · Health · Biological Age | Mobility & flexibility assessed as part of the longevity factor.',
   rows: [
     { num: 1, exercise: 'Deadlift (Hex or BB)', weight: '85 lbs', reps: '5', pctBW: `${pctOfBodyweight(85, BW)}%`, level: 'Intermediate', notes: 'Strong baseline — well above typical new-client starting loads.' },
     { num: 2, exercise: 'Back Squat', notTested: true, notes: 'Not tested today — Goblet Squat established as new working baseline this program.' },
@@ -201,7 +201,7 @@ const observations = [
   {
     tone: 'neutral',
     label: 'Growth Opportunity — Back Squat Baseline',
-    body: "Back Squat was not part of the original 11-exercise testing battery — a working Goblet Squat load (30 lbs) was established this program and becomes the new 8-week baseline to track from here.",
+    body: "Back Squat was not part of the original 11-exercise testing battery — a working Goblet Squat load (30 lbs) was established this program and becomes the new baseline to track from here, first re-checked at the 4-week strength reassessment.",
   },
   {
     tone: 'neutral',
@@ -214,7 +214,7 @@ const nextSteps = [
   { title: 'Results Review Call', body: 'Oscar will walk you through your full assessment summary and Styku results.' },
   { title: 'Begin Your Personalized Program', body: 'Your 2-Day Full Gym Training Plan is built directly off today\'s tested baselines — hinge, press, and pull strength at meaningful working loads from week one.' },
   { title: 'Track Weekly Progression', body: 'Follow the Week 1 → Week 4 load progression already built into your program; your trainer monitors RIR and technique as loads climb toward and past today\'s tested numbers.' },
-  { title: 'Reassessment — 8 to 12 Weeks', body: 'ICONS Index reassessment at 8 weeks to track strength gains, body-composition shifts, and the segmental gaps noted above.' },
+  { title: 'Reassessment — Two Clocks', body: 'Strength (ICONS Index) is re-checked every 4 weeks against the program\'s Week 4 targets; the Styku body-composition rescan runs on its own 8–12 week cycle and tracks the segmental gaps noted above. The two are tracked separately, not on the same clock.' },
 ];
 
 const data = {
