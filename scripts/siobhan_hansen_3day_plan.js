@@ -742,7 +742,7 @@ const days = [
           { name: 'Banded Clamshell', sets: '2', reps: '15/side', load: 'mini band', tempo: '2-1-2', rest: '30s', cue: 'Hips stacked, heels together, squeeze glute med at top.' },
           { name: 'Bird Dog', sets: '2', reps: '8/side', load: 'bodyweight', tempo: '2-2-2', rest: '30s', cue: 'Neutral spine, reach long, no hip rotation.' },
           { name: 'Crab Walk (Static Elvis Knee, Internal Rotation)', sets: '2', reps: '10/side', load: 'mini band, above knees', tempo: 'controlled', rest: '30s', flag: 'Left hip — active tendinitis rehab; documented static variant, not the standard walking version', cue: 'Static Elvis-knee, internal-rotation hold rather than the standard walking crab walk — glute med activation without added hip-loading distance.' },
-          { name: 'Glute Kickback (Cable/Banded)', sets: '2', reps: '10/side', load: 'Total Gym Level 10 (≈50 lbs)', tempo: '2-1-2', rest: '30s', cue: 'Working load Total Gym Level 10 (≈50 lbs). Hip extension, squeeze glute at end range, avoid lumbar extension/compensation.' },
+          { name: 'Glute Kickback (Total Gym/Banded)', sets: '2', reps: '10/side', load: 'Total Gym Level 10 (≈50 lbs)', tempo: '2-1-2', rest: '30s', cue: 'Working load Total Gym Level 10 (≈50 lbs). Hip extension, squeeze glute at end range, avoid lumbar extension/compensation.' },
         ],
       },
       {
@@ -777,7 +777,7 @@ const days = [
         letter: 'E',
         title: 'SECONDARY COMPOUND — SINGLE-LEG RDL (LEFT-LED)',
         introLabel: 'Load Target',
-        intro: `The day's second compound pattern — a hip hinge, rotating off the knee-dominant squat work above. Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.slRDL} lbs) — Week 1 trains at ${wk1.slRDL} lbs/side, climbing to ${wk4.slRDL} lbs/side by Week 4. Left leg leads every set. If the day calls for a variation, rotate between: a B-stance RDL (rear foot down for balance — halfway between single-leg and two-leg, left leg still does the working share), a hip hinge to a bench or target (shortened range — useful when the hip wants a smaller day), or a cable or band pull-through where available. Same hip rule on every option — sharp or pinching pain stops the set — and the single-leg RDL stays the lift we track and retest.`,
+        intro: `The day's second compound pattern — a hip hinge, rotating off the knee-dominant squat work above. Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.slRDL} lbs) — Week 1 trains at ${wk1.slRDL} lbs/side, climbing to ${wk4.slRDL} lbs/side by Week 4. Left leg leads every set. If the day calls for a variation, rotate between: a B-stance RDL (rear foot down for balance — halfway between single-leg and two-leg, left leg still does the working share), a hip hinge to a bench or target (shortened range — useful when the hip wants a smaller day), or a band pull-through. Same hip rule on every option — sharp or pinching pain stops the set — and the single-leg RDL stays the lift we track and retest.`,
         exercises: [
           { name: 'Single-Leg RDL (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slRDL} lbs → Wk4: ${wk4.slRDL} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set; left hip in active tendinitis rehab, stop at sharp/pinching pain', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
         ],
@@ -824,7 +824,7 @@ const days = [
         exercises: [
           { name: 'Banded Clamshell', sets: '2', reps: '12/side', load: 'mini band', tempo: '2-1-2', rest: '30s', cue: 'Heels together, squeeze glute med at top.' },
           { name: 'Standing Banded Hip Abduction', sets: '2', reps: '10/side', load: 'band', tempo: '2-0-1', rest: '30s', cue: 'Tall posture, drive knee out, no torso lean.' },
-          { name: 'Glute Kickback (Cable/Banded)', sets: '2', reps: '10/side', load: 'Total Gym Level 10 (≈50 lbs)', tempo: '2-1-2', rest: '30s', cue: 'Carried forward from Day 2 at the same working load. Hip extension, squeeze glute at end range, avoid lumbar extension/compensation, directly priming the Hex Bar Deadlift/Hip Thrust hip-extension pattern below.' },
+          { name: 'Glute Kickback (Total Gym/Banded)', sets: '2', reps: '10/side', load: 'Total Gym Level 10 (≈50 lbs)', tempo: '2-1-2', rest: '30s', cue: 'Carried forward from Day 2 at the same working load. Hip extension, squeeze glute at end range, avoid lumbar extension/compensation, directly priming the Hex Bar Deadlift/Hip Thrust hip-extension pattern below.' },
         ],
       },
       {

@@ -2886,6 +2886,55 @@ Applies to: the 60+ bracket onward for men, consistent with the same
 
 ---
 
+## STUDIO EQUIPMENT — CONFIRMED IN-STUDIO INVENTORY
+
+Added 8/19/2026, from Xolokan's direct, definitive statement of what the studio actually has. **Every in-studio program build and every compound-slot exercise-options menu must be selected from this list** — a movement requiring equipment not on it either gets a substitution from what IS here, or gets flagged to Xolokan before the document ships. This section is the check the ICONS Block Method's exercise-options rule runs against.
+
+**Confirmed inventory (Xolokan, verbatim list, 8/19/2026):**
+```
+Squat rack + Olympic bar        — full barbell work: back/front squat, BB deadlift,
+                                   BB RDL, BB hip thrust, OHP, bench press (with the
+                                   bench below), BB rows, rack-supported variations
+Dumbbells up to 60 lbs           — HARD CEILING per hand. No DB prescription above
+                                   60 lbs/hand for in-studio training.
+Kettlebells up to 25 lbs         — HARD CEILING. Goblet work, carries, swings-family
+                                   (where programmed) cap at 25 lbs per bell.
+Bench                            — flat pressing/hip thrust shoulders-elevated/step
+                                   & box work/supported rows. (Incline capability
+                                   unconfirmed — see open questions.)
+Leg extension machine            — quad isolation; TKE-adjacent knee rehab loading
+Hamstring curl machine           — knee-flexion hamstring isolation (the hinge-free
+                                   hamstring option for hinge-intolerant clients)
+Hyperextension (back extension)  — hip-hinge pattern training at low spinal load;
+                                   the Scoliosis section's "back extension to
+                                   tolerance" tool
+Assisted pull-up machine         — the roster's assisted pull-up baselines/grip
+                                   progression batteries run here
+Kieser                           — machine resistance line already used in programs
+                                   (e.g. Siobhan's Kieser rows/press work)
+Sled push                        — conditioning/power tool; the Power Training
+                                   section's "fast, not maximal-load, sled push"
+                                   lives here
+```
+
+**Programming implications (binding for in-studio clients):**
+1. **There is NO cable machine.** Any cable prescription in-studio is invalid — substitute band, dumbbell, Kieser, or machine equivalents (band pull-through for cable pull-through, band or DB lateral raise, band pulldown/assisted pull-up machine for cable pulldown, band face pull, etc.). Legacy scripts referencing cables predate this inventory — see the reconciliation note below.
+2. **Load ceilings are real constraints, not suggestions**: 60 lbs/hand DB, 25 lbs KB. A progression that would cross a ceiling moves to the Olympic bar (or a harder variation at the same load — deficit, tempo, unilateral) rather than prescribing equipment that doesn't exist.
+3. **Heavy carries above 60 lbs/hand cannot be done with DBs.** Options: cap at 60/hand, switch to asymmetric/suitcase variants, or flag for Xolokan.
+4. **Scope: IN-STUDIO clients only.** Virtual/home-gym clients (Petra, Sarah) program against their OWN equipment lists, not this one — Sarah's build already runs on trainer Nick's stated constraints, and a home-gym client's cable machine (if she has one) is legitimately programmable for her.
+
+**Open questions — flagged, NOT assumed (as of 8/19/2026):**
+- **Hex/trap bar**: NOT on the stated list, yet tested hex-bar PRs exist across the roster (Elizabeth Poyner Hex DL 195×5, Siobhan Hansen 75–85 lbs) and the ICONS Baseline Testing Protocol itself lists "Deadlift (Hex Bar or BB)." Strong implication one exists; unconfirmed. Until confirmed, existing hex-bar prescriptions stand (they reflect real tested history) but new builds should note "hex bar or Olympic bar" rather than hex-only.
+- **Total Gym**: not on the list, but Jason Bethea's SOAP notes program it heavily (Siobhan, Heather Dolland, Christina Alesci). Likely Jason's PT-side equipment — treat as available within Jason-coordinated work, unconfirmed for general programming.
+- **Landmine**: not listed as an attachment; an Olympic bar wedged in a corner/rack achieves the same pattern. Existing landmine prescriptions are workable but the setup should be confirmed.
+- **Cardio machines (bike/assault bike/rower)**: appear in some warm-ups/conditioning blocks; none stated on the list. Unconfirmed.
+- **Bench incline capability**: the Baseline Testing Protocol includes Incline Dumbbell Press — whether the bench adjusts to incline is unconfirmed.
+- **Plyo boxes/step platforms, bands, foam rollers, med balls**: small equipment not enumerated; bands/rollers are already threaded through Jason's own in-studio sessions so are assumed present, but boxes and med balls used in some programs are unconfirmed.
+
+**Roster reconciliation status (8/19/2026):** a repo-wide sweep found cable references in 17 client/trainer scripts, DB loads above 60 lbs/hand in 6 (Brodie 75, Jah 60–75, Elizabeth's 65–70/hand carries, Kelly 65, Moe 60 at-ceiling, Petra 70 — Petra is virtual, likely not a conflict), and Petra's 20–35 lb KB range above the 25 lb ceiling (again virtual — likely fine). Siobhan's document (the Block Method pilot) was fixed same-day; the rest are flagged for per-client resolution as each document is next touched, per the standing "touch it, bring it current" practice — plus Xolokan's answers to the open questions above, since several apparent conflicts (hex bar, Total Gym) may not be conflicts at all.
+
+---
+
 ## STUDIO STAFF — IN-HOUSE PT & STRETCH THERAPY
 
 Added 8/11/2026, at Xolokan's direction: "utilize [this staff] to push my clients' experience at Brace Life Studios to the maximal potential." Brace Life now has two in-house staff whose scope directly affects how clinical-flag content gets written in client documents:
