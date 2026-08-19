@@ -435,8 +435,8 @@ const days = [
         ],
       },
       {
-        letter: 'B',
-        title: 'MEDICINE BALL POWER BLOCK',
+        letter: 'C',
+        title: 'ACCESSORY POWER — MEDICINE BALL BLOCK',
         introLabel: 'Med Ball Note',
         intro: 'Medicine ball drills train explosive upper body power — something dumbbells and bands cannot replicate. These are ballistic movements: intent is maximum velocity on every rep. Use an 8–12 lb ball against a solid wall or floor.',
         exercises: [
@@ -447,10 +447,10 @@ const days = [
         ],
       },
       {
-        letter: 'C',
-        title: 'COMPOUND STRENGTH CLUSTERS',
+        letter: 'D',
+        title: 'FULL-BODY INTEGRATION — COMPOUND STRENGTH CLUSTERS',
         introLabel: 'Cluster Format',
-        intro: 'A ‘cluster’ is two exercises performed back-to-back with 15 seconds rest between them, then full rest after the pair. C1+C2 together, 15s, then 90s rest. This allows heavier loads with better quality reps than straight supersets.',
+        intro: 'The session\'s compound strength work and its integrated close in one: each cluster pair is a full-body complex — a hinge flowing into a press, a squat flowing into a press — pulling the day\'s patterns together under fatigue. A ‘cluster’ is two exercises performed back-to-back with 15 seconds rest between them, then full rest after the pair. C1+C2 together, 15s, then 90s rest. This allows heavier loads with better quality reps than straight supersets. If a variation suits the day, a B-stance DB deadlift can stand in for C1 on a day the low back is tired, and a goblet squat for D1 — the listed cluster lifts stay the loads we track.',
         exercises: [
           { name: 'C1  DB Deadlift (Suitcase Style)', sets: '3', reps: '5', load: 'Wk1: 80 lbs → Wk4: 100 lbs (per hand, total)', tempo: '2-1-1', rest: '15s rest then C2', cue: 'Hip hinge, one DB each side like a suitcase. Heavy — near Day 1\'s Hex Bar Deadlift load. Then 15s rest, straight into C2.' },
           { name: 'C2  DB Overhead Press', sets: '3', reps: '8', load: 'Working load', tempo: '2-1-1', rest: '90s', cue: '15 lbs/hand Wk1. Same baseline as Day 2. Full 90s rest after C2 before next cluster. The deadlift pre-fatigues the posterior chain, making the OHP pure upper.' },
@@ -459,7 +459,7 @@ const days = [
         ],
       },
       {
-        letter: 'D',
+        letter: 'E',
         title: 'CONDITIONING FINISHER + CORE',
         color: 'gold',
         introLabel: 'Finisher',
@@ -483,8 +483,8 @@ const summary = {
     ['2', '70%', 'Upper Body — Push, Pull & Carry', 'DB Bench Press / DB Single-Arm Row', 'Press +2.5 lbs/hand every 2 weeks toward 22.5 lbs ×8 by Wk4. Farmer Carry +5 lbs/hand/week toward 55 lbs by Wk4; right hand trails left by 5 lbs per the grip-asymmetry protocol.'],
     ['3', '90%', 'Full Body Power — KB, Med Ball & Compound Clusters', 'KB Swing / Compound Clusters (Deadlift+OHP, Squat+Bench)', '5-min AMRAP Wk1–2 → 7-min AMRAP Wk3–4, target +1 round vs Wk1. Highest-demand session of the week — schedule a rest day after.'],
   ],
-  milestones4wk: 'Virtual Training Best Practices: record each session or keep camera live; send clips of primary lifts (deadlift, OHP, Bulgarian split squat) after each session for async coach review; log load, reps, and how each set felt (easy / hard / form broke) every session. Strength & Muscle Protocol: primary lifts run 5–6 reps heavy and close to failure on the final set (1–2 RIR) while accessory work runs 8–12 reps moderate (hypertrophy-focused) — both strength and hypertrophy trained simultaneously. Week 4 targets: Hex Deadlift 105 lbs ×5, Bulgarian Split Squat 25 lbs/hand ×8, Single-Leg RDL 27.5 lbs/hand ×8, Bench/OHP 20 lbs/hand ×10, DB Single-Arm Row 37.5 lbs, Farmer Carry 55 lbs/hand, Elbow Plank 1:15, Push-Up 10–12 full reps. Day 3 test week: compare max AMRAP rounds vs Week 1.',
-  milestones8wk: '8-week targets: Hex Deadlift 140–150 lbs ×5, Bench Press 27.5–30 lbs/hand ×8, Overhead Press 27.5 lbs/hand ×8, DB Single-Arm Row 50+ lbs ×8, Farmer Carry 70 lbs/hand, Bulgarian Split Squat 35 lbs/hand ×8, Elbow Plank 1:30+, Push-Up 15+ full reps unassisted. Re-test the Week 1 force assessment protocol (grip squeeze, floor pull, hip extension) around this window to confirm whether the left-grip/right-hip asymmetry pattern is closing — current gaps: grip 29.5% left, floor pull 23.8% left, hip extension (projected) 43.9% right.',
+  milestones4wk: 'Virtual Training Best Practices: record each session or keep camera live; send clips of primary lifts (deadlift, OHP, Bulgarian split squat) after each session for async coach review; log load, reps, and how each set felt (easy / hard / form broke) every session. Strength & Muscle Protocol: primary lifts run 5–6 reps heavy at 2 reps in reserve, while accessory work runs 8–12 reps moderate (hypertrophy-focused, up to 1 rep in reserve) — both strength and hypertrophy trained simultaneously. Week 4 targets: Hex Deadlift 105 lbs ×5, Bulgarian Split Squat 25 lbs/hand ×8, Single-Leg RDL 27.5 lbs/hand ×8, Bench/OHP 20 lbs/hand ×10, DB Single-Arm Row 37.5 lbs, Farmer Carry 55 lbs/hand, Elbow Plank 1:15, Push-Up 10–12 full reps. Day 3 test week: compare max AMRAP rounds vs Week 1. Week 4 closes with the strength check; Week 5 that follows is the planned deload week — same exercises, reduced sets, loads held (see the deload note above) — before Weeks 6-8 rebuild.',
+  milestones8wk: '8-week targets (reached through the Wk4 check, the planned Week 5 deload, and the Weeks 6-8 rebuild): Hex Deadlift 140–150 lbs ×5, Bench Press 27.5–30 lbs/hand ×8, Overhead Press 27.5 lbs/hand ×8, DB Single-Arm Row 50+ lbs ×8, Farmer Carry 70 lbs/hand, Bulgarian Split Squat 35 lbs/hand ×8, Elbow Plank 1:30+, Push-Up 15+ full reps unassisted. Re-test the Week 1 force assessment protocol (grip squeeze, floor pull, hip extension) around this window to confirm whether the left-grip/right-hip asymmetry pattern is closing — current gaps: grip 29.5% left, floor pull 23.8% left, hip extension (projected) 43.9% right.',
 };
 
 const data = {
@@ -507,13 +507,12 @@ async function main() {
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
 
-  // Client View (added 8/17/2026) — same data object, filtered. None of
-  // her baselineNotes are build/methodology notes (all are training-logic,
-  // equipment, or force-assessment findings genuinely meant for her), so
-  // none are marked internal; no `insight` fields exist in this script;
-  // and no real documented PR/progress-since-last-version exists on file
-  // (this is a rebuild from the original source, not an update over an
-  // earlier version), so no clientHighlight is set.
+  // Client View (added 8/17/2026; re-checked 8/19/2026 with the Block
+  // Method restructure) — same data object, filtered. ONE baselineNote is
+  // marked audience: 'internal' (the 8/19 Session Architecture record);
+  // every training-logic, equipment, and force-assessment note stays
+  // client-visible. No real documented PR/progress-since-last-version
+  // exists on file, so no clientHighlight is set.
   const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
   const clientOutPath = path.join(outDir, 'Petra_3Day_Virtual_Training_Plan_Client_View.docx');
   fs.writeFileSync(clientOutPath, clientBuffer);
