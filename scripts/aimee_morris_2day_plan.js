@@ -638,7 +638,7 @@ const baselines = [
   ['Hip Thrust', '95 lbs', '5 RM (est.)', 'New baseline. Wk1: 80 lbs ×6 → Wk4: 105 lbs ×5–6. Hip-dominant, no axial spinal load — ideal for spinal stenosis.'],
   ['Single-Leg RDL', '25 lbs / hand', '8 reps', 'Wk1: 22.5 lbs ×10 → Wk4: 30 lbs ×8. Left and right equal sets. Most important hip hinge developer.'],
   ['DB Split Squat', '35 lbs / hand', '3 RM', 'Wk1: 25 lbs ×8 (form + depth focus at lower load) → Wk4: 35 lbs ×8. 3RM suggests form may break at max — train sub-max.'],
-  ['Reverse Lunge', 'Not Tested', 'New — 8/13/2026', 'Wk1: Bodyweight ×8 ea (controlled step-back, form focus) → Wk4: 10 lbs/hand ×8 ea. New exercise added to establish genuine lunge-pattern coverage, distinct from DB Split Squat (a stationary split-squat pattern).'],
+  ['Reverse Lunge', 'Not Tested', 'New — 8/13/2026', 'Wk1: Bodyweight ×8 ea (controlled step-back, form focus) → Wk4: 10 lbs/hand ×8 ea. A genuinely distinct lunge-pattern movement from DB Split Squat (a stationary split-squat pattern).'],
   ['Barbell Back Squat', '55 lbs', 'Tested — Deferred', 'Recorded for reference. Stenosis restriction cleared, but per moderate-progression guidance this is deferred to a later phase — Landmine Squat bridges toward it in the meantime (see baseline notes).'],
   ['Overhead Press', '17.5 lbs / hand', '5 RM', 'Wk1: 15 lbs ×10 (sub-max) → Wk4: 20 lbs ×8. Spine-safe: seated or standing, no barbell.'],
   ['Incline DB Press', '15 lbs / hand', '8 reps', 'Wk1: 15 lbs ×10 → Wk4: 20 lbs ×8. Primary chest movement.'],

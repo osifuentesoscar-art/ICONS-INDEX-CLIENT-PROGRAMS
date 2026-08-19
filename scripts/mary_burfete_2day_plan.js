@@ -198,6 +198,65 @@
  * belonged here and was missing.
  * NO loads, sets, reps, tempos, rests, exercise selection, or block structure
  * were touched in this pass.
+ *
+ * REVISION (8/19/2026) — ICONS BLOCK METHOD RESTRUCTURE (roster-wide
+ * rollout, batch 2; spec: CLAUDE.md "ICONS Block Method — Standing Session
+ * Architecture"; reference: scripts/siobhan_hansen_3day_plan.js, the pilot).
+ * Block boundaries/titles re-cut onto the six-slot order — RENDERED
+ * EXERCISE ORDER ON BOTH DAYS UNCHANGED, deliberately preserving the
+ * 8/12/2026 and 8/16/2026 Antagonist Rotation fixes verbatim (Day A:
+ * Hex DL → Hip Thrust → Face Pull → SA Row → SL RDL → Bent-Over Row →
+ * Incline Press; Day B: Back Squat → Split Stance → Lateral Raise →
+ * Reverse Lunge → Bench → OHP → pull-up battery → Step-Up).
+ *   DAY A slots: 1 = OMITTED honestly (no documented corrective finding
+ *   for Mary; the unloaded PVC-hinge/glute-bridge/pull-apart prep stays in
+ *   warmUp per the drift rule); 2 = new Block A, Hex Bar Deadlift alone
+ *   (+ options); 3 = new Block B, Hip Thrust + Face Pull (accessory; the
+ *   8/16 fix's Face-Pull-closes-the-block placement survives); 4 = OMITTED
+ *   (no Jason Bethea exercise on file — no coordinated-care relationship
+ *   documented for this client); 5 = Block C, SA Row + SL RDL + Bent-Over
+ *   Row + Incline Press (secondary compound: pull + press, 8/16-fix order
+ *   verbatim, + options); 6 = Block D (Carry + Core) and Block E (Trap Bar
+ *   Jump) retitled FULL-BODY INTEGRATION — the pilot's Day 3 pattern:
+ *   carries/core/power ARE the integration work this day already did;
+ *   Block F = conditioning finisher.
+ *   DAY B slots: 1 = OMITTED (same reasoning); 2 = new Block A, Back Squat
+ *   alone (+ options); 3 = new Block B, Split Stance Squat + DB Lateral
+ *   Raise + DB Reverse Lunge (accessory; the 8/13-fix isolation-breaker
+ *   order survives); 4 = OMITTED; 5 = Block C, Bench + Seated OHP +
+ *   3-grip pull-up battery + Step-Up (secondary, + options); Block D =
+ *   Push-Up Progression retained as a standing green baseline-protocol
+ *   block; 6 = Block E, metabolic circuit retitled FULL-BODY INTEGRATION
+ *   (goblet-squat→row→push-up→plank is genuinely the day's compound
+ *   closer, metabolic emphasis intact).
+ * COMPOUND-SLOT OPTIONS — Mary has no clinical movement constraint on
+ * file, so menus are filtered by equipment (confirmed in-studio inventory)
+ * and her unconfirmed menopausal status (already handled by
+ * forcePelvicFloor on both days — which survives this restructure
+ * untouched); left-leg-leads side rules restated on every unilateral
+ * option.
+ * ASYMMETRY LANGUAGE PASS (Nicolette Scott precedent, applied here at
+ * this document's first touch since the 8/17 trigger correction): her leg
+ * gap (14.6 vs 15.1 = 0.5 lb) met the OLD absolute trigger exactly but is
+ * only ~3.3% relative — it does NOT clear the corrected >=10% relative
+ * threshold. The LEFT-leads prescription is left UNCHANGED pending a
+ * dedicated per-client review; client-visible note/intro/cue language was
+ * reworded off the retired absolute-trigger claim, and a new internal
+ * baselineNote records the discrepancy for that review.
+ * TOUCH-IT-BRING-IT-CURRENT: Face Pull renamed (Kieser or Band); equipment
+ * ceilings verified (all DB loads ≤60/hand, no KB content, hex bar/trap
+ * bar confirmed in inventory); DELOAD — combined model per CLAUDE.md's
+ * protocol (robust, well-recovering client with no injury sites, but an
+ * 8+ week continuous-progression arc): a PLANNED Week-5 slot directly
+ * after the Week 4 strength check, autoregulated ±1 week (pulled forward
+ * on stalls/soreness/sleep triggers, pushed back one week max if every
+ * signal is green) — new blue client-visible note; milestones/rescanNote
+ * reconciled to the Wk4-check → Wk5-deload → Wk6-8-rebuild arc and the
+ * 4-week strength / 8-12-week Styku cadence split stated. Warm-up drift
+ * checked: both days' warmUps carry only unloaded prep (the Day B "goblet
+ * squat 2x10 light (depth focus)" line carries no load figure and ramps a
+ * movement programmed as a real row the same day — legitimate ramp, not
+ * drift).
  */
 
 const fs = require('fs');
@@ -276,8 +335,19 @@ const baselineNotes = [
   },
   {
     type: 'watch',
-    label: 'Segmental Asymmetry — Legs At Threshold, Protocol Triggered',
-    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — 0.1 lb gap, below the 0.5 lb asymmetry-protocol threshold — monitor only, no unilateral-lead requirement. Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — exactly 0.5 lbs, landing precisely AT the asymmetry-protocol trigger. An exact-threshold gap is treated as triggering the full protocol, not as a borderline non-trigger. LEFT leg (lower LST) is weaker and leads every unilateral leg exercise in this program — split stance squat, step-up, and single-leg RDL all list LEFT first below.`,
+    label: 'Segmental Asymmetry — Left Leg Leads Unilateral Work (Arms Monitor Only)',
+    body: `Arms: Left ${styku.leftArmLST} lbs / Right ${styku.rightArmLST} lbs — effectively even; monitor only, no unilateral-lead requirement. Legs: Left ${styku.leftLegLST} lbs / Right ${styku.rightLegLST} lbs — the left leg reads as the lighter/weaker side on this scan, and it leads every unilateral leg exercise in this program as a standard coaching convention — split stance squat, step-up, and single-leg RDL all list LEFT first below, with reps and loads logged per side. The gap is tracked at the 8-week rescan to confirm the lead assignment still reflects a real, worth-addressing difference.`,
+  },
+  {
+    type: 'watch',
+    audience: 'internal',
+    label: 'Asymmetry Trigger Recalculation — Flagged Discrepancy (8/19/2026)',
+    body: "CLAUDE.md's Asymmetry Protocol trigger was corrected 8/17/2026 from an absolute 0.5 lb L/R gap to a relative >=10% gap (the old absolute figure was firing on measurement noise). Recomputed against this client's actual numbers at this document's first touch since that correction: Left Leg 14.6 lbs / Right Leg 15.1 lbs is a 0.5 lb gap — it met the OLD absolute trigger exactly (the original basis for this document's LEFT-leads protocol, per the Johanna Castillo exact-threshold precedent) but is only ~3.3% relative, so it does NOT clear the corrected >=10% threshold. Arms (7.3 vs 7.2, ~1.4% relative) sit below it either way. Per the Nicolette Scott precedent, the left-leg-leads prescription programmed throughout (Split Stance Squat, Step-Up, DB Reverse Lunge, Single-Leg RDL) is left UNCHANGED pending a dedicated per-client review — a functional single-leg strength/power test is the preferred primary trigger for that review. Client-visible trigger language was reworded off the retired absolute standard; this note makes the discrepancy visible rather than resolving it silently. Flagged to the main thread/icons-expert.",
+  },
+  {
+    type: 'blue',
+    label: 'Planned Deload — Week 5 by Default, Adjusted by How Training Is Actually Going',
+    body: 'This program includes one deliberately lighter week, planned rather than reactive. The default timing is Week 5, directly after the Week 4 strength check: the same exercises and movement patterns, sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), and loads held at Week 3-4 levels — the usual add-weight rule pauses for that one week. Because Mary is recovering well on a strong, established base, the exact week flexes: if lifts stall, soreness lingers, or sleep degrades before Week 5, the light week moves earlier; if every signal is green it may slide one week later — but it is never skipped across an 8-week block of continuous loading. One light week costs nothing that matters — muscle built over the previous month is not lost in a single reduced-volume week, and Weeks 6-8 then rebuild from the Week 4 loads toward the 8-week retest and rescan.',
   },
   {
     type: 'gold',
@@ -309,7 +379,13 @@ const baselineNotes = [
     type: 'gold',
     audience: 'internal',
     label: 'Power Training Added — 55-65 Bracket (8/16/2026)',
-    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day A, Block D now includes a Trap Bar Jump: a light load well below her tested hinge working weights, moved with maximal intent, full recovery between sets. Full recovery is the defining design feature of power work, distinct from a metabolic stimulus, so it is sequenced before the Conditioning Finisher rather than after it — trained fresh, not stacked onto fatigue. Mary carries no clinical flag ruling out any particular movement, but a lower-body, non-overhead jump pattern was chosen as the more conservative default, consistent with how this same addition was made for her closest bracket-mates on the roster (Siobhan Hansen, Elizabeth Poyner), and because it pairs naturally with the hex bar equipment already in use on this day.',
+    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day A\'s power block (Block E as of the 8/19/2026 Block Method restructure, part of the day\'s Full-Body Integration close) includes a Trap Bar Jump: a light load well below her tested hinge working weights, moved with maximal intent, full recovery between sets. Full recovery is the defining design feature of power work, distinct from a metabolic stimulus, so it is sequenced before the Conditioning Finisher rather than after it — trained fresh, not stacked onto fatigue. Mary carries no clinical flag ruling out any particular movement, but a lower-body, non-overhead jump pattern was chosen as the more conservative default, consistent with how this same addition was made for her closest bracket-mates on the roster (Siobhan Hansen, Elizabeth Poyner), and because it pairs naturally with the hex bar equipment already in use on this day.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'Both days restructured onto the ICONS Block Method six-slot order (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound/Integration) with the rendered exercise order on both days UNCHANGED — block boundaries and titles were re-cut around the existing sequence, deliberately preserving the 8/12/2026 and 8/16/2026 Antagonist Rotation fixes verbatim. Day A: slots 1 and 4 honestly omitted (no documented corrective finding, and no Jason Bethea exercise/coordinated-care relationship on file — no filler inserted); slot 2 = Hex Bar Deadlift; slot 3 = Hip Thrust + Face Pull (the 8/16 fix\'s Face-Pull placement survives); slot 5 = SA Row + SL RDL + Bent-Over Row + Incline Press; slot 6 = Carry + Core and the Trap Bar Jump power block, retitled as the day\'s Full-Body Integration close (pilot Day-3 pattern); conditioning finisher follows. Day B: slots 1 and 4 omitted (same reasoning); slot 2 = Back Squat; slot 3 = Split Stance Squat + Lateral Raise + Reverse Lunge; slot 5 = Bench + OHP + pull-up battery + Step-Up; Push-Up Progression retained as a standing baseline-protocol block; slot 6 = the metabolic circuit retitled Full-Body Integration. Compound-slot options menus added to every compound slot, filtered by the confirmed studio inventory and her record (no clinical movement constraint on file; forcePelvicFloor already handles the unconfirmed-menopausal-status caution on both days and survives untouched; left-leads side rules restated on every unilateral option); anchors named in every menu. Same pass: Face Pull renamed to Kieser; asymmetry trigger language reworded off the retired 0.5 lb absolute standard (see the discrepancy note above — prescription unchanged); combined-model Week-5 deload added; 4-week strength / 8-12-week Styku cadence split stated in the summary.',
   },
 ];
 
@@ -326,32 +402,40 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY HINGE STRENGTH',
-        introLabel: `Hex Deadlift & Hip Thrust — Epley 1RM ${hexDL1RM} / ${hipThrust1RM} lbs`,
-        intro: `Both lifts tested at 90+ lbs for 5 reps — a genuinely strong starting point. Week 1 trains at 80% of Epley 1RM to lock in hip hinge mechanics under real load; by Week 4 both lifts climb to 93% of Epley 1RM, above the originally tested weight.`,
+        title: 'PRIMARY COMPOUND — HEX BAR DEADLIFT',
+        introLabel: `Hex Deadlift — Epley 1RM ${hexDL1RM} lbs`,
+        intro: `The day's main lift, and her strongest tested number — 155 lbs x5. Week 1 trains at 80% of Epley 1RM to lock in hip hinge mechanics under real load; by Week 4 it climbs to 93%, above the originally tested weight. If the day calls for a variation, rotate between: a conventional double-DB deadlift, a hex bar pull from low blocks (shortened range on a heavier-feeling day), or a barbell Romanian deadlift (hinge emphasis, lighter load). The hex bar lift stays the one we track and retest — its Week 1 → Week 4 line is the anchor.`,
         exercises: [
           { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${hexDL_wk1} lbs → Wk4: ${hexDL_wk4} lbs`, tempo: '2-1-1', rest: '90s', cue: 'Hinge hips back to grip, drive floor away, hips and shoulders rise together.', rirNote: '2 RIR' },
-          { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5–6', load: `Wk1: ${hipThrust_wk1} lbs → Wk4: ${hipThrust_wk4} lbs`, tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Bone-density investment.', rirNote: '2 RIR' },
-          { name: 'Face Pull (Cable or Band)', sets: '3', reps: '15–20', load: 'Light–Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Shoulder health, balances pressing.', rirNote: '3+ RIR — shoulder health, quality over load' },
         ],
       },
       {
         letter: 'B',
-        title: 'PRIMARY PULL STRENGTH & PRESS ACCESSORY',
+        title: 'ACCESSORY — HIP THRUST & SHOULDER HEALTH',
+        introLabel: `Hip Thrust — Epley 1RM ${hipThrust1RM} lbs`,
+        intro: `The glute-building accessory directly behind the deadlift — tested at 90 lbs x5, trained on the same 80% → 93% ramp — followed by high-rep shoulder-health work that rotates the pattern before the pulling block below. If the hip thrust needs a variation: a floor glute bridge, a B-stance hip thrust (left leg takes the working share), or a single-leg glute bridge (left leg leads) covers the same pattern; the bench-supported hip thrust stays the lift we track.`,
+        exercises: [
+          { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5–6', load: `Wk1: ${hipThrust_wk1} lbs → Wk4: ${hipThrust_wk4} lbs`, tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Bone-density investment.', rirNote: '2 RIR' },
+          { name: 'Face Pull (Kieser or Band)', sets: '3', reps: '15–20', load: 'Light–Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Shoulder health, balances pressing.', rirNote: '3+ RIR — shoulder health, quality over load' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'SECONDARY COMPOUND — PULL STRENGTH & PRESS ACCESSORY',
         introLabel: `Single-Arm Row — Epley 1RM ${row1RM} lbs`,
-        intro: 'Single-arm row tested at 30 lbs for 5 reps and climbs from there; single-leg RDL sits next, breaking up the pulling volume with a hinge-pattern movement, before bent-over bilateral row rounds out the pulling volume, balancing the pressing work on Day B. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, established this week at a conservative technique-first load.',
+        intro: 'The day\'s second compound pattern — pulling, rotating off the hinge work above. Single-arm row tested at 30 lbs for 5 reps and climbs from there; single-leg RDL sits next, breaking up the pulling volume with a hinge-pattern movement, before bent-over bilateral row rounds out the pulling volume, balancing the pressing work on Day B. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, established this week at a conservative technique-first load. If the row needs a variation: a chest-supported DB row (torso fully supported, strict pattern) or a single-arm Kieser row covers the same pull; the single-arm DB row stays the lift we track and retest.',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '4', reps: '8', load: `Wk1: ${row_wk1} lbs → Wk4: ${row_wk4} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Bench-supported, flat back. Drive elbow to hip, full stretch at bottom.', rirNote: '2 RIR' },
-          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8–10 ea', load: '20 lbs → 25 lbs', tempo: '3-1-1', rest: '75s', cue: 'LEFT leg leads every set — lower leg LST (14.6 vs 15.1 lbs), asymmetry-protocol trigger at exactly 0.5 lb gap.', rirNote: '2 RIR — match the right side to what the left can hold' },
+          { name: 'Single-Leg RDL (DB)', sets: '3+3', reps: '8–10 ea', load: '20 lbs → 25 lbs', tempo: '3-1-1', rest: '75s', cue: 'LEFT leg leads every set — the lighter side on her scan (14.6 vs 15.1 lbs) trains first.', rirNote: '2 RIR — match the right side to what the left can hold' },
           { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: '20–25 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to ribs together. Bilateral pulling volume.', rirNote: '1 RIR — hypertrophy-priority accessory' },
           { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline this week', cue: 'Bench ~30°, elbows ~45°, controlled descent to full stretch.', rirNote: '3+ RIR — new pattern, technique first' },
         ],
       },
       {
-        letter: 'C',
-        title: 'LOADED CARRY + CORE',
+        letter: 'D',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY + CORE',
         introLabel: 'Farmer Carry & Plank Baseline — 25 lbs/Hand · 2:03 Hold',
-        intro: 'A 2:03 plank hold is exceptional — well past the 60-second ICONS threshold. Carries build the deep spinal stabilizer strength (multifidus, QL) that supports posture under all the compound lifts above. Both are descriptive/reference loads, not 1RM-calculated.',
+        intro: 'The session\'s integrated close begins here — the carry pulls the day\'s hinge strength and pulling posture together under gait, building the deep spinal stabilizer strength (multifidus, QL) that supports posture under all the compound lifts above. A 2:03 plank hold is exceptional — well past the 60-second ICONS threshold. Both are descriptive/reference loads, not 1RM-calculated. If a carry variation suits the day: a suitcase carry (one side at a time — brace against the lean) or a front-rack carry (upright-posture bias) covers the same ground; if carry loads ever progress past 60 lbs per hand, the carry moves to the hex bar.',
         exercises: [
           { name: 'Farmer Carry (DB, Both Hands)', sets: '4', reps: '25–30 yds', load: 'Wk1: 25 lbs/hand → +5 lbs every 2 wks', tempo: 'Controlled', rest: '90s', cue: 'Shoulders packed, chest tall, neutral neck. Add 5 lbs per hand every 2 weeks.' },
           { name: 'Plank Hold (Elbow)', sets: '2', reps: '1:45', load: 'Bodyweight', tempo: '—', rest: '90s', cue: 'Exceptional baseline 2:03. Hold at 1:45 in training — quality over max time. Wk4: 2:00+ loaded.' },
@@ -359,16 +443,16 @@ const days = [
         ],
       },
       {
-        letter: 'D',
-        title: 'POWER TRAINING — LOWER BODY (55-65 BRACKET)',
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — POWER EXPRESSION (55-65 BRACKET)',
         introLabel: 'Why',
-        intro: 'Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. Light load relative to her tested hex deadlift working weights; full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it is trained fresh, before the conditioning finisher below, not after it.',
+        intro: 'The final piece of the session\'s integrated close: a power expression of the day\'s primary hinge pattern. Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. Light load relative to her tested hex deadlift working weights; full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it is trained fresh, before the conditioning finisher below, not after it.',
         exercises: [
           { name: 'Trap Bar Jump (Light Load, Full Recovery)', sets: '3', reps: '3', load: '30–40 lbs (empty-to-light trap bar)', tempo: 'Explosive up, soft controlled landing', rest: '120s', cue: 'Drive up with real intent through ankle, knee, hip. Land soft. Full recovery — not a metabolic set.', rirNote: 'Not RIR-governed — end the set if bar speed drops' },
         ],
       },
       {
-        letter: 'E',
+        letter: 'F',
         title: 'CONDITIONING FINISHER (CHOOSE ONE)',
         color: 'gold',
         introLabel: 'Conditioning Protocol — Sled Push Baseline 45 lbs',
@@ -394,21 +478,29 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY LOWER — SQUAT, SPLIT SQUAT & LUNGE',
-        introLabel: `Back Squat & Split Stance Squat — Epley 1RM ${backSquat1RM} / ${splitSquat1RM} lbs`,
-        intro: `Back squat tested at 90 lbs for 5 reps; split stance DB squat tested at 17.5 lbs/hand for 5 reps. LEFT leg leads every unilateral exercise here — legs sit exactly at the 0.5 lb asymmetry-protocol trigger (14.6 vs 15.1 lbs). DB Reverse Lunge was not part of the initial testing battery — it closes the block as a new baseline, LEFT-led per the same asymmetry finding.`,
+        title: 'PRIMARY COMPOUND — BACK SQUAT',
+        introLabel: `Back Squat — Epley 1RM ${backSquat1RM} lbs`,
+        intro: `The day's main lift — tested at 90 lbs for 5 reps, trained on the same 80% → 93% ramp as Day A's deadlift. If the day calls for a variation, rotate between: a goblet squat (DB at the chest, easiest to keep upright), a box squat (depth set by the box), or a landmine squat (angled path, more forgiving on a heavier-feeling day). The barbell back squat stays the lift we track and retest.`,
         exercises: [
           { name: 'Back Squat (Barbell or Loaded)', sets: '4', reps: '5–6', load: `Wk1: ${backSquat_wk1} lbs → Wk4: ${backSquat_wk4} lbs`, tempo: '3-1-1', rest: '90s', cue: 'Full depth, chest tall, drive knees out. Brace before descent, exhale on the drive up.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'B',
+        title: 'ACCESSORY — SPLIT SQUAT, SHOULDER & LUNGE',
+        introLabel: `Split Stance Squat — Epley 1RM ${splitSquat1RM} lbs`,
+        intro: `Unilateral and shoulder accessory work behind the squat: split stance squat (tested at 17.5 lbs/hand x5), a lateral-raise pattern break, then the reverse lunge — LEFT leg leads every unilateral exercise here, as the lighter side on her scan trains first. DB Reverse Lunge was not part of the initial testing battery — it closes the block as a new baseline. This order never stacks three same-pattern leg exercises in a row.`,
+        exercises: [
           { name: 'Split Stance Squat (DB) — LEFT Leads', sets: '3+3', reps: '8 ea', load: `Wk1: ${splitSquat_wk1} lbs/hand → Wk4: ${splitSquat_wk4} lbs/hand`, tempo: '2-1-1', rest: '75s', cue: 'LEFT (weaker) leg trains first every set. Rear foot elevated optional. Front knee tracks over toes.', rirNote: '2 RIR — match the right side to what the left can hold' },
           { name: 'DB Lateral Raise', sets: '3', reps: '12–15', load: '8–10 lbs', tempo: '2-1-2', rest: '30s', cue: 'Arms slightly bent. Raise to shoulder height, 1-second hold at top, slow 2-second lower.', rirNote: '1 RIR — hypertrophy-priority isolation' },
           { name: 'DB Reverse Lunge — LEFT Leads', sets: '3+3', reps: '8 ea', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs/hand', tempo: '2-1-1', rest: '75s', flag: 'Not tested — establishing baseline this week', cue: 'LEFT (weaker) leg trains first. Step back, knee tracks over mid-foot, drive through front heel.', rirNote: '3+ RIR — new pattern, technique first' },
         ],
       },
       {
-        letter: 'B',
-        title: 'PRIMARY PRESS + PULL-UP PROGRESSION',
+        letter: 'C',
+        title: 'SECONDARY COMPOUND — PRESS + PULL-UP PROGRESSION',
         introLabel: `Bench Press & Pull-Up Baseline — Epley 1RM ${bench1RM} lbs / 5 Reps Each Grip`,
-        intro: 'Bench press tested at 65 lbs for 5 reps. Seated Overhead Press was not part of the initial testing battery and closes the pressing pair as a new vertical-press baseline, established this week at a conservative technique-first load. Five clean reps per grip on assisted pull-ups (close, standard, wide) is a strong starting point — close grip leads every session as the least shoulder strain and easiest to add volume to first.',
+        intro: 'The day\'s second compound territory — pressing and vertical pulling, rotating off the squat and lunge work above. Bench press tested at 65 lbs for 5 reps. Seated Overhead Press was not part of the initial testing battery and follows as a new vertical-press baseline, established this week at a conservative technique-first load. Five clean reps per grip on assisted pull-ups (close, standard, wide) is a strong starting point — close grip leads every session as the least shoulder strain and easiest to add volume to first. If the bench needs a variation: a DB flat bench press or a low-incline DB press covers the same pattern; if the overhead press needs one: a landmine press (shoulder-friendly arc) or a half-kneeling single-arm DB press. The barbell bench and seated DB overhead press stay the lifts we track, and the three-grip pull-up battery runs as written.',
         exercises: [
           { name: 'Bench Press (Barbell or DB)', sets: '4', reps: '6–8', load: `Wk1: ${bench_wk1} lbs → Wk4: ${bench_wk4} lbs`, tempo: '2-1-1', rest: '90s', cue: 'Shoulder blades set, feet planted, controlled descent to chest, drive up without bouncing.', rirNote: '2 RIR' },
           { name: 'Seated DB Overhead Press', sets: '3', reps: '8', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs/hand', tempo: '2-0-2', rest: '75s', flag: 'Not tested — establishing baseline this week', cue: 'Ribs stacked over hips, press straight overhead, no lean-back.', rirNote: '3+ RIR — new pattern, technique first' },
@@ -419,7 +511,7 @@ const days = [
         ],
       },
       {
-        letter: 'C',
+        letter: 'D',
         title: 'PUSH-UP PROGRESSION',
         color: 'green',
         introLabel: 'Push-Up Baseline — 10 Reps Incline',
@@ -431,11 +523,11 @@ const days = [
         ],
       },
       {
-        letter: 'D',
-        title: 'METABOLIC CONDITIONING CIRCUIT — 3 ROUNDS',
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — METABOLIC CONDITIONING CIRCUIT (3 ROUNDS)',
         color: 'gold',
         introLabel: 'Cardio Protocol',
-        intro: "Day B's cardiovascular work is a metabolic circuit rather than dedicated cardio — the strength-plus-conditioning combination most effective for body composition at 2 days/week. After 3 rounds: 10-minute finisher — stationary bike easy spin, treadmill Zone 2 walk, or rowing machine easy pace.",
+        intro: "The session's closing compound circuit — squat, pull, push, and core in one continuous complex, pulling the whole day's patterns together while doubling as Day B's cardiovascular work: the strength-plus-conditioning combination most effective for body composition at 2 days/week. If a station needs a swap, keep the pattern: the squat station may run as a light DB deadlift on a knee-heavy week, and the row may run on the Kieser. After 3 rounds: 10-minute finisher — stationary bike easy spin, treadmill Zone 2 walk, or rowing machine easy pace.",
         exercises: [
           { name: 'Goblet Squat (Light, Continuous)', sets: '3 rounds', reps: '15', load: '20–25 lbs', tempo: '2-0-1', rest: '15s then next', cue: 'Sub-maximal load, continuous reps. Focus is metabolic — keep moving into the next exercise.', rirNote: '3+ RIR throughout the circuit — metabolic, never near-failure' },
           { name: 'DB Row (Both Arms, Bent Over)', sets: '3 rounds', reps: '12', load: '20–25 lbs', tempo: '2-1-2', rest: '15s then next', cue: 'Hip hinge, pull both DBs to ribs. Lighter than Day A primary row — metabolic pull volume.', rirNote: '3+ RIR' },
@@ -474,9 +566,9 @@ const summary = {
     ['Wk 3', '—', 'Day A & B', 'Hex DL approaching tested baseline / Hip Thrust at tested baseline / Back Squat above baseline', 'Push-up: 6–7 floor reps. Plank: 1:55.'],
     ['Wk 4', '—', 'Day A & B', `Hex DL ${hexDL_wk4} lbs ×5 / Hip Thrust ${hipThrust_wk4} lbs ×5–6 / Back Squat ${backSquat_wk4} lbs ×5–6 / Bench ${bench_wk4} lbs ×6–8`, 'All baseline lifts surpassed. Push-up: 7 full unassisted. Plank: 2:00+ loaded. Reassess pull-up assist level.'],
   ],
-  milestones4wk: 'All baseline lifts surpassed. Push-up: 7 full unassisted. Plank: 2:00+ loaded. Pull-up assist level reduced across all 3 grips. Seated Overhead Press progressing from 15 toward 20 lbs/hand; Incline Dumbbell Press from 20 toward 25 lbs/hand; DB Reverse Lunge from 15 toward 20 lbs/hand (LEFT leads) — all three newly established this week.',
-  milestones8wk: `Strength: Hex DL ${hexDL_wk4 + 15}+ lbs ×5. Hip Thrust ${hipThrust_wk4 + 10}+ lbs ×5–6. Back Squat ${backSquat_wk4 + 10}+ lbs ×5–6. Bench ${bench_wk4 + 5}+ lbs ×6–8. Row ${row_wk4 + 5}+ lbs ×8. Split Stance Squat ${splitSquat_wk4 + 5}+ lbs/hand ×8. Sled Push distance/resistance increased. Push-up 10+ full unassisted. Pull-up 8+ reps all grips, next assist-level reduction. Plank 2:15+ loaded.`,
-  rescanNote: 'Styku rescan recommended at 8 weeks — track ALST Index closely given the current 5.52 kg/m² reading sits only 0.02 kg/m² above the At-Risk cutoff (do not assume it stays clear of the threshold without confirming; ALST is tracked as a trend metric, not a graded score), VFA trend (currently 62.0 cm² — track as a trend rather than a risk-band label), and the leg segmental gap (currently exactly 0.5 lbs, at the asymmetry-protocol trigger — should trend down with the LEFT-leads unilateral protocol). Also worth revisiting at next intake: confirming actual menopausal status, given its direct relevance to the pelvic floor protocol on this program\'s heavy hinge/squat days.',
+  milestones4wk: 'All baseline lifts surpassed. Push-up: 7 full unassisted. Plank: 2:00+ loaded. Pull-up assist level reduced across all 3 grips. Seated Overhead Press progressing from 15 toward 20 lbs/hand; Incline Dumbbell Press from 20 toward 25 lbs/hand; DB Reverse Lunge from 15 toward 20 lbs/hand (LEFT leads) — all three newly established this week. Week 4 closes with the strength check (the standing 4-week reassessment); the planned lighter week that follows — Week 5 by default, adjusted by how training is actually going (see the deload note above) — consolidates before Weeks 6–8 rebuild.',
+  milestones8wk: `Reached through the Week 4 strength check, the planned deload week, and the Weeks 6-8 rebuild. Strength: Hex DL ${hexDL_wk4 + 15}+ lbs ×5. Hip Thrust ${hipThrust_wk4 + 10}+ lbs ×5–6. Back Squat ${backSquat_wk4 + 10}+ lbs ×5–6. Bench ${bench_wk4 + 5}+ lbs ×6–8. Row ${row_wk4 + 5}+ lbs ×8. Split Stance Squat ${splitSquat_wk4 + 5}+ lbs/hand ×8. Sled Push distance/resistance increased. Push-up 10+ full unassisted. Pull-up 8+ reps all grips, next assist-level reduction. Plank 2:15+ loaded.`,
+  rescanNote: 'Two clocks run separately here: strength is reassessed on the standing 4-week cadence (the Week 4 check, then the Week 8 retest at the end of the rebuild), while the Styku body-composition rescan books at 8 weeks — landing at the end of the Weeks 6-8 rebuild that follows the planned deload week, so the scan reads a consolidated block rather than a mid-deload dip. Track at rescan: ALST Index closely, given the current 5.52 kg/m² reading sits only 0.02 kg/m² above the At-Risk cutoff (do not assume it stays clear of the threshold without confirming; ALST is tracked as a trend metric, not a graded score), VFA trend (currently 62.0 cm² — track as a trend rather than a risk-band label), and the leg segmental gap (currently 0.5 lbs, ~3% relative to the larger side — watch it directionally under the LEFT-leads unilateral convention, and reassess whether that lead assignment still reflects a real, worth-addressing difference once updated numbers are in). Also worth revisiting at next intake: confirming actual menopausal status, given its direct relevance to the pelvic floor protocol on this program\'s heavy hinge/squat days.',
 };
 
 const data = {

@@ -86,6 +86,84 @@
  * more conservative given the frozen shoulder history (OHP) and the general
  * "never chase load over a corrective priority" posture (Lunge, paired with
  * the tibia/inner-thigh work) — not an inconsistency.
+ *
+ * REVISION (8/19/2026) — ICONS BLOCK METHOD RESTRUCTURE (roster-wide
+ * rollout, batch 2; spec: CLAUDE.md "ICONS Block Method — Standing Session
+ * Architecture"; reference: scripts/siobhan_hansen_3day_plan.js, the
+ * pilot). Full prior record (this header + CLIENTS.md entry) re-read
+ * first, per the standing rule. Slot 4 (Jason's Exercise) is OMITTED on
+ * all three days — no Jason Bethea SOAP note, exercise, or coordinated-
+ * care relationship is on file for this client (her frozen-shoulder work
+ * is a self-contained corrective priority, explicitly not PT-coordinated
+ * per intake) — no filler inserted.
+ *   DAY 1: slot 1 = Block A (Hip Activation & 90/90, unchanged); slot 2 =
+ *   Goblet Squat alone (new Block B — primary, still baseline-
+ *   establishment: options menu is technique-band only); slot 3 = the
+ *   Tibia & Inner-Thigh corrective pairing, MOVED between the two lifts
+ *   as the accessory block (the one genuine resequencing in this
+ *   restructure: previous rendered order was Squat → Trap Bar DL → tibia
+ *   block; new order Squat → tibia block → Trap Bar DL. Antagonist walk:
+ *   squat → isolated corrective work → hinge — no same-pattern stack
+ *   created or removed; no documented audit-fix ordering existed on this
+ *   day to disturb); slot 5 = Trap Bar Deadlift (new Block D — secondary
+ *   compound, hinge vs. the squat primary; technique-band options only);
+ *   slot 6 = NEW Block E, Full-Body Integration — Farmers Carry (Light),
+ *   2x25-30 yd at 20-25 lbs/hand — anchored BELOW her tested 30 lbs/hand
+ *   Farmers Carry baseline, no invented number; integrates the two brand-
+ *   new lift patterns into braced gait at technique loads. Block F =
+ *   metabolic finisher.
+ *   DAY 2: slot 1 = Block A (Shoulder Internal Rotation corrective,
+ *   unchanged); slot 2 = Seated DB OHP alone (new Block B — primary;
+ *   options constraint-filtered by the frozen-shoulder history: landmine
+ *   press [standard scap-friendly alternate] and half-kneeling single-arm
+ *   DB press, every option inside the same pain-free-range/sharp-pinch
+ *   stop rule; NOTE: CLAUDE.md's shoulder-reintroduction addendum
+ *   [press → closed-chain hold] was considered and deliberately NOT
+ *   applied — its stated scope is a REINTRODUCED press after shoulder
+ *   rehab/reconstruction, and Johnna's OHP is a tested, continuously-
+ *   programmed lift under a corrective-priority gate, not a
+ *   reintroduction); slot 3 = Incline Push-Up (new Block C — accessory,
+ *   split out of the old press block); slot 5 = old Block C retitled
+ *   secondary compound (Bent-Over Row + Face Pull [renamed Band or
+ *   Kieser] + Incline DB Press — order unchanged; row options:
+ *   chest-supported DB row, single-arm Kieser row); slot 6 = NEW Block E,
+ *   Full-Body Integration — Farmers Carry, 2x20-30 yd at 20-25 lbs/hand,
+ *   packed-shoulder framing that directly reinforces the shoulder-care
+ *   priority in a closed, neutral position (a deliberately shoulder-safe
+ *   integration choice — no overhead carry, which is excluded on
+ *   constraint grounds). Block F = metabolic finisher.
+ *   DAY 3: slot 1 = Block A (Hip Activation Carryover, unchanged);
+ *   slot 2 = DB Hip Thrust alone (new Block B — her strongest tested
+ *   lift; options: floor glute bridge, B-stance hip thrust [left working
+ *   share], single-leg glute bridge [left leads]); slot 3 = Single-Leg
+ *   RDL left-led (new Block C — accessory; 2 RIR kept); slot 5 = old
+ *   Block C retitled secondary compound (DB Reverse Lunge left-led +
+ *   tibia/Copenhagen touch-up — lunge is knee-dominant vs. the hip-
+ *   extension primary; options: step-up [left leads], static split
+ *   squat); slot 6 = old Block D (Loaded Carry + Core) retitled
+ *   Full-Body Integration (+ suitcase-carry/front-rack options — arms
+ *   read effectively even, so a one-sided carry alternates sides rather
+ *   than fabricating a lead; Farmers Carry rirNote aligned from '2 RIR'
+ *   to the carry convention, matching the pilot); Block F = finisher.
+ *   Rendered order on Days 2-3 is otherwise unchanged.
+ * CONSTRAINT FILTERING SUMMARY: no overhead carries or overhead ballistic
+ * options anywhere (frozen-shoulder history + conservative OHP ramp); the
+ * two not-yet-baselined patterns (Goblet Squat, Trap Bar DL) get
+ * technique-band options only — no heavy barbell variants offered while
+ * the baseline is still being established.
+ * TOUCH-IT-BRING-IT-CURRENT: Face Pull renamed (Band or Kieser);
+ * equipment ceilings verified (all DB loads ≤60/hand, KB Swing 20 lbs ≤25
+ * ceiling, trap bar confirmed in inventory); DELOAD — PROACTIVE Week 5
+ * (new blue client-visible note): an 8+ week continuous-progression arc
+ * plus a conservative frozen-shoulder ramp that benefits from a
+ * consolidation week put her in the proactive tier of CLAUDE.md's deload
+ * protocol; milestones/rescanNote reconciled to the Wk4-check →
+ * Wk5-deload → Wk6-8-rebuild arc, and the 4-week strength / 8-12-week
+ * Styku cadence split stated. Warm-up drift checked: all three warmUps
+ * carry only unloaded mobility/activation — no loaded, rep-prescribed
+ * exercise in any of them. 10-movement Full-Spectrum coverage (she is 54)
+ * re-verified intact post-restructure, including the 8/13 Incline DB
+ * Press addition.
  */
 
 const fs = require('fs');
@@ -230,6 +308,17 @@ const baselineNotes = [
     body: 'At 54, Johnna sits in the 45–55 age bracket. Creatine is strongly indicated by age alone regardless of ALST status. Protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status — not for age or bracket alone (her ALST, 6.32 kg/m², is within normal reference range, not At-Risk). Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing on the current scan indicates low bone mass.',
   },
   {
+    type: 'blue',
+    label: 'Planned Deload — Week 5, Directly After the Week 4 Strength Check',
+    body: 'This program deliberately includes one lighter week, and it is planned, not a reaction to anything going wrong. Week 5 — immediately after the Week 4 strength check — is a structured deload: the same exercises and movement patterns, with sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), and loads held at Week 3-4 levels rather than climbing — the usual add-weight rule pauses for this one week. With two brand-new lift baselines being established and a shoulder trained deliberately conservatively, this is how the program consolidates the strength built in Weeks 1-4 before Weeks 6-8 rebuild from the Week 4 loads toward the 8-week retest and rescan. One light week costs nothing that matters: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days of resuming.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'All three days restructured onto the ICONS Block Method six-slot order (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound/Integration). Slot 4 omitted on all days — no Jason Bethea exercise or coordinated-care relationship on file (her shoulder work is a self-contained corrective priority per intake); no filler inserted. Day 1: corrective = Hip Activation & 90/90; primary = Goblet Squat; accessory = the Tibia & Inner-Thigh pairing, MOVED between the two lifts (the one genuine resequencing — previous order was Squat → Trap Bar DL → tibia block; antagonist walk clean: squat → isolated correctives → hinge; no documented audit-fix ordering existed on this day); secondary = Trap Bar Deadlift; integration = NEW light Farmers Carry (2x25-30 yd, 20-25 lbs/hand, anchored below her tested 30 lbs/hand baseline). Day 2: corrective = Shoulder Internal Rotation; primary = Seated OHP (split from the old press block); accessory = Incline Push-Up; secondary = row/face-pull/incline-press block unchanged; integration = NEW Farmers Carry, packed-shoulder framing (shoulder-safe by design — overhead carry excluded on constraint grounds). CLAUDE.md\'s shoulder-reintroduction addendum (press → closed-chain hold) was considered and deliberately not applied: its scope is a reintroduced press after rehab/reconstruction; her OHP is a tested, continuously-programmed lift under a corrective gate, not a reintroduction. Day 3: primary = DB Hip Thrust; accessory = SL RDL (left-led); secondary = Reverse Lunge + tibia/Copenhagen touch-up; integration = the existing Carry + Core block retitled (Farmers Carry rirNote aligned to the carry convention; suitcase/front-rack options alternate sides — arms effectively even, no lead fabricated). Options menus on every compound slot, constraint-filtered: technique-band options only on the two not-yet-baselined patterns; every press option inside the pain-free-range/sharp-pinch stop rule; no overhead carries or ballistic overhead options anywhere. Same pass: Face Pull renamed (Band or Kieser), proactive Week-5 deload added, 4-week strength / 8-12-week Styku cadence split stated, warm-up drift checked clean, 10-movement coverage re-verified intact.',
+  },
+  {
     type: 'teal',
     audience: 'internal',
     label: 'Perimenopausal Status — Not Assessed, isPostmenopausal Left False',
@@ -262,20 +351,19 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — SQUAT & DEADLIFT TECHNIQUE INTRODUCTION',
+        title: 'PRIMARY COMPOUND — GOBLET SQUAT (BASELINE ESTABLISHMENT)',
         introLabel: 'Load Target',
-        intro: 'No baseline was recorded for squat or deadlift. Loads stay light — the goal is a clean, repeatable pattern that becomes today\'s new baseline, not maximal load.',
+        intro: 'No baseline was recorded for the squat. Today\'s deliberately light load becomes the new baseline — the goal is a clean, repeatable pattern, not maximal weight. If the day calls for a variation while the pattern is still being established, both options stay in the same technique band: a box squat (depth set by the box) or a supported split-stance squat holding a rail (left leg leads). The goblet squat stays the lift we track — its working load is the number that becomes the 8-week baseline.',
         exercises: [
           { name: 'Goblet Squat', sets: '3', reps: '8', load: '25 lbs', tempo: '3-1-1', rest: '75s', cue: 'Elbows inside knees, chest tall, full depth.', rirNote: '3+ RIR' },
-          { name: 'Trap Bar Deadlift', sets: '3', reps: '6', load: '55 lbs', tempo: '2-1-1', rest: '90s', cue: 'Flat back, brace, push floor away evenly.', rirNote: '3+ RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'TIBIA & INNER-THIGH CORRECTIVE PAIRING',
+        title: 'ACCESSORY — TIBIA & INNER-THIGH CORRECTIVE PAIRING',
         color: 'gold',
         introLabel: 'Why',
-        intro: 'Tibialis strength and inner-thigh/adductor activation are paired corrective priorities from intake — tibialis raises build the ankle-dorsiflexion control that supports squat and lunge mechanics, while the adductor work balances the lateral hip-abductor emphasis in Block A.',
+        intro: 'Tibialis strength and inner-thigh/adductor activation are paired corrective priorities from intake — tibialis raises build the ankle-dorsiflexion control that supports squat and lunge mechanics, while the adductor work balances the lateral hip-abductor emphasis in Block A. Placed between today\'s two main lifts, this work also gives the legs a controlled breather before the hinge pattern below.',
         exercises: [
           { name: 'Tibialis Raise (Wall or Slant Board)', sets: '3', reps: '15', load: 'bodyweight / light plate', tempo: '2-1-2', rest: '30s', cue: 'Heels planted, toes drive up toward shins, slow return.' },
           { name: 'Banded Dorsiflexion Pull', sets: '2', reps: '15', load: 'light band', tempo: 'controlled', rest: '30s', cue: 'Seated, pull toes toward shin against band resistance.' },
@@ -285,6 +373,25 @@ const days = [
       },
       {
         letter: 'D',
+        title: 'SECONDARY COMPOUND — TRAP BAR DEADLIFT (BASELINE ESTABLISHMENT)',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound pattern — a hinge, rotating off the squat work above. No baseline was recorded for the deadlift; today\'s deliberately light load becomes the new baseline. If a variation is needed while the pattern is established, both options stay in the same technique band: a trap bar pull from low blocks (shortened range) or a light double-DB Romanian deadlift. The trap bar lift stays the one we track — its working load becomes the 8-week baseline.',
+        exercises: [
+          { name: 'Trap Bar Deadlift', sets: '3', reps: '6', load: '55 lbs', tempo: '2-1-1', rest: '90s', cue: 'Flat back, brace, push floor away evenly.', rirNote: '3+ RIR' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — FARMERS CARRY (LIGHT)',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — a light loaded carry that puts today\'s two brand-new lift patterns to work as one integrated movement: the hinge to pick the weights up, the braced, tall posture of the squat work, carried under gait. Loads stay deliberately below her tested 30 lbs/hand carry baseline — this closes a technique day with quality movement, not extra load. Distance and movement quality govern this work, not an effort target. A goblet carry (one DB held at the chest) covers the same ground with an upright-posture bias if it suits the day better.',
+        exercises: [
+          { name: 'Farmers Carry (DB, Both Hands — Light)', sets: '2', reps: '25–30 yd', load: '20–25 lbs/hand', tempo: 'controlled', rest: '60s', cue: 'Hinge to pick up clean. Tall posture, ribs down, quick tight steps.', rirNote: 'Distance & quality governed — no RIR target' },
+        ],
+      },
+      {
+        letter: 'F',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'Low-impact conditioning closes the session without adding lower-body fatigue that would compromise the new squat/deadlift baseline being tracked today.',
@@ -320,28 +427,47 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY PRESS STRENGTH',
+        title: 'PRIMARY COMPOUND — SEATED OVERHEAD PRESS',
         introLabel: 'Load Target',
-        intro: `Seated overhead press tested at 15 lbs x8 (Epley 1RM ≈${oneRM.ohp} lbs). Given the frozen shoulder history, Week 1 trains conservatively below baseline (${wk1.ohp} lbs) and progresses only as far as pain-free range allows, reaching ${wk4.ohp} lbs by Week 4.`,
+        intro: `The day's main lift. Seated overhead press tested at 15 lbs x8 (Epley 1RM ≈${oneRM.ohp} lbs). Given the frozen shoulder history, Week 1 trains conservatively below baseline (${wk1.ohp} lbs) and progresses only as far as pain-free range allows, reaching ${wk4.ohp} lbs by Week 4. If the day calls for a press variation, rotate between: a landmine press (a friendlier, angled arc when the fully vertical line isn't comfortable) or a half-kneeling single-arm DB press (light, one side at a time). Every option lives inside the same rule as the press itself — pain-free range only, sharp or pinching pain ends the set — and the seated press stays the lift we track and retest.`,
         exercises: [
           { name: 'Seated DB Overhead Press', sets: '3', reps: '8', load: `Wk1: ${wk1.ohp} lbs → Wk4: ${wk4.ohp} lbs`, tempo: '2-0-2', rest: '75s', flag: 'Progress only within pain-free range', cue: 'Ribs stacked over hips, press within comfortable range.', rirNote: '2 RIR' },
-          { name: 'Incline Push-Up', sets: '3', reps: '6–8', load: 'bodyweight (bench)', tempo: '3-1-1', rest: '60s', cue: 'Baseline 6 reps. Hands under shoulders, chest to bench, brace.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'PULL STRENGTH & INCLINE PRESS BASELINE',
-        color: 'purple',
-        introLabel: 'Note',
-        intro: 'Rowing volume balances the pressing work above and builds scapular stability around the healing shoulder. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, light load and technique-first, respecting the same pain-free-range guardrail as the rest of this session.',
+        title: 'ACCESSORY — INCLINE PUSH-UP',
+        color: 'green',
+        introLabel: 'Load Target',
+        intro: 'The pressing accessory directly behind the overhead work — a controlled, non-overhead range that builds pushing volume while staying well clear of the shoulder\'s sensitive arc.',
         exercises: [
-          { name: 'Bent-Over DB Row', sets: '3', reps: '10', load: '20 lbs/hand', tempo: '2-1-2', rest: '75s', cue: 'Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
-          { name: 'Face Pull (Band or Cable)', sets: '3', reps: '15', load: 'light band', tempo: '2-1-2', rest: '45s', cue: 'Pull to face, elbows high. Light, pain-free range only.' },
-          { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: '12.5 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline. Stop at any pinch or sharp pain.', cue: 'Bench ~30°, elbows ~45°, press within pain-free range only.', rirNote: '2 RIR' },
+          { name: 'Incline Push-Up', sets: '3', reps: '6–8', load: 'bodyweight (bench)', tempo: '3-1-1', rest: '60s', cue: 'Baseline 6 reps. Hands under shoulders, chest to bench, brace.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'D',
+        title: 'SECONDARY COMPOUND — PULL STRENGTH & INCLINE PRESS BASELINE',
+        color: 'purple',
+        introLabel: 'Note',
+        intro: 'The day\'s second compound territory — pulling, rotating off the pressing work above. Rowing volume balances the pressing and builds scapular stability around the healing shoulder. Incline Dumbbell Press was not part of the initial testing battery — it closes the block as a new horizontal-press baseline, light load and technique-first, respecting the same pain-free-range guardrail as the rest of this session. If the row needs a variation: a chest-supported DB row (torso fully supported) or a single-arm Kieser row covers the same pattern; the bent-over row stays the one we track.',
+        exercises: [
+          { name: 'Bent-Over DB Row', sets: '3', reps: '10', load: '20 lbs/hand', tempo: '2-1-2', rest: '75s', cue: 'Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
+          { name: 'Face Pull (Band or Kieser)', sets: '3', reps: '15', load: 'light band', tempo: '2-1-2', rest: '45s', cue: 'Pull to face, elbows high. Light, pain-free range only.' },
+          { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: '12.5 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline. Stop at any pinch or sharp pain.', cue: 'Bench ~30°, elbows ~45°, press within pain-free range only.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — FARMERS CARRY (PACKED SHOULDERS)',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — a loaded carry that puts today\'s shoulder work to use in the position it is strongest and safest: shoulders packed down and back, arms locked at the sides, load carried under a tall, braced posture. This directly reinforces the shoulder-care priority in a closed, neutral position — nothing travels overhead. Loads stay below her tested 30 lbs/hand carry baseline. Distance and movement quality govern this work, not an effort target. A goblet carry (one DB at the chest) is the alternate if it suits the day better; no overhead carry variation is used in this program.',
+        exercises: [
+          { name: 'Farmers Carry (DB, Both Hands)', sets: '2', reps: '20–30 yd', load: '20–25 lbs/hand', tempo: 'controlled', rest: '60s', cue: 'Shoulders packed down and back, tall posture, quick tight steps.', rirNote: 'Distance & quality governed — no RIR target' },
+        ],
+      },
+      {
+        letter: 'F',
         title: 'METABOLIC FINISHER',
         color: 'gold',
         introLabel: 'Why',
@@ -377,20 +503,28 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — HIP THRUST & SINGLE-LEG RDL',
+        title: 'PRIMARY COMPOUND — DB HIP THRUST',
         introLabel: 'Load Target',
-        intro: `Hip Thrust tested at 55 lbs x8 (Epley 1RM ≈${oneRM.hipThrust} lbs); Week 1 trains at ${wk1.hipThrust} lbs, climbing to ${wk4.hipThrust} lbs by Week 4. Single-Leg RDL tested at 20 lbs/hand x5 (Epley 1RM ≈${oneRM.slRDL} lbs); Week 1 trains at ${wk1.slRDL} lbs/hand, climbing to ${wk4.slRDL} lbs/hand — left leg leads every set.`,
+        intro: `The day's main lift, built on her strongest tested number. Hip Thrust tested at 55 lbs x8 (Epley 1RM ≈${oneRM.hipThrust} lbs); Week 1 trains at ${wk1.hipThrust} lbs, climbing to ${wk4.hipThrust} lbs by Week 4. If the day calls for a variation, rotate between: a floor glute bridge (the simplest regression), a B-stance hip thrust (left leg takes the working share), or a single-leg glute bridge (left leg leads). The bench-supported DB hip thrust stays the lift we track and retest.`,
         exercises: [
           { name: 'DB Hip Thrust', sets: '3', reps: '8', load: `Wk1: ${wk1.hipThrust} lbs → Wk4: ${wk4.hipThrust} lbs`, tempo: '2-1-2', rest: '90s', cue: 'Drive through heels, glutes lock at top.', rirNote: '2 RIR' },
-          { name: 'Single-Leg RDL (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slRDL} lbs/hand → Wk4: ${wk4.slRDL} lbs/hand`, tempo: '3-1-1', rest: '60s', flag: 'Left leg weaker (Styku) — leads every set', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'LUNGE & TIBIA/INNER-THIGH ACCESSORY',
+        title: 'ACCESSORY — SINGLE-LEG RDL (LEFT-LED)',
+        introLabel: 'Load Target',
+        intro: `The unilateral accessory directly behind the hip thrust — same posterior chain, worked one leg at a time with the left leading. Tested at 20 lbs/hand x5 (Epley 1RM ≈${oneRM.slRDL} lbs); Week 1 trains at ${wk1.slRDL} lbs/hand, climbing to ${wk4.slRDL} lbs/hand — left leg leads every set.`,
+        exercises: [
+          { name: 'Single-Leg RDL (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slRDL} lbs/hand → Wk4: ${wk4.slRDL} lbs/hand`, tempo: '3-1-1', rest: '60s', flag: 'Left leg weaker (Styku) — leads every set', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — LUNGE (LEFT-LED) & TIBIA/INNER-THIGH ACCESSORY',
         color: 'gold',
         introLabel: 'Note',
-        intro: `Lunge tested at 15 lbs/hand x8 (Epley 1RM ≈${oneRM.lunge} lbs) — Week 1 trains at ${wk1.lunge} lbs/hand, climbing to ${wk4.lunge} lbs/hand by Week 4. Tibialis and adductor work from Day 1 gets a lighter touch-up here to reinforce the pattern under load.`,
+        intro: `The day's second compound pattern — knee-dominant lunging, rotating off the hip-extension work above. Lunge tested at 15 lbs/hand x8 (Epley 1RM ≈${oneRM.lunge} lbs) — Week 1 trains at ${wk1.lunge} lbs/hand, climbing to ${wk4.lunge} lbs/hand by Week 4, left leg leading. If the lunge needs a variation: a DB step-up (left leg leads) or a static split squat covers the same knee-dominant territory; the reverse lunge stays the lift we track. Tibialis and adductor work from Day 1 gets a lighter touch-up here to reinforce the pattern under load.`,
         exercises: [
           { name: 'DB Reverse Lunge (Left-Led)', sets: '3', reps: '8/side', load: `Wk1: ${wk1.lunge} lbs/hand → Wk4: ${wk4.lunge} lbs/hand`, tempo: '2-1-1', rest: '60s', flag: 'Left leg leads', cue: 'Left leg first. Knee tracks over mid-foot.', rirNote: '2 RIR' },
           { name: 'Tibialis Raise (Wall or Slant Board)', sets: '2', reps: '15', load: 'bodyweight / light plate', tempo: '2-1-2', rest: '30s', cue: 'Heels planted, toes drive up toward shins.' },
@@ -398,17 +532,17 @@ const days = [
         ],
       },
       {
-        letter: 'D',
-        title: 'LOADED CARRY + CORE',
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY + CORE',
         introLabel: 'Why',
-        intro: 'Farmers Carry tested at 30 lbs/hand — builds the deep spinal stabilizer strength that supports posture under all the compound lifts above. Plank closes the block.',
+        intro: 'The session\'s closing compound work — the carry pulls the day\'s hip-extension strength into upright, braced gait at her full tested working load (30 lbs/hand), building the deep spinal stabilizer strength that supports posture under all the compound lifts above. Distance and movement quality govern the carry, not an effort target. If a variation suits the day: a suitcase carry (one side at a time, alternating sides evenly — her arms read effectively even on the scan, so no side leads) or a front-rack carry (upright-posture bias). Plank closes the block.',
         exercises: [
-          { name: 'DB Farmers Carry', sets: '3', reps: '30–40 yd', load: '30 lbs/hand', tempo: 'controlled', rest: '60s', cue: 'Tall posture, ribs down, quick tight steps.', rirNote: '2 RIR' },
+          { name: 'DB Farmers Carry', sets: '3', reps: '30–40 yd', load: '30 lbs/hand', tempo: 'controlled', rest: '60s', cue: 'Tall posture, ribs down, quick tight steps.', rirNote: 'Distance & quality governed — no RIR target' },
           { name: 'Plank Hold', sets: '3', reps: '37 sec', load: 'bodyweight', tempo: 'hold', rest: '45s', cue: 'Baseline 37 sec — ribs down, glutes tight, breathe steady.' },
         ],
       },
       {
-        letter: 'E',
+        letter: 'F',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'Closing conditioning supports the week\'s cardiometabolic priority without adding lower-body fatigue that would compromise hip thrust/RDL load tracking.',
@@ -430,9 +564,9 @@ const summary = {
     ['2', '70%', 'Upper Body — Shoulder Care Priority', 'Seated DB Overhead Press', `Internal rotation strengthening precedes all pressing — frozen shoulder history, conservative load progression ${wk1.ohp}→${wk4.ohp} lbs; Incline Dumbbell Press baseline newly established this week at 12.5 lbs/hand, technique-first`],
     ['3', '80%', 'Posterior Chain — Left-Led Unilateral', 'DB Hip Thrust', `Loads build off tested baselines (Hip Thrust Epley 1RM ≈${oneRM.hipThrust} lbs); left leg leads every unilateral set per 1.4 lb Styku gap`],
   ],
-  milestones4wk: `Goblet Squat 30–35 lbs x8, Trap Bar Deadlift 65–70 lbs x6 at 2–3 RIR. Hip Thrust progressing toward ${wk4.hipThrust + 5} lbs x8. Seated OHP at 15 lbs x8 pain-free (matching tested baseline) — progress only as shoulder ROM allows. Incline Dumbbell Press progressing from 12.5 lbs/hand toward 15 lbs/hand, pain-free. Left-leg single-leg RDL load matched toward parity with right within 10%.`,
-  milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline (25 lbs / 55 lbs). Hip Thrust and OHP progressed from current working loads. Left/right leg LST gap reduced from 1.4 lbs. Plank hold past 50 seconds. Shoulder internal rotation strength improved with no pain flags logged.',
-  rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend (currently 6.32 kg/m², within normal reference range), VFA (currently 82.7 cm² — track the direction of travel rather than a risk band, and pair it with a waist-circumference measurement at the next scan), left/right leg LST gap (baseline 1.4 lbs, ≈8% relative — track the percentage narrowing, not just the raw pounds), lean mass (currently 96.6 lbs, Ideal Lean Mass marker — maintain or build further).',
+  milestones4wk: `Goblet Squat 30–35 lbs x8, Trap Bar Deadlift 65–70 lbs x6 at 2–3 RIR. Hip Thrust progressing toward ${wk4.hipThrust + 5} lbs x8. Seated OHP at 15 lbs x8 pain-free (matching tested baseline) — progress only as shoulder ROM allows. Incline Dumbbell Press progressing from 12.5 lbs/hand toward 15 lbs/hand, pain-free. Left-leg single-leg RDL load matched toward parity with right within 10%. Week 4 closes with the strength check (the standing 4-week reassessment); Week 5 that follows is the planned deload week — same movements, sets reduced, loads held (see the deload note above) — before Weeks 6–8 rebuild.`,
+  milestones8wk: 'Reached through the Week 4 strength check, the planned Week 5 deload, and the Weeks 6–8 rebuild. Squat/deadlift 8-week retest against today\'s new baseline (25 lbs / 55 lbs). Hip Thrust and OHP progressed from current working loads. Left/right leg LST gap reduced from 1.4 lbs. Plank hold past 50 seconds. Shoulder internal rotation strength improved with no pain flags logged.',
+  rescanNote: 'Two clocks run separately: strength is reassessed on the standing 4-week cadence (the Week 4 check, then the Week 8 retest at the end of the rebuild), while the Styku body-composition rescan books at 8 weeks — landing at the end of the Weeks 6–8 rebuild that follows the planned Week 5 deload, so the scan reads a consolidated block. Track: ALST Index trend (currently 6.32 kg/m², within normal reference range), VFA (currently 82.7 cm² — track the direction of travel rather than a risk band, and pair it with a waist-circumference measurement at the next scan), left/right leg LST gap (baseline 1.4 lbs, ≈8% relative — track the percentage narrowing, not just the raw pounds), lean mass (currently 96.6 lbs, Ideal Lean Mass marker — maintain or build further).',
 };
 
 const data = {

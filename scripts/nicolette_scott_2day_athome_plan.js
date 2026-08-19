@@ -61,6 +61,38 @@
  * ANTAGONIST ROTATION RULE — applied at build time, mirroring the studio
  * version's block structure and pattern sequencing so both documents stay
  * internally consistent. Compliance checked inline per block below.
+ *
+ * REVISION (8/19/2026) — ICONS BLOCK METHOD RESTRUCTURE, mirroring the
+ * full-gym version's same-day restructure so both documents stay
+ * structurally consistent (see scripts/nicolette_scott_2day_plan.js's
+ * 8/19 header note for the full slot-mapping rationale; spec: CLAUDE.md's
+ * Block Method section; pilot: scripts/siobhan_hansen_3day_plan.js).
+ * Slot 4 (Jason's Exercise) omitted both days (nothing on file); slot 1
+ * served by the existing Control & Alignment activation blocks.
+ *   DAY A: primary = DB Romanian Deadlift (own block + DB-only options:
+ *   B-stance DB RDL, sumo-stance DB deadlift); accessory = DB Hip Thrust
+ *   + Lateral Raise (+ options: floor glute bridge, single-leg glute
+ *   bridge left leads); secondary = press block (+ options: half-kneeling
+ *   single-arm DB press, DB floor press); integration = Farmer Carry +
+ *   Plank + Suitcase Carry split into its own closing block, with the
+ *   Zone 2 line moved to a separate Conditioning Close.
+ *   DAY B: primary = DB Goblet Squat (own block + options: squat to a
+ *   box/sturdy chair, staggered-stance goblet squat); accessory = DB
+ *   Split Squat + DB Reverse Fly; secondary = pull block (+ options:
+ *   chest-supported DB row prone on the bench, staggered-stance
+ *   single-arm row braced on the knee); Push-Up & Side Plank retained as
+ *   a standing baseline block; NEW integration closer — Farmer Carry
+ *   (Light), 2x25 yd at 15 lbs/hand, anchored below her tested 20
+ *   lbs/hand reference (mirrors the gym version's new Day B closer);
+ *   Zone 2 moved to its own Conditioning Close. Rendered exercise order
+ *   otherwise unchanged; all options DB-only per the stated equipment
+ *   assumption (no landmine/Kieser/barbell options in THIS document —
+ *   those live in the studio version only).
+ * TOUCH RULES: no cable references existed here (already DB-only);
+ * equipment ceilings trivially satisfied (~25-30 lb pair assumption);
+ * DELOAD — same AUTOREGULATED recovery-week note as the gym version (one
+ * training week, venue-independent); 4-week strength cadence noted in
+ * the summary. Warm-up drift checked: unloaded prep only.
  */
 
 const fs = require('fs');
@@ -122,6 +154,17 @@ const baselineNotes = [
     body: 'At 35 — the literal boundary of the 20-35 and 35-45 brackets — no CLAUDE.md numeric threshold actually differs at this exact age, so the shared guidance applies directly: protein stays at the active-women-general 1.6 g/kg tier, creatine is indicated (not yet strongly indicated), full volume/frequency target, RIR-based autoregulation. This is a first build for a first-time-tested, early-intermediate client — technique-first, not advanced/elite periodization, same posture as the full-gym version.',
   },
   {
+    type: 'blue',
+    label: 'Planned Recovery Week — Built In, Timed by How Training Is Actually Going',
+    body: 'Roughly every four to six weeks of continuous progression, this program takes one deliberately lighter week — the same in this at-home plan as in the studio version, since it is one training week regardless of venue: the same exercises and movement patterns, sets reduced by roughly a third, every set held comfortably well short of hard effort, and loads held rather than climbing. At her current technique-first loads the light week is not fixed to a calendar date: the natural first window is right after the Week 4 strength check, and it moves earlier if lifts stall, soreness lingers, or sleep degrades. One light week costs nothing that matters — muscle built over the previous weeks is not lost in a single reduced-volume week.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'Restructured onto the ICONS Block Method six-slot order in the same pass as the companion full-gym document, mirroring its slot mapping so the two documents stay structurally consistent — see the full-gym script/CLIENTS.md entry for the complete rationale. Slot 4 omitted both days (no Jason Bethea relationship on file); slot 1 served by the existing Control & Alignment blocks. Primary/accessory/secondary splits mirror the gym version with DB-only substitutes; integration closers: Day A = the existing carry/core work split into its own closing block (Zone 2 moved to a separate Conditioning Close), Day B = a NEW light Farmer Carry closer (2x25 yd, 15 lbs/hand — anchored below her tested 20 lbs/hand reference, no invented number), mirroring the gym version\'s new Day B closer. All options menus are DB-only per this document\'s stated equipment assumption — no landmine/Kieser/barbell options here; those exist only in the studio version. Same pass: autoregulated recovery-week note added (identical call to the gym version — one training week, venue-independent); 4-week strength cadence noted in the summary. The asymmetry-trigger flagged discrepancy (8/17) and left-leg-leads prescription are untouched.',
+  },
+  {
     type: 'gold',
     label: 'Equipment-Driven Load Differences vs. the Full-Gym Program',
     body: 'DB-based substitutes for barbell/hex-bar lifts are naturally lighter than their studio counterparts, and several will hit a practical dumbbell-pair ceiling (~25-30 lbs/hand assumed) by Week 4 rather than a strength ceiling — most visible on the Hip Thrust substitute below, which caps well under the studio version\'s Week 4 target. That is an equipment limit, not a program deficiency. When she can access the studio, or if her home equipment grows past this range, progressing to the Full Gym Training Plan (or simply adding heavier dumbbells) is the natural next step — flag this at her next check-in.',
@@ -150,16 +193,25 @@ const days = [
           { name: 'Dead Bug', sets: '2', reps: '10 ea side', load: 'Bodyweight', tempo: '3-0-3', rest: '30s', cue: 'Low back pressed flat, slow opposite arm-leg reach, exhale on the reach.' },
         ],
       },
-      // Compound zone. Pattern check: DB Romanian Deadlift (hinge) -> DB
-      // Hip Thrust (hinge) -> DB Lateral Raise (shoulder isolation) = 2
-      // hinge + 1 different pattern. No 3rd hinge stacked. Compliant.
+      // Compound zone. Pattern check across blocks B-C: DB Romanian
+      // Deadlift (hinge) -> DB Hip Thrust (hinge) -> DB Lateral Raise
+      // (shoulder isolation) = 2 hinge + 1 different pattern. No 3rd hinge
+      // stacked. Compliant — order unchanged by the 8/19 re-cut.
       {
         letter: 'B',
-        title: 'PRIMARY HINGE STRENGTH — DB SUBSTITUTES',
+        title: 'PRIMARY COMPOUND — DB ROMANIAN DEADLIFT',
         introLabel: 'Load Target',
-        intro: 'DB Romanian Deadlift replaces Hex Bar Deadlift; DB Hip Thrust (bench-supported, double dumbbell across the hips) replaces the barbell version. Both are naturally lighter than their studio counterparts — the Hip Thrust in particular caps around 55-60 lbs total by Week 4 here versus 80 lbs total in the studio program, an equipment ceiling, not a strength ceiling.',
+        intro: 'The day\'s main lift. DB Romanian Deadlift replaces the studio version\'s Hex Bar Deadlift — naturally lighter by design, an equipment difference, not a regression. If the day calls for a variation, rotate between: a B-stance DB RDL (rear foot down for balance, one leg doing the working share) or a sumo-stance DB deadlift (wider base, more upright torso) — both dumbbell-only. The double-DB Romanian deadlift stays the lift we track.',
         exercises: [
           { name: 'DB Romanian Deadlift (Double DB)', sets: '3', reps: '6–8', load: 'Wk1: 20 lbs/hand → Wk4: 27.5–30 lbs/hand', tempo: '2-1-1', rest: '90s', cue: 'Hinge from hip, DBs stay close to legs, feel hamstring load, stand tall.' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'ACCESSORY — DB HIP THRUST & SHOULDER',
+        introLabel: 'Load Target',
+        intro: 'The glute-building accessory directly behind the hinge — DB Hip Thrust (bench-supported, double dumbbell across the hips) replaces the barbell version and caps around 55-60 lbs total by Week 4 here versus 80 lbs total in the studio program: an equipment ceiling, not a strength ceiling. A light lateral raise rotates the pattern before the pressing block. If the hip thrust needs a variation: a floor glute bridge or a single-leg glute bridge (left leg leads) covers the same pattern.',
+        exercises: [
           { name: 'DB Hip Thrust (Bench-Supported)', sets: '3', reps: '8', load: 'Wk1: 20 lbs/hand → Wk4: 27.5–30 lbs/hand (double DB)', tempo: '2-1-2', rest: '90s', cue: 'Upper back on bench, DBs rest on hip crease, full extension at top.' },
           { name: 'DB Lateral Raise', sets: '3', reps: '12–15', load: '5–8 lbs', tempo: '2-1-2', rest: '30s', cue: 'Lateral delt. Arms slightly bent, raise to shoulder height, slow lower.' },
         ],
@@ -168,10 +220,10 @@ const days = [
       // Incline DB Chest Press (horizontal push) -> Single-Leg RDL (hinge)
       // = 2 push + 1 different pattern. No 3rd push stacked. Compliant.
       {
-        letter: 'C',
-        title: 'PRIMARY PRESS STRENGTH',
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — PRESS STRENGTH',
         introLabel: 'Load Target',
-        intro: `Same DB-based lifts as the full-gym version — no equipment substitution needed here. Seated overhead press (Epley 1RM ~${ohpRM} lbs/hand) and incline chest press (Epley 1RM ~${inclineRM} lbs/hand) both tested clean. Single-Leg RDL closes the block — left leg leads (weaker side).`,
+        intro: `The day's second compound pattern — pressing, rotating off the hinge work above. Same DB-based lifts as the full-gym version — no equipment substitution needed here. Seated overhead press (Epley 1RM ~${ohpRM} lbs/hand) and incline chest press (Epley 1RM ~${inclineRM} lbs/hand) both tested clean. Single-Leg RDL closes the block — left leg leads (weaker side). If the day calls for a press variation: a half-kneeling single-arm DB press or a DB floor press (no bench needed) covers the same patterns; the seated press and incline press stay the lifts we track.`,
         exercises: [
           { name: 'DB Overhead Press (Seated)', sets: '3', reps: '8', load: `Wk1: ${ohpWk1} lbs/hand → Wk4: ${ohpWk4} lbs/hand`, tempo: '2-1-1', rest: '75s', cue: 'Chair or bench with back support, spine neutral, press overhead.' },
           { name: 'Incline DB Chest Press (Bench)', sets: '3', reps: '8', load: `Wk1: ${inclineWk1} lbs/hand → Wk4: ${inclineWk4} lbs/hand`, tempo: '2-1-1', rest: '75s', cue: 'Bench at 30-45°, full range, control the descent, no bench arch.' },
@@ -180,18 +232,27 @@ const days = [
       },
       // Metabolic zone (less strict per CLAUDE.md, but checked anyway).
       // Pattern: Farmer Carry (carry) -> Plank (core) -> Suitcase Carry
-      // (carry) -> conditioning finisher (cardio) — 2 carry, not 3
-      // consecutive, split by Plank in between. Compliant.
+      // (carry) — 2 carry, not 3 consecutive, split by Plank in between.
+      // Compliant.
       {
-        letter: 'D',
-        title: 'LOADED CARRY, CORE & CONDITIONING',
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY + CORE',
         color: 'gold',
         introLabel: 'Format',
-        intro: 'Farmer carry and suitcase carry double as the primary cardiovascular stimulus at 2 days/week — a hallway, driveway, or office corridor is enough space. Carry with both hands evenly on the Farmer Carry; the arm-to-arm difference here is minor, so no side-lead is applied there.',
+        intro: 'The session\'s closing compound work — the carries pull the day\'s hinge strength and braced posture together under gait, and a hallway, driveway, or office corridor is enough space. Carry with both hands evenly on the Farmer Carry; the arm-to-arm difference here is minor, so no side-lead is applied there — the suitcase carry alternates sides evenly. Distance and movement quality govern this work, not an effort target.',
         exercises: [
           { name: 'Farmer Carry (DB, Both Hands)', sets: '3', reps: '25–30 yds', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs/hand', tempo: 'Controlled', rest: '75s', cue: 'Shoulders packed, chest tall, neutral neck. Carry evenly, both hands.' },
           { name: 'Plank Hold (Elbow)', sets: '2', reps: '1:00–1:10', load: 'Bodyweight', tempo: '—', rest: '60s', cue: 'Baseline 1:36. Hold at 1:00-1:10 in training — quality over max time.' },
           { name: 'Suitcase Carry (Single-Side, DB)', sets: '2+2', reps: '20–25 yds ea', load: 'Wk1: 15 lbs → Wk4: 20 lbs', tempo: 'Controlled', rest: '60s', cue: 'Resist lateral lean, tall posture, brace hard on the loaded side.' },
+        ],
+      },
+      {
+        letter: 'F',
+        title: 'CONDITIONING CLOSE',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'A brief steady-state close — the primary cardiovascular dose at 2 days/week, after the training work is done.',
+        exercises: [
           { name: 'Stair Climb or Brisk Walk — Zone 2', sets: '1', reps: '10 min', load: 'Conversational pace', tempo: 'Steady', rest: '—', cue: 'Easy, steady effort. Minimum weekly cardiovascular dose, session close.' },
         ],
       },
@@ -220,17 +281,25 @@ const days = [
           { name: 'Thoracic Rotation (Quadruped)', sets: '2', reps: '8 ea side', load: 'Bodyweight', tempo: 'Controlled', rest: '30s', cue: 'Hand behind head, rotate from the mid-back, hips stay still.' },
         ],
       },
-      // Compound zone. Pattern check: DB Goblet Squat (squat) -> DB Split
-      // Squat (squat/lunge, left leads) -> DB Reverse Fly (horizontal pull)
-      // = 2 squat/lunge + 1 different pattern. No 3rd squat/lunge stacked.
-      // Compliant.
+      // Compound zone. Pattern check across blocks B-C: DB Goblet Squat
+      // (squat) -> DB Split Squat (squat/lunge, left leads) -> DB Reverse
+      // Fly (horizontal pull) = 2 squat/lunge + 1 different pattern. No
+      // 3rd squat/lunge stacked. Compliant — order unchanged by the re-cut.
       {
         letter: 'B',
-        title: 'PRIMARY SQUAT & LUNGE STRENGTH — DB SUBSTITUTES',
+        title: 'PRIMARY COMPOUND — DB GOBLET SQUAT',
         introLabel: 'Load Target',
-        intro: 'DB Goblet Squat (single DB, held at chest) replaces Back Squat — naturally lighter than a barbell back squat by design, an equipment difference, not a regression. DB Split Squat is unchanged from the studio version (already DB-based) — left leg leads. DB Reverse Fly closes the block, replacing the cable/band Face Pull.',
+        intro: 'The day\'s main lift. DB Goblet Squat (single DB, held at chest) replaces the studio version\'s Back Squat — naturally lighter by design, an equipment difference, not a regression. If the day calls for a variation, rotate between: a squat to a box or sturdy chair (depth set by the surface) or a staggered-stance goblet squat (one foot slightly back, left leg forward first) — both dumbbell-only. The goblet squat stays the lift we track.',
         exercises: [
           { name: 'DB Goblet Squat', sets: '3', reps: '8', load: 'Wk1: 20 lbs → Wk4: 27.5–30 lbs', tempo: '3-1-1', rest: '90s', cue: 'DB held at chest, full depth, chest tall, elbows inside knees at bottom.' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'ACCESSORY — SPLIT SQUAT & SHOULDER HEALTH',
+        introLabel: 'Load Target',
+        intro: 'Unilateral accessory work directly behind the squat — DB Split Squat is unchanged from the studio version (already DB-based), left leg leading every set — then the DB Reverse Fly rotates the pattern, standing in for the studio version\'s face pull.',
+        exercises: [
           { name: 'DB Split Squat', sets: '3', reps: '8 ea, LEFT leads', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-1', rest: '75s', cue: 'Left leads (weaker side). Front knee tracks over toes, even tempo.' },
           { name: 'DB Reverse Fly (Bent-Over)', sets: '3', reps: '15', load: '5–8 lbs/hand', tempo: '2-1-2', rest: '30s', cue: 'Hinge forward, soft knees, raise arms out to sides, squeeze shoulder blades.' },
         ],
@@ -239,10 +308,10 @@ const days = [
       // DB Row (pull) -> Standing DB Push Press (push) = 2 pull + 1
       // different pattern. No 3rd pull stacked. Compliant.
       {
-        letter: 'C',
-        title: 'PRIMARY PULL STRENGTH',
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — PULL STRENGTH',
         introLabel: 'Load Target',
-        intro: 'Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor. Same exercises and loads as the studio version — no equipment substitution needed here.',
+        intro: 'The day\'s second compound pattern — pulling, rotating off the squat and lunge work above. Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor. Same exercises and loads as the studio version — no equipment substitution needed here. If the row needs a variation: a chest-supported DB row (lying prone on the bench) or a staggered-stance single-arm row (free hand braced on the knee) covers the same pattern; today\'s rows stay the lifts we track.',
         exercises: [
           { name: 'Single-Arm DB Row (Bench-Supported)', sets: '3', reps: '8 ea side', load: 'Wk1: 15 lbs → Wk4: 20 lbs', tempo: '3-1-2', rest: '60s', cue: 'One hand and knee on bench, flat back, drive elbow to hip.' },
           { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to lower ribs.' },
@@ -250,14 +319,33 @@ const days = [
         ],
       },
       {
-        letter: 'D',
-        title: 'PUSH-UP PROGRESSION & METABOLIC FINISHER',
+        letter: 'E',
+        title: 'PUSH-UP PROGRESSION & CORE',
         color: 'green',
         introLabel: 'Baseline',
-        intro: '10 reps on an incline (hands on a bench or sturdy chair) is a solid bridge point toward full floor push-ups. Side plank varies the core stimulus from Day A\'s front plank; the finisher is a brief conditioning close, same role as Day A\'s stair climb.',
+        intro: '10 reps on an incline (hands on a bench or sturdy chair) is a solid bridge point toward full floor push-ups. Side plank varies the core stimulus from Day A\'s front plank.',
         exercises: [
           { name: 'Incline Push-Up (Hands on Bench/Chair)', sets: '3', reps: '10–12', load: 'Bodyweight', tempo: '3-0-1', rest: '45s', cue: 'Baseline 10 reps. Full chest to hand level, controlled descent.' },
           { name: 'Side Plank', sets: '2', reps: '30s ea side', load: 'Bodyweight', tempo: '—', rest: '45s', cue: 'Hips stacked, no sag, straight line shoulder to ankle.' },
+        ],
+      },
+      {
+        letter: 'F',
+        title: 'FULL-BODY INTEGRATION — FARMER CARRY (LIGHT)',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — a light loaded carry pulling the day\'s squat posture, pulling strength, and core bracing together under gait. Loads stay deliberately below Day A\'s carry work — this closes the day with quality movement, not extra load. Carry evenly with both hands; distance and movement quality govern this work, not an effort target.',
+        exercises: [
+          { name: 'Farmer Carry (DB, Both Hands — Light)', sets: '2', reps: '25 yds', load: '15 lbs/hand', tempo: 'Controlled', rest: '60s', cue: 'Hinge to pick up clean. Shoulders packed, chest tall, carry evenly.' },
+        ],
+      },
+      {
+        letter: 'G',
+        title: 'CONDITIONING CLOSE',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'A brief steady-state close, same dose and role as Day A\'s stair climb.',
+        exercises: [
           { name: 'Stair Climb, Jump Rope, or Brisk Walk — Zone 2', sets: '1', reps: '10 min', load: 'Conversational pace', tempo: 'Steady', rest: '—', cue: 'Easy, steady effort. Session close, same dose as Day A.' },
         ],
       },
@@ -289,7 +377,7 @@ const summary = {
     ['Wk 3', '—', 'Day A & B', 'Approach equipment-capped ceiling on Hip Thrust/Goblet Squat/RDL', 'Loads on DB-only lifts begin approaching the practical dumbbell-pair ceiling. Push-up: 4-6 full floor reps. Plank: 1:20-1:30.'],
     ['Wk 4', '—', 'Day A & B', 'DB RDL 27.5-30 lbs/hand / Goblet Squat 27.5-30 lbs / DB Hip Thrust 27.5-30 lbs/hand', 'Peak week within equipment limits. Push-up: 6-8 full unassisted. Plank: 1:30-1:45.'],
   ],
-  milestones4wk: 'All lifts progressed on schedule within equipment limits. Push-up: 6-8 full floor reps. Plank: 1:30-1:45. Flag at check-in whether any DB-only lift (especially Hip Thrust) has hit its equipment ceiling before Week 4.',
+  milestones4wk: 'All lifts progressed on schedule within equipment limits. Push-up: 6-8 full floor reps. Plank: 1:30-1:45. Flag at check-in whether any DB-only lift (especially Hip Thrust) has hit its equipment ceiling before Week 4. Week 4 closes with the strength check (the standing 4-week reassessment) — the natural window for the planned recovery week that follows it (see the recovery-week note above).',
   milestones8wk: 'Re-test the full 10-pattern battery in whichever setting (home or studio) she trains in most. If home equipment has not grown past the ~25-30 lb pair range, recommend a studio session or heavier dumbbells specifically for Hip Thrust and Goblet Squat, which are the two most equipment-capped lifts in this document.',
   rescanNote: 'Styku rescan recommended at 8 weeks — see the full-gym document for the complete rescan tracking list (ALST, BMI, Shape Score, leg segmental gap). Identical here; not restated in full to avoid duplicating the same tracking note across both documents.',
 };
