@@ -323,7 +323,7 @@ const days = [
         title: 'KNEE VALGUS & ASYMMETRY CORRECTIVE CIRCUIT',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Hip abductor / glute med activation before loaded unilateral work — standard screen for women\'s ACL/knee-valgus risk on single-leg patterns, and the entry point for closing the flagged leg asymmetry.',
+        intro: 'Hip abductor / glute med activation before loaded unilateral work — the same lower-limb injury-prevention work that protects knee tracking on every single-leg pattern, and the entry point for closing the flagged leg asymmetry. This circuit earns its place for every session, not because of any one test result.',
         exercises: [
           { name: 'Banded Lateral Walk', sets: '2', reps: '10 each way', load: 'Mini band', tempo: '—', rest: '30s', cue: 'Band above knees, push knees out, stay low.' },
           { name: 'Single-Leg Balance', sets: '2', reps: '20–30s each', load: 'BW', tempo: '—', rest: '20s', flag: 'Left leg leads — log seconds L vs R separately.', cue: 'Soft knee, tall posture, eyes on a fixed point.' },
@@ -331,26 +331,45 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY UNILATERAL',
+        title: 'PRIMARY COMPOUND — DB SPLIT SQUAT (LEFT-LED)',
         introLabel: 'Load Target',
-        intro: 'Left leg leads every set — always perform the left-side rep first while freshest.',
+        intro: 'The day\'s primary lift, worked one leg at a time — left leg leads every set, always performing the left-side reps first while freshest. If the day calls for a variation, rotate between: a supported split squat (hand on a rail or bench for balance), a reverse lunge, or a low-box step-up — every option is left-led and stays in the same technique band as the split squat itself. The split squat stays the movement we track.',
         exercises: [
           { name: 'DB Split Squat', sets: '3', reps: '5 each leg', load: 'Light DB', tempo: '3-1-1', rest: '75s', flag: 'Left leg leads — log load/reps L vs R separately.', cue: 'Left leg first. Torso tall, back knee soft-tap.', rirNote: '3+ RIR — technique day, no PRs' },
-          { name: 'DB Suitcase Farmer Carry', sets: '3', reps: '20 yd each hand', load: '25 lb', tempo: '—', rest: '60s', cue: 'Ribs stacked over hips, no side lean, tight grip.' },
         ],
       },
       {
         letter: 'C',
-        title: 'ACCESSORY',
+        title: 'ACCESSORY — ADDUCTOR STRENGTH',
         color: 'gold',
+        introLabel: 'Why',
+        intro: 'Inner-thigh strength directly supports knee tracking and single-leg control — quiet, high-value accessory work between the two main lifts.',
+        exercises: [
+          { name: 'Copenhagen Plank (bench, top leg)', sets: '2', reps: '15–20s each side', load: 'BW', tempo: '—', rest: '30s', cue: 'Side plank, top shin on bench, hold level hips.' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — SINGLE-LEG RDL (LEFT-LED)',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound pattern — a hip hinge, rotating off the knee-dominant work above. Left leg leads. If the day calls for a variation, rotate between: a B-stance RDL (rear foot down for balance, left leg takes the working share) or a hip hinge to a bench or target (shortened range) — both left-led, both in the same technique band. The single-leg RDL stays the movement we track.',
         exercises: [
           { name: 'Single-Leg RDL (hand-supported)', sets: '2', reps: '5 each leg', load: 'BW / light DB', tempo: '3-1-1', rest: '60s', flag: 'Left leg leads.', cue: 'Hinge from hip, square hips to the floor.', rirNote: '3+ RIR — technique day' },
-          { name: 'Copenhagen Plank (bench, top leg)', sets: '2', reps: '15–20s each side', load: 'BW', tempo: '—', rest: '30s', cue: 'Side plank, top shin on bench, hold level hips.' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — SUITCASE CARRY',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — one loaded walk pulling the day\'s single-leg control and bracing together under gait, one hand at a time with both sides working evenly. Distance and quality govern this work, not a rep count.',
+        exercises: [
+          { name: 'DB Suitcase Farmer Carry', sets: '3', reps: '20 yd each hand', load: '25 lb', tempo: '—', rest: '60s', cue: 'Ribs stacked over hips, no side lean, tight grip.', rirNote: 'Distance & quality governed — no RIR target' },
         ],
       },
     ],
     coolDown: '90/90 hip stretch 30s/side. Standing adductor stretch 20s/side. Figure-4 glute stretch 30s/side.',
-    iconsNote: 'No PRs today — this session exists to close the left/right leg gap. Every left-side rep goes first, at full attention, before the right.',
+    iconsNote: 'No PRs today — this session exists to close the left/right leg gap. Every left-side rep goes first, at full attention, before the right. The closing carry keeps that control working all the way out the door.',
   },
   {
     intensity: 80,
@@ -363,30 +382,50 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY PRESS',
-        introLabel: 'Shoulder Note',
-        intro: 'Right shoulder leads every set at a reduced, controlled load — see clinical flag on page 1.',
-        exercises: [
-          { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12–13 lb', tempo: '2-0-2', rest: '90s', flag: 'Right shoulder leads at reduced load — strict tempo.', cue: 'Right arm first. Ribs down, straight overhead path.', rirNote: '2 RIR' },
-          { name: 'Incline Push-Up', sets: '3', reps: '6–8', load: 'BW, bench', tempo: '3-0-1', rest: '60s', cue: 'Lower bench height only if form holds clean.', rirNote: '1 RIR' },
-        ],
-      },
-      {
-        letter: 'B',
-        title: 'PULL',
+        title: 'SHOULDER CORRECTIVE — SCAPULAR SET',
+        color: 'red',
         introLabel: 'Why',
-        intro: 'Single-arm row trains the weaker right shoulder unilaterally under full control.',
+        intro: 'Scapular and rotator-cuff preparation before any pressing — the standing rule for every session given the right-shoulder force deficit. Control precedes power: set the shoulder blades first, then load them.',
         exercises: [
-          { name: 'Single-Arm DB Row', sets: '3', reps: '6 each arm', load: '15–17.5 lb', tempo: '2-1-1', rest: '75s', flag: 'Right arm leads — log load L vs R separately.', cue: 'Right first. Flat back, pull elbow to hip.', rirNote: '2 RIR' },
           { name: 'Band Pull-Apart', sets: '2', reps: '12–15', load: 'Light band', tempo: '2-1-2', rest: '45s', cue: 'Squeeze shoulder blades, control the return.' },
         ],
       },
       {
-        letter: 'C',
-        title: 'CORE & CARRY',
-        color: 'gold',
+        letter: 'B',
+        title: 'PRIMARY COMPOUND — SEATED OH PRESS',
+        introLabel: 'Shoulder Note',
+        intro: 'Right shoulder leads every set at a reduced, controlled load — see clinical flag on page 1. If the day calls for a press variation, rotate between: a half-kneeling single-arm DB press (right arm leads, reduced load) or a landmine press (the shoulder-friendly arc) — both live inside the same controlled-load rule, and heavy bilateral overhead loading stays off the menu until the deficit is reassessed. The seated press stays the movement we track.',
         exercises: [
-          { name: 'DB Farmer Carry', sets: '3', reps: '25 yd each hand', load: '25–27.5 lb', tempo: '—', rest: '60s', cue: 'Tall posture, ribs stacked, quiet shoulders.' },
+          { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12–13 lb', tempo: '2-0-2', rest: '90s', flag: 'Right shoulder leads at reduced load — strict tempo.', cue: 'Right arm first. Ribs down, straight overhead path.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'ACCESSORY — INCLINE PUSH-UP',
+        color: 'gold',
+        introLabel: 'Load Target',
+        intro: 'The muscle-building press accessory behind the day\'s primary — worked hard in a controlled, non-overhead range that respects the shoulder protocol.',
+        exercises: [
+          { name: 'Incline Push-Up', sets: '3', reps: '6–8', load: 'BW, bench', tempo: '3-0-1', rest: '60s', cue: 'Lower bench height only if form holds clean.', rirNote: '1 RIR' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — SINGLE-ARM ROW',
+        introLabel: 'Why',
+        intro: 'The day\'s second compound pattern — pulling, rotating off the pressing above. Single-arm row trains the weaker right shoulder unilaterally under full control. If the day calls for a row variation, rotate between: a chest-supported row, a Kieser row, or a band row — right arm leads on every option, at the same controlled load. The single-arm DB row stays the movement we track.',
+        exercises: [
+          { name: 'Single-Arm DB Row', sets: '3', reps: '6 each arm', load: '15–17.5 lb', tempo: '2-1-1', rest: '75s', flag: 'Right arm leads — log load L vs R separately.', cue: 'Right first. Flat back, pull elbow to hip.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — CARRY & CORE',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound work — the day\'s pressing posture, pulling strength, and grip pulled together under gait, then core under load. Distance and quality govern the carry, not a rep count.',
+        exercises: [
+          { name: 'DB Farmer Carry', sets: '3', reps: '25 yd each hand', load: '25–27.5 lb', tempo: '—', rest: '60s', cue: 'Tall posture, ribs stacked, quiet shoulders.', rirNote: 'Distance & quality governed — no RIR target' },
           { name: 'Plank Hold', sets: '3', reps: '45–50s', load: 'BW', tempo: '—', rest: '45s', cue: 'Ribs down, glutes on, no hip sag.' },
         ],
       },
@@ -403,9 +442,9 @@ const summary = {
     ['2', '60%', 'Lower Unilateral & Corrective', 'DB Split Squat', 'No PRs — left leg leads, close the leg gap'],
     ['3', '80%', 'Upper Push/Pull + Core', 'Seated DB OH Press', 'Right shoulder leads at controlled load'],
   ],
-  milestones4wk: 'Squat 40–42.5 lb × 5 @ 2 RIR. Hip thrust 55–60 lb × 5. Plank 60s. Right shoulder unilateral load within 20% of left on single-arm row.',
-  milestones8wk: 'Squat 45–50 lb × 5 @ 2 RIR. Deadlift and lunge baselines established and progressing. Plank 70–75s. Left/right leg LST gap reduced from 0.7 lbs.',
-  rescanNote: 'Rebook Styku scan at 8 weeks. Track: ALST Index trend toward 5.5 kg/m², body fat % direction, left/right leg LST gap, and right shoulder force output vs. left on the extension test.',
+  milestones4wk: 'Squat 40–42.5 lb × 5 @ 2 RIR. Hip thrust 55–60 lb × 5. Plank 60s. Right shoulder unilateral load within 20% of left on single-arm row. Week 4 closes with the strength check; the planned lighter week that follows (Week 5, flexible — see the note above) consolidates before Weeks 6-8 rebuild.',
+  milestones8wk: 'Squat 45–50 lb × 5 @ 2 RIR (reached through the Wk4 check, the flexible Week 5 lighter week, and the Weeks 6-8 rebuild). Deadlift and lunge baselines established and progressing. Plank 70–75s. Left/right leg LST gap reduced from 0.7 lbs.',
+  rescanNote: 'Two clocks run here: strength is re-checked every 4 weeks (the Week 4 check, then the Week 8 retest at the end of the rebuild), while the Styku body-composition scan runs on its own 8-12-week cadence — book one in that window. Track: ALST Index trend toward 5.5 kg/m², body fat % direction, left/right leg LST gap, and right shoulder force output vs. left on the extension test.',
 };
 
 const data = {
@@ -429,11 +468,12 @@ async function main() {
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
 
-  // Client View (added 8/17/2026) — same data object, filtered for the
-  // client-facing copy. No baselineNotes are marked audience: 'internal'
-  // (none of hers are build/methodology notes) and no clientHighlight is
-  // set — this is her first build, with Deadlift/Lunges baselines still
-  // pending, so there is no real prior PR/version to compare against.
+  // Client View (added 8/17/2026; re-checked 8/19/2026 with the Block
+  // Method restructure) — same data object, filtered. ONE baselineNote is
+  // now marked audience: 'internal' (the 8/19 Session Architecture record);
+  // every clinical note stays client-visible. No clientHighlight is set —
+  // this is her first build, with Deadlift/Lunges baselines still pending,
+  // so there is no real prior PR/version to compare against.
   const clientBuffer = await buildDocument({ ...data, viewMode: 'client' });
   const clientOutPath = path.join(outDir, 'August_Olivia_3Day_Training_Plan_Client_View.docx');
   fs.writeFileSync(clientOutPath, clientBuffer);
