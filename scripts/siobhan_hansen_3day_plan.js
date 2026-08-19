@@ -398,6 +398,47 @@
  * No exercise, load, set/rep, flag, or existing clinical content changed
  * in this pass — additions 1-4 are notes plus the three summary-field
  * reconciliation edits listed under #2.
+ *
+ * REVISION (8/19/2026, seventh pass — COMPOUND-SLOT EXPERT OPTIONS, per
+ * CLAUDE.md's "Compound-slot exercise options" paragraph added to the
+ * Block Method 8/18/2026, commit 99c2bed; Siobhan is the Block Method
+ * pilot, so the rule is applied here first): every compound slot
+ * (Primary, Secondary, Third/Integration — plus the Day 3 hip-thrust
+ * accessory-compound, per the rollout instruction) now carries a 2-4
+ * option same-pattern rotation stated in the block intro (one case uses
+ * an exercise `insight` — the Day 3 power block's no-jump step-up
+ * option), coach-selectable by equipment/tolerance/day readiness, in
+ * client-readable coaching language ("If the day calls for a
+ * variation, rotate between: ..."). Per the spec's four rules:
+ *   (1) ANCHORS UNCHANGED — every Index-tested movement (Seated DB OHP,
+ *       Squat, SL RDL, Hex Bar Deadlift, DB Hip Thrust) remains the
+ *       tracked/retested progression anchor, stated in each intro; no
+ *       Wk1→Wk4 load line moved.
+ *   (2) CONSTRAINT-FILTERED — every hip-loaded option carries the same
+ *       sharp/pinching stop rule and none raises hip-loading frequency
+ *       (options substitute within a session, never add sessions);
+ *       every press option sits inside the pain-free-ROM
+ *       reintroduction protocol (landmine press = standard scap-
+ *       friendly first alternate; half-kneeling SA press right-led;
+ *       high-incline DB press conditional on a clean range check);
+ *       the band-assisted pull-up option is explicitly conditional on
+ *       Block B's scapular criteria — the gate is not bypassed; side
+ *       rules (right arm leads rows/presses, right hand holds
+ *       one-sided carries, left leg leads unilateral lower work)
+ *       restated on every option they touch.
+ *   (3) SAME-PATTERN per the Antagonist Rotation taxonomy — squat slot
+ *       offers squat variants, hinge slot hinge variants, press slot
+ *       press variants, integration slots carry/complex variants.
+ *   (4) NO DECORATIVE OPTIONS — rejected on constraint grounds:
+ *       overhead/waiter's carry (new overhead loading outside the
+ *       reintroduction protocol), kettlebell swing as a hinge/power
+ *       alternate (ballistic hip extension during active severity-4
+ *       tendinitis rehab), broad/depth-jump power alternates (impact
+ *       escalation on the rehabbing hip — the valuable direction is
+ *       the no-jump regression, which IS listed).
+ * One new internal baselineNote records the selection/rejection
+ * reasoning for the trainer; nothing about it reaches the Client View.
+ * No load, set/rep, flag, tempo, rest, or clinical language changed.
  */
 
 const fs = require('fs');
@@ -577,6 +618,12 @@ const baselineNotes = [
   {
     type: 'gold',
     audience: 'internal',
+    label: 'Compound-Slot Exercise Options — Selection Record (8/19/2026)',
+    body: 'Per CLAUDE.md\'s compound-slot expert-options rule (Block Method, added 8/18/2026), every compound slot in this program now carries a 2-4 option same-pattern rotation in its block intro (the Day 3 power block uses an exercise insight instead), coach-selectable by equipment, tolerance, and day readiness. All menus were filtered against her record before listing: every hip-loaded option carries the same sharp/pinching stop rule and none raises hip-loading frequency beyond what is already programmed (options substitute within a session, never add sessions); every press option sits inside the pain-free-ROM reintroduction protocol (landmine press is the standard scap-friendly first alternate; the high-incline DB press option is conditional on a clean range check that day); the band-assisted pull-up option is explicitly conditional on Block B\'s scapular criteria — the gate is not bypassed. Options considered and REJECTED on constraint grounds, not to be added without a record change: overhead/waiter\'s carry (new overhead loading outside the current reintroduction protocol), kettlebell swing as a hinge or power alternate (ballistic hip extension during active severity-4 tendinitis rehab), broad/depth-jump power alternates (impact escalation on the rehabbing hip — the useful direction is the listed no-jump step-up regression). Index-tested movements (Seated DB OHP, Squat, Single-Leg RDL, Hex Bar Deadlift, DB Hip Thrust) all remain the tracked/retested progression anchors, stated in each intro — options are per-session substitutions, never a fork in the progression.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
     label: 'Clinical Question for Jason Bethea — Graded vs. Binary Hip Pain Rule (Pending, 8/18/2026)',
     body: 'Recorded from the 8/18/2026 external review of this document, for Jason Bethea via the normal SOAP-note channel — deliberately NOT applied here. Her left-hip stop-signal is currently binary (sharp/pinching pain = stop the set), which is more conservative than the evidence-based graded tendinopathy loading model (Silbernagel pain-monitoring: pain up to ~5/10 acceptable DURING loading, provided it settles within 24 hours and is not trending worse week to week). The binary rule is Jason\'s clinical call as the coordinating in-house PT for her active left-hip tendinitis rehab — per the never-silently-merge-clinical-conflicts rule, every instance of the sharp/pinching stop-signal language in this document stays verbatim pending his input. If he adopts a graded model, the update touches all 7 hip-flagged exercises\' flag text plus the Day 2/Day 3 block intros and ICONS Notes in one pass. Status: question pending; do not change the pain rule without his documented answer.',
   },
@@ -626,7 +673,7 @@ const days = [
         letter: 'C',
         title: 'PRIMARY STRENGTH — OVERHEAD PRESS (PROGRESSIVE REINTRODUCTION)',
         introLabel: 'Load Target',
-        intro: 'Never load-tested, so there is no 1RM to build a percentage table from. Progression is autoregulated entirely by pain-free range of motion and RIR — start light, add load only when full pain-free range and 2 RIR are both met with clean form.',
+        intro: 'Never load-tested, so there is no 1RM to build a percentage table from. Progression is autoregulated entirely by pain-free range of motion and RIR — start light, add load only when full pain-free range and 2 RIR are both met with clean form. If the day calls for a variation, rotate between: a landmine press (the shoulder-friendly arc — the natural first alternate when the fully vertical line isn\'t clean yet), a half-kneeling single-arm DB press (light, one side at a time — right arm leads), or a high-incline DB press on a day the range check is clean. Every option lives inside the same rule as the press itself — pain-free range only, sharp or pinching pain ends the set — and the seated press stays the lift we track and retest. Whichever press runs, the plank shoulder taps that follow stay.',
         exercises: [
           { name: 'Seated DB Overhead Press', sets: '3', reps: '6-8', load: 'self-select ~3-5 lbs, build weekly', tempo: '2-0-2', rest: '90s', flag: 'Left shoulder — progress only within pain-free range', cue: 'Ribs stacked over hips, press within comfortable range only.', rirNote: '2 RIR' },
           { name: 'Plank Shoulder Taps (Static Hold)', sets: '2', reps: '8-10 taps/side', load: 'bodyweight', tempo: 'slow, controlled', rest: '45s', flag: 'Left shoulder — regress to quadruped position if the plank loads it painfully', cue: 'Hold the push-up position, hips level — tap slow, the hold is the exercise. Anchors the shoulder closed-chain right after pressing.' },
@@ -647,7 +694,7 @@ const days = [
         title: 'SECONDARY COMPOUND — PULL STRENGTH (RIGHT ARM LEADS)',
         color: 'purple',
         introLabel: 'Load Target',
-        intro: 'The day\'s second compound pattern — pulling, rotating away from the pressing work above. Kieser Pulldown is her active pull-strength pathway exercise while pull-up loading stays gated — track progression in Kieser units on the same machine, not converted to a free-weight number. Single-Arm Row is led by the right arm (weaker side, per Styku LST).',
+        intro: 'The day\'s second compound pattern — pulling, rotating away from the pressing work above. Kieser Pulldown is her active pull-strength pathway exercise while pull-up loading stays gated — track progression in Kieser units on the same machine, not converted to a free-weight number. Single-Arm Row is led by the right arm (weaker side, per Styku LST). If the day calls for a pull variation, rotate between: a chest-supported row (torso fully supported, strict pattern), a single-arm landmine row (right arm leads, same as the DB row), or — only once Block B\'s scapular criteria are consistently met — a band-assisted pull-up; until then the gate governs and the Kieser Pulldown stays the vertical-pull pathway. The Kieser number remains what we track session to session.',
         exercises: [
           { name: 'Kieser Pulldown', sets: '3', reps: '10-12', load: 'Kieser 13.5 units, build weekly on same machine', tempo: '2-1-2', rest: '75s', cue: 'Full controlled range, chest tall, no momentum.', rirNote: '2 RIR' },
           { name: 'Single-Arm DB Row (Right-Led)', sets: '3', reps: '10/side', load: '20 lbs (reference), build progressively', tempo: '2-1-2', rest: '75s', flag: 'Right arm weaker (Styku) — leads every set', cue: 'Right arm first. Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
@@ -658,7 +705,7 @@ const days = [
         title: 'FULL-BODY INTEGRATION — SUITCASE CARRY (RIGHT-LED)',
         color: 'gold',
         introLabel: 'Why',
-        intro: 'The session\'s closing compound — one movement that pulls today\'s work together: the scapular setting built in Blocks A-B, the grip and pulling strength from Block E, and the tall pressing posture from Block C, all held at once under gait. The weaker (right) hand holds the load, the same rule as Day 3\'s suitcase carry. Distance and movement quality govern this work, not an RIR target — add load only when every yard stays tall and level.',
+        intro: 'The session\'s closing compound — one movement that pulls today\'s work together: the scapular setting built in Blocks A-B, the grip and pulling strength from Block E, and the tall pressing posture from Block C, all held at once under gait. The weaker (right) hand holds the load, the same rule as Day 3\'s suitcase carry. Distance and movement quality govern this work, not an RIR target — add load only when every yard stays tall and level. If the day calls for a variation, a bilateral farmer carry (both hands loaded) or a goblet carry (one DB held at the chest — lighter, with an upright-posture bias) covers the same ground; any time the carry is one-sided, the right hand holds the load.',
         exercises: [
           { name: 'Suitcase Carry (Right-Led)', sets: '2', reps: '20-30 yd/side', load: '15-20 lbs', tempo: 'controlled', rest: '60s', flag: 'Right hand holds the weight — weaker arm (Styku)', cue: 'Right hand loaded. Shoulders set, ribs stacked, resist the lean.', rirNote: 'Distance & quality governed — no RIR target' },
         ],
@@ -702,7 +749,7 @@ const days = [
         letter: 'B',
         title: 'PRIMARY STRENGTH — SQUAT',
         introLabel: 'Load Target',
-        intro: `Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.squat} lbs) — Week 1 trains at ${wk1.squat} lbs, climbing to ${wk4.squat} lbs by Week 4.`,
+        intro: `Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.squat} lbs) — Week 1 trains at ${wk1.squat} lbs, climbing to ${wk4.squat} lbs by Week 4. If the day calls for a variation — equipment, or how the hip is presenting — rotate between: a goblet squat (DB held at the chest, the easiest to keep upright), a box squat (depth set by the box — a genuinely useful choice on a day the hip is more vocal), or a supported split-stance squat (left leg leads). Every option carries the same hip rule as the squat itself — sharp or pinching pain stops the set, ordinary fatigue does not — and the squat above stays the lift we track and retest.`,
         exercises: [
           { name: 'Squat', sets: '3', reps: '6-8', load: `Wk1: ${wk1.squat} lbs → Wk4: ${wk4.squat} lbs`, tempo: '3-1-1', rest: '90s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Elbows tracking, chest tall, full comfortable depth.', rirNote: '2 RIR' },
         ],
@@ -730,7 +777,7 @@ const days = [
         letter: 'E',
         title: 'SECONDARY COMPOUND — SINGLE-LEG RDL (LEFT-LED)',
         introLabel: 'Load Target',
-        intro: `The day's second compound pattern — a hip hinge, rotating off the knee-dominant squat work above. Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.slRDL} lbs) — Week 1 trains at ${wk1.slRDL} lbs/side, climbing to ${wk4.slRDL} lbs/side by Week 4. Left leg leads every set.`,
+        intro: `The day's second compound pattern — a hip hinge, rotating off the knee-dominant squat work above. Tested at 25 lbs x5 (Epley 1RM ≈${oneRM.slRDL} lbs) — Week 1 trains at ${wk1.slRDL} lbs/side, climbing to ${wk4.slRDL} lbs/side by Week 4. Left leg leads every set. If the day calls for a variation, rotate between: a B-stance RDL (rear foot down for balance — halfway between single-leg and two-leg, left leg still does the working share), a hip hinge to a bench or target (shortened range — useful when the hip wants a smaller day), or a cable or band pull-through where available. Same hip rule on every option — sharp or pinching pain stops the set — and the single-leg RDL stays the lift we track and retest.`,
         exercises: [
           { name: 'Single-Leg RDL (Left-Led)', sets: '3', reps: '6/side', load: `Wk1: ${wk1.slRDL} lbs → Wk4: ${wk4.slRDL} lbs`, tempo: '3-1-1', rest: '75s', flag: 'Left leg weaker (Styku) — leads every set; left hip in active tendinitis rehab, stop at sharp/pinching pain', cue: 'Left leg first. Hinge, flat back, soft knee.', rirNote: '2 RIR' },
         ],
@@ -740,7 +787,7 @@ const days = [
         title: 'FULL-BODY INTEGRATION — HINGE-TO-CARRY COMPLEX',
         color: 'gold',
         introLabel: 'Why',
-        intro: 'The session\'s closing compound complex — a light hip hinge flowing straight into a loaded walk, integrating today\'s squat and hinge patterns into upright, braced gait. Loads stay deliberately light: this closes the session with quality movement, not more heavy hip-extension volume on a day that already carries plenty of it, out of respect for the left-hip rehab. Distance and movement quality govern this work, not an RIR target.',
+        intro: 'The session\'s closing compound complex — a light hip hinge flowing straight into a loaded walk, integrating today\'s squat and hinge patterns into upright, braced gait. Loads stay deliberately light: this closes the session with quality movement, not more heavy hip-extension volume on a day that already carries plenty of it, out of respect for the left-hip rehab. Distance and movement quality govern this work, not an RIR target. If a variation suits the day better, a goblet-squat-to-carry or a deadlift-to-suitcase-carry (right hand holds the load) closes the session the same way — always at the same deliberately light loads, same hip rule throughout.',
         exercises: [
           { name: 'Hinge-to-Carry Complex (DB Deadlift → Farmers Carry)', sets: '2', reps: '5 + 20-30 yd', load: '15-20 lbs/hand', tempo: 'controlled', rest: '75s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Hinge to pick the DBs up clean, walk tall, hinge to set down.', rirNote: 'Distance & quality governed — no RIR target' },
         ],
@@ -784,7 +831,7 @@ const days = [
         letter: 'B',
         title: 'PRIMARY STRENGTH — HEX BAR DEADLIFT',
         introLabel: 'Load Target',
-        intro: `Her strongest tested lift. Tested at 85 lbs x5 (Epley 1RM ≈${oneRM.hexDL} lbs) — Week 1 trains at ${wk1.hexDL} lbs, climbing to ${wk4.hexDL} lbs by Week 4.`,
+        intro: `Her strongest tested lift. Tested at 85 lbs x5 (Epley 1RM ≈${oneRM.hexDL} lbs) — Week 1 trains at ${wk1.hexDL} lbs, climbing to ${wk4.hexDL} lbs by Week 4. If the day calls for a variation, rotate between: a conventional DB deadlift, a block or elevated pull (bar or DBs raised — a shorter range that genuinely earns its place on a day the hip is more vocal), or a sumo-stance DB deadlift (wider base, more upright torso). Same hip rule on every option — sharp or pinching pain stops the set — and the hex bar lift stays the anchor: its Week 1 → Week 4 line is what gets tracked and retested.`,
         exercises: [
           { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${wk1.hexDL} lbs → Wk4: ${wk4.hexDL} lbs`, tempo: '2-0-1', rest: '2 min', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Neutral spine, brace hard, push floor away evenly.', rirNote: '2 RIR' },
         ],
@@ -793,7 +840,7 @@ const days = [
         letter: 'C',
         title: 'ACCESSORY — DB HIP THRUST (GLUTE BUILD)',
         introLabel: 'Load Target',
-        intro: `The glute-building accessory directly behind the deadlift — same posterior chain, isolated harder at the hip. Tested at 35 lbs x5 (Epley 1RM ≈${oneRM.hipThrust} lbs) — Week 1 trains at ${wk1.hipThrust} lbs, climbing to ${wk4.hipThrust} lbs by Week 4. Held at 2 reps in reserve — the left-hip rehab governs how hard this is pushed, not a hypertrophy default.`,
+        intro: `The glute-building accessory directly behind the deadlift — same posterior chain, isolated harder at the hip. Tested at 35 lbs x5 (Epley 1RM ≈${oneRM.hipThrust} lbs) — Week 1 trains at ${wk1.hipThrust} lbs, climbing to ${wk4.hipThrust} lbs by Week 4. Held at 2 reps in reserve — the left-hip rehab governs how hard this is pushed, not a hypertrophy default. If the day calls for a variation, rotate between: a floor glute bridge (the simplest regression), a single-leg glute bridge (left leg leads), or a B-stance hip thrust (left leg takes the working share). Same hip monitoring on every option, and the DB hip thrust stays the lift we track and retest.`,
         exercises: [
           { name: 'DB Hip Thrust', sets: '3', reps: '8', load: `Wk1: ${wk1.hipThrust} lbs → Wk4: ${wk4.hipThrust} lbs`, tempo: '2-1-2', rest: '90s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive through heels, glutes lock at top.', rirNote: '2 RIR' },
         ],
@@ -824,7 +871,7 @@ const days = [
         title: 'FULL-BODY INTEGRATION — LOADED CARRIES (ASYMMETRY PROTOCOL)',
         color: 'gold',
         introLabel: 'Load Target',
-        intro: 'The session\'s closing compound work begins here — the carries pull the day\'s hinge and hip-extension strength into upright, braced gait. Farmers Carry tested bilaterally at 25 lbs/hand. Suitcase Carry adds the Asymmetry Protocol\'s single-hand rule directly — the weaker (right) hand holds the load, training anti-lateral-flexion through the opposite side. Distance and movement quality govern the carries, not an RIR target.',
+        intro: 'The session\'s closing compound work begins here — the carries pull the day\'s hinge and hip-extension strength into upright, braced gait. Farmers Carry tested bilaterally at 25 lbs/hand. Suitcase Carry adds the Asymmetry Protocol\'s single-hand rule directly — the weaker (right) hand holds the load, training anti-lateral-flexion through the opposite side. Distance and movement quality govern the carries, not an RIR target. A front-rack carry (DBs held at the chest) is a third option here — it trades grip demand for an upright-posture bias; same distance-and-quality rules, and any one-sided carry stays in the right hand.',
         exercises: [
           { name: 'DB Farmers Carry', sets: '3', reps: '30-40 yd', load: '25 lbs/hand', tempo: 'controlled', rest: '60s', cue: 'Tall posture, ribs down, quick tight steps.', rirNote: 'Distance & quality governed — no RIR target' },
           { name: 'Suitcase Carry (Right-Led)', sets: '2', reps: '20-30 yd/side', load: '15-20 lbs', tempo: 'controlled', rest: '45s', flag: 'Right hand holds the weight — weaker arm (Styku)', cue: 'Right hand loaded. Resist leaning — ribs stacked over hips.' },
@@ -847,7 +894,7 @@ const days = [
         introLabel: 'Why',
         intro: 'The final piece of the session\'s integrated close: a power expression of the day\'s lower-body work. Muscle power — moving a sub-maximal load with maximal intent — predicts functional independence and longevity in older women more strongly than strength alone, and belongs in the 55-65 bracket already, not just 65+. This is deliberately a lower-body movement, not overhead, given the shoulder reintroduction still underway in Blocks D and E. Full recovery between sets is the point — this is a velocity stimulus, not a conditioning one, so it does not compete with Block I\'s deliberately brief finisher below.',
         exercises: [
-          { name: 'Box Step-Up Jump (Submaximal, Full Recovery)', sets: '3', reps: '3', load: 'bodyweight, low box (~10-12")', tempo: 'explosive up, soft controlled landing', rest: '120s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive up with real intent, land soft and controlled. Full recovery — not a metabolic set.' },
+          { name: 'Box Step-Up Jump (Submaximal, Full Recovery)', sets: '3', reps: '3', load: 'bodyweight, low box (~10-12")', tempo: 'explosive up, soft controlled landing', rest: '120s', flag: 'Left hip — active tendinitis rehab; stop at sharp/pinching pain, not fatigue', cue: 'Drive up with real intent, land soft and controlled. Full recovery — not a metabolic set.', insight: 'On a day the hip is more vocal, run the same box as a brisk step-up without the jump — same drive-with-intent cue, none of the landing impact. The intent is the exercise; the jump is optional.' },
         ],
       },
       {
