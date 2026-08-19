@@ -304,18 +304,22 @@ const days = [
           { name: 'DB Reverse Fly (Bent-Over)', sets: '3', reps: '15', load: '5–8 lbs/hand', tempo: '2-1-2', rest: '30s', cue: 'Hinge forward, soft knees, raise arms out to sides, squeeze shoulder blades.' },
         ],
       },
-      // Compound zone. Pattern check: Single-Arm DB Row (pull) -> Bent-Over
-      // DB Row (pull) -> Standing DB Push Press (push) = 2 pull + 1
-      // different pattern. No 3rd pull stacked. Compliant.
+      // Compound zone. Antagonist walk ACROSS the C->D boundary (fixed
+      // 8/19/2026, batch-2 audit, mirroring Mary Burfete's 8/16 fix and
+      // the studio version's same-day fix): Block C ends on the Reverse
+      // Fly (pull), so the old D order (SA Row -> Bent-Over Row) stacked
+      // a 3rd consecutive pull across the boundary. Push Press now sits
+      // between the two rows: Reverse Fly -> SA Row -> Push Press ->
+      // Bent-Over Row. Compliant on the full rendered walk.
       {
         letter: 'D',
         title: 'SECONDARY COMPOUND — PULL STRENGTH',
         introLabel: 'Load Target',
-        intro: 'The day\'s second compound pattern — pulling, rotating off the squat and lunge work above. Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor. Same exercises and loads as the studio version — no equipment substitution needed here. If the row needs a variation: a chest-supported DB row (lying prone on the bench) or a staggered-stance single-arm row (free hand braced on the knee) covers the same pattern; today\'s rows stay the lifts we track.',
+        intro: 'The day\'s second compound pattern — pulling, rotating off the squat and lunge work above, with the push press breaking up the two rows so the pulling muscles get a breather mid-block. Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor. Same exercises and loads as the studio version — no equipment substitution needed here. If the row needs a variation: a chest-supported DB row (lying prone on the bench) or a staggered-stance single-arm row (free hand braced on the knee) covers the same pattern; today\'s rows stay the lifts we track.',
         exercises: [
           { name: 'Single-Arm DB Row (Bench-Supported)', sets: '3', reps: '8 ea side', load: 'Wk1: 15 lbs → Wk4: 20 lbs', tempo: '3-1-2', rest: '60s', cue: 'One hand and knee on bench, flat back, drive elbow to hip.' },
-          { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to lower ribs.' },
           { name: 'Standing DB Push Press', sets: '3', reps: '8', load: 'Wk1: 10 lbs/hand → Wk4: 12.5 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'Slight knee dip, drive up and press overhead in one motion.' },
+          { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to lower ribs.' },
         ],
       },
       {

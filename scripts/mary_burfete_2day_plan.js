@@ -222,7 +222,7 @@
  *   Block F = conditioning finisher.
  *   DAY B slots: 1 = OMITTED (same reasoning); 2 = new Block A, Back Squat
  *   alone (+ options); 3 = new Block B, Split Stance Squat + DB Lateral
- *   Raise + DB Reverse Lunge (accessory; the 8/13-fix isolation-breaker
+ *   Raise + DB Reverse Lunge (accessory; the 8/16-fix isolation-breaker
  *   order survives); 4 = OMITTED; 5 = Block C, Bench + Seated OHP +
  *   3-grip pull-up battery + Step-Up (secondary, + options); Block D =
  *   Push-Up Progression retained as a standing green baseline-protocol

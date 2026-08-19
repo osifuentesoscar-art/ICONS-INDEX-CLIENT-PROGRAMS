@@ -134,7 +134,7 @@
  *   goblet squat, box squat, landmine squat); 3 = DB Split Squat + Face
  *   Pull (new Block C; Face Pull renamed Kieser or Band per the studio
  *   inventory — the Kieser acts as the cable machine); 5 = old Block C
- *   retitled secondary compound (SA Row + Bent-Over Row + Push Press;
+ *   retitled secondary compound (SA Row + Push Press + Bent-Over Row;
  *   row options: chest-supported DB row, single-arm Kieser row); old
  *   Block D SPLIT — new Block E, Push-Up Progression & Core (standing
  *   green baseline-protocol block: incline push-up + side plank);
@@ -421,18 +421,21 @@ const days = [
           { name: 'Kieser or Band Face Pull', sets: '3', reps: '15', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range.' },
         ],
       },
-      // Compound zone. Pattern check: Single-Arm DB Row (pull) -> Bent-Over
-      // DB Row (pull) -> Standing DB Push Press (push) = 2 pull + 1
-      // different pattern. No 3rd pull stacked. Compliant.
+      // Compound zone. Antagonist walk ACROSS the C->D boundary (fixed
+      // 8/19/2026, batch-2 audit, mirroring Mary Burfete's 8/16 fix):
+      // Block C ends on Face Pull (pull), so the old D order (SA Row ->
+      // Bent-Over Row) stacked a 3rd consecutive pull across the boundary.
+      // Push Press now sits between the two rows: Face Pull -> SA Row ->
+      // Push Press -> Bent-Over Row. Compliant on the full rendered walk.
       {
         letter: 'D',
         title: 'SECONDARY COMPOUND — PULL STRENGTH',
         introLabel: 'Load Target',
-        intro: 'The day\'s second compound pattern — pulling, rotating off the squat and lunge work above. Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor. If the row needs a variation: a chest-supported DB row (torso fully supported) or a single-arm Kieser row covers the same pattern; today\'s rows stay the lifts we track.',
+        intro: 'The day\'s second compound pattern — pulling, rotating off the squat and lunge work above, with the push press breaking up the two rows so the pulling muscles get a breather mid-block. Row was not part of the tested 10-pattern battery — today\'s working loads become the new 8-week baseline for both rows, tracked the same as every tested lift. No side-lead is applied to Single-Arm Row — the arm-to-arm difference here is minor. If the row needs a variation: a chest-supported DB row (torso fully supported) or a single-arm Kieser row covers the same pattern; today\'s rows stay the lifts we track.',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '3', reps: '8 ea side', load: 'Wk1: 15 lbs → Wk4: 20 lbs', tempo: '3-1-2', rest: '60s', cue: 'Bench-supported, flat back, drive elbow to hip, full stretch at bottom.' },
-          { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to lower ribs.' },
           { name: 'Standing DB Push Press', sets: '3', reps: '8', load: 'Wk1: 10 lbs/hand → Wk4: 12.5 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'Slight knee dip, drive up and press overhead in one motion.' },
+          { name: 'Bent-Over DB Row (Both Arms)', sets: '3', reps: '10', load: 'Wk1: 12.5 lbs/hand → Wk4: 17.5 lbs/hand', tempo: '2-1-2', rest: '60s', cue: 'Hip hinge, flat back, pull both DBs to lower ribs.' },
         ],
       },
       {

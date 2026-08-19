@@ -453,7 +453,7 @@ const days = [
         exercises: [
           { name: 'Bent-Over DB Row', sets: '3', reps: '10', load: '20 lbs/hand', tempo: '2-1-2', rest: '75s', cue: 'Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
           { name: 'Face Pull (Band or Kieser)', sets: '3', reps: '15', load: 'light band', tempo: '2-1-2', rest: '45s', cue: 'Pull to face, elbows high. Light, pain-free range only.' },
-          { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: '12.5 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline. Stop at any pinch or sharp pain.', cue: 'Bench ~30°, elbows ~45°, press within pain-free range only.', rirNote: '2 RIR' },
+          { name: 'Incline Dumbbell Press', sets: '3', reps: '8', load: '12.5 lbs/hand', tempo: '2-1-2', rest: '75s', flag: 'Not tested — establishing baseline. Stop at any pinch or sharp pain.', cue: 'Bench ~30°, elbows ~45°, press within pain-free range only.', rirNote: '3+ RIR — new pattern, technique first' },
         ],
       },
       {
