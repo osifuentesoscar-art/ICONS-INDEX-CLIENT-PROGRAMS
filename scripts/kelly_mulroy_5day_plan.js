@@ -127,6 +127,94 @@
  *     progress-since-last-version on file (her only Styku scan is
  *     6/17/2026 with no rescan), and CLAUDE.md forbids fabricating one.
  *
+ * REVISION (8/19/2026) — ICONS BLOCK METHOD RESTRUCTURE (roster rollout,
+ * batch 1; Siobhan Hansen pilot is the reference implementation). Days 1-4
+ * resequenced onto the six-slot order (Corrective → Primary Compound →
+ * Accessory → Jason's Exercise → Secondary Compound → Third Compound/
+ * Integration); Sunday (Active Recovery) is deliberately untouched — an AR
+ * day has no compound lifts to slot, per CLAUDE.md's "plans still flex for
+ * Active Recovery days." Organizational only: every exercise, baseline,
+ * working load, RIR tier, stop-signal placement and left-lead prescription
+ * survives; no RIR tier changed. SLOT 4 (Jason's Exercise) is OMITTED on
+ * every day: Jason Bethea's documented exercises for Kelly (banded crab
+ * walk primer, the anti-valgus progression ladder, the home glute-med
+ * program) are all corrective in nature and are consumed by the corrective
+ * slots exactly as his documentation used them — per the pilot's
+ * "consumed by the corrective slot" precedent, the slot is omitted, never
+ * filled.
+ *   Per-day mapping:
+ *   TUE — slot 1 spans TWO corrective blocks (pilot precedent): Block A
+ *     (valgus circuit, crab walk stays the first movement per Jason's
+ *     protocol) + Block B (the anti-valgus progression, MOVED UP from old
+ *     Block E — corrective work belongs before loading, and the 8/18
+ *     placement at the end of the session was a build choice, not a
+ *     documented Jason sequence; the wall-lunge → tap-down → pistol
+ *     internal order is preserved). Slot 2 = old Block B (goblet/box/SL
+ *     bridge — the 8/12 antagonist swap preserved verbatim). Slot 3 = old
+ *     Block C (VMO & knee stability). Slot 5 = old Block D (push-up
+ *     protocol — press, rotated off the squat primary; battery movement
+ *     with real progression). Slot 6 = NEW light suitcase carry, left
+ *     lead, 20-25 lbs (anchored below Friday's documented 25-30 lb
+ *     suitcase load — no invented number).
+ *   WED — no documented corrective exists for an upper day, so slot 1 is
+ *     honestly omitted (never filler); warm-up covers activation. Slot 2 =
+ *     press block (chest press anchor + incline + SA row — the row is the
+ *     in-block antagonist breaker, as audited). Slot 3 = push-up/arms
+ *     accessory (incline→full push-up is the named skill-progression
+ *     exemption). Slot 5 = OHP + Kieser pulldown + face pull (press+pull
+ *     secondary pairing, pilot precedent). Slot 6 = Plank Hold migrated
+ *     out of the accessory block as the core-under-tension closer.
+ *   THU — slot 1 = adductor corrective circuit (unchanged). Slot 2 =
+ *     primary hinge (DL/sumo RDL/lateral lunge, order unchanged). Slot 3
+ *     = SL RDL split out as the unilateral-hinge accessory. Slot 5 = Hip
+ *     Thrust (hinge-free hip extension — the day's second compound).
+ *     Slot 6 = NEW light farmer carry (25-30 lbs/hand, below the 35 lb
+ *     working baseline), with the hinge stop-signal explicitly governing
+ *     the pickup.
+ *   FRI — slot 1 omitted (same reasoning as WED). Slot 2 = OHP + assisted
+ *     pull-up + Kieser row (90% primary). Slot 3 absorbed into slots 2/5
+ *     (the pull-up progression and trap-bar shrug are in-block
+ *     accessories — documented, not hidden). Slot 5 = loaded carry block
+ *     (the day's tracked battery movement; hex bar named as the vehicle
+ *     past 60 lbs/hand for the Week 8 target). Slot 6 = core/posture
+ *     block retitled as the integration closer, ending on the weekly
+ *     push-up max test.
+ * TOUCH-RULE CHANGES in the same pass:
+ *   - Cable → Kieser renames: Lat Pulldown (Cable) → (Kieser); Face Pull
+ *     (Cable/Band) → (Kieser or Band); Seated Cable Row → Seated Row
+ *     (Kieser, Wide Grip); Cable/Band Adductor Pull → Adductor Pull
+ *     (Kieser or Band); Tricep Pushdown → (Kieser or Band); Pallof Press
+ *     (Cable/Band) → (Kieser or Band).
+ *   - Warm-up drift rule: "light DB warm-up press 2×10" on WED and FRI is
+ *     a loaded, rep-targeted item — promoted out of warmUp prose into a
+ *     ramp row at the top of each day's press block (3+ RIR, priming).
+ *   - Hex-bar carry vehicle: the Week 8 farmer-carry target of 65
+ *     lbs/hand exceeds the 60 lb/hand DB ceiling — the hex bar is named
+ *     as the implement past 60 in Friday's carry intro and the
+ *     milestones8wk text.
+ *   - Load-field Wk1→Wk4 convention applied where the progression was
+ *     already documented: Deadlift (Wk1: 55-65 → Wk4: 75+), Hip Thrust
+ *     (Wk1: 45 → Wk4: 60), OHP heavy (Wk1: 22.5 → Wk4: 27.5 PR test),
+ *     Assisted Pull-Up (Wk1: L9 → Wk4: L6). Farmer carry already carried
+ *     its weekly line.
+ *   - PROACTIVE WEEK 5 DELOAD added (blue client-visible note +
+ *     milestones/rescanNote reconciliation): she meets the coordinated-
+ *     care/rehab-flagged criterion (active lumbar hinge stop-signal,
+ *     Jason Bethea) AND runs 8 weeks of continuous progression — both
+ *     non-negotiable proactive triggers per CLAUDE.md's deload section.
+ *   - Compound-slot expert options menus added to every compound slot,
+ *     each filtered by her actual constraints BEFORE listing: every hinge
+ *     option carries the same stop-signal word for word; every squat
+ *     option keeps the band-above-knees knee-tracking standard; no
+ *     barbell squat option is listed (her own document defers the barbell
+ *     until tracking is consistently clean). See the internal restructure
+ *     note for rejected options.
+ *   - TRAVEL PLAN REVISED AT THE SAME TOUCH (scripts/
+ *     kelly_mulroy_travel_plan.js) — same restructure day for day,
+ *     translated to hotel-gym/booty-band equipment per its substitution
+ *     map; no Kieser/hex-bar references there (travel doc stays
+ *     studio-inventory-exempt by design).
+ *
  * SCOPE NOTES:
  *   - Age 35 -> the "ICONS Index Full-Spectrum Progression Standard" is
  *     scoped to women 40-55 and does NOT apply to her; it is not applied
@@ -228,6 +316,15 @@ const baselineNotes = [
     label: 'Reassessment Cadence',
     body: 'Strength reassessment runs every 4 weeks: the tested lifts in the table above get re-checked against their Week 4 targets and working loads are reset from the result. Body-composition rescanning runs on its own longer cycle of 8–12 weeks — the two are tracked separately, not on the same clock. The only Styku scan on file is 6/17/2026, so a strength reassessment is due at the next available session.',
   },
+  // ── ADDED 8/19/2026 — proactive deload, per CLAUDE.md's Deload section:
+  // she meets BOTH non-negotiable triggers (coordinated-care/rehab-flagged
+  // via the active lumbar hinge stop-signal, and 8 weeks of continuous
+  // progression).
+  {
+    type: 'blue',
+    label: 'Planned Deload — Week 5, Directly After the Week 4 Strength Check',
+    body: 'This program deliberately includes one lighter week, planned in advance — not a reaction to anything going wrong. Week 5, immediately after the Week 4 strength reassessment, is a structured "reload": the same movements and the same week structure, with working sets roughly halved, loads at about 50–70% of normal working weights, and every set in the technique band (3 or more reps in reserve) — no PR attempts and no push-up max test that week. With a lower back still re-earning the hinge pattern and eight straight weeks of progression on the calendar, this is how the plan banks its gains: one light week costs no muscle and only a small, quickly-recovered edge of peak strength, while unbroken hard loading is where soreness, joint stress, and stalls accumulate. Weeks 6–8 then rebuild from the Week 4 loads toward the 8-week targets.',
+  },
   // ── INTERNAL (trainer/audit only — filtered out of the Client View).
   {
     type: 'watch',
@@ -246,6 +343,12 @@ const baselineNotes = [
     label: 'Document Provenance — First Engine Build (8/18/2026)',
     audience: 'internal',
     body: 'This is the first script-driven build of Kelly’s program. Her delivered .docx previously doubled as the engine’s byte-identical XML-audit reference, which is why she was the only client on the roster with no build script, no Client View, and no route for a documented safety finding to reach her document. The reference artifact is now frozen separately at system_documents/reference/Kelly_Mulroy_5Day_Training_Plan_ENGINE_REFERENCE.docx and is the engine standard going forward; this document is her live program and is revised like any other client’s. Program content below is reproduced verbatim from the frozen reference except for the clinical additions and RIR prescriptions dated 8/18/2026.',
+  },
+  {
+    type: 'watch',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    audience: 'internal',
+    body: 'Days 1–4 restructured to the ICONS Block Method six-slot order (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound/Integration); Sunday AR deliberately untouched (no compound lifts to slot). Organizational only — every exercise, baseline, load, RIR tier, stop-signal placement and left-lead prescription preserved; no RIR tier changed. Slot 4 omitted on every day: Jason Bethea\'s documented exercises for Kelly (crab walk primer, anti-valgus ladder, home glute-med program) are corrective in nature and are consumed by the corrective slots exactly as his documentation used them, per the pilot precedent. Judgment calls: (1) Tuesday\'s Anti-Valgus Progression moved UP from the end of the session to the second corrective block — the 8/18 end-of-session placement was a build choice, not a documented Jason sequence, and corrective work belongs fresh, before loading; internal order preserved. (2) Wednesday/Friday slot 1 honestly omitted — no documented corrective exists for her upper-body days, and filler is forbidden. (3) Friday\'s accessory slot is absorbed into the primary/secondary blocks (pull-up progression, trap-bar shrug are in-block accessories). (4) New light integration closers on TUE (suitcase carry 20–25 lbs left lead, anchored below Friday\'s 25–30 lb suitcase load), THU (farmer carry 25–30 lbs/hand, below the 35 lb baseline, hinge stop-signal explicitly on the pickup); WED\'s closer is the existing Plank migrated to slot 6; FRI\'s is the existing core/posture/push-up-test block retitled. (5) Warm-up drift rule: "light DB warm-up press 2×10" promoted from WED/FRI warmUp prose into ramp rows (3+ RIR). Compound-slot options menus: every hinge option carries the stop-signal verbatim; every squat option keeps the band-above-knees tracking standard; REJECTED on constraint grounds — any barbell squat option (her document defers the barbell until tracking is consistently clean), kettlebell/DB swing as a hinge alternate (ballistic hip hinge under an active lumbar stop-signal), and a barbell push press on the 90% day (momentum overhead adds nothing a near-maximal strict press doesn\'t already track). Cable → Kieser renames throughout (pulldown, face pull, seated row, adductor pull, tricep pushdown, pallof); hex bar named as the carry vehicle past 60 lbs/hand for the Week 8 target. The travel plan was revised at the same touch with the identical restructure translated to hotel equipment.',
   },
 ];
 
@@ -274,14 +377,29 @@ const day1 = {
         { name: 'Wall Squat with Ball Squeeze', sets: '2', reps: '15', load: 'Ball/fist', tempo: '2-2-1', rest: '30s', cue: 'Squat with soft ball or fist between inner thighs. Squeeze inward as you descend. Activates adductors and trains them to stabilize the knee.' },
       ],
     },
+    // ── MOVED UP 8/19/2026 (Block Method): corrective work belongs before
+    // loading — slot 1 spans Blocks A+B, pilot precedent. Internal order
+    // (wall lunge -> tap-down -> pistol) preserved from the 8/18 build.
     {
       letter: 'B',
-      title: 'PRIMARY SQUAT STRENGTH (60% EFFORT)',
+      title: 'ANTI-VALGUS PROGRESSION',
+      color: 'red',
+      introLabel: 'Why',
+      intro: 'The anti-valgus progression documented by Jason Bethea. Wall support removes the balance demand so all of the attention goes to knee tracking. The pistol squat is the highest valgus-risk movement in this program — it is trained through its regression ladder (doorframe or wall assist → heel elevated → reduced range of motion) and never at full depth unassisted until the knee tracks cleanly. Plank-position leg tap-downs stand in for a knee-extension machine here and are not a one-to-one replacement; when the equipment allows, a wall sit, Spanish squat, cyclist squat or banded terminal knee extension is the stronger choice. Run fresh, before any loaded squatting — tracking quality is the entire point.',
+      exercises: [
+        { name: 'Reverse Wall Lunge with Calf Raise (Left Lead)', sets: '3', reps: '8 ea', load: 'Bodyweight', tempo: '2-1-2', rest: '45s', cue: 'Hands on the wall for support. Step back, lower the trailing knee, drive up and finish with a calf raise. Front knee tracks over the second toe the whole way.', rirNote: '2 RIR — tracking quality first' },
+        { name: 'Plank Position Leg Tap-Down', sets: '2', reps: '10 ea', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Plank on hands. Tap one knee lightly to the floor and drive straight back up. Hips stay square — no rotation, no sagging.', flag: 'Knee-extension substitute — not a 1:1 replacement.' },
+        { name: 'Single-Leg Pistol Squat (Assisted, Left Lead)', sets: '2', reps: '5 ea', load: 'Bodyweight + assist', tempo: '3-1-1', rest: '60s', cue: 'Regression ladder: doorframe or wall assist first, then heel elevated, then reduced depth. Stay at whichever level keeps the knee tracking clean.', flag: 'High valgus risk — regress the moment the knee drifts inward.', rirNote: '3+ RIR — technique band' },
+      ],
+    },
+    {
+      letter: 'C',
+      title: 'PRIMARY COMPOUND — SQUAT (60% EFFORT)',
       introLabel: 'Load Target',
       // "below the 3RM range" removed 8/19/2026 (travel-plan audit, P3): no
       // squat baseline of any kind exists for her, so the phrase had no
       // referent — see the DISCREPANCIES note in this header.
-      intro: '60% day. Goblet squat at 30–35 lbs (deliberately light — focus is form, not load). Box squat at 40–45 lbs. Technique must be clean before load increases Thursday and Friday.',
+      intro: '60% day. Goblet squat at 30–35 lbs (deliberately light — focus is form, not load). Box squat at 40–45 lbs. Technique must be clean before load increases Thursday and Friday. If the day calls for a variation, rotate between: a heels-elevated goblet squat (same tracking demand, friendlier depth) or a longer-pause box squat — every variant keeps the band above the knees and the same knee-tracking standard. The goblet squat stays the movement we track.',
       exercises: [
         { name: 'Goblet Squat (Banded Knees)', sets: '4', reps: '8―10', load: '30―35 lbs', tempo: '3-1-1', rest: '90s', cue: 'Hold DB at chest. Elbows push knees out at bottom. Primary squat pattern. Band above knees for feedback. No barbell until this is consistently clean.', rirNote: '3+ RIR — technique band, 60% day' },
         { name: 'Box Squat (to Bench Height)', sets: '3', reps: '8', load: '40―45 lbs', tempo: '3-2-1', rest: '90s', cue: 'Sit BACK to the box, pause completely, drive up. The pause removes stretch-reflex and forces glutes to fire. Key valgus corrective.', rirNote: '3+ RIR — technique band' },
@@ -289,8 +407,8 @@ const day1 = {
       ],
     },
     {
-      letter: 'C',
-      title: 'VMO & KNEE STABILITY',
+      letter: 'D',
+      title: 'ACCESSORY — VMO & KNEE STABILITY',
       color: 'gold',
       exercises: [
         { name: 'Terminal Knee Extension (Band)', sets: '3', reps: '15 ea', load: 'Light band', tempo: '2-1-2', rest: '30s', cue: 'Band behind knee. Drive knee to full extension against band. Directly targets VMO. Key knee-tracking corrective.' },
@@ -299,8 +417,8 @@ const day1 = {
       ],
     },
     {
-      letter: 'D',
-      title: 'PUSH-UP PROTOCOL (UPDATED BASELINE)',
+      letter: 'E',
+      title: 'SECONDARY COMPOUND — PUSH-UP PROTOCOL (UPDATED BASELINE)',
       // ENGINE GAP #3: the reference renders this block's HEADER in gold
       // while its intro label and both table tints are green. blockLabel()
       // couples the header color to the table color, so 'green' is chosen
@@ -308,27 +426,22 @@ const day1 = {
       // run's color differs from the reference (gold -> green).
       color: 'green',
       introLabel: 'Push-Up Update',
-      intro: 'Baseline is 15 assisted reps. Moving off eccentric-only protocol. This week: incline push-ups (hands on bench) + first attempts at floor push-ups. Goal is 5+ full reps by end of Week 2.',
+      intro: 'Baseline is 15 assisted reps. Moving off eccentric-only protocol. This week: incline push-ups (hands on bench) + first attempts at floor push-ups. Goal is 5+ full reps by end of Week 2. This is the day\'s second compound pattern — pressing, rotated fully off the leg work above.',
       exercises: [
         { name: 'Incline Push-Up (Hands on Bench)', sets: '4', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Hands elevated on bench. Full chest to bench level. This is the bridge from assisted to full floor push-up. Progress by lowering the incline height each week.', rirNote: '1 RIR — accessory' },
         { name: 'Full Push-Up Attempt (Floor)', sets: '3', reps: 'Max (target 3–5)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt full push-ups from the floor. Record reps each set. Even 1 rep counts. Do NOT go to failure — stop 1 rep before form breaks.', rirNote: '1 RIR — stop before form breaks' },
       ],
     },
-    // ── ADDED 8/18/2026 — anti-valgus progression, PT-documented.
-    // Isolated-zone corrective work. Sequenced wall lunge -> plank tap-down
-    // -> pistol squat so no three consecutive knee-dominant movements stack
-    // (the block would be exempt as corrective work either way, but the
-    // rotation is free here and worth taking).
+    // ── ADDED 8/19/2026 (Block Method slot 6): light integration closer,
+    // load anchored below Friday's documented 25-30 lb suitcase carry.
     {
-      letter: 'E',
-      title: 'ANTI-VALGUS PROGRESSION',
-      color: 'red',
+      letter: 'F',
+      title: 'FULL-BODY INTEGRATION — SUITCASE CARRY (LEFT LEAD)',
+      color: 'gold',
       introLabel: 'Why',
-      intro: 'The anti-valgus progression documented by Jason Bethea. Wall support removes the balance demand so all of the attention goes to knee tracking. The pistol squat is the highest valgus-risk movement in this program — it is trained through its regression ladder (doorframe or wall assist → heel elevated → reduced range of motion) and never at full depth unassisted until the knee tracks cleanly. Plank-position leg tap-downs stand in for a knee-extension machine here and are not a one-to-one replacement; when the equipment allows, a wall sit, Spanish squat, cyclist squat or banded terminal knee extension is the stronger choice.',
+      intro: 'The session closes with one integrated movement: a light suitcase carry puts the day\'s knee-tracking and glute-med work to use under gait — the core resists the lean while the legs walk tall and the knees track straight. Left hand carries first, matching every unilateral prescription in this plan. Deliberately light: quality of carriage governs it, not load.',
       exercises: [
-        { name: 'Reverse Wall Lunge with Calf Raise (Left Lead)', sets: '3', reps: '8 ea', load: 'Bodyweight', tempo: '2-1-2', rest: '45s', cue: 'Hands on the wall for support. Step back, lower the trailing knee, drive up and finish with a calf raise. Front knee tracks over the second toe the whole way.', rirNote: '2 RIR — tracking quality first' },
-        { name: 'Plank Position Leg Tap-Down', sets: '2', reps: '10 ea', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Plank on hands. Tap one knee lightly to the floor and drive straight back up. Hips stay square — no rotation, no sagging.', flag: 'Knee-extension substitute — not a 1:1 replacement.' },
-        { name: 'Single-Leg Pistol Squat (Assisted, Left Lead)', sets: '2', reps: '5 ea', load: 'Bodyweight + assist', tempo: '3-1-1', rest: '60s', cue: 'Regression ladder: doorframe or wall assist first, then heel elevated, then reduced depth. Stay at whichever level keeps the knee tracking clean.', flag: 'High valgus risk — regress the moment the knee drifts inward.', rirNote: '3+ RIR — technique band' },
+        { name: 'Suitcase Carry (Left Lead)', sets: '2', reps: '25 yds ea', load: '20–25 lbs', tempo: 'Controlled', rest: '60s', cue: 'LEFT arm first. Lighter than Friday\'s carries. Resist the lateral lean, walk tall, knees tracking straight ahead.' },
       ],
     },
   ],
@@ -344,12 +457,15 @@ const day2 = {
   descriptor: 'Moderate Strength Day · Building Baseline Loads · Upper Body Volume',
   intensityLabel: '70% Day',
   intensityPara: 'Wednesday’s loads are moderate — challenging but not near-maximal. Row at 32–35 lbs (from 40 lb 5RM baseline). OHP at 20 lbs/hand (from 25 lb 3RM). Reps are in the 10–12 range. This builds volume without accumulating the fatigue that would compromise Thursday and Friday.',
-  warmUp: 'Band pull-aparts 2×15, face pulls 2×10, arm circles, cat-cow 10 reps, light DB warm-up press 2×10, shoulder external rotation 10 each side.',
+  warmUp: 'Band pull-aparts 2×15, face pulls 2×10, arm circles, cat-cow 10 reps, shoulder external rotation 10 each side. The DB press warm-up ramp opens Block A.',
   blocks: [
     {
       letter: 'A',
-      title: 'PRIMARY PRESS STRENGTH',
+      title: 'PRIMARY COMPOUND — PRESS (& ROW PAIRING)',
+      introLabel: 'Load Target',
+      intro: 'Row at 32–35 lbs (from the 40 lb 5RM baseline); chest press builds from 17.5–20 lbs/hand. The warm-up ramp opens the block — nowhere near working effort. If the day calls for a press variation, rotate between: a paused DB floor press (shoulder-friendly range) or a low-incline DB press — the flat DB chest press stays the movement we track.',
       exercises: [
+        { name: 'DB Press — Warm-Up Ramp', sets: '2', reps: '10', load: 'Light DBs', tempo: 'Controlled', rest: '30s', cue: 'Priming only — light, crisp reps before the working sets.', rirNote: '3+ RIR — ramp' },
         { name: 'Dumbbell Chest Press (Flat)', sets: '4', reps: '10―12', load: '17.5–20 lbs/hand', tempo: '3-1-1', rest: '60s', cue: 'Elbows at 45°. Squeeze chest at top. Baseline OHP is 25 lbs ×3RM — chest press starts conservatively. Add 2.5 lbs/hand every 2 weeks.', rirNote: '2 RIR' },
         { name: 'Incline Dumbbell Press', sets: '3', reps: '10―12', load: '15–17.5 lbs/hand', tempo: '3-1-1', rest: '60s', cue: '30–45° angle. Upper chest and anterior delt. Pairs with flat press for full chest development.', rirNote: '1 RIR — accessory' },
         { name: 'Dumbbell Single-Arm Row (Left First)', sets: '4', reps: '10 ea', load: '32–35 lbs', tempo: '3-1-2', rest: '60s', cue: 'Baseline: 40 lbs ×5RM. Training load: 32–35 lbs for 10 reps. LEFT arm first per Styku scan. Chest supported. Drive elbow to hip. Full stretch at bottom.', rirNote: '2 RIR' },
@@ -357,21 +473,32 @@ const day2 = {
     },
     {
       letter: 'B',
-      title: 'PRIMARY PULL STRENGTH',
-      exercises: [
-        { name: 'Dumbbell Overhead Press', sets: '3', reps: '10―12', load: '20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'Baseline: 25 lbs ×3RM. Training load: 20 lbs/hand for 10–12 reps. Press overhead, arms alongside ears. Core braced. Increase to 22.5 in Week 3.', rirNote: '2 RIR' },
-        { name: 'Lat Pulldown (Cable)', sets: '3', reps: '12―15', load: 'Moderate', tempo: '2-1-2', rest: '60s', cue: 'Full stretch overhead, drive elbows to hip pockets. Supports pull-up progression. Helps close the gap from Level 9 assisted.', rirNote: '1 RIR — accessory' },
-        { name: 'Face Pull (Cable/Band)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face with external rotation. Elbows at ear height. Rear delt and rotator cuff health.' },
-      ],
-    },
-    {
-      letter: 'C',
-      title: 'ACCESSORY & PUSH-UP',
+      title: 'ACCESSORY — PUSH-UP & ARMS',
       color: 'gold',
       exercises: [
         { name: 'Incline Push-Up', sets: '3', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Hands on bench. Continue push-up progression. Wednesday reinforcement.', rirNote: '1 RIR — accessory' },
         { name: 'Full Push-Up (Floor)', sets: '2', reps: 'Max (3–5)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt floor push-ups. Record reps. Stop before form breaks.', rirNote: '1 RIR' },
-        { name: 'Tricep Pushdown', sets: '3', reps: '12―15', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Elbows pinned. Full extension at bottom. Supports pressing strength.', rirNote: '1 RIR — accessory' },
+        { name: 'Tricep Pushdown (Kieser or Band)', sets: '3', reps: '12―15', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Elbows pinned. Full extension at bottom. Supports pressing strength.', rirNote: '1 RIR — accessory' },
+      ],
+    },
+    {
+      letter: 'C',
+      title: 'SECONDARY COMPOUND — OVERHEAD PRESS & VERTICAL PULL',
+      introLabel: 'Load Target',
+      intro: 'The day\'s second compound pairing — overhead pressing and vertical pulling. OHP trains at 20 lbs/hand from the 25 lb 3RM baseline. If the day calls for a variation: a seated DB press or a half-kneeling single-arm press covers the same overhead pattern, and the pulldown can swap to light sets on the assisted pull-up machine to feed Friday\'s progression. The two-DB overhead press stays the lift we track.',
+      exercises: [
+        { name: 'Dumbbell Overhead Press', sets: '3', reps: '10―12', load: '20 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'Baseline: 25 lbs ×3RM. Training load: 20 lbs/hand for 10–12 reps. Press overhead, arms alongside ears. Core braced. Increase to 22.5 in Week 3.', rirNote: '2 RIR' },
+        { name: 'Lat Pulldown (Kieser)', sets: '3', reps: '12―15', load: 'Moderate', tempo: '2-1-2', rest: '60s', cue: 'Full stretch overhead, drive elbows to hip pockets. Supports pull-up progression. Helps close the gap from Level 9 assisted.', rirNote: '1 RIR — accessory' },
+        { name: 'Face Pull (Kieser or Band)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face with external rotation. Elbows at ear height. Rear delt and rotator cuff health.' },
+      ],
+    },
+    {
+      letter: 'D',
+      title: 'FULL-BODY INTEGRATION — CORE UNDER TENSION',
+      color: 'gold',
+      introLabel: 'Why',
+      intro: 'The closing hold: one braced plank puts the whole session\'s posture — ribs down, glutes on, shoulders packed — under one continuous demand.',
+      exercises: [
         { name: 'Plank Hold', sets: '2', reps: '1:00–1:10', load: 'Bodyweight', tempo: '—', rest: '60s', cue: 'Baseline 1:00. Add 10 seconds per week. Target 1:20 by Week 4, 1:45 by Week 8.' },
       ],
     },
@@ -401,28 +528,50 @@ const day3 = {
       intro: 'The most important corrective in this program. Side plank with top leg on bench. Every set targets the adductor isometrically in the position that mirrors the inner thigh demands of squatting and hinging.',
       exercises: [
         { name: 'Copenhagen Plank (Inner Thigh)', sets: '3', reps: '25–35s ea', load: 'Bodyweight', tempo: '—', rest: '45s', cue: 'Side plank, top leg on bench. Adductor isometric. Progress hold time by 5 seconds per week. Target 45s by Week 4.' },
-        { name: 'Cable/Band Adductor Pull', sets: '3', reps: '15 ea', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Standing, cable or band at ankle height. Pull working leg across midline. Direct adductor strengthening.' },
+        { name: 'Adductor Pull (Kieser or Band)', sets: '3', reps: '15 ea', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Standing, Kieser or band at ankle height. Pull working leg across midline. Direct adductor strengthening.' },
         { name: 'Hip Hinge Drill (Wall or PVC)', sets: '2', reps: '10', load: 'Bodyweight', tempo: 'Slow', rest: '30s', cue: 'PVC along spine, 3 points of contact. Hinge from hips, not lower back. Movement pattern baseline.', flag: 'Unloaded pattern check — if this provokes back pain, skip all loaded hinging today.' },
       ],
     },
     {
       letter: 'B',
-      title: 'PRIMARY HINGE STRENGTH (80% EFFORT)',
+      title: 'PRIMARY COMPOUND — HINGE (80% EFFORT)',
       introLabel: 'Load Target',
       // Stop-signal sentence added 8/18/2026.
-      intro: 'Deadlift starts at 55–60 lbs and progresses to 75 lbs by Week 4. At 80% effort this means 3–4 reps feel like work but the set completes cleanly. Sumo RDL should load the adductors — feel the inner thigh under tension. HINGE STOP-SIGNAL: back pain during the deadlift or a single-leg hip hinge means STOP the set immediately — regress to hinge-free squat patterns for the remainder of the session and flag it before the next one. That call is not made mid-set.',
+      intro: 'Deadlift starts at 55–60 lbs and progresses to 75 lbs by Week 4. At 80% effort this means 3–4 reps feel like work but the set completes cleanly. Sumo RDL should load the adductors — feel the inner thigh under tension. If the day calls for a hinge variation, rotate between: a hex bar deadlift (more upright torso — often the friendliest hinge for a sensitive lower back), a two-dumbbell deadlift, or an elevated block pull (shortened range) — every option lives under the same stop-signal below, word for word, and the conventional deadlift stays the lift we track. HINGE STOP-SIGNAL: back pain during the deadlift or a single-leg hip hinge means STOP the set immediately — regress to hinge-free squat patterns for the remainder of the session and flag it before the next one. That call is not made mid-set.',
       exercises: [
-        { name: 'Deadlift (Conventional)', sets: '4', reps: '6–8', load: '55–65 lbs', tempo: '2-1-1', rest: '90s', cue: 'Bar close to shins. Drive floor away. Neutral spine. Add 5–7 lbs each week. Target 75 lbs by Week 4. At 80% effort — last 2 reps should be challenging.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
+        { name: 'Deadlift (Conventional)', sets: '4', reps: '6–8', load: 'Wk1: 55–65 → Wk4: 75+ lbs', tempo: '2-1-1', rest: '90s', cue: 'Bar close to shins. Drive floor away. Neutral spine. Add 5–7 lbs each week. Target 75 lbs by Week 4. At 80% effort — last 2 reps should be challenging.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
         { name: 'Sumo RDL', sets: '3', reps: '8―10', load: '45―55 lbs', tempo: '3-1-1', rest: '75s', cue: 'Wide stance, toes out. Loads adductors more than conventional. Hinge from hip, feel inner thigh lengthen. Complement to Copenhagen plank.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
         { name: 'Lateral Lunge (Left Lead)', sets: '3', reps: '10 ea', load: '12―17 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'LEFT leg leads. Step wide, sit into the hip. Inner thigh of the standing leg lengthens under load.', rirNote: '2 RIR' },
       ],
     },
     {
       letter: 'C',
-      title: 'HIP THRUST & POSTERIOR CHAIN',
+      title: 'ACCESSORY — UNILATERAL HINGE (LEFT LEAD)',
+      introLabel: 'Why',
+      intro: 'The unilateral hinge accessory behind the primary — balance, hip control, and left-side priority, governed by the same stop-signal as every hinge on this page.',
       exercises: [
-        { name: 'Hip Thrust (Barbell or DB)', sets: '4', reps: '10―12', load: '45―60 lbs', tempo: '2-2-1', rest: '60s', cue: 'Shoulders on bench, drive through heels. Hold squeeze 2 seconds at top. Add 5–10 lbs per week. This drives the glute strength that supports both squat and hinge corrections.', rirNote: '2 RIR' },
         { name: 'Single-Leg RDL (Left Lead)', sets: '3', reps: '8 ea', load: '12―17 lbs', tempo: '3-1-1', rest: '60s', cue: 'LEFT leg first, all sets. Hinge from hip, hamstring stretch. Balance and unilateral hip control.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
+      ],
+    },
+    {
+      letter: 'D',
+      title: 'SECONDARY COMPOUND — HIP THRUST',
+      introLabel: 'Load Target',
+      intro: 'The day\'s second compound — hip extension without the hinge\'s spinal lever, which is exactly why it anchors the back half of this session. If the day calls for a variation, rotate between: a B-stance hip thrust, a heavy glute bridge from the floor, or a single-DB hip thrust — all hinge-free patterns. The barbell/DB hip thrust stays the lift we track.',
+      exercises: [
+        { name: 'Hip Thrust (Barbell or DB)', sets: '4', reps: '10―12', load: 'Wk1: 45 → Wk4: 60 lbs', tempo: '2-2-1', rest: '60s', cue: 'Shoulders on bench, drive through heels. Hold squeeze 2 seconds at top. Add 5–10 lbs per week. This drives the glute strength that supports both squat and hinge corrections.', rirNote: '2 RIR' },
+      ],
+    },
+    // ── ADDED 8/19/2026 (Block Method slot 6): light integration closer,
+    // load anchored below her documented 35 lb/hand working carry baseline.
+    {
+      letter: 'E',
+      title: 'FULL-BODY INTEGRATION — FARMER CARRY (LIGHT)',
+      color: 'gold',
+      introLabel: 'Why',
+      intro: 'The closing compound: a short, light farmer carry integrates the day\'s brace and hip work into upright gait — deliberately below Friday\'s working carry loads. The pickup is a hinge: the same stop-signal governs it, and the set ends there if the back speaks up.',
+      exercises: [
+        { name: 'Farmer Carry (Light — Integration)', sets: '2', reps: '25–30 yds', load: '25–30 lbs/hand', tempo: 'Controlled', rest: '60s', flag: 'Hinge stop-signal governs the pickup — back pain means STOP.', cue: 'Hinge cleanly to lift, walk tall, hinge cleanly to set down. Quality over load.' },
       ],
     },
   ],
@@ -439,22 +588,23 @@ const day4 = {
   descriptor: 'Peak Weekly Intensity · Heavy Carries · Pull-Up Progression · Near-Maximal Effort',
   intensityLabel: '90% Day',
   intensityPara: 'Friday is the highest intensity gym session of the week. Loads are near-maximal — OHP at 22.5–25 lbs/hand (close to 3RM territory), row at 37–40 lbs (close to 5RM). Farmer carry steps up. Pull-ups stay at Level 9 this week then drop one level every 2–3 weeks. Rest fully between sets today.',
-  warmUp: 'Band pull-aparts 2×15, arm circles, shoulder external rotation, cat-cow 10 reps, light DB warm-up press 2×10. Longer warm-up than usual — Friday loads are heavy.',
+  warmUp: 'Band pull-aparts 2×15, arm circles, shoulder external rotation, cat-cow 10 reps. The DB press warm-up ramp opens Block A. Longer warm-up than usual — Friday loads are heavy.',
   blocks: [
     {
       letter: 'A',
-      title: 'OVERHEAD & VERTICAL PULL STRENGTH (90% EFFORT)',
+      title: 'PRIMARY COMPOUND — OVERHEAD PRESS & VERTICAL PULL (90% EFFORT)',
       introLabel: 'OHP Target',
-      intro: 'Baseline is 25 lbs ×3RM. At 90% effort: Week 1 = 22.5 lbs ×8. Week 2 = 22.5–25 lbs ×6–8. Week 3 = 25 lbs ×6. Week 4 = attempt 27.5 lbs ×3RM (new PR test). This is the fastest-progressing lift in this plan.',
+      intro: 'Baseline is 25 lbs ×3RM. At 90% effort: Week 1 = 22.5 lbs ×8. Week 2 = 22.5–25 lbs ×6–8. Week 3 = 25 lbs ×6. Week 4 = attempt 27.5 lbs ×3RM (new PR test). This is the fastest-progressing lift in this plan. If the day calls for a press variation: a seated DB press (strictest line) or a standing single-arm press at matched effort — the two-DB standing press stays the tracked lift and the PR-test movement. The warm-up ramp opens the block.',
       exercises: [
-        { name: 'Dumbbell Overhead Press (Heavy)', sets: '4', reps: '6–8', load: '22.5–25 lbs/hand', tempo: '2-1-1', rest: '90s', cue: '90% day = near-maximal load. Neutral grip. Press straight overhead. Lock out at top. Core rigid. Slightly heavier than Wednesday. Last 2 reps should be hard.', rirNote: '2 RIR — at this load, 2 RIR arrives early' },
-        { name: 'Assisted Pull-Up (Level 9→12)', sets: '4', reps: '5–8', load: 'Level 9 assisted', tempo: '3-1-1', rest: '90s', cue: 'Baseline Level 9/12 (heavier band). Full hang at bottom, chin over bar. Drop one level every 2–3 weeks. Target Level 6 by Week 4.', rirNote: '1 RIR' },
-        { name: 'Seated Cable Row (Wide Grip)', sets: '3', reps: '8―10', load: '37–40 lbs', tempo: '3-1-2', rest: '75s', cue: '90% of 40 lb 5RM baseline. Wide grip, pull to lower chest. Squeeze blades hard. Different stimulus from Wednesday’s single-arm row.', rirNote: '2 RIR' },
+        { name: 'DB Press — Warm-Up Ramp', sets: '2', reps: '10', load: 'Light DBs', tempo: 'Controlled', rest: '30s', cue: 'Priming only — light, crisp reps before the near-maximal working sets.', rirNote: '3+ RIR — ramp' },
+        { name: 'Dumbbell Overhead Press (Heavy)', sets: '4', reps: '6–8', load: 'Wk1: 22.5 → Wk4: 27.5 lbs/hand (PR test)', tempo: '2-1-1', rest: '90s', cue: '90% day = near-maximal load. Neutral grip. Press straight overhead. Lock out at top. Core rigid. Slightly heavier than Wednesday. Last 2 reps should be hard.', rirNote: '2 RIR — at this load, 2 RIR arrives early' },
+        { name: 'Assisted Pull-Up (Level 9→12)', sets: '4', reps: '5–8', load: 'Wk1: Level 9 → Wk4: Level 6', tempo: '3-1-1', rest: '90s', cue: 'Baseline Level 9/12 (heavier band). Full hang at bottom, chin over bar. Drop one level every 2–3 weeks. Target Level 6 by Week 4.', rirNote: '1 RIR' },
+        { name: 'Seated Row (Kieser, Wide Grip)', sets: '3', reps: '8―10', load: '37–40 lbs', tempo: '3-1-2', rest: '75s', cue: '90% of 40 lb 5RM baseline. Wide grip, pull to lower chest. Squeeze blades hard. Different stimulus from Wednesday’s single-arm row.', rirNote: '2 RIR' },
       ],
     },
     {
       letter: 'B',
-      title: 'LOADED CARRY & GRIP STRENGTH',
+      title: 'SECONDARY COMPOUND — LOADED CARRY & GRIP (ICONS BATTERY)',
       // ENGINE GAPS #3 and #4: the reference renders this block's header
       // and table in red but its intro label in gold, and that label ends
       // in a period rather than a colon ("Carry Baseline: 35 lbs/hand.  ").
@@ -462,7 +612,7 @@ const day4 = {
       // labeledPara() appends a fixed ":  " — so this reproduces with a red
       // intro label and a colon.
       introLabel: 'Carry Baseline: 35 lbs/hand',
-      intro: 'This is the confirmed working weight. Week 1: 35 lbs ×4 sets. Week 2: 40 lbs. Week 3: 45 lbs. Week 4: test 50 lbs. Add 5 lbs/hand each week consistently.',
+      intro: 'This is the confirmed working weight. Week 1: 35 lbs ×4 sets. Week 2: 40 lbs. Week 3: 45 lbs. Week 4: test 50 lbs. Add 5 lbs/hand each week consistently — and past 60 lbs per hand (the Week 8 target of 65 lands there) the carry moves to the hex bar, since dumbbells stop at 60. When a variation suits the day, the suitcase carry (left lead) or a hex-bar frame carry covers the same ground; the two-hand farmer carry stays the tracked battery movement.',
       exercises: [
         { name: 'Farmer Carry (Both Hands)', sets: '4', reps: '30–35 yds', load: '35 lbs/hand (Wk1) →40 →45 →50', tempo: 'Controlled', rest: '90s', cue: 'Shoulders packed, chest tall, neutral neck. Confirmed baseline 35 lbs/hand. Add 5 lbs every week. 50 lbs/hand is the Week 4 target.', rirNote: '2 RIR — stop the carry before grip fails' },
         { name: 'Suitcase Carry (Left Lead)', sets: '3', reps: '25 yds ea', load: '25–30 lbs', tempo: 'Controlled', rest: '60s', cue: 'LEFT arm first per Styku scan. Resist lateral lean. Core stays square. Anti-lateral flexion. Reveals asymmetry under load.' },
@@ -471,11 +621,13 @@ const day4 = {
     },
     {
       letter: 'C',
-      title: 'CORE, POSTURE & PUSH-UP',
+      title: 'FULL-BODY INTEGRATION — CORE, POSTURE & PUSH-UP TEST',
       color: 'gold',
+      introLabel: 'Why',
+      intro: 'The closing block integrates the week\'s posture and brace work under direct demand — and ends on the one true test set of the week: the Friday push-up max.',
       exercises: [
         { name: 'Plank Hold', sets: '3', reps: '1:00–1:15', load: 'Bodyweight', tempo: '—', rest: '60s', cue: 'Baseline 1:00. Add 10–15 seconds per week. Full brace, neutral spine, squeeze glutes. Target 1:20 by Week 4.' },
-        { name: 'Pallof Press (Cable/Band)', sets: '3', reps: '10 ea side', load: 'Light-Mod', tempo: '2-1-2', rest: '45s', cue: 'Anti-rotation core. Press and resist twist. Functional core for carries and loaded movement.' },
+        { name: 'Pallof Press (Kieser or Band)', sets: '3', reps: '10 ea side', load: 'Light-Mod', tempo: '2-1-2', rest: '45s', cue: 'Anti-rotation core. Press and resist twist. Functional core for carries and loaded movement.' },
         { name: 'Band Pull-Apart (Posture)', sets: '3', reps: '20', load: 'Light band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight. Rear delt and mid-back. Counters forward shoulder from pressing days.' },
         { name: 'Full Push-Up (Max Effort)', sets: '3', reps: 'Max reps', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Friday is peak day — attempt maximum full push-ups. Record every set. This is the weekly push-up PR test.', rirNote: '0 RIR — the one true test set of the week' },
       ],
@@ -545,9 +697,9 @@ const summary = {
     ['SUN', 'Active Recovery', 'Corrective + Mobility', 'Light cardio · Copenhagen · SL bridge · Mobility', 'Hold times: Copenhagen +5s/wk · Plank +10s/wk · 90/90 hip depth'],
     ['SAT/MON', 'Off', 'At-Home Optional', 'Copenhagen · Ankle mobility · Walk', 'See At-Home plan'],
   ],
-  milestones4wk: 'Wk2: goblet squat knees tracking clean without banded cue. Wk2: 5+ full floor push-ups. Wk3: pull-up drops to Level 8. Wk4: deadlift at 75+ lbs, carry at 50 lbs/hand, plank at 1:20, OHP at 25 lbs ×6. Wk4 also carries the full strength reassessment — every tested lift in the baselines table gets re-checked and working loads reset from the result.',
-  milestones8wk: '15 full push-ups unassisted. Pull-up at Level 6 or below. Deadlift at 90+ lbs. Farmer carry at 65 lbs/hand. OHP at 27.5–30 lbs ×6. Plank at 1:45. Row at 50 lbs ×10. Styku re-scan to measure body comp change.',
-  rescanNote: 'Styku 3D scan at Week 8 measures leg lean mass asymmetry (baseline: left 15.7 vs right 16.5 lbs), body fat % (baseline 36.4%), and Shape Score (baseline 61/100). This is the objective measure of the corrective and recomposition program. Read every figure as a personal trend across scans rather than a precise diagnostic number — this scanner is far better at tracking change in one person over time than at pinning an exact absolute value on any single reading.',
+  milestones4wk: 'Wk2: goblet squat knees tracking clean without banded cue. Wk2: 5+ full floor push-ups. Wk3: pull-up drops to Level 8. Wk4: deadlift at 75+ lbs, carry at 50 lbs/hand, plank at 1:20, OHP at 25 lbs ×6. Wk4 also carries the full strength reassessment — every tested lift in the baselines table gets re-checked and working loads reset from the result. Week 5 that follows is the planned deload ("reload") week: same movements, sets roughly halved, 50–70% loads, everything at 3+ reps in reserve — before Weeks 6–8 rebuild toward the 8-week targets.',
+  milestones8wk: 'Reached through the Week 4 reassessment, the planned Week 5 deload, and the Weeks 6–8 rebuild: 15 full push-ups unassisted. Pull-up at Level 6 or below. Deadlift at 90+ lbs. Farmer carry at 65 lbs/hand (on the hex bar — dumbbells stop at 60 lbs per hand). OHP at 27.5–30 lbs ×6. Plank at 1:45. Row at 50 lbs ×10. Styku re-scan to measure body comp change.',
+  rescanNote: 'Styku 3D scan at Week 8 measures leg lean mass asymmetry (baseline: left 15.7 vs right 16.5 lbs), body fat % (baseline 36.4%), and Shape Score (baseline 61/100). The scan lands at the end of the Weeks 6–8 rebuild that follows the planned Week 5 deload — it reads a consolidated block, not a mid-deload dip. This is the objective measure of the corrective and recomposition program. Read every figure as a personal trend across scans rather than a precise diagnostic number — this scanner is far better at tracking change in one person over time than at pinning an exact absolute value on any single reading.',
 };
 
 const data = {

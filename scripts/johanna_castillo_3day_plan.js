@@ -107,6 +107,79 @@
  *   android/gynoid mass) is on file in CLIENTS.md but deliberately NOT
  *   rendered here — a measurements table is a separate document change,
  *   not part of this swap.
+ *
+ * REVISION (8/19/2026) — ICONS BLOCK METHOD RESTRUCTURE (roster rollout,
+ * batch 1; Siobhan Hansen pilot is the reference implementation). All
+ * three days resequenced onto the six-slot order (Corrective → Primary
+ * Compound → Accessory → Jason's Exercise → Secondary Compound → Third
+ * Compound/Integration). Organizational only: every exercise, tested
+ * baseline, load, RIR tier, pelvic-floor bracing flag and left-lead
+ * prescription survives verbatim; no RIR tier changed. SLOT 4 omitted on
+ * all days — no Jason Bethea SOAP-note exercise exists on file for this
+ * client. Metabolic finishers (her VFA/body-fat priority) stay as the
+ * closing block after slot 6 on every day, per the spec's
+ * finishers-may-follow rule.
+ *   Per-day mapping:
+ *   DAY 1 — A activation (unchanged) · B PRIMARY = DB Hip Thrust (tested
+ *     baseline, battery #7 — split out of the old 3-lift primary block) ·
+ *     C ACCESSORY = Chest-Supported Row + Incline Push-Up · D SECONDARY =
+ *     Seated DB Overhead Press (tested baseline, battery #3 — press,
+ *     rotated off the thrust primary) · E INTEGRATION = Farmers Carry +
+ *     Plank (carries/core live in slot 6 by default) · F metabolic
+ *     finisher unchanged.
+ *   DAY 2 — A movement prep (unchanged) · B PRIMARY = Goblet Squat
+ *     (battery #2, new baseline) · C ACCESSORY = unilateral left-led
+ *     block (unchanged) · D SECONDARY = Trap Bar Deadlift (battery #1,
+ *     new baseline — hinge, rotated off the squat primary) · E
+ *     INTEGRATION = NEW light farmers carry (20-25 lbs/hand — anchored
+ *     below Day 1's documented 30 lbs/hand working carry; no invented
+ *     baseline; kept light so it never competes with the technique
+ *     tracking this day exists for) · F metabolic finisher unchanged.
+ *   DAY 3 — A scapular activation (unchanged) · B PRIMARY = Incline DB
+ *     Press (battery #4 — the day's Index movement takes the primary
+ *     slot; the old block ran row-first, a build-order choice, not a
+ *     tested-priority statement) · C ACCESSORY = Single-Arm DB Row ·
+ *     D SECONDARY = Bent-Over DB Row · E INTEGRATION = Suitcase Carry +
+ *     Plank · F metabolic finisher unchanged.
+ * TOUCH-RULE CHANGES in the same pass:
+ *   - No cable references existed (verified — her doc is DB/machine/rower/
+ *     bike only); KB swing at 25 lbs sits exactly at the studio KB
+ *     ceiling — legal, no change.
+ *   - Load-field Wk1→Wk4 convention applied to the two newly-baselined
+ *     progressing lifts (Goblet Squat Wk1: 20 → Wk4: 25-27.5; Trap Bar
+ *     DL Wk1: 45 → Wk4: 55-60 — the same numbers already in
+ *     milestones4wk). Day 1's tested lifts hold at baseline by design
+ *     (flat load fields stay correct for a genuinely non-progressing
+ *     prescription).
+ *   - 4-week strength / 8-12 week Styku cadence note added (new gold
+ *     note); the two tested baselines' target text now names the 4-week
+ *     check ahead of the 8-week formal retest.
+ *   - DELOAD CALL — AUTOREGULATED, not proactive (documented): she is
+ *     not rehab-flagged, not 65+/recovery-limited, and runs only
+ *     moderate 60-70% intensities across 3 days; per CLAUDE.md's deload
+ *     section she fits the "robust, well-recovering client" combined
+ *     model — a planned Week 5 slot after the Week 4 check that can be
+ *     pulled forward on triggers or pushed back if all signals are
+ *     green. New blue client-visible note states it.
+ *   - NUTRITION FRAMING CHECK (per rollout instruction): her rendered
+ *     protein figure (156-172 g/day) still comes from proteinTargets()'s
+ *     age>=50 formula, which CLAUDE.md retired 8/17/2026 — engine fix
+ *     still pending, unchanged here. BUT the corrected context-driven
+ *     standard independently supports the upper range for her: her
+ *     stated fat-loss/cardiometabolic priority means she is training in
+ *     an intended energy deficit, which IS a corrected-standard trigger
+ *     for the 1.6-2.2 g/kg upper range (protein protects lean mass in a
+ *     deficit — directly serving her strength-maintenance-under-fat-loss
+ *     goal). One clause added to the Age Bracket note stating this, so
+ *     the rendered figure now has correct, current reasoning behind it
+ *     rather than resting on the retired age trigger.
+ *   - Compound-slot expert options menus added to every compound slot,
+ *     filtered by her record: every hip-thrust/carry option carries the
+ *     same pelvic-floor bracing rule already flagged on those rows;
+ *     Day 2 options all stay in the 3+ RIR technique band (that day's
+ *     entire purpose); no swing/ballistic option is listed outside the
+ *     existing finisher. VFA stays a trend metric throughout — no
+ *     risk-band label anywhere (verified again post-build).
  */
 
 const fs = require('fs');
@@ -179,8 +252,8 @@ const weekOverview = [
 // somewhere in baselines[]/exercises[]/summary, not a baselines-table row
 // specifically.
 const baselines = [
-  ['DB Hip Thrust', '60 lbs × 8', 'Initial Testing Battery', 'Day 1 working load holds at tested baseline (60 lbs × 8, 2 RIR) — reassess at 8-week retest'],
-  ['Seated DB Overhead Press', '17.5 lbs × 8', 'Initial Testing Battery', 'Day 1 working load holds at tested baseline (17.5 lbs × 8, 2 RIR) — reassess at 8-week retest'],
+  ['DB Hip Thrust', '60 lbs × 8', 'Initial Testing Battery', 'Day 1 working load holds at tested baseline (60 lbs × 8, 2 RIR) — re-checked at the 4-week strength check; formal retest at 8 weeks'],
+  ['Seated DB Overhead Press', '17.5 lbs × 8', 'Initial Testing Battery', 'Day 1 working load holds at tested baseline (17.5 lbs × 8, 2 RIR) — re-checked at the 4-week strength check; formal retest at 8 weeks'],
   ['Goblet Squat (Back Squat)', 'Not Tested — Established This Week', 'This Week', 'Wk1 working load 20 lbs × 8 (Day 2 Block B) — becomes the new 8-week baseline'],
   ['Trap Bar Deadlift', 'Not Tested — Established This Week', 'This Week', 'Wk1 working load 45 lbs × 6 (Day 2 Block B) — becomes the new 8-week baseline'],
 ];
@@ -265,7 +338,23 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
-    body: 'At 51, Johanna sits in the 45–55 age bracket, confirmed postmenopausal. Creatine is strongly indicated by age and postmenopausal status alike. Protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status — not for age or postmenopausal status alone (Johanna\'s ALST, 7.23 kg/m², is well within normal reference range). LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk — though no DEXA/T-score data is currently on file to confirm candidacy either way.',
+    body: 'At 51, Johanna sits in the 45–55 age bracket, confirmed postmenopausal. Creatine is strongly indicated by age and postmenopausal status alike. Protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status — not for age or postmenopausal status alone (Johanna\'s ALST, 7.23 kg/m², is well within normal reference range). For Johanna specifically, the fat-loss priority driving this program means training in an intended energy deficit — and that deficit is exactly the condition that puts her protein target toward the upper end of the range: protein is what protects the lean mass this program is built to keep while the body fat comes down. LIFTMOR-style bone-loading candidacy screening (T-score < -1.0) is worth introducing as part of ongoing care as estrogen decline accelerates through this window — framed as "bone investment," not added risk — though no DEXA/T-score data is currently on file to confirm candidacy either way.',
+  },
+  {
+    type: 'gold',
+    label: 'Reassessment Cadence',
+    body: 'Strength reassessment runs every 4 weeks: the tested lifts in the table above get re-checked against their Week 4 targets and working loads reset from the result, with the formal full retest of the newly-baselined squat and deadlift at 8 weeks. Body-composition rescanning runs on its own longer cycle of 8–12 weeks — the two are tracked separately, not on the same clock.',
+  },
+  {
+    type: 'blue',
+    label: 'Planned Deload Slot — Week 5, Flexible',
+    body: 'One lighter week is built into this program\'s calendar: Week 5, directly after the Week 4 strength check, is the standing deload ("reload") slot — same movements, working sets roughly halved, loads at about 50–70% of normal working weights, every set comfortably sub-maximal, conditioning finishers kept but easy. At this program\'s moderate intensities the slot is flexible rather than fixed: if energy, sleep, and sessions all feel strong at Week 4, it can slide a week later; if soreness or flat sessions show up earlier, it moves up. One light week costs nothing that matters — it is where the previous month\'s work consolidates before the push toward the 8-week retest and rescan.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'Restructured to the ICONS Block Method six-slot order in the roster rollout (batch 1) — organizational only; every exercise, tested baseline, load, RIR tier, pelvic-floor bracing flag and left-lead prescription preserved verbatim, no RIR tier changed. Slot 4 omitted all days (no Jason Bethea SOAP-note exercise on file). Mapping: Day 1 — Hip Thrust primary (tested battery lift) / Chest-Supported Row + Incline Push-Up accessory / Seated OHP secondary / Farmers Carry + Plank integration / finisher last. Day 2 — Goblet Squat primary / unilateral left-led accessory / Trap Bar DL secondary / NEW light farmers carry integration (20–25 lbs/hand, anchored below Day 1\'s 30 lbs/hand — no invented baseline) / finisher last. Day 3 — Incline DB Press promoted to primary (battery #4; the old row-first order was build-order, not tested priority) / SA Row accessory / Bent-Over Row secondary / Suitcase Carry + Plank integration / finisher last. Deload call: AUTOREGULATED (flexible Week 5 slot), not proactive — she is not rehab-flagged, not 65+/recovery-limited, and runs only 60–70% intensities over 3 days; documented against CLAUDE.md\'s deload criteria. Nutrition framing: the rendered 156–172 g/day figure still comes from proteinTargets()\'s retired age≥50 formula (engine fix pending per CLAUDE.md), but her intended fat-loss deficit is a genuine corrected-standard trigger for the same upper range — the Age Bracket note now states that deficit-context reasoning so the figure rests on current grounds. Options menus filtered: all hip-thrust/carry options carry the pelvic-floor bracing rule; Day 2 options stay in the 3+ RIR technique band; REJECTED — kettlebell swing as a hinge-slot option (ballistic work lives only in her existing finisher, and Day 2 is a technique-introduction day), and any barbell back-squat option (squat pattern is one week old — goblet/box variants only until the pattern is established).',
   },
   {
     type: 'watch',
@@ -302,29 +391,46 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH',
+        title: 'PRIMARY COMPOUND — HIP THRUST (ICONS BATTERY)',
         introLabel: 'Load Target',
-        intro: 'Working sets at 70% — 2 RIR.',
+        intro: 'Working sets at 70% — 2 RIR, holding at the tested 60 lbs × 8 baseline. If the day calls for a variation, rotate between: a barbell hip thrust in the rack, a B-stance hip thrust (one leg takes the working share), or a heavier banded glute bridge — every option keeps the same brace-and-exhale rule as the lift itself. The DB hip thrust stays the tested lift we track and retest.',
         exercises: [
           { name: 'DB Hip Thrust', sets: '3', reps: '8', load: '60 lbs', tempo: '2-1-2', rest: '90s', flag: 'Brace + exhale on exertion — pelvic floor cue', cue: 'Drive through heels, glutes lock at top.', rirNote: '2 RIR' },
-          { name: 'Seated DB Overhead Press', sets: '3', reps: '8', load: '17.5 lbs', tempo: '2-0-2', rest: '75s', cue: 'Ribs stacked over hips, press straight up.', rirNote: '2 RIR' },
-          { name: 'Chest-Supported Row', sets: '3', reps: '10', load: '20 lbs', tempo: '2-1-2', rest: '75s', cue: 'Squeeze shoulder blades, elbows track back.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'ACCESSORY',
+        title: 'ACCESSORY — UPPER PULL & PUSH',
         color: 'gold',
         introLabel: 'Note',
-        intro: 'Farmers Carry is bilateral load-bearing — same pelvic floor bracing cue applies before every pass.',
+        intro: 'Hypertrophy accessories behind the primary — a strict supported pull, then the incline push-up progression.',
         exercises: [
+          { name: 'Chest-Supported Row', sets: '3', reps: '10', load: '20 lbs', tempo: '2-1-2', rest: '75s', cue: 'Squeeze shoulder blades, elbows track back.', rirNote: '2 RIR' },
           { name: 'Incline Push-Up', sets: '3', reps: '8', load: 'bodyweight (bench)', tempo: '3-1-1', rest: '60s', cue: 'Hands under shoulders, chest to bench, brace.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — SEATED OVERHEAD PRESS (ICONS BATTERY)',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound — pressing, rotated off the hip work above, holding at the tested 17.5 lbs × 8 baseline. If the day calls for a variation, rotate between: a standing DB press, a half-kneeling single-arm press, or a landmine press (the friendliest arc). The seated DB press stays the tested lift we track and retest.',
+        exercises: [
+          { name: 'Seated DB Overhead Press', sets: '3', reps: '8', load: '17.5 lbs', tempo: '2-0-2', rest: '75s', cue: 'Ribs stacked over hips, press straight up.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY & CORE',
+        color: 'gold',
+        introLabel: 'Note',
+        intro: 'The session\'s closing compound work: the carry pulls the day\'s brace, posture and hip strength into upright gait, and the plank holds the same brace statically. Farmers Carry is bilateral load-bearing — same pelvic floor bracing cue applies before every pass. When a variation suits the day, a suitcase carry (one hand, log sides) or a front-rack carry covers the same ground at the same bracing standard.',
+        exercises: [
           { name: 'DB Farmers Carry', sets: '3', reps: '40 yd', load: '30 lbs/hand', tempo: 'controlled', rest: '60s', flag: 'Brace before lifting — pelvic floor cue', cue: 'Tall posture, ribs down, quick tight steps.', rirNote: '2 RIR' },
           { name: 'Plank Hold', sets: '3', reps: '40 sec', load: 'bodyweight', tempo: 'hold', rest: '45s', cue: 'Ribs down, glutes tight, breathe steady.' },
         ],
       },
       {
-        letter: 'D',
+        letter: 'F',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'Short conditioning finisher supports the cardiometabolic/fat-loss priority driven by elevated VFA and body fat %. Brisk and sustainable — not a max-effort test.',
@@ -358,17 +464,16 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — TECHNIQUE INTRODUCTION',
+        title: 'PRIMARY COMPOUND — GOBLET SQUAT (TECHNIQUE INTRODUCTION)',
         introLabel: 'Load Target',
-        intro: 'No baseline was recorded for squat or deadlift. Loads stay light; the goal is a clean, repeatable pattern for 8-week testing, not load.',
+        intro: 'No baseline was recorded for squat. Loads stay light; the goal is a clean, repeatable pattern for 8-week testing, not load — Week 1\'s 20 lbs becomes the new baseline and builds toward 25–27.5 lbs by Week 4. If the day calls for a variation, rotate between: a box squat to bench height (depth set by the box) or a banded goblet squat (band above knees for tracking feedback) — both at the same easy technique effort. The goblet squat stays the movement we track and retest.',
         exercises: [
-          { name: 'Goblet Squat', sets: '3', reps: '8', load: '20 lbs', tempo: '3-1-1', rest: '75s', cue: 'Elbows inside knees, chest tall, full depth.', rirNote: '3+ RIR' },
-          { name: 'Trap Bar Deadlift', sets: '3', reps: '6', load: '45 lbs', tempo: '2-1-1', rest: '90s', cue: 'Flat back, brace, push floor away evenly.', rirNote: '3+ RIR' },
+          { name: 'Goblet Squat', sets: '3', reps: '8', load: 'Wk1: 20 → Wk4: 25–27.5 lbs', tempo: '3-1-1', rest: '75s', cue: 'Elbows inside knees, chest tall, full depth.', rirNote: '3+ RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'UNILATERAL LEG — LEFT-LED',
+        title: 'ACCESSORY — UNILATERAL LEG (LEFT-LED)',
         introLabel: 'Why',
         intro: 'Segmental lean mass reads lighter on the left (L 17.5 / R 18.0 lbs), so the left leg leads every set below and sets the working load. Log reps per side.',
         exercises: [
@@ -378,6 +483,25 @@ const days = [
       },
       {
         letter: 'D',
+        title: 'SECONDARY COMPOUND — TRAP BAR DEADLIFT (TECHNIQUE INTRODUCTION)',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound — a hinge, rotated off the squat pattern above. No baseline was recorded for deadlift; Week 1\'s 45 lbs becomes the new baseline and builds toward 55–60 lbs by Week 4, technique governing every step. If the day calls for a variation, rotate between: a two-DB deadlift or an elevated trap-bar pull (bar raised on blocks — a shorter range while the pattern beds in). The trap bar lift stays the movement we track and retest.',
+        exercises: [
+          { name: 'Trap Bar Deadlift', sets: '3', reps: '6', load: 'Wk1: 45 → Wk4: 55–60 lbs', tempo: '2-1-1', rest: '90s', cue: 'Flat back, brace, push floor away evenly.', rirNote: '3+ RIR' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY (LIGHT)',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The closing compound: a short, light farmers carry integrates the day\'s new squat and hinge patterns into upright, braced gait — deliberately lighter than Day 1\'s working carry, so it never competes with the technique tracking this session exists for. Brace before every pickup, exactly as flagged on Day 1.',
+        exercises: [
+          { name: 'DB Farmers Carry (Light)', sets: '2', reps: '30 yd', load: '20–25 lbs/hand', tempo: 'controlled', rest: '60s', flag: 'Brace before lifting — pelvic floor cue', cue: 'Tall posture, ribs down — the quality of the carry is the exercise, not the load.' },
+        ],
+      },
+      {
+        letter: 'F',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'Low-impact conditioning to close the session without adding lower-body fatigue that would compromise squat/deadlift technique tracking.',
@@ -411,28 +535,45 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH',
+        title: 'PRIMARY COMPOUND — INCLINE DB PRESS (ICONS BATTERY)',
         introLabel: 'Load Target',
-        intro: 'Working sets at 70% — 2 RIR on all sets.',
+        intro: 'Working sets at 70% — 2 RIR. The incline press is the day\'s primary compound and its tracked battery movement. If the day calls for a variation, rotate between: a flat DB bench press or a lower-incline press — same pattern, same effort standard. The incline DB press stays the lift we track and retest.',
         exercises: [
-          { name: 'Bent-Over DB Row', sets: '3', reps: '10', load: '20 lbs/hand', tempo: '2-1-2', rest: '75s', cue: 'Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
           { name: 'Incline DB Press', sets: '3', reps: '8', load: '17.5 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Ribs down, press up and slightly in.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'ACCESSORY',
+        title: 'ACCESSORY — SINGLE-ARM ROW',
         color: 'gold',
         introLabel: 'Note',
-        intro: 'Suitcase carry loads the pelvic floor bracing pattern under single-side load — same cue as flagged above. Single-arm row and suitcase carry track L/R per the marginal Styku arm gap.',
+        intro: 'Pulling accessory behind the press — logged left and right per the marginal Styku arm gap (monitoring only, no lead-side prescription).',
         exercises: [
           { name: 'Single-Arm DB Row', sets: '3', reps: '10', load: '20 lbs', tempo: '2-1-2', rest: '60s', flag: 'Log reps per side — track L/R (Styku)', cue: 'Brace on bench, pull to hip, no rotation.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — BENT-OVER DB ROW',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound — a bilateral pull, rotating off the pressing above. Working sets at 70% — 2 RIR. If the day calls for a variation, rotate between: a chest-supported row (the strict, back-friendly line — Day 1\'s movement) or an inverted row on the bar in the rack. The bent-over DB row stays the lift we track.',
+        exercises: [
+          { name: 'Bent-Over DB Row', sets: '3', reps: '10', load: '20 lbs/hand', tempo: '2-1-2', rest: '75s', cue: 'Flat back, pull to hip, squeeze at top.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — SUITCASE CARRY & CORE',
+        color: 'gold',
+        introLabel: 'Note',
+        intro: 'The session\'s closing compound work: the suitcase carry loads the pelvic floor bracing pattern under single-side load — same cue as flagged above — and the plank holds the same brace statically. Log carry sides per the routine arm monitoring. A two-hand farmers carry (Day 1\'s movement) covers the same ground when a variation suits the day.',
+        exercises: [
           { name: 'Suitcase Carry', sets: '3', reps: '30 yd/side', load: '25 lbs', tempo: 'controlled', rest: '60s', flag: 'Brace before lifting — pelvic floor cue', cue: 'Ribs stacked, resist leaning, quick steps.', rirNote: '2 RIR' },
           { name: 'Plank Hold', sets: '3', reps: '40 sec', load: 'bodyweight', tempo: 'hold', rest: '45s', cue: 'Ribs down, glutes tight, breathe steady.' },
         ],
       },
       {
-        letter: 'D',
+        letter: 'F',
         title: 'METABOLIC FINISHER',
         introLabel: 'Why',
         intro: 'Closing conditioning block supports the cardiometabolic/fat-loss priority. Brisk and sustainable — not a max-effort test.',
@@ -454,8 +595,8 @@ const summary = {
     ['2', '60%', 'Lower Body Technique', 'Goblet Squat / Trap Bar Deadlift', 'New baseline established — left leg leads all unilateral work'],
     ['3', '70%', 'Upper Body & Posterior Chain', 'Bent-Over DB Row', 'Single-arm row & suitcase carry tracked per side — monitor right-arm gap'],
   ],
-  milestones4wk: 'Squat 25–27.5 lbs × 8 @ 2–3 RIR. Trap bar deadlift 55–60 lbs × 6. Hip thrust progressing toward 70 lbs. Left-leg single-leg RDL load matched to right within 10%.',
-  milestones8wk: 'Squat/deadlift 8-week retest against today\'s new baseline. VFA and body fat % trending down from 142.7 cm² / 40.4%. Left/right leg lean-mass gap (currently 17.5 vs 18.0 lbs) holding steady or narrowing. Hip thrust and OHP progressed from current working loads.',
+  milestones4wk: 'Squat 25–27.5 lbs × 8 @ 2–3 RIR. Trap bar deadlift 55–60 lbs × 6. Hip thrust progressing toward 70 lbs. Left-leg single-leg RDL load matched to right within 10%. Week 4 carries the standing 4-week strength check — tested lifts re-checked and working loads reset from the result — with the flexible Week 5 deload slot (see the deload note above) following it.',
+  milestones8wk: 'Reached through the Week 4 strength check, the flexible Week 5 deload slot, and the weeks that rebuild from it: squat/deadlift 8-week retest against today\'s new baseline. VFA and body fat % trending down from 142.7 cm² / 40.4%. Left/right leg lean-mass gap (currently 17.5 vs 18.0 lbs) holding steady or narrowing. Hip thrust and OHP progressed from current working loads.',
   rescanNote: 'Rebook Styku scan at 8 weeks. Track: VFA and body fat % direction, left/right leg LST gap (currently 17.5 vs 18.0 lbs, roughly 3% — track the percentage, not the raw pounds), arm LST gap (currently 8.7 vs 8.4 lbs, monitor only), ALST maintenance (currently 7.23 kg/m², within normal reference range).',
 };
 
