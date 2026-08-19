@@ -58,6 +58,106 @@
  *   likely intended as "5–8%") but is reproduced exactly as written per
  *   instruction not to editorialize the client's document — flagged here
  *   for Xolokan's review rather than silently corrected.
+ *
+ * REVISION (8/19/2026 — ICONS BLOCK METHOD RESTRUCTURE, roster-wide
+ * rollout batch 3; CLAUDE.md's "ICONS Block Method" section is the spec,
+ * scripts/siobhan_hansen_3day_plan.js the reference implementation; full
+ * prior record — this header + CLIENTS.md entry — read in full first).
+ * VIRTUAL CLIENT: every menu/substitution below is drawn from HER OWN
+ * equipment list (DBs, one KB 20-35 lbs, bench, bands, medicine ball) —
+ * the studio inventory does NOT apply to her, per CLAUDE.md's STUDIO
+ * EQUIPMENT scope note. She has NO cable machine, so no Kieser renames
+ * apply (her document's existing "replaces cable row / no cable needed"
+ * substitution language is factual for her home setup and stays).
+ * Six-slot order per day (Corrective → Primary Compound → Accessory →
+ * Jason's Exercise [conditional] → Secondary Compound → Third Compound/
+ * Integration). Slot 4 OMITTED on all three days — no Jason Bethea SOAP
+ * note or coordinated-care relationship on file for Petra (virtual
+ * client); no filler inserted. Her force-assessment protocols are the
+ * slot-1 correctives: they were living in warmUp prose and are PROMOTED
+ * into tracked corrective blocks (they are her documented, force-data-
+ * sourced correctives — exactly what slot 1 exists for — and the light
+ * KB dead-hinge ramps are loaded, rep-prescribed movements the warm-up
+ * drift rule says belong in table rows). Per-day mapping:
+ *   DAY 1 (80% lower): slot 1 = NEW "Corrective — Left-Hip Activation &
+ *     Hinge Priming": Single-Leg Glute Bridge (Left) 2x12 + Clamshell
+ *     (Left) 2x15 (promoted from warmUp — the documented left-glute
+ *     priority for the projected right-hip-dominance gap), KB Dead-Hinge
+ *     (Light Ramp) 2x10 (promoted from warmUp per the drift rule), and
+ *     Lateral Band Walk moved up from the old squat block (band-loaded
+ *     glute-med corrective content that belongs in the corrective slot).
+ *     Block-internal order deliberately ends on the band walk so the
+ *     hinge ramp never sits directly against the hinge primary (walk:
+ *     bridge[hip], clam[frontal], dead-hinge[submax hinge], band walk
+ *     [frontal] → Hex DL[hinge] — no 3 consecutive same-pattern). Slot 2
+ *     = Hex Bar Deadlift (or DB Deadlift) — own primary block, menu.
+ *     Slot 3 = Romanian Deadlift (hinge accessory — the allowed
+ *     primary+accessory same-pattern pairing). Slot 5 = squat secondary
+ *     (Goblet Squat + Bulgarian Split Squat — existing order preserved).
+ *     The "Unilateral Lower Body" force-data block stays as its own
+ *     red corrective-priority accessory block after the secondary
+ *     (left-led, its documented purpose and position preserved). Slot 6
+ *     = the existing "KB Complex Finisher + Core" RETITLED "Full-Body
+ *     Integration — KB Complex + Core" (its content — a hinge/squat/
+ *     carry-free KB complex plus plank/dead bug — is textbook slot-6
+ *     integration; content unchanged).
+ *   DAY 2 (70% upper): slot 1 = NEW "Corrective — Right-Arm Neural
+ *     Activation" (Right-Hand Isometric Squeeze 10s x3, promoted from
+ *     warmUp — her documented pre-pulling neural-delay protocol). Slot 2
+ *     = DB Bench Press (own primary block, menu from her equipment).
+ *     Slot 3 = accessory (Incline DB Press, Single-Arm Row [right-leads
+ *     protocol verbatim], Push-Up Progression — old order preserved).
+ *     Slot 5 = secondary (OHP + Renegade Row + Rear Delt Fly + Med Ball
+ *     OH Slam — old order preserved; OHP menu). Slot 6 = the existing
+ *     Loaded Carry + Core block RETITLED as the integration closer
+ *     (Farmer/Suitcase carries with the grip-asymmetry protocol verbatim,
+ *     plank, med ball rotational press — content unchanged). Full-day
+ *     walk: iso, push, push[2], pull, push, push[2], pull, pull[2],
+ *     power, carry, carry[2], core, core — max 2 consecutive.
+ *   DAY 3 (90% power): slot 1 = NEW "Corrective — Neural Priming (Right
+ *     Grip + Left Hip)": Right-Hand Isometric Squeeze, KB Dead-Hinge
+ *     (Light Ramp), Single-Leg Glute Bridge (Left) — all promoted from
+ *     warmUp; block-internal order deliberately ends on the glute bridge
+ *     so the hinge ramp never sits directly against the KB swings
+ *     (dead-hinge[submax], bridge[hip], swing[hinge] — no 3-hinge run,
+ *     and the 8/12-audited KB Power order [2H Swing → 1A Swing → Goblet
+ *     → Clean] survives VERBATIM). DOCUMENTED DEVIATION (Elizabeth
+ *     Poyner Saturday precedent): on this dedicated power day the KB
+ *     Power block runs as the day's primary expression (slot 2), the
+ *     Med Ball Power block is the ballistic accessory (slot 3), and the
+ *     Compound Strength Clusters — each cluster pair literally a
+ *     hinge-to-press / squat-to-press compound complex — serve the
+ *     secondary-compound and integration functions together (slots 5/6
+ *     fused), with the AMRAP conditioning finisher following per spec.
+ *     Cluster content unchanged.
+ * TOUCH-RULE CHANGES in the same pass: (1) NO Kieser renames — virtual
+ * client, no cable machine (see above); (2) RIR-tier alignment to the
+ * corrected model (same alignment the pilot applied): the "Training Load
+ * Logic" note's "always leave 1-2 reps in the tank... final set can go
+ * closer to failure" reworded to the corrected 2-RIR primary default
+ * with 1 RIR reserved for hypertrophy accessories and no
+ * training-to-failure requirement; milestones4wk's "(1-2 RIR)" aligned
+ * to "(2 RIR)" — loads, sets, reps untouched; (3) deload call: PROACTIVE
+ * Week 5 — grounds: an aggressive 8+-week continuous-progression arc
+ * (per-session linear deadlift jumps, weekly +5 lbs/hand carry jumps,
+ * a weekly 90% power day) with virtual-format limits on in-person
+ * recovery monitoring; new blue client-visible note + milestones
+ * reconciled to the Wk4-check → Wk5-deload → Wk6-8-rebuild arc; (4)
+ * reassessment cadence stated for HER data sources: strength re-checked
+ * every 4 weeks (Week 4 targets already on file), the force-assessment
+ * protocol re-tested around Week 8 — no Styku clock exists for this
+ * client (no scan on file, virtual), so none is invented; (5) warm-up
+ * drift: the two light KB dead-hinges and the named corrective
+ * activations promoted (above); the med ball chest passes (2x8
+ * light/explosive) DELIBERATELY KEPT in warmUp as implement-based
+ * activation/potentiation primers with no working load — the same
+ * category as band pull-aparts, which the drift rule's own examples
+ * keep in prose; leg swings, hip circles, deep squat holds, arm
+ * circles, scapular push-ups all legitimately stay; (6) options menus
+ * on every compound slot, filtered to HER equipment only (no barbell,
+ * landmine, machine, or sled options listed anywhere) and to her
+ * force-data protocols (right-arm sequencing/load rules restated on
+ * pulling options; left-leg leads restated on unilateral options).
  */
 
 const fs = require('fs');
@@ -94,7 +194,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Training Load Logic',
-    body: 'For strength and muscle building at an intermediate level, primary compound lifts run at 70–85% of working weight for 3–5 sets of 5–10 reps. Last 2 reps of every work set should be hard but achievable. Reps in Reserve (RIR): always leave 1–2 reps in the tank on sets 1–3. Final set can go closer to failure.',
+    body: 'For strength and muscle building at an intermediate level, primary compound lifts run at 70–85% of working weight for 3–5 sets of 5–10 reps. Last 2 reps of every work set should be hard but achievable. Reps in Reserve (RIR): leave 2 clean reps in reserve on primary-lift work sets — 1 RIR is reserved for hypertrophy-focused accessory work only, and training to true failure is not required on any lift in this program.',
   },
   {
     type: 'gold',
@@ -132,6 +232,22 @@ const baselineNotes = [
     body: 'Both hip time-to-peak readings are slow — likely first-time test anxiety rather than a true neuromuscular limit. Re-test hip extension at Session 3 or 4 once Petra is comfortable with the dynamometer. If the projected 43.9% gap is confirmed on re-test, left-hip priority continues in all lower-body programming.',
   },
   {
+    type: 'blue',
+    label: 'Planned Deload — Week 5, Directly After the Week 4 Strength Check',
+    body: 'This program deliberately includes one lighter week, and it is planned, not a reaction to anything going wrong. Week 5 — immediately after the Week 4 strength check — is a structured deload: the same exercises and movement patterns, with sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), and loads held at Week 3-4 levels — the usual add-weight rules (including the deadlift\'s per-session jumps and the weekly carry increases) pause for this one week. This program progresses aggressively — a weekly power day plus linear load jumps — and training virtually means the coach sees less of the day-to-day fatigue picture than in the studio, so the light week is built in rather than left to chance. One light week costs nothing that matters: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days. Weeks 6-8 then rebuild from the Week 4 loads toward the 8-week targets and the force-assessment re-test.',
+  },
+  {
+    type: 'gold',
+    label: 'Two Reassessment Clocks',
+    body: 'Strength is re-checked every 4 weeks — the Week 4 targets in the weekly summary are that first check, and the Week 8 targets close the block. The force-assessment protocol (grip squeeze, floor pull, hip extension) is re-tested around the Week 8 window to confirm whether the left-grip/right-hip asymmetry pattern is closing — plus the early hip-extension re-test at Session 3 or 4 noted above.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'Restructured to the ICONS Block Method six-slot session architecture (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound/Integration; see CLAUDE.md). VIRTUAL client — all menus/substitutions drawn from her own equipment list only (DBs, one KB 20-35, bench, bands, med ball); no Kieser renames (no cable machine exists in her setup — the studio inventory does not apply, per CLAUDE.md\'s scope note). Slot 4 omitted all days — no Jason Bethea relationship on file, re-verified. Slot 1 on every day is her force-assessment corrective work PROMOTED out of warmUp prose into tracked blocks (left-hip activation, right-hand neural-delay squeeze, and the two light KB dead-hinge ramps — the ramps are loaded, rep-prescribed movements per the warm-up drift rule; the med ball chest passes deliberately stay in warmUp as implement activation primers, the band-pull-apart category). Block-internal corrective ordering deliberately keeps each hinge ramp separated from the hinge work that follows (Day 1: ramp → band walk → Hex DL; Day 3: ramp → glute bridge → KB swings) so no 3-consecutive-hinge run is created; the 8/12 KB Power fix order (2H Swing → 1A Swing → Goblet → Clean) survives verbatim. Day 1\'s Lateral Band Walk moved from the squat block into the corrective slot; Day 1\'s unilateral force-data block keeps its own position/purpose; Day 1\'s KB complex and Day 2\'s carries+core retitled as the integration closers (content unchanged). Day 3 documented deviation (Elizabeth Poyner Saturday precedent): power block runs first as the day\'s primary expression; the Compound Strength Clusters — literally hinge-to-press and squat-to-press complexes — serve the secondary-compound and integration functions together, AMRAP finisher after. RIR alignment to the corrected model: "1-2 RIR / final set closer to failure" language updated to the 2-RIR primary default (loads/sets/reps untouched); milestones4wk\'s "(1-2 RIR)" aligned to "(2 RIR)". Deload: proactive Week 5 (aggressive 8+-week continuous progression + virtual monitoring limits). No Styku clock exists for this client — reassessment cadence stated on her actual data sources (4-week strength, ~8-week force-assessment re-test), nothing invented.',
+  },
+  {
     type: 'watch',
     label: 'Force Pattern Summary — Opposing Compensation Chains',
     body: 'LEFT ARM DOMINANT in grip and pulling (29.5% asymmetry). RIGHT HIP DOMINANT in extension (11–44% asymmetry depending on reading). These are opposite patterns — the body is compensating on one chain for weakness in the other. Key training changes: (1) RIGHT arm gets priority sequencing and neural activation before all pulling and carry work. (2) LEFT leg leads all unilateral lower body exercises to address the right hip dominance and develop the weaker left glute.',
@@ -146,31 +262,51 @@ const days = [
     descriptor: 'Strength Emphasis · Primary Lower Body Volume · 45–55 Min',
     intensityLabel: '80% Day',
     intensityPara: 'Primary lower-body strength day — hex deadlift and squat patterns carry the week\'s heaviest working loads, with unilateral work directly targeting the force-assessment asymmetry below. Equipment: Dumbbells (20–95 lbs range) · Kettlebell · Bench or step · Mini-band (optional).',
-    warmUp: '3 min treadmill incline walk (5–8% grade, posterior chain + hip flexor activation before loading). Then: LEFT HIP ACTIVATION: single-leg glute bridge LEFT side 2×12 + clamshell LEFT side 2×15. Bilateral glute bridge 2×10, KB deadhinge 2×10 light, leg swings 10 each, hip circles, deep squat hold 3×30s, ankle circles 10 each. Camera side-on.',
+    warmUp: '3 min treadmill incline walk (5–8% grade, posterior chain + hip flexor activation before loading). Then: bilateral glute bridge 2×10, leg swings 10 each, hip circles, deep squat hold 3×30s, ankle circles 10 each. Camera side-on. Left-hip activation and the light hinge ramp open Block A below.',
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY HINGE STRENGTH (HEX DEADLIFT)',
-        introLabel: 'Deadlift Baseline',
-        intro: '95 lbs. Week 1 starts at 85 lbs ×4×5 to groove the pattern. Add 5 lbs per session — linear progression is still available here. 130 lbs ×5 is the 4-week target. Camera side-on during deadlift sets so coach can check hip height, spine, and knee tracking.',
+        title: 'CORRECTIVE — LEFT-HIP ACTIVATION & HINGE PRIMING',
+        color: 'red',
+        introLabel: 'Why',
+        intro: 'The force assessment shows the right hip dominating extension — the left glute is the priority side, so it gets woken up deliberately before anything is loaded. The light hinge ramp rehearses the deadlift pattern without spending strength, and the band walk fires the glute med that keeps knees tracking under load.',
         exercises: [
-          { name: 'Hex Bar Deadlift (or DB Deadlift)', sets: '4', reps: '5', load: 'Wk1: 85 lbs → Wk4: 110 lbs', tempo: '2-1-1', rest: '90s', cue: 'Stand centered in hex bar or DBs at sides. Hips hinge back to grip. Drive floor away, lockout hips at top. Neutral spine throughout. Camera side-on for coach check.' },
-          { name: 'Romanian Deadlift (DB)', sets: '3', reps: '8–10', load: '30–40 lbs', tempo: '3-1-1', rest: '75s', cue: 'Hip hinge, soft knee, feel hamstring load. DBs track close to legs. Returns to standing via glute squeeze. Builds hamstring volume to complement the hex bar pattern.' },
-        ],
-      },
-      {
-        letter: 'B',
-        title: 'PRIMARY SQUAT STRENGTH',
-        introLabel: 'Virtual Cue',
-        intro: 'Camera facing front for goblet squat. Knees should track over the second toe. No inward collapse. Coach will cue depth — aim for thighs parallel or below.',
-        exercises: [
-          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '8–10', load: '30–40 lbs', tempo: '3-1-1', rest: '90s', cue: 'DB or KB at chest, elbows inside knees at depth. Full depth, drive through heels. Chest tall. Builds the bilateral squat pattern before loading heavier.' },
-          { name: 'Bulgarian Split Squat (DB, per leg)', sets: '3+3', reps: '8 ea', load: '20–25 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Baseline 20 lbs/hand. Rear foot elevated on bench. Front knee tracks over second toe. Left leg leads first. +2.5 lbs/hand every 2 weeks.' },
+          { name: 'Single-Leg Glute Bridge (Left Side)', sets: '2', reps: '12', load: 'Bodyweight', tempo: '2-1-1', rest: '30s', cue: 'Left glute drives, hips level — the priority side per the force assessment.' },
+          { name: 'Clamshell (Left Side)', sets: '2', reps: '15', load: 'Bodyweight or light band', tempo: '2-1-1', rest: '30s', cue: 'Hips stacked, heels together, squeeze the left glute med at top.' },
+          { name: 'KB Dead-Hinge (Light Ramp)', sets: '2', reps: '10', load: 'Light KB', tempo: '2-1-1', rest: '30s', cue: 'Crisp hinge rehearsal, KB stays close — prime the pattern, no grind.', rirNote: '3+ RIR — technique/submaximal' },
           { name: 'Lateral Band Walk (Mini-band if available)', sets: '2', reps: '15 ea way', load: 'Band', tempo: 'Controlled', rest: '30s', cue: 'Band above knees. Slight squat, step lateral. Glute medius activation — prevents knee cave under load.' },
         ],
       },
       {
+        letter: 'B',
+        title: 'PRIMARY COMPOUND — HEX DEADLIFT',
+        introLabel: 'Deadlift Baseline',
+        intro: '95 lbs. Week 1 starts at 85 lbs ×4×5 to groove the pattern. Add 5 lbs per session — linear progression is still available here. 130 lbs ×5 is the 4-week target. Camera side-on during deadlift sets so coach can check hip height, spine, and knee tracking. If the day calls for a variation, rotate between: a DB deadlift (one DB at each side — already the built-in alternate), a B-stance DB deadlift (left leg takes the working share), or a KB deadlift with her bell. The hex bar/DB deadlift stays the lift we track — its Week 1 → Week 4 line is what gets retested.',
+        exercises: [
+          { name: 'Hex Bar Deadlift (or DB Deadlift)', sets: '4', reps: '5', load: 'Wk1: 85 lbs → Wk4: 110 lbs', tempo: '2-1-1', rest: '90s', cue: 'Stand centered in hex bar or DBs at sides. Hips hinge back to grip. Drive floor away, lockout hips at top. Neutral spine throughout. Camera side-on for coach check.' },
+        ],
+      },
+      {
         letter: 'C',
+        title: 'ACCESSORY — ROMANIAN DEADLIFT',
+        introLabel: 'Why',
+        intro: 'The hamstring-volume accessory directly behind the deadlift — same hinge pattern, lighter and longer, building the posterior chain that supports every lift in the program.',
+        exercises: [
+          { name: 'Romanian Deadlift (DB)', sets: '3', reps: '8–10', load: '30–40 lbs', tempo: '3-1-1', rest: '75s', cue: 'Hip hinge, soft knee, feel hamstring load. DBs track close to legs. Returns to standing via glute squeeze. Builds hamstring volume to complement the hex bar pattern.' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — SQUAT STRENGTH',
+        introLabel: 'Virtual Cue',
+        intro: 'The day\'s second compound pattern — knee-dominant squatting, rotating off the hinge work above. Camera facing front for goblet squat. Knees should track over the second toe. No inward collapse. Coach will cue depth — aim for thighs parallel or below. If the day calls for a variation, rotate between: a KB goblet squat (her bell, on a lighter day), a DB front squat (two DBs racked at the shoulders), or a box/bench squat to depth. The goblet squat stays the movement we track; on every unilateral option the left leg leads.',
+        exercises: [
+          { name: 'Goblet Squat (DB or KB)', sets: '4', reps: '8–10', load: '30–40 lbs', tempo: '3-1-1', rest: '90s', cue: 'DB or KB at chest, elbows inside knees at depth. Full depth, drive through heels. Chest tall. Builds the bilateral squat pattern before loading heavier.' },
+          { name: 'Bulgarian Split Squat (DB, per leg)', sets: '3+3', reps: '8 ea', load: '20–25 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Baseline 20 lbs/hand. Rear foot elevated on bench. Front knee tracks over second toe. Left leg leads first. +2.5 lbs/hand every 2 weeks.' },
+        ],
+      },
+      {
+        letter: 'E',
         title: 'UNILATERAL LOWER BODY',
         color: 'red',
         introLabel: 'Unilateral Priority — Force Data Informed',
@@ -182,11 +318,11 @@ const days = [
         ],
       },
       {
-        letter: 'D',
-        title: 'KB COMPLEX FINISHER + CORE',
+        letter: 'F',
+        title: 'FULL-BODY INTEGRATION — KB COMPLEX + CORE',
         color: 'gold',
-        introLabel: 'Finisher',
-        intro: 'KB Complex — 3 rounds, rest 90s between: 8 KB Swings (hip hinge power) + 8 KB Goblet Squat + 8 KB Romanian Deadlift + 30s Plank Hold (baseline :45 → build to 1:20). Use a KB you can swing explosively — not too heavy. Record load and rounds.',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound complex — the day\'s hinge and squat patterns pulled together into one continuous flow, then core under fatigue. KB Complex — 3 rounds, rest 90s between: 8 KB Swings (hip hinge power) + 8 KB Goblet Squat + 8 KB Romanian Deadlift + 30s Plank Hold (baseline :45 → build to 1:20). Use a KB you can swing explosively — not too heavy. Record load and rounds. If a variation suits the day, run the same complex goblet-style with a single DB, or swap the swings for KB deadlifts on a day the low back is tired.',
         exercises: [
           { name: 'Plank Hold (Elbow)', sets: '3', reps: 'Baseline :45 +10s/wk', load: 'Bodyweight', tempo: '—', rest: '60s', cue: 'Baseline :45. Add 10 seconds per week. Full brace — squeeze glutes, ribs down, neutral neck. Camera side-on so coach can check spine position.' },
           { name: 'Dead Bug', sets: '3', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-3', rest: '45s', cue: 'Lower back pressed into floor throughout. Slow opposite arm-leg extension. Anti-extension core. Key stability work for deadlift and squat patterns.' },
@@ -204,25 +340,43 @@ const days = [
     descriptor: 'Push/Pull Balance · Carry Strength · Push-Up Progression · 45–55 Min',
     intensityLabel: '70% Day',
     intensityPara: 'Moderate, balanced upper-body volume — press and pull loaded evenly, no near-failure work. Right arm leads sequencing on every pulling exercise per the neural-delay protocol below. Equipment: Dumbbells (15–40 lbs) · Flat/adjustable bench · Resistance bands (light + medium) · Pull-up bar or band anchor (optional).',
-    warmUp: '3 min treadmill walk or light jog (elevate HR before upper work). Then: RIGHT ARM NEURAL ACTIVATION: right hand isometric squeeze 10s ×3 (neural delay protocol). Arm circles 2×10, scapular push-ups 2×10, cat-cow 10 reps, thoracic rotation 10 each side, med ball chest pass to wall 2×8 light (shoulder warm-up). Camera: posture check before loading.',
+    warmUp: '3 min treadmill walk or light jog (elevate HR before upper work). Then: arm circles 2×10, scapular push-ups 2×10, cat-cow 10 reps, thoracic rotation 10 each side, med ball chest pass to wall 2×8 light (shoulder warm-up). Camera: posture check before loading. The right-arm neural activation opens Block A below.',
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY PRESS STRENGTH (PUSH)',
+        title: 'CORRECTIVE — RIGHT-ARM NEURAL ACTIVATION',
+        color: 'red',
+        introLabel: 'Why',
+        intro: 'The grip test shows the right arm firing 14.8% slower to peak force — this short isometric protocol fires that neural pathway before every loaded pulling session, priming the right grip for the rows and carries below.',
+        exercises: [
+          { name: 'Right-Hand Isometric Squeeze', sets: '3', reps: '10s hold', load: 'Ball or rolled towel — max squeeze', tempo: 'Hold', rest: '30s', cue: 'Right hand only. Squeeze hard for 10 seconds, full rest between — wake the pathway, not fatigue it.' },
+        ],
+      },
+      {
+        letter: 'B',
+        title: 'PRIMARY COMPOUND — DB BENCH PRESS',
         introLabel: 'Press Baseline',
-        intro: '15 lbs/hand for the DB bench press. Wk1 keeps that load for 10–12 reps. Progress +2.5 lbs/hand every 2 weeks toward a 22.5 lbs/hand target by Week 4 — a realistic intermediary jump from a 15 lb working weight. Incline press runs slightly lighter to build the upper chest and anterior delt alongside the flat press.',
+        intro: '15 lbs/hand for the DB bench press. Wk1 keeps that load for 10–12 reps. Progress +2.5 lbs/hand every 2 weeks toward a 22.5 lbs/hand target by Week 4 — a realistic intermediary jump from a 15 lb working weight. If the day calls for a variation, rotate between: a DB floor press (shorter range, easy on the shoulders) or a band-resisted push-up — both from her home equipment. The flat DB bench press stays the lift we track.',
         exercises: [
           { name: 'DB Bench Press (Flat)', sets: '4', reps: '10–12', load: 'Wk1: 15 → Wk4: 22.5 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Baseline 15 lbs/hand. Elbows at 45°. Full range — DBs to chest level. Squeeze at top. Add 2.5 lbs/hand every 2 weeks. Target 22.5 lbs by Week 4.' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'ACCESSORY — PRESS & PULL VOLUME',
+        introLabel: 'Why',
+        intro: 'The accessory volume behind the primary press: incline press runs slightly lighter to build the upper chest and anterior delt alongside the flat press, the single-arm row runs the right-arm-priority protocol, and the push-up progression builds toward full floor reps.',
+        exercises: [
           { name: 'Incline DB Press (30–45°)', sets: '3', reps: '10–12', load: '12.5–17.5 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Upper chest emphasis. Slightly lighter than flat press. Builds the upper chest and anterior delt that complement the flat press.' },
           { name: 'DB Single-Arm Row', sets: '4', reps: '8–10 ea', load: 'R: 30 lbs / L: 35 lbs Wk1', tempo: '3-1-2', rest: '60s', flag: 'Right arm leads — 14.8% neural delay protocol', cue: 'Force data: LEFT grip 78 lb (98th %ile), RIGHT 55 lb (65th %ile), 29.5% asymmetry. RIGHT arm leads each set and starts 5 lbs lighter than left. RIGHT arm: 3s isometric squeeze at top every rep to address the 14.8% neural delay. Left arm: normal tempo. Add 2.5 lbs/hand every 2 weeks.' },
           { name: 'Push-Up Progression', sets: '3', reps: 'Max (target 8–10 full)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Baseline 10 assisted. Week 1: incline push-ups (hands on bench) or first full floor attempts. Week 3: full push-ups from the floor. Record reps each set every session.' },
         ],
       },
       {
-        letter: 'B',
-        title: 'PRIMARY PULL STRENGTH',
+        letter: 'D',
+        title: 'SECONDARY COMPOUND — OVERHEAD PRESS & PULL',
         introLabel: 'Pull Baseline',
-        intro: 'OHP baseline is 15 lbs/hand, progressing +2.5 lbs/hand every 2 weeks toward 22.5 lbs/hand by Week 4 — same rate as the bench press. Force data shows right grip 29.5% weaker (55 lb vs 78 lb) and 14.8% slower time-to-peak — right arm leads sequencing on every pulling exercise below and starts each load lighter than left. Row baseline: L 35 / R 30 lbs Wk1, adding 2.5 lbs/hand every 2 weeks toward symmetry. Renegade row and rear delt fly reinforce the same pull pattern and neural-delay protocol without a cable machine.',
+        intro: 'The day\'s second compound pattern — the overhead press, with the pulling volume that balances it. OHP baseline is 15 lbs/hand, progressing +2.5 lbs/hand every 2 weeks toward 22.5 lbs/hand by Week 4 — same rate as the bench press. If the day calls for a press variation, rotate between: a seated DB press (bench back support), a half-kneeling single-arm DB press, or a band overhead press — all from her home equipment; the standing/seated DB press stays the lift we track. Force data shows right grip 29.5% weaker (55 lb vs 78 lb) and 14.8% slower time-to-peak — right arm leads sequencing on every pulling exercise below and starts each load lighter than left. Row baseline: L 35 / R 30 lbs Wk1, adding 2.5 lbs/hand every 2 weeks toward symmetry. Renegade row and rear delt fly reinforce the same pull pattern and neural-delay protocol without a cable machine.',
         exercises: [
           { name: 'DB Overhead Press', sets: '4', reps: '10–12', load: 'Wk1: 15 → Wk4: 22.5 lbs/hand', tempo: '2-1-1', rest: '75s', cue: 'Baseline 15 lbs/hand. Seated or standing. Press overhead, arms alongside ears. Core rigid. Progress same rate as bench press.' },
           { name: 'KB Renegade Row', sets: '3', reps: '8 ea side', load: 'KB or 15–20 lbs DB', tempo: '2-1-2', rest: '60s', cue: 'Push-up position, one hand on KB. Row one arm while holding plank with the other. Builds lat and mid-back strength without a cable. RIGHT arm: 3s hold at top (neural delay protocol).' },
@@ -231,11 +385,11 @@ const days = [
         ],
       },
       {
-        letter: 'C',
-        title: 'LOADED CARRY + CORE',
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY + CORE',
         color: 'gold',
         introLabel: 'Carry Baseline',
-        intro: '40 lbs/hand. +5 lbs/hand per week. Week 4 target: 55 lbs/hand. Farmer carry is the single most reliable strength and grip builder in this program. Shoulders packed, chest tall, neutral neck. Camera side-on to check posture drift.',
+        intro: 'The session\'s closing compound work — the day\'s pressing posture, pulling strength, and grip pulled together under gait, then core under load. 40 lbs/hand. +5 lbs/hand per week. Week 4 target: 55 lbs/hand. Farmer carry is the single most reliable strength and grip builder in this program. Shoulders packed, chest tall, neutral neck. Camera side-on to check posture drift. A goblet carry (one DB at the chest) covers the same ground as a lighter variation; the right-hand load rules below hold on every option.',
         exercises: [
           { name: 'Farmer Carry (Both Hands, DB)', sets: '4', reps: '30–35 yds', load: 'Wk1: L 40 lbs / R 35 lbs', tempo: 'Controlled', rest: '90s', flag: 'Right hand 5 lbs lighter — grip asymmetry protocol', cue: 'Force data shows right grip 29.5% weaker. Start RIGHT hand 5 lbs lighter than left (L:40, R:35) to avoid right-side compensation. Raise right-side load by 5 lbs per week when sets complete cleanly. Target load symmetry by Week 4.' },
           { name: 'Suitcase Carry (Single Arm)', sets: '3', reps: '25 yds ea', load: '30–35 lbs', tempo: 'Controlled', rest: '60s', flag: 'RIGHT arm leads — grip asymmetry protocol', cue: 'RIGHT arm carries first each set, per the right-arm-priority protocol. Resist lateral lean. Anti-lateral flexion core. Reveals left-right imbalance under load.' },
@@ -254,13 +408,25 @@ const days = [
     descriptor: 'Rate Of Force Development · Metabolic Conditioning · Total-Body Strength · 50–60 Min',
     intensityLabel: '90% Day',
     intensityPara: 'Full body power day combines explosive KB work, medicine ball throws, and compound strength clusters. This is the highest-demand session of the week. It trains Rate of Force Development (RFD) — how fast you produce force — which builds athleticism and accelerates strength gains on Days 1 and 2. Schedule this session with at least one rest day after it. Equipment: Kettlebell (20–35 lbs) · Medicine ball (8–12 lbs) · Dumbbells (15–40 lbs) · Bench · Resistance band.',
-    warmUp: '3 min treadmill moderate pace (full-body activation before power work). CORRECTIVE: Right hand isometric squeeze 10s ×3 (right grip neural delay). Left hip single-leg bridge 2×12 (left glute priority for hip extension gap). Then: leg swings 10 each, arm circles, hip circles, light KB deadhinge 2×10, med ball chest pass to wall 2×8 explosive.',
+    warmUp: '3 min treadmill moderate pace (full-body activation before power work). Then: leg swings 10 each, arm circles, hip circles, med ball chest pass to wall 2×8 explosive (potentiation primer). The corrective neural priming opens Block A below.',
     blocks: [
       {
         letter: 'A',
-        title: 'KB POWER BLOCK',
+        title: 'CORRECTIVE — NEURAL PRIMING (RIGHT GRIP + LEFT HIP)',
+        color: 'red',
+        introLabel: 'Why',
+        intro: 'Both force-assessment protocols fire before the week\'s highest-demand session: the right-hand squeeze primes the slower-firing right grip for the KB and carry work, the light hinge ramp rehearses the swing pattern without spending power, and the left-side bridge wakes the priority glute before the hips drive everything below.',
+        exercises: [
+          { name: 'Right-Hand Isometric Squeeze', sets: '3', reps: '10s hold', load: 'Ball or rolled towel — max squeeze', tempo: 'Hold', rest: '30s', cue: 'Right hand only. Squeeze hard for 10 seconds, full rest between — wake the pathway, not fatigue it.' },
+          { name: 'KB Dead-Hinge (Light Ramp)', sets: '2', reps: '10', load: 'Light KB', tempo: '2-1-1', rest: '30s', cue: 'Crisp hinge rehearsal, KB stays close — prime the swing pattern, no grind.', rirNote: '3+ RIR — technique/submaximal' },
+          { name: 'Single-Leg Glute Bridge (Left Side)', sets: '2', reps: '12', load: 'Bodyweight', tempo: '2-1-1', rest: '30s', cue: 'Left glute drives, hips level — the priority side per the force assessment.' },
+        ],
+      },
+      {
+        letter: 'B',
+        title: 'PRIMARY POWER — KB BLOCK',
         introLabel: 'KB Setup',
-        intro: 'Use a KB you can swing explosively — not so heavy that the hinge pattern breaks. Swings are a hip hinge power movement, not a squat. Hike the KB back between the legs, then snap the hips forward. Arms are passive — the hip drives everything.',
+        intro: 'The day\'s primary work runs first while the nervous system is freshest — this is a power day, and power leads it. Use a KB you can swing explosively — not so heavy that the hinge pattern breaks. Swings are a hip hinge power movement, not a squat. Hike the KB back between the legs, then snap the hips forward. Arms are passive — the hip drives everything. If the day calls for a variation, rotate between: a dead-stop swing (reset the KB on the floor each rep — sharper technique focus) or a lighter-bell speed swing. The two-hand swing stays the movement we track.',
         exercises: [
           { name: 'KB Swing (Two-Hand)', sets: '5', reps: '10', load: 'Moderate KB', tempo: 'Explosive', rest: '60s', cue: 'Hip hinge back, explosive hip snap forward. The KB floats to shoulder height from hip drive alone. This is the foundational power exercise in this program.' },
           { name: 'KB Swing (Single-Arm, alternating)', sets: '3', reps: '8 ea hand', load: 'Moderate KB', tempo: 'Explosive', rest: '60s', cue: 'Same mechanics as two-hand. Release and switch at the top. Challenges rotational core stability. Build from two-hand base before loading this.' },
