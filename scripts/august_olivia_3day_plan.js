@@ -70,6 +70,88 @@
  * variation. Assigned the technique/submaximal band instead, matching the
  * house precedent on Elizabeth Poyner's own 60% day (Romanian Deadlift,
  * "3 RIR — sub-maximal").
+ *
+ * REVISION (8/19/2026 — ICONS BLOCK METHOD RESTRUCTURE, roster-wide
+ * rollout batch 3; PRIORITY CLIENT — full-checklist care; CLAUDE.md's
+ * "ICONS Block Method" section is the spec, scripts/
+ * siobhan_hansen_3day_plan.js the reference implementation; full prior
+ * record — this header + CLIENTS.md entry — read in full first).
+ * Six-slot order per day (Corrective → Primary Compound → Accessory →
+ * Jason's Exercise [conditional] → Secondary Compound → Third Compound/
+ * Integration). Slot 4 OMITTED on all three days — no Jason Bethea SOAP
+ * note, exercise, or coordinated-care relationship on file for August
+ * Olivia; no filler inserted. Every clinical flag (right-shoulder force
+ * deficit + right-leads prescriptions, left-leg-leads prescriptions, ALST
+ * At-Risk framing), every tested baseline, and all 8/18 RIR prescriptions
+ * survive verbatim. Per-day mapping:
+ *   DAY 1 (Tue, 70% full-body): slot 1 = omitted (no documented corrective
+ *     specific to this day; the warm-up's band pull-aparts/scap push-ups
+ *     are unloaded activation that legitimately stays in warmUp). Slot 2 =
+ *     DB Goblet Squat (own primary block, menu) — the bodyweight pattern
+ *     set REORDERED to run FIRST in the block, fixing a latent
+ *     row-order/cue mismatch (its own cue says "before loaded work" but it
+ *     rendered after the loaded squat). Slot 3 = posterior-chain accessory
+ *     (Barbell Hip Thrust + DB RDL — hinge/thrust pairing, 2 consecutive
+ *     allowed). Slot 5 = press secondary (Seated OHP [3+ RIR flagged-
+ *     shoulder prescription verbatim] + Incline Push-Up). Slot 6 = NEW
+ *     "Full-Body Integration — Farmer Carry & Core": a light farmer carry
+ *     at 20-25 lb/hand — anchored AT/BELOW her tested 25 lb/hand carry
+ *     baseline, no invented number — plus the day's Plank Hold moved in as
+ *     core-under-load (pilot precedent groups carry + core as the
+ *     integration close).
+ *   DAY 2 (Thu, 60% technique/corrective): slot 1 = existing corrective
+ *     circuit (unchanged — its intro's retired screening-as-risk-
+ *     prediction framing corrected, see touch rules below). Slot 2 = DB
+ *     Split Squat (own primary block; 3+ RIR technique-day judgment call
+ *     preserved verbatim; menu, all options left-led and technique-band).
+ *     Slot 3 = Copenhagen Plank (adductor accessory). Slot 5 = Single-Leg
+ *     RDL (hand-supported — hinge, rotating off the knee-dominant
+ *     primary; 3+ RIR verbatim). Slot 6 = DB Suitcase Farmer Carry moved
+ *     from the old primary block to the integration closer (content
+ *     unchanged; sides even — her arm LST gap is below the ≥10% trigger,
+ *     and the shoulder deficit is a force finding handled by its own
+ *     controlled-load rule, so no carry-hand lead is fabricated or
+ *     removed).
+ *   DAY 3 (Sat, 80% upper): slot 1 = NEW corrective lead block — Band
+ *     Pull-Apart RESEQUENCED out of the old pull block to open the day as
+ *     scapular/cuff preparation before pressing, directly serving the
+ *     clinical note's own standing instruction ("Add rotator cuff and
+ *     scapular stability work every session") with existing content, not
+ *     new filler. Slot 2 = Seated DB OH Press (right-leads flag verbatim;
+ *     menu constraint-filtered per the shoulder deficit). Slot 3 =
+ *     Incline Push-Up (1 RIR hypertrophy accessory, verbatim). Slot 5 =
+ *     Single-Arm DB Row (right-leads flag verbatim; menu). Slot 6 =
+ *     existing Core & Carry RETITLED "Full-Body Integration — Carry &
+ *     Core" (content unchanged).
+ * TOUCH-RULE CHANGES in the same pass: (1) RETIRED-LANGUAGE FIX (Nicolette
+ * Scott precedent — prescriptions unchanged, framing corrected): Day 2
+ * Block A's intro described the corrective circuit as a "standard screen
+ * for women's ACL/knee-valgus risk" — visual screening is NOT risk
+ * prediction per CLAUDE.md's corrected ACL section (8/17/2026), and the
+ * circuit's value is population-level injury prevention, not a screen
+ * result; reworded to general lower-limb injury-prevention framing, the
+ * exercises themselves untouched. (2) Wk1→Wk4 load-field convention
+ * applied where documented targets exist: Goblet Squat 35 → 40-42.5 lb
+ * (milestones4wk), Hip Thrust 45 → 55-60 lb (milestones4wk), DB RDL
+ * 17.5 → 20-22.5 lb/hand by Wk8 (baselines-table 8-week target — no Wk4
+ * number exists, so the documented 8-week figure is used, nothing
+ * invented). Shoulder-governed lifts (both OH presses, SA row)
+ * deliberately KEEP their flat/controlled loads — their progression is
+ * capacity-governed by the right-shoulder protocol, not load-driven, and
+ * writing a load ramp onto a deficit-controlled lift would misstate the
+ * prescription. (3) Deload call: AUTOREGULATED COMBINED MODEL (planned
+ * Week 5 slot after the Wk4 check, movable on triggers) — grounds: 25,
+ * robust, 3-day moderate-intensity program, no rehab flags; the ALST
+ * At-Risk recovery priority is already protected by the program's
+ * deliberately brief conditioning, and a rigid calendar deload is not
+ * clinically indicated. New blue client-visible note + milestones/
+ * rescanNote reconciled. (4) 4-week strength / 8-12-week Styku cadence
+ * split stated in rescanNote (which also keeps the shoulder force-retest
+ * tracking). (5) No cable references exist (verified); all DB loads sit
+ * far under the 60 lb/hand ceiling; KB goblet variants EXCLUDED from the
+ * squat menu (her 35 lb goblet load exceeds the studio's 25 lb KB
+ * ceiling). (6) Warm-up drift re-checked all 3 days — all prose content
+ * is unloaded/bodyweight activation; nothing to promote.
  */
 
 const fs = require('fs');
@@ -158,6 +240,17 @@ const baselineNotes = [
     label: 'Baselines Pending — Deadlift & Lunges',
     body: 'Not yet tested. Establish working loads under direct coach supervision in the Week 1 session, then add to the programmed baseline table above.',
   },
+  {
+    type: 'blue',
+    label: 'Planned Lighter Week — Week 5, Flexible',
+    body: 'One deliberately lighter week is built into this program\'s rhythm: Week 5, directly after the Week 4 strength check. Same exercises and movement patterns, sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), loads held at Week 3-4 levels — the usual add-weight rule pauses for that one week, then Weeks 6-8 rebuild toward the 8-week targets. With recovery running well this lighter week is flexible rather than fixed: it can slide a week later if everything feels strong, or move up if sleep, soreness, or session quality dip — her coach makes that call with her. One light week costs nothing that matters for the muscle-building priority: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'Restructured to the ICONS Block Method six-slot session architecture (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound/Integration; see CLAUDE.md). Slot 4 omitted all days — no Jason Bethea relationship on file, re-verified. Slot 1: Day 2\'s existing corrective circuit; Day 3 opens with Band Pull-Apart resequenced out of the old pull block as scapular/cuff preparation before pressing (serves the clinical note\'s own "rotator cuff and scapular stability work every session" instruction with existing content); Day 1 omitted (warm-up activation only, legitimately in prose). One latent fix: Day 1\'s bodyweight pattern set now renders before the loaded goblet squat, matching its own cue. New Day 1 integration carry (20-25 lb/hand) anchors at/below the tested 25 lb/hand baseline. Wk1→Wk4 convention applied only where documented targets exist (Goblet 35→40-42.5, Hip Thrust 45→55-60 from milestones4wk; RDL 17.5→20-22.5 by Wk8 from the baselines table); shoulder-governed lifts deliberately keep flat controlled loads — their progression is capacity-governed by the right-shoulder protocol. Day 2 Block A intro\'s retired screening-as-risk-prediction ACL framing corrected to injury-prevention framing (Nicolette Scott precedent — exercises unchanged). Options menus constraint-filtered: every press option carries the right-leads/controlled-load rule and no near-maximal bilateral overhead option is listed; every unilateral lower option is left-led; KB goblet excluded (35 lb load > 25 lb KB ceiling). Deload: autoregulated combined model (25, robust, moderate intensities, no rehab flags). Carry-hand policy unchanged: sides even — the arm LST gap is below the ≥10% trigger and the shoulder force deficit is governed by its own controlled-load rule, so no carry lead is fabricated.',
+  },
 ];
 
 const days = [
@@ -172,33 +265,43 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY LOWER — SQUAT',
+        title: 'PRIMARY COMPOUND — GOBLET SQUAT',
         introLabel: 'Load Target',
-        intro: 'Goblet position, DB held at chest. Full-Body Foundation lift for the day — own the depth and bracing pattern before adding load.',
+        intro: 'Goblet position, DB held at chest. Full-Body Foundation lift for the day — the bodyweight pattern set runs first, then own the depth and bracing pattern under load. If the day calls for a variation, rotate between: a box squat (depth set by the box), a split-stance squat (left leg leads), or a landmine squat. The goblet squat stays the lift we track toward the 4-week check.',
         exercises: [
-          { name: 'DB Goblet Squat', sets: '3', reps: '5', load: '35 lb', tempo: '3-1-1', rest: '90s', cue: 'Chest tall, sit hips back, knees track over toes.', rirNote: '2 RIR' },
           { name: 'Bodyweight Squat (pattern set)', sets: '1', reps: '10', load: 'BW', tempo: '2-0-1', rest: '—', cue: 'Warm-up pattern set before loaded work.', rirNote: '3+ RIR' },
+          { name: 'DB Goblet Squat', sets: '3', reps: '5', load: 'Wk1: 35 lb → Wk4: 40–42.5 lb', tempo: '3-1-1', rest: '90s', cue: 'Baseline 35 lb ×5. Chest tall, sit hips back, knees track over toes.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'B',
-        title: 'POSTERIOR CHAIN',
+        title: 'ACCESSORY — POSTERIOR CHAIN',
         introLabel: 'Why',
-        intro: 'Hip thrust and RDL build the posterior chain that supports every lift on the baseline sheet.',
+        intro: 'Hip thrust and RDL build the posterior chain that supports every lift on the baseline sheet — the muscle-building accessory work directly behind the squat. Hip thrust variations when the day calls for one: a floor glute bridge, a single-leg glute bridge (left leg leads), or a B-stance hip thrust (left leg takes the working share) — the barbell hip thrust stays the lift we track.',
         exercises: [
-          { name: 'Barbell Hip Thrust', sets: '3', reps: '5', load: '45 lb', tempo: '2-1-1', rest: '90s', cue: 'Chin tucked, ribs down, drive through heels.', rirNote: '2 RIR' },
-          { name: 'DB Romanian Deadlift', sets: '3', reps: '5', load: '17.5 lb/hand', tempo: '3-1-1', rest: '75s', cue: 'Soft knees, hinge hips back, feel hamstring stretch.', rirNote: '2 RIR' },
+          { name: 'Barbell Hip Thrust', sets: '3', reps: '5', load: 'Wk1: 45 lb → Wk4: 55–60 lb', tempo: '2-1-1', rest: '90s', cue: 'Baseline 45 lb ×5. Chin tucked, ribs down, drive through heels.', rirNote: '2 RIR' },
+          { name: 'DB Romanian Deadlift', sets: '3', reps: '5', load: 'Wk1: 17.5 lb/hand → 20–22.5 lb by Wk8', tempo: '3-1-1', rest: '75s', cue: 'Soft knees, hinge hips back, feel hamstring stretch.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'UPPER PRESS & CORE',
+        title: 'SECONDARY COMPOUND — UPPER PRESS',
         color: 'gold',
         introLabel: 'Shoulder Note',
-        intro: 'Right shoulder leads at reduced load with strict control — see clinical flag above.',
+        intro: 'The day\'s second compound pattern — pressing, rotating off the lower-body work above. Right shoulder leads at reduced load with strict control — see clinical flag above. If the day calls for a press variation, rotate between: a half-kneeling single-arm DB press (right arm leads, reduced load) or a landmine press (the shoulder-friendly arc) — both live inside the same controlled-load shoulder rule, and heavy bilateral overhead loading stays off the menu until the deficit is reassessed. The seated press stays the movement we track.',
         exercises: [
           { name: 'Seated DB OH Press', sets: '3', reps: '5', load: '12 lb', tempo: '2-0-2', rest: '75s', flag: 'Right shoulder leads — control tempo, no press-out compensation.', cue: 'Ribs down, press straight overhead, avoid arching.', rirNote: '3+ RIR — sub-maximal, flagged shoulder' },
           { name: 'Incline Push-Up', sets: '3', reps: '5–6', load: 'BW, bench', tempo: '3-0-1', rest: '60s', cue: 'Hands under shoulders, hips level, full lockout.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'FULL-BODY INTEGRATION — FARMER CARRY & CORE',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — a light loaded walk pulling the day\'s squat depth, hip drive, and pressing posture together under gait, then core under load. Loads start at or below the tested 25 lb/hand carry baseline. Distance and quality govern the carry, not a rep count. A suitcase carry (one side at a time, alternating evenly) covers the same closing ground when variety suits the day.',
+        exercises: [
+          { name: 'DB Farmer Carry (Light)', sets: '2', reps: '20–25 yd', load: '20–25 lb/hand', tempo: '—', rest: '60s', cue: 'Tested 25 lb/hand. Tall posture, ribs stacked, quiet shoulders.', rirNote: 'Distance & quality governed — no RIR target' },
           { name: 'Plank Hold', sets: '3', reps: '40–45s', load: 'BW', tempo: '—', rest: '45s', cue: 'Ribs down, glutes on, straight line head to heel.' },
         ],
       },

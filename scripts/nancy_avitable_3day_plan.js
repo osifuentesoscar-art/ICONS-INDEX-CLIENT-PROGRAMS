@@ -365,12 +365,12 @@ const baselines = [
   ['Goblet Squat', '40 lbs w/ 10-sec isometric hold x 10 (isometric-loaded — not run through Epley formula)', '8/13/2026', `Wk1: ${wk1.gobletSquat} lbs x6-8 (tempo) → Wk4: ${wk4.gobletSquat} lbs x6-8 — Day 1 Block B, adjusted for the program's tempo-rep format vs. the tested hold format`],
   ['DB Chest Press', '15 lbs (reps not recorded — working/reference load, not a rep-max)', '8/13/2026', `Informs Day 2 Block A Incline DB Press Wk1: ${wk1.chestPress} lbs/hand → Wk4: ${wk4.chestPress} lbs/hand`],
   ['DB Split Squat', `17.5 lbs/hand x 10 (Epley 1RM ≈${oneRM.splitSquat} lbs)`, '8/13/2026', `Informs Day 3 Block B Weighted Step-Up Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`],
-  ['Hex Deadlift (Trap Bar)', `135 lbs x 8 (Epley 1RM ≈${oneRM.hexDL} lbs)`, '8/13/2026', 'Reference baseline only — no matching slot; NOT used to inform Romanian Deadlift (mechanically distinct lift, different load capacity). Revisit if a dedicated hex-bar deadlift slot is added.'],
-  ['Overhead Press', `17.5 lbs x 10 (Epley 1RM ≈${oneRM.ohp} lbs) — format as reported, no seated/standing qualifier given`, '8/13/2026', 'Reference baseline only — no existing press slot beyond Incline DB Press; not force-fit as a 3rd pressing exercise.'],
+  ['Hex Deadlift (Trap Bar)', `135 lbs x 8 (Epley 1RM ≈${oneRM.hexDL} lbs)`, '8/13/2026', 'Reference baseline only — deliberately NOT used to set the Romanian Deadlift load (mechanically distinct lift, different load capacity). Revisit if a dedicated hex-bar deadlift is added to the program.'],
+  ['Overhead Press', `17.5 lbs x 10 (Epley 1RM ≈${oneRM.ohp} lbs) — format as reported, no seated/standing qualifier given`, '8/13/2026', 'Reference baseline only — Incline DB Press covers the week\'s pressing progression; a third pressing exercise is not force-fit in.'],
   ['Sled Push', '135 lbs', '8/13/2026', 'Now programmed as the closing integration work: Day 1 controlled push Wk1: 90 lbs → Wk4: 105 lbs; Day 3 drive push Wk1: 105 lbs → Wk4: 135 lbs (the tested load). Distance & quality governed.'],
-  ['Plank Hold', '2:05 (125 sec)', '8/13/2026', 'Reference baseline only — no plank slot in current 3-day structure.'],
-  ['Push-Up (Incline)', '10 reps', '8/13/2026', 'Reference baseline only — no push-up slot in current 3-day structure.'],
-  ['Pull-Up (Assisted)', '20 reps', '8/13/2026', 'Reference baseline only — bonus 11th ICONS protocol movement; no pull-up slot in current structure.'],
+  ['Plank Hold', '2:05 (125 sec)', '8/13/2026', 'Reference baseline only — not currently a programmed exercise in this 3-day plan.'],
+  ['Push-Up (Incline)', '10 reps', '8/13/2026', 'Reference baseline only — not currently a programmed exercise in this 3-day plan.'],
+  ['Pull-Up (Assisted)', '20 reps', '8/13/2026', 'Reference baseline only — bonus 11th ICONS protocol movement; not currently a programmed exercise in this 3-day plan.'],
 ];
 
 const baselineNotes = [
@@ -405,7 +405,7 @@ const baselineNotes = [
     type: 'watch',
     label: 'Judgment Call — DB Split Squat vs. Weighted Step-Up',
     audience: 'internal',
-    body: `No exercise literally named "Split Squat" exists in Nancy's program. Weighted Step-Up (Day 3 Block B, a primary-strength-block loaded unilateral knee-dominant movement) is the closest analogous slot — closer than Day 1's Reverse Lunge or Day 3's Curtsy Lunge, both of which are deliberately light, corrective-context finishers where a heavier baseline-derived load would work against their actual purpose. The DB Split Squat baseline (${wk1.splitSquat} lbs/hand → ${wk4.splitSquat} lbs/hand) is used to inform Weighted Step-Up's Week 1 → Week 4 load on that basis.`,
+    body: `No exercise literally named "Split Squat" exists in Nancy's program. Weighted Step-Up (Day 3 Block C as of the 8/19 restructure, a loaded unilateral knee-dominant movement) is the closest analogous slot — closer than Day 1's Reverse Lunge or Day 3's Curtsy Lunge, both of which are deliberately light, corrective-context finishers where a heavier baseline-derived load would work against their actual purpose. The DB Split Squat baseline (${wk1.splitSquat} lbs/hand → ${wk4.splitSquat} lbs/hand) is used to inform Weighted Step-Up's Week 1 → Week 4 load on that basis.`,
   },
   {
     type: 'teal',
