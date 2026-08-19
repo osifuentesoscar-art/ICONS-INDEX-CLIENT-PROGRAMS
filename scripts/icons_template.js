@@ -466,7 +466,11 @@ function proteinTargets(client) {
 
   const proteinLow = Math.round(client.weightKg * low);
   const proteinHigh = Math.round(client.weightKg * high);
-  const perMeal = Math.round(client.weightKg * 0.4);
+  // Corrected 8/17/2026 (applied to the engine 8/19/2026): ~0.3 g/kg/meal
+  // (≈25-40g, 4 meals spaced 3-4h) per the ISSN serving guidance and the
+  // ~0.31 g/kg MPS-maximizing dose — the old 0.4 g/kg figure exceeded both.
+  // Leucine framing downgraded to approximate, per the same correction.
+  const perMeal = Math.round(client.weightKg * 0.3);
 
   return { atRisk, low, high, tier, proteinLow, proteinHigh, perMeal };
 }
@@ -487,7 +491,7 @@ function nutritionBlock(client) {
     [
       txt(gramsText, { bold: true, size: 20, color: C.dark }),
       txt(`  (${gkgText} — ${tier})  `, { size: 15, color: C.mid }),
-      txt(`~${perMeal}g per meal minimum (leucine threshold), distributed across 4+ meals/day.`, { size: 17, color: C.dark }),
+      txt(`~${perMeal}g per meal (≈0.3 g/kg), across 4 meals spaced 3–4 hours apart.`, { size: 17, color: C.dark }),
     ]
   ));
 

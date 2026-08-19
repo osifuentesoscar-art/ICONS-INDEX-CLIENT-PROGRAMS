@@ -797,6 +797,19 @@ above: flagged for `icons-expert`/`icons-research-analyst` as real follow-up
 work, and every current client document computed under the old age-banded
 tiers needs individual review once the engine changes, not a blanket
 regeneration under an unchanged formula.
+**Partial resolution 8/19/2026:** the PER-MEAL half of this flag is fixed —
+`proteinTargets()` now computes ~0.3 g/kg/meal (was 0.4) and the rendered
+label states "across 4 meals spaced 3–4 hours apart" with the leucine-
+threshold framing removed, per the corrected standard above; every
+nutrition-block client inherited it via same-day regeneration. The AGE-
+TRIGGER half (`atRisk || ageYears >= 50` and the rendered "50+ tier"/"40+
+tier" labels) remains open exactly as described — it still needs the new
+intake fields plus per-client review, not a formula edit. Note the male
+framework's `maleProteinTargets()` per-meal figure (0.4 g/kg) was
+deliberately NOT changed — the Male Framework's own prose still states 0.4,
+and whether the women's correction transfers is an open
+`icons-research-analyst` question (flagged 8/19), not an assumption to make
+silently.
 
 ### Energy Availability & Caloric Surplus for Lean-Mass Gain (2013-2023 evidence — new section, 8/18/2026)
 ```
