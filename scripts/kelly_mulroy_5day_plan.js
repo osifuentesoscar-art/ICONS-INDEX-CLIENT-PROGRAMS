@@ -428,7 +428,7 @@ const day1 = {
       introLabel: 'Push-Up Update',
       intro: 'Baseline is 15 assisted reps. Moving off eccentric-only protocol. This week: incline push-ups (hands on bench) + first attempts at floor push-ups. Goal is 5+ full reps by end of Week 2. This is the day\'s second compound pattern — pressing, rotated fully off the leg work above.',
       exercises: [
-        { name: 'Incline Push-Up (Hands on Bench)', sets: '4', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Hands elevated on bench. Full chest to bench level. This is the bridge from assisted to full floor push-up. Progress by lowering the incline height each week.', rirNote: '1 RIR — accessory' },
+        { name: 'Incline Push-Up (Hands on Bench)', sets: '4', reps: '10―12', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Hands elevated on bench. Full chest to bench level. This is the bridge from assisted to full floor push-up. Progress by lowering the incline height each week.', rirNote: '1 RIR — hypertrophy priority' },
         { name: 'Full Push-Up Attempt (Floor)', sets: '3', reps: 'Max (target 3–5)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt full push-ups from the floor. Record reps each set. Even 1 rep counts. Do NOT go to failure — stop 1 rep before form breaks.', rirNote: '1 RIR — stop before form breaks' },
       ],
     },
@@ -441,7 +441,7 @@ const day1 = {
       introLabel: 'Why',
       intro: 'The session closes with one integrated movement: a light suitcase carry puts the day\'s knee-tracking and glute-med work to use under gait — the core resists the lean while the legs walk tall and the knees track straight. Left hand carries first, matching every unilateral prescription in this plan. Deliberately light: quality of carriage governs it, not load.',
       exercises: [
-        { name: 'Suitcase Carry (Left Lead)', sets: '2', reps: '25 yds ea', load: '20–25 lbs', tempo: 'Controlled', rest: '60s', cue: 'LEFT arm first. Lighter than Friday\'s carries. Resist the lateral lean, walk tall, knees tracking straight ahead.' },
+        { name: 'Suitcase Carry (Left Lead)', sets: '2', reps: '25 yds ea', load: '20–25 lbs', tempo: 'Controlled', rest: '60s', flag: 'Hinge stop-signal governs the pickup and set-down — back pain means STOP.', cue: 'LEFT arm first. Lighter than Friday\'s carries. Resist the lateral lean, walk tall, knees tracking straight ahead.' },
       ],
     },
   ],
@@ -614,8 +614,8 @@ const day4 = {
       introLabel: 'Carry Baseline: 35 lbs/hand',
       intro: 'This is the confirmed working weight. Week 1: 35 lbs ×4 sets. Week 2: 40 lbs. Week 3: 45 lbs. Week 4: test 50 lbs. Add 5 lbs/hand each week consistently — and past 60 lbs per hand (the Week 8 target of 65 lands there) the carry moves to the hex bar, since dumbbells stop at 60. When a variation suits the day, the suitcase carry (left lead) or a hex-bar frame carry covers the same ground; the two-hand farmer carry stays the tracked battery movement.',
       exercises: [
-        { name: 'Farmer Carry (Both Hands)', sets: '4', reps: '30–35 yds', load: '35 lbs/hand (Wk1) →40 →45 →50', tempo: 'Controlled', rest: '90s', cue: 'Shoulders packed, chest tall, neutral neck. Confirmed baseline 35 lbs/hand. Add 5 lbs every week. 50 lbs/hand is the Week 4 target.', rirNote: '2 RIR — stop the carry before grip fails' },
-        { name: 'Suitcase Carry (Left Lead)', sets: '3', reps: '25 yds ea', load: '25–30 lbs', tempo: 'Controlled', rest: '60s', cue: 'LEFT arm first per Styku scan. Resist lateral lean. Core stays square. Anti-lateral flexion. Reveals asymmetry under load.' },
+        { name: 'Farmer Carry (Both Hands)', sets: '4', reps: '30–35 yds', load: '35 lbs/hand (Wk1) →40 →45 →50', tempo: 'Controlled', rest: '90s', flag: 'Hinge stop-signal governs the pickup and set-down — back pain means STOP.', cue: 'Shoulders packed, chest tall, neutral neck. Confirmed baseline 35 lbs/hand. Add 5 lbs every week. 50 lbs/hand is the Week 4 target.', rirNote: '2 RIR — stop the carry before grip fails' },
+        { name: 'Suitcase Carry (Left Lead)', sets: '3', reps: '25 yds ea', load: '25–30 lbs', tempo: 'Controlled', rest: '60s', flag: 'Hinge stop-signal governs the pickup and set-down — back pain means STOP.', cue: 'LEFT arm first per Styku scan. Resist lateral lean. Core stays square. Anti-lateral flexion. Reveals asymmetry under load.' },
         { name: 'Trap Bar or Hex Bar Shrug', sets: '3', reps: '15', load: '55–65 lbs', tempo: '2-1-2', rest: '45s', cue: 'Elevate shoulders toward ears, hold 1 second, controlled lower. Upper trap and grip strength.', rirNote: '1 RIR — accessory' },
       ],
     },

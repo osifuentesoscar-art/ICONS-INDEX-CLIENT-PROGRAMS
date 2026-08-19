@@ -388,7 +388,7 @@ const styku = {
   rightArmLST: 6.4,
   leftLegLST: 12.7,
   rightLegLST: 13.1,
-  peerComparison: "Body Fat 27.1% reads lower than 80% of Styku's peer comparison group. Both segmental gaps (arms 0.2 lbs, legs 0.4 lbs) sit below the 0.5 lb Asymmetry Protocol trigger — monitor only, no unilateral-lead protocol change indicated.",
+  peerComparison: "Body Fat 27.1% reads lower than 80% of Styku's peer comparison group. Both segmental gaps (arms 0.2 lbs ≈ 3%, legs 0.4 lbs ≈ 3%) sit far below the ≥10% relative Asymmetry Protocol trigger — monitor only, no unilateral-lead protocol change indicated.",
 };
 
 const weekOverview = [
@@ -406,7 +406,7 @@ const baselines = [
   ['Split Stance Hex DL', '165 lbs × 5', 'NEW PR', 'Est 1RM: 192 lbs · Wk4 target: 175–180 lbs'],
   ['Hip Thrust', '145 lbs × 5', 'NEW PR', 'Est 1RM: 169 lbs · Wk4 target: 155–160 lbs'],
   ['DB Lunge', '40 lbs × 8', 'Baseline', 'Wk4 target: 45–50 lbs/hand'],
-  ['Single-Leg RDL', '40 lbs', 'Baseline', 'Wk4 target: 45 lbs. Previously left-leg-lead (per original leg LST gap); Week 8 rescan confirmed gap closed below the 0.5 lb threshold — proceed evenly both sides.'],
+  ['Single-Leg RDL', '40 lbs', 'Baseline', 'Wk4 target: 45 lbs. Previously left-leg-lead (per original leg LST gap); Week 8 rescan confirmed the gap closed (0.4 lbs ≈ 3% — far below the ≥10% relative trigger) — proceed evenly both sides.'],
   ['Push-Ups', '28 reps', 'NEW PR', 'Exceptional. Add weighted vest Wk3'],
   ['Farmers Carry', '50 lbs/hand', 'Baseline', 'Wk4 target: 60–65 lbs/hand — past 60 lbs/hand the carry moves to the hex bar'],
   ['Plank Hold', '2:00', 'NEW PR', 'Exceptional. Loaded with 10–15 lb plate from session 1'],
@@ -759,7 +759,7 @@ const days = [
         letter: 'A',
         title: 'PRIMARY COMPOUND — POWER & RATE OF FORCE DEVELOPMENT',
         introLabel: null,
-        intro: 'Power is this day\'s primary quality and runs first, fresh — moving a sub-maximal load with maximal intent, full recovery between sets. Rotate the jump slot by how the legs feel: trap bar jump, box step-up jump, or — on a day that wants less impact — a brisk step-up driven with full intent and no jump. The speed sled stays lighter than Thursday\'s by design; the intent is the exercise.',
+        intro: 'Power is this day\'s primary quality and runs first, fresh — moving a sub-maximal load with maximal intent, full recovery between sets. Rotate the jump selection by how the legs feel: trap bar jump, box step-up jump, or — on a day that wants less impact — a brisk step-up driven with full intent and no jump. The speed sled stays lighter than Thursday\'s by design; the intent is the exercise.',
         exercises: [
           { name: 'Sled Push (Speed Focus)', insight: 'Speed focus — not max load', sets: '5', reps: '15 yds', load: '70–80 lbs', tempo: 'Explosive', rest: '90s', cue: 'Velocity training — lighter than Thursday. Drive hard and fast. Full hip extension.' },
           { name: 'Trap Bar Jump or Box Step-Up Jump', sets: '4', reps: '5', load: '30–40 lbs', tempo: 'Explosive', rest: '90s', cue: 'Light load, fast intent. Triple extension: ankle, knee, hip. Safe power expression.' },

@@ -244,6 +244,75 @@
  * NO loads, sets, reps, tempos, rests, exercise selection, block structure,
  * or clinical framing changed in this pass beyond the two moved exercises
  * and the Day A block relettering they required.
+ *
+ * Updated 8/19/2026 — ICONS BLOCK METHOD RESTRUCTURE (roster-wide rollout,
+ * batch 2; spec: CLAUDE.md "ICONS Block Method — Standing Session
+ * Architecture"; reference implementation: scripts/siobhan_hansen_3day_plan.js,
+ * the pilot). Re-architecture of block boundaries and titles onto the
+ * six-slot order (Corrective → Primary Compound → Accessory → Jason's
+ * Exercise → Secondary Compound → Third Compound/Integration) — the
+ * RENDERED EXERCISE ORDER ON BOTH DAYS IS UNCHANGED, which deliberately
+ * preserves both documented Antagonist Rotation audit fixes verbatim
+ * (8/12/2026 four-in-a-row fixes: Day A Hex DL → Hip Thrust → DB Flat
+ * Bench → RDL; Day B Split Squat → Landmine → Face Pull → Reverse Lunge →
+ * Step-Up, incl. the 8/13 Reverse Lunge insertion).
+ *   DAY A slot map: 1 = Block A (Hip Hinge Corrective, unchanged — Jason's
+ *   hinge-corrective exercises [SL Reverse Hyper, KB Hip-Hinge Hang, Glute
+ *   Kickback] stay slot-1 priming, exactly as his session used them);
+ *   2 = new Block B, Hex Bar Deadlift alone (primary + options menu);
+ *   3 = new Block C, Hip Thrust + DB Flat Bench + DB RDL (accessory block —
+ *   the 8/12-fix ordering lives here verbatim); 4 = Block D, the Shoulder &
+ *   Postural Activation block (Back Fly + Around-the-World Raise ARE
+ *   Jason's documented 8/10-session exercises, and their existing pre-press
+ *   position is exactly the slot-4 position — retitled PT-LED, no content
+ *   moved); 5 = Block E, Press Strength (secondary compound + options);
+ *   6 = Block F, Loaded Carry + Core retitled FULL-BODY INTEGRATION (+
+ *   carry options); Block G = cardio finisher (may follow integration per
+ *   spec). DAY B slot map: 1 = OMITTED honestly — no documented corrective
+ *   for the day's regions beyond the standing hip-hinge rehearsal, which is
+ *   unloaded rehearsal and stays in warmUp per the warm-up-drift rule (it
+ *   still precedes all loaded hinge work, satisfying the standing flag);
+ *   2 = new Block A, Split Squat + Landmine Squat (primary pair + options);
+ *   3 = new Block B, Face Pull (Kieser) + Reverse Lunge + Step-Up
+ *   (accessory); 4 = OMITTED — all of Jason's documented exercises live on
+ *   Day A (slot 1 + slot 4) exactly as his sessions used them; importing
+ *   one to Day B would be a dosing addition he didn't prescribe;
+ *   5 = Block C, Pull Strength + Pull-Up Progression (secondary + options;
+ *   goblet squat stays the block's closer where the 8/12 fix placed it);
+ *   Block D = Push-Up Progression retained as a standing baseline-protocol
+ *   block (green, per CLAUDE.md's color rule); 6 = Block E, the metabolic
+ *   circuit retitled FULL-BODY INTEGRATION — it genuinely is the day's
+ *   compound closer (hinge → pull → push → core in one complex), with its
+ *   metabolic emphasis intact.
+ * COMPOUND-SLOT OPTIONS — all menus constraint-filtered BEFORE listing:
+ *   no barbell back squat, no conventional barbell deadlift, no
+ *   clean-to-overhead-press anywhere on any menu (all three deferred per
+ *   the moderate-progression plan — stated in the menus themselves);
+ *   hinge options stay hex-bar/DB/hip-thrust-family; press options stay
+ *   DB/landmine (spine-conservative paths only).
+ * TOUCH-IT-BRING-IT-CURRENT in the same pass: (1) cable→Kieser renames
+ *   (Face Pull, pull-through, tricep kickback — also normalizing the old
+ *   "Keiser" spelling); (2) equipment check clean — KB work ≤25 lbs,
+ *   DB work ≤60 lbs/hand at every programmed load; the carry options menu
+ *   names the hex bar as the vehicle if carry loads ever pass 60 lbs/hand;
+ *   (3) PROACTIVE Week-5 deload added (new blue client-visible note) —
+ *   she is a coordinated-care client (Jason Bethea, PT-set 6-8 week hex-DL
+ *   target) in an active moderate-progression reintroduction phase with an
+ *   8+ week continuous-progression arc, all three of which point to the
+ *   proactive (non-negotiable) tier of CLAUDE.md's deload protocol;
+ *   milestones4wk/8wk/rescanNote reconciled to the Wk4-check → Wk5-deload
+ *   → Wk6-8-rebuild arc; (4) 4-week strength-check cadence stated in the
+ *   summary (no Styku on file, so the 8-12-week body-comp rescan clock
+ *   starts only once a first scan exists — stated rather than implied);
+ *   (5) warm-up drift re-checked: the flagged Day A case was already fixed
+ *   8/18 (third pass above) — re-verified no loaded, rep-prescribed
+ *   exercise remains in either day's warmUp beyond Day B's legitimate
+ *   goblet-squat ramp of a programmed lift; also reworded the warm-up's
+ *   "PT-documented ... (from the 8/10 session)" phrasing to "PT-led" per
+ *   the pilot's Client-View leak-fix precedent (warmUp has no audience
+ *   filter). ICONS Index 10-movement coverage (women 40-55 standard,
+ *   applies at 48) re-verified intact after the restructure — nothing
+ *   dropped, nothing moved out of a progressed row.
  */
 
 const fs = require('fs');
@@ -279,6 +348,11 @@ const baselineNotes = [
     type: 'gold',
     label: 'How Hard Each Set Should Feel — Reps In Reserve (RIR)',
     body: 'Most working sets in this program now carry an RIR target — the number of clean reps you could still have completed at the moment you racked the weight. 2 RIR is the default on the primary lifts (hex bar deadlift, hip thrust, flat bench press, overhead press, incline press, split squat, goblet squat, chest-supported row): finish each set with two good reps left, not grinding. 1 RIR is used only where the goal is muscle growth rather than peak strength — lateral raises, incline push-up volume, tricep work. Anything marked technique/sub-maximal sits deliberately further from failure than that: the correctives, the shoulder activation, and every movement still being established (landmine squat, reverse lunge, glute kickback). There is no meaningful difference between three, four or five reps in reserve, so do not try to hit a precise number there — just stay clearly short of hard. Some work carries no RIR target at all, on purpose: farmer carries are governed by distance and posture, planks by time, the correctives by hinge quality, and the cardio finishers and metabolic circuit by the clock and by movement quality. Given the stenosis history, training to true failure is not required and is not the goal on any lift in this program. Calibration for the first few weeks: on one sub-maximal set of a new movement, call out the RIR you think you have left, then take that same set to true failure and compare. Once your call is within one rep two sessions running, your own RIR is reliable enough to drive load increases on its own.',
+  },
+  {
+    type: 'blue',
+    label: 'Planned Deload — Week 5, Directly After the Week 4 Strength Check',
+    body: 'This program deliberately includes one lighter week, and it is planned, not a reaction to anything going wrong. Week 5 — immediately after the Week 4 strength check — is a structured deload: the same exercises and the same movement patterns, with sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), and loads held at Week 3-4 levels rather than climbing — the usual add-weight rule pauses for this one week. With previously-restricted movements still being reintroduced on a moderate-progression plan and a PT-set long-arc deadlift target underway, this is how the program consolidates the strength built in Weeks 1-4 before Weeks 6-8 rebuild from the Week 4 loads toward the 8-week retest. One light week costs nothing that matters: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days of resuming.',
   },
   {
     type: 'gold',
@@ -359,12 +433,18 @@ const baselineNotes = [
   {
     type: 'green',
     label: 'PT Update — 8/10/2026 Session, Additional Activation & Accessory Detail (Jason Bethea)',
-    body: 'The same SOAP note above (SOAP_AimeeMorris_2026-08-10.pdf) documented a fuller PT-led warm-up and activation circuit than the headline additions alone captured. Folded in this update: (1) a full-body PVC-stick mobility routine (shoulder passovers, overhead squat with stick, hip openers) used as her actual session opener, added to Day A\'s warm-up; (2) Kettlebell Hip-Hinge Hang, an isometric hinge-position hold, added to Day A Block A alongside the dynamic hinge drills; (3) Glute Kickback (band or cable), added to Day A Block A — genuinely new, not already covered by the Day B "Keiser/DB Kickback" line, which is a tricep kickback; (4) Standing Hip-Hinge Back Fly and Around-the-World Lateral Raise, real postural/shoulder activation from the same session, now programmed as Day A Block C (Shoulder & Postural Activation) with full sets/load/tempo/rest and RIR — they were originally folded into Day A\'s warm-up prose, which gave two genuinely loaded, rep-prescribed exercises no load columns, no progression, and no visibility to exercise-table audits (restructured 8/18/2026); (5) Walking Reach documented as a named low-fatigue regression option on the Single-Leg RDL exercise (not programmed as a standing swap — a DOMS-driven one-off accommodation, per the note above).',
+    body: 'The same SOAP note above (SOAP_AimeeMorris_2026-08-10.pdf) documented a fuller PT-led warm-up and activation circuit than the headline additions alone captured. Folded in this update: (1) a full-body PVC-stick mobility routine (shoulder passovers, overhead squat with stick, hip openers) used as her actual session opener, added to Day A\'s warm-up; (2) Kettlebell Hip-Hinge Hang, an isometric hinge-position hold, added to Day A Block A alongside the dynamic hinge drills; (3) Glute Kickback (band or Kieser), added to Day A Block A — genuinely new, not already covered by the Day B "Kieser/DB Kickback" line (Day B Block D as of the 8/19 restructure), which is a tricep kickback; (4) Standing Hip-Hinge Back Fly and Around-the-World Lateral Raise, real postural/shoulder activation from the same session, now programmed as Day A\'s Shoulder & Postural Activation block (Block D as of the 8/19 restructure) with full sets/load/tempo/rest and RIR — they were originally folded into Day A\'s warm-up prose, which gave two genuinely loaded, rep-prescribed exercises no load columns, no progression, and no visibility to exercise-table audits (restructured 8/18/2026); (5) Walking Reach documented as a named low-fatigue regression option on the Single-Leg RDL exercise (not programmed as a standing swap — a DOMS-driven one-off accommodation, per the note above).',
     // Client View: cites internal session-documentation detail (SOAP note
     // filename/date), same category already marked internal elsewhere in
     // this file (the "Reintroduced This Update" and prior "PT Update"
     // notes). The exercises/warm-up content themselves stay fully visible.
     audience: 'internal',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'Both days restructured onto the ICONS Block Method six-slot order (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound/Integration) with the rendered exercise order on both days UNCHANGED — block boundaries and titles were re-cut around the existing sequence, which deliberately preserves the 8/12/2026 Antagonist Rotation four-in-a-row fixes and the 8/13/2026 Reverse Lunge insertion verbatim. Day A: slot 1 = Hip Hinge Corrective (Jason\'s hinge exercises stay slot-1 priming, as his session used them); slot 2 = Hex Bar Deadlift; slot 3 = Hip Thrust + DB Flat Bench + DB RDL; slot 4 = the Shoulder & Postural Activation block (Back Fly + Around-the-World Raise are Jason\'s documented 8/10-session exercises and were already positioned exactly where slot 4 sits — pre-press); slot 5 = Press block; slot 6 = Loaded Carry + Core as integration; cardio finisher follows. Day B: slots 1 and 4 honestly omitted (no documented day-region corrective beyond the unloaded warm-up hinge rehearsal, and all Jason content lives on Day A as prescribed — importing it would be a dosing addition he didn\'t order); slot 2 = Split + Landmine Squat; slot 3 = Face Pull + Reverse Lunge + Step-Up; slot 5 = pull block (goblet squat stays its closer per the 8/12 fix); Push-Up Progression retained as a standing baseline-protocol block; slot 6 = the metabolic circuit as the integration closer. Compound-slot options menus (in block intros) were constraint-filtered before listing: barbell back squat, conventional barbell deadlift, and clean-to-overhead-press are excluded from every menu (deferred per the moderate-progression plan) and each exclusion is stated in the menu itself; overhead barbell pressing likewise excluded; the anchor lift is named in every menu. Same pass: cable→Kieser renames (incl. the old "Keiser" spelling), Week-5 proactive deload added (coordinated-care + reintroduction phase + 8-week arc), 4-week strength-check cadence stated, warm-up drift re-verified resolved (fixed 8/18), 10-movement coverage re-verified intact.',
   },
 ];
 
@@ -389,7 +469,7 @@ const days = [
     descriptor: 'STRENGTH EMPHASIS · HIP HINGE DEVELOPMENT · CARDIOVASCULAR FINISHER · 55–65 MIN',
     intensityLabel: "Day A's Purpose",
     intensityPara: 'Hinge, press, and loaded carry work built around hip hinge development. Hex bar deadlift stays as the primary hinge lift for now, and all pressing is dumbbell-based — moderate progression means new patterns get added deliberately rather than all at once, even with the stenosis restriction cleared. The day closes with a Zone 2 or HIIT cardio finisher — the primary cardiovascular training stimulus in this 2-day/week program. This program does not use the standard ICONS 60/70/80/90 day-intensity framework — with spinal stenosis history and moderate-progression pacing, load advances only as each newly-reintroduced movement proves clean, not on a fixed weekly % schedule; the badge color reflects the day\'s pattern focus, not an intensity percentage.',
-    warmUp: '10 min: 5 min stationary bike or treadmill walk (Zone 2 — cardiovascular warm-in). Then hip hinge rehearsal: PVC or broomstick hip hinge drill 2×10 (spine neutral, hinge from hips not back), glute bridge 2×15, dead bug 2×8 each side (spine decompression before loading), cat-cow 10 slow reps, ankle circles 10 each. PT-documented stick mobility circuit (from the 8/10 session): PVC/stick shoulder passovers 2×10 (front-to-back overhead pass, shoulder mobility prep ahead of today\'s pressing work), overhead squat with stick 2×8 (integrated hip/shoulder mobility), hip openers (90/90 or open-book) 8 each side. Shoulder and postural activation is not part of the warm-up — it runs as its own block (Block C) immediately before the pressing work, so it can be loaded and progressed properly.',
+    warmUp: '10 min: 5 min stationary bike or treadmill walk (Zone 2 — cardiovascular warm-in). Then hip hinge rehearsal: PVC or broomstick hip hinge drill 2×10 (spine neutral, hinge from hips not back), glute bridge 2×15, dead bug 2×8 each side (spine decompression before loading), cat-cow 10 slow reps, ankle circles 10 each. PT-led stick mobility circuit, used as the session opener: PVC/stick shoulder passovers 2×10 (front-to-back overhead pass, shoulder mobility prep ahead of today\'s pressing work), overhead squat with stick 2×8 (integrated hip/shoulder mobility), hip openers (90/90 or open-book) 8 each side. Shoulder and postural activation is not part of the warm-up — it runs as its own block (Block D) immediately before the pressing work, so it can be loaded and progressed properly.',
     blocks: [
       {
         letter: 'A',
@@ -403,37 +483,45 @@ const days = [
           { name: 'Kettlebell Hip-Hinge Hang (Isometric)', sets: '2', reps: '3-5 controlled breaths (hold)', load: '20 lbs KB', tempo: '—', rest: '30s', cue: 'New this update. Hold at the bottom of the hinge position — neutral spine, lats engaged, no eccentric loading. Builds hinge-position control and time-under-tension awareness without adding load stress before the working sets.' },
           { name: 'Single-Leg Hip Hinge (Bodyweight)', sets: '2', reps: '8 ea', load: 'Bodyweight', tempo: '3-1-1', rest: '30s', cue: 'One leg, hinge from the hip, reach toward the floor. Develops hip hinge on each side independently. Left and right equal sets.' },
           { name: 'Single-Leg Reverse Hyper (Bench-Supported, Assessment)', sets: '2', reps: '8 ea', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'New PT assessment tool. Hips at bench edge, one leg extends behind on a controlled hip-extension arc, opposite leg braces. Watch for pelvic rotation or lumbar compensation each side; quality over load.', flag: 'PT assessment — pelvic control / hip-extension quality' },
-          { name: 'Glute Kickback (Band or Cable)', sets: '2-3', reps: '12/side', load: 'Band or cable — light-mod', tempo: 'Controlled', rest: '30s', cue: 'New this update. Standing or quadruped hip extension, squeeze glute at end range, avoid lumbar extension/compensation. Isolated hip-extension activation reinforcing the hinge and hip thrust patterns above.', rirNote: 'Technique/sub-maximal — activation, well short of failure' },
+          { name: 'Glute Kickback (Band or Kieser)', sets: '2-3', reps: '12/side', load: 'Band or Kieser — light-mod', tempo: 'Controlled', rest: '30s', cue: 'Standing or quadruped hip extension, squeeze glute at end range, avoid lumbar extension/compensation. Isolated hip-extension activation reinforcing the hinge and hip thrust patterns above.', rirNote: 'Technique/sub-maximal — activation, well short of failure' },
         ],
       },
       {
         letter: 'B',
-        title: 'PRIMARY HINGE STRENGTH',
+        title: 'PRIMARY COMPOUND — HEX BAR DEADLIFT',
         introLabel: 'Deadlift Baseline — 105 lbs ×3RM',
-        intro: 'Week 1 backs down to 95 lbs ×4×4. The 3RM baseline means technique may be under pressure at higher loads. Given the spinal stenosis, form is the absolute priority over load. Hip hinge corrective runs before every set. Add 5 lbs per week when all sets complete with clean hip hinge mechanics. Hex bar only — no conventional barbell. Hip thrust is new this block — hip-dominant and fully spine-safe, it reinforces the hip hinge pattern without any axial load. Your PT has set an explicit longer-arc target of 95 → 135 lbs over 6–8 weeks — this program\'s Wk1→Wk4 progression (95→120 lbs) is the compatible first step toward that goal.',
+        intro: 'The day\'s main lift. Week 1 backs down to 95 lbs ×4×4. The 3RM baseline means technique may be under pressure at higher loads — form is the absolute priority over load, and the hip hinge corrective runs before every set. Add 5 lbs per week when all sets complete with clean hip hinge mechanics. Hex bar only — no conventional barbell. Your PT has set an explicit longer-arc target of 95 → 135 lbs over 6–8 weeks — this program\'s Wk1→Wk4 progression (95→120 lbs) is the compatible first step toward that goal. If the day calls for a variation, rotate between: a double-DB Romanian deadlift, a hex bar pull from low blocks (shortened range, useful on a higher-fatigue day), or a B-stance DB RDL. The conventional barbell deadlift is not on this menu — it stays deferred to a later phase per the moderate-progression plan — and the hex bar lift stays the one we track and retest.',
         exercises: [
           { name: 'Hex Bar Deadlift', sets: '4', reps: '4–6', load: 'Wk1: 95 lbs → Wk4: 120 lbs', tempo: '2-1-1', rest: '90s', cue: 'Hex bar reduces lumbar shear vs conventional deadlift — appropriate for spinal stenosis. Stand centered. Hinge hips back to grip handles. Drive floor away. Hips and shoulders rise together. Lockout at top. Hip hinge drill before each set.', rirNote: '2 RIR — primary lift' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'ACCESSORY — HIP THRUST, PRESS & HINGE VOLUME',
+        introLabel: 'Accessory Load Targets',
+        intro: 'The muscle-building volume directly behind the deadlift: hip thrust (hip-dominant and fully spine-safe — it reinforces the hip hinge pattern without any axial load), supine flat pressing, and DB hinge volume, in an order that never stacks the same pattern three times running. If the hip thrust needs a variation: a floor glute bridge or a B-stance hip thrust covers the same pattern at the same spine-safe angle — the bench-supported hip thrust stays the lift we track.',
+        exercises: [
           { name: 'Hip Thrust (Barbell or Loaded DB, Bench-Supported)', sets: '4', reps: '5―6', load: 'Wk1: 80 lbs → Wk4: 105 lbs', tempo: '2-1-2', rest: '90s', cue: 'New baseline 95 lbs. Upper back on bench, drive hips to full extension, squeeze glutes hard at top. Hip-dominant — no axial spinal load, one of the safest heavy-loading options for spinal stenosis.', rirNote: '2 RIR — primary lift' },
           { name: 'DB Flat Bench Press', sets: '3', reps: '10', load: 'Wk1: 20 lbs/hand → Wk4: 25 lbs', tempo: '2-1-1', rest: '75s', cue: 'New baseline 20 lbs ×5RM. Fully supine, full back support — one of the safest presses for spinal stenosis. Full range, control the descent, drive up without arching off the bench.', rirNote: '2 RIR — primary lift' },
           { name: 'Romanian Deadlift (DB)', sets: '3', reps: '10', load: '25–30 lbs / hand', tempo: '3-1-1', rest: '60s', cue: 'Hip hinge, soft knee, full hamstring stretch at bottom. DBs track close to legs. Builds hip hinge volume after the hex bar primary work. Keep spine long throughout — no rounding.', rirNote: '2 RIR — compound accessory' },
         ],
       },
       {
-        letter: 'C',
-        title: 'SHOULDER & POSTURAL ACTIVATION',
+        letter: 'D',
+        title: 'PT-LED SHOULDER & POSTURAL ACTIVATION',
         color: 'gold',
         introLabel: 'Why This Runs Before Pressing',
-        intro: 'Two light postural/shoulder drills from the 8/10 PT session, primed immediately before the pressing work below. Rear-delt and upper-back activation counteracts the forward-shoulder posture that makes overhead pressing feel tight, and full-range abduction wakes up the shoulder through its whole arc before it has to hold load overhead. Deliberately light and deliberately sub-maximal — the goal is a switched-on shoulder going into Block D, not fatigue. Both movements are tracked with real loads and a progression the same way every other trained exercise in this program is.',
+        intro: 'Two light postural/shoulder drills from her PT-led session work with Jason Bethea, Brace Life\'s in-house Trainer/Physical Therapist, primed immediately before the pressing work below — keeping in-session continuity with his hands-on work. Rear-delt and upper-back activation counteracts the forward-shoulder posture that makes overhead pressing feel tight, and full-range abduction wakes up the shoulder through its whole arc before it has to hold load overhead. Deliberately light and deliberately sub-maximal — the goal is a switched-on shoulder going into Block E, not fatigue. Both movements are tracked with real loads and a progression the same way every other trained exercise in this program is.',
         exercises: [
           { name: 'Standing Hip-Hinge Back Fly (Light DBs)', sets: '2', reps: '10–12', load: 'Wk1: 5 lbs/hand → Wk4: 8 lbs/hand', tempo: '2-1-2', rest: '30s', cue: 'Hinge to a flat-back position, soft knees, arms long. Sweep the DBs out and back, leading with the pinky edge. Squeeze the shoulder blades together — no shrugging, no lumbar extension to help the weight up.', insight: 'Rear delt / upper back, postural anti-hunch. PT note specified only "light DBs" — the Wk1→Wk4 numbers are a programmed progression path set against her existing 8–10 lb lateral-raise accessory load, not a figure carried from the note.', insightAudience: 'internal', rirNote: 'Technique/sub-maximal — activation, well short of failure' },
           { name: 'Around-the-World Lateral Raise', sets: '2', reps: '10', load: '3–5 lbs', tempo: '2-1-2', rest: '30s', cue: 'Full arc from the hips to overhead and back, shoulders pulled down away from the ears the whole way. If the shoulders start to hike or the arc shortens, stop the set — range is the point of this one.', insight: 'Load stays at 3–5 lbs on purpose — this one progresses by range and control, not by weight. Heavier shortens the arc, which removes the reason it is in the program.', rirNote: 'Technique/sub-maximal — range and control, never near failure' },
         ],
       },
       {
-        letter: 'D',
-        title: 'PRIMARY PRESS STRENGTH',
+        letter: 'E',
+        title: 'SECONDARY COMPOUND — PRESS STRENGTH',
         introLabel: 'Spinal Stenosis Note',
-        intro: 'All pressing is dumbbell-based — no barbell overhead press. Dumbbells allow the spine to remain in a more neutral position and reduce axial load vs a barbell. Seated overhead press is preferred for spinal stenosis (supported lumbar spine). Flat bench press is new this block — fully supine, no axial load. Avoid pressing to absolute failure — brace fails first.',
+        intro: 'The day\'s second compound pattern — pressing, rotating off the hinge work above. All pressing is dumbbell-based — no barbell overhead press. Dumbbells allow the spine to remain in a more neutral position and reduce axial load vs a barbell. Seated overhead press is preferred for spinal stenosis (supported lumbar spine). Avoid pressing to absolute failure — brace fails first. If the day calls for a press variation, rotate between: a landmine press (angled path, easy on the spine — the same logic as the landmine squat), a half-kneeling single-arm DB press, or a higher-incline DB press. Barbell overhead pressing and the clean-to-press stay off this menu — both deferred per the moderate-progression plan — and the seated DB press and incline press stay the lifts we track and retest.',
         exercises: [
           { name: 'DB Overhead Press (Seated)', sets: '4', reps: '10', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs', tempo: '2-1-1', rest: '75s', cue: 'Updated baseline 17.5 lbs ×5RM. Wk1 starts at 15 lbs for 10 reps. Seated: back supported, spine neutral. Press overhead, arms alongside ears. Core braced throughout. Add 2.5 lbs every 2 weeks.', rirNote: '2 RIR — primary lift' },
           { name: 'Incline DB Press (30–45°)', sets: '4', reps: '10―12', load: 'Wk1: 15 lbs/hand → Wk4: 20 lbs', tempo: '3-1-1', rest: '75s', cue: 'Updated baseline 15 lbs ×8 reps. Primary chest movement. 30–45° incline. Elbows at 45°. Full range, squeeze at top. Safe for spinal stenosis — no axial load.', rirNote: '2 RIR — primary lift' },
@@ -442,10 +530,10 @@ const days = [
         ],
       },
       {
-        letter: 'E',
-        title: 'LOADED CARRY + CORE',
+        letter: 'F',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY + CORE',
         introLabel: 'Farmer Carry & Core Progression',
-        intro: 'Loaded carries build deep spinal stabilizer strength (multifidus, QL) with neutral spine and shoulders packed. Sit-up and bicycle crunch are new this update — previously restricted, now cleared, reintroduced at moderate volume and controlled tempo. Stop and flag any discomfort rather than pushing through. Nothing in this block carries an RIR target: the carry is governed by distance and posture, the plank by time, and the core work by control and symptom response — a carry that ends because the grip failed is a different (and worse) set than one that ends with the spine still stacked.',
+        intro: 'The session\'s closing compound work — the carry pulls today\'s hinge strength, pressing posture, and core bracing together under gait, building deep spinal stabilizer strength (multifidus, QL) with neutral spine and shoulders packed. Sit-up and bicycle crunch are newly reintroduced — previously restricted, now cleared — at moderate volume and controlled tempo; stop and flag any discomfort rather than pushing through. Nothing in this block carries an RIR target: the carry is governed by distance and posture, the plank by time, and the core work by control and symptom response — a carry that ends because the grip failed is a different (and worse) set than one that ends with the spine still stacked. If a carry variation suits the day: a front-rack or goblet carry (upright-posture bias), or a light suitcase carry (one side at a time — brace against the lean, and keep it lighter than the two-hand carry). If carry loads ever progress past 60 lbs per hand, the carry moves to the hex bar.',
         exercises: [
           { name: 'Farmer Carry (DB, Both Hands)', sets: '4', reps: '25–30 yds', load: 'Wk1: 35 lbs/hand → +5 lbs/2wks', tempo: 'Controlled', rest: '90s', cue: 'Baseline 35 lbs/hand. Shoulders packed, chest tall, neutral neck. Add 5 lbs every 2 weeks. Stop if spine begins to laterally flex or shoulder hikes. These are the form cues that matter most.' },
           { name: 'Plank Hold (Elbow)', sets: '2', reps: ':50', load: 'Bodyweight', tempo: '—', rest: '90s', cue: 'Updated baseline :55. Hold at :50 in training — quality over max time. Full brace, neutral spine. Builds to 1:05 in Wk2, 1:15 in Wk4.' },
@@ -454,7 +542,7 @@ const days = [
         ],
       },
       {
-        letter: 'F',
+        letter: 'G',
         title: 'CARDIOVASCULAR FINISHER (CHOOSE ONE)',
         introLabel: 'Cardio Protocol — Choose One',
         intro: 'At 2 days per week, cardiovascular improvement depends heavily on the quality of conditioning work done within each session. Every Day A ends with one of these finishers. They are not optional. This is the primary fat loss and cardiovascular adaptation mechanism in the program. None of these carry an RIR target — they are governed by heart rate, time, and drive quality, not by reps left in reserve. On the sled specifically: end a round when drive speed drops off sharply, rather than grinding out the distance.',
@@ -481,22 +569,31 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'PRIMARY SQUAT STRENGTH',
+        title: 'PRIMARY COMPOUND — SPLIT SQUAT & LANDMINE SQUAT',
         introLabel: 'Squat Progression Note',
-        intro: 'DB split squat and goblet squat remain the primary lower body movements on Day B. Landmine squat is new this update — the angled bar path is more forgiving than a straight barbell back squat, a good bridge exercise while barbell squatting itself is still deferred (see baseline notes). The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus. Reverse Lunge is new this update — a genuinely distinct lunge-pattern movement from DB Split Squat, started at bodyweight.',
+        intro: 'The day\'s main squat-pattern work. The split squat 3RM baseline (35 lbs/hand) suggests form may be under pressure at max load — Week 1 trains at 25 lbs for 8 reps with full depth focus. Landmine squat pairs directly behind it — the angled bar path is more forgiving than a straight barbell back squat, a good bridge exercise while barbell squatting itself is still deferred (see baseline notes). If the day calls for a squat variation, rotate between: a goblet squat (also programmed later today), a box squat (depth set by the box — a genuinely useful choice on a heavier-feeling day), or a supported split squat holding a rail. The barbell back squat is not on this menu — it stays deferred to a later phase per the moderate-progression plan — and the DB split squat stays the lift we track and retest.',
         exercises: [
           { name: 'DB Split Squat (Front Foot Elevated)', sets: '3+3', reps: '8―10 ea', load: 'Wk1: 25 lbs/hand → Wk4: 35 lbs/hand', tempo: '3-1-1', rest: '75s', cue: 'Baseline 35 lbs ×3RM. Start at 25 lbs for 8 quality reps with full depth. Front foot elevated 2–4 inches increases range of motion. Front knee tracks over second toe. Left leg leads first. Add 2.5 lbs every 2 weeks.', rirNote: '2 RIR — primary lift' },
-          { name: 'Landmine Squat', sets: '3', reps: '10–12', load: 'Light-Mod — coach discretion', tempo: 'Controlled', rest: '75s', cue: 'New this update. Chest up, drive through heels, full ROM. Angled bar path loads the spine more forgivingly than a straight barbell — bridges toward barbell squatting once that\'s reintroduced.', rirNote: 'Technique/sub-maximal while the pattern is new' },
-          { name: 'Face Pull (Cable)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Rear delt and rotator cuff health. Balances the pressing volume from Day A. Non-negotiable for shoulder health.', rirNote: 'Technique/sub-maximal — shoulder health, never near failure' },
-          { name: 'Reverse Lunge (Bodyweight or DB)', sets: '3', reps: '8 ea', load: 'Wk1: Bodyweight → Wk4: 10 lbs/hand', tempo: '3-1-1', rest: '60s', cue: 'New this update — first genuine lunge-pattern movement in the program. Step straight back, lower until rear knee lightly grazes floor, front knee tracks over toes, drive through front heel to return. Controlled step-back (not walking lunge) — lower deceleration demand, appropriate given the stenosis history. Left leg leads first.', rirNote: 'Technique/sub-maximal — new pattern, quality first' },
-          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '12.5―17.5 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Left leg leads. Excellent glute and quad developer.', rirNote: '2 RIR — compound accessory' },
+          { name: 'Landmine Squat', sets: '3', reps: '10–12', load: 'Light-Mod — coach discretion', tempo: 'Controlled', rest: '75s', cue: 'Chest up, drive through heels, full ROM. Angled bar path loads the spine more forgivingly than a straight barbell — bridges toward barbell squatting once that\'s reintroduced.', rirNote: 'Technique/sub-maximal while the pattern is new' },
         ],
       },
       {
         letter: 'B',
-        title: 'PRIMARY PULL STRENGTH + PULL-UP PROGRESSION',
+        title: 'ACCESSORY — SHOULDER HEALTH & LUNGE PATTERNS',
+        color: 'gold',
+        introLabel: 'Why This Order',
+        intro: 'Accessory work behind the squat pair: the face pull breaks up the leg patterns while doing non-negotiable rear-delt/rotator-cuff work, then the lunge patterns close the block — a true stepping reverse lunge (genuinely distinct from the stationary split squat) followed by the step-up. This order never stacks three same-pattern leg exercises in a row.',
+        exercises: [
+          { name: 'Face Pull (Kieser)', sets: '3', reps: '15―20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face, elbows at ear height, external rotation at end range. Rear delt and rotator cuff health. Balances the pressing volume from Day A. Non-negotiable for shoulder health.', rirNote: 'Technique/sub-maximal — shoulder health, never near failure' },
+          { name: 'Reverse Lunge (Bodyweight or DB)', sets: '3', reps: '8 ea', load: 'Wk1: Bodyweight → Wk4: 10 lbs/hand', tempo: '3-1-1', rest: '60s', cue: 'Step straight back, lower until rear knee lightly grazes floor, front knee tracks over toes, drive through front heel to return. Controlled step-back (not walking lunge) — lower deceleration demand, appropriate given the stenosis history. Left leg leads first.', rirNote: 'Technique/sub-maximal — new pattern, quality first' },
+          { name: 'Step-Up (Unilateral, DB)', sets: '3+3', reps: '8 ea', load: '12.5―17.5 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Drive through front heel, full hip extension at top. Left leg leads. Excellent glute and quad developer.', rirNote: '2 RIR — compound accessory' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'SECONDARY COMPOUND — PULL STRENGTH + PULL-UP PROGRESSION',
         introLabel: 'Pull-Up Baseline — 5 Reps Each Grip (Assisted)',
-        intro: 'Neutral grip is the safest for spinal stenosis — least internal rotation and least lat tension through the lumbar spine at end range. Neutral grip leads in every session. All three grips trained every session for comprehensive lat and upper back development. Progress: +1 rep per grip every 2 weeks.',
+        intro: 'The day\'s second compound pattern — pulling, rotating off the squat and lunge work above. Neutral grip is the safest for spinal stenosis — least internal rotation and least lat tension through the lumbar spine at end range. Neutral grip leads in every session; all three grips trained every session for comprehensive lat and upper back development. Progress: +1 rep per grip every 2 weeks. If the row needs a variation: a single-arm Kieser row or a single-arm DB row on a bench covers the same pattern with the same no-lumbar-load intent — the chest-supported row stays the one we track. The three-grip pull-up progression is its own sequence — run it as written. Goblet squat closes the block as squat-pattern volume after the pulling work.',
         exercises: [
           { name: 'Assisted Pull-Up — Neutral Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'LEADS every session — safest grip for spinal stenosis. Full hang at bottom. Chin over bar at top. Controlled 3-second descent. Neural grip (palms facing each other). Add 1 rep every 2 weeks.', rirNote: '2 RIR — set the assist so the last rep is clean with ~2 left' },
           { name: 'Assisted Pull-Up — Standard Grip', sets: '3', reps: '5–6 reps', load: 'Assist level set', tempo: '3-1-2', rest: '60s', cue: 'Standard overhand grip, shoulder-width. Same quality as neutral grip. 3-second descent. Second grip in the rotation.', rirNote: '2 RIR — same assist standard as neutral grip' },
@@ -506,7 +603,7 @@ const days = [
         ],
       },
       {
-        letter: 'C',
+        letter: 'D',
         title: 'PUSH-UP PROGRESSION',
         color: 'green',
         introLabel: 'Push-Up Baseline — 7 Reps Incline (Hands Elevated)',
@@ -514,17 +611,17 @@ const days = [
         exercises: [
           { name: 'Incline Push-Up (Hands Elevated)', sets: '3', reps: '8―10', load: 'Bodyweight', tempo: '3-0-1', rest: '60s', cue: 'Updated baseline 7 reps. Hands on bench or box. Full chest to bench level. Controlled descent. Progress by lowering the incline height each week. Bridges the gap to floor push-ups.', rirNote: '1 RIR — hypertrophy-priority accessory volume' },
           { name: 'Full Push-Up (Floor Attempt)', sets: '3', reps: 'Max (target 3–5)', load: 'Bodyweight', tempo: '3-0-1', rest: '90s', cue: 'Attempt full push-ups. Stop 2 reps before form breaks. Record reps every set every session. Target: 8–10 full reps by Week 4. Neutral spine throughout — no sag or pike.', rirNote: 'Form-governed, not RIR — this is the one recorded max-rep set; stop 2 reps before form breaks' },
-          { name: 'Tricep Dip (Bench) OR Keiser / DB Kickback', sets: '3', reps: '10―12', load: 'Bodyweight (dip) or Light-Mod (kickback)', tempo: '3-0-1', rest: '45s', cue: 'Dip: hands on bench behind body, lower until elbows reach 90°, drive back up. Keiser/DB kickback: hinge forward, elbow fixed at side, extend through full range, squeeze at lockout. Coach/client choice — both build tricep strength for push-up progression.', rirNote: '1 RIR — hypertrophy-priority isolation' },
+          { name: 'Tricep Dip (Bench) OR Kieser / DB Kickback', sets: '3', reps: '10―12', load: 'Bodyweight (dip) or Light-Mod (kickback)', tempo: '3-0-1', rest: '45s', cue: 'Dip: hands on bench behind body, lower until elbows reach 90°, drive back up. Kieser/DB kickback: hinge forward, elbow fixed at side, extend through full range, squeeze at lockout. Coach/client choice — both build tricep strength for push-up progression.', rirNote: '1 RIR — hypertrophy-priority isolation' },
         ],
       },
       {
-        letter: 'D',
-        title: 'METABOLIC CONDITIONING CIRCUIT — 3 ROUNDS',
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — METABOLIC CONDITIONING CIRCUIT (3 ROUNDS)',
         color: 'gold',
         introLabel: 'Cardio Protocol',
-        intro: "Day B's cardiovascular work is a metabolic circuit rather than dedicated cardio. This provides the strength-plus-conditioning stimulus that is most effective for fat loss and body composition at 2 days per week. Kettlebell swing and pull-through are new this update — moderate, hip-hinge-dominant options from the cross-training notes, replacing goblet squat in this slot (client/coach choice over jump squat, which stays deferred for now given moderate-progression pacing). After 3 circuit rounds: 10-minute cardiovascular finisher — choose stationary bike easy spin, treadmill Zone 2 walk, or rowing machine easy pace. Nothing in this circuit carries an RIR target — it is paced by the clock and by movement quality, not by reps left in reserve. End a round of swings or pull-throughs if the hinge mechanics start to degrade, rather than completing the number.",
+        intro: "The session's closing compound circuit — hinge, pull, push, and core in one continuous complex, pulling the whole day's patterns together while doubling as Day B's cardiovascular work. This provides the strength-plus-conditioning stimulus that is most effective for fat loss and body composition at 2 days per week. The hinge station rotates between kettlebell swing and Kieser/band pull-through (client/coach choice — jump squat stays deferred for now given moderate-progression pacing). After 3 circuit rounds: 10-minute cardiovascular finisher — choose stationary bike easy spin, treadmill Zone 2 walk, or rowing machine easy pace. Nothing in this circuit carries an RIR target — it is paced by the clock and by movement quality, not by reps left in reserve. End a round of swings or pull-throughs if the hinge mechanics start to degrade, rather than completing the number.",
         exercises: [
-          { name: 'Kettlebell Swing OR Cable/Band Pull-Through', sets: '3 rounds', reps: '10–15', load: 'Light-Mod KB or band/cable', tempo: '2-0-1', rest: '15s then next', cue: 'KB swing: hip hinge, snap glutes at top, arms relaxed. Pull-through: hinge back to reach through legs, drive hips forward to stand tall, squeeze glutes at top. Both hip-hinge dominant — coach discretion which to use. Into the next exercise after 15 seconds.' },
+          { name: 'Kettlebell Swing OR Kieser/Band Pull-Through', sets: '3 rounds', reps: '10–15', load: 'Light-Mod KB or band/Kieser', tempo: '2-0-1', rest: '15s then next', cue: 'KB swing: hip hinge, snap glutes at top, arms relaxed. Pull-through: hinge back to reach through legs, drive hips forward to stand tall, squeeze glutes at top. Both hip-hinge dominant — coach discretion which to use. Into the next exercise after 15 seconds.' },
           { name: 'DB Row (Both Arms, Bent Over)', sets: '3 rounds', reps: '12', load: '20―25 lbs', tempo: '2-1-2', rest: '15s then next', cue: 'Hip hinge, pull both DBs to ribs. Lighter than Day B primary row. Metabolic pull volume. Into the next exercise.' },
           { name: 'Push-Up (Max or Incline)', sets: '3 rounds', reps: 'Max', load: 'Bodyweight', tempo: '3-0-1', rest: '15s then next', cue: 'Full or incline — whatever allows quality reps. Stop 1 rep before form breaks.' },
           { name: 'Plank Hold', sets: '3 rounds', reps: '45–60s', load: 'Bodyweight', tempo: '—', rest: '90s rest', cue: 'Full brace. Rest 90 seconds after plank then begin next round. 3 full rounds of the complete circuit. Record how many rounds complete with good form each week.' },
@@ -564,9 +661,9 @@ const summary = {
     ['Wk 3', '—', 'Day A & B', 'Hex DL 105 lbs ×4×4 / Hip Thrust 95–100 lbs ×5–6 / Split Squat 30 lbs ×8', 'Hex DL and Hip Thrust back to tested baseline, treated as working weight. Push-up: 6–8 full reps. Plank: 1:10. Cardiovascular endurance noticeably improved.'],
     ['Wk 4', '—', 'Day A & B', 'Hex DL 120 lbs ×4×4 / Hip Thrust 105 lbs ×5–6 / Split Squat 32.5 lbs ×8', 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.'],
   ],
-  milestones4wk: 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level.',
-  milestones8wk: 'Strength: Hex DL progressing toward the PT-documented 95→135 lbs / 6–8 week target (Wk4 program checkpoint 120 lbs). Hip Thrust 115+ lbs ×5–6. OHP 22.5 lbs/hand ×8. Incline 22.5 lbs/hand ×8. Flat Press 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Landmine Squat progressing in load. Goblet 45 lbs ×10. SL-RDL 32.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:30. Single-Leg Reverse Hyper: clean, controlled hip extension with no pelvic rotation either side. Sit-up/bicycle crunch and KB swing clean and symptom-free for 3–4+ weeks. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads. Revisit barbell back squat, conventional barbell deadlift, and clean-to-overhead-press for reintroduction once the above is consistent.',
-  rescanNote: 'No Styku scan is on file for this client — reassess at 8 weeks via baseline lift retest, pull-up assist-level reduction, and resting heart rate trend rather than a body-composition rescan.',
+  milestones4wk: 'All updated baseline lifts surpassed. Push-up: 8–10 full unassisted. Plank: 1:15. Hip hinge: clean and reflexive. Reassess pull-up assist level. Week 4 closes with the strength check (the standing 4-week reassessment); Week 5 that follows is the planned deload week — same movements, sets reduced, loads held (see the deload note above) — before Weeks 6–8 rebuild from the Week 4 loads.',
+  milestones8wk: 'Reached through the Week 4 strength check, the planned Week 5 deload, and the Weeks 6–8 rebuild. Strength: Hex DL progressing toward the PT-documented 95→135 lbs / 6–8 week target (Wk4 program checkpoint 120 lbs). Hip Thrust 115+ lbs ×5–6. OHP 22.5 lbs/hand ×8. Incline 22.5 lbs/hand ×8. Flat Press 27.5 lbs/hand ×8. Row 32.5 lbs ×8. Split Squat 37.5 lbs/hand ×8. Landmine Squat progressing in load. Goblet 45 lbs ×10. SL-RDL 32.5 lbs/hand. Carry 50 lbs/hand. Push-up 12 full unassisted. Pull-up 8 reps all grips. Plank 1:30. Single-Leg Reverse Hyper: clean, controlled hip extension with no pelvic rotation either side. Sit-up/bicycle crunch and KB swing clean and symptom-free for 3–4+ weeks. Cardiovascular: Day A cardio finisher extends to 20–25 min Zone 2 or 10 rounds of incline intervals; Day B metabolic circuit completes 3 rounds faster than Week 1 at the same loads. Revisit barbell back squat, conventional barbell deadlift, and clean-to-overhead-press for reintroduction once the above is consistent.',
+  rescanNote: 'Strength is reassessed on the standing 4-week cadence: the Week 4 check above is the first reassessment, the Week 8 retest the second — run each against the baseline lift table, pull-up assist level, and resting heart rate trend. No Styku scan is on file for this client, so there is no body-composition rescan to book yet; once a first scan is taken, the separate 8–12 week body-composition rescan cadence starts from that scan date.',
 };
 
 const data = {
