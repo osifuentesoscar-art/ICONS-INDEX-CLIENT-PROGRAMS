@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICONS Trainer Development — The Three-Zone Practicum — Brace Life Studios</title>
+<style>
+  :root {
+    --onyx:#0D0D0D; --ink:#1C1C1C; --slate:#3A3A3A; --mid:#787878; --rule:#E6E2DC;
+    --cream:#FAF8F5; --parch:#F4F0EA;
+    --gold:#C9A227; --gold-d:#8B6914; --gold-p:#FAF5E8;
+    --teal:#00695C; --teal-p:#EAF5F2;
+    --green:#2A6B2E; --green-p:#EDF6ED;
+    --red:#7A1515; --red-p:#FDF0F0;
+    --blue:#1A3560; --blue-p:#EEF2F9;
+    --amber:#9A4E00; --amber-p:#FDF4EC;
+    --purp:#471570; --purp-p:#F3EEF9;
+    --flagr:#B71C1C; --flagg:#1B5E20;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Georgia',serif;background:var(--cream);color:var(--ink);line-height:1.65;min-height:100vh;}
+  .shell{display:flex;min-height:100vh;}
+  nav{width:270px;flex-shrink:0;background:var(--onyx);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;border-right:2px solid var(--gold);}
+  .nav-brand{padding:24px 20px 16px;border-bottom:1px solid #2a2a2a;}
+  .nav-brand-name{font-family:Arial,sans-serif;font-size:8px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:6px;}
+  .nav-title{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;}
+  .nav-subtitle{font-family:Arial,sans-serif;font-size:9px;color:#888;margin-top:5px;line-height:1.5;}
+  .nav-items{padding:16px 0;flex:1;}
+  .nav-module{display:block;padding:12px 20px;text-decoration:none;border-left:3px solid transparent;transition:all .15s;cursor:pointer;position:relative;}
+  .nav-module:hover{background:#1a1a1a;}
+  .nav-module.active{border-left-color:var(--gold);background:#1a1a1a;}
+  .nav-module-num{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center;}
+  .nav-module-name{font-family:Arial,sans-serif;font-size:11px;font-weight:600;color:#ccc;line-height:1.3;}
+  .nav-module.active .nav-module-name{color:#fff;}
+  .nav-module.locked{cursor:not-allowed;opacity:.45;}
+  .nav-lock{font-size:9px;}
+  .nav-progress{padding:16px 20px;border-top:1px solid #2a2a2a;}
+  .progress-label{font-family:Arial,sans-serif;font-size:8px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+  .progress-bar{height:3px;background:#2a2a2a;border-radius:2px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease;}
+  .progress-text{font-family:Arial,sans-serif;font-size:9px;color:var(--gold);margin-top:5px;}
+  main{flex:1;max-width:840px;padding:0 0 80px;}
+  .module{display:none;} .module.visible{display:block;}
+  .module-hero{padding:48px 52px 36px;border-bottom:1px solid var(--rule);}
+  .zone-badge{display:inline-flex;align-items:center;gap:8px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:20px;color:#fff;margin-bottom:14px;}
+  .module-eyebrow{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+  .module-title{font-size:32px;font-weight:normal;line-height:1.2;color:var(--onyx);margin-bottom:12px;letter-spacing:-.5px;}
+  .module-lead{font-size:15px;color:var(--slate);line-height:1.7;max-width:620px;border-left:3px solid;padding-left:16px;margin-top:16px;}
+  .module-meta{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);margin-top:20px;display:flex;gap:20px;flex-wrap:wrap;}
+  .content{padding:36px 52px;}
+  .section-block{margin-bottom:40px;}
+  .section-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+  .section-heading{font-size:22px;font-weight:normal;color:var(--onyx);margin-bottom:12px;line-height:1.3;}
+  p{margin-bottom:14px;font-size:15px;color:var(--slate);line-height:1.72;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--ink);font-weight:600;}
+  .callout{border-radius:4px;padding:20px 22px;margin:20px 0;border-left:4px solid;}
+  .callout-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .callout p{font-size:14px;margin-bottom:8px;} .callout p:last-child{margin-bottom:0;}
+  .callout.gold{background:var(--gold-p);border-color:var(--gold);} .callout.gold .callout-label{color:var(--gold-d);}
+  .callout.teal{background:var(--teal-p);border-color:var(--teal);} .callout.teal .callout-label{color:var(--teal);}
+  .callout.green{background:var(--green-p);border-color:var(--green);} .callout.green .callout-label{color:var(--green);}
+  .callout.red{background:var(--red-p);border-color:var(--red);} .callout.red .callout-label{color:var(--red);}
+  .callout.blue{background:var(--blue-p);border-color:var(--blue);} .callout.blue .callout-label{color:var(--blue);}
+  .callout.purp{background:var(--purp-p);border-color:var(--purp);} .callout.purp .callout-label{color:var(--purp);}
+  .callout.amber{background:var(--amber-p);border-color:var(--amber);} .callout.amber .callout-label{color:var(--amber);}
+  .science-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0;}
+  .science-card{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:16px;border-top:3px solid;}
+  .science-card-label{font-family:Arial,sans-serif;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .science-card-value{font-size:22px;font-weight:normal;line-height:1.15;margin-bottom:4px;}
+  .science-card-note{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);line-height:1.4;}
+  .threshold-table{width:100%;border-collapse:collapse;margin:20px 0;font-family:Arial,sans-serif;}
+  .threshold-table th{background:var(--onyx);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 14px;text-align:left;}
+  .threshold-table td{padding:10px 14px;font-size:12px;border-bottom:1px solid var(--rule);}
+  .threshold-table tr:nth-child(even) td{background:var(--parch);}
+  .threshold-table tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+  .tag-red{background:var(--red-p);color:var(--flagr);} .tag-amber{background:var(--amber-p);color:var(--amber);}
+  .tag-green{background:var(--green-p);color:var(--flagg);} .tag-teal{background:var(--teal-p);color:var(--teal);}
+  .tag-blue{background:var(--blue-p);color:var(--blue);} .tag-gold{background:var(--gold-p);color:var(--gold-d);}
+  .steps{margin:20px 0;}
+  .step{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start;}
+  .step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px;}
+  .step-content{flex:1;} .step-title{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+  .step-body{font-size:14px;color:var(--slate);}
+  .key-insight{background:var(--parch);border:none;border-left:4px solid var(--gold);padding:18px 20px;margin:20px 0;font-size:16px;font-style:italic;color:var(--ink);line-height:1.65;}
+  .key-insight cite{display:block;font-style:normal;font-family:Arial,sans-serif;font-size:10px;color:var(--mid);margin-top:8px;text-transform:uppercase;letter-spacing:1px;}
+  .apply-it{border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin:24px 0;}
+  .apply-it-header{background:var(--ink);padding:10px 18px;display:flex;align-items:center;gap:10px;}
+  .apply-it-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+  .apply-it-title{font-family:Arial,sans-serif;font-size:12px;font-weight:600;color:#fff;}
+  .apply-it-body{padding:18px;background:#fff;} .apply-it-body p{font-size:14px;}
+  .case-packet{border:1.5px dashed var(--gold);border-radius:4px;padding:20px 22px;margin:20px 0;background:#fffdf7;}
+  .case-packet-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px;}
+  .case-packet dl{display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-family:Arial,sans-serif;font-size:12px;}
+  .case-packet dt{font-weight:700;color:var(--ink);} .case-packet dd{color:var(--slate);}
+  .checklist{list-style:none;margin:16px 0;}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--slate);line-height:1.5;}
+  .checklist li:last-child{border-bottom:none;}
+  .check-box{width:16px;height:16px;border:1.5px solid var(--rule);border-radius:2px;flex-shrink:0;margin-top:2px;cursor:pointer;transition:all .1s;}
+  .check-box:hover{border-color:var(--gold);}
+  .check-box.checked{background:var(--gold);border-color:var(--gold);position:relative;}
+  .check-box.checked::after{content:'✓';color:#fff;font-size:10px;font-weight:700;position:absolute;top:-1px;left:2px;}
+  .check-box.strict.checked{background:var(--red);border-color:var(--red);}
+  .gate-box{border:1px solid var(--onyx);border-radius:4px;overflow:hidden;margin:32px 0 20px;}
+  .gate-header{background:var(--onyx);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .gate-eyebrow{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+  .gate-title{font-size:15px;color:#fff;font-weight:normal;margin-top:2px;}
+  .gate-threshold{font-family:Arial,sans-serif;font-size:9px;color:#999;text-align:right;}
+  .gate-body{padding:22px;background:#fff;}
+  .quiz-q{background:var(--cream);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;margin-bottom:14px;}
+  .quiz-q:last-child{margin-bottom:0;}
+  .quiz-q-text{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.5;}
+  .quiz-opts{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opt{font-family:Arial,sans-serif;font-size:13px;padding:9px 12px;border:1px solid var(--rule);border-radius:3px;cursor:pointer;background:#fff;transition:all .12s;line-height:1.4;}
+  .quiz-opt:hover{border-color:var(--gold);}
+  .quiz-opt.correct{background:var(--green-p);border-color:var(--green);color:var(--flagg);font-weight:600;}
+  .quiz-opt.incorrect{background:var(--red-p);border-color:var(--red);color:var(--flagr);font-weight:600;}
+  .quiz-opt.disabled{pointer-events:none;}
+  .quiz-explain{font-size:12px;color:var(--mid);margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule);display:none;font-family:Arial,sans-serif;line-height:1.55;}
+  .quiz-explain.show{display:block;}
+  .gate-status-row{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);flex-wrap:wrap;gap:10px;}
+  .gate-score{font-family:Arial,sans-serif;font-size:11px;color:var(--mid);}
+  .gate-score-value{font-weight:700;color:var(--ink);}
+  .gate-status{font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.5px;padding:6px 12px;border-radius:3px;}
+  .gate-status.pass{background:var(--green-p);color:var(--flagg);}
+  .gate-status.fail{background:var(--red-p);color:var(--flagr);}
+  .gate-status.pending{background:var(--parch);color:var(--mid);}
+  .rubric-note{font-family:Arial,sans-serif;font-size:10.5px;color:var(--mid);margin-top:6px;font-style:italic;}
+  .module-footer{display:flex;align-items:center;justify-content:space-between;padding:24px 52px;border-top:1px solid var(--rule);margin-top:20px;background:#fff;flex-wrap:wrap;gap:10px;}
+  .nav-btn{font-family:Arial,sans-serif;font-size:12px;font-weight:700;padding:10px 20px;border-radius:3px;cursor:pointer;border:none;text-decoration:none;transition:all .15s;}
+  .btn-next{background:var(--onyx);color:var(--gold);} .btn-next:hover{background:#1a1a1a;}
+  .btn-next:disabled{background:#ccc;color:#888;cursor:not-allowed;}
+  .btn-prev{background:transparent;color:var(--mid);border:1px solid var(--rule);} .btn-prev:hover{color:var(--ink);border-color:var(--ink);}
+  .module-position{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;}
+  @media (max-width:760px){nav{display:none;} .module-hero{padding:28px 24px 24px;} .content{padding:24px;} .module-footer{padding:20px 24px;}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-name">B R A C E   L I F E   S T U D I O S</span>
+    <div class="nav-title">ICONS Trainer Development<br>The Three-Zone Practicum</div>
+    <div class="nav-subtitle">Built on the same Isolated → Compound → Metabolic structure every ICONS session uses on clients. Progress by demonstrated precision, not by the calendar.</div>
+  </div>
+  <div class="nav-items">
+    <a class="nav-module active" onclick="goTo(0)" data-module="0">
+      <div class="nav-module-num" style="color:var(--purp)"><span>ORIENTATION</span></div>
+      <div class="nav-module-name">Why the Three Zones</div>
+    </a>
+    <a class="nav-module" onclick="goTo(1)" data-module="1">
+      <div class="nav-module-num" style="color:var(--teal)"><span>ZONE 1</span></div>
+      <div class="nav-module-name">Isolated — Control &amp; Precision</div>
+    </a>
+    <a class="nav-module locked" onclick="goTo(2)" data-module="2">
+      <div class="nav-module-num" style="color:var(--gold)"><span>ZONE 2</span><span class="nav-lock">🔒</span></div>
+      <div class="nav-module-name">Compound — Integrated Delivery</div>
+    </a>
+    <a class="nav-module locked" onclick="goTo(3)" data-module="3">
+      <div class="nav-module-num" style="color:var(--red)"><span>ZONE 3</span><span class="nav-lock">🔒</span></div>
+      <div class="nav-module-name">Metabolic — Delivery Under Pressure</div>
+    </a>
+    <a class="nav-module locked" onclick="goTo(4)" data-module="4">
+      <div class="nav-module-num" style="color:var(--blue)"><span>ONGOING</span><span class="nav-lock">🔒</span></div>
+      <div class="nav-module-name">The Reassessment Loop</div>
+    </a>
+  </div>
+  <div class="nav-progress">
+    <div class="progress-label">Your progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+    <div class="progress-text" id="progressText">Orientation</div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════ MODULE 0 — ORIENTATION ═══════════ -->
+<div class="module visible" id="module-0">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--purp-p),var(--cream))">
+    <div class="zone-badge" style="background:var(--purp)">Orientation</div>
+    <div class="module-eyebrow" style="color:var(--purp)">Read this before Zone 1</div>
+    <h1 class="module-title">Why the<br>Three Zones</h1>
+    <p class="module-lead" style="border-color:var(--purp)">Every ICONS session is built from three progressive zones. This program builds <em>you</em> the same way — because a trainer who hasn't lived the structure can't deliver it convincingly.</p>
+    <div class="module-meta"><span>⏱ 10 min</span><span>📖 Framework</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--purp)">The client-facing framework</div>
+      <h2 class="section-heading">Isolated → Compound → Metabolic.</h2>
+      <p>Every ICONS session progresses through three zones, and every plan you deliver is built on this logic:</p>
+      <div class="science-grid">
+        <div class="science-card" style="border-top-color:var(--teal)"><div class="science-card-label" style="color:var(--teal)">Zone 1</div><div class="science-card-value" style="color:var(--teal);font-size:17px;font-weight:700">Isolated</div><div class="science-card-note">Control, activation, alignment. Single-joint work that builds neural precision before loading compound patterns. "Control precedes power."</div></div>
+        <div class="science-card" style="border-top-color:var(--gold)"><div class="science-card-label" style="color:var(--gold-d)">Zone 2</div><div class="science-card-value" style="color:var(--gold-d);font-size:17px;font-weight:700">Compound</div><div class="science-card-note">Strength, shape, hormonal balance. Multi-joint lifts combining everything Zone 1 built. "Strength builds confidence."</div></div>
+        <div class="science-card" style="border-top-color:var(--red)"><div class="science-card-label" style="color:var(--red)">Zone 3</div><div class="science-card-value" style="color:var(--red);font-size:17px;font-weight:700">Metabolic</div><div class="science-card-note">Burn, energy, endurance. The session's finish, under real fatigue. "Energy becomes identity."</div></div>
+      </div>
+      <p>This program mirrors that exact structure onto your own development. Zone 1 drills single trainer skills to precision, in isolation, with no other demand competing for your attention. Zone 2 combines those skills into one integrated delivery — a full mock session, done correctly, under moderate time pressure. Zone 3 tests you delivering under the same kind of real-world pressure a live session actually applies: equipment failures, symptom changes, a client pushing back on a restriction.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--purp)">Why order matters</div>
+      <h2 class="section-heading">You cannot skip to Zone 3.</h2>
+      <blockquote class="key-insight">"Full range of motion strengthens muscle through its full length — but only with control. Never chase depth if posture breaks."<cite>The ICONS Training System — Brace Life Studios internal methodology</cite></blockquote>
+      <p>The same rule governs your own progression. A trainer who can improvise smoothly under pressure but doesn't have perfect isolated recall of the callout color system, the asymmetry rule, or the exact required pelvic-floor language isn't ready for Zone 3 — they're guessing convincingly, which is more dangerous than guessing badly. Zone 1's precision bar is intentionally the highest of the three (90%+) for exactly this reason: <strong>fluency has to be automatic before it gets tested under load.</strong></p>
+      <div class="callout purp"><div class="callout-label">The house rule this program borrows from client programming</div><p>ICONS deliberately does not lead with functional/unstable training for clients — that comes only after strength is developed, as reintegration. This program applies the identical logic to you: improvisational judgment under pressure (Zone 3) is only introduced after your isolated fundamentals (Zone 1) and your integrated delivery (Zone 2) are both proven, never before.</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--purp)">How this differs from a calendar-based program</div>
+      <h2 class="section-heading">You progress on demonstrated precision, not on time served.</h2>
+      <p>There are no "weeks" in this track. You move from Zone 1 to Zone 2 only once you hit the Zone 1 precision threshold. You move from Zone 2 to Zone 3 only once your integrated case-study delivery is accurate. Zone 3 itself ends only in a live, lead-coach-observed session — not a quiz. A trainer who needs three attempts at Zone 1 and a trainer who passes on the first attempt end up equally ready by the time they reach Zone 3 — that's the point of gating by precision instead of by a fixed schedule.</p>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" disabled>← Previous</button>
+    <span class="module-position">Orientation</span>
+    <button class="nav-btn btn-next" onclick="goTo(1)">Zone 1: Isolated →</button>
+  </div>
+</div>
+
+<!-- ═══════════ ZONE 1 — ISOLATED ═══════════ -->
+<div class="module" id="module-1">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--teal-p),var(--cream))">
+    <div class="zone-badge" style="background:var(--teal)">Zone 1 · Isolated</div>
+    <div class="module-eyebrow" style="color:var(--teal)">Control precedes power</div>
+    <h1 class="module-title">Isolated —<br>Control &amp; Precision</h1>
+    <p class="module-lead" style="border-color:var(--teal)">Four skills, drilled one at a time, to near-perfect precision. No integration yet — that's Zone 2's job. Right now the only goal is that each skill fires correctly, every time, without hesitation.</p>
+    <div class="module-meta"><span>⏱ 20 min</span><span>🎯 4 isolated drills</span><span>✅ 90% precision to unlock Zone 2</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Drill 1 — Callout color ID</div>
+      <h2 class="section-heading">Color is clinical information — recognize it instantly.</h2>
+      <table class="threshold-table">
+        <thead><tr><th>Color</th><th>Meaning</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag tag-gold">Gold</span></td><td>Warm-up, general coaching, ICONS Note</td><td>Read and follow — guidance, not restriction</td></tr>
+          <tr><td><span class="tag tag-green">Green</span></td><td>Baseline note, PR, cleared status</td><td>Reference for load and progress</td></tr>
+          <tr><td><span class="tag tag-red">Red</span></td><td>Corrective priority, clinical flag, restriction</td><td>Read first. Overrides everything.</td></tr>
+          <tr><td><span class="tag tag-teal">Teal</span></td><td>Styku data, assessment findings, asymmetry</td><td>Apply to exercise selection and side-leading</td></tr>
+          <tr><td><span class="tag tag-blue">Blue</span></td><td>Cool-down, recovery, mobility</td><td>Deliver as written — not optional</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Drill 2 — Intensity % to color/intention</div>
+      <h2 class="section-heading">Say the intention before you read the table.</h2>
+      <table class="threshold-table">
+        <thead><tr><th>%</th><th>Color</th><th>Intention</th></tr></thead>
+        <tbody>
+          <tr><td>60%</td><td><span class="tag tag-teal">Teal</span></td><td>Technique day. No PRs.</td></tr>
+          <tr><td>70%</td><td><span class="tag tag-green">Green</span></td><td>Moderate. Building volume.</td></tr>
+          <tr><td>80%</td><td><span class="tag tag-gold">Gold</span></td><td>Primary strength. Hard but clean.</td></tr>
+          <tr><td>90%</td><td><span class="tag tag-red">Red</span></td><td>Peak. Near-maximal, full rest.</td></tr>
+          <tr><td>AR</td><td><span class="tag tag-blue">Blue</span></td><td>Active recovery. No PRs, no AMRAP.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Drill 3 — Asymmetry determination</div>
+      <h2 class="section-heading">Lower number = weaker = leads.</h2>
+      <div class="callout teal"><div class="callout-label">The rule</div><p>Lower LST number = weaker side = leads all unilateral exercises — once the gap clears the trigger. For suitcase carry, the weaker side <em>holds</em> the weight.</p></div>
+      <div class="callout amber"><div class="callout-label">Corrected 8/17/2026 — trigger on a RELATIVE gap, not an absolute lb figure</div><p>The old flat 0.5 lb trigger fired on measurement noise — device error on leg lean mass alone runs 2.6–3.6× larger than that number. Trigger only on a gap ≥10% of the larger side.</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Drill 4 — Verbatim cue recall</div>
+      <h2 class="section-heading">The exact words, not the general idea.</h2>
+      <table class="threshold-table">
+        <thead><tr><th>Day</th><th>Exact cue</th></tr></thead>
+        <tbody>
+          <tr><td>60% Teal</td><td>"How does that feel? Can you feel where the load is?"</td></tr>
+          <tr><td>80% Gold</td><td>"One more — keep that back flat."</td></tr>
+          <tr><td>90% Red</td><td>"Take your full rest. The next set matters more than saving 30 seconds."</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Drill 5 — Sex-scope recognition</div>
+      <h2 class="section-heading">Know which framework a client's numbers belong to.</h2>
+      <p>Every threshold drilled above (ALST, VFA, BMI, pelvic floor) is validated for ICONS' target population — women. A male client's ALST At-Risk cutoff is &lt;7.0 kg/m² (EWGSOP2 2018), not &lt;5.5 — a genuinely different number, not the same one applied more loosely (both sexes now use a single binary threshold with no graded "Optimal" tier — corrected 8/17/2026 on the women's side, where a three-tier table had wrongly used the men's 7.0 cutoff as a women's "Optimal" tier). Recognize instantly when you're looking at a male client's data and reach for CLAUDE.md's Male Client Programming Framework instead of defaulting to the women's numbers.</p>
+    </div>
+
+    <div class="gate-box" data-threshold="90">
+      <div class="gate-header"><div><div class="gate-eyebrow">Isolated Precision Check</div><div class="gate-title">Zone 1 Gate</div></div><div class="gate-threshold">11 rapid questions · 90% (10/11) to unlock Zone 2</div></div>
+      <div class="gate-body">
+        <div class="quiz-q"><div class="quiz-q-text">1. A callout is teal. What does it contain?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Cool-down / mobility guidance</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Styku scan data, assessment findings, or asymmetry protocol</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">A clinical restriction</div></div><div class="quiz-explain">Teal is assessment/Styku-derived data — not restriction (red) or recovery (blue).</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">2. A red callout overrides today's exercise table:</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Only if the load would exceed 80%</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Always, with no exceptions</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Only for clients over 50</div></div><div class="quiz-explain">Red always overrides the table. No conditions attached.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">3. Which color/percentage pairing is correct?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">80% = Red</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">80% = Gold</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">80% = Green</div></div><div class="quiz-explain">80% Gold is the primary strength day.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">4. AR (Active Recovery) days permit:</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">A light AMRAP finisher</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">No PRs and no AMRAP — intentional movement only</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Whatever the client feels like that day</div></div><div class="quiz-explain">AR is programmed intentional movement, not free-form or light-normal training.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">5. Left Arm LST 6.8 lbs / Right Arm LST 6.1 lbs. Which arm leads a single-arm row?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Left</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Right</div></div><div class="quiz-explain">6.1 &lt; 6.8 — right arm is weaker, right leads.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">6. Same client, suitcase carry — which side holds the weight?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Right hand (the weaker arm)</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Left hand (the stronger arm)</div></div><div class="quiz-explain">The weaker side always holds the carry — the anti-lateral-flexion demand trains its core indirectly.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">7. Exact 60% Teal cue:</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"Push harder — you've got this"</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">"How does that feel? Can you feel where the load is?"</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"One more rep for a PR"</div></div><div class="quiz-explain">Teal days are technique days — the cue asks about feel, not effort.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">8. Exact 90% Red cue:</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">"Take your full rest. The next set matters more than saving 30 seconds."</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"Let's move fast to beat the clock"</div></div><div class="quiz-explain">90% days prioritize CNS output — full rest is non-negotiable.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">9. A gold callout appears on a plan's cover page. Its content is:</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Guidance to follow — not a restriction</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">An active clinical restriction</div></div><div class="quiz-explain">Gold marks warm-up notes, general coaching, and ICONS Notes — read and follow, never overriding anything.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">10. Left Leg LST 12.7 lbs / Right Leg LST 13.1 lbs — is this an asymmetry-protocol trigger under the corrected ≥10% RELATIVE rule (8/17/2026)?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Yes, apply full protocol</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">No — 0.4 / 13.1 = 3.1% relative gap, well under the 10% threshold; monitor only</div></div><div class="quiz-explain">The old flat 0.5 lb absolute trigger is retired — it fired on measurement noise. Trigger on a gap ≥10% of the larger side. 3.1% doesn't clear it — log it, but no unilateral-lead change is indicated.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">11. A male client's ALST reads 6.9 kg/m². Is he At-Risk?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Yes — below the men's 7.0 kg/m² cutoff</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">No — 6.9 would sit within the women's normal reference range, so he's fine</div></div><div class="quiz-explain">Men use a single binary EWGSOP2 cutoff at 7.0 kg/m² — 6.9 falls below it and is At-Risk. The women's threshold (also a single binary cutoff, corrected 8/17/2026) doesn't apply to his number — the structure matches, the number doesn't.</div></div>
+        <div class="gate-status-row"><div class="gate-score">Score: <span class="gate-score-value">0 / 11</span></div><div class="gate-status pending">Answer all questions to see your result</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(0)">← Orientation</button>
+    <span class="module-position">Zone 1</span>
+    <button class="nav-btn btn-next" id="next-1" onclick="goTo(2)" disabled>Zone 2: Compound →</button>
+  </div>
+</div>
+
+<!-- ═══════════ ZONE 2 — COMPOUND ═══════════ -->
+<div class="module" id="module-2">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--gold-p),var(--cream))">
+    <div class="zone-badge" style="background:var(--gold);color:var(--onyx)">Zone 2 · Compound</div>
+    <div class="module-eyebrow" style="color:var(--gold-d)">Strength builds confidence</div>
+    <h1 class="module-title">Compound —<br>Integrated Delivery</h1>
+    <p class="module-lead" style="border-color:var(--gold)">Zone 1's four isolated skills now combine into one task: read a real case packet and extract everything correctly, together, the way you'd actually have to before a session.</p>
+    <div class="module-meta"><span>⏱ 25 min</span><span>📋 1 integrated case study</span><span>✅ 80% to unlock Zone 3</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">The compound case study</div>
+      <h2 class="section-heading">Read this once. Answer from memory below.</h2>
+      <p>This is a fictional client packet, built for training only. Read it exactly as you would a real plan before a session — cover page first, then today's day.</p>
+      <div class="case-packet">
+        <div class="case-packet-label">Case Packet — "Marisol T." (Training Scenario)</div>
+        <dl>
+          <dt>Age / Status</dt><dd>52 · Postmenopausal · ALST 5.3 kg/m² (At-Risk)</dd>
+          <dt>Cover Page — Red Callout</dt><dd>"Right shoulder — overhead loading suspended, coordinated with Jason Bethea, Brace Life's in-house Trainer/Physical Therapist." (updated 2 weeks ago)</dd>
+          <dt>Program Week</dt><dd>Week 3 of 8</dd>
+          <dt>Today</dt><dd>Day 2 — Lower Body &amp; Pull — 80% Gold</dd>
+          <dt>Segmental (Arms)</dt><dd>Left Arm LST 6.1 lbs · Right Arm LST 6.8 lbs</dd>
+          <dt>Block A — Corrective</dt><dd>Terminal Knee Extension + Copenhagen Plank</dd>
+          <dt>Block B — Primary</dt><dd>Trap Bar Deadlift — Wk 1 load 130 lbs → Wk 3 load 145 lbs</dd>
+          <dt>Block C — Pull</dt><dd>Seated Cable Row + Single-Arm Row</dd>
+          <dt>Block D — Accessory</dt><dd>Seated Overhead Press, 15 lbs × 8</dd>
+        </dl>
+      </div>
+      <div class="apply-it">
+        <div class="apply-it-header"><span class="apply-it-label">Apply It</span><span class="apply-it-title">Before the gate below</span></div>
+        <div class="apply-it-body"><p>Time yourself doing the three-minute read on the packet above. Extract: today's load for the primary lift, what happens to Block D, which arm leads the row, and today's intensity color — before you look at the questions.</p></div>
+      </div>
+    </div>
+
+    <div class="gate-box" data-threshold="80">
+      <div class="gate-header"><div><div class="gate-eyebrow">Integrated Case Assessment</div><div class="gate-title">Zone 2 Gate</div></div><div class="gate-threshold">6 questions on the case above · 80% (5/6) to unlock Zone 3</div></div>
+      <div class="gate-body">
+        <div class="quiz-q"><div class="quiz-q-text">1. What is today's correct load for the Trap Bar Deadlift?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">130 lbs — the baseline number</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">145 lbs — the Week 3 load</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Whatever feels appropriate today</div></div><div class="quiz-explain">Marisol is in Week 3; the Week 3 load (145 lbs) applies, not the Week 1 baseline.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">2. What do you do with Block D — Seated Overhead Press?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Deliver it at a lighter load given the shoulder note</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Skip it entirely — the red callout overrides the table regardless of load</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Ask Marisol if her shoulder feels okay today and decide together</div></div><div class="quiz-explain">Overhead loading is suspended — any load, including a lighter one, is still overhead loading.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">3. Which arm leads the single-arm row?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Left (6.1 lbs LST, the weaker side)</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Right (6.8 lbs LST)</div></div><div class="quiz-explain">Lower LST = weaker = leads. Left is weaker here.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">4. What color/intensity is today's session?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">80% Gold — Primary Strength</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">70% Green — Moderate</div></div><div class="quiz-explain">Stated directly in the packet: Day 2 — 80% Gold.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">5. Is Block A (the corrective) optional today since the session is already at 80% intensity?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Yes — skip it to protect energy for the primary lift</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">No — the corrective block is never optional, regardless of the day's intensity</div></div><div class="quiz-explain">Corrective work runs in full before the primary lift it precedes, at every intensity level.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">6. The shoulder restriction was documented two weeks ago. Is it reasonable to treat it as possibly outdated and re-check with Marisol's own opinion today?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Yes — two weeks is long enough that it's worth asking her directly</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">No — apply it as documented until the lead coach updates or clears it</div></div><div class="quiz-explain">A restriction stays in force until a documented change comes from the lead coach — not from elapsed time or the client's self-assessment.</div></div>
+        <div class="gate-status-row"><div class="gate-score">Score: <span class="gate-score-value">0 / 6</span></div><div class="gate-status pending">Answer all questions to see your result</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(1)">← Zone 1</button>
+    <span class="module-position">Zone 2</span>
+    <button class="nav-btn btn-next" id="next-2" onclick="goTo(3)" disabled>Zone 3: Metabolic →</button>
+  </div>
+</div>
+
+<!-- ═══════════ ZONE 3 — METABOLIC ═══════════ -->
+<div class="module" id="module-3">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--red-p),var(--cream))">
+    <div class="zone-badge" style="background:var(--red)">Zone 3 · Metabolic</div>
+    <div class="module-eyebrow" style="color:var(--red)">Energy becomes identity — and pressure reveals what actually stuck</div>
+    <h1 class="module-title">Metabolic —<br>Delivery Under Pressure</h1>
+    <p class="module-lead" style="border-color:var(--red)">Real sessions rarely go exactly to plan. This zone tests whether your Zone 1 precision and Zone 2 integration hold up when something goes wrong mid-session — the same way a metabolic finisher tests whether technique holds up under fatigue.</p>
+    <div class="module-meta"><span>⏱ Fire-drill quiz + live shadow</span><span>🔥 5 pressure scenarios</span><span>✅ 100% required — zero tolerance</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Why 100%, not 80%</div>
+      <h2 class="section-heading">These are the items that hurt a client if you get them wrong.</h2>
+      <p>Zone 1 and Zone 2 have room for a wrong answer because a wrong answer there is corrected on your next attempt with no one at risk. Zone 3's fire-drill scenarios are different — every one of them maps to a real "never without authorization" item. A single wrong answer here isn't a lower score, it's a documented gap that needs direct lead-coach coaching before you're cleared for live delivery.</p>
+    </div>
+
+    <div class="gate-box" data-threshold="100">
+      <div class="gate-header"><div><div class="gate-eyebrow">Fire-Drill Battery</div><div class="gate-title">Zone 3 Gate</div></div><div class="gate-threshold">5 scenarios · 100% required</div></div>
+      <div class="gate-body">
+        <div class="quiz-q"><div class="quiz-q-text">1. Mid-warm-up, a virtual client says the trap bar in her home gym is missing a collar and unsafe to load. You have a lead coach reachable by text. What do you do?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Pick a similar-looking substitute yourself and keep the session moving</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Pause, text the lead coach for an approved substitution, confirm before continuing</div></div>
+          <div class="quiz-explain">Equipment substitutions require lead-coach sign-off — never improvised, even when a coach is only reachable by text and the client is waiting.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">2. You're running a small group session and you're 12 minutes behind schedule. The cool-down is next for a client with a documented spinal consideration. What do you do?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Shorten the cool-down to catch up on time</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Deliver the full cool-down — it is therapeutic, not cosmetic, and is never dropped for time</div></div>
+          <div class="quiz-explain">The cool-down decompresses the spine and restores mobility after loading for this client specifically — running long is the accepted cost, not the cool-down.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">3. Mid-set on a hip thrust, the client says she feels a sudden tingling running down her leg. What do you do?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Have her finish the set at a lighter load, then reassess</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Stop all training immediately, seat her comfortably, contact the lead coach, and require physician clearance before the next session</div></div>
+          <div class="quiz-explain">Radiating pain/numbness/tingling is a stop-everything signal — there is no "finish this set first."</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">4. A client with a documented overhead-restriction says, in front of a friend who's watching the session, "My shoulder's totally fine today, let's just do the press." What do you do?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Allow a light set since she's confident and it would be awkward to refuse in front of her friend</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Decline, and explain the restriction comes from her program — any change must come from the lead coach</div></div>
+          <div class="quiz-explain">Client self-report ("it feels fine") is never medical clearance, and social pressure changes nothing about the rule.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">5. You're 25 minutes into a session, running behind, and the client says she has to leave in 10 minutes for a meeting. The corrective block for today hasn't started yet. What do you do?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Skip the corrective block and go straight to the primary lift so she gets the "main" work in</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Run the corrective block as programmed; if time runs out, the primary block is what gets shortened, not the corrective</div></div>
+          <div class="quiz-explain">The corrective primer is non-optional and runs before the work it protects — cutting the session short falls on later blocks, not the corrective.</div></div>
+        <div class="gate-status-row"><div class="gate-score">Score: <span class="gate-score-value">0 / 5</span></div><div class="gate-status pending">Answer all questions to see your result</div></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Live shadow sign-off</div>
+      <h2 class="section-heading">The fire drill isn't the finish line.</h2>
+      <p>Passing the battery above proves you know the right call on paper. Zone 3 only closes out once a lead coach has observed you make the same calls live — during an actual session, with an actual client, in real time.</p>
+    </div>
+
+    <div class="gate-box" data-threshold="100">
+      <div class="gate-header"><div><div class="gate-eyebrow">Practicum Sign-Off</div><div class="gate-title">Confirm Readiness for the Reassessment Loop</div></div><div class="gate-threshold">Both items required</div></div>
+      <div class="gate-body">
+        <div class="quiz-q"><div class="quiz-q-text">Have you completed a live, lead-coach-observed session with zero red-flag failures?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Yes — lead coach confirmed zero red-flag failures</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Not yet — schedule the observed session before proceeding</div></div>
+          <div class="quiz-explain">Do not self-certify this step — it requires an actual observation.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">Did the lead coach review and accept your session log from that observed session?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Yes</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Not yet</div></div>
+          <div class="quiz-explain">An unreviewed log is itself a standards gap — resolve before moving into the ongoing reassessment loop.</div></div>
+        <div class="gate-status-row"><div class="gate-score">Confirmed: <span class="gate-score-value">0 / 2</span></div><div class="gate-status pending">Confirm both items to proceed</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(2)">← Zone 2</button>
+    <span class="module-position">Zone 3</span>
+    <button class="nav-btn btn-next" id="next-3" onclick="goTo(4)" disabled>The Reassessment Loop →</button>
+  </div>
+</div>
+
+<!-- ═══════════ MODULE 4 — REASSESSMENT LOOP ═══════════ -->
+<div class="module" id="module-4">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--blue-p),var(--cream))">
+    <div class="zone-badge" style="background:var(--blue)">Ongoing</div>
+    <div class="module-eyebrow" style="color:var(--blue)">Reintegration only comes after strength is proven</div>
+    <h1 class="module-title">The<br>Reassessment Loop</h1>
+    <p class="module-lead" style="border-color:var(--blue)">The three zones aren't a one-time gate you clear and forget. They're a loop you re-enter — the same way ICONS only reintroduces functional/unstable work for a client after strength is developed, never before.</p>
+    <div class="module-meta"><span>♾ Recurring, no calendar lock</span><span>🎯 Precision maintenance</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">The recurring structure</div>
+      <h2 class="section-heading">Isolated → Compound → Metabolic, again — lighter, but not skipped.</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num" style="background:var(--teal)">1</div><div class="step-content"><div class="step-title">Quarterly Zone 1 re-drill</div><div class="step-body">Retake the 10-question isolated precision check each quarter. Thresholds and science update over time (see CLAUDE.md's dated science layer) — recertifying on old numbers isn't recertifying.</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--gold)">2</div><div class="step-content"><div class="step-title">New Zone 2 case packets</div><div class="step-body">Fresh case studies rotate in periodically so the compound check tests genuine reading fluency, not memorized answers to one fictional client.</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--red)">3</div><div class="step-content"><div class="step-title">Monthly peer-shadow audit</div><div class="step-body">Shadow one peer session, have one of yours shadowed. This is where Zone 3 drift gets caught early — before a real fire-drill scenario happens live.</div></div></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">Standing checklist — every session, indefinitely</div>
+      <h2 class="section-heading">The floor never lowers, even after certification.</h2>
+      <ul class="checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I read the cover page and checked for red callouts.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I confirmed the week number and the correct load for today.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I know the asymmetry protocol for this client without needing to look it up.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I know today's exact coaching cues, verbatim, not paraphrased.</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>I know what I'm authorized to change without the lead coach, and what I'm not.</li>
+      </ul>
+    </div>
+
+    <div class="section-block" style="text-align:center;padding:32px 0 16px;border-top:1px solid var(--rule)">
+      <div style="font-family:Arial,sans-serif;font-size:9px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">You have completed the Three-Zone Practicum</div>
+      <div style="font-size:22px;color:var(--onyx);margin-bottom:6px">It's not about working out.<br>It's about working <em>in.</em></div>
+      <div style="font-family:Arial,sans-serif;font-size:10px;color:var(--gold);letter-spacing:1px">B R A C E   L I F E   S T U D I O S · bracelifestudios.com</div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(3)">← Zone 3</button>
+    <span class="module-position">Reassessment Loop — Complete</span>
+    <button class="nav-btn btn-next" style="background:var(--gold);color:var(--onyx)" onclick="goTo(0)">Review from Orientation ↺</button>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+let current = 0;
+const TOTAL_MODULES = 5;
+
+function goTo(n) {
+  const targetNav = document.querySelector('[data-module="'+n+'"]');
+  if (targetNav && targetNav.classList.contains('locked')) {
+    alert('Hit the required precision threshold on the current zone before continuing — Zone 1 fundamentals have to be automatic before they get tested under load.');
+    return;
+  }
+  document.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
+  document.querySelectorAll('.nav-module').forEach(m => m.classList.remove('active'));
+  document.getElementById('module-' + n).classList.add('visible');
+  document.querySelector('[data-module="' + n + '"]').classList.add('active');
+  current = n;
+  updateProgress();
+  window.scrollTo(0, 0);
+}
+
+const stageNames = ['Orientation', 'Zone 1', 'Zone 2', 'Zone 3', 'Reassessment Loop'];
+function updateProgress() {
+  const pct = ((current + 1) / TOTAL_MODULES) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = stageNames[current];
+}
+
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+function answerQuiz(el) {
+  const wrap = el.parentElement;
+  if ([...wrap.children].some(o => o.classList.contains('disabled'))) return;
+  const isCorrect = el.dataset.correct === 'true';
+  [...wrap.children].forEach(o => {
+    o.classList.add('disabled');
+    if (o.dataset.correct === 'true') o.classList.add('correct');
+  });
+  if (!isCorrect) el.classList.add('incorrect');
+  const q = wrap.closest('.quiz-q');
+  q.dataset.result = isCorrect ? 'correct' : 'incorrect';
+  const explain = wrap.parentElement.querySelector('.quiz-explain');
+  if (explain) explain.classList.add('show');
+  updateGate(q.closest('.gate-box'));
+}
+
+function updateGate(gateBox) {
+  if (!gateBox) return;
+  const qs = gateBox.querySelectorAll('.quiz-q');
+  const total = qs.length;
+  const correct = [...qs].filter(q => q.dataset.result === 'correct').length;
+  const answered = [...qs].filter(q => q.dataset.result).length;
+  const scoreEl = gateBox.querySelector('.gate-score-value');
+  if (scoreEl) scoreEl.textContent = correct + ' / ' + total;
+  const statusEl = gateBox.querySelector('.gate-status');
+  const moduleEl = gateBox.closest('.module');
+  const idx = parseInt(moduleEl.id.replace('module-', ''));
+  const threshold = parseInt(gateBox.dataset.threshold || '0');
+
+  if (answered < total) {
+    statusEl.textContent = 'In progress — ' + answered + ' of ' + total + ' answered';
+    statusEl.className = 'gate-status pending';
+    return;
+  }
+  const pct = total ? (correct / total * 100) : 100;
+  const passed = pct >= threshold;
+  statusEl.textContent = passed
+    ? 'PASSED — ' + Math.round(pct) + '% (threshold ' + threshold + '%)'
+    : 'NOT YET PASSED — ' + Math.round(pct) + '% (threshold ' + threshold + '%). Review above and retry with your lead coach.';
+  statusEl.className = 'gate-status ' + (passed ? 'pass' : 'fail');
+
+  // Only advance the nav/next-button lock once ALL gates within this module have passed
+  const allGates = moduleEl.querySelectorAll('.gate-box');
+  const allPassed = [...allGates].every(gb => {
+    const gqs = gb.querySelectorAll('.quiz-q');
+    const gtotal = gqs.length;
+    const gcorrect = [...gqs].filter(q => q.dataset.result === 'correct').length;
+    const gansw = [...gqs].filter(q => q.dataset.result).length;
+    if (gansw < gtotal) return false;
+    const gthresh = parseInt(gb.dataset.threshold || '0');
+    return gtotal ? (gcorrect / gtotal * 100) >= gthresh : true;
+  });
+
+  if (allPassed) {
+    const nextNav = document.querySelector('[data-module="' + (idx + 1) + '"]');
+    const nextBtn = document.getElementById('next-' + idx);
+    if (nextNav) { nextNav.classList.remove('locked'); const lock = nextNav.querySelector('.nav-lock'); if (lock) lock.remove(); }
+    if (nextBtn) nextBtn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICONS Trainer Development — Baseline to Rescan — Brace Life Studios</title>
+<style>
+  :root {
+    --onyx:#0D0D0D; --ink:#1C1C1C; --slate:#3A3A3A; --mid:#787878; --rule:#E6E2DC;
+    --cream:#FAF8F5; --parch:#F4F0EA;
+    --gold:#C9A227; --gold-d:#8B6914; --gold-p:#FAF5E8;
+    --teal:#00695C; --teal-p:#EAF5F2;
+    --green:#2A6B2E; --green-p:#EDF6ED;
+    --red:#7A1515; --red-p:#FDF0F0;
+    --blue:#1A3560; --blue-p:#EEF2F9;
+    --amber:#9A4E00; --amber-p:#FDF4EC;
+    --purp:#471570; --purp-p:#F3EEF9;
+    --flagr:#B71C1C; --flagg:#1B5E20;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Georgia',serif;background:var(--cream);color:var(--ink);line-height:1.65;min-height:100vh;}
+  .shell{display:flex;min-height:100vh;}
+  nav{width:270px;flex-shrink:0;background:var(--onyx);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;border-right:2px solid var(--gold);}
+  .nav-brand{padding:24px 20px 16px;border-bottom:1px solid #2a2a2a;}
+  .nav-brand-name{font-family:Arial,sans-serif;font-size:8px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:6px;}
+  .nav-title{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;}
+  .nav-subtitle{font-family:Arial,sans-serif;font-size:9px;color:#888;margin-top:5px;line-height:1.5;}
+  .nav-items{padding:16px 0;flex:1;}
+  .nav-module{display:block;padding:12px 20px;text-decoration:none;border-left:3px solid transparent;transition:all .15s;cursor:pointer;position:relative;}
+  .nav-module:hover{background:#1a1a1a;}
+  .nav-module.active{border-left-color:var(--gold);background:#1a1a1a;}
+  .nav-module-num{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center;}
+  .nav-module-name{font-family:Arial,sans-serif;font-size:11px;font-weight:600;color:#ccc;line-height:1.3;}
+  .nav-module.active .nav-module-name{color:#fff;}
+  .nav-module.locked{cursor:not-allowed;opacity:.45;}
+  .nav-lock{font-size:9px;}
+  .nav-progress{padding:16px 20px;border-top:1px solid #2a2a2a;}
+  .progress-label{font-family:Arial,sans-serif;font-size:8px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+  .progress-bar{height:3px;background:#2a2a2a;border-radius:2px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease;}
+  .progress-text{font-family:Arial,sans-serif;font-size:9px;color:var(--gold);margin-top:5px;}
+  main{flex:1;max-width:840px;padding:0 0 80px;}
+  .module{display:none;} .module.visible{display:block;}
+  .module-hero{padding:48px 52px 36px;border-bottom:1px solid var(--rule);}
+  .stage-badge{display:inline-flex;align-items:center;gap:8px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:20px;color:#fff;margin-bottom:14px;}
+  .module-eyebrow{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+  .module-title{font-size:32px;font-weight:normal;line-height:1.2;color:var(--onyx);margin-bottom:12px;letter-spacing:-.5px;}
+  .module-lead{font-size:15px;color:var(--slate);line-height:1.7;max-width:620px;border-left:3px solid;padding-left:16px;margin-top:16px;}
+  .module-meta{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);margin-top:20px;display:flex;gap:20px;flex-wrap:wrap;}
+  .content{padding:36px 52px;}
+  .section-block{margin-bottom:40px;}
+  .section-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+  .section-heading{font-size:22px;font-weight:normal;color:var(--onyx);margin-bottom:12px;line-height:1.3;}
+  p{margin-bottom:14px;font-size:15px;color:var(--slate);line-height:1.72;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--ink);font-weight:600;}
+  .callout{border-radius:4px;padding:20px 22px;margin:20px 0;border-left:4px solid;}
+  .callout-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .callout p{font-size:14px;margin-bottom:8px;} .callout p:last-child{margin-bottom:0;}
+  .callout.gold{background:var(--gold-p);border-color:var(--gold);} .callout.gold .callout-label{color:var(--gold-d);}
+  .callout.teal{background:var(--teal-p);border-color:var(--teal);} .callout.teal .callout-label{color:var(--teal);}
+  .callout.green{background:var(--green-p);border-color:var(--green);} .callout.green .callout-label{color:var(--green);}
+  .callout.red{background:var(--red-p);border-color:var(--red);} .callout.red .callout-label{color:var(--red);}
+  .callout.blue{background:var(--blue-p);border-color:var(--blue);} .callout.blue .callout-label{color:var(--blue);}
+  .callout.amber{background:var(--amber-p);border-color:var(--amber);} .callout.amber .callout-label{color:var(--amber);}
+  .science-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0;}
+  .science-card{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:16px;border-top:3px solid;}
+  .science-card-label{font-family:Arial,sans-serif;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .science-card-value{font-size:22px;font-weight:normal;line-height:1.15;margin-bottom:4px;}
+  .science-card-note{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);line-height:1.4;}
+  .threshold-table{width:100%;border-collapse:collapse;margin:20px 0;font-family:Arial,sans-serif;}
+  .threshold-table th{background:var(--onyx);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 14px;text-align:left;}
+  .threshold-table td{padding:10px 14px;font-size:12px;border-bottom:1px solid var(--rule);}
+  .threshold-table tr:nth-child(even) td{background:var(--parch);}
+  .threshold-table tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+  .tag-red{background:var(--red-p);color:var(--flagr);} .tag-amber{background:var(--amber-p);color:var(--amber);}
+  .tag-green{background:var(--green-p);color:var(--flagg);} .tag-teal{background:var(--teal-p);color:var(--teal);}
+  .tag-blue{background:var(--blue-p);color:var(--blue);} .tag-gold{background:var(--gold-p);color:var(--gold-d);}
+  .steps{margin:20px 0;}
+  .step{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start;}
+  .step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px;}
+  .step-content{flex:1;} .step-title{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+  .step-body{font-size:14px;color:var(--slate);}
+  .key-insight{background:var(--parch);border:none;border-left:4px solid var(--gold);padding:18px 20px;margin:20px 0;font-size:16px;font-style:italic;color:var(--ink);line-height:1.65;}
+  .key-insight cite{display:block;font-style:normal;font-family:Arial,sans-serif;font-size:10px;color:var(--mid);margin-top:8px;text-transform:uppercase;letter-spacing:1px;}
+  .apply-it{border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin:24px 0;}
+  .apply-it-header{background:var(--ink);padding:10px 18px;display:flex;align-items:center;gap:10px;}
+  .apply-it-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+  .apply-it-title{font-family:Arial,sans-serif;font-size:12px;font-weight:600;color:#fff;}
+  .apply-it-body{padding:18px;background:#fff;} .apply-it-body p{font-size:14px;}
+  .checklist{list-style:none;margin:16px 0;}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--slate);line-height:1.5;}
+  .checklist li:last-child{border-bottom:none;}
+  .check-box{width:16px;height:16px;border:1.5px solid var(--rule);border-radius:2px;flex-shrink:0;margin-top:2px;cursor:pointer;transition:all .1s;}
+  .check-box:hover{border-color:var(--gold);}
+  .check-box.checked{background:var(--gold);border-color:var(--gold);position:relative;}
+  .check-box.checked::after{content:'✓';color:#fff;font-size:10px;font-weight:700;position:absolute;top:-1px;left:2px;}
+  .check-box.strict.checked{background:var(--red);border-color:var(--red);}
+  .gate-box{border:1px solid var(--onyx);border-radius:4px;overflow:hidden;margin:32px 0 20px;}
+  .gate-header{background:var(--onyx);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .gate-eyebrow{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+  .gate-title{font-size:15px;color:#fff;font-weight:normal;margin-top:2px;}
+  .gate-threshold{font-family:Arial,sans-serif;font-size:9px;color:#999;text-align:right;}
+  .gate-body{padding:22px;background:#fff;}
+  .quiz-q{background:var(--cream);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;margin-bottom:14px;}
+  .quiz-q:last-child{margin-bottom:0;}
+  .quiz-q-skill{font-family:Arial,sans-serif;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:6px;}
+  .quiz-q-text{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.5;}
+  .quiz-opts{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opt{font-family:Arial,sans-serif;font-size:13px;padding:9px 12px;border:1px solid var(--rule);border-radius:3px;cursor:pointer;background:#fff;transition:all .12s;line-height:1.4;}
+  .quiz-opt:hover{border-color:var(--gold);}
+  .quiz-opt.correct{background:var(--green-p);border-color:var(--green);color:var(--flagg);font-weight:600;}
+  .quiz-opt.incorrect{background:var(--red-p);border-color:var(--red);color:var(--flagr);font-weight:600;}
+  .quiz-opt.disabled{pointer-events:none;}
+  .quiz-explain{font-size:12px;color:var(--mid);margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule);display:none;font-family:Arial,sans-serif;line-height:1.55;}
+  .quiz-explain.show{display:block;}
+  .gate-status-row{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);flex-wrap:wrap;gap:10px;}
+  .gate-score{font-family:Arial,sans-serif;font-size:11px;color:var(--mid);}
+  .gate-score-value{font-weight:700;color:var(--ink);}
+  .gate-status{font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.5px;padding:6px 12px;border-radius:3px;}
+  .gate-status.pass{background:var(--green-p);color:var(--flagg);}
+  .gate-status.fail{background:var(--red-p);color:var(--flagr);}
+  .gate-status.pending{background:var(--parch);color:var(--mid);}
+  .rubric-note{font-family:Arial,sans-serif;font-size:10.5px;color:var(--mid);margin-top:6px;font-style:italic;}
+  .tier-panel{display:none;margin-top:18px;border-radius:4px;overflow:hidden;border:1px solid var(--rule);}
+  .tier-panel.show{display:block;}
+  .tier-panel-header{padding:14px 18px;font-family:Arial,sans-serif;}
+  .tier-panel-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.85;}
+  .tier-panel-value{font-size:18px;font-weight:700;margin-top:4px;}
+  .tier-panel-body{padding:14px 18px;background:#fff;font-family:Arial,sans-serif;font-size:12px;color:var(--slate);line-height:1.6;}
+  .compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-family:Arial,sans-serif;font-size:12px;}
+  .compare-table th{background:var(--onyx);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 12px;text-align:left;}
+  .compare-table td{padding:9px 12px;border-bottom:1px solid var(--rule);}
+  .compare-table tr:nth-child(even) td{background:var(--parch);}
+  .compare-pill{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;}
+  .compare-pill.correct{background:var(--green-p);color:var(--flagg);}
+  .compare-pill.incorrect{background:var(--red-p);color:var(--flagr);}
+  .compare-change{font-weight:700;}
+  .compare-change.improved{color:var(--flagg);}
+  .compare-change.same-good{color:var(--mid);}
+  .compare-change.regressed{color:var(--flagr);}
+  .module-footer{display:flex;align-items:center;justify-content:space-between;padding:24px 52px;border-top:1px solid var(--rule);margin-top:20px;background:#fff;flex-wrap:wrap;gap:10px;}
+  .nav-btn{font-family:Arial,sans-serif;font-size:12px;font-weight:700;padding:10px 20px;border-radius:3px;cursor:pointer;border:none;text-decoration:none;transition:all .15s;}
+  .btn-next{background:var(--onyx);color:var(--gold);} .btn-next:hover{background:#1a1a1a;}
+  .btn-next:disabled{background:#ccc;color:#888;cursor:not-allowed;}
+  .btn-prev{background:transparent;color:var(--mid);border:1px solid var(--rule);} .btn-prev:hover{color:var(--ink);border-color:var(--ink);}
+  .module-position{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;}
+  @media (max-width:760px){nav{display:none;} .module-hero{padding:28px 24px 24px;} .content{padding:24px;} .module-footer{padding:20px 24px;}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-name">B R A C E   L I F E   S T U D I O S</span>
+    <div class="nav-title">ICONS Trainer Development<br>Baseline to Rescan</div>
+    <div class="nav-subtitle">Built on the same model used on every client: measure first, program to the gaps, then rescan and compare — applied to your own competency instead of a body composition scan.</div>
+  </div>
+  <div class="nav-items">
+    <a class="nav-module active" onclick="goTo(0)" data-module="0">
+      <div class="nav-module-num" style="color:var(--purp)"><span>ORIENTATION</span></div>
+      <div class="nav-module-name">Why Measure Before You Program</div>
+    </a>
+    <a class="nav-module" onclick="goTo(1)" data-module="1">
+      <div class="nav-module-num" style="color:var(--teal)"><span>DAY 0</span></div>
+      <div class="nav-module-name">Baseline Battery</div>
+    </a>
+    <a class="nav-module locked" onclick="goTo(2)" data-module="2">
+      <div class="nav-module-num" style="color:var(--green)"><span>WEEKS 1–4</span><span class="nav-lock">🔒</span></div>
+      <div class="nav-module-name">Targeted Development</div>
+    </a>
+    <a class="nav-module locked" onclick="goTo(3)" data-module="3">
+      <div class="nav-module-num" style="color:var(--red)"><span>WEEKS 5–8</span><span class="nav-lock">🔒</span></div>
+      <div class="nav-module-name">Refinement &amp; Peak Practicum</div>
+    </a>
+    <a class="nav-module locked" onclick="goTo(4)" data-module="4">
+      <div class="nav-module-num" style="color:var(--gold)"><span>WEEK 8</span><span class="nav-lock">🔒</span></div>
+      <div class="nav-module-name">The Rescan</div>
+    </a>
+  </div>
+  <div class="nav-progress">
+    <div class="progress-label">Your progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+    <div class="progress-text" id="progressText">Orientation</div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════ MODULE 0 — ORIENTATION ═══════════ -->
+<div class="module visible" id="module-0">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--purp-p),var(--cream))">
+    <div class="stage-badge" style="background:var(--purp)">Orientation</div>
+    <div class="module-eyebrow" style="color:var(--purp)">Read this before Day 0</div>
+    <h1 class="module-title">Why Measure<br>Before You Program</h1>
+    <p class="module-lead" style="border-color:var(--purp)">You would never build a client's plan without a Styku scan and a baseline battery. This track applies the identical discipline to trainer development — because "we think you're roughly at the right level" is exactly the guessing ICONS exists to eliminate for clients.</p>
+    <div class="module-meta"><span>⏱ 10 min</span><span>📖 Framework</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--purp)">The client-facing model, applied to you</div>
+      <h2 class="section-heading">Baseline. Targeted programming. Rescan.</h2>
+      <p>Every client gets tested before they get programmed, and rescanned before their program is called a success. This track is that exact structure, with your ICONS competency standing in for body composition:</p>
+      <div class="science-grid">
+        <div class="science-card" style="border-top-color:var(--teal)"><div class="science-card-label" style="color:var(--teal)">Day 0</div><div class="science-card-value" style="color:var(--teal);font-size:17px;font-weight:700">Baseline Battery</div><div class="science-card-note">A 10-item diagnostic across the core competency areas — your ALST-equivalent tier comes out of this, not a guess.</div></div>
+        <div class="science-card" style="border-top-color:var(--green)"><div class="science-card-label" style="color:var(--green)">Wks 1–4</div><div class="science-card-value" style="color:var(--green);font-size:17px;font-weight:700">Targeted Development</div><div class="science-card-note">Programmed to your actual gaps, not a generic curriculum everyone repeats identically.</div></div>
+        <div class="science-card" style="border-top-color:var(--red)"><div class="science-card-label" style="color:var(--red)">Wks 5–8</div><div class="science-card-value" style="color:var(--red);font-size:17px;font-weight:700">Refinement &amp; Practicum</div><div class="science-card-note">Live delivery, standards audits, and a lead-coach-observed capstone session.</div></div>
+        <div class="science-card" style="border-top-color:var(--gold)"><div class="science-card-label" style="color:var(--gold-d)">Wk 8</div><div class="science-card-value" style="color:var(--gold-d);font-size:17px;font-weight:700">The Rescan</div><div class="science-card-note">The same battery, retaken. A real before/after comparison — not a certificate that just says "complete."</div></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--purp)">Why this beats a fixed curriculum</div>
+      <h2 class="section-heading">Nobody's gaps are identical.</h2>
+      <blockquote class="key-insight">"When a client's ALST is At-Risk, muscle-building is not a preference — it is the physiological priority. The plan is built around this."<cite>ICONS Trainer Staff Guide — Brace Life Studios, adapted</cite></blockquote>
+      <p>A trainer who already has the clinical thresholds cold but has never run a live session under pressure has a different gap than one who knows the plan-reading sequence perfectly but has never had to make an asymmetry call from raw Styku numbers. A fixed five-module curriculum treats both trainers identically. This track doesn't — your Day 0 baseline sets what Weeks 1–4 actually emphasizes with you.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--purp)">What "rescan" means here</div>
+      <h2 class="section-heading">The same standard you'd apply to a client's before/after.</h2>
+      <p>At Week 8 you retake a parallel version of the Day 0 battery — same ten competency areas, different specific scenarios so you can't just memorize answers. The result is a real comparison table: baseline vs. rescan, skill by skill, exactly like the "Never fabricate a before value" discipline used on client improvement reports. If a skill area didn't genuinely improve, the report says so — the same honesty a client's comparison table gets.</p>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" disabled>← Previous</button>
+    <span class="module-position">Orientation</span>
+    <button class="nav-btn btn-next" onclick="goTo(1)">Day 0: Baseline Battery →</button>
+  </div>
+</div>
+
+<!-- ═══════════ MODULE 1 — DAY 0 BASELINE BATTERY ═══════════ -->
+<div class="module" id="module-1">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--teal-p),var(--cream))">
+    <div class="stage-badge" style="background:var(--teal)">Day 0</div>
+    <div class="module-eyebrow" style="color:var(--teal)">No pass/fail. This is a measurement, not a test you can fail.</div>
+    <h1 class="module-title">Baseline<br>Battery</h1>
+    <p class="module-lead" style="border-color:var(--teal)">Ten questions, one per core competency area. Answer honestly — a low score here shapes a better Weeks 1–4 plan for you. A false "pass" just means Weeks 1–4 miss your actual gap.</p>
+    <div class="module-meta"><span>⏱ 15 min</span><span>📊 10 competency areas</span><span>✅ Completion unlocks Weeks 1–4</span></div>
+  </div>
+
+  <div class="content">
+    <div class="gate-box" id="baseline-gate" data-threshold="0">
+      <div class="gate-header"><div><div class="gate-eyebrow">Diagnostic</div><div class="gate-title">Day 0 Baseline Battery</div></div><div class="gate-threshold">10 questions · 1 per competency area</div></div>
+      <div class="gate-body" id="baseline-quiz">
+        <div class="quiz-q" data-skill="callout-colors"><div class="quiz-q-skill">Callout Colors</div><div class="quiz-q-text">Which callout color signals an active clinical restriction that overrides the exercise table regardless of what it says?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Gold</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Red</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Teal</div></div><div class="quiz-explain">Red always overrides the table, with no exceptions.</div></div>
+
+        <div class="quiz-q" data-skill="red-override"><div class="quiz-q-skill">Applying a Red Override</div><div class="quiz-q-text">A red callout suspends overhead loading. Today's table has a lighter-load Overhead Press. What do you do?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Deliver it at the lighter load — that's a reasonable compromise</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Skip it entirely — any overhead load is still overhead loading</div></div><div class="quiz-explain">A lighter load doesn't change the movement pattern the restriction is protecting against.</div></div>
+
+        <div class="quiz-q" data-skill="rir-progression"><div class="quiz-q-skill">RIR / Load Progression</div><div class="quiz-q-text">Client hits the top of her rep range with clean form on every set, at roughly 2 RIR. What's the correct call?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Add weight next session</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Keep the same weight one more week to be safe</div></div><div class="quiz-explain">Top of range + clean form + 2 RIR is exactly the documented add-weight trigger.</div></div>
+
+        <div class="quiz-q" data-skill="asymmetry"><div class="quiz-q-skill">Asymmetry Protocol</div><div class="quiz-q-text">Left Leg LST 11.4 lbs / Right Leg LST 12.1 lbs. Which leg leads unilateral work?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Left (the weaker leg)</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Right (the stronger leg)</div></div><div class="quiz-explain">Lower LST = weaker = leads.</div></div>
+
+        <div class="quiz-q" data-skill="alst"><div class="quiz-q-skill">ALST Thresholds</div><div class="quiz-q-text">A client's ALST reads 5.05 kg/m². What tier is she in?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Normal — monitor at rescan</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">At-Risk — muscle-building becomes the physiological priority</div></div><div class="quiz-explain">5.05 is below the 5.5 kg/m² At-Risk threshold.</div></div>
+
+        <div class="quiz-q" data-skill="vfa-bmi"><div class="quiz-q-skill">VFA / BMI Flags</div><div class="quiz-q-text">A client's VFA reads 118 cm². How should you present this to her?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">As elevated cardiometabolic risk, since it's above the old 100 cm² threshold</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">As a personal trend to track over time — no single validated VFA cutoff exists, and this scanner's own VFA output was validated against DXA in kilograms, not cm². Pair it with a waist-circumference measurement instead</div></div><div class="quiz-explain">Corrected 8/17/2026: the old "≥100 cm² = elevated risk" band is retired. VFA is a trend metric, not a risk classification.</div></div>
+
+        <div class="quiz-q" data-skill="pelvic-floor"><div class="quiz-q-skill">Pelvic Floor Protocol</div><div class="quiz-q-text">A client reports a feeling of heaviness during a heavy farmer's carry. Correct response?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Tell her to brace harder and finish the set — it's common under load</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Stop, use the exact required language, and never minimize the symptom</div></div><div class="quiz-explain">"Push through" is explicitly prohibited language for this protocol.</div></div>
+
+        <div class="quiz-q" data-skill="session-sequence"><div class="quiz-q-skill">Session Sequence</div><div class="quiz-q-text">What runs immediately after the warm-up in the standard session sequence?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">The corrective block</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">The primary strength block</div></div><div class="quiz-explain">The corrective primer runs in full before the primary lifts it protects.</div></div>
+
+        <div class="quiz-q" data-skill="red-flag-standards"><div class="quiz-q-skill">Standards / Authorization</div><div class="quiz-q-text">Can a trainer substitute a listed exercise for one they personally prefer, without lead-coach sign-off?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Yes, if they document it afterward</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">No — never, under any circumstance, without authorization first</div></div><div class="quiz-explain">Substitution always requires lead-coach authorization before it happens, not documentation after.</div></div>
+
+        <div class="quiz-q" data-skill="coaching-cue-precision"><div class="quiz-q-skill">Coaching Cue Precision</div><div class="quiz-q-text">On a 60% Teal technique day, what's the correct coaching-cue style?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Ask about feel and form — "Can you feel where the load is?"</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Push for effort — "One more, you've got this"</div></div><div class="quiz-explain">Teal days are form-only; effort-pushing language belongs to the higher-intensity days.</div></div>
+
+        <div class="gate-status-row"><div class="gate-score">Answered: <span class="gate-score-value">0 / 10</span></div><div class="gate-status pending">Answer all 10 to record your baseline</div></div>
+      </div>
+      <div class="tier-panel" id="baseline-tier-panel">
+        <div class="tier-panel-header"><div class="tier-panel-label">Your Baseline Tier</div><div class="tier-panel-value" id="baseline-tier-value">—</div></div>
+        <div class="tier-panel-body" id="baseline-tier-body">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(0)">← Orientation</button>
+    <span class="module-position">Day 0</span>
+    <button class="nav-btn btn-next" id="next-1" onclick="goTo(2)" disabled>Weeks 1–4: Targeted Development →</button>
+  </div>
+</div>
+
+<!-- ═══════════ MODULE 2 — WEEKS 1–4 TARGETED DEVELOPMENT ═══════════ -->
+<div class="module" id="module-2">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--green-p),var(--cream))">
+    <div class="stage-badge" style="background:var(--green)">Weeks 1–4</div>
+    <div class="module-eyebrow" style="color:var(--green)">Programmed to your gaps, not a generic repeat</div>
+    <h1 class="module-title">Targeted<br>Development</h1>
+    <p class="module-lead" style="border-color:var(--green)">Whatever came back weakest on your Day 0 battery gets the most repetition here — the same principle behind a client's plan emphasizing their weaker side and their actual clinical flags, not a symmetric generic template.</p>
+    <div class="module-meta"><span>⏱ 4-week cycle</span><span>📋 Full plan-literacy + science review</span><span>✅ 8-question milestone gate · 75% to unlock Weeks 5–8</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Full plan literacy</div>
+      <h2 class="section-heading">The three-minute read, the callout system, the seven-column table.</h2>
+      <p>Cover page → red callouts → week number → today's warm-up → first cue of each block, in under three minutes, every time. Color is clinical information: gold is guidance, green is reference data, red overrides everything, teal is Styku/asymmetry data, blue is non-optional recovery. Every exercise-table column — EXERCISE, SETS, REPS, LOAD, TEMPO, REST, COACHING CUE — is an instruction, never a suggestion.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">The evidence base</div>
+      <h2 class="section-heading">RIR over failure, LIFTMOR, and the ALST/VFA/BMI thresholds.</h2>
+      <table class="threshold-table">
+        <thead><tr><th>Concept</th><th>Standard</th></tr></thead>
+        <tbody>
+          <tr><td>RIR model</td><td>3+ RIR = one collapsed "technique/submaximal" band · 2 RIR = DEFAULT for primary lifts · 1 RIR = hypertrophy-priority accessory work only · 0 RIR sparingly, documented only (corrected 8/17/2026 — 1 RIR is no longer the primary-lift default)</td></tr>
+          <tr><td>LIFTMOR (Watson &amp; Beck 2018)</td><td>&gt;85% 1RM compound lifts (corrected 8/17/2026 from a rounded "≥80%") are the most osteogenic stimulus available in postmenopausal women with low bone mass — supervised, 2×/week, after a technique-first ramp-in, risk-gated for fracture history — framed as a bone investment</td></tr>
+          <tr><td>ALST</td><td>&lt;5.5 kg/m² At-Risk · ≥5.5 kg/m² within normal range — a trend metric, not a graded score (corrected 8/17/2026: the old "≥7.0 = Optimal" tier wrongly used the men's EWGSOP2 cutoff as a women's tier) — always use Styku's reported value</td></tr>
+          <tr><td>VFA</td><td>Trend metric only (corrected 8/17/2026 — no single validated absolute cutoff; the old "≥100 cm² = elevated risk" band is retired). Use waist circumference (IAS/ICCR: ≥80/90/105/115 cm, women) as the primary clinical-facing metric</td></tr>
+          <tr><td>BMI</td><td>&lt;18.5 clinical underweight flag even if body fat % reads "Fit" — cross-reference against ALST</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Clinical decision-making</div>
+      <h2 class="section-heading">Asymmetry and pelvic floor — the exact protocols.</h2>
+      <div class="callout teal"><div class="callout-label">Asymmetry</div><p>Lower LST number = weaker side = leads all unilateral exercises — once the gap clears the trigger. Suitcase carry: the weaker side holds the weight.</p></div>
+      <div class="callout amber"><div class="callout-label">Corrected 8/17/2026 — trigger on a RELATIVE gap, not an absolute lb figure</div><p>The old flat 0.5 lb trigger fired on measurement noise — device error on leg lean mass alone runs 2.6–3.6× larger than that number. Trigger only on a gap ≥10% of the larger side; prefer a functional strength/power test as the primary trigger where available.</p></div>
+      <div class="callout red"><div class="callout-label">Pelvic floor — bracing scales with load, corrected 8/17/2026</div><p>No longer a blanket "never hold your breath" rule — POGP 2024 states that's "not appropriate." Free breathing on lighter work; exhale on exertion as the default; a brief controlled brace (which may include a short breath-hold through the sticking point) is normal on the heaviest sets. Sustained breath-holding across multiple reps or a whole set is what's still wrong. If symptoms are reported: "If you experience any leaking, heaviness, or pressure — stop and flag me. This is common and completely treatable. We will not train through it." Never "push through."</p></div>
+      <div class="callout gold"><div class="callout-label">Scope check — male clients</div><p>The ALST/VFA/BMI numbers above are validated for women. A male client's ALST At-Risk cutoff is &lt;7.0 kg/m² (EWGSOP2 2018) — not &lt;5.5. Both sexes now use a single binary cutoff (no graded "Optimal" tier for either, since the women's old three-tier table was corrected 8/17/2026) — the numbers just differ. Never apply the women's thresholds to a male client by default; see CLAUDE.md's Male Client Programming Framework. TRT/hypogonadism questions mirror the HRT posture — flag for referral, never diagnose.</p></div>
+    </div>
+
+    <div class="gate-box" data-threshold="75">
+      <div class="gate-header"><div><div class="gate-eyebrow">4-Week Milestone Check</div><div class="gate-title">Weeks 1–4 Gate</div></div><div class="gate-threshold">9 questions · 75% (7/9) to unlock Weeks 5–8</div></div>
+      <div class="gate-body">
+        <div class="quiz-q"><div class="quiz-q-text">1. A client's ALST is 6.8 kg/m². What tier, and what changes in her programming?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Within normal range — monitor as a trend at rescan, no immediate change required</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">At-Risk — escalate protein and creatine immediately</div></div><div class="quiz-explain">6.8 is above the 5.5 kg/m² At-Risk line — corrected 8/17/2026, there is no separate "Optimal" tier above that; ALST reads as a trend metric, not a graded score.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">2. Rest periods in the plan are:</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">A flexible guideline you can shorten if the client feels fine</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Part of the programmed stimulus — enforced with a timer</div></div><div class="quiz-explain">Too short or too long both change the stimulus; neither is an improvement on the plan.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">3. Why does LIFTMOR matter for a 65-year-old client's heavy deadlift prescription?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">&gt;85% 1RM compound loading (LIFTMOR's actual prescription, supervised and risk-gated) is the most osteogenic stimulus available in postmenopausal women with low bone mass</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">It doesn't — age alone should lower her load regardless of the plan</div></div><div class="quiz-explain">Age alone is not a basis to override the load a plan specifies. Note the corrected number: LIFTMOR's actual trial prescription is &gt;85% 1RM, not a rounded ≥80%.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">4. BMI reads 18.1, body fat % reads "Fit." Correct handling?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Flag as clinically underweight regardless, and cross-reference against ALST for sarcopenic obesity risk</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">No action — "Fit" body fat overrides a low BMI</div></div><div class="quiz-explain">BMI &lt; 18.5 is a clinical flag independent of how favorable the body fat % looks.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">5. Left Arm LST 7.1 lbs / Right Arm LST 6.4 lbs. Which arm leads a single-arm row?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Right (the weaker arm)</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Left (the stronger arm)</div></div><div class="quiz-explain">6.4 &lt; 7.1 — right arm is weaker, right leads.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">6. A client mentions "leaking" during a heavy hip thrust and looks embarrassed. What's the correct tone?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Reassure her it's rare and move past it quickly so she isn't embarrassed</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Use the exact required language — stop, name it as common and treatable, refer to pelvic floor PT if symptomatic</div></div><div class="quiz-explain">Calling it "rare" understates it and risks minimizing a real symptom — the required language calls it common and treatable instead.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">7. What's the correct action if a client's form degrades on a set even though she completed all the reps?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Keep the same weight next session</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Add weight, since the reps were technically completed</div></div><div class="quiz-explain">Completed reps with degraded form is the "same weight" trigger, not the "add weight" one.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">8. Training to true momentary failure, per ACSM 2026:</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Consistently produces superior strength and hypertrophy gains</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Does not consistently outperform RIR-based loading, and raises injury/recovery cost</div></div><div class="quiz-explain">This is exactly why the RIR model, not failure training, is the ICONS standard.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">9. A male client's ALST reads 6.2 kg/m². What tier, using the correct framework for his sex?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">At-Risk — below the men's 7.0 kg/m² EWGSOP2 cutoff</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Not At-Risk — 6.2 would sit within the women's normal reference range, so treat it the same</div></div><div class="quiz-explain">Men use a single binary cutoff at 7.0 kg/m² — 6.2 is below it and is At-Risk. Both sexes now use a single-threshold structure (corrected 8/17/2026), but the number doesn't transfer between them.</div></div>
+        <div class="gate-status-row"><div class="gate-score">Score: <span class="gate-score-value">0 / 9</span></div><div class="gate-status pending">Answer all questions to see your result</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(1)">← Day 0</button>
+    <span class="module-position">Weeks 1–4</span>
+    <button class="nav-btn btn-next" id="next-2" onclick="goTo(3)" disabled>Weeks 5–8: Refinement &amp; Practicum →</button>
+  </div>
+</div>
+
+<!-- ═══════════ MODULE 3 — WEEKS 5–8 REFINEMENT & PEAK PRACTICUM ═══════════ -->
+<div class="module" id="module-3">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--red-p),var(--cream))">
+    <div class="stage-badge" style="background:var(--red)">Weeks 5–8</div>
+    <div class="module-eyebrow" style="color:var(--red)">Live delivery. Zero tolerance on red-flag items.</div>
+    <h1 class="module-title">Refinement &amp;<br>Peak Practicum</h1>
+    <p class="module-lead" style="border-color:var(--red)">The knowledge phase is behind you. This stage is entirely about proving it live — culminating in a lead-coach-observed session, exactly like a client's 8-week cycle culminates in a rescan, not another quiz.</p>
+    <div class="module-meta"><span>⏱ Live sessions + standards audits</span><span>🎯 Observed capstone</span><span>✅ Sign-off required to unlock the rescan</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Standards audit — monthly, at random</div>
+      <h2 class="section-heading">One log, reviewed against the full standard.</h2>
+      <p>Each of these weeks, a lead coach reviews one of your submitted session logs at random against the rubric below. This is not scheduled in advance — that's deliberate, since it measures your standing standard, not your performance on a day you knew was being checked.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Capstone rubric</div>
+      <h2 class="section-heading">Standard items scored; red-flag items pass/fail.</h2>
+      <p><strong>Standard items</strong> — scored, contribute to your overall proficiency rating:</p>
+      <ul class="checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Completed the three-minute pre-session read within three minutes</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Delivered the exact written coaching cue for at least the first exercise of each block</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Enforced tempo and used a visible timer for rest periods</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Correctly applied the asymmetry side-leading protocol without prompting</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Submitted a complete session log before leaving</li>
+      </ul>
+      <p style="margin-top:20px"><strong>Red-flag items</strong> — pass/fail, zero tolerance:</p>
+      <ul class="checklist">
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Did not substitute, skip, or modify any element of the plan without lead-coach authorization</li>
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Did not override a documented restriction under client pressure</li>
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Responded correctly to any reported pain/discomfort — stopped immediately, no "pushing through"</li>
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Used the exact required pelvic floor language when applicable</li>
+      </ul>
+      <div class="rubric-note">This checklist is a self-preparation tool. The scored version is completed live by your lead coach during the observed capstone session.</div>
+    </div>
+
+    <div class="gate-box" data-threshold="100">
+      <div class="gate-header"><div><div class="gate-eyebrow">Capstone Sign-Off</div><div class="gate-title">Confirm Readiness for the Rescan</div></div><div class="gate-threshold">Both items required</div></div>
+      <div class="gate-body">
+        <div class="quiz-q"><div class="quiz-q-text">Have you completed a live, lead-coach-observed capstone session with zero red-flag failures?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Yes — lead coach confirmed zero red-flag failures</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Not yet — schedule the capstone before proceeding</div></div>
+          <div class="quiz-explain">Do not self-certify this step — it requires an actual observation.</div></div>
+        <div class="quiz-q"><div class="quiz-q-text">Did at least one random monthly standards audit come back clean during Weeks 5–8?</div>
+          <div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Yes</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Not yet</div></div>
+          <div class="quiz-explain">The rescan measures standing standard, not a single good day — a clean random audit is part of that evidence.</div></div>
+        <div class="gate-status-row"><div class="gate-score">Confirmed: <span class="gate-score-value">0 / 2</span></div><div class="gate-status pending">Confirm both items to proceed</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(2)">← Weeks 1–4</button>
+    <span class="module-position">Weeks 5–8</span>
+    <button class="nav-btn btn-next" id="next-3" onclick="goTo(4)" disabled>Week 8: The Rescan →</button>
+  </div>
+</div>
+
+<!-- ═══════════ MODULE 4 — THE RESCAN ═══════════ -->
+<div class="module" id="module-4">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--gold-p),var(--cream))">
+    <div class="stage-badge" style="background:var(--gold);color:var(--onyx)">Week 8</div>
+    <div class="module-eyebrow" style="color:var(--gold-d)">The same ten competency areas — different scenarios</div>
+    <h1 class="module-title">The<br>Rescan</h1>
+    <p class="module-lead" style="border-color:var(--gold)">Same structure as Day 0, same ten skill areas — new scenarios so this measures real fluency, not memorized answers. When you finish, you get an actual before/after comparison, the same honest format used on a client's Brace Life Improvement Report.</p>
+    <div class="module-meta"><span>⏱ 15 min</span><span>📊 10 competency areas, mirrored</span><span>📈 Auto-generates your comparison report</span></div>
+  </div>
+
+  <div class="content">
+    <div class="gate-box" id="rescan-gate" data-threshold="0">
+      <div class="gate-header"><div><div class="gate-eyebrow">Rescan</div><div class="gate-title">Week 8 Competency Battery</div></div><div class="gate-threshold">10 questions · mirrors Day 0</div></div>
+      <div class="gate-body" id="rescan-quiz">
+        <div class="quiz-q" data-skill="callout-colors"><div class="quiz-q-skill">Callout Colors</div><div class="quiz-q-text">Which callout color marks Styku scan data, assessment findings, and asymmetry protocol?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Blue</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Teal</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Gold</div></div><div class="quiz-explain">Teal is Styku/assessment/asymmetry data.</div></div>
+
+        <div class="quiz-q" data-skill="red-override"><div class="quiz-q-skill">Applying a Red Override</div><div class="quiz-q-text">A red callout restricts axial spinal loading. Today's table has a lighter-load Barbell Back Squat. What do you do?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Skip it — red overrides the table regardless of load</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Deliver it at a much lighter load, since the restriction was about heavy loading</div></div><div class="quiz-explain">The restriction is on the pattern (axial spinal loading), not a specific weight threshold — any load still loads the spine axially.</div></div>
+
+        <div class="quiz-q" data-skill="rir-progression"><div class="quiz-q-skill">RIR / Load Progression</div><div class="quiz-q-text">A client misses her last two reps on a set and reports unusual fatigue. Correct call?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Drop the weight, document it, and flag the lead coach</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Keep the same weight — missing two reps once isn't significant</div></div><div class="quiz-explain">Missed reps plus unusual fatigue is the explicit drop-weight-and-flag trigger.</div></div>
+
+        <div class="quiz-q" data-skill="asymmetry"><div class="quiz-q-skill">Asymmetry Protocol</div><div class="quiz-q-text">Left Arm LST 6.9 lbs / Right Arm LST 6.3 lbs. Which arm holds a suitcase carry?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Right (the weaker arm)</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Left (the stronger arm)</div></div><div class="quiz-explain">The weaker arm always holds the carry weight.</div></div>
+
+        <div class="quiz-q" data-skill="alst"><div class="quiz-q-skill">ALST Thresholds</div><div class="quiz-q-text">A client's ALST reads 6.2 kg/m². What tier?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Within normal range — track as a trend at rescan</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Optimal — a distinct top tier, no monitoring needed</div></div><div class="quiz-explain">6.2 is above the 5.5 kg/m² At-Risk line. Corrected 8/17/2026: there is no separate "Optimal" tier above that — ALST is a trend metric, not a graded score.</div></div>
+
+        <div class="quiz-q" data-skill="vfa-bmi"><div class="quiz-q-skill">VFA / BMI Flags</div><div class="quiz-q-text">BMI reads 17.8, body fat % reads "Fit." Correct handling?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Flag as clinically underweight regardless, and cross-reference against ALST</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">No flag needed since body fat % reads favorably</div></div><div class="quiz-explain">BMI &lt; 18.5 is flagged independent of the body fat % reading.</div></div>
+
+        <div class="quiz-q" data-skill="pelvic-floor"><div class="quiz-q-skill">Pelvic Floor Protocol</div><div class="quiz-q-text">What's the exact required language when a client reports leaking during a heavy squat?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">"Stop and flag me. This is common and completely treatable. We will not train through it."</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"Let's modify your brace and try to push through carefully."</div></div><div class="quiz-explain">"Push through," even softened with "carefully," is explicitly prohibited language.</div></div>
+
+        <div class="quiz-q" data-skill="session-sequence"><div class="quiz-q-skill">Session Sequence</div><div class="quiz-q-text">What is the last step of the standard session sequence, before you leave?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Submitting the session log</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">The cool-down</div></div><div class="quiz-explain">Cool-down is step 7 of 8; the session log is the final step — an unsubmitted log is itself a standards event.</div></div>
+
+        <div class="quiz-q" data-skill="red-flag-standards"><div class="quiz-q-skill">Standards / Authorization</div><div class="quiz-q-text">A client insists a restricted movement is fine today. Can you allow it based on her self-report?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Yes, if she's confident and it's a light set</div><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">No — client self-report is never medical clearance</div></div><div class="quiz-explain">Only a documented change from the lead coach can lift a restriction.</div></div>
+
+        <div class="quiz-q" data-skill="coaching-cue-precision"><div class="quiz-q-skill">Coaching Cue Precision</div><div class="quiz-q-text">On a 90% Red peak-intensity day, what's the correct coaching cue?</div><div class="quiz-opts"><div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">"Take your full rest. The next set matters more than saving 30 seconds."</div><div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"Let's keep the pace up to stay on schedule."</div></div><div class="quiz-explain">90% days prioritize full CNS recovery between sets over session pacing.</div></div>
+
+        <div class="gate-status-row"><div class="gate-score">Answered: <span class="gate-score-value">0 / 10</span></div><div class="gate-status pending">Answer all 10 to generate your comparison report</div></div>
+      </div>
+    </div>
+
+    <div class="section-block" id="comparison-section" style="display:none">
+      <div class="section-label" style="color:var(--gold-d)">Your Comparison Report</div>
+      <h2 class="section-heading">Baseline vs. Rescan — the same honest format as a client's before/after.</h2>
+      <table class="compare-table">
+        <thead><tr><th>Competency Area</th><th>Day 0 Baseline</th><th>Week 8 Rescan</th><th>Change</th></tr></thead>
+        <tbody id="comparison-body"></tbody>
+      </table>
+      <div class="tier-panel show" id="rescan-tier-panel">
+        <div class="tier-panel-header"><div class="tier-panel-label">Your Rescan Tier</div><div class="tier-panel-value" id="rescan-tier-value">—</div></div>
+        <div class="tier-panel-body" id="rescan-tier-body">—</div>
+      </div>
+      <p style="margin-top:16px;font-size:12px;color:var(--mid);font-family:Arial,sans-serif">Only competency areas answered in both Day 0 and Week 8 are compared — nothing here is inferred or assumed. If a skill area shows no change, that's reported as-is, the same discipline used on a client's improvement report where an undocumented "before" is never invented.</p>
+    </div>
+
+    <div class="section-block" style="margin-top:32px">
+      <div class="section-label" style="color:var(--blue)">Ongoing</div>
+      <h2 class="section-heading">Quarterly rescans, not a one-time certificate.</h2>
+      <p>A client's 8-week rescan sets the baseline for the next cycle, not a finish line. The same applies here — this battery re-runs quarterly with fresh scenarios, so certification reflects your current standard, not a snapshot from months ago.</p>
+    </div>
+
+    <div class="section-block" style="text-align:center;padding:32px 0 16px;border-top:1px solid var(--rule)">
+      <div style="font-family:Arial,sans-serif;font-size:9px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">You have completed Baseline to Rescan</div>
+      <div style="font-size:22px;color:var(--onyx);margin-bottom:6px">It's not about working out.<br>It's about working <em>in.</em></div>
+      <div style="font-family:Arial,sans-serif;font-size:10px;color:var(--gold);letter-spacing:1px">B R A C E   L I F E   S T U D I O S · bracelifestudios.com</div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(3)">← Weeks 5–8</button>
+    <span class="module-position">Week 8 — Rescan</span>
+    <button class="nav-btn btn-next" style="background:var(--gold);color:var(--onyx)" onclick="goTo(0)">Review from Orientation ↺</button>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+let current = 0;
+const TOTAL_MODULES = 5;
+const skillLabels = {
+  'callout-colors': 'Callout Colors',
+  'red-override': 'Applying a Red Override',
+  'rir-progression': 'RIR / Load Progression',
+  'asymmetry': 'Asymmetry Protocol',
+  'alst': 'ALST Thresholds',
+  'vfa-bmi': 'VFA / BMI Flags',
+  'pelvic-floor': 'Pelvic Floor Protocol',
+  'session-sequence': 'Session Sequence',
+  'red-flag-standards': 'Standards / Authorization',
+  'coaching-cue-precision': 'Coaching Cue Precision'
+};
+
+function goTo(n) {
+  const targetNav = document.querySelector('[data-module="'+n+'"]');
+  if (targetNav && targetNav.classList.contains('locked')) {
+    alert('Complete the current stage before continuing — same rule as a client not moving to the next training block before this one is done.');
+    return;
+  }
+  document.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
+  document.querySelectorAll('.nav-module').forEach(m => m.classList.remove('active'));
+  document.getElementById('module-' + n).classList.add('visible');
+  document.querySelector('[data-module="' + n + '"]').classList.add('active');
+  current = n;
+  updateProgress();
+  window.scrollTo(0, 0);
+}
+
+const stageNames = ['Orientation', 'Day 0', 'Weeks 1–4', 'Weeks 5–8', 'Week 8 — Rescan'];
+function updateProgress() {
+  const pct = ((current + 1) / TOTAL_MODULES) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = stageNames[current];
+}
+
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+function answerQuiz(el) {
+  const wrap = el.parentElement;
+  if ([...wrap.children].some(o => o.classList.contains('disabled'))) return;
+  const isCorrect = el.dataset.correct === 'true';
+  [...wrap.children].forEach(o => {
+    o.classList.add('disabled');
+    if (o.dataset.correct === 'true') o.classList.add('correct');
+  });
+  if (!isCorrect) el.classList.add('incorrect');
+  const q = wrap.closest('.quiz-q');
+  q.dataset.result = isCorrect ? 'correct' : 'incorrect';
+  const explain = wrap.parentElement.querySelector('.quiz-explain');
+  if (explain) explain.classList.add('show');
+  updateGate(q.closest('.gate-box'));
+}
+
+function tierFor(pct) {
+  if (pct >= 90) return { label: 'Optimal', color: 'var(--flagg)', bg: 'var(--green-p)' };
+  if (pct >= 70) return { label: 'Developing', color: 'var(--gold-d)', bg: 'var(--gold-p)' };
+  return { label: 'Needs Foundational Work', color: 'var(--flagr)', bg: 'var(--red-p)' };
+}
+
+function updateGate(gateBox) {
+  if (!gateBox) return;
+  const qs = gateBox.querySelectorAll('.quiz-q');
+  const total = qs.length;
+  const correct = [...qs].filter(q => q.dataset.result === 'correct').length;
+  const answered = [...qs].filter(q => q.dataset.result).length;
+  const scoreEl = gateBox.querySelector('.gate-score-value');
+  if (scoreEl) scoreEl.textContent = correct + ' / ' + total;
+  const statusEl = gateBox.querySelector('.gate-status');
+  const moduleEl = gateBox.closest('.module');
+  const idx = parseInt(moduleEl.id.replace('module-', ''));
+  const threshold = parseInt(gateBox.dataset.threshold || '0');
+
+  if (answered < total) {
+    statusEl.textContent = 'In progress — ' + answered + ' of ' + total + ' answered';
+    statusEl.className = 'gate-status pending';
+    return;
+  }
+  const pct = total ? (correct / total * 100) : 100;
+  const passed = pct >= threshold;
+
+  if (gateBox.id === 'baseline-gate') {
+    statusEl.textContent = 'BASELINE RECORDED — ' + correct + ' / ' + total + ' correct';
+    statusEl.className = 'gate-status pass';
+    showTier('baseline', pct, correct, total);
+  } else if (gateBox.id === 'rescan-gate') {
+    statusEl.textContent = 'RESCAN RECORDED — ' + correct + ' / ' + total + ' correct';
+    statusEl.className = 'gate-status pass';
+    showTier('rescan', pct, correct, total);
+    buildComparisonReport();
+  } else {
+    statusEl.textContent = passed
+      ? 'PASSED — ' + Math.round(pct) + '% (threshold ' + threshold + '%)'
+      : 'NOT YET PASSED — ' + Math.round(pct) + '% (threshold ' + threshold + '%). Review above and retry with your lead coach.';
+    statusEl.className = 'gate-status ' + (passed ? 'pass' : 'fail');
+  }
+
+  if (passed) {
+    const nextNav = document.querySelector('[data-module="' + (idx + 1) + '"]');
+    const nextBtn = document.getElementById('next-' + idx);
+    if (nextNav) { nextNav.classList.remove('locked'); const lock = nextNav.querySelector('.nav-lock'); if (lock) lock.remove(); }
+    if (nextBtn) nextBtn.disabled = false;
+  }
+}
+
+function showTier(which, pct, correct, total) {
+  const panel = document.getElementById(which + '-tier-panel');
+  const valueEl = document.getElementById(which + '-tier-value');
+  const bodyEl = document.getElementById(which + '-tier-body');
+  const t = tierFor(pct);
+  panel.classList.add('show');
+  panel.querySelector('.tier-panel-header').style.background = t.bg;
+  valueEl.style.color = t.color;
+  valueEl.textContent = t.label + ' (' + correct + '/' + total + ')';
+  if (which === 'baseline') {
+    bodyEl.textContent = t.label === 'Needs Foundational Work'
+      ? 'Weeks 1–4 will weight repetition toward the areas you missed above — this is not a bad result, it is exactly what Day 0 is for.'
+      : t.label === 'Developing'
+      ? 'A solid starting point with real gaps to close. Weeks 1–4 will target the specific areas missed above.'
+      : 'Strong starting fluency. Weeks 1–4 will still cover every area, with lighter repetition on what you already have solid.';
+  } else {
+    bodyEl.textContent = t.label === 'Needs Foundational Work'
+      ? 'The comparison report above shows where the 8-week cycle did and did not close the gap — bring it to your lead coach to plan the next cycle.'
+      : t.label === 'Developing'
+      ? 'Real progress, with room left — use the comparison report to target the next quarterly cycle.'
+      : 'Certification standard met. The comparison report documents exactly what improved since Day 0.';
+  }
+}
+
+function buildComparisonReport() {
+  const body = document.getElementById('comparison-body');
+  body.innerHTML = '';
+  Object.keys(skillLabels).forEach(skill => {
+    const b = document.querySelector('#baseline-quiz .quiz-q[data-skill="' + skill + '"]');
+    const r = document.querySelector('#rescan-quiz .quiz-q[data-skill="' + skill + '"]');
+    const bResult = b ? b.dataset.result : undefined;
+    const rResult = r ? r.dataset.result : undefined;
+    if (!bResult || !rResult) return;
+    let changeLabel, changeClass;
+    if (bResult === 'incorrect' && rResult === 'correct') { changeLabel = 'Improved'; changeClass = 'improved'; }
+    else if (bResult === 'correct' && rResult === 'incorrect') { changeLabel = 'Regressed'; changeClass = 'regressed'; }
+    else if (bResult === 'correct' && rResult === 'correct') { changeLabel = 'Held steady'; changeClass = 'same-good'; }
+    else { changeLabel = 'Still developing'; changeClass = 'regressed'; }
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + skillLabels[skill] + '</td>'
+      + '<td><span class="compare-pill ' + bResult + '">' + (bResult === 'correct' ? 'Correct' : 'Missed') + '</span></td>'
+      + '<td><span class="compare-pill ' + rResult + '">' + (rResult === 'correct' ? 'Correct' : 'Missed') + '</span></td>'
+      + '<td><span class="compare-change ' + changeClass + '">' + changeLabel + '</span></td>';
+    body.appendChild(tr);
+  });
+  document.getElementById('comparison-section').style.display = 'block';
+}
+</script>
+</body>
+</html>

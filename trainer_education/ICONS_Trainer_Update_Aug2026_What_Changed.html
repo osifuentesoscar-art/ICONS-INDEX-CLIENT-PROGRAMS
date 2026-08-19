@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICONS Trainer Update — August 2026: What Changed — Brace Life Studios</title>
+<style>
+  :root {
+    --onyx:#0D0D0D; --ink:#1C1C1C; --slate:#3A3A3A; --mid:#787878; --rule:#E6E2DC;
+    --cream:#FAF8F5; --parch:#F4F0EA;
+    --gold:#C9A227; --gold-d:#8B6914; --gold-p:#FAF5E8;
+    --teal:#00695C; --teal-p:#EAF5F2;
+    --green:#2A6B2E; --green-p:#EDF6ED;
+    --red:#7A1515; --red-p:#FDF0F0;
+    --blue:#1A3560; --blue-p:#EEF2F9;
+    --amber:#9A4E00; --amber-p:#FDF4EC;
+    --purp:#471570; --purp-p:#F3EEF9;
+    --flagr:#B71C1C; --flagg:#1B5E20;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Georgia',serif;background:var(--cream);color:var(--ink);line-height:1.65;min-height:100vh;}
+  .shell{display:flex;min-height:100vh;}
+  nav{width:270px;flex-shrink:0;background:var(--onyx);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;border-right:2px solid var(--gold);}
+  .nav-brand{padding:24px 20px 16px;border-bottom:1px solid #2a2a2a;}
+  .nav-brand-name{font-family:Arial,sans-serif;font-size:8px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:6px;}
+  .nav-title{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;}
+  .nav-subtitle{font-family:Arial,sans-serif;font-size:9px;color:#888;margin-top:5px;line-height:1.5;}
+  .nav-items{padding:16px 0;flex:1;}
+  .nav-module{display:block;padding:12px 20px;text-decoration:none;border-left:3px solid transparent;transition:all .15s;cursor:pointer;position:relative;}
+  .nav-module:hover{background:#1a1a1a;}
+  .nav-module.active{border-left-color:var(--gold);background:#1a1a1a;}
+  .nav-module-num{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center;}
+  .nav-module-name{font-family:Arial,sans-serif;font-size:11px;font-weight:600;color:#ccc;line-height:1.3;}
+  .nav-module.active .nav-module-name{color:#fff;}
+  .nav-module.locked{cursor:not-allowed;opacity:.45;}
+  .nav-lock{font-size:9px;}
+  .nav-progress{padding:16px 20px;border-top:1px solid #2a2a2a;}
+  .progress-label{font-family:Arial,sans-serif;font-size:8px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+  .progress-bar{height:3px;background:#2a2a2a;border-radius:2px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease;}
+  .progress-text{font-family:Arial,sans-serif;font-size:9px;color:var(--gold);margin-top:5px;}
+  main{flex:1;max-width:840px;padding:0 0 80px;}
+  .module{display:none;} .module.visible{display:block;}
+  .module-hero{padding:48px 52px 36px;border-bottom:1px solid var(--rule);}
+  .week-badge{display:inline-flex;align-items:center;gap:8px;font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:20px;color:#fff;margin-bottom:14px;}
+  .module-eyebrow{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+  .module-title{font-size:32px;font-weight:normal;line-height:1.2;color:var(--onyx);margin-bottom:12px;letter-spacing:-.5px;}
+  .module-lead{font-size:15px;color:var(--slate);line-height:1.7;max-width:620px;border-left:3px solid;padding-left:16px;margin-top:16px;}
+  .module-meta{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);margin-top:20px;display:flex;gap:20px;flex-wrap:wrap;}
+  .content{padding:36px 52px;}
+  .section-block{margin-bottom:40px;}
+  .section-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+  .section-heading{font-size:22px;font-weight:normal;color:var(--onyx);margin-bottom:12px;line-height:1.3;}
+  p{margin-bottom:14px;font-size:15px;color:var(--slate);line-height:1.72;}
+  p:last-child{margin-bottom:0;}
+  strong{color:var(--ink);font-weight:600;}
+  .callout{border-radius:4px;padding:20px 22px;margin:20px 0;border-left:4px solid;}
+  .callout-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .callout p{font-size:14px;margin-bottom:8px;} .callout p:last-child{margin-bottom:0;}
+  .callout.gold{background:var(--gold-p);border-color:var(--gold);} .callout.gold .callout-label{color:var(--gold-d);}
+  .callout.teal{background:var(--teal-p);border-color:var(--teal);} .callout.teal .callout-label{color:var(--teal);}
+  .callout.green{background:var(--green-p);border-color:var(--green);} .callout.green .callout-label{color:var(--green);}
+  .callout.red{background:var(--red-p);border-color:var(--red);} .callout.red .callout-label{color:var(--red);}
+  .callout.blue{background:var(--blue-p);border-color:var(--blue);} .callout.blue .callout-label{color:var(--blue);}
+  .callout.amber{background:var(--amber-p);border-color:var(--amber);} .callout.amber .callout-label{color:var(--amber);}
+  .science-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0;}
+  .science-card{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:16px;border-top:3px solid;}
+  .science-card-label{font-family:Arial,sans-serif;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .science-card-value{font-size:22px;font-weight:normal;line-height:1.15;margin-bottom:4px;}
+  .science-card-note{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);line-height:1.4;}
+  .threshold-table{width:100%;border-collapse:collapse;margin:20px 0;font-family:Arial,sans-serif;}
+  .threshold-table th{background:var(--onyx);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 14px;text-align:left;}
+  .threshold-table td{padding:10px 14px;font-size:12px;border-bottom:1px solid var(--rule);}
+  .threshold-table tr:nth-child(even) td{background:var(--parch);}
+  .threshold-table tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+  .tag-red{background:var(--red-p);color:var(--flagr);} .tag-amber{background:var(--amber-p);color:var(--amber);}
+  .tag-green{background:var(--green-p);color:var(--flagg);} .tag-teal{background:var(--teal-p);color:var(--teal);}
+  .tag-blue{background:var(--blue-p);color:var(--blue);} .tag-gold{background:var(--gold-p);color:var(--gold-d);}
+  .steps{margin:20px 0;}
+  .step{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start;}
+  .step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px;}
+  .step-content{flex:1;} .step-title{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+  .step-body{font-size:14px;color:var(--slate);}
+  .key-insight{background:var(--parch);border:none;border-left:4px solid var(--gold);padding:18px 20px;margin:20px 0;font-size:16px;font-style:italic;color:var(--ink);line-height:1.65;}
+  .key-insight cite{display:block;font-style:normal;font-family:Arial,sans-serif;font-size:10px;color:var(--mid);margin-top:8px;text-transform:uppercase;letter-spacing:1px;}
+  .apply-it{border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin:24px 0;}
+  .apply-it-header{background:var(--ink);padding:10px 18px;display:flex;align-items:center;gap:10px;}
+  .apply-it-label{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+  .apply-it-title{font-family:Arial,sans-serif;font-size:12px;font-weight:600;color:#fff;}
+  .apply-it-body{padding:18px;background:#fff;} .apply-it-body p{font-size:14px;}
+  .checklist{list-style:none;margin:16px 0;}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--slate);line-height:1.5;}
+  .checklist li:last-child{border-bottom:none;}
+  .check-box{width:16px;height:16px;border:1.5px solid var(--rule);border-radius:2px;flex-shrink:0;margin-top:2px;cursor:pointer;transition:all .1s;}
+  .check-box:hover{border-color:var(--gold);}
+  .check-box.checked{background:var(--gold);border-color:var(--gold);position:relative;}
+  .check-box.checked::after{content:'✓';color:#fff;font-size:10px;font-weight:700;position:absolute;top:-1px;left:2px;}
+  .check-box.strict.checked{background:var(--red);border-color:var(--red);}
+  /* ── QUIZ / KNOWLEDGE-CHECK GATE ─────────────────────────────────── */
+  .gate-box{border:1px solid var(--onyx);border-radius:4px;overflow:hidden;margin:32px 0 20px;}
+  .gate-header{background:var(--onyx);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .gate-eyebrow{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+  .gate-title{font-size:15px;color:#fff;font-weight:normal;margin-top:2px;}
+  .gate-threshold{font-family:Arial,sans-serif;font-size:9px;color:#999;text-align:right;}
+  .gate-body{padding:22px;background:#fff;}
+  .quiz-q{background:var(--cream);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;margin-bottom:14px;}
+  .quiz-q:last-child{margin-bottom:0;}
+  .quiz-q-text{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.5;}
+  .quiz-opts{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opt{font-family:Arial,sans-serif;font-size:13px;padding:9px 12px;border:1px solid var(--rule);border-radius:3px;cursor:pointer;background:#fff;transition:all .12s;line-height:1.4;}
+  .quiz-opt:hover{border-color:var(--gold);}
+  .quiz-opt.correct{background:var(--green-p);border-color:var(--green);color:var(--flagg);font-weight:600;}
+  .quiz-opt.incorrect{background:var(--red-p);border-color:var(--red);color:var(--flagr);font-weight:600;}
+  .quiz-opt.disabled{pointer-events:none;}
+  .quiz-explain{font-size:12px;color:var(--mid);margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule);display:none;font-family:Arial,sans-serif;line-height:1.55;}
+  .quiz-explain.show{display:block;}
+  .gate-status-row{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);flex-wrap:wrap;gap:10px;}
+  .gate-score{font-family:Arial,sans-serif;font-size:11px;color:var(--mid);}
+  .gate-score-value{font-weight:700;color:var(--ink);}
+  .gate-status{font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.5px;padding:6px 12px;border-radius:3px;}
+  .gate-status.pass{background:var(--green-p);color:var(--flagg);}
+  .gate-status.fail{background:var(--red-p);color:var(--flagr);}
+  .gate-status.pending{background:var(--parch);color:var(--mid);}
+  .rubric-note{font-family:Arial,sans-serif;font-size:10.5px;color:var(--mid);margin-top:6px;font-style:italic;}
+  .module-footer{display:flex;align-items:center;justify-content:space-between;padding:24px 52px;border-top:1px solid var(--rule);margin-top:20px;background:#fff;flex-wrap:wrap;gap:10px;}
+  .nav-btn{font-family:Arial,sans-serif;font-size:12px;font-weight:700;padding:10px 20px;border-radius:3px;cursor:pointer;border:none;text-decoration:none;transition:all .15s;}
+  .btn-next{background:var(--onyx);color:var(--gold);} .btn-next:hover{background:#1a1a1a;}
+  .btn-next:disabled{background:#ccc;color:#888;cursor:not-allowed;}
+  .btn-prev{background:transparent;color:var(--mid);border:1px solid var(--rule);} .btn-prev:hover{color:var(--ink);border-color:var(--ink);}
+  .module-position{font-family:Arial,sans-serif;font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;}
+  @media (max-width:760px){nav{display:none;} .module-hero{padding:28px 24px 24px;} .content{padding:24px;} .module-footer{padding:20px 24px;}}
+  /* ── DELTA (OLD → NEW) COMPONENT — this module only ──────────────── */
+  .delta{border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin:22px 0;background:#fff;}
+  .delta-head{background:var(--ink);padding:11px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .delta-num{font-family:Arial,sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+  .delta-name{font-family:Arial,sans-serif;font-size:13px;font-weight:600;color:#fff;}
+  .delta-sev{font-family:Arial,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:#2a2a2a;color:#bbb;}
+  .delta-sev.high{background:var(--flagr);color:#fff;}
+  .delta-cols{display:grid;grid-template-columns:1fr 1fr;}
+  .delta-col{padding:16px 18px;}
+  .delta-col.old{background:var(--red-p);border-right:1px solid var(--rule);}
+  .delta-col.new{background:var(--green-p);}
+  .delta-col-label{font-family:Arial,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .delta-col.old .delta-col-label{color:var(--flagr);}
+  .delta-col.new .delta-col-label{color:var(--flagg);}
+  .delta-headline{font-family:Arial,sans-serif;font-size:15px;font-weight:700;line-height:1.35;margin-bottom:7px;}
+  .delta-col.old .delta-headline{color:var(--flagr);text-decoration:line-through;text-decoration-thickness:1px;}
+  .delta-col.new .delta-headline{color:var(--flagg);}
+  .delta-col p{font-size:13px;margin-bottom:0;color:var(--slate);line-height:1.6;}
+  .delta-foot{padding:14px 18px;border-top:1px solid var(--rule);background:#fff;}
+  .delta-foot-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;}
+  .delta-foot-row:last-child{margin-bottom:0;}
+  .delta-foot-tag{font-family:Arial,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold-d);flex-shrink:0;width:96px;padding-top:2px;}
+  .delta-foot-body{font-size:13.5px;color:var(--slate);line-height:1.6;flex:1;}
+  @media (max-width:760px){.delta-cols{grid-template-columns:1fr;} .delta-col.old{border-right:none;border-bottom:1px solid var(--rule);} .delta-foot-row{flex-direction:column;gap:3px;} .delta-foot-tag{width:auto;}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-name">B R A C E   L I F E   S T U D I O S</span>
+    <div class="nav-title">ICONS Trainer Update<br>August 2026 — What Changed</div>
+    <div class="nav-subtitle">Delta module · ~25 min. For trainers who certified on Modules A/B/C before 8/17/2026. Read the changes, then pass the recertification check.</div>
+  </div>
+  <div class="nav-items">
+    <a class="nav-module active" onclick="goTo(0)" data-module="0">
+      <div class="nav-module-num" style="color:var(--gold)"><span>SECTION 1</span></div>
+      <div class="nav-module-name">Why You're Reading This</div>
+    </a>
+    <a class="nav-module" onclick="goTo(1)" data-module="1">
+      <div class="nav-module-num" style="color:var(--red)"><span>SECTION 2</span></div>
+      <div class="nav-module-name">Loading, Progression &amp; Intensity</div>
+    </a>
+    <a class="nav-module" onclick="goTo(2)" data-module="2">
+      <div class="nav-module-num" style="color:var(--teal)"><span>SECTION 3</span></div>
+      <div class="nav-module-name">Reading the Scan</div>
+    </a>
+    <a class="nav-module" onclick="goTo(3)" data-module="3">
+      <div class="nav-module-num" style="color:var(--green)"><span>SECTION 4</span></div>
+      <div class="nav-module-name">Clinical Protocols &amp; Nutrition</div>
+    </a>
+    <a class="nav-module" onclick="goTo(4)" data-module="4">
+      <div class="nav-module-num" style="color:var(--gold)"><span>SECTION 5</span></div>
+      <div class="nav-module-name">Recertification Check</div>
+    </a>
+    <a class="nav-module locked" onclick="goTo(5)" data-module="5">
+      <div class="nav-module-num" style="color:var(--blue)"><span>SECTION 6</span><span class="nav-lock">🔒</span></div>
+      <div class="nav-module-name">Sign-Off &amp; What This Supersedes</div>
+    </a>
+  </div>
+  <div class="nav-progress">
+    <div class="progress-label">Your progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:16.7%"></div></div>
+    <div class="progress-text" id="progressText">Section 1 of 6</div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════ SECTION 1 — WHY YOU'RE READING THIS ═══════════ -->
+<div class="module visible" id="module-0">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--gold-p),var(--cream))">
+    <div class="week-badge" style="background:var(--gold-d)">Delta Module · August 2026</div>
+    <div class="module-eyebrow" style="color:var(--gold-d)">Some of what you were taught — and tested on — has changed.</div>
+    <h1 class="module-title">What Changed —<br>and What To Do Differently Monday</h1>
+    <p class="module-lead" style="border-color:var(--gold)">This is not a summary of the ICONS system. It is a list of the specific places where the correct answer is now different from the one you were scored on. Eleven items, each shown as old standard → new standard, with the one sentence that tells you what to do differently in the room.</p>
+    <div class="module-meta"><span>⏱ ~25 min</span><span>📖 11 corrections</span><span>✅ 10-question gate · 80% (8/10) to certify</span><span>🖊 Lead-coach sign-off required</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">What happened</div>
+      <h2 class="section-heading">An external evidence review checked 13 ICONS protocol elements against the 2018–2026 literature.</h2>
+      <p>On 17 August 2026 Brace Life commissioned an outside review of the ICONS science layer — not a marketing exercise, a line-by-line check of thirteen protocol elements against current peer-reviewed evidence. Some elements came back confirmed and were strengthened with better citations. Some came back <strong>wrong</strong>, and those are what this module is about.</p>
+      <p>Every correction has already been folded into <strong>CLAUDE.md</strong>, into the document engine, and into Modules A, B and C. What has <em>not</em> been fixed automatically is the knowledge in your head. If you passed a gate in Module A, B or C before 8/17/2026, some of the answers you were scored as correct on are now retired standards.</p>
+      <blockquote class="key-insight">You cannot be faulted for having learned the previous standard correctly. You can be faulted for still coaching it next week.<cite>Brace Life Studios — Trainer Development</cite></blockquote>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">Why this exists instead of "please re-read the modules"</div>
+      <h2 class="section-heading">Re-reading a 76-page module to spot eleven differences is not a remediation path.</h2>
+      <p>The corrected modules are correct — but they read as though they were always correct. Nothing in them announces "this number used to be different, and you learned the old one." That's exactly the failure mode this module exists to close: a trainer who re-reads Module A carefully and confidently comes away with the old number still intact, because nothing contradicted it out loud.</p>
+      <p>So every item below is shown in explicit <strong>OLD → NEW</strong> form. If you find yourself thinking "I already knew that" on an item, check the left-hand column — that's the version you were tested on.</p>
+      <div class="callout amber"><div class="callout-label">Two of these change what you say to a client mid-set</div><p>The pelvic floor bracing correction and the ALST scale correction are not paperwork. One changes a cue you give during a heavy lift; the other changes how you describe a woman's own body composition to her face. Read those two twice.</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">How the eleven items are grouped</div>
+      <h2 class="section-heading">Three sections, then a scored check.</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num" style="background:var(--red)">2</div><div class="step-content"><div class="step-title">Loading, Progression &amp; Intensity — 3 items</div><div class="step-body">RIR defaults on primary lifts · the LIFTMOR bone-loading protocol · who actually gets the five-color intensity week.</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--teal)">3</div><div class="step-content"><div class="step-title">Reading the Scan — 4 items</div><div class="step-body">The asymmetry trigger · the ALST scale · VFA · what a Styku scan is and isn't good for.</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--green)">4</div><div class="step-content"><div class="step-title">Clinical Protocols &amp; Nutrition — 4 items</div><div class="step-body">Pelvic floor bracing · the knee/ACL corrective circuit · protein targets · collagen.</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--gold-d)">5</div><div class="step-content"><div class="step-title">Recertification Check — 10 questions, 80% to pass</div><div class="step-body">Written so that holding the old answer produces a wrong answer. That's the point of it.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <span class="module-position">Section 1 of 6</span>
+    <button class="nav-btn btn-next" onclick="goTo(1)">Section 2: Loading &amp; Intensity →</button>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 2 — LOADING, PROGRESSION & INTENSITY ═══════════ -->
+<div class="module" id="module-1">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--red-p),var(--cream))">
+    <div class="week-badge" style="background:var(--red)">Section 2 · Items 1–3</div>
+    <div class="module-eyebrow" style="color:var(--red)">Changes that alter a load, a rep call, or a whole week's structure</div>
+    <h1 class="module-title">Loading, Progression<br>&amp; Intensity</h1>
+    <p class="module-lead" style="border-color:var(--red)">Three corrections here. One changes the default proximity-to-failure you coach on every primary lift. One raises the bone-loading intensity number and wraps four new safety requirements around it. One says the five-color week you learned is not the right default for a beginner.</p>
+    <div class="module-meta"><span>⏱ 8 min</span><span>📖 3 corrections</span><span>⚠ No gate — read straight through</span></div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Item 1 of 11</div>
+      <h2 class="section-heading">RIR default on primary lifts</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 1 · Progressive Overload</div><div class="delta-name">Proximity to failure on a primary lift</div></div><span class="delta-sev">Changes a rep call</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">1 RIR on primary lifts</div><p>1 RIR was treated as the "hard working set" default for the day's main lift, on the reasoning that closer to failure drives more strength. 3, 4 and 5 RIR were taught as meaningfully distinct targets you could call in the room.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">2 RIR on primary lifts</div><p>2 RIR is the default proximity for <strong>primary</strong> lifts. 1 RIR is now reserved for <strong>hypertrophy-priority accessory</strong> work. Everything above 2 RIR collapses into a single "technique / submaximal" band — not separate targets.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">A 2024 dose-response meta-regression found strength gains are <em>largely unrelated</em> to estimated RIR — so 1 RIR was never buying the extra strength it was assumed to buy on a primary lift, it was just buying fatigue. Separately, measured RIR accuracy is roughly ±1 rep in trained lifters close to failure and <em>degrades the further a set is from failure</em> — which is why 3 vs. 4 vs. 5 RIR was false precision.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Do this</div><div class="delta-foot-body">Call "2 in reserve" on the main lift. Save "1 in reserve" for accessory hypertrophy work. Above 2, stop numbering it — say "this is a technique set, leave plenty in the tank."</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Also new</div><div class="delta-foot-body">Every new client now gets an <strong>RIR calibration protocol</strong>: on one submaximal set of a new exercise, have her call her own RIR, then take that set to true failure and record the discrepancy. Repeat until she's within 1 rep on two consecutive sessions before you trust her RIR calls to drive load progression. Treat a novice's RIR call as lower-confidence, not just noisier.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Item 2 of 11</div>
+      <h2 class="section-heading">LIFTMOR bone-loading protocol</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 2 · Bone Loading</div><div class="delta-name">Intensity, supervision, and who is allowed into the protocol</div></div><span class="delta-sev high">Safety-relevant</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">≥80% 1RM, 5×5, 2×/week</div><p>The intensity number was ≥80% 1RM, with no stated supervision requirement, no entry screen, no ramp-in phase, and no explicit prohibition on loaded spinal flexion.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">&gt;85% 1RM, 5×5, 2×/week — supervised, risk-gated, ramped in</div><p>The trial actually prescribed <strong>&gt;85%</strong> 1RM. Four requirements now travel with it: supervision, a risk-stratification gate, a technique-first ramp-in, and a loaded-spinal-flexion prohibition.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">The ≥80% figure was simply a misreading of the source trial — Watson et al. prescribed 5×5 at &gt;85% 1RM. The safety requirements come from the trial evidence itself: in a related trial, one participant sustained a vertebral compression fracture <em>after a fall</em>, with 30 falls across 21% of participants. Fall risk, not the barbell, was the proximate mechanism of harm — which is why balance/fall-prevention work belongs alongside the loading.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Supervision</div><div class="delta-foot-body">Every supporting trial was fully supervised. <strong>Never send &gt;85% 1RM 5×5 home as unsupervised homework</strong> for a postmenopausal client.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Risk gate</div><div class="delta-foot-body">A client with a <strong>prior vertebral fracture, multiple low-trauma fractures, or very low BMD</strong> is routed to individualised physiotherapist input <em>first</em> — she does not enter the protocol on your say-so.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Ramp-in</div><div class="delta-foot-body">Several weeks of technique-first, lower-intensity loading before anyone reaches &gt;85%. The Teal (60%) technique day is the vehicle for this — for a bone-loading candidate it is a purposeful ramp-in phase, not a generic light day.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Prohibition</div><div class="delta-foot-body">No loaded spinal flexion, and no repeated or end-range flexion, in any postmenopausal bone-loading program.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Unchanged</div><div class="delta-foot-body">The framing. This is still "bone investment," never "heavy lifting." And a pelvic-floor flag is still <em>not</em> a reason to default her to lighter loads — 2025 data found heavy loading does not aggravate pelvic floor dysfunction symptoms.</div></div>
+        </div>
+      </div>
+      <div class="callout amber"><div class="callout-label">Say this honestly if a client asks</div><p>The strongest supporting data for this protocol come from one research group's trial line. That's disclosed on purpose — it doesn't undercut the protocol, and being straight about it is house practice.</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--red)">Item 3 of 11</div>
+      <h2 class="section-heading">Who actually gets the five-color intensity week</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 3 · Intensity Framework</div><div class="delta-name">Novice rotation, and the Red (90%) day</div></div><span class="delta-sev">Changes a week's structure</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">The full 60/70/80/90/AR rotation is the ICONS default for everyone</div><p>Five colors, five intentions, applied as the house structure regardless of how long a client had been training. Red 90% days were a normal part of any client's week.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">Novices run a simplified Gold + Green rotation. Red days need a reason.</div><p>A client in her <strong>first ~6 months</strong> runs a simplified two-day rotation — Gold (≈80%) + Green (≈70%) — hitting each major muscle group ≥2×/week. <strong>Red (90%) days are restricted to clients with a genuine testing or competition rationale.</strong></p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">The periodization benefit behind the undulating five-color week is real but <em>concentrated in trained clients</em> — it's essentially absent in untrained ones. And no reviewed source supports 90% 1RM work as <em>necessary</em> for general strength or hypertrophy outcomes; the evidence-backed strength anchor is ~80% 1RM.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Not a safety claim</div><div class="delta-foot-body">Be precise about this. Nothing found Red days <em>unsafe</em> for a recreational client — only unnecessary for the outcomes we're training for. Don't over-tell it as a danger.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Also new</div><div class="delta-foot-body">Audit <strong>weekly volume</strong>, not just the intensity colors — roughly 10 sets/muscle/week for hypertrophy. A client can hit every color correctly and still be badly under- or over-volumed. And for older clients, add power work (30–70% 1RM moved with intent) into Green/Teal days.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Keep</div><div class="delta-foot-body">The color system stays exactly as it is for client communication and adherence — it works. Just don't sell it internally as an "optimal" physiological distribution.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(0)">← Section 1</button>
+    <span class="module-position">Section 2 of 6</span>
+    <button class="nav-btn btn-next" onclick="goTo(2)">Section 3: Reading the Scan →</button>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 3 — READING THE SCAN ═══════════ -->
+<div class="module" id="module-2">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--teal-p),var(--cream))">
+    <div class="week-badge" style="background:var(--teal)">Section 3 · Items 4–7</div>
+    <div class="module-eyebrow" style="color:var(--teal)">Four corrections to how you read and describe a Styku scan</div>
+    <h1 class="module-title">Reading the Scan</h1>
+    <p class="module-lead" style="border-color:var(--teal)">This is the section with the single most consequential correction in the whole review. Two of the four items here are cases where a threshold was firing on measurement noise, and one is a case where a number from the wrong sex was being held out to women as a target.</p>
+    <div class="module-meta"><span>⏱ 9 min</span><span>📖 4 corrections</span><span>⚠ No gate — read straight through</span></div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Item 4 of 11 — the most consequential correction in the set</div>
+      <h2 class="section-heading">The ALST scale</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 4 · ALST Index</div><div class="delta-name">The women's tier structure was built on a male cutoff</div></div><span class="delta-sev high">Highest impact</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">3 tiers: &lt;5.5 At-Risk · 5.5–6.99 Normal, monitor · ≥7.0 Optimal</div><p>Presented as one severity ladder for women, with ≥7.0 kg/m² as the top tier to aim for and 5.5–6.99 as a middling "keep an eye on it" band.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">2 tiers: &lt;5.5 At-Risk · ≥5.5 within normal reference range</div><p>No "Optimal" tier exists for women. Above 5.5 is simply <strong>normal</strong>. ALST is a <strong>trend metric with a stated reference floor</strong>, not a graded score of how good her muscle mass is.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body"><strong>7.0 kg/m² is EWGSOP2's <em>male</em> at-risk cutoff.</strong> It was never a female "optimal" number. The two figures aren't rungs on one ladder — they're two different sexes' thresholds. 7.0 sits roughly 1.5 kg/m² above where a healthy woman's ALST typically falls, so the old scale was simultaneously telling normal women they were merely "monitor" and holding out an essentially unreachable target derived from men.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Do this</div><div class="delta-foot-body">A woman at 5.8, or 6.2, or 6.9 is <strong>normal</strong>. Say that. Never tell a female client she's "not optimal yet" on ALST — there is nothing above normal to reach for on this metric.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Unchanged</div><div class="delta-foot-body">&lt;5.5 kg/m² is still At-Risk for women and still shifts the whole program: resistance priority every session, protein at the top of the range, creatine strongly indicated, protein reminder on every page. The male cutoff is still &lt;7.0 — that number was always correct <em>for men</em>.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Deeper point</div><div class="delta-foot-body">Lean mass was never the primary sarcopenia criterion anyway. In the actual consensus algorithm, low <em>strength</em> is primary and lean mass only <em>confirms</em> it. Two zero-cost function screens now sit alongside ALST: <strong>grip strength</strong> (flag &lt;16 kg women / &lt;27 kg men) and the <strong>five-times chair-stand</strong> (flag &gt;15 s). And note honestly: the scanner's own published validation never validated ALM/ALMI at all.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Item 5 of 11</div>
+      <h2 class="section-heading">The asymmetry trigger</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 5 · Asymmetry Protocol</div><div class="delta-name">When a left/right gap actually counts as asymmetry</div></div><span class="delta-sev">Changes who gets a protocol</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">Any L/R gap ≥ 0.5 lbs absolute</div><p>Half a pound of lean-soft-tissue difference between limbs triggered the full asymmetry protocol — weaker side leads unilateral work, suitcase carry in the weaker hand, logged separately.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">A ≥ 10% <em>relative</em> gap between limbs</div><p>Compute the gap as a percentage of the larger side. Below 10%, note it and move on — no protocol. It must also exceed our own measured test-retest variation for that scan region.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">0.5 lb ≈ 0.23 kg. The scanner's own measurement error on female <em>leg</em> lean mass runs roughly 0.61–0.69 kg — <strong>two to three times larger than the entire trigger</strong>. The old trigger was firing on measurement noise most of the time. Meanwhile the injury literature that actually links asymmetry to outcomes uses 10–15% thresholds — an order of magnitude up.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Do the math</div><div class="delta-foot-body">Left leg 12.9 lbs, right leg 13.5 lbs → gap 0.6 lb → 0.6 / 13.5 = <strong>4.4%</strong> → below trigger, <em>no</em> unilateral-lead protocol. Under the old rule this same client got a full protocol. Left arm 6.2, right arm 7.0 → 0.8 / 7.0 = <strong>11.4%</strong> → clears the trigger.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Prefer</div><div class="delta-foot-body">Where you have one, a <strong>functional strength/power test</strong> (single-leg press, isometric strength, single-leg jump) is the better primary trigger — that's where the evidence-linked thresholds actually come from. Use the scan for client-facing progress visualisation, where it's far less error-sensitive.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Honest framing</div><div class="delta-foot-body">"Weaker side leads" is a defensible <strong>coaching convention</strong> — it caps the stronger side's volume at what the weaker side can match — not a research-backed rule. Present it that way. The 8-week corrective dose (6–10 weeks of unilateral work, 1–2 sessions/week) <em>is</em> evidence-backed.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Watch out</div><div class="delta-foot-body">The engine's <code>weakerSide()</code> helper still only tells you <em>which</em> side is lower — it does not check the 10% threshold. Computing the percentage is a manual step. A non-"even" result is not confirmation the trigger is met.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Item 6 of 11</div>
+      <h2 class="section-heading">VFA (Visceral Fat Area)</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 6 · VFA</div><div class="delta-name">From a four-tier risk table to a personal trend line</div></div><span class="delta-sev">Changes what you say</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">&lt;70 Very Low · 70–99 Low · 100–149 Moderate · ≥150 High Risk</div><p>A four-tier risk-band table you could read a client's number against and give her a risk classification on the spot.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">Retired. VFA is a personal trend metric.</div><p>Track <em>her</em> change over time. Don't classify an absolute reading against a risk table. <strong>Waist circumference</strong> is now the primary clinical-facing metric.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">No consensus body endorses a single VFA threshold — published cutoffs span roughly 82–140 cm². In women specifically, elevated-risk thresholds run <em>higher</em> than the old table assumed (around 106 cm²+, not 100), and one large cohort's median female VFA was ~90 cm² — meaning a perfectly typical woman sat near the top of our old "Low" band. On top of that, this scanner's VFA output was validated against DXA <em>in kilograms</em>, never against CT in the cm² units we were reading it in.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Do this</div><div class="delta-foot-body">"This is your starting number — what matters is where it goes over the next few months." Add a tape measure to intake and use waist circumference against the international consensus female thresholds (≥80 / 90 / 105 / 115 cm) as the clinically-endorsed metric. A short low-stakes tag like "Very Low" is still acceptable <em>if</em> the methodology caveat travels with it every time.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Never</div><div class="delta-foot-body">Never present a VFA reading alone as a cardiometabolic verdict.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--teal)">Item 7 of 11</div>
+      <h2 class="section-heading">What a Styku scan is actually good for</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 7 · Scan Validity</div><div class="delta-name">A trend tool, not a diagnostic — and segmental data is not precise</div></div><span class="delta-sev">Changes what you claim</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what was implied</div><div class="delta-headline">Scan numbers read as precise measurements of this client's body</div><p>Absolute values — body fat %, per-limb lean mass — were quoted to clients as findings, with no stated uncertainty around any single reading.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">Excellent precision scan-to-scan. Meaningful error on any one absolute reading.</div><p>Present every absolute number as a <strong>trend indicator with individual-level uncertainty</strong>. <strong>Segmental (per-limb) composition is not reliable enough to report as precise</strong> — full stop.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">The numbers</div><div class="delta-foot-body">Repeat scans on the same person agree tightly — well under 1 point on body fat %. But a single scan's agreement with a clinical DXA reading spans roughly <strong>7–11 percentage points</strong> of body fat for an individual. Against a true four-compartment criterion, validity is poor. Segmental agreement with DXA is poor enough to be unsuitable for client-facing precision claims.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Where it shines</div><div class="delta-foot-body">Change-tracking — the actual reason we scan — performs well, and <em>better in women</em>. Sub-kilogram error on lean-mass change over a training block is genuinely useful. And <strong>circumferences are the single most trustworthy output the device produces</strong>.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Say it out loud</div><div class="delta-foot-body">Publishing the uncertainty is a trust asset, not a liability — it's what explains to a client why a number moved. "Your body fat percentage might differ from a clinical DXA by several points on any one reading, but repeat scans on <em>you</em> are precise to well under a point — which is why we read the direction, not the digit."</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Protocol</div><div class="delta-foot-body">Precision is the device's real strength and only a tight protocol preserves it: same time of day, same hydration state, minimal clothing, hair up, same posture. Sloppy scan conditions throw away the one thing it does best.</div></div>
+        </div>
+      </div>
+      <div class="callout teal"><div class="callout-label">Items 5, 6 and 7 are one finding wearing three hats</div><p>The asymmetry trigger, the VFA bands and the segmental-precision caveat all come from the same underlying fact: this scanner is a precise <em>trend</em> instrument and an imprecise <em>absolute</em> one. Any protocol that asked a single absolute reading to make a clinical determination was asking the device to do something it was never validated to do.</p></div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(1)">← Section 2</button>
+    <span class="module-position">Section 3 of 6</span>
+    <button class="nav-btn btn-next" onclick="goTo(3)">Section 4: Clinical &amp; Nutrition →</button>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 4 — CLINICAL PROTOCOLS & NUTRITION ═══════════ -->
+<div class="module" id="module-3">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--green-p),var(--cream))">
+    <div class="week-badge" style="background:var(--green)">Section 4 · Items 8–11</div>
+    <div class="module-eyebrow" style="color:var(--green)">Four corrections to protocols and to what you tell clients about food</div>
+    <h1 class="module-title">Clinical Protocols<br>&amp; Nutrition</h1>
+    <p class="module-lead" style="border-color:var(--green)">One of these changes a cue you give mid-lift. One turns a conditional corrective circuit into a standing program component for every client. Two change what you tell a client to eat and when.</p>
+    <div class="module-meta"><span>⏱ 8 min</span><span>📖 4 corrections</span><span>⚠ No gate — read straight through</span></div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Item 8 of 11</div>
+      <h2 class="section-heading">Pelvic floor bracing</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 8 · Pelvic Floor Protocol</div><div class="delta-name">The blanket breath-holding prohibition</div></div><span class="delta-sev high">Changes a mid-set cue</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">"Never hold your breath" — a blanket rule at every load</div><p>Exhale on exertion, always, on every set, for every postmenopausal client on any heavy-loading day. Breath-holding was framed as simply wrong.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">A graded model — bracing scales with load</div><p><strong>Light/warm-up:</strong> free breathing. <strong>Moderate working sets:</strong> exhale on exertion — still the default cue. <strong>Heaviest working sets:</strong> a brief, controlled brace is normal and appropriate, and may include a short breath-hold through the sticking point.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">The 2024 POGP clinical commentary states outright that a permanent "no breath-holding" prohibition is <strong>"not appropriate."</strong> Intra-abdominal pressure strategy is supposed to scale with the demand of the lift.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Still an error</div><div class="delta-foot-body"><strong>Sustained</strong> breath-holding across multiple reps or a whole set. That's what was always actually wrong — the old rule just over-generalised it down to loads where it didn't apply.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Don't over-cue</div><div class="delta-foot-body">The pelvic floor is reflexive. If a client is asymptomatic and isn't reporting anything, you do <em>not</em> need to cue a pelvic-floor contraction on every brace. Cue a pre-brace contraction specifically when leakage comes with a bearing-down sensation.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Symptomatic client</div><div class="delta-foot-body">Exhale-on-exertion is a <em>symptom-triggered tool</em>, not a life sentence. Accumulate volume below her symptom threshold first, then progressively trial a stronger graded brace as coordination improves — don't park her at exhale-on-exertion forever once she's ready to progress.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Screen first</div><div class="delta-foot-body">Braced breath-holds are low-risk <em>in the absence of significant cardiovascular disease</em>. If a client repeatedly experiences presyncope, syncope, or subconjunctival haemorrhage, switch her to exhale-on-exertion only and refer for cardiac assessment.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Unchanged — word for word</div><div class="delta-foot-body">"If you experience any leaking, heaviness, or pressure — stop and flag your coach. This is common and treatable." Never "train through it." Never minimise it. Refer to pelvic floor PT when symptomatic — and note that heavy lifting <em>co-activates</em> the pelvic floor but does not <em>strengthen</em> it, so her lifting program is not a substitute for targeted PFM work.</div></div>
+        </div>
+      </div>
+      <div class="callout amber"><div class="callout-label">Prevalence — why we screen rather than wait</div><p>Reported symptom rates in lifting populations run high: urinary incontinence in ~44% of female powerlifters and ~50% of elite powerlifters/weightlifters. At that prevalence, waiting for a client to volunteer symptoms will miss most cases. Ask at intake and periodically — which movements, at what load, at what point in the lift.</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Item 9 of 11</div>
+      <h2 class="section-heading">The knee / ACL corrective circuit</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 9 · Neuromuscular Circuit</div><div class="delta-name">From screen-gated to universal</div></div><span class="delta-sev">Changes every client's week</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">Run the circuit if she shows valgus on the screen</div><p>Watch the single-leg squat or drop landing, look for the knee collapsing inward, and program the corrective circuit for the clients who visibly failed.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">Universal — every client gets it, dosed properly</div><p><strong>20–30 minutes, 1–2×/week, sustained beyond 6 months</strong>, with a <strong>≥76% session-completion</strong> adherence target tracked per client. A standing program component with its own weekly time allocation.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">Visual screening doesn't predict injury. A prospective study of 880 elite female athletes concluded visual assessment of the drop jump and single-leg squat "cannot predict who will sustain a future noncontact ACL injury," and a separate study found no association between inward knee motion and future injury across 74 real ACL injuries. Meanwhile the intervention works at the population level regardless of screen status. <strong>Net effect of the old rule: we were withholding an effective intervention from most of the clients who would actually go on to get hurt.</strong></div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Adherence is the lever</div><div class="delta-foot-body">High adherence (≥76% of prescribed sessions) is associated with a 64% injury-risk reduction, dose-responsively. Track it the way you track load progression. <strong>A short circuit she actually completes every time beats an elaborate one that gets dropped when the session runs long.</strong></div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Add</div><div class="delta-foot-body">A <strong>Nordic / eccentric hamstring</strong> component where it isn't already present — roughly halves hamstring-injury rates, and it's a different muscle group and mechanism from the Copenhagen plank, so it's an addition, not a swap.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Keep the screen</div><div class="delta-foot-body">Still useful as a <em>coaching</em> tool for correcting an obvious form fault. Just stop describing it as risk prediction — it isn't one.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Framing</div><div class="delta-foot-body">Describe it to clients as general lower-limb injury and knee-pain prevention — that's where the strongest evidence sits (a ~75% reduction in anterior knee pain) — not as ACL-specific risk screening.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Item 10 of 11</div>
+      <h2 class="section-heading">Protein targets</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 10 · Protein</div><div class="delta-name">From age bands to context</div></div><span class="delta-sev">Changes a nutrition target</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">1.6 g/kg → 1.8–2.0 at 40+ → 2.0–2.2 at 50+</div><p>An age-banded escalation: a client's target stepped up as she crossed 40 and again at 50, on the assumption that the menopause transition raises protein requirement. Per meal, ~0.4 g/kg.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">1.6 g/kg/day baseline · up toward 2.2 only for context</div><p>Move up within 1.6–2.2 g/kg for a genuine <strong>energy deficit</strong>, a <strong>heavy training load</strong>, or <strong>ALST At-Risk</strong> — <em>not</em> for turning 50. Per meal, <strong>~0.3 g/kg</strong> (≈25–40g), 4 meals, 3–4h apart.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why</div><div class="delta-foot-body">The most current female-specific synthesis (Nov 2025) states plainly that peri- and postmenopausal athletes likely need <strong>no different protein target than premenopausal athletes</strong>, and reserves intakes above 1.6 g/kg specifically for energy restriction or heavy training load. Direct postmenopausal trial evidence for pushing intake higher by age alone is weak. The old per-meal 0.4 g/kg also exceeded both the position-stand serving guidance and the measured muscle-protein-synthesis-maximising dose.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Do this</div><div class="delta-foot-body">Ask about her actual context, not her birthday. Is she in a deficit? Is her training load genuinely heavy? Is her ALST flagged? Any yes moves her up the range. A 52-year-old eating at maintenance with normal ALST and moderate training sits at <strong>1.6</strong>.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">New options</div><div class="delta-foot-body">A pre-sleep 30–40g slow-digesting protein serving is a low-friction way to hit daily totals. Add ~10% to whatever target applies for a plant-based client. Treat the leucine-per-meal figure as approximate, not protocol-grade.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Know this</div><div class="delta-foot-body">The document engine still computes the old age-triggered tier — the corrected trigger needs client-data fields that don't exist yet. So an existing client document may still show an age-derived number. <strong>Don't quietly "fix" one yourself</strong>; flag it, because every affected client needs an individual review, not a blanket regeneration.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Unchanged</div><div class="delta-foot-body">Creatine. 3–5g monohydrate daily, no loading phase, with food, ~4 weeks to saturate, strongly indicated for women 40+/postmenopausal/ALST At-Risk. It remains the best-evidenced item in the whole ICONS protocol — and it must always be messaged <em>paired with training</em>, never standalone.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Item 11 of 11</div>
+      <h2 class="section-heading">Collagen</h2>
+      <div class="delta">
+        <div class="delta-head"><div><div class="delta-num">Item 11 · Collagen</div><div class="delta-name">Timing window and what it's actually for</div></div><span class="delta-sev">Changes what you claim</span></div>
+        <div class="delta-cols">
+          <div class="delta-col old"><div class="delta-col-label">Old standard — what you were taught</div><div class="delta-headline">15g + vitamin C, 30–60 min pre-session — an acute performance aid</div><p>Framed as a pre-workout dose that acutely doubles collagen synthesis markers, positioned alongside protein and creatine in the supplement conversation.</p></div>
+          <div class="delta-col new"><div class="delta-col-label">New standard — effective 8/17/2026</div><div class="delta-headline">15g + ~50mg vitamin C, 45–60 min pre-load — a chronic 12+ week support protocol</div><p>A connective-tissue <strong>support</strong> protocol taken consistently on training days over 12+ weeks. <strong>Ranks below protein and creatine</strong> in the client supplement hierarchy.</p></div>
+        </div>
+        <div class="delta-foot">
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why the timing narrowed</div><div class="delta-foot-body">The source protocol dosed <strong>one hour</strong> pre-exercise at the 15g dose. The 30-minute end of the old window was never actually studied at 15g — the authors themselves noted a <em>smaller</em> 5g dose would have suited 30 minutes. Drop "30 min" as an equivalent option.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Why the reframe</div><div class="delta-foot-body">A Jan 2026 umbrella review (16 meta-analyses, 113 RCTs) describes the effect as <strong>"chronic and structural rather than acutely ergogenic"</strong> — a positive effect on tendon morphology at low certainty, and <em>no</em> effect on tendon mechanical properties. A separate meta-analysis found collagen does not further improve musculoskeletal performance when added to exercise.</div></div>
+          <div class="delta-foot-row"><div class="delta-foot-tag">Do this</div><div class="delta-foot-body">Don't promise a performance benefit. Position it as long-horizon connective-tissue support, and if a client is only going to do one or two things, point her at protein and creatine first. Mechanical load is still required for it to do anything at all.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--green)">Before the check</div>
+      <h2 class="section-heading">The eleven, in one screen.</h2>
+      <table class="threshold-table">
+        <thead><tr><th>#</th><th>Item</th><th>Old</th><th>New</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>RIR — primary lifts</td><td>1 RIR</td><td><strong>2 RIR</strong> (1 RIR = accessory hypertrophy)</td></tr>
+          <tr><td>2</td><td>LIFTMOR intensity</td><td>≥80% 1RM</td><td><strong>&gt;85% 1RM</strong>, supervised + risk-gated + ramped</td></tr>
+          <tr><td>3</td><td>Intensity framework</td><td>5-color week for all</td><td>Novice = <strong>Gold + Green</strong>; Red needs a test rationale</td></tr>
+          <tr><td>4</td><td>ALST scale</td><td>3 tiers, ≥7.0 "Optimal"</td><td><strong>2 tiers</strong>; ≥5.5 normal, no optimal tier</td></tr>
+          <tr><td>5</td><td>Asymmetry trigger</td><td>≥0.5 lb absolute</td><td><strong>≥10% relative</strong></td></tr>
+          <tr><td>6</td><td>VFA</td><td>4-tier risk table</td><td><strong>Trend metric</strong>; waist circumference primary</td></tr>
+          <tr><td>7</td><td>Scan validity</td><td>Absolute numbers as findings</td><td><strong>Trend tool</strong>; segmental not precise</td></tr>
+          <tr><td>8</td><td>Pelvic floor bracing</td><td>Never hold your breath</td><td><strong>Graded</strong>; sustained breath-holding is the error</td></tr>
+          <tr><td>9</td><td>Knee/ACL circuit</td><td>Gated on a positive screen</td><td><strong>Universal</strong>, 20–30 min, 1–2×/wk, ≥76% adherence</td></tr>
+          <tr><td>10</td><td>Protein</td><td>Age-banded to 2.0–2.2</td><td><strong>1.6 baseline</strong>, context-driven; ~0.3 g/kg per meal</td></tr>
+          <tr><td>11</td><td>Collagen</td><td>30–60 min, acute aid</td><td><strong>45–60 min</strong>, chronic 12+ wk support, ranks 3rd</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(2)">← Section 3</button>
+    <span class="module-position">Section 4 of 6</span>
+    <button class="nav-btn btn-next" onclick="goTo(4)">Section 5: Recertification Check →</button>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 5 — RECERTIFICATION CHECK ═══════════ -->
+<div class="module" id="module-4">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--gold-p),var(--cream))">
+    <div class="week-badge" style="background:var(--gold-d)">Section 5 · Scored</div>
+    <div class="module-eyebrow" style="color:var(--gold-d)">Written so that the old answer is a wrong answer.</div>
+    <h1 class="module-title">Recertification Check</h1>
+    <p class="module-lead" style="border-color:var(--gold)">Ten questions covering all eleven corrections. Each one has a plausible distractor that is exactly what you would have been scored as <em>correct</em> on before 8/17/2026 — so a score below the threshold tells you specifically which old standard is still stuck, not that you don't know the system.</p>
+    <div class="module-meta"><span>⏱ 8 min</span><span>✅ 10 questions · 80% (8/10) to pass</span><span>🔓 Unlocks Section 6</span></div>
+  </div>
+
+  <div class="content">
+    <div class="section-block">
+      <div class="section-label" style="color:var(--gold-d)">How this is scored</div>
+      <h2 class="section-heading">8 of 10 to pass. Retry with your lead coach if you miss it.</h2>
+      <p>Answers reveal immediately with an explanation — this is remediation, not an exam you can fail quietly. If you land below 8/10, the explanations tell you which items to re-read, and the retry happens with your lead coach so the gap gets talked through rather than just re-guessed.</p>
+      <div class="callout gold"><div class="callout-label">Missing a specific question matters more than the total</div><p>Questions 4 (ALST) and 6 (pelvic floor bracing) are the two items that change what you say to a client's face. If you miss either of those, re-read that item before your next session even if your overall score passed.</p></div>
+    </div>
+
+    <div class="gate-box" data-threshold="80">
+      <div class="gate-header"><div><div class="gate-eyebrow">Recertification Check — August 2026 Update</div><div class="gate-title">Corrected-Standards Gate</div></div><div class="gate-threshold">10 questions · 80% (8/10) to pass</div></div>
+      <div class="gate-body">
+
+        <div class="quiz-q"><div class="quiz-q-text">1. You're coaching a client's primary lift of the day — her heaviest working sets on the hex bar deadlift. What proximity to failure do you call?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">1 RIR — the primary lift is where you want her closest to failure</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">2 RIR — 1 RIR is now reserved for hypertrophy-priority accessory work</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">0 RIR on the final set to confirm the load is right</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">4 RIR, then 3 RIR, then 2 RIR across the three working sets</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. 2 RIR is the default for primary lifts; 1 RIR moved to accessory hypertrophy work. A 2024 dose-response meta-regression found strength gains largely unrelated to estimated RIR — 1 RIR wasn't buying extra strength on a primary lift. The fourth option is also wrong for a second reason: everything above 2 RIR collapses into one "technique/submaximal" band, because RIR accuracy degrades the further a set is from failure.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">2. A postmenopausal bone-loading client is progressing well. What is the correct target intensity for the LIFTMOR-style protocol, and what travels with it?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">≥80% 1RM, 5×5, 2×/week — and she can run it at home on a non-studio day</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">&gt;85% 1RM, 5×5, 2×/week — supervised only, after a risk-stratification gate and a technique-first ramp-in, with no loaded spinal flexion</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">&gt;85% 1RM, 5×5, 2×/week — the intensity is what changed; nothing else about delivery did</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">8–12RM as the house default, since higher intensity isn't worth the risk in this population</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. The trial actually prescribed &gt;85% 1RM, not ≥80% — and four requirements now travel with it: supervision (every supporting trial was fully supervised; never unsupervised homework), a risk gate (prior vertebral fracture / multiple low-trauma fractures / very low BMD → physiotherapist first), a technique-first ramp-in before reaching &gt;85%, and a loaded-spinal-flexion prohibition.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">3. A client's scan reads Left Leg LST 12.9 lbs, Right Leg LST 13.5 lbs. What do you do?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Run the asymmetry protocol — the 0.6 lb gap clears the 0.5 lb trigger, so the left leg leads all unilateral work</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">No asymmetry protocol — 0.6 / 13.5 is 4.4%, below the corrected ≥10% relative trigger. Note it and move on</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Run the protocol anyway — segmental scan data is precise enough that any measurable gap is real</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Trust <code>weakerSide()</code> — it returned "left," which confirms the trigger is met</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. The trigger is now a ≥10% <em>relative</em> gap, because 0.5 lb (≈0.23 kg) was smaller than the scanner's own error on female leg lean mass (~0.61–0.69 kg) — it was firing on noise. Segmental composition is specifically <em>not</em> reliable enough to treat as precise. And <code>weakerSide()</code> only reports direction; it does not compute or gate on the 10% threshold — that math is a manual step.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">4. A 57-year-old female client's ALST Index reads 6.4 kg/m². How do you describe this to her?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"Normal — but not optimal yet. We'd like to get you to 7.0."</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">"That's within the normal reference range. There's no tier above normal on this metric — we'll track it as a trend over time."</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"You're in the middle band — normal, monitor. We'll watch it at the next rescan."</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"That's below the 7.0 cutoff, so muscle-building becomes the priority and protein escalates."</div>
+          </div>
+          <div class="quiz-explain">The most consequential correction in the set. <strong>7.0 kg/m² is EWGSOP2's <em>male</em> at-risk cutoff — it was never a female "optimal" tier.</strong> The women's scale is now two tiers: &lt;5.5 At-Risk, ≥5.5 within the normal reference range, framed as a trend metric with no graded score above the floor. The old three-tier table asked healthy women to chase a number derived from men.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">5. A client asks why her body fat percentage from our scan doesn't match the DXA reading she got at a clinic. What's the accurate answer?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">The scan is a validated clinical measurement — the DXA reading was probably taken under different conditions</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">A single scan can differ from a clinical DXA by several percentage points for an individual, but repeat scans on her personally are precise to well under a point — so we read the direction of change, not the digit</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">The two are interchangeable; any difference is rounding</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Avoid the question — publishing our uncertainty undermines confidence in the scan</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. The device has excellent test-retest precision and moderate individual-level accuracy — a genuinely good trend tool and a poor diagnostic one. Publishing that uncertainty is a trust asset: it's what explains why a number moved. Segmental (per-limb) composition specifically must not be reported as precise, and circumferences are the device's most trustworthy output.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">6. Your postmenopausal client is on her heaviest working set of a hip thrust. She braces and briefly holds her breath through the sticking point. What do you do?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Correct her — she must never hold her breath; exhale on exertion applies to every set at every load</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">Nothing — a brief, controlled brace including a short breath-hold through the sticking point is normal and appropriate on the heaviest sets. Sustained breath-holding across reps or a whole set is what's actually wrong</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Drop her load until she can complete the set with continuous free breathing</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Cue a maximal pelvic floor contraction before every rep as a precaution</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. The 2024 POGP clinical commentary states a blanket "never hold your breath" rule is "not appropriate." Bracing scales with load: free breathing when light, exhale-on-exertion as the default, a brief controlled brace on the heaviest sets. The last option is wrong for a separate reason — the pelvic floor is reflexive, and an asymptomatic client does not need a cued PFM contraction on every brace.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">7. A new client shows no knee valgus at all on her single-leg squat and drop-landing screen. What does her program include?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">No corrective circuit — she screened clean, so it isn't indicated</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">The full neuromuscular circuit — it's universal now, dosed at 20–30 min, 1–2×/week, sustained beyond 6 months, with a ≥76% session-completion target tracked</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">A few minutes of banded work before squats, as a precaution</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Re-screen her monthly and add the circuit if valgus appears</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. Visual screening cannot predict future non-contact ACL injury — a prospective study of 880 elite female athletes found exactly that. Screen-gating meant withholding an effective intervention from most of the clients who would go on to get hurt. The circuit is now universal with a real weekly time allocation, and adherence (≥76%) is the dominant moderator — a short circuit she completes beats an elaborate one that gets skipped. Keep the screen as a coaching tool only.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">8. A 52-year-old client, ALST within normal range, eating at maintenance, training a moderate three days a week. What is her protein target?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">2.0–2.2 g/kg/day — she's over 50</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">1.6 g/kg/day — the baseline. Nothing in her context moves her up the range</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">1.8–2.0 g/kg/day — the 40+ tier</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">2.2 g/kg/day — postmenopausal clients need the top of the range</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. The age-banded escalation is retired. 1.6 g/kg/day is the baseline; you move up toward 2.2 only for a genuine energy deficit, a heavy training load, or ALST At-Risk — not for age. The most current female-specific synthesis states peri- and postmenopausal athletes likely need no different target than premenopausal athletes. Per-meal also dropped from ~0.4 to ~0.3 g/kg. Note the document engine still computes the old age-based tier — flag that, don't quietly fix it.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">9. A client's scan shows VFA 96 cm². How do you present it?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"Low risk — you're under the 100 cm² moderate-risk cutoff"</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">As her personal starting number to track over time, with the methodology caveat — and take a waist circumference as the primary clinical-facing metric</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">"Borderline — you're close to the moderate-risk band, so let's watch it"</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">As a cardiometabolic verdict on its own, since visceral fat is the strongest single risk marker we measure</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. The four-tier risk table is retired: no consensus body endorses a single VFA threshold, published cutoffs span ~82–140 cm², elevated-risk thresholds in women run higher than 100, and one large cohort's median female VFA was ~90 cm². This scanner's VFA was validated against DXA in kilograms, never against CT in cm². Waist circumference against the international consensus female thresholds is the clinically-endorsed metric.</div></div>
+
+        <div class="quiz-q"><div class="quiz-q-text">10. A client asks about collagen. What do you tell her about timing and what it does?</div>
+          <div class="quiz-opts">
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">15g with vitamin C, 30–60 min before the session — it acutely boosts collagen synthesis, so it's a performance aid on lifting days</div>
+            <div class="quiz-opt" data-correct="true" onclick="answerQuiz(this)">15g with ~50mg vitamin C, 45–60 min before a loading session, taken consistently for 12+ weeks as connective-tissue support — not a performance aid, and it ranks below protein and creatine</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">Any time of day is fine as long as she hits 15g, and it improves tendon strength within a few weeks</div>
+            <div class="quiz-opt" data-correct="false" onclick="answerQuiz(this)">It's the highest-priority supplement for a client with joint complaints — start there before protein or creatine</div>
+          </div>
+          <div class="quiz-explain">Corrected 8/17/2026. The 30-minute end of the old window was never studied at the 15g dose — the source protocol dosed one hour pre-exercise. A Jan 2026 umbrella review describes the effect as "chronic and structural rather than acutely ergogenic," with no effect on tendon mechanical properties, and a separate meta-analysis found no added performance benefit on top of exercise. Mechanical load is still required for it to do anything.</div></div>
+
+        <div class="gate-status-row"><div class="gate-score">Score: <span class="gate-score-value">0 / 10</span></div><div class="gate-status pending">Answer all questions to see your result</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(3)">← Section 4</button>
+    <span class="module-position">Section 5 of 6</span>
+    <button class="nav-btn btn-next" id="next-4" onclick="goTo(5)" disabled>Section 6: Sign-Off →</button>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 6 — SIGN-OFF & WHAT THIS SUPERSEDES ═══════════ -->
+<div class="module" id="module-5">
+  <div class="module-hero" style="background:linear-gradient(to bottom,var(--blue-p),var(--cream))">
+    <div class="week-badge" style="background:var(--blue)">Section 6 · Sign-Off</div>
+    <div class="module-eyebrow" style="color:var(--blue)">The quiz unlocked this section. It does not sign you off.</div>
+    <h1 class="module-title">Sign-Off &amp; What<br>This Supersedes</h1>
+    <p class="module-lead" style="border-color:var(--blue)">Passing the recertification check proves you can recognise the corrected standard on a page. Delivering it in a live session with a client in front of you is a separate thing, and it is confirmed by your lead coach — never by this module.</p>
+    <div class="module-meta"><span>⏱ 4 min</span><span>🖊 Lead-coach confirmed</span><span>🚫 Self-certification not accepted</span></div>
+  </div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">Live confirmation</div>
+      <h2 class="section-heading">One observed session under the corrected standards.</h2>
+      <p>Before this update is considered closed for you, deliver <strong>one live session observed by your lead coach</strong> in which the corrected standards are actually applied in the room. The checklist below is your own preparation tool — the scored version is completed live by the lead coach, not by you.</p>
+      <p><strong>Applied-correction items</strong> — the observer is specifically watching for these:</p>
+      <ul class="checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Called <strong>2 RIR</strong> on the primary lift, and reserved 1 RIR for accessory hypertrophy work</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Did not narrate 3/4/5 RIR as distinct targets — used one "technique/submaximal" band above 2 RIR</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Computed an asymmetry gap as a <strong>percentage</strong> before treating it as a real asymmetry</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Described any scan number as a trend, with its uncertainty, rather than as a precise finding</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Did not use a retired label — no "Optimal" ALST tier, no VFA risk band</li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div>Delivered the neuromuscular circuit as a standing component regardless of screen result</li>
+      </ul>
+      <p style="margin-top:20px"><strong>Red-flag items</strong> — pass/fail, zero tolerance, any single failure fails the sign-off:</p>
+      <ul class="checklist">
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Did not correct a client out of a brief, controlled brace on a heaviest working set — and did not permit sustained breath-holding across reps or a whole set</li>
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Used the exact required pelvic floor language if symptoms were reported — no minimising, no "push through"</li>
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Did not tell a female client her ALST was "not optimal yet" or quote 7.0 kg/m² as a target for her</li>
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Did not prescribe &gt;85% 1RM bone-loading work unsupervised, or route a client into it past the risk-stratification gate</li>
+        <li><div class="check-box strict" onclick="toggleCheck(this)"></div>Did not quietly edit a client document's protein target to match the corrected standard — flagged it instead</li>
+      </ul>
+      <div class="rubric-note">Self-certification is not accepted for this step. A passed knowledge check unlocks this page; it does not sign you off. The lead coach confirms the live session, and that confirmation is recorded outside this module.</div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">Scope</div>
+      <h2 class="section-heading">What this module supersedes.</h2>
+      <p>Where this module and anything you previously learned disagree, <strong>this module wins</strong> — it supersedes the corresponding content in <strong>Module A (Intensity Build)</strong>, <strong>Module B (Three-Zone Practicum)</strong>, and <strong>Module C (Baseline to Rescan)</strong>, along with any notes, printouts, or session habits carried over from a pre-8/17/2026 certification.</p>
+      <div class="callout green"><div class="callout-label">Modules A, B and C have already been updated</div><p>All three now carry the corrected thresholds in both their teaching content and their knowledge-check answers. If you go back to re-read one, you'll find it correct — which is precisely why this delta module exists: a corrected module reads as though it was always right, and never tells you which of your answers used to be different.</p></div>
+      <div class="callout gold"><div class="callout-label">For new trainers</div><p>A trainer who has not yet certified does <strong>not</strong> need this module. They should go straight to the updated A, B or C, which already carry every correction above. This is a remediation path for people who certified against the old standards, not a new step in onboarding.</p></div>
+      <div class="callout teal"><div class="callout-label">Client documents already in circulation</div><p>Existing client documents were built under the old standards, and correcting them is deliberate per-client work — not a blanket rewrite, and not something to do on your own initiative. If you spot a stale threshold in a client's plan, <strong>flag it to the lead coach</strong>. Two known cases: protein targets still computed on the retired age tiers, and asymmetry protocols established under the old 0.5 lb trigger that may not clear ≥10%.</p></div>
+      <blockquote class="key-insight">The standard didn't get harder. It got more honest — and a couple of the numbers we were confident about turned out to belong to somebody else's population.<cite>Brace Life Studios — August 2026 Evidence Review</cite></blockquote>
+    </div>
+
+    <div class="section-block">
+      <div class="section-label" style="color:var(--blue)">Ongoing</div>
+      <h2 class="section-heading">This will happen again — that's the system working.</h2>
+      <p>The science layer is re-checked against current literature on a standing cadence, and corrections get folded back in as they're verified. Expect another delta module the next time a review changes something material. A protocol that never changes isn't stable, it's unmaintained.</p>
+    </div>
+  </div>
+  <div class="module-footer">
+    <button class="nav-btn btn-prev" onclick="goTo(4)">← Section 5</button>
+    <span class="module-position">Section 6 of 6</span>
+    <button class="nav-btn btn-next" style="background:var(--gold);color:var(--onyx)" onclick="goTo(0)">Review from Section 1 ↺</button>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+let current = 0;
+const TOTAL_MODULES = 6;
+
+function goTo(n) {
+  const targetNav = document.querySelector('[data-module="'+n+'"]');
+  if (targetNav && targetNav.classList.contains('locked')) {
+    alert('Pass the recertification check first — the sign-off section unlocks once you score 8 of 10 or better.');
+    return;
+  }
+  document.querySelectorAll('.module').forEach(m => m.classList.remove('visible'));
+  document.querySelectorAll('.nav-module').forEach(m => m.classList.remove('active'));
+  document.getElementById('module-' + n).classList.add('visible');
+  document.querySelector('[data-module="' + n + '"]').classList.add('active');
+  current = n;
+  updateProgress();
+  window.scrollTo(0, 0);
+}
+
+function updateProgress() {
+  const pct = ((current + 1) / TOTAL_MODULES) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = 'Section ' + (current + 1) + ' of ' + TOTAL_MODULES;
+}
+
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+function answerQuiz(el) {
+  const wrap = el.parentElement;
+  if ([...wrap.children].some(o => o.classList.contains('disabled'))) return;
+  const isCorrect = el.dataset.correct === 'true';
+  [...wrap.children].forEach(o => {
+    o.classList.add('disabled');
+    if (o.dataset.correct === 'true') o.classList.add('correct');
+  });
+  if (!isCorrect) el.classList.add('incorrect');
+  const q = wrap.closest('.quiz-q');
+  q.dataset.result = isCorrect ? 'correct' : 'incorrect';
+  const explain = wrap.parentElement.querySelector('.quiz-explain');
+  if (explain) explain.classList.add('show');
+  updateGate(q.closest('.gate-box'));
+}
+
+function updateGate(gateBox) {
+  if (!gateBox) return;
+  const qs = gateBox.querySelectorAll('.quiz-q');
+  const total = qs.length;
+  const correct = [...qs].filter(q => q.dataset.result === 'correct').length;
+  const answered = [...qs].filter(q => q.dataset.result).length;
+  const scoreEl = gateBox.querySelector('.gate-score-value');
+  if (scoreEl) scoreEl.textContent = correct + ' / ' + total;
+  const statusEl = gateBox.querySelector('.gate-status');
+  const moduleEl = gateBox.closest('.module');
+  const idx = parseInt(moduleEl.id.replace('module-', ''));
+  const threshold = parseInt(gateBox.dataset.threshold || moduleEl.dataset.threshold || '0');
+
+  if (answered < total) {
+    statusEl.textContent = 'In progress — ' + answered + ' of ' + total + ' answered';
+    statusEl.className = 'gate-status pending';
+    return;
+  }
+  const pct = total ? (correct / total * 100) : 100;
+  const passed = pct >= threshold;
+  statusEl.textContent = passed
+    ? 'PASSED — ' + Math.round(pct) + '% (threshold ' + threshold + '%)'
+    : 'NOT YET PASSED — ' + Math.round(pct) + '% (threshold ' + threshold + '%). Review the explanations above and retry with your lead coach.';
+  statusEl.className = 'gate-status ' + (passed ? 'pass' : 'fail');
+
+  const nextNav = document.querySelector('[data-module="' + (idx + 1) + '"]');
+  const nextBtn = document.getElementById('next-' + idx);
+  if (passed) {
+    if (nextNav) { nextNav.classList.remove('locked'); const lock = nextNav.querySelector('.nav-lock'); if (lock) lock.remove(); }
+    if (nextBtn) nextBtn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
