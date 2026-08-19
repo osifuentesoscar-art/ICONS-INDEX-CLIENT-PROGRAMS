@@ -278,7 +278,10 @@ const day1 = {
       letter: 'B',
       title: 'PRIMARY SQUAT STRENGTH (60% EFFORT)',
       introLabel: 'Load Target',
-      intro: '60% day. Goblet squat at 30–35 lbs (below the 3RM range — focus is form, not load). Box squat at 40–45 lbs. Technique must be clean before load increases Thursday and Friday.',
+      // "below the 3RM range" removed 8/19/2026 (travel-plan audit, P3): no
+      // squat baseline of any kind exists for her, so the phrase had no
+      // referent — see the DISCREPANCIES note in this header.
+      intro: '60% day. Goblet squat at 30–35 lbs (deliberately light — focus is form, not load). Box squat at 40–45 lbs. Technique must be clean before load increases Thursday and Friday.',
       exercises: [
         { name: 'Goblet Squat (Banded Knees)', sets: '4', reps: '8―10', load: '30―35 lbs', tempo: '3-1-1', rest: '90s', cue: 'Hold DB at chest. Elbows push knees out at bottom. Primary squat pattern. Band above knees for feedback. No barbell until this is consistently clean.', rirNote: '3+ RIR — technique band, 60% day' },
         { name: 'Box Squat (to Bench Height)', sets: '3', reps: '8', load: '40―45 lbs', tempo: '3-2-1', rest: '90s', cue: 'Sit BACK to the box, pause completely, drive up. The pause removes stretch-reflex and forces glutes to fire. Key valgus corrective.', rirNote: '3+ RIR — technique band' },

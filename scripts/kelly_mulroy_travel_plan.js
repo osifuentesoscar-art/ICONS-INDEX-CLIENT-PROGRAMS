@@ -194,7 +194,7 @@ const day1 = {
       letter: 'B',
       title: 'PRIMARY SQUAT STRENGTH (60% EFFORT)',
       introLabel: 'Load Target',
-      intro: '60% day. Goblet squat at 30–35 lbs (below the 3RM range — focus is form, not load). Box squat to the hotel bench at 40–45 lbs, or the heaviest single dumbbell the rack offers if it stops short. Technique must be clean before load increases Thursday and Friday.',
+      intro: '60% day. Goblet squat at 30–35 lbs (deliberately light — focus is form, not load). Box squat to the hotel bench at 40–45 lbs, or the heaviest single dumbbell the rack offers if it stops short. Technique must be clean before load increases Thursday and Friday.',
       exercises: [
         { name: 'Goblet Squat (Banded Knees)', sets: '4', reps: '8―10', load: '30―35 lbs', tempo: '3-1-1', rest: '90s', cue: 'Hold DB at chest. Elbows push knees out at bottom. Primary squat pattern. Booty band above knees for feedback. Same rules as the studio version.', rirNote: '3+ RIR — technique band, 60% day' },
         { name: 'Box Squat (to Bench Height)', sets: '3', reps: '8', load: '40―45 lbs', tempo: '3-2-1', rest: '90s', cue: 'Sit BACK to the hotel bench, pause completely, drive up. The pause removes stretch-reflex and forces glutes to fire. Key valgus corrective.', rirNote: '3+ RIR — technique band' },
@@ -347,7 +347,7 @@ const day4 = {
       exercises: [
         { name: 'Dumbbell Overhead Press (Heavy)', sets: '4', reps: '6–8', load: '22.5–25 lbs/hand', tempo: '2-1-1', rest: '90s', cue: '90% day = near-maximal load. Neutral grip. Press straight overhead. Lock out at top. Core rigid. Last 2 reps should be hard — but 2 stay in reserve, especially alone.', rirNote: '2 RIR — at this load, 2 RIR arrives early' },
         { name: 'Chest-Supported Incline DB Row', sets: '4', reps: '8–10', load: '25–30 lbs/hand', tempo: '3-1-1', rest: '90s', cue: 'Chest on the inclined bench (or strict bent-over row with a flat-back if the bench is flat-only — hinge pain rule applies). Both arms. The travel version of Friday’s heavy machine row — squeeze the blades hard.', rirNote: '2 RIR' },
-        { name: 'Heavy Single-Arm DB Row (Left First)', sets: '3', reps: '6–8 ea', load: '37–40 lbs', tempo: '3-1-1', rest: '75s', cue: '90% of the 40 lb 5RM baseline — this is the heaviest pull of the travel week, and it stands in for the pull-up machine. LEFT arm first. Full stretch, drive elbow to hip, no torso twist.', rirNote: '2 RIR' },
+        { name: 'Heavy Single-Arm DB Row (Left First)', sets: '3', reps: '6–8 ea', load: '35–37.5 lbs', tempo: '3-1-1', rest: '75s', cue: 'Just under the 40 lb 5RM baseline — the heaviest pull of the travel week, standing in for the pull-up machine. If the rack skips 37.5, stay at 35 and own the tempo. LEFT arm first. Full stretch, drive elbow to hip, no torso twist.', rirNote: '2 RIR' },
       ],
     },
     {

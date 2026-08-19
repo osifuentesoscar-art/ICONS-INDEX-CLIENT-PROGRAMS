@@ -476,11 +476,17 @@ function nutritionBlock(client) {
   const els = [sectionTitle('Evidence-Based Nutrition Targets', C.gold)];
   const { atRisk, low, high, tier, proteinLow, proteinHigh, perMeal } = proteinTargets(client);
 
+  // When a tier's endpoints coincide (e.g. the 1.6 g/kg active-women
+  // baseline), render a single value — "110–110g/day (1.6–1.6 g/kg)" was a
+  // real, client-visible display artifact (flagged 8/19/2026, Kelly Mulroy
+  // travel-plan audit). Range tiers render exactly as before.
+  const gramsText = proteinLow === proteinHigh ? `${proteinLow}g/day` : `${proteinLow}–${proteinHigh}g/day`;
+  const gkgText = low === high ? `${low.toFixed(1)} g/kg` : `${low.toFixed(1)}–${high.toFixed(1)} g/kg`;
   els.push(...goldCallout(
     'Daily Protein Target',
     [
-      txt(`${proteinLow}–${proteinHigh}g/day`, { bold: true, size: 20, color: C.dark }),
-      txt(`  (${low.toFixed(1)}–${high.toFixed(1)} g/kg — ${tier})  `, { size: 15, color: C.mid }),
+      txt(gramsText, { bold: true, size: 20, color: C.dark }),
+      txt(`  (${gkgText} — ${tier})  `, { size: 15, color: C.mid }),
       txt(`~${perMeal}g per meal minimum (leucine threshold), distributed across 4+ meals/day.`, { size: 17, color: C.dark }),
     ]
   ));
