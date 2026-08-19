@@ -221,6 +221,95 @@
  * re-checked today), Day 3 hip hinge drill (movement rehearsal, clarified
  * as empty bar/PVC) and band side steps (no rep prescription, activation)
  * -- all legitimately stay in `warmUp`.
+ *
+ * REVISION (8/19/2026 — ICONS BLOCK METHOD RESTRUCTURE, roster-wide
+ * rollout batch 3; CLAUDE.md's "ICONS Block Method" section is the spec,
+ * scripts/siobhan_hansen_3day_plan.js the reference implementation; full
+ * prior record — this header + CLIENTS.md entry — read in full first).
+ * Six-slot order per day (Corrective → Primary Compound → Accessory →
+ * Jason's Exercise [conditional] → Secondary Compound → Third Compound/
+ * Integration). Organizational restructure — every tested baseline, load,
+ * RIR prescription, left-lead flag, and the 8/18 fixes (RDL establish-and-
+ * record load, Lateral Band Walk promotion, Hinge Priming block) survive
+ * verbatim. Per-day mapping:
+ *   DAY 1: slot 1 = Block A (existing hip corrective, unchanged); slot 2 =
+ *     Goblet Squat (own primary block, options menu added); slot 3 = the
+ *     unilateral left-led pair (Reverse Lunge, Single-Leg Hip Bridge) MOVED
+ *     between the two lifts as the accessory block — the one genuine
+ *     resequencing on this day (prior rendered order Goblet → RDL →
+ *     lunge/bridge; new order Goblet → lunge/bridge → RDL; antagonist walk
+ *     re-verified: knee → knee[2, allowed] → hip → hinge[2 hip-extension,
+ *     allowed] → sled — clean); slot 4 = OMITTED (Jason's documented
+ *     exercises are all from the 8/12 upper-body session and live on Day
+ *     2; importing them here would be filler and would raise their weekly
+ *     frequency beyond his prescription); slot 5 = Romanian Deadlift (own
+ *     secondary block — hinge, rotating off the squat pattern; the 8/18
+ *     establish-and-record load + rirNote survive verbatim); slot 6 = NEW
+ *     "Full-Body Integration — Sled Push (Controlled)", Wk1 90 → Wk4 105
+ *     lbs — anchored BELOW her tested 135 lb sled baseline (8/13 battery),
+ *     no invented number; this also resolves the sled baseline's prior
+ *     "no existing slot" status honestly. Sled is deliberately apt for a
+ *     runner with a knee-health priority: concentric-only leg drive under
+ *     gait, no eccentric knee loading.
+ *   DAY 2: slot 1 = omitted (no documented upper-body corrective on file;
+ *     the arm-bike/stick-circuit activation legitimately stays in warmUp);
+ *     slot 2 = Incline DB Press (own primary block, menu); slot 3 =
+ *     accessory push/pull (Half-Kneeling Eccentric Push-Up, Face Pulls,
+ *     Standing Band Chest Press); slot 4 = "PT-Led Running-Economy Circuit
+ *     (Jason Bethea)" — Landmine Shoulder Press, DB Deadlift → Farmer
+ *     Carry Combo, Static Overhead DB Hold (Walking): the three most
+ *     explicitly PT-framed exercises from his 8/12 SOAP session, kept
+ *     together as one continuous PT-continuity block (genuine slot-4
+ *     trigger — documented Jason exercises on file); slot 5 = Single-Arm
+ *     Row (own secondary block, menu); slot 6 = Farmer Carry moved from
+ *     the old accessory block to the integration closer, its vague
+ *     "moderate" load upgraded to the establish-and-record instruction
+ *     (no tested carry number exists — nothing invented). NOTE on the
+ *     8/18 carry-sequencing fix: its PURPOSE (never 3 consecutive
+ *     carry-pattern exercises) is preserved under the new order — the
+ *     rendered walk is push, push, pull, push, push, carry, carry, pull,
+ *     carry — max 2 consecutive of any pattern; re-verified in full since
+ *     the slot mapping moved Farmer Carry out of the old position.
+ *   DAY 3: slot 1 = Hinge Priming (8/18 block, unchanged — genuine
+ *     priming serving the corrective slot); slot 2 = Back Squat or Box
+ *     Squat (own primary block, menu); slot 3 = Weighted Step-Up (own
+ *     accessory block; internal flag + informed load survive verbatim);
+ *     slot 4 = OMITTED (same reason as Day 1); slot 5 = Hip Thrust +
+ *     Nordic Hamstring (secondary posterior-chain block; Hip Thrust's
+ *     vague "moderate-heavy" load upgraded to establish-and-record — no
+ *     tested hip-thrust number exists in her battery); slot 6 = NEW
+ *     "Full-Body Integration — Sled Push (Drive)", Wk1 105 → Wk4 135 lbs
+ *     (Wk4 = the tested baseline itself, never beyond it). The left-side
+ *     volume finishers stay in their documented closing-corrective
+ *     position ahead of the sled (their end-of-session placement is a
+ *     stated design choice: "finish with unilateral sets focused on left
+ *     quality").
+ * TOUCH-RULE CHANGES in the same pass: (1) Cable Hip Abduction renamed
+ * "Hip Abduction — Kieser (Left)" per the studio's Kieser-as-cable-machine
+ * inventory rule (band alternative named in the cue); (2) retired-language
+ * fix, Nicolette Scott precedent — the "Watch — Asymmetry Alert" note
+ * cited "the 0.5-unit asymmetry threshold" (the retired absolute trigger):
+ * reworded to the corrected ≥10% relative standard, which her 17.5%
+ * functional-strength-test gap clears decisively (a functional test is the
+ * corrected standard's PREFERRED primary trigger, so the prescription is
+ * strengthened, not changed); (3) provenance-drift cue cleanup ("New this
+ * update", "per the 8/12 PT session") reworded to client-appropriate
+ * language per the Client View standard — these fields have no audience
+ * filter; (4) deload call: PROACTIVE Week 5 (grounds: an 8-week
+ * continuous-progression arc to the retest, plus a standing coordinated-
+ * care relationship with Jason Bethea) — new blue client-visible note,
+ * milestones/rescanNote reconciled to the Wk4-check → Wk5-deload →
+ * Wk6-8-rebuild arc; (5) 4-week strength / 8-12-week Styku reassessment-
+ * cadence split stated in the summary fields; (6) warm-up drift re-checked
+ * on all three days — nothing further to promote (all remaining prose
+ * content is unloaded/bodyweight activation or movement rehearsal);
+ * (7) options menus on every compound slot, constraint-filtered: KB goblet
+ * variants EXCLUDED (her 35-40 lb goblet loads exceed the studio's 25 lb
+ * KB ceiling), hex-bar deadlift deliberately NOT listed as an RDL
+ * alternate (would imply the 135 lb hex baseline transfers to the RDL —
+ * the exact mapping the 8/13 rebuild explicitly refused), left-led side
+ * rules restated on every unilateral option, sled/carry options stay
+ * distance-and-quality governed.
  */
 
 const fs = require('fs');
@@ -278,7 +367,7 @@ const baselines = [
   ['DB Split Squat', `17.5 lbs/hand x 10 (Epley 1RM ≈${oneRM.splitSquat} lbs)`, '8/13/2026', `Informs Day 3 Block B Weighted Step-Up Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`],
   ['Hex Deadlift (Trap Bar)', `135 lbs x 8 (Epley 1RM ≈${oneRM.hexDL} lbs)`, '8/13/2026', 'Reference baseline only — no matching slot; NOT used to inform Romanian Deadlift (mechanically distinct lift, different load capacity). Revisit if a dedicated hex-bar deadlift slot is added.'],
   ['Overhead Press', `17.5 lbs x 10 (Epley 1RM ≈${oneRM.ohp} lbs) — format as reported, no seated/standing qualifier given`, '8/13/2026', 'Reference baseline only — no existing press slot beyond Incline DB Press; not force-fit as a 3rd pressing exercise.'],
-  ['Sled Push', '135 lbs', '8/13/2026', 'Reference baseline only — not one of the 10 core ICONS Baseline Testing Protocol movements (distance/effort push, not a rep-max); no existing slot.'],
+  ['Sled Push', '135 lbs', '8/13/2026', 'Now programmed as the closing integration work: Day 1 controlled push Wk1: 90 lbs → Wk4: 105 lbs; Day 3 drive push Wk1: 105 lbs → Wk4: 135 lbs (the tested load). Distance & quality governed.'],
   ['Plank Hold', '2:05 (125 sec)', '8/13/2026', 'Reference baseline only — no plank slot in current 3-day structure.'],
   ['Push-Up (Incline)', '10 reps', '8/13/2026', 'Reference baseline only — no push-up slot in current 3-day structure.'],
   ['Pull-Up (Assisted)', '20 reps', '8/13/2026', 'Reference baseline only — bonus 11th ICONS protocol movement; no pull-up slot in current structure.'],
@@ -293,7 +382,7 @@ const baselineNotes = [
   {
     type: 'watch',
     label: 'Watch — Asymmetry Alert',
-    body: '17.5% left/right gap exceeds the 0.5-unit asymmetry threshold. Lead every unilateral exercise with the LEFT (weaker) side per protocol.',
+    body: 'The 17.5% left/right gap on the hip abduction force test clears the ≥10% relative asymmetry threshold decisively — and a functional strength test like this one is exactly the kind of measurement the asymmetry protocol treats as its primary trigger. Lead every unilateral exercise with the LEFT (weaker) side per protocol.',
   },
   {
     type: 'red',
@@ -337,6 +426,17 @@ const baselineNotes = [
     body: 'The same SOAP note above documented a fuller upper-body carry/press circuit than the eccentric push-up alone captured — explicitly framed by the PT as direct running-economy transfer given Nancy\'s running-knee-health goal (see Block B\'s intro below). Folded in this update: (1) arm bike warm-up (1 min forward + 1 min backward) and a mobility-stick shoulder circuit, added to Day 2\'s warm-up; (2) Standing Resistance Band Chest Press, a core-anti-rotation pressing accessory, added to Day 2 Block A; (3) DB Deadlift → Farmer Carry Combo, Static Overhead DB Hold (Walking), and Landmine Shoulder Press added to Day 2 Block B — the press is deliberately sequenced between the two carry-pattern additions to avoid stacking 3 consecutive loaded-carry exercises (Farmer Carry / DB Deadlift+Carry Combo / Static OH Hold Walking are all carry-pattern), per the Antagonist Rotation Rule.',
   },
   {
+    type: 'blue',
+    label: 'Planned Deload — Week 5, Directly After the Week 4 Strength Check',
+    body: 'This program deliberately includes one lighter week, and it is planned, not a reaction to anything going wrong. Week 5 — immediately after the Week 4 strength check — is a structured deload: the same exercises and movement patterns, with sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), and loads held at Week 3-4 levels rather than climbing — the usual add-weight rule pauses for this one week. For a runner training three days a week on top of her mileage, this is how the strength built in Weeks 1-4 consolidates without the knees or hips ever carrying accumulating fatigue into a run. One light week costs nothing that matters: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days. Weeks 6-8 then rebuild from the Week 4 loads toward the Week 8 retest.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Session Architecture — ICONS Block Method Restructure (8/19/2026)',
+    body: 'Restructured to the ICONS Block Method six-slot session architecture (Corrective → Primary Compound → Accessory → Jason\'s Exercise → Secondary Compound → Third Compound/Integration; see CLAUDE.md). Organizational — every tested baseline, load, RIR prescription, left-lead flag, and the 8/18 fixes (RDL establish-and-record, Lateral Band Walk promotion, Hinge Priming block) survive verbatim. Slot 4 fires on Day 2 only (the three most explicitly PT-framed exercises from Jason Bethea\'s 8/12 SOAP session grouped as one continuity block); omitted Days 1/3 — his documented content is upper-body-session-specific and importing it would exceed his prescribed frequency. One genuine resequence: Day 1\'s unilateral left-led pair now sits between the Goblet Squat and the RDL (antagonist walk re-verified clean); Day 2\'s Farmer Carry moved to the integration closer — the 8/18 no-3-consecutive-carries fix\'s purpose holds under the new order (max 2 consecutive carry-pattern exercises, re-walked in full). New integration closers anchor to her tested 135 lb sled baseline (Day 1: 90→105; Day 3: 105→135, never beyond the tested number). Touch-rule changes this pass: Cable Hip Abduction renamed to Kieser per studio inventory; the asymmetry note\'s retired 0.5-absolute-trigger language corrected to the ≥10% relative standard (her 17.5% functional-test gap clears it — prescription unchanged, Nicolette Scott precedent); provenance-drift cue language ("New this update," dated session references) reworded client-appropriate; Hip Thrust and Farmer Carry vague loads upgraded to establish-and-record instructions (no tested numbers exist — nothing invented; capture both at the next battery); proactive Week 5 deload added; 4-week strength / 8-12-week Styku cadence split stated in the summary. Options menus constraint-filtered: no KB goblet variants (35-40 lb loads exceed the 25 lb KB ceiling), no hex-bar-deadlift RDL alternate (would imply the refused 8/13 load mapping), left-led rules restated per unilateral option.',
+  },
+  {
     type: 'gold',
     label: 'Warm-Up Content Promoted to Tracked Rows — 8/18/2026',
     audience: 'internal',
@@ -368,25 +468,45 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'Compound Strength',
-        introLabel: 'Why',
-        intro: 'Build bilateral strength while preserving left control. Goblet Squat Week 1 load is informed by the 8/13 baseline test (40 lbs w/ 10-sec hold x10) — adjusted for this block\'s tempo-rep format, not a literal repeat of the isometric test load.',
+        title: 'Primary Compound — Goblet Squat',
+        introLabel: 'Load Target',
+        intro: 'Build bilateral strength while preserving left control. Goblet Squat Week 1 load is informed by the 8/13 baseline test (40 lbs w/ 10-sec hold x10) — adjusted for this block\'s tempo-rep format, not a literal repeat of the isometric test load. If the day calls for a variation, rotate between: a box squat (depth set by the box — useful on a heavy-legged running week) or a supported split-stance squat (left leg leads). The goblet squat stays the lift we track and progress.',
         exercises: [
           { name: 'Goblet Squat', sets: '4', reps: '6-8', load: `Wk1: ${wk1.gobletSquat} lbs → Wk4: ${wk4.gobletSquat} lbs`, tempo: '2-0-2', rest: '90s', cue: 'Braced core; track knees; depth to parallel', rirNote: '2 RIR' },
-          { name: 'Romanian Deadlift', sets: '3', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-2', rest: '90s', cue: 'Hinge at hips; feel posterior chain tension', rirNote: '2 RIR — use to set Wk1 load' },
         ],
       },
       {
         letter: 'C',
-        title: 'Unilateral Strength Finishers',
+        title: 'Accessory — Unilateral Strength (Left-Led)',
+        introLabel: 'Why',
+        intro: 'The unilateral accessory work directly behind the squat — left leg leads both movements, keeping the corrective priority active under real training volume.',
         exercises: [
           { name: 'Reverse Lunge (Left-Led)', sets: '3', reps: '8 each', load: 'bodyweight / light', tempo: '2-0-1', rest: '60s', cue: 'Step back with control; emphasise L push-off', flag: 'Left corrective' },
           { name: 'Single-Leg Hip Bridge (Left Focus)', sets: '3', reps: '10', load: 'bodyweight', tempo: '2-0-1', rest: '45s', cue: 'Drive left glute; 1s pause top; no knee cave', flag: 'Left corrective' },
         ],
       },
+      {
+        letter: 'D',
+        title: 'Secondary Compound — Romanian Deadlift',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound pattern — a hip hinge, rotating off the squat and lunge work above. If the day calls for a variation, rotate between: a B-stance RDL (rear foot down for balance, left leg takes the working share) or a barbell RDL from the rack. The Romanian deadlift stays the lift we track — set its Week 1 load at the first session and record it.',
+        exercises: [
+          { name: 'Romanian Deadlift', sets: '3', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-2', rest: '90s', cue: 'Hinge at hips; feel posterior chain tension', rirNote: '2 RIR — use to set Wk1 load' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'Full-Body Integration — Sled Push (Controlled)',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — leg drive, bracing, and gait in one movement, pulling the day\'s squat, lunge, and hinge patterns together. Deliberately runner-friendly: the sled loads the legs concentrically with no eccentric knee stress, so it builds drive without adding next-run soreness. Loads build from well below the tested 135 lb baseline. Distance and movement quality govern this work, not a rep count. A light farmer carry or suitcase carry (alternating sides evenly) covers the same closing ground when the sled is unavailable.',
+        exercises: [
+          { name: 'Sled Push (Controlled)', sets: '3', reps: '20-25 yd', load: 'Wk1: 90 lbs → Wk4: 105 lbs', tempo: 'controlled', rest: '90s', cue: 'Tested 135 lbs. Low hips, long spine, full-foot drive — smooth, not sprinting.', rirNote: 'Distance & quality governed — no RIR target' },
+        ],
+      },
     ],
     coolDown: '8–10 min mobility and glute release',
-    iconsNote: 'Emphasise tempo and control on left side. Use lighter load and perfect technique before progressing.',
+    iconsNote: 'Emphasise tempo and control on left side. Use lighter load and perfect technique before progressing. The closing sled push puts the day\'s leg drive to work under gait — smooth and controlled today, never a sprint.',
   },
   {
     intensity: 60,
@@ -395,37 +515,62 @@ const days = [
     descriptor: 'Lower Load — Mobility Emphasis',
     intensityLabel: '60% Day',
     intensityPara: 'Lower overall load; emphasise shoulder and thoracic mobility.',
-    warmUp: 'Arm bike 1 min forward + 1 min backward (upper-body cardio + shoulder circulation — the backward direction deliberately engages the posterior shoulder differently, per the 8/12 PT session). Mobility stick shoulder circuit: overhead pass-throughs 2x8-10, external rotation with stick 2x8-10, reach + drive 2x8-10. Then: band pull-aparts, thoracic rotations, 3×10 scapular push-ups.',
+    warmUp: 'Arm bike 1 min forward + 1 min backward (upper-body cardio + shoulder circulation — a PT-led detail: the backward direction deliberately engages the posterior shoulder differently). Mobility stick shoulder circuit: overhead pass-throughs 2x8-10, external rotation with stick 2x8-10, reach + drive 2x8-10. Then: band pull-aparts, thoracic rotations, 3×10 scapular push-ups.',
     blocks: [
       {
         letter: 'A',
-        title: 'Push / Pull',
+        title: 'Primary Compound — Incline DB Press',
         introLabel: 'Load Target',
-        intro: `Incline DB Press Week 1 load is informed by the 8/13 baseline test ("DB Chest Press," 15 lbs). Single-Arm Row loads directly off its own matching baseline (30 lbs x10, Epley 1RM ≈${oneRM.row} lbs). Standing Resistance Band Chest Press is added this update — a core-anti-rotation pressing accessory (no bench support) from the 8/12 PT session.`,
+        intro: 'Incline DB Press Week 1 load is informed by the 8/13 baseline test ("DB Chest Press," 15 lbs). If the day calls for a variation, rotate between: a flat DB bench press, a low-incline barbell press from the rack, or a Kieser chest press. The incline DB press stays the lift we track and progress.',
         exercises: [
           { name: 'Incline DB Press', sets: '4', reps: '8', load: `Wk1: ${wk1.chestPress} lbs/hand → Wk4: ${wk4.chestPress} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Control descent', flag: 'Load informed by DB Chest Press baseline — see note', flagAudience: 'internal' },
-          { name: 'Single-Arm Row', sets: '4', reps: '8 each', load: `Wk1: ${wk1.row} lbs → Wk4: ${wk4.row} lbs`, tempo: '2-0-1', rest: '60s', cue: 'Pull to the hip; maintain neutral spine' },
-          { name: 'Half-Kneeling Eccentric Push-Up', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '4-0-1', rest: '45s', cue: 'Half-kneeling stance (one knee down); slow 4-sec controlled lower, drive back up. New — PT-introduced tempo/control accessory.' },
-          { name: 'Standing Resistance Band Chest Press', sets: '3', reps: '10-12', load: 'light-mod band', tempo: '2-1-2', rest: '45s', cue: 'New this update. No bench support — standing, anti-rotation core demand throughout the press. Press straight ahead, resist trunk rotation, control the return.' },
         ],
       },
       {
         letter: 'B',
-        title: 'Accessory',
+        title: 'Accessory — Push/Pull Control',
+        introLabel: 'Why',
+        intro: 'Tempo and control accessories behind the press: a slow eccentric push-up, rear-delt/rotator health work, and a standing band press with a real core anti-rotation demand — no bench support.',
+        exercises: [
+          { name: 'Half-Kneeling Eccentric Push-Up', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '4-0-1', rest: '45s', cue: 'Half-kneeling stance (one knee down); slow 4-sec controlled lower, drive back up.' },
+          { name: 'Face Pulls', sets: '3', reps: '15', load: 'band', tempo: '2-0-1', rest: '45s', cue: 'High elbows; squeeze rear delts' },
+          { name: 'Standing Resistance Band Chest Press', sets: '3', reps: '10-12', load: 'light-mod band', tempo: '2-1-2', rest: '45s', cue: 'No bench support — standing, anti-rotation core demand throughout. Press straight ahead, resist trunk rotation, control the return.' },
+        ],
+      },
+      {
+        letter: 'C',
+        title: 'PT-Led Running-Economy Circuit (Jason Bethea)',
+        color: 'green',
+        introLabel: 'Why',
+        intro: 'Carried into this session from her PT-led work with Jason Bethea, Brace Life\'s in-house Trainer/Physical Therapist — three drills chosen for direct running-economy transfer given her running-knee-health goal: grip, gait, and anti-lateral-flexion core demand under load carry over directly to running mechanics.',
+        exercises: [
+          { name: 'Landmine Shoulder Press', sets: '3', reps: '8-10/side', load: 'light-mod — coach discretion', tempo: '2-1-2', rest: '60s', cue: 'Scap-friendly unilateral press — the landmine angle reduces shoulder impingement risk vs. a straight vertical press.' },
+          { name: 'DB Deadlift → Farmer Carry Combo', sets: '3', reps: '6-8 DL into 20-30 yd carry', load: 'moderate — coach discretion', tempo: 'controlled', rest: '75s', cue: 'Hinge into an immediate loaded carry — grip, gait, and anti-lateral-flexion core demand in one continuous drill.', insight: 'Hinge + loaded-carry combination targets the same grip, gait, and core-stability qualities that support running mechanics.' },
+          { name: 'Static Overhead DB Hold (Walking)', sets: '2-3', reps: '20-30 yd', load: 'light-mod DB — coach discretion', tempo: 'controlled walk', rest: '60s', cue: 'Overhead isometric hold while walking — shoulder stability, thoracic extension, core anti-extension, and gait control combined.' },
+        ],
+      },
+      {
+        letter: 'D',
+        title: 'Secondary Compound — Single-Arm Row',
+        introLabel: 'Load Target',
+        intro: `The day's second compound pattern — pulling, rotating off the pressing work above. Loads build directly off the tested baseline (30 lbs x10, Epley 1RM ≈${oneRM.row} lbs). If the day calls for a variation, rotate between: a chest-supported row, a Kieser row, or a bent-over barbell row. The single-arm row stays the lift we track and retest.`,
+        exercises: [
+          { name: 'Single-Arm Row', sets: '4', reps: '8 each', load: `Wk1: ${wk1.row} lbs → Wk4: ${wk4.row} lbs`, tempo: '2-0-1', rest: '60s', cue: 'Pull to the hip; maintain neutral spine' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'Full-Body Integration — Farmer Carry',
         color: 'gold',
         introLabel: 'Why',
-        intro: 'Face Pulls lead for rear-delt/rotator health. DB Deadlift → Farmer Carry Combo and Static Overhead DB Hold (Walking) are added this update — both explicitly framed by the PT as direct running-economy transfer, given Nancy\'s documented running-knee-health goal: grip, gait, and anti-lateral-flexion core demand under load carry over directly to running mechanics. Landmine Shoulder Press is sequenced between the two carry-pattern additions to avoid stacking 3 consecutive loaded-carry exercises in a row (Antagonist Rotation Rule).',
+        intro: 'The session\'s closing compound — the day\'s pressing posture, pulling strength, and core control held together under gait. Distance and movement quality govern this work, not a rep count. A suitcase carry (alternating sides evenly) or a goblet carry covers the same closing ground when variety suits the day.',
         exercises: [
-          { name: 'Face Pulls', sets: '3', reps: '15', load: 'band', tempo: '2-0-1', rest: '45s', cue: 'High elbows; squeeze rear delts' },
-          { name: 'Farmer Carry', sets: '3', reps: '30s', load: 'moderate', tempo: '—', rest: '60s', cue: 'Tall posture; tight core' },
-          { name: 'Landmine Shoulder Press', sets: '3', reps: '8-10/side', load: 'light-mod — coach discretion', tempo: '2-1-2', rest: '60s', cue: 'New this update. Scap-friendly unilateral press — landmine angle reduces shoulder impingement risk vs. a straight vertical press.' },
-          { name: 'DB Deadlift → Farmer Carry Combo', sets: '3', reps: '6-8 DL into 20-30 yd carry', load: 'moderate — coach discretion', tempo: 'controlled', rest: '75s', cue: 'New this update. Hinge into an immediate loaded carry — grip, gait, and anti-lateral-flexion core demand in one continuous drill. PT-framed as direct running-economy transfer.', insight: 'Running-economy transfer, per the 8/12 PT session — hinge + loaded-carry combination targets the same grip/gait/core-stability qualities that support running mechanics.' },
-          { name: 'Static Overhead DB Hold (Walking)', sets: '2-3', reps: '20-30 yd', load: 'light-mod DB — coach discretion', tempo: 'controlled walk', rest: '60s', cue: 'New this update. Overhead isometric hold while walking — shoulder stability, thoracic extension, core anti-extension, and gait control combined. PT-framed as direct running-economy transfer.' },
+          { name: 'Farmer Carry', sets: '3', reps: '30s', load: 'Establish working load at first session — record', tempo: '—', rest: '60s', cue: 'Tall posture; tight core. Add load only when every step stays tall and level.', rirNote: 'Distance & quality governed — no RIR target' },
         ],
       },
     ],
     coolDown: 'Lat stretch and foam rolling',
-    iconsNote: 'Use this session to improve movement quality and recovery.',
+    iconsNote: 'Use this session to improve movement quality and recovery. The PT-led circuit is direct running-economy work, not filler — treat its quality bar the same as the main lifts.',
   },
   {
     intensity: 80,
@@ -448,34 +593,54 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'Strength Core',
+        title: 'Primary Compound — Back Squat',
         introLabel: 'Load Target',
-        intro: `Back Squat tested at 95 lbs x8 (Epley 1RM ≈${oneRM.backSquat} lbs) — Week 1 trains at ${wk1.backSquat} lbs, climbing to ${wk4.backSquat} lbs by Week 4. Weighted Step-Up Week 1 load is informed by the DB Split Squat baseline (${wk1.splitSquat} lbs/hand).`,
+        intro: `Back Squat tested at 95 lbs x8 (Epley 1RM ≈${oneRM.backSquat} lbs) — Week 1 trains at ${wk1.backSquat} lbs, climbing to ${wk4.backSquat} lbs by Week 4. If the day calls for a variation, rotate between: a box squat (depth set by the box, already the built-in alternate), a goblet squat at its own Day 1 working loads, or a supported split-stance squat (left leg leads). The back squat stays the lift we track and retest.`,
         exercises: [
           { name: 'Back Squat or Box Squat', sets: '5', reps: '5', load: `Wk1: ${wk1.backSquat} lbs → Wk4: ${wk4.backSquat} lbs`, tempo: '2-0-2', rest: '2m', cue: 'Braced core; safe depth', rirNote: '1-2 RIR' },
-          { name: 'Weighted Step-Up', sets: '3', reps: '6 each', load: `Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Drive through heel; control descent', flag: 'Load informed by DB Split Squat baseline — see note', flagAudience: 'internal' },
         ],
       },
       {
         letter: 'C',
-        title: 'Posterior Chain',
+        title: 'Accessory — Weighted Step-Up',
+        introLabel: 'Load Target',
+        intro: `The unilateral accessory behind the squat. Week 1 load is informed by the DB Split Squat baseline (${wk1.splitSquat} lbs/hand). A DB split squat (the tested pattern itself) or a reverse lunge (left leg leads) rotates in cleanly when the day calls for it.`,
         exercises: [
-          { name: 'Hip Thrust', sets: '4', reps: '8', load: 'moderate-heavy', tempo: '2-0-1', rest: '90s', cue: 'Full hip extension; hold 1s top' },
-          { name: 'Nordic Hamstring (Assisted)', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '2-0-2', rest: '90s', cue: 'Slow eccentric; control' },
+          { name: 'Weighted Step-Up', sets: '3', reps: '6 each', load: `Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Drive through heel; control descent', flag: 'Load informed by DB Split Squat baseline — see note', flagAudience: 'internal' },
         ],
       },
       {
         letter: 'D',
+        title: 'Secondary Compound — Hip Thrust & Posterior Chain',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound pattern — hip extension, rotating off the knee-dominant work above. Hip thrust was not part of the tested battery: set its Week 1 load at the first session and record it. If the day calls for a variation, rotate between: a glute bridge (floor), a single-leg glute bridge (left leg leads), or a B-stance hip thrust (left leg takes the working share). The hip thrust stays the lift we track.',
+        exercises: [
+          { name: 'Hip Thrust', sets: '4', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-1', rest: '90s', cue: 'Full hip extension; hold 1s top', rirNote: '2 RIR — use to set Wk1 load' },
+          { name: 'Nordic Hamstring (Assisted)', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '2-0-2', rest: '90s', cue: 'Slow eccentric; control' },
+        ],
+      },
+      {
+        letter: 'E',
         title: 'Left-Side Volume Finishers',
         color: 'red',
         exercises: [
-          { name: 'Cable Hip Abduction (Left)', sets: '3', reps: '12', load: 'light-moderate', tempo: '2-0-1', rest: '45s', cue: 'Slow control; add 2 extra reps on L', flag: 'Left corrective' },
+          { name: 'Hip Abduction — Kieser (Left)', sets: '3', reps: '12', load: 'light-moderate', tempo: '2-0-1', rest: '45s', cue: 'Kieser machine (or ankle band). Slow control; add 2 extra reps on L', flag: 'Left corrective' },
           { name: 'Curtsy Lunge (Left Lead)', sets: '3', reps: '10', load: 'bodyweight', tempo: '2-0-1', rest: '45s', cue: 'Focus on L glute drive' },
+        ],
+      },
+      {
+        letter: 'F',
+        title: 'Full-Body Integration — Sled Push (Drive)',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closing compound — the day\'s squat, hinge, and hip-extension strength expressed as one full-body drive under gait. Loads build toward the tested 135 lb baseline by Week 4, never beyond it this block. Distance and movement quality govern this work, not a rep count. A loaded farmer carry covers the same closing ground when the sled is unavailable.',
+        exercises: [
+          { name: 'Sled Push (Drive)', sets: '3', reps: '15-20 yd', load: 'Wk1: 105 lbs → Wk4: 135 lbs', tempo: 'strong, controlled drive', rest: '2 min', cue: 'Tested 135 lbs. Low hips, arms long, drive the floor back — full recovery between pushes.', rirNote: 'Distance & quality governed — no RIR target' },
         ],
       },
     ],
     coolDown: 'Hamstring and lateral banded mobility',
-    iconsNote: 'Push load on bilateral lifts but finish with unilateral sets focused on left quality.',
+    iconsNote: 'Push load on bilateral lifts, finish the unilateral sets focused on left quality, then close with the sled drive — the strength built today expressed as one movement. Full recovery between sled pushes.',
   },
 ];
 
@@ -486,9 +651,9 @@ const summary = {
     ['2', '60%', 'Upper Body — Stability & Posterior Chain', `Single-Arm DB Row (${wk1.row}→${wk4.row} lbs)`, 'Lower load week focused on movement quality and mobility'],
     ['3', '80%', 'Lower Body — Bilateral Strength + Unilateral Finishers', `Back Squat (${wk1.backSquat}→${wk4.backSquat} lbs)`, 'Higher intensity strength day; finish with left-focused unilateral volume'],
   ],
-  milestones4wk: `Reduce asymmetry below 10% and increase left hip abduction force by 10-15%. Back Squat progressing toward ${wk4.backSquat}+ lbs x5 at 1-2 RIR; Single-Arm Row toward ${wk4.row} lbs x8.`,
-  milestones8wk: `Symmetry within 5–8%; L and R hip abduction within 5%. Retest the 8/13/2026 strength battery — target measurable gains across Back Squat, Single-Arm DB Row, Goblet Squat, and DB Split Squat.`,
-  rescanNote: 'Rescan with Styku in 8 weeks to assess asymmetry and lean mass changes. Continue left-focused progression if asymmetry persists. Re-run the full 8/13/2026 strength battery alongside the rescan to establish a real before/after on the newly-tested lifts.',
+  milestones4wk: `Reduce asymmetry below 10% and increase left hip abduction force by 10-15%. Back Squat progressing toward ${wk4.backSquat}+ lbs x5 at 1-2 RIR; Single-Arm Row toward ${wk4.row} lbs x8; sled push at 105 lbs (Day 1) and 135 lbs (Day 3) with clean drive. Week 4 closes with the strength check; Week 5 that follows is the planned deload week — same exercises, reduced sets, loads held (see the deload note above) — before Weeks 6-8 rebuild.`,
+  milestones8wk: `Symmetry within 5–8%; L and R hip abduction within 5%. Retest the 8/13/2026 strength battery at the end of the Weeks 6-8 rebuild — target measurable gains across Back Squat, Single-Arm DB Row, Goblet Squat, and DB Split Squat, plus first recorded RDL, Hip Thrust, and Farmer Carry working loads on file.`,
+  rescanNote: 'Two clocks run here: strength is re-checked every 4 weeks (the Week 4 check, then the Week 8 full battery retest at the end of the rebuild that follows the planned Week 5 deload), while a Styku body-composition scan runs on its own 8-12-week cadence — book one in that window to assess asymmetry and lean-mass trends. Continue left-focused progression if the asymmetry persists.',
 };
 
 const data = {
@@ -502,17 +667,18 @@ const data = {
   summary,
 };
 
-// Client View (added 8/17/2026): no `clientHighlight` is set — Nancy's new
-// 8/13/2026 strength battery is a first-time test, not a documented
-// before/after PR or a prior-version comparison, so per CLAUDE.md's Client
-// View spec ("never fabricate one") nothing is invented here. The 7 internal
-// baselineNotes above (New Strength Baseline Battery, both Judgment Call
-// notes, Perimenopausal Status — Not Assessed, the two 8/18 PT-update notes,
-// and the 8/18 warm-up-promotion note) and the 2 flag lines that
-// dangle-reference those judgment-call notes ("...— see note") are filtered
-// out of this view; everything else (Styku finding, asymmetry watch/
-// corrective flags, all day/block/exercise content — including the promoted
-// Lateral Band Walk and Hinge Priming rows) renders unchanged.
+// Client View (added 8/17/2026; re-checked 8/19/2026 with the Block Method
+// restructure): no `clientHighlight` is set — Nancy's 8/13/2026 strength
+// battery is a first-time test, not a documented before/after PR, so per
+// CLAUDE.md's Client View spec ("never fabricate one") nothing is invented.
+// The 8 internal baselineNotes above (New Strength Baseline Battery, both
+// Judgment Call notes, Perimenopausal Status — Not Assessed, the two 8/18
+// PT-update notes, the 8/18 warm-up-promotion note, and the 8/19 Session
+// Architecture note) and the 2 flag lines that dangle-reference the
+// judgment-call notes ("...— see note") are filtered out of this view;
+// everything else (Styku finding, asymmetry watch/corrective flags, the
+// client-visible deload note, all day/block/exercise content including the
+// new integration closers and options menus) renders unchanged.
 async function main() {
   const outDir = path.join(__dirname, '..', 'clients', 'nancy_avitable');
   fs.mkdirSync(outDir, { recursive: true });
