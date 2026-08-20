@@ -523,7 +523,7 @@ const days = [
         introLabel: 'Load Target',
         intro: 'Incline DB Press Week 1 load is informed by the 8/13 baseline test ("DB Chest Press," 15 lbs). If the day calls for a variation, rotate between: a flat DB bench press, a low-incline barbell press from the rack, or a Kieser chest press. The incline DB press stays the lift we track and progress.',
         exercises: [
-          { name: 'Incline DB Press', sets: '4', reps: '8', load: `Wk1: ${wk1.chestPress} lbs/hand → Wk4: ${wk4.chestPress} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Control descent', flag: 'Load informed by DB Chest Press baseline — see note', flagAudience: 'internal' },
+          { name: 'Incline DB Press', sets: '4', reps: '8', load: `Wk1: ${wk1.chestPress} lbs/hand → Wk4: ${wk4.chestPress} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Control descent', flag: 'Load informed by DB Chest Press baseline — see note', flagAudience: 'internal', rirNote: '2 RIR' },
         ],
       },
       {
@@ -532,9 +532,9 @@ const days = [
         introLabel: 'Why',
         intro: 'Tempo and control accessories behind the press: a slow eccentric push-up, rear-delt/rotator health work, and a standing band press with a real core anti-rotation demand — no bench support.',
         exercises: [
-          { name: 'Half-Kneeling Eccentric Push-Up', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '4-0-1', rest: '45s', cue: 'Half-kneeling stance (one knee down); slow 4-sec controlled lower, drive back up.' },
-          { name: 'Face Pulls', sets: '3', reps: '15', load: 'band', tempo: '2-0-1', rest: '45s', cue: 'High elbows; squeeze rear delts' },
-          { name: 'Standing Resistance Band Chest Press', sets: '3', reps: '10-12', load: 'light-mod band', tempo: '2-1-2', rest: '45s', cue: 'No bench support — standing, anti-rotation core demand throughout. Press straight ahead, resist trunk rotation, control the return.' },
+          { name: 'Half-Kneeling Eccentric Push-Up', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '4-0-1', rest: '45s', cue: 'Half-kneeling stance (one knee down); slow 4-sec controlled lower, drive back up.', rirNote: '1 RIR — hypertrophy priority' },
+          { name: 'Face Pulls', sets: '3', reps: '15', load: 'band', tempo: '2-0-1', rest: '45s', cue: 'High elbows; squeeze rear delts', rirNote: '1 RIR — hypertrophy priority' },
+          { name: 'Standing Resistance Band Chest Press', sets: '3', reps: '10-12', load: 'light-mod band', tempo: '2-1-2', rest: '45s', cue: 'No bench support — standing, anti-rotation core demand throughout. Press straight ahead, resist trunk rotation, control the return.', rirNote: '1 RIR — hypertrophy priority' },
         ],
       },
       {
@@ -544,9 +544,9 @@ const days = [
         introLabel: 'Why',
         intro: 'Carried into this session from her PT-led work with Jason Bethea, Brace Life\'s in-house Trainer/Physical Therapist — three drills chosen for direct running-economy transfer given her running-knee-health goal: grip, gait, and anti-lateral-flexion core demand under load carry over directly to running mechanics.',
         exercises: [
-          { name: 'Landmine Shoulder Press', sets: '3', reps: '8-10/side', load: 'light-mod — coach discretion', tempo: '2-1-2', rest: '60s', cue: 'Scap-friendly unilateral press — the landmine angle reduces shoulder impingement risk vs. a straight vertical press.' },
-          { name: 'DB Deadlift → Farmer Carry Combo', sets: '3', reps: '6-8 DL into 20-30 yd carry', load: 'moderate — coach discretion', tempo: 'controlled', rest: '75s', cue: 'Hinge into an immediate loaded carry — grip, gait, and anti-lateral-flexion core demand in one continuous drill.', insight: 'Hinge + loaded-carry combination targets the same grip, gait, and core-stability qualities that support running mechanics.' },
-          { name: 'Static Overhead DB Hold (Walking)', sets: '2-3', reps: '20-30 yd', load: 'light-mod DB — coach discretion', tempo: 'controlled walk', rest: '60s', cue: 'Overhead isometric hold while walking — shoulder stability, thoracic extension, core anti-extension, and gait control combined.' },
+          { name: 'Landmine Shoulder Press', sets: '3', reps: '8-10/side', load: 'light-mod — coach discretion', tempo: '2-1-2', rest: '60s', cue: 'Scap-friendly unilateral press — the landmine angle reduces shoulder impingement risk vs. a straight vertical press.', rirNote: 'Quality governed — stay well short of failure' },
+          { name: 'DB Deadlift → Farmer Carry Combo', sets: '3', reps: '6-8 DL into 20-30 yd carry', load: 'moderate — coach discretion', tempo: 'controlled', rest: '75s', cue: 'Hinge into an immediate loaded carry — grip, gait, and anti-lateral-flexion core demand in one continuous drill.', insight: 'Hinge + loaded-carry combination targets the same grip, gait, and core-stability qualities that support running mechanics.', rirNote: 'Quality governed — stay well short of failure' },
+          { name: 'Static Overhead DB Hold (Walking)', sets: '2-3', reps: '20-30 yd', load: 'light-mod DB — coach discretion', tempo: 'controlled walk', rest: '60s', cue: 'Overhead isometric hold while walking — shoulder stability, thoracic extension, core anti-extension, and gait control combined.', rirNote: 'Hold quality governed — no RIR target' },
         ],
       },
       {
@@ -555,7 +555,7 @@ const days = [
         introLabel: 'Load Target',
         intro: `The day's second compound pattern — pulling, rotating off the pressing work above. Loads build directly off the tested baseline (30 lbs x10, Epley 1RM ≈${oneRM.row} lbs). If the day calls for a variation, rotate between: a chest-supported row, a Kieser row, or a bent-over barbell row. The single-arm row stays the lift we track and retest.`,
         exercises: [
-          { name: 'Single-Arm Row', sets: '4', reps: '8 each', load: `Wk1: ${wk1.row} lbs → Wk4: ${wk4.row} lbs`, tempo: '2-0-1', rest: '60s', cue: 'Pull to the hip; maintain neutral spine' },
+          { name: 'Single-Arm Row', sets: '4', reps: '8 each', load: `Wk1: ${wk1.row} lbs → Wk4: ${wk4.row} lbs`, tempo: '2-0-1', rest: '60s', cue: 'Pull to the hip; maintain neutral spine', rirNote: '2 RIR' },
         ],
       },
       {
@@ -597,7 +597,7 @@ const days = [
         introLabel: 'Load Target',
         intro: `Back Squat tested at 95 lbs x8 (Epley 1RM ≈${oneRM.backSquat} lbs) — Week 1 trains at ${wk1.backSquat} lbs, climbing to ${wk4.backSquat} lbs by Week 4. If the day calls for a variation, rotate between: a box squat (depth set by the box, already the built-in alternate), a goblet squat at its own Day 1 working loads, or a supported split-stance squat (left leg leads). The back squat stays the lift we track and retest.`,
         exercises: [
-          { name: 'Back Squat or Box Squat', sets: '5', reps: '5', load: `Wk1: ${wk1.backSquat} lbs → Wk4: ${wk4.backSquat} lbs`, tempo: '2-0-2', rest: '2m', cue: 'Braced core; safe depth', rirNote: '1-2 RIR' },
+          { name: 'Back Squat or Box Squat', sets: '5', reps: '5', load: `Wk1: ${wk1.backSquat} lbs → Wk4: ${wk4.backSquat} lbs`, tempo: '2-0-2', rest: '2m', cue: 'Braced core; safe depth', rirNote: '2 RIR' },
         ],
       },
       {
@@ -606,7 +606,7 @@ const days = [
         introLabel: 'Load Target',
         intro: `The unilateral accessory behind the squat. Week 1 load is informed by the DB Split Squat baseline (${wk1.splitSquat} lbs/hand). A DB split squat (the tested pattern itself) or a reverse lunge (left leg leads) rotates in cleanly when the day calls for it.`,
         exercises: [
-          { name: 'Weighted Step-Up', sets: '3', reps: '6 each', load: `Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Drive through heel; control descent', flag: 'Load informed by DB Split Squat baseline — see note', flagAudience: 'internal' },
+          { name: 'Weighted Step-Up', sets: '3', reps: '6 each', load: `Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Drive through heel; control descent', flag: 'Load informed by DB Split Squat baseline — see note', flagAudience: 'internal', rirNote: '1 RIR — hypertrophy priority' },
         ],
       },
       {
@@ -651,7 +651,7 @@ const summary = {
     ['2', '60%', 'Upper Body — Stability & Posterior Chain', `Single-Arm DB Row (${wk1.row}→${wk4.row} lbs)`, 'Lower load week focused on movement quality and mobility'],
     ['3', '80%', 'Lower Body — Bilateral Strength + Unilateral Finishers', `Back Squat (${wk1.backSquat}→${wk4.backSquat} lbs)`, 'Higher intensity strength day; finish with left-focused unilateral volume'],
   ],
-  milestones4wk: `Reduce asymmetry below 10% and increase left hip abduction force by 10-15%. Back Squat progressing toward ${wk4.backSquat}+ lbs x5 at 1-2 RIR; Single-Arm Row toward ${wk4.row} lbs x8; sled push at 105 lbs (Day 1) and 135 lbs (Day 3) with clean drive. Week 4 closes with the strength check; Week 5 that follows is the planned deload week — same exercises, reduced sets, loads held (see the deload note above) — before Weeks 6-8 rebuild.`,
+  milestones4wk: `Reduce asymmetry below 10% and increase left hip abduction force by 10-15%. Back Squat progressing toward ${wk4.backSquat}+ lbs x5 at 2 RIR; Single-Arm Row toward ${wk4.row} lbs x8; sled push at 105 lbs (Day 1) and 135 lbs (Day 3) with clean drive. Week 4 closes with the strength check; Week 5 that follows is the planned deload week — same exercises, reduced sets, loads held (see the deload note above) — before Weeks 6-8 rebuild.`,
   milestones8wk: `Symmetry within 5–8%; L and R hip abduction within 5%. Retest the 8/13/2026 strength battery at the end of the Weeks 6-8 rebuild — target measurable gains across Back Squat, Single-Arm DB Row, Goblet Squat, and DB Split Squat, plus first recorded RDL, Hip Thrust, and Farmer Carry working loads on file.`,
   rescanNote: 'Two clocks run here: strength is re-checked every 4 weeks (the Week 4 check, then the Week 8 full battery retest at the end of the rebuild that follows the planned Week 5 deload), while a Styku body-composition scan runs on its own 8-12-week cadence — book one in that window to assess asymmetry and lean-mass trends. Continue left-focused progression if the asymmetry persists.',
 };

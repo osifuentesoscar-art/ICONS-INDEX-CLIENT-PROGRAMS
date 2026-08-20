@@ -232,7 +232,7 @@ const baselineNotes = [
   {
     type: 'gold',
     label: 'Age Bracket — Perimenopause / Menopause Transition (45–55)',
-    body: 'At 45, Rena sits in the 45-55 age bracket, where heavy compound lifting is both a hormonal reset and an early bone-density investment ahead of the menopause transition — creatine is strongly indicated by age 40+ regardless, and protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status, not for age or bracket alone (her ALST, 5.94 kg/m², is within normal reference range). Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing currently indicates low bone mass.',
+    body: 'At 45, Rena sits in the 45-55 age bracket, where heavy compound lifting is both a hormonal reset and an early bone-density investment ahead of the menopause transition — creatine is strongly indicated by age 40+ regardless, and protein moves up within the 1.6–2.2 g/kg range for a genuine energy deficit, heavy training load, or ALST At-Risk status, not for age or bracket alone (your ALST, 5.94 kg/m², is within normal reference range). The tier label printed in the nutrition block above is still generated from an age-based rule the standard has since moved past — read the target itself as the context-driven range described here, and treat the upper end as reserved for a genuine deficit or heavy-training stretch rather than an automatic step-up. Bone-loading candidacy (LIFTMOR-style, T-score dependent) is worth screening for as she moves through this window even though nothing currently indicates low bone mass.',
   },
   {
     type: 'gold',
@@ -242,7 +242,7 @@ const baselineNotes = [
   {
     type: 'blue',
     label: 'Planned Lighter Week — Week 5, Flexible',
-    body: 'One deliberately lighter week is built into this program\'s rhythm: Week 5, directly after the Week 4 strength check. Same exercises and movement patterns, sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), loads held at Week 3-4 levels — the usual add-weight rule pauses for that one week, then Weeks 6-8 rebuild from the Week 4 loads toward the 8-week targets. At two sessions a week with recovery running well, this lighter week is flexible rather than fixed: if everything feels strong and fresh it can slide a week later, and if sleep, soreness, or session quality dip earlier, it moves up — her coach makes that call with her. One light week costs nothing that matters: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days of resuming.',
+    body: 'One deliberately lighter week is built into this program\'s rhythm: Week 5, directly after the Week 4 strength check. Same exercises and movement patterns, sets reduced by roughly a third, every set held comfortably in the technique band (3 or more reps in reserve), loads held at Week 3-4 levels — the usual add-weight rule pauses for that one week, then Weeks 6-8 rebuild from the Week 4 loads toward the 8-week targets. At two sessions a week with recovery running well, this lighter week is flexible rather than fixed: if everything feels strong and fresh it can slide a week later, and if sleep, soreness, or session quality dip earlier, it moves up — your coach makes that call with you. One light week costs nothing that matters: muscle built over the previous month is not lost in a single reduced-volume week — only a small edge of peak strength dips, and it returns within days of resuming.',
   },
   {
     type: 'gold',
@@ -341,7 +341,7 @@ const days = [
         letter: 'B',
         title: 'PRIMARY COMPOUND — DB REVERSE LUNGE',
         introLabel: 'DB Lunge Baseline — 25 lbs ×5',
-        intro: 'Lunge tested at 25 lbs/hand for 5 reps — a solid unilateral strength baseline, and the day\'s primary lower-body lift. If the day calls for a variation, rotate between: a walking lunge, a forward lunge, or a DB split squat — sides alternate evenly on every option (no side leads; her scan shows no meaningful left/right gap). The reverse lunge stays the lift we track and retest.',
+        intro: 'Lunge tested at 25 lbs/hand for 5 reps — a solid unilateral strength baseline, and the day\'s primary lower-body lift. If the day calls for a variation, rotate between: a walking lunge, a forward lunge, or a DB split squat — sides alternate evenly on every option (no side leads; your scan shows no meaningful left/right gap). The reverse lunge stays the lift we track and retest.',
         exercises: [
           { name: 'DB Reverse Lunge', sets: '3+3', reps: '8 ea', load: 'Wk1: 20 lbs/hand → Wk4: 27.5–30 lbs', tempo: '2-1-1', rest: '75s', cue: 'Baseline 25 lbs ×5RM. Step back with control, front knee tracks over toes, drive through the front heel to stand.', rirNote: '2 RIR' },
         ],
