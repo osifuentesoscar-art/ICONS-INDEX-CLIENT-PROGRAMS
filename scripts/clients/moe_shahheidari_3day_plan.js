@@ -248,7 +248,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'HIP & POSTERIOR CHAIN ACTIVATION',
+        title: 'CORRECTIVE & ACTIVATION — HIP AND POSTERIOR CHAIN',
         color: 'red',
         introLabel: 'Why',
         intro: 'General joint-health activation for the hip/glute complex ahead of heavy hip-hinge and squat loading — no specific lower-body flag reported, applied as standard practice.',
@@ -260,7 +260,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — HEX BAR DEADLIFT',
+        title: 'PRIMARY COMPOUND — HEX BAR DEADLIFT',
         introLabel: 'Load Target',
         intro: `Week 1 working load ${wk1.deadlift} lbs (80% of est. 1RM ${oneRM.deadlift}) — 1 RIR on top sets. Add load only at the top of the rep range with clean form.`,
         exercises: [
@@ -278,7 +278,7 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'CORE / CARRY-PREP ACCESSORY',
+        title: 'ACCESSORY — CORE & CARRY PREP',
         color: 'gold',
         introLabel: 'Format',
         intro: "Anti-rotation core work plus an isometric carry-prep hold — sets up Saturday's loaded Farmers Carry work. The suitcase hold loads the shoulder girdle isometrically, same as the loaded carry it's prepping for — normal grip/shoulder fatigue is expected, sharp or pinching pain is not.",
@@ -303,19 +303,19 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'ROTATOR CUFF & SCAPULAR STRENGTHENING',
+        title: 'CORRECTIVE — ROTATOR CUFF & SCAPULAR STRENGTHENING (JASON-COORDINATED)',
         color: 'red',
         introLabel: 'Why',
         intro: "This is the strengthening protocol itself, not a warm-up — direct, progressive loading of the rotator cuff and scapular stabilizers, following the standard rehab loading sequence (isometric hold capacity → slow eccentric control → controlled concentric strength → dynamic loading) as capacity builds week to week. Runs before compound pressing so the shoulder is actively controlling the joint before it's asked to move real load.",
         exercises: [
           { name: 'Band External Rotation (Side-Lying / Standing)', sets: '3', reps: '12-15/side', load: 'Light-Mod band', tempo: 'Wk1-2 isometric hold; Wk3+ slow eccentric', rest: '45s', cue: 'Elbow pinned to side; full slow control both directions.' },
           { name: 'Prone Y-T-W', sets: '3', reps: '8 each letter', load: 'Bodyweight → light DB', tempo: 'Controlled', rest: '45s', cue: 'Thumbs up; small range, full scapular control.' },
-          { name: 'Scapular Wall Slide / Retraction', sets: '2', reps: '12', load: 'Bodyweight', tempo: 'Slow', rest: '30s', cue: 'Ribs down; scap glide, no shrugging.' },
+          { name: 'Scapular Wall Slide / Retraction', sets: '2', reps: '12', load: 'Bodyweight', tempo: 'Slow', rest: '30s', cue: 'Ribs down; scap glide, no shrugging.', insight: 'Scapular options — select and progress by what his control actually shows that day rather than repeating one drill: band pull-apart, scapular retraction-depression hold, scapular dead hang, scapular push-up, prone I-T-W, face pull, wall slide with lift-off, or chest-supported scapular-retraction row.', insightAudience: 'internal' },
         ],
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — INCLINE BENCH PRESS',
+        title: 'PRIMARY COMPOUND — INCLINE BENCH PRESS',
         introLabel: 'Load Target',
         intro: `Well-tolerated in cuff rehab (controlled-ROM pressing) — Week 1 working load ${wk1.inclineBench} lbs (90% of est. 1RM ${oneRM.inclineBench}), progressing close to normal. 1-2 RIR; stop short of sharp or pinching pain, not of ordinary fatigue.`,
         exercises: [
@@ -324,16 +324,17 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'OVERHEAD PRESS — PROGRESSIVE STRENGTHENING, PAIN-FREE ROM',
+        title: 'SECONDARY COMPOUND — OVERHEAD PRESS (PROGRESSIVE REINTRODUCTION) + CLOSED-CHAIN HOLD',
         introLabel: 'Load Target',
         intro: 'Genuine strengthening work, not a placeholder — load builds week to week from the tested 17.5 lb starting point the same as any other lift here, just autoregulated by pain-free range of motion and RIR instead of a fixed %1RM table.',
         exercises: [
           { name: 'Standing Overhead Press', sets: '3', reps: '6-8', load: 'Self-select ~17.5-20 lbs, build weekly', tempo: 'Controlled', rest: '2 min', cue: 'Full pain-free ROM; add load at 2 RIR + clean form.' },
+          { name: 'Plank Shoulder Taps', sets: '3', reps: '8/side', load: 'Bodyweight', tempo: 'Slow, no hip rotation', rest: '45s', cue: 'Push-up position, hips square, tap opposite shoulder without letting the pelvis rotate. Regress to quadruped if the hips sway.', flag: 'Closed-chain re-anchor — pairs with the press above, not a separate finisher.' },
         ],
       },
       {
         letter: 'D',
-        title: 'PULL — PROGRESSIVE STRENGTHENING',
+        title: 'ACCESSORY — PULL, PROGRESSIVE STRENGTHENING',
         color: 'purple',
         introLabel: 'Load Target',
         intro: 'Real progression target, not a scaled-back stand-in: reduce assistance week to week from the tested 5-rep baseline, autoregulated by pain-free ROM. Neutral or close grip is an available option, not a mandate, if standard wide grip aggravates the shoulder.',
@@ -343,7 +344,7 @@ const days = [
       },
       {
         letter: 'E',
-        title: 'ACCESSORY — SINGLE-ARM DB ROW',
+        title: 'THIRD COMPOUND — INTEGRATION: SINGLE-ARM DB ROW (LEFT-LED)',
         introLabel: 'Load Target',
         intro: 'Well-tolerated in cuff rehab (posterior-chain/scap-stabilizer work) — build progressively from the tested 35 lb reference at 1-2 RIR, close to normal progression.',
         exercises: [
@@ -365,7 +366,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'HIP & ANKLE MOBILITY PREP',
+        title: 'CORRECTIVE & ACTIVATION — HIP AND ANKLE PREP',
         color: 'red',
         introLabel: 'Why',
         intro: 'General mobility prep ahead of unilateral leg work and loaded carries — no specific flag reported, applied as standard practice.',
@@ -376,7 +377,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY — SINGLE-LEG ROMANIAN DEADLIFT',
+        title: 'PRIMARY COMPOUND — SINGLE-LEG ROMANIAN DEADLIFT',
         introLabel: 'Load Target',
         intro: 'Reference load 30 lbs (no rep count recorded at intake) — left leg leads per the asymmetry protocol; build progressively at 1-2 RIR.',
         exercises: [
@@ -385,7 +386,7 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'LOADED CARRIES',
+        title: 'SECONDARY COMPOUND — LOADED CARRY',
         color: 'gold',
         introLabel: 'Load Target',
         intro: 'Tested at 45 lbs/hand — hold there this week and build from it as grip and trunk control allow. This loads the shoulder girdle isometrically; ordinary grip/shoulder fatigue is expected, sharp or pinching pain is the stop signal.',
@@ -395,7 +396,7 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'CORE & PUSH-UP PROTOCOL',
+        title: 'THIRD COMPOUND — INTEGRATION: CORE & PUSH-UP PROTOCOL',
         color: 'green',
         introLabel: 'Load Target',
         intro: 'Progression from the tested 1:18 plank and 12-rep push-up baselines. Push-ups load the shoulder girdle isometrically through a controlled, non-overhead range — normally well-tolerated in cuff rehab; the same pain-monitoring rule still applies.',

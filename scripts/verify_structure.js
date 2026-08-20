@@ -27,6 +27,7 @@ const ENGINE_ROOT_ALLOWED = new Set([
   'icons_template.js',        // shared engine, required by both sides
   'icons_baseline_sheets.js', // writes system_documents/, audience-neutral
   'verify_structure.js',      // this file
+  'check_antagonist_rotation.js', // audit tool, audience-neutral
 ]);
 
 // ---- 1. script placement -------------------------------------------------

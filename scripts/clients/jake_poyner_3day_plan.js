@@ -195,7 +195,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'GLUTE MEDIUS + TRUNK ACTIVATION',
+        title: 'CORRECTIVE — GLUTE MEDIUS & TRUNK ACTIVATION (JASON-COORDINATED)',
         color: 'red',
         introLabel: 'Why',
         intro: 'Directly targets the flagged hip abduction unreliability and primes the trunk before any loaded work.',
@@ -207,7 +207,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH',
+        title: 'PRIMARY COMPOUND',
         introLabel: 'Format',
         intro: 'Single-leg hip thrust and goblet squat build lower-body strength on a stable, symmetric base; Pallof press is the QL-safe anti-rotation core work.',
         exercises: [
@@ -218,7 +218,7 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'TRUNK EXTENSOR CAPACITY (ISOMETRIC)',
+        title: 'ACCESSORY — TRUNK EXTENSOR CAPACITY (ISOMETRIC)',
         color: 'red',
         introLabel: 'Why Isometric Only This Week',
         intro: 'Trunk extensor work stays isometric this week — building capacity before adding dynamic loading, per the tendon-loading sequencing above.',
@@ -230,7 +230,7 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'STRENGTH DEVELOPMENT',
+        title: 'SECONDARY COMPOUND — STRENGTH DEVELOPMENT',
         introLabel: 'Load & Progression',
         intro: 'See the Load & Progression note above for weekly RPE targets. No axial spinal loading in this block — leg press seat/back fully supported.',
         exercises: [
@@ -265,7 +265,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'ACTIVATION / PREP',
+        title: 'CORRECTIVE — ACTIVATION & PREP (JASON-COORDINATED)',
         color: 'red',
         introLabel: 'Why',
         intro: 'Checks for right-side lag before it shows up under load.',
@@ -276,7 +276,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — RIGHT-BIASED UNILATERAL',
+        title: 'PRIMARY COMPOUND — RIGHT-BIASED UNILATERAL',
         introLabel: 'Format',
         intro: 'Right side leads every set this block — direct correction for the flagged hip extension and lat/posterior shoulder time-to-peak-force lag.',
         exercises: [
@@ -287,7 +287,7 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'TRUNK / ANTI-LATERAL FLEXION',
+        title: 'ACCESSORY — TRUNK & ANTI-LATERAL FLEXION',
         color: 'red',
         introLabel: 'Held Back This Phase',
         intro: 'No loaded side bends or QL-side carries this phase — revisit once trunk extensor and hip abduction symmetry improve at the 4-week reassessment.',
@@ -299,7 +299,7 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'STRENGTH DEVELOPMENT',
+        title: 'SECONDARY COMPOUND — STRENGTH DEVELOPMENT',
         introLabel: 'Right Side Is Priority',
         intro: 'Slow lat/posterior chain on testing makes the right side the priority on the pull.',
         exercises: [
@@ -334,7 +334,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'ACTIVATION / PREP',
+        title: 'CORRECTIVE — ACTIVATION & PREP (JASON-COORDINATED)',
         color: 'red',
         introLabel: 'First Dynamic-Adjacent Trunk Work',
         intro: 'Prone Superman is the progression from Day 1\'s isometric plank — first dynamic-adjacent trunk extensor work.',
@@ -345,7 +345,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH',
+        title: 'PRIMARY COMPOUND',
         introLabel: 'Format',
         intro: 'Trap bar deadlift is the week\'s primary loaded strength lift — neutral spine, symmetric setup both feet.',
         exercises: [
@@ -356,7 +356,7 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'POWER / RFD & TRUNK EXTENSOR PROGRESSION',
+        title: 'THIRD COMPOUND — INTEGRATION: POWER / RFD & TRUNK EXTENSOR PROGRESSION',
         color: 'red',
         introLabel: 'Confirm Pain-Free First',
         intro: 'This is the first session introducing dynamic trunk extension and jump-landing force — confirm Days 1–2 were fully pain-free before progressing here.',
@@ -368,7 +368,7 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'STRENGTH DEVELOPMENT',
+        title: 'SECONDARY COMPOUND — STRENGTH DEVELOPMENT',
         introLabel: 'Trap Bar Deadlift Continued',
         intro: 'Trap bar deadlift (from Block B, load-graded per the Load & Progression prescription) is this week\'s primary loaded strength lift — the dip/press rounds out upper body pressing volume.',
         exercises: [
@@ -405,7 +405,7 @@ const data = {
 };
 
 async function main() {
-  const outDir = path.join(__dirname, '..', '..', 'clients', 'jake_Poyner');
+  const outDir = path.join(__dirname, '..', '..', 'clients', 'jake_poyner');
   fs.mkdirSync(outDir, { recursive: true });
 
   const buffer = await buildDocument(data);

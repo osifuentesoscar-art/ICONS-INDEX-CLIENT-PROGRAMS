@@ -72,7 +72,7 @@
  *   - A dedicated purple baselineNote spells out the current scope
  *     decision explicitly (now: framework applied, not "no framework
  *     exists"), following the same document-don't-bury-in-code pattern
- *     established for Jake Poyner (see scripts/jake_Poyner_3day_plan.js).
+ *     established for Jake Poyner (see scripts/clients/jake_poyner_3day_plan.js).
  *
  * What DOES carry over from ICONS, because it's sex-neutral structural
  * philosophy, not a numeric threshold: the Isolated -> Compound ->
@@ -301,7 +301,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'HIP & KNEE ACTIVATION',
+        title: 'CORRECTIVE & ACTIVATION — HIP AND KNEE',
         color: 'red',
         introLabel: 'Why',
         intro: 'General joint-health activation for the hip/knee complex ahead of heavy hip-hinge and squat loading — no specific flag reported, applied as standard practice.',
@@ -313,7 +313,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — HEX BAR DEADLIFT',
+        title: 'PRIMARY COMPOUND — HEX BAR DEADLIFT',
         introLabel: 'Load Target',
         intro: `Week 1 working load ${wk1.deadlift} lbs (80% of est. 1RM ${oneRM.deadlift}) — 1 RIR on top sets. Add load only at the top of the rep range with clean form.`,
         exercises: [
@@ -331,7 +331,7 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'CORE / CARRY-PREP ACCESSORY',
+        title: 'ACCESSORY — CORE & CARRY PREP',
         color: 'gold',
         introLabel: 'Format',
         intro: "Anti-rotation core work plus an isometric carry-prep hold — sets up Saturday's loaded Farmers Carry work.",
@@ -355,7 +355,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'SHOULDER & SCAPULAR PREP',
+        title: 'CORRECTIVE & ACTIVATION — SHOULDER AND SCAPULAR PREP',
         color: 'red',
         introLabel: 'Why',
         intro: 'Primes the scapular stabilizers ahead of heavy pressing and pulling — standard shoulder-health practice for a peak upper-body day.',
@@ -367,7 +367,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — INCLINE BENCH PRESS',
+        title: 'PRIMARY COMPOUND — INCLINE BENCH PRESS',
         introLabel: 'Load Target',
         intro: `Week 1 working load ${wk1.inclineBench} lbs (90% of est. 1RM ${oneRM.inclineBench}) — 1 RIR, peak-intensity day. Rest fully between sets.`,
         exercises: [
@@ -392,7 +392,7 @@ const days = [
         // pull, pull) -> OHP(D, push) -> Single-Arm DB Row(E, pull). No 3
         // same-pattern exercises in a row anywhere in the day.
         letter: 'C',
-        title: 'PULL — PULL-UP PROGRESSION',
+        title: 'ACCESSORY — PULL-UP PROGRESSION',
         color: 'purple',
         introLabel: 'Load Target',
         intro: 'Progress by reducing assistance from the tested 15-rep/grip assisted baseline (wide, standard, close) — track assistance level, not just reps.',
@@ -404,7 +404,7 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'SECONDARY — OVERHEAD PRESS',
+        title: 'SECONDARY COMPOUND — OVERHEAD PRESS',
         introLabel: 'Load Target',
         intro: 'No percentage prescription — self-select load off the tested 35 lb reference at 1–2 RIR; establish a true Week 1 working weight here.',
         exercises: [
@@ -413,7 +413,7 @@ const days = [
       },
       {
         letter: 'E',
-        title: 'ACCESSORY — SINGLE-ARM DB ROW',
+        title: 'THIRD COMPOUND — INTEGRATION: SINGLE-ARM DB ROW (LEFT-LED)',
         introLabel: 'Load Target',
         intro: `Week 1 working load ${wk1.row} lbs (from an approximate estimate off a 15-rep test) for 10–12 reps — left arm leads per the asymmetry note; log left vs. right separately.`,
         exercises: [
@@ -435,7 +435,7 @@ const days = [
     blocks: [
       {
         letter: 'A',
-        title: 'HIP & ANKLE MOBILITY PREP',
+        title: 'CORRECTIVE & ACTIVATION — HIP AND ANKLE PREP',
         color: 'red',
         introLabel: 'Why',
         intro: 'General mobility prep ahead of unilateral leg work and loaded carries — no specific flag reported, applied as standard practice.',
@@ -446,7 +446,7 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — HIP THRUST',
+        title: 'PRIMARY COMPOUND — HIP THRUST',
         introLabel: 'Load Target',
         intro: `Week 1 working load ${wk1.hipThrust} lbs (70% of est. 1RM ${oneRM.hipThrust}) — 2 RIR, moderate accumulation day.`,
         exercises: [
@@ -455,30 +455,29 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'UNILATERAL LEG WORK',
+        title: 'ACCESSORY — BULGARIAN SPLIT SQUAT (LEFT-LED)',
         introLabel: 'Format',
-        intro: 'Left leg leads every set — direct application of the standard asymmetry protocol (lower LST = weaker = leads unilateral work).',
+        intro: 'Left leg leads every set — direct application of the standard asymmetry protocol (lower LST = weaker = leads unilateral work). Knee-dominant accessory supporting the hip thrust; this is the second consecutive loaded leg lift, which the Antagonist Rotation Rule permits as a primary-plus-accessory pair. The Single-Leg RDL that used to sit here has moved to Block E — see that block for why.',
         exercises: [
           { name: 'Bulgarian Split Squat', sets: '3', reps: '8/side', load: 'Mod DB', tempo: '2-1-1', rest: '75s', cue: 'Left leg leads — weaker side. Even depth both sides.' },
-          { name: 'Single-Leg Romanian Deadlift', sets: '2', reps: '8/side', load: 'Light-Mod DB', tempo: '3-1-1', rest: '60s', cue: 'Left leg leads. Hips square, soft knee.' },
         ],
       },
       {
         letter: 'D',
-        title: 'LOADED CARRIES',
-        color: 'gold',
+        title: 'SECONDARY COMPOUND — LOADED CARRY',
         introLabel: 'Load Target',
-        intro: 'Tested at 40 lbs/hand — hold there this week and build from it as grip and trunk control allow.',
+        intro: 'Tested at 40 lbs/hand — hold there this week and build from it as grip and trunk control allow. The Dumbbell Farmers Carry is one of the 10 core ICONS Index movements, so it fills the secondary-compound slot legitimately rather than as a filler — and placing it here is what breaks the lower-body chain: Hip Thrust and Bulgarian Split Squat are two loaded leg lifts, and running the Single-Leg RDL straight after them would have been a third in a row under compression, the exact stacking the Antagonist Rotation Rule forbids.',
         exercises: [
           { name: 'Farmers Carry', sets: '3', reps: '30–40m', load: '40 lbs/hand', tempo: 'Steady', rest: '60s', cue: 'Tall posture, no shrug; even stride both sides.' },
         ],
       },
       {
         letter: 'E',
-        title: 'CORE',
-        introLabel: 'Load Target',
-        intro: 'Progression from the tested 10 lb plate / 1:35 weighted plank baseline — build hold time and/or load week to week.',
+        title: 'THIRD COMPOUND — INTEGRATION: UNILATERAL HINGE & CORE UNDER LOAD',
+        introLabel: 'Format',
+        intro: 'The session\'s closer — the unilateral hinge and the loaded isometric together, pulling the day\'s hip, knee and trunk work into one integrated expression. Hinge options, all studio-available: Single-Leg Romanian Deadlift (the anchor, a core ICONS Index movement), Two-Dumbbell RDL, Hex Bar RDL, or a Back Extension on the hyperextension bench to tolerance. Weighted plank progresses from the tested 10 lb plate / 1:35 baseline — build hold time and/or load week to week.',
         exercises: [
+          { name: 'Single-Leg Romanian Deadlift', sets: '2', reps: '8/side', load: 'Light-Mod DB', tempo: '3-1-1', rest: '60s', cue: 'Left leg leads. Hips square, soft knee.' },
           { name: 'Weighted Plank', sets: '3', reps: '45–60s', load: '10 lb plate (Wk1)', tempo: 'Hold', rest: '45s', cue: 'Ribs down, no lumbar sag. Build past 1:35 baseline.' },
         ],
       },
