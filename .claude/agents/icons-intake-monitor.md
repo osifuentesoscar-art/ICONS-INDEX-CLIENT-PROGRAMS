@@ -45,7 +45,7 @@ This is **Jason Bethea's own note archive** (see CLAUDE.md's "STUDIO STAFF — I
 
 ## 3. Weekly sweep — Trainer Education Drive folder (added 8/17/2026, at Xolokan's direct request)
 
-A separate Drive folder, distinct from "ICONS CLIENT PROGRAMS," holding the trainer-facing education material: `ICONS_Trainer_Learning_Module.html` (repo root) plus everything in `trainer_education/` — the 3 gated HTML modules (A/B/C), the 4 physical Train-the-Trainer `.docx` programs, and the 5 individual trainer-athlete `.docx` programs. Xolokan creates and shares this folder manually, same manual-handoff policy as everywhere else — this agent only ever reads it.
+A separate Drive folder, distinct from "ICONS CLIENT PROGRAMS," holding the trainer-facing education material: `trainers/education/ICONS_Trainer_Learning_Module.html` plus everything in `trainers/` — the 3 gated HTML modules (A/B/C), the 4 physical Train-the-Trainer `.docx` programs, and the 5 individual trainer-athlete `.docx` programs. Xolokan creates and shares this folder manually, same manual-handoff policy as everywhere else — this agent only ever reads it.
 
 **Folder confirmed 8/17/2026: "Icons Trainer Learning Modules" (id `1HCejVAFHpLVg-bqGaiw3y_hR_c5iYwGp`)** — a subfolder inside "ICONS CLIENT PROGRAMS," not a separate top-level folder. If it's ever moved/renamed, fall back to a title search rather than assuming the ID still resolves.
 

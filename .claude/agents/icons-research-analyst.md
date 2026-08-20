@@ -45,4 +45,4 @@ How to run a pass:
 Non-negotiables carried over from the rest of this system:
 - The "Demographic scope rule" in the Age Bracket Programming Framework — numeric thresholds here (ALST, protein tiers, LIFTMOR, pelvic floor) are validated for women. Research on male or notably younger/older populations gets flagged as a scope question, not silently folded into the women's thresholds.
 - This file is prescriptive for real client programming decisions — err toward being explicit about uncertainty (e.g. "evidence is mixed") rather than presenting a contested finding as settled.
-- Do not touch client-facing deliverables (`clients/`, `trainer_education/`) — that's `icons-expert` and `icons-trainer-education`'s scope. If a research finding should change an already-delivered client document, flag it back to the main thread rather than editing it yourself.
+- Do not touch client-facing deliverables (`clients/`, `trainers/`) — that's `icons-expert` and `icons-trainer-education`'s scope. If a research finding should change an already-delivered client document, flag it back to the main thread rather than editing it yourself.

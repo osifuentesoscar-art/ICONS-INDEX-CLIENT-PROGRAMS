@@ -28,14 +28,25 @@ The deliverable is always one of:
 
 **Repo paths:**
 ```
-Source scripts    → scripts/
-Client outputs    → clients/<client_name>/
-Trainer programs   → trainer_education/
+Shared engine     → scripts/icons_template.js
+Client scripts    → scripts/clients/     Client outputs   → clients/<client_name>/
+Trainer scripts   → scripts/trainers/    Trainer outputs  → trainers/<trainer_name>/
+                                         Trainer education → trainers/education/
 System documents  → system_documents/ (index: docs/CLIENT_ROSTER_MAP.md)
 Uploaded files    → (attached inline to the conversation)
 This file         → CLAUDE.md at repo root
 System prompt     → docs/ICONS_System_Prompt.md (paste-into-Projects reference copy)
 ```
+
+**CLIENT / TRAINER SEPARATION — a hard boundary (established 8/20/2026, at Xolokan's direct instruction).**
+Client and trainer material are separate trees, top to bottom: separate output folders, separate
+script folders. A client build never writes into `trainers/`, and a trainer build never writes into
+`clients/` — the split exists so the two can never be produced into the same folder again. The only
+shared file is the engine itself, `scripts/icons_template.js`. Trainers with individual programs:
+Becca, Brodie, Jah, Nick, Oscar. Jason Bethea and Niko Heers are studio staff who appear *inside*
+client documents (see "STUDIO STAFF") — they are not programmed trainers. When adding a new person,
+decide which tree they belong to BEFORE writing the build script, and put the script in the matching
+`scripts/` subfolder.
 
 **Build pattern — no exceptions:**
 1. Write the build script under `scripts/`
@@ -83,7 +94,7 @@ Everything else — page setup, color system, exercise tables, warm-up/cool-down
 
 **When marking an exercise's `insight` internal, do a full-text search of the client's document for similar language before assuming it's the only instance** — any exercise inserted specifically to satisfy the Antagonist Rotation Rule (a common pattern roster-wide; grep a client's script for `insight:.*[Aa]ntagonist` or similar sequencing-rationale phrasing) is a candidate for the same fix.
 
-**Output location:** same folder as the trainer document, `clients/<client_name>/`, filename `<ClientName>_<ProgramTitle>_Client_View.docx` (e.g. `Elizabeth_Poyner_5Day_Training_Plan_Client_View.docx`) — a client view is a per-client artifact, not a new top-level category like `trainer_education/` or `system_documents/`.
+**Output location:** same folder as the trainer document, `clients/<client_name>/`, filename `<ClientName>_<ProgramTitle>_Client_View.docx` (e.g. `Elizabeth_Poyner_5Day_Training_Plan_Client_View.docx`) — a client view is a per-client artifact, not a new top-level category like `trainers/` or `system_documents/`.
 
 **Standing rule going forward (confirmed permanent 8/17/2026 — "keep this as constant standard that needs to improve every client doc it creates as well"):** generate the client view alongside every new trainer document, and regenerate it alongside every later revision to an existing one — not a one-time rollout. The same build→audit→commit→deliver pipeline applies to both, every time, including `icons-doc-auditor`'s standing "Client View audience-leak check" (see that agent's file for the full checklist — cross-client names, dangling "see note" references, and the fact that block `intro` text and `summary.milestones4wk`/`milestones8wk`/`rescanNote` strings have no `audience` filter mechanism, so internal-sounding language written there always leaks) — a note, block intro, or summary field added in a later revision needs the same internal/client-facing judgment call applied to it that the original build got. See `icons-expert.md` for the corresponding standing instruction.
 
@@ -1677,49 +1688,54 @@ Niko Heers    — Stretch Therapist (certified)
   clinical constraint register, asymmetry execution log, watchlists.
 - **Roster map, system-document index, trainer-education format history —
   `docs/CLIENT_ROSTER_MAP.md`** (moved out of this file 2026-08-20).
-- **Trainer education formats** — `trainer_education/README.md` carries the per-format tables.
+- **Trainer programs, data & education** — `trainers/README.md` carries the roster, the
+  per-format tables, and the client/trainer boundary.
 - **Subagent team** — the eight `.claude/agents/*.md` definitions describe their own scope in
   frontmatter, which every session receives automatically; route by those descriptions.
-## KNOWN ISSUES — ARCHITECTURE AUDIT (2026-08-18)
+## ARCHITECTURE AUDIT — 2026-08-18, RESOLVED 2026-08-20
 
-Fix these before onboarding a partner or generating another partnership briefing. If you (the agent) are asked to work on any file mentioned below, fix the underlying issue, not just the symptom.
+All four findings of the 8/18 audit are closed. Kept as record because two of them were closed
+in the *opposite* direction from what the audit recommended — reality had moved on by 8/19, and
+anyone re-reading the old recommendation would otherwise delete the wrong side.
 
 ```
-1. DUPLICATE CLIENT RECORD — August Olivia exists in two places.
-   - clients/august_olivia/  (underscore, LEGACY) — built by scripts/august_olivia_3day_plan.js;
-     the .docx output sits directly in clients/ instead of deliverables/.
-   - clients/august-olivia/  (hyphen, CURRENT) — the real pipeline: intake.md → data.json →
-     deliverables/august-olivia/{.docx,.pdf} via generate.mjs.
-   ACTION: Treat clients/august-olivia/ as the single source of truth. After confirming its
-   data.json has everything the legacy version had, delete clients/august_olivia/ and
-   scripts/august_olivia_3day_plan.js.
+1. DUPLICATE CLIENT RECORD — August Olivia (and Johanna Castillo). RESOLVED 8/20.
+   The 8/18 audit named clients/august-olivia/ (hyphen) as CURRENT and told a future agent to
+   delete clients/august_olivia/ (underscore). That recommendation became WRONG on 8/19, when
+   the roster-wide ICONS Block Method restructure was applied to the underscore pipeline
+   (scripts/clients/august_olivia_3day_plan.js -> clients/august_olivia/). The hyphen dirs had
+   not been touched since 8/07 and predated the Block Method entirely.
+   ACTION TAKEN: kept the underscore pipeline. Deleted clients/august-olivia/ and
+   clients/johanna-castillo/ (same duplicate pattern) after confirming, field by field, that
+   every Styku value in their intake.md/data.json already exists in the live build script.
+   Nothing unique was lost.
 
-2. DUPLICATE TEMPLATE ENGINE — schema-drift risk.
-   scripts/icons_template.js (645 lines) is called "canonical" by this file and by
-   docs/ICONS_System_Prompt.md. But the automated pipeline (generate.mjs → 
-   my-agent/engine/render.cjs) actually renders through a SEPARATE file,
-   my-agent/engine/icons_template.cjs (625 lines). A brand/schema fix applied to one will not
-   propagate to the other.
-   ACTION: Keep my-agent/engine/icons_template.cjs (it's the one actually wired into
-   automation). Deprecate/delete scripts/icons_template.js and update every doc reference
-   (this file, docs/ICONS_System_Prompt.md, CLIENTS.md) to point at the real engine.
+2. DUPLICATE TEMPLATE ENGINE. RESOLVED 8/20 — again, opposite to the audit's recommendation.
+   The audit said to keep my-agent/engine/icons_template.cjs "because it's the one actually
+   wired into automation." It was not wired into anything that could run: my-agent/ had no
+   package.json at all (its package.json sat in a separate top-level bls-expert-agent/ dir),
+   so the workflow's `npm ci` step could never have succeeded.
+   ACTION TAKEN: deleted my-agent/ and bls-expert-agent/. scripts/icons_template.js is now the
+   single engine, with no second copy to drift against.
 
-3. MISSING SPECIALIST AGENTS — partner-facing claims outrun the code.
-   Partnership materials describe 7 running roles (coordinating ICONS Expert +
-   Clinical Research Analyst, Evidence Curator, Trainer Education, Document Auditor,
-   Intake Monitor, Roster Analyst) operating daily. Only ONE agent is defined
-   (.claude/agents/icons-expert.md), and the only automation
-   (.github/workflows/generate-icons-docs.yml) triggers on push to clients/** or manual
-   dispatch — there is no `schedule:` trigger, so nothing runs autonomously/daily yet.
-   ACTION: Either build the six missing roles as real subagents + a scheduled workflow, or
-   scale back partner-facing claims to match what's actually automated today.
+3. MISSING SPECIALIST AGENTS. RESOLVED — all eight agents now exist in .claude/agents/
+   (icons-expert, icons-research-analyst, icons-evidence-curator, icons-trainer-education,
+   icons-doc-auditor, icons-intake-monitor, icons-roster-analyst, icons-operations-analyst).
+   The scheduled-automation half was closed differently: the .github/workflows/
+   generate-icons-docs.yml workflow was DELETED on 8/20 rather than repaired. It fired on every
+   push to clients/**, could never install its dependencies (see item 2), and would have
+   auto-committed generated output back to the branch. Document generation is deliberately a
+   run-the-script-and-audit-it operation, not a CI job.
 
-4. REPO HYGIENE — unrelated personal-tool files at repo root.
-   BACKUP, JARVIS, Clsrvis, Preque, hook, "clarvis_config (1).toml" are leftover setup notes
-   for an unrelated third-party tool (a Claude Code TTS status-narrator called "Clarvis") —
-   not part of ICONS.
-   ACTION: Delete these or move them outside the repo before anyone else clones it.
+4. REPO HYGIENE — unrelated personal-tool files at repo root. RESOLVED 8/20.
+   BACKUP, JARVIS, Clsrvis, Preque, hook, PONYTAIL and "clarvis_config (1).toml" were setup
+   notes for Clarvis (a third-party TTS status-narrator) and a plugin install line — all
+   deleted. ICONS_Trainer_Learning_Module.html was also loose at the root; it was trainer
+   material and moved to trainers/education/.
 ```
+
+**Standing rule this audit produced:** client and trainer material stay in separate trees — see
+"CLIENT / TRAINER SEPARATION" at the top of this file.
 
 ---
 
@@ -2139,9 +2155,10 @@ under-served topic. `icons-research-analyst` owns it.
 ## SCRIPTS QUICK REFERENCE
 
 Run `ls scripts/` for the current list (34 files as of 2026-08-20). The engine is
-`scripts/icons_template.js`; per "KNOWN ISSUES" above, the automated pipeline actually
-renders through `my-agent/engine/icons_template.cjs` — resolve that duplication before
-treating either as canonical. Each client script's header comment states its own purpose,
+`scripts/icons_template.js`, and as of 8/20/2026 it is the *only* engine — the duplicate
+`my-agent/engine/icons_template.cjs` and its broken automation were removed (see "KNOWN
+ISSUES" above). Client scripts live in `scripts/clients/`, trainer scripts in
+`scripts/trainers/`; both require the engine as `../icons_template`. Each client script's header comment states its own purpose,
 data sources, and output path.
 
 ---
