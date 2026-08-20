@@ -106,6 +106,56 @@
  * Nothing clinical changed; his nutrition targets still come from the
  * source document's own age/sex-appropriate research (Robinson et al.
  * 2024/2025, Morton et al. 2018, Shaw/Bischof/Praet), unchanged.
+ *
+ * ============================================================================
+ * REVISION 8/20/2026 — ICONS BLOCK METHOD (roster-wide rollout, batch 4 —
+ * CLINICALLY-LED CLIENT). Full existing record read first (CLIENTS.md entry
+ * + this script in full). The clinician's structure came FIRST and the
+ * architecture was fitted around it; nothing clinical was re-derived.
+ *   1. Block titles now name the architecture slot they actually occupy on
+ *      all three days. Slot 4 (Jason's exercise) omitted on all three days
+ *      under the consumed-by-corrective rule; slot 6 omitted on Day 1 and
+ *      served in place on Day 2, because the clinician's tendon-loading
+ *      ladder stages the first integrated loaded-carry expression on Day 3.
+ *      See the "Block Method Mapping" internal baselineNote for the full
+ *      per-day map and rationale.
+ *   2. ONE sequencing change, Day 3 only: the bilateral farmer's carry moved
+ *      from mid-Block-C to the session closer, with an explicit coach
+ *      instruction that it may be run in its original position if trunk
+ *      posture degrades late in the session.
+ *   3. Compound-slot options menus added to every compound slot, filtered
+ *      against the clinician's hold-back list BEFORE listing — no option
+ *      introduces loaded lateral flexion, a symptomatic-side suitcase carry,
+ *      or heavy single-arm overhead work, and conventional/sumo deadlift is
+ *      explicitly excluded from the hinge menu because the trap bar's
+ *      centred load line is why that variation was chosen.
+ *   4. COLLAGEN PROTOCOL CORRECTED in 4 locations (3 warm-ups + the Evidence
+ *      Base note's two mentions): timing 30-60 min -> 45-60 min, which moves
+ *      the program CLOSER to Shaw et al.'s actual 1-hour-pre-load protocol
+ *      at the 15g dose, not away from the clinician; and the acute
+ *      "increases collagen synthesis markers and, over months, tendon
+ *      stiffness" claim retired per the January 2026 umbrella review (no
+ *      effect on tendon mechanical properties; low-certainty morphology
+ *      benefit only), reframed as a chronic structural support protocol
+ *      ranked below protein and creatine.
+ *   5. DELOAD: his clinician-structured Week 4 RPE-6 deload BEFORE the
+ *      retest is left exactly as written and NOT converted to the house
+ *      after-test pattern — documented in its own internal note so a future
+ *      pass doesn't "fix" it.
+ *   6. Two open intake items flagged, not resolved by invention: a single
+ *      weigh-in (the 130-175 g/day absolute protein figure implies a ~81 kg
+ *      body weight that is nowhere in his record), and confirmation of his
+ *      training venue (leg press, treadmill, and dip station are all outside
+ *      the confirmed studio inventory). Every affected slot now carries an
+ *      in-studio-executable same-pattern option so the program runs either
+ *      way.
+ *   7. Touch-rule pass: "Lat Pulldown" -> "Kieser or Lat Pulldown" with the
+ *      assisted pull-up machine named in the options; "Standing Cable/Band
+ *      Row" -> "Standing Row (Kieser, Cable or Band)"; Day 3's duplicate
+ *      em-dash Trap Bar stub row removed; warm-up drift check run — all
+ *      three warm-ups hold only the collagen protocol line and 5 min of easy
+ *      bike/row, so nothing needed promoting to an exercise table.
+ * ============================================================================
  */
 
 const fs = require('fs');
@@ -164,7 +214,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Evidence Base — Volume, Frequency, RIR, Protein & Tendon Nutrition (Age 25, Male)',
-    body: 'Robinson et al. (2024/2025) — a meta-regression of 67 studies / 2,000+ participants averaging age 25.2, putting Jake at the center of this evidence base rather than requiring extrapolation: ~10–20 hard sets/muscle/week before diminishing returns (this program targets ~12–16 across the 3 days); frequency matters more for strength than hypertrophy once volume is equated, so squat/hinge/press/pull patterns are each hit twice weekly. Grgic et al. (2018): strength gains are largely insensitive to proximity to failure — RPE 6–8 (≈2–4 RIR) is used throughout, no true failure, both per the evidence and to protect the QL. Morton et al. (2018): 1.6–2.2 g/kg/day protein supports hypertrophy with a plateau in benefit around 1.6 g/kg/day — target roughly 130–175g/day, spread across 4–5 meals including a pre-sleep dose (pre-sleep protein improves overnight muscle protein synthesis). Collagen — corrected framing (8/20/2026, current evidence): Shaw et al. (2017) dosed 15g vitamin-C-enriched gelatin one hour pre-loading, so the protocol here is 15g collagen peptides + ~50mg vitamin C taken 45–60 minutes before each session (the earlier \'30–60 min\' window was never actually studied at this 15g dose — the correction moves this program closer to the source protocol, not away from it). What it is honestly for: a chronic, structural connective-tissue support protocol taken consistently on training days across 12+ weeks, not a pre-workout performance aid. A January 2026 umbrella review (16 meta-analyses, 113 RCTs) found a positive effect on tendon MORPHOLOGY at low certainty (4 RCTs, 127 participants) and NO effect on tendon mechanical properties, and a separate meta-analysis of 13 RCTs found collagen does not further improve musculoskeletal performance when added to exercise — so the prior \'increases collagen synthesis markers and, over months, tendon stiffness\' claim overstates what the outcome evidence supports and is retired here. Priority order in this program: protein intake first, then creatine if he chooses to use it, then collagen — collagen is the most speculative of the three and should never displace either. Mechanical loading remains the actual tendon intervention; the collagen protocol supports it and does not substitute for it. Continue alongside Jason Bethea\'s care.',
+    body: 'Robinson et al. (2024/2025) — a meta-regression of 67 studies / 2,000+ participants averaging age 25.2, putting Jake at the center of this evidence base rather than requiring extrapolation: ~10–20 hard sets/muscle/week before diminishing returns (this program targets ~12–16 across the 3 days); frequency matters more for strength than hypertrophy once volume is equated, so squat/hinge/press/pull patterns are each hit twice weekly. Grgic et al. (2018): strength gains are largely insensitive to proximity to failure — RPE 6–8 (≈2–4 RIR) is used throughout, no true failure, both per the evidence and to protect the QL. Morton et al. (2018): 1.6–2.2 g/kg/day protein supports hypertrophy with a plateau in benefit around 1.6 g/kg/day — spread across 4–5 meals including a pre-sleep dose (pre-sleep protein improves overnight muscle protein synthesis). The g/kg range is the real prescription; the working figure of roughly 130–175g/day assumes a body weight that has not actually been recorded yet, so bring a single weigh-in to any session and this gets set exactly rather than estimated. Collagen: Shaw et al. (2017) dosed 15g vitamin-C-enriched gelatin one hour before loading, so the protocol here is 15g collagen peptides + ~50mg vitamin C taken 45–60 minutes before each of the three training sessions. Be clear-eyed about what this is for: it is a chronic, structural connective-tissue support protocol taken consistently across 12+ weeks — not a pre-workout that does anything for you on the day. Current evidence (a January 2026 umbrella review of 16 meta-analyses and 113 RCTs, plus a separate meta-analysis of 13 RCTs) finds a low-certainty benefit to tendon morphology, no measurable effect on tendon mechanical properties, and no added performance benefit on top of the training itself. Priority order, in plain terms: hit the protein target first, creatine second if you choose to use it, collagen third — it is the most speculative of the three and should never displace either. The loading in this program is the actual tendon intervention; collagen supports it and does not substitute for it. Continue alongside Jason Bethea\'s care.',
   },
   {
     type: 'purple',
@@ -179,6 +229,30 @@ const baselineNotes = [
     type: 'green',
     label: 'Reassessment — 4-Week Retest',
     body: 'Re-test hip abduction, hip extension time-to-peak-force, and trunk extension peak force/RFD at the 4-week mark. Progress QL-side loaded carries and side-bend work only once hip abduction asymmetry is under ~10% and trunk extension RFD has improved — and only with continued clearance from Jason Bethea and the treating physician.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Collagen Protocol — What Changed 8/20/2026 and Why',
+    body: 'Four locations updated (all three day warm-ups plus both mentions inside the Evidence Base note). TIMING: 30-60 min pre-session became 45-60 min. This moves the program CLOSER to the source clinician\'s own citation, not away from it — Shaw et al. (2017) dosed the 15g protocol one hour pre-loading, and the authors themselves noted the 30-minute end of the window would suit a smaller 5g dose; the 30-minute end was never studied at 15g. CLAIM: the previous wording asserted collagen "increases collagen synthesis markers and, over months, tendon stiffness." That is retired. A January 2026 umbrella review (16 meta-analyses, 113 RCTs, 7,983 participants) found a positive effect on tendon MORPHOLOGY only, at low certainty (4 RCTs, 127 participants), and NO effect on tendon mechanical properties; a separate meta-analysis of 13 RCTs (450 participants) found collagen does not further improve musculoskeletal performance when added to exercise. The acute-synthesis framing overstated the outcome evidence, which matters more than usual here because the client has a tendinopathy and could reasonably read the old wording as "the supplement is fixing the tendon." Collagen is now explicitly ranked below protein and creatine in the supplement hierarchy, and the document states that mechanical loading is the actual intervention. PROTEIN: the absolute 130-175 g/day figure was left visible but is now qualified in-document as assuming an unrecorded body weight, with the g/kg range named as the real prescription — see the open-intake note below.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Block Method Mapping — 8/20/2026 (Clinically-Led Build Record)',
+    body: 'This is a CLINICALLY-LED program (QL tendinosis, coordinated with Jason Bethea and the treating physician, rebuilt from a clinician-supplied source program). Per the clinically-led override, the clinician\'s structure came FIRST and the ICONS session architecture was fitted around it — no exercise was moved, added, or removed to satisfy the architecture except where noted below. Mapping as delivered: Day 1 — A Corrective (glute medius + trunk activation) / B Primary Compound (single-leg hip thrust + goblet squat) / C Accessory (isometric trunk extensor capacity) / D Secondary Compound (supported leg press + flat DB bench) / E Metabolic finisher. Day 2 — A Corrective / B Primary Compound (right-biased unilateral) / C Accessory & Integration (trunk/anti-lateral flexion, containing the unaffected-side suitcase carry) / D Secondary Compound (vertical pull + overhead press) / E Metabolic finisher. Day 3 — A Corrective / B Primary Compound (trap bar deadlift) / C Accessory (power/RFD + first dynamic trunk extension) / D Secondary Compound (press) / E Full-Body Integration (bilateral farmer\'s carry). SLOT 4 (Jason\'s exercise) is OMITTED on all three days under the consumed-by-corrective rule: Jason\'s coordinated input for this client IS the corrective/staging content, which already sits in slot 1 and in the clinician\'s hold-back list exactly as documented — placing it twice would double-count it, and inserting filler would be worse. SLOT 6 (integration closer) is deliberately OMITTED on Day 1 and served IN PLACE on Day 2 rather than moved: the clinician\'s tendon-loading ladder (isometric to slow eccentric to controlled concentric to dynamic) stages the first integrated loaded-carry expression on Day 3, and Day 2\'s single-side carry is deliberately positioned before the pull/press block rather than at the end of a fatigued session. Adding a Day 1 closer, or relocating Day 2\'s carry to the end, would move ahead of the clinician\'s staging — precisely what the clinically-led override forbids. Day 3 is the clinician\'s own integration day and maps cleanly. ONE sequencing change was made, and only there: the bilateral farmer\'s carry moved from mid-Block-C to the Day 3 closer, with the block intro stating explicitly that the coach may run it in its original position if trunk posture degrades late in the session. Antagonist Rotation walked on the full rendered day for all three days — no three consecutive same-pattern compounds anywhere. One documentation defect cleaned up: Day 3\'s old Block D carried a duplicate Trap Bar Deadlift row with em-dashes in every numeric column, a stub cross-reference rather than a real prescription; removed, since the full trap bar prescription already lives in Block B.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Deload — Clinician\'s Week 4 RPE-6 Deload Stands, House Pattern NOT Applied',
+    body: 'This program already carries a planned deload, and it is the clinician\'s: Week 4 runs at RPE 6 with load reduced roughly 15-20% AHEAD of the reassessment testing, so the retest is performed fresh rather than on accumulated fatigue. The ICONS house pattern places a deload immediately AFTER the Week 4 strength check instead. That difference is deliberate and was NOT reconciled to the house pattern: for a client whose Week 4 event is a force-plate/dynamometer retest whose numbers drive the next phase\'s clearance decisions (QL-side carries, loaded side-bends), deloading before the test is the clinically correct order, and the clinically-led override governs. Recorded here so a future pass does not mistake it for a missing deload or "fix" it into the house cadence.',
+  },
+  {
+    type: 'gold',
+    audience: 'internal',
+    label: 'Open Intake Items — Single Weigh-In, and Training-Venue Equipment Confirmation',
+    body: 'TWO items to resolve at his next session, neither invented here. (1) WEIGH-IN: this document contains an internal inconsistency inherited from the source program. The scope note above correctly states no weight is on file, yet the Evidence Base note prescribes an absolute protein target of roughly 130-175 g/day — a figure that only makes sense back-calculated from a body weight of about 81 kg at the 1.6-2.2 g/kg range. That weight is not documented anywhere in his record; the absolute grams almost certainly came across with the source PDF. It has NOT been resolved by inventing a weight. A single weigh-in closes it completely: it converts the g/day figure from an inherited assumption into a real g/kg calculation, and it is also the one missing input that would let the Male Client Programming Framework\'s numeric tools (maleProteinTargets, the 20-39 Foundation bracket reads) actually attach to him. Until then, treat 130-175 g/day as provisional and read the g/kg range as the real prescription. (2) TRAINING VENUE: his schedule line reads "Full Gym," and the source program prescribes a 45-degree leg press, a treadmill, and a weighted dip — none of which appear on the confirmed Brace Life studio equipment inventory (which has a squat rack and Olympic bar, DBs to 60 lbs/hand, KBs to 25 lbs, bench, leg extension, hamstring curl, hyperextension, assisted pull-up machine, Kieser, sled, hex bar, Total Gym, landmine, bike/assault bike/rower, plyo boxes, bands, med balls). Whether he trains in-studio or at an outside commercial gym is not documented. Rather than silently rewriting clinician-prescribed exercise selections, every affected slot now carries a same-pattern option that IS available in-studio (Total Gym or supported machine variation for the leg press; bike or rower for the treadmill; close-grip DB floor press already named as the tracked version of the dip slot), so the program is executable either way. Confirm the venue and this resolves cleanly in one line.',
   },
 ];
 
@@ -329,12 +403,12 @@ const days = [
     subtitle: 'Dynamic Trunk Extension · Power & Symmetric Loaded Carries',
     descriptor: 'INTEGRATION DAY · FIRST DYNAMIC TRUNK EXTENSOR WORK · POWER/RFD',
     intensityLabel: 'Day 3 Priority',
-    intensityPara: 'Begin layering speed/RFD work now that isometric capacity has been built, and integrate both hips and the trunk extensors together in compound patterns. This is the first session introducing dynamic trunk extension and jump-landing force — confirm Days 1–2 were fully pain-free before progressing here. No added conditioning finisher today; the power/RFD block already provides meaningful CNS demand.',
+    intensityPara: 'Begin layering speed/RFD work now that isometric capacity has been built, and integrate both hips and the trunk extensors together in compound patterns. This is the first session introducing dynamic trunk extension and jump-landing force — confirm Days 1–2 were fully pain-free before progressing here. No added conditioning finisher today; the power/RFD work and the closing bilateral carry already provide meaningful demand.',
     warmUp: 'Collagen protocol: 15g collagen peptides + ~50mg Vitamin C, 45–60 min before this session. 5 min easy bike.',
     blocks: [
       {
         letter: 'A',
-        title: 'ACTIVATION / PREP',
+        title: 'CORRECTIVE — ACTIVATION & FIRST DYNAMIC-ADJACENT TRUNK WORK',
         color: 'red',
         introLabel: 'First Dynamic-Adjacent Trunk Work',
         intro: 'Prone Superman is the progression from Day 1\'s isometric plank — first dynamic-adjacent trunk extensor work.',
@@ -345,9 +419,9 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH',
+        title: 'PRIMARY COMPOUND — TRAP BAR DEADLIFT',
         introLabel: 'Format',
-        intro: 'Trap bar deadlift is the week\'s primary loaded strength lift — neutral spine, symmetric setup both feet.',
+        intro: 'Trap bar deadlift is the week\'s primary loaded strength lift and the number tracked into the 4-week retest — neutral spine, symmetric setup both feet. Hinge options if the day calls for one, all keeping the load line symmetrical and the spine neutral: elevated-handle or block-height trap bar pulls (shorter range on a stiff day), a rack pull from just below the knee, or a supported hip-hinge machine variation. Conventional and sumo barbell deadlifts are deliberately NOT offered this phase — the trap bar\'s centred load line is the reason this variation was chosen over a barbell for a symptomatic QL, and swapping it out would defeat that. Step-up options: box step-up (tracked), split squat, or reverse lunge. Row options: bilateral standing row (tracked), chest-supported row, or a seated Kieser row.',
         exercises: [
           { name: 'Trap Bar Deadlift', sets: '4', reps: '6', load: 'RPE 7–8 (see Load & Progression note)', tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, symmetric setup both feet. This week\'s primary loaded strength lift — apply the Load & Progression prescription to this lift specifically.' },
           { name: 'Single-Leg Box Step-Up', sets: '3', reps: '8/side', load: 'RPE 7', tempo: '2-1-1', rest: '75s', cue: 'Drive through mid-foot; no hip hike at top.' },
@@ -356,24 +430,32 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'POWER / RFD & TRUNK EXTENSOR PROGRESSION',
+        title: 'ACCESSORY — POWER / RFD & TRUNK EXTENSOR PROGRESSION',
         color: 'red',
         introLabel: 'Confirm Pain-Free First',
         intro: 'This is the first session introducing dynamic trunk extension and jump-landing force — confirm Days 1–2 were fully pain-free before progressing here.',
         exercises: [
           { name: 'Broad Jump (Submax, Controlled Landing)', sets: '3', reps: '3', load: 'Bodyweight', tempo: 'Explosive/controlled', rest: '90s', cue: 'Only if pain-free through Days 1–2; stop if any QL discomfort.' },
           { name: 'Prone Trunk Extension (Controlled, Small ROM)', sets: '3', reps: '8', load: 'Bodyweight', tempo: '3-1-1', rest: '60s', cue: 'First dynamic loading of trunk extensors — small range, no end-range hyperextension.' },
-          { name: 'Farmer\'s Carry (Bilateral, Moderate Load)', sets: '3', reps: '30m', load: 'Moderate', tempo: 'Steady', rest: '60s', cue: 'Bilateral only — reintroduces loaded carries symmetrically.' },
         ],
       },
       {
         letter: 'D',
-        title: 'STRENGTH DEVELOPMENT',
-        introLabel: 'Trap Bar Deadlift Continued',
-        intro: 'Trap bar deadlift (from Block B, load-graded per the Load & Progression prescription) is this week\'s primary loaded strength lift — the dip/press rounds out upper body pressing volume.',
+        title: 'SECONDARY COMPOUND — PRESS',
+        introLabel: 'Format',
+        intro: 'The day\'s second compound pattern — pressing, rotating off the trap bar and jump work above, and rounding out the week\'s upper-body pushing volume. The trap bar prescription for this session lives in Block B above and is not repeated here. Press options: close-grip dumbbell floor press (the version we track — shortest, most shoulder-friendly range), flat dumbbell bench press, or a weighted dip where a dip station is available. Full but pain-free range on whichever one runs.',
         exercises: [
-          { name: 'Trap Bar Deadlift (From Block B, Load-Graded)', sets: '—', reps: '—', load: 'RPE 7–8', tempo: '—', rest: '—', cue: 'Apply the Load & Progression prescription to this lift specifically — see note above.' },
-          { name: 'Weighted Dip / Close-Grip DB Floor Press', sets: '3', reps: '6–8', load: 'RPE 7', tempo: 'Controlled', rest: '90s', cue: 'Full but pain-free ROM; stop short if front shoulder pinches.' },
+          { name: 'Close-Grip DB Floor Press (or Weighted Dip)', sets: '3', reps: '6–8', load: 'RPE 7', tempo: 'Controlled', rest: '90s', cue: 'Full but pain-free ROM; stop short if front shoulder pinches.' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'FULL-BODY INTEGRATION — BILATERAL FARMER\'S CARRY',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: 'The session\'s closer, and the one place in this phase where loaded carrying is reintroduced — bilateral only, symmetric by design, so nothing pulls the trunk into side-bending. It puts the whole day together at once: the glute medius reliability built in the activation block, the trunk extensor capacity from Days 1-2, and the neutral-spine bracing from the trap bar, all held under load while walking. Load stays moderate and does not run ahead of the trap bar work above. Position is coach-selectable: if trunk posture degrades at the end of the session, run this carry immediately after the primary block instead — the carry itself is the prescription, not its slot in the order. Variations, all bilateral this phase: two-hand dumbbell farmer\'s carry (the version we track), trap-bar carry, or a front-racked/goblet carry. Single-side suitcase carries on the symptomatic side stay held back until the 4-week reassessment clears them.',
+        exercises: [
+          { name: 'Farmer\'s Carry (Bilateral, Moderate Load)', sets: '3', reps: '30m', load: 'Moderate — held below the day\'s trap bar load', tempo: 'Steady', rest: '60s', cue: 'Bilateral only — reintroduces loaded carries symmetrically. Tall ribs, level pelvis, no side lean.' },
         ],
       },
     ],
