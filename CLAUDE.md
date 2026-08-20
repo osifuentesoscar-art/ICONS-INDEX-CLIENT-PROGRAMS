@@ -3187,6 +3187,29 @@ Fix these before onboarding a partner or generating another partnership briefing
    automation). Deprecate/delete scripts/icons_template.js and update every doc reference
    (this file, docs/ICONS_System_Prompt.md, CLIENTS.md) to point at the real engine.
 
+   *** UPDATE 8/20/2026 — THE DRIFT WAS REAL, AND THE RECOMMENDED DIRECTION IS NOW
+   INVERTED. *** A daily check-in compared the two engines directly and found the .cjs
+   carrying FIVE retired clinical standards the .js had already corrected — three of them
+   FIRING LOGIC, not just text: (1) alstStatus() used a 3-tier band with <7.0 = "NORMAL"
+   and >=7.0 = "OPTIMAL" — the sex-conflation error (7.0 is the MALE EWGSOP2 cutoff; no
+   female "Optimal" tier exists); (2) vfaStatus() used the retired 70/100 risk-band table;
+   (3) the segmental block gated lead-side prescriptions on the retired 0.5 lb ABSOLUTE
+   asymmetry trigger, i.e. firing on measurement noise; (4) collagen timing 30-60 min;
+   (5) per-meal protein 0.4 g/kg. All five were corrected in the .cjs on 8/20/2026 so both
+   engines now carry current science regardless of which renders.
+   BLAST RADIUS CHECKED: the workflow triggers on push to clients/** (which every batch
+   delivery does) and commits back to the branch — but the only automation-bot commit in
+   history is 8/7/2026 and touched a single .state.json, so no delivered client document
+   was ever regenerated through the stale engine. Nothing to remediate downstream.
+   WHY THE DIRECTION INVERTED: scripts/icons_template.js is now the engine carrying every
+   8/17 science correction, the Block Method rollout, buildAssessmentReport(), Client View
+   audience filtering, and buildImprovementDoc(). The .cjs is a smaller, older subset. The
+   original recommendation (keep .cjs, delete .js) was written before that divergence and
+   would now DISCARD the corrected engine. **Which engine survives is Xolokan's call and
+   is NOT actioned here** — but until it is made, any science-layer correction must be
+   applied to BOTH files, and this section is the reminder that a one-engine fix is a
+   half-fix.
+
 3. MISSING SPECIALIST AGENTS — partner-facing claims outrun the code.
    Partnership materials describe 7 running roles (coordinating ICONS Expert +
    Clinical Research Analyst, Evidence Curator, Trainer Education, Document Auditor,

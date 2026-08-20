@@ -239,14 +239,21 @@ function baselineNotes(notes) {
 // Styku scan block
 // ---------------------------------------------------------------------------
 function alstStatus(alst) {
+  // Corrected 8/20/2026 to match scripts/icons_template.js and CLAUDE.md's
+  // 8/17 correction: EWGSOP2's cutoffs are SEX-SPECIFIC, not a graded ladder.
+  // <5.5 is the female at-risk threshold; 7.0 is the MALE threshold and was
+  // being misapplied here as a female "Optimal" tier. Two tiers only, and the
+  // upper one is a normal reference range, not a grade.
   if (alst < 5.5) return { label: 'AT-RISK', color: C.flagRed };
-  if (alst < 7.0) return { label: 'NORMAL', color: C.flagAmber };
-  return { label: 'OPTIMAL', color: C.flagGreen };
+  return { label: 'WITHIN NORMAL RANGE', color: C.flagGreen };
 }
 function vfaStatus(vfa) {
-  if (vfa >= 100) return { label: 'MODERATE RISK', color: C.flagRed };
-  if (vfa >= 70) return { label: 'LOW RISK', color: C.flagAmber };
-  return { label: 'VERY LOW RISK', color: C.flagGreen };
+  // Corrected 8/20/2026: the 70/100/150 risk-band table is RETIRED (no
+  // consensus body endorses a single VFA cutoff; this device's VFA was
+  // validated against DXA in kg, not CT in cm2). Only the <70 "Very Low"
+  // floor survives, as a TREND tag — not a graded risk classification.
+  if (vfa < 70) return { label: 'VERY LOW (TREND)', color: C.flagGreen };
+  return { label: 'TRACKED AS A TREND', color: C.flagAmber };
 }
 function bmiStatus(bmi) {
   if (bmi < 18.5) return { label: 'UNDERWEIGHT', color: C.flagRed };
@@ -296,14 +303,17 @@ function stykuBlock(styku) {
 
   const armGap = Math.abs(styku.leftArmLST - styku.rightArmLST);
   const legGap = Math.abs(styku.leftLegLST - styku.rightLegLST);
+  // Relative gap against the LARGER side — the corrected >=10% trigger.
+  const armGapPct = armGap / Math.max(styku.leftArmLST, styku.rightArmLST) * 100;
+  const legGapPct = legGap / Math.max(styku.leftLegLST, styku.rightLegLST) * 100;
   const weakerArm = styku.leftArmLST < styku.rightArmLST ? 'LEFT' : 'RIGHT';
   const weakerLeg = styku.leftLegLST < styku.rightLegLST ? 'LEFT' : 'RIGHT';
 
   out.push(tealCallout(
     'Segmental Lean Soft Tissue',
     `Arms: L ${styku.leftArmLST} / R ${styku.rightArmLST} lbs  ·  Legs: L ${styku.leftLegLST} / R ${styku.rightLegLST} lbs.`
-    + (armGap >= 0.5 ? `  Arm asymmetry ≥ 0.5 lbs — ${weakerArm} arm leads all single-arm work.` : '')
-    + (legGap >= 0.5 ? `  Leg asymmetry ≥ 0.5 lbs — ${weakerLeg} leg leads all unilateral work.` : ''),
+    + (armGapPct >= 10 ? `  Arm gap ${armGapPct.toFixed(1)}% — clears the 10% relative threshold; ${weakerArm} arm leads all single-arm work.` : '')
+    + (legGapPct >= 10 ? `  Leg gap ${legGapPct.toFixed(1)}% — clears the 10% relative threshold; ${weakerLeg} leg leads all unilateral work.` : ''),
   ));
   out.push(spacer(120));
 
@@ -337,12 +347,12 @@ function nutritionBlock(client) {
   const weightKg = client.weightKg;
   const proteinLo = Math.round(weightKg * lo);
   const proteinHi = Math.round(weightKg * hi);
-  const perMeal = Math.round(weightKg * 0.4);
+  const perMeal = Math.round(weightKg * 0.3);  // corrected 8/20/2026: ~0.3 g/kg, was 0.4
   const creatineIndicated = client.ageYears >= 40 || (client.alstIndex ?? 99) < 5.5 || client.isPostmenopausal;
 
-  const body = `Protein target: ${proteinLo}–${proteinHi}g/day (~${perMeal}g per meal, 4+ meals/day). `
+  const body = `Protein target: ${proteinLo}–${proteinHi}g/day (~${perMeal}g per meal, across 4 meals spaced 3–4 hours apart). `
     + `Creatine monohydrate 3–5g/day with food — ${creatineIndicated ? 'strongly indicated' : 'indicated'} for this client. `
-    + `Collagen: 15g + 50mg Vitamin C, 30–60 min before loading sessions.`;
+    + `Collagen: 15g + 50mg Vitamin C, 45–60 min before loading sessions — a chronic connective-tissue support protocol, not a pre-workout aid.`;
 
   return [
     para([run('NUTRITION & RECOVERY', { bold: true, size: 18, color: C.gold })], { spacing: { after: 100 } }),
