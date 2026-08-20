@@ -58,7 +58,7 @@
  * DELIBERATELY NOT GIVEN AN RIR TARGET: plank holds and both farmer carries
  * (time/distance/grip-governed, not proximity-to-failure governed), and the
  * corrective/activation work in Day 2 Block A (banded lateral walk,
- * single-leg balance) — consistent with how Elizabeth Poyner's document
+ * single-leg balance) — consistent with how Elizabeth Poynor's document
  * treats its own carries and isometrics.
  * DAY 2 JUDGMENT CALL, stated rather than buried: DB Split Squat is the
  * "PRIMARY UNILATERAL" lift of its block, which the 2-RIR default would
@@ -68,7 +68,7 @@
  * closing the leg asymmetry under control. Prescribing 2 RIR there would
  * contradict the day's stated intent and flatten the week's intensity
  * variation. Assigned the technique/submaximal band instead, matching the
- * house precedent on Elizabeth Poyner's own 60% day (Romanian Deadlift,
+ * house precedent on Elizabeth Poynor's own 60% day (Romanian Deadlift,
  * "3 RIR — sub-maximal").
  *
  * REVISION (8/19/2026 — ICONS BLOCK METHOD RESTRUCTURE, roster-wide

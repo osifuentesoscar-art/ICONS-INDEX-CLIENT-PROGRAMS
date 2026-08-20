@@ -221,7 +221,7 @@ clearFlag(label, body)
                                       // see Rena Paul's script) so the load column itself
                                       // carries the progression, rather than burying it
                                       // in a block intro paragraph (see Elizabeth
-                                      // Poyner's Hip Thrust/Split Stance Hex DL, where
+                                      // Poynor's Hip Thrust/Split Stance Hex DL, where
                                       // the Wk1 numbers live only in `intro` prose and
                                       // `load` never states them) or leaving it implicit.
                                       // Not retrofitted roster-wide in this pass — apply
@@ -273,6 +273,6 @@ A standalone before/after progress report — for a client with two Styku scans 
 }
 ```
 
-**Never fabricate a "before" value.** Only put a metric/lift in `comparison.rows` or `strengthGains.rows` if both the before and after numbers are actually documented — if a metric (e.g. ALST/VFA/Shape Score on a client whose earlier scan predates that report page) or a PR (e.g. a lift with no prior numeric baseline on file) only has a current value, describe it in `narrative` as a newly-established baseline or an undocumented-improvement PR instead of inventing a "before" number for the table. See `scripts/elizabeth_poyner_improvement_doc.js` for the reference implementation of this rule.
+**Never fabricate a "before" value.** Only put a metric/lift in `comparison.rows` or `strengthGains.rows` if both the before and after numbers are actually documented — if a metric (e.g. ALST/VFA/Shape Score on a client whose earlier scan predates that report page) or a PR (e.g. a lift with no prior numeric baseline on file) only has a current value, describe it in `narrative` as a newly-established baseline or an undocumented-improvement PR instead of inventing a "before" number for the table. See `scripts/elizabeth_poynor_improvement_doc.js` for the reference implementation of this rule.
 
 ---

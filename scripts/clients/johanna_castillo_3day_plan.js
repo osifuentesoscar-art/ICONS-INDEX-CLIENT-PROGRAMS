@@ -16,7 +16,7 @@
  *
  * REVISION (8/13/2026, icons-roster-analyst cross-check) — AGE BRACKET / LIFTMOR
  * NOTE ADDED: every other 45-55/55-65 bracket client on the roster (Johnna
- * Macarthur, Rena Paul, Mary Burfete, Siobhan Hansen, Elizabeth Poyner)
+ * Macarthur, Rena Paul, Mary Burfete, Siobhan Hansen, Elizabeth Poynor)
  * carries a LIFTMOR bone-loading candidacy / T-score screening note; this
  * document had none. Added below, matching the established wording pattern
  * for her bracket (45-55, confirmed postmenopausal).

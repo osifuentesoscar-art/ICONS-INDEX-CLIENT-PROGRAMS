@@ -405,7 +405,7 @@ const data = {
 };
 
 async function main() {
-  const outDir = path.join(__dirname, '..', '..', 'clients', 'jake_poyner');
+  const outDir = path.join(__dirname, '..', '..', 'clients', 'jake_Poyner');
   fs.mkdirSync(outDir, { recursive: true });
 
   const buffer = await buildDocument(data);

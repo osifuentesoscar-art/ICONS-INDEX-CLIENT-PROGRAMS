@@ -369,7 +369,7 @@
  *      each updated to state the Wk4-check → Wk5-deload → Wk6-8-rebuild
  *      arc so no field implies unbroken linear loading through 8 weeks.
  *   3. BONE DENSITY (new gold baselineNote, client-visible, placed after
- *      the teal Styku note; modeled on Elizabeth Poyner's "Bone-Loading
+ *      the teal Styku note; modeled on Elizabeth Poynor's "Bone-Loading
  *      Candidacy" note): postmenopausal + low body weight are two stacked
  *      osteoporosis risk factors and the document never mentioned bone
  *      density client-side (the internal Age Bracket note's LIFTMOR line

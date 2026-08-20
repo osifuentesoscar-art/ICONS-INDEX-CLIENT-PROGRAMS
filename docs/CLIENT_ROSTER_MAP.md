@@ -45,9 +45,9 @@ Kelly Mulroy    → MIGRATED 8/18/2026 into this repo's clients/scripts structur
     deliverable during her 8/18 engine migration): OHP 25 lbs×3RM, DB Row, Push-Up,
     Plank Hold, Farmer Carry 35 lbs/hand, Assisted Pull-Up — six rows, see CLIENTS.md.
 
-Elizabeth Poyner → MIGRATED 8/14/2026 into this repo's clients/scripts structure — see
-                    `clients/elizabeth_poyner/Elizabeth_Poyner_5Day_Training_Plan.docx` /
-                    `scripts/elizabeth_poyner_5day_plan.js` and CLIENTS.md's "Elizabeth Poyner"
+Elizabeth Poynor → MIGRATED 8/14/2026 into this repo's clients/scripts structure — see
+                    `clients/elizabeth_poynor/Elizabeth_Poynor_5Day_Training_Plan.docx` /
+                    `scripts/elizabeth_poynor_5day_plan.js` and CLIENTS.md's "Elizabeth Poynor"
                     entry for the current, engine-built version (which also fixed a missing
                     pelvic floor note on Thu/Fri — see CLIENTS.md for the open items flagged
                     alongside that fix). This block's numbers are the pre-migration snapshot.

@@ -1,12 +1,12 @@
 /**
- * Elizabeth Poyner — ICONS 5-Day Training Plan
+ * Elizabeth Poynor — ICONS 5-Day Training Plan
  * Brace Life Studios
  *
  * FIRST BUILD SCRIPT for this client. Prior to this build, her main training
- * plan (`clients/elizabeth_poyner/Elizabeth_Poyner_5Day_Training_Plan.docx`)
+ * plan (`clients/elizabeth_poynor/Elizabeth_Poynor_5Day_Training_Plan.docx`)
  * was the one active client document maintained as a direct hand-edit — no
  * `buildDocument()` script existed, unlike her companion Brace Life
- * Improvement Report (`scripts/elizabeth_poyner_improvement_doc.js`). This
+ * Improvement Report (`scripts/elizabeth_poynor_improvement_doc.js`). This
  * migrates her onto the engine, triggered by a same-day `icons-intake-monitor`
  * finding: her Thursday (Heavy Lower) and Friday (Heavy Prep) day pages were
  * missing the Pelvic Floor Safety Note despite clear trigger content (Hex
@@ -356,7 +356,7 @@ const path = require('path');
 const { buildDocument } = require('../icons_template');
 
 const client = {
-  name: 'Elizabeth Poyner',
+  name: 'Elizabeth Poynor',
   programTitle: '5-Day Training Plan',
   subtitle: '60–100% Progressive Intensity Build',
   schedule: 'Tue/Wed/Thu/Fri/Sat Gym',
@@ -803,7 +803,7 @@ const days = [
 ];
 
 const summary = {
-  subtitle: 'Elizabeth Poyner  ·  ICONS Index  ·  Progressive Intensity Build  ·  Week 1',
+  subtitle: 'Elizabeth Poynor  ·  ICONS Index  ·  Progressive Intensity Build  ·  Week 1',
   rows: [
     ['TUE', '70% — Green', 'Upper Strength', 'DB Row · Push-Ups · OHP · Incline Press', 'Row: 40→45 lbs · OHP: 20→22.5 lbs · Push-ups: 20 reps (controlled)'],
     ['WED', '80% — Gold', 'Glute & Hamstring', 'Hip Thrust PR · Split Hex DL · SL RDL', 'Hip Thrust: 135→155–160 lbs · Split DL: 155→175 lbs'],
@@ -838,16 +838,16 @@ const data = {
 };
 
 async function main() {
-  const outDir = path.join(__dirname, '..', '..', 'clients', 'elizabeth_poyner');
+  const outDir = path.join(__dirname, '..', '..', 'clients', 'elizabeth_poynor');
   fs.mkdirSync(outDir, { recursive: true });
 
   const buffer = await buildDocument(data);
-  const outPath = path.join(outDir, 'Elizabeth_Poyner_5Day_Training_Plan.docx');
+  const outPath = path.join(outDir, 'Elizabeth_Poynor_5Day_Training_Plan.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
 
   const clientBuffer = await buildDocument({ ...data, viewMode: 'client', clientHighlight });
-  const clientOutPath = path.join(outDir, 'Elizabeth_Poyner_5Day_Training_Plan_Client_View.docx');
+  const clientOutPath = path.join(outDir, 'Elizabeth_Poynor_5Day_Training_Plan_Client_View.docx');
   fs.writeFileSync(clientOutPath, clientBuffer);
   console.log('Wrote', clientOutPath);
 }

@@ -80,7 +80,7 @@
  *   - NO RIR target at all on distance/time/quality-governed work: farmer
  *     carry, both plank holds, Pallof press, the max-rep circuit push-up
  *     (already form-governed by its own cue), and the Day A cardiovascular
- *     finisher, which is HR-governed. Matches how Elizabeth Poyner's and
+ *     finisher, which is HR-governed. Matches how Elizabeth Poynor's and
  *     Mary Burfete's documents handle their own carries and isometrics.
  *   - No power/velocity work exists in this program (no jumps, throws or
  *     sled sprints), so the "Not RIR-governed — end the set if bar speed
@@ -126,7 +126,7 @@
  *   DAY B: slot 1 = NEW "Squat Priming" block — the warm-up's "goblet
  *     squat 2x10 light (depth focus)" PROMOTED out of warmUp prose per
  *     the standing warm-up drift rule (external load + rep target = an
- *     exercise row; same promotion Elizabeth Poyner's Thursday ramp got),
+ *     exercise row; same promotion Elizabeth Poynor's Thursday ramp got),
  *     at ~15 lbs (~50% of the documented Wk1 30 lb goblet working load —
  *     no invented number), 3+ RIR technique band. CONSEQUENCE + the one
  *     ordering change: with a knee-dominant priming row now preceding the

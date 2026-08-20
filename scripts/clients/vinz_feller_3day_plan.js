@@ -72,7 +72,7 @@
  *   - A dedicated purple baselineNote spells out the current scope
  *     decision explicitly (now: framework applied, not "no framework
  *     exists"), following the same document-don't-bury-in-code pattern
- *     established for Jake Poyner (see scripts/jake_poyner_3day_plan.js).
+ *     established for Jake Poyner (see scripts/jake_Poyner_3day_plan.js).
  *
  * What DOES carry over from ICONS, because it's sex-neutral structural
  * philosophy, not a numeric threshold: the Isolated -> Compound ->

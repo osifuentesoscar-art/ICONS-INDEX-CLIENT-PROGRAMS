@@ -1,5 +1,5 @@
 /**
- * Elizabeth Poyner — Brace Life Improvement Report
+ * Elizabeth Poynor — Brace Life Improvement Report
  * Brace Life Studios
  *
  * Compares two Styku scans on file for this client:
@@ -31,7 +31,7 @@
  * longer) and the ALST table no longer implies a graded "how good" score
  * above the At-Risk line. Reworded both to trend-metric framing — same
  * numbers, corrected description only. See the same-day header revision
- * in `scripts/elizabeth_poyner_5day_plan.js` for the parallel fix (plus
+ * in `scripts/elizabeth_poynor_5day_plan.js` for the parallel fix (plus
  * the LIFTMOR ">85% 1RM" correction, which doesn't apply to this document).
  */
 
@@ -40,7 +40,7 @@ const path = require('path');
 const { buildImprovementDoc } = require('../icons_template');
 
 const client = {
-  name: 'Elizabeth Poyner',
+  name: 'Elizabeth Poynor',
   subtitle: '6-Month Body Composition & Strength Progress',
   stats: ['Age 64', "5'5\"", 'Postmenopausal', 'Brace Life Studios'],
 };
@@ -109,9 +109,9 @@ const data = {
 
 async function main() {
   const buffer = await buildImprovementDoc(data);
-  const outDir = path.join(__dirname, '..', '..', 'clients', 'elizabeth_poyner');
+  const outDir = path.join(__dirname, '..', '..', 'clients', 'elizabeth_poynor');
   fs.mkdirSync(outDir, { recursive: true });
-  const outPath = path.join(outDir, 'Elizabeth_Poyner_Brace_Life_Improvement_Report.docx');
+  const outPath = path.join(outDir, 'Elizabeth_Poynor_Brace_Life_Improvement_Report.docx');
   fs.writeFileSync(outPath, buffer);
   console.log('Wrote', outPath);
 }

@@ -226,7 +226,7 @@
  *     Dead Bug and the reintroduced sit-up/bicycle crunch (control and
  *     symptom response), the Day A cardio finishers, and the Day B
  *     metabolic circuit (clock and movement quality). Matches how Elizabeth
- *     Poyner's document treats its own carries and isometrics.
+ *     Poynor's document treats its own carries and isometrics.
  *   - Full Push-Up (Floor Attempt) marked "Form-governed, not RIR" -- it is
  *     the one deliberately recorded max-rep set in the program, and its
  *     existing "stop 2 reps before form breaks" rule is the real governor.

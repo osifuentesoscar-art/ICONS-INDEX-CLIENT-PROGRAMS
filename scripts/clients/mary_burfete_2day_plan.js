@@ -90,7 +90,7 @@
  * TRAINING ADDED, 55-65 BRACKET: CLAUDE.md's Power Training section places
  * sub-maximal-load/maximal-intent power work in the 55-65 bracket already,
  * not just 65+ (power output declines before strength does), and Mary's two
- * closest bracket-mates on the roster (Siobhan Hansen 59, Elizabeth Poyner
+ * closest bracket-mates on the roster (Siobhan Hansen 59, Elizabeth Poynor
  * 64) both already carry it. Mary has no clinical flag — no shoulder issue,
  * no cardiac flag — that would rule out any particular movement, but the
  * addition below stays deliberately conservative and consistent with the
@@ -177,7 +177,7 @@
  * DELIBERATELY NOT GIVEN AN RIR TARGET, and why:
  *   - Farmer Carry, Plank Hold, Pallof Press — distance-, time- and
  *     quality-governed, not proximity-to-failure governed. Matches how
- *     Elizabeth Poyner's document (the roster's reference pattern for RIR
+ *     Elizabeth Poynor's document (the roster's reference pattern for RIR
  *     instrumentation) treats its own carries and isometrics.
  *   - Sled Push / Bike HIIT conditioning finisher — conditioning dose, not
  *     an RIR-governed strength set.
@@ -379,7 +379,7 @@ const baselineNotes = [
     type: 'gold',
     audience: 'internal',
     label: 'Power Training Added — 55-65 Bracket (8/16/2026)',
-    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day A\'s power block (Block E as of the 8/19/2026 Block Method restructure, part of the day\'s Full-Body Integration close) includes a Trap Bar Jump: a light load well below her tested hinge working weights, moved with maximal intent, full recovery between sets. Full recovery is the defining design feature of power work, distinct from a metabolic stimulus, so it is sequenced before the Conditioning Finisher rather than after it — trained fresh, not stacked onto fatigue. Mary carries no clinical flag ruling out any particular movement, but a lower-body, non-overhead jump pattern was chosen as the more conservative default, consistent with how this same addition was made for her closest bracket-mates on the roster (Siobhan Hansen, Elizabeth Poyner), and because it pairs naturally with the hex bar equipment already in use on this day.',
+    body: 'CLAUDE.md\'s Power Training section places sub-maximal-load, maximal-intent power work in the 55-65 bracket already, not just 65+ — power output declines before strength does, so waiting until 65 is a real cost. Day A\'s power block (Block E as of the 8/19/2026 Block Method restructure, part of the day\'s Full-Body Integration close) includes a Trap Bar Jump: a light load well below her tested hinge working weights, moved with maximal intent, full recovery between sets. Full recovery is the defining design feature of power work, distinct from a metabolic stimulus, so it is sequenced before the Conditioning Finisher rather than after it — trained fresh, not stacked onto fatigue. Mary carries no clinical flag ruling out any particular movement, but a lower-body, non-overhead jump pattern was chosen as the more conservative default, consistent with how this same addition was made for her closest bracket-mates on the roster (Siobhan Hansen, Elizabeth Poynor), and because it pairs naturally with the hex bar equipment already in use on this day.',
   },
   {
     type: 'gold',

@@ -717,7 +717,7 @@ function blockLabel(letter, title, colorKey, day, introLabel, intro) {
 // trainer/auditor (e.g. "Antagonist rotation — ...", explaining why an
 // exercise was sequenced a certain way per CLAUDE.md's Antagonist
 // Rotation Rule) rather than something a client needs to read — see the
-// 8/17/2026 Client View pilot audit finding on Elizabeth Poyner's
+// 8/17/2026 Client View pilot audit finding on Elizabeth Poynor's
 // document, which is what surfaced this gap.
 function exTable(exercises, colorKey, isClientView = false) {
   const hue = hueOf(colorKey);

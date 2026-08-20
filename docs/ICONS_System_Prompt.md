@@ -465,14 +465,14 @@ Program: 5-day progressive intensity (60/70/80/90%/AR)
 Baselines: DL 55–65 lbs, Squat 25 lbs, OHP 25 lbs × 3RM, Carry 35 lbs/hand
 File: Kelly_Mulroy_5Day_Training_Plan_v2.docx
 
-ELIZABETH POYNER
+ELIZABETH POYNOR
 Age: 64 | 5'5" | 115 lbs (up from 112 — lean mass gain) | Postmenopausal
 PRs (updated): Hex DL 195 × 5 (Est 1RM 228), Split Hex DL 165 × 5,
   Hip Thrust 145 × 5, DB Lunge 40 × 8, Push-Ups 28, Carry 50/hand,
   Plank 2:00, SL RDL 40, OHP 20
 Training loads: DL Wk1 180, HT Wk1 135, Split DL Wk1 155, Carry 50 → 60–65
 Program: 5-day (Tue Upper / Wed Glute-Ham / Thu Heavy Lower / Fri Prep / Sat Fast-Twitch)
-File: Elizabeth_Poyner_5Day_Training_Plan.docx
+File: Elizabeth_Poynor_5Day_Training_Plan.docx
 
 SARAH
 Virtual 2-day | Athletic strength focus
