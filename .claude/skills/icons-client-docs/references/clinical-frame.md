@@ -31,6 +31,31 @@ questions about TRT get the same referral-not-diagnose posture the women's
 framework gives HRT. Bone-loading and power evidence transfers with caveats —
 see CLAUDE.md's Male Client Programming Framework.
 
+**A male client's build must switch off the default nutrition block.**
+`buildDocument()` renders `nutritionBlock()` unless you set
+`includeNutritionBlock: false`, and that block calls `proteinTargets()`, which is
+female-keyed. Verified on a 47-year-old male at 88.9 kg:
+
+```
+proteinTargets()      → 160–178 g/day   labelled "1.8–2.0 g/kg — 40+ tier"
+maleProteinTargets()  → 142–196 g/day   working 169–196
+```
+
+The first number is the women's age-banded tier — which is itself retired — and
+it will print into his document silently. So for any male client:
+
+```js
+includeNutritionBlock: false,
+// ...and splice the male note in through baselineNotes:
+baselineNotes: [
+  { render: maleNutritionNote(client) },
+  { render: testosteroneNote(client) },   // returns [] under age 40
+]
+```
+
+`maleProteinTargets()`, `maleNutritionNote()`, and `testosteroneNote()` are all
+exported from the engine and are the male fork of the same calculation.
+
 **Case C — no demographic data at all** (no age, no sex, no scan; only
 trainer-observed constraints). This is distinct from Case B and is the one most
 often handled wrongly. You cannot determine which framework applies, so the
@@ -132,6 +157,11 @@ yourself:
 const gapPct = Math.abs(l - r) / Math.max(l, r) * 100;  // ≥ 10 → protocol active
 ```
 
+It also rounds against you at small gaps: `weakerSide(9.8, 9.9)` returns
+`'even'`, because `9.8 - 9.9` evaluates to `-0.09999999999999964` and slips under
+the function's 0.1 guard. Harmless at a 1% gap, but it is one more reason the
+percentage is the thing to trust.
+
 When it is active: lower LST is the weaker side; the weaker side leads every
 unilateral set; a suitcase carry is held in the weaker hand; log left and right
 separately in the `flag` or `cue` field; track it to the 8-week rescan. Present
@@ -186,6 +216,12 @@ ambiguity should produce caution rather than a default of "not postmenopausal."
 Use this field rather than setting `isPostmenopausal: true` on a client who
 isn't; the flag is also read by protein logic and by the age-bracket framing, so
 falsifying it corrupts more than the one callout you were aiming at.
+
+**`proteinBar()` cannot fire for an at-risk male.** Its trigger is hardcoded
+`client.alstIndex < 5.5` — the female threshold. A man at 6.5 is genuinely
+At-Risk against the male 7.0 cutoff and gets no callout at all. The failure is
+silent and in the dangerous direction, so for a male At-Risk client write the
+flag yourself; do not assume the engine caught it.
 
 Anything not in this table is hand-written prose with no engine enforcement
 behind it — a cardiac HR ceiling, a rotator-cuff precaution, a stop signal. Those
