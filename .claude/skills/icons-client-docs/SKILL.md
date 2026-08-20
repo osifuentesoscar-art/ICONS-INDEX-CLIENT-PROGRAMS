@@ -164,6 +164,13 @@ Kieser line serves as the studio's cable machine. Virtual and home-gym clients
 program against their own equipment instead. Full list in
 `references/training-plan.md`.
 
+**Don't change the engine while building a client document.** If
+`icons_template.js` is genuinely missing something you need, say so and work
+around it in the client's script — a build is the wrong moment to alter the file
+every other client's document renders through, and an engine change made in
+passing gets no review and no regression check against the rest of the roster.
+The same goes for the delivered `.docx` of a client you weren't asked to touch.
+
 **CLAUDE.md wins on conflict.** These reference files compress its science layer
 into build-time decision tables; CLAUDE.md remains authoritative and carries the
 citations and the reasoning. If the two disagree, follow CLAUDE.md and flag the
