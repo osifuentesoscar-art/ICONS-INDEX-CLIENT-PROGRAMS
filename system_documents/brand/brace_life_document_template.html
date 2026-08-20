@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brace Life Studios — Document Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@700;800&family=Inter:wght@700&family=Manrope:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'slate-foundation': '#1E293B',
+          'electric-cyan':    '#00F0FF',
+          'mist-grey':        '#F8FAFC',
+          'surface-white':    '#FCF8FA',
+          'on-surface':       '#1B1B1D',
+          'subtle-outline':   '#C6C6CD',
+        },
+        fontFamily: {
+          display: ['Anybody', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+          body:    ['Manrope', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+          label:   ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        },
+        boxShadow: { ambient: '0 12px 32px rgba(15, 23, 42, 0.08)' },
+        borderRadius: { card: '1rem' },
+      }
+    }
+  }
+</script>
+<style>
+  /* Critical baseline — keeps the document on-brand even if Tailwind or the
+     font request fails to load. See design.md §6. */
+  :root {
+    --slate:   #1E293B;
+    --cyan:    #00F0FF;
+    --mist:    #F8FAFC;
+    --surface: #FCF8FA;
+    --ink:     #1B1B1D;
+    --outline: #C6C6CD;
+    --ambient: 0 12px 32px rgba(15, 23, 42, 0.08);
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+  }
+  .font-display { font-family: 'Anybody', system-ui, -apple-system, sans-serif; letter-spacing: -0.02em; }
+  .font-body    { font-family: 'Manrope', system-ui, -apple-system, sans-serif; }
+  .font-label   { font-family: 'Inter', system-ui, -apple-system, sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+
+  /* Glass surface — 12px blur, crisp white border, navy ambient shadow. */
+  .glass {
+    background: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--ambient);
+    border-radius: 1rem;
+  }
+  /* Glass over the slate hero — same construction, inverted for dark ground. */
+  .glass-dark {
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 1rem;
+  }
+  .measure { max-width: 72ch; }         /* body copy 65–75ch */
+  .scroll-x { overflow-x: auto; }        /* wide blocks scroll themselves */
+
+  /* Numbered protocol steps — cyan numeral on a slate disc. */
+  .step-list { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  .step-list > li { counter-increment: step; position: relative; padding-left: 3.25rem; margin-bottom: 1.5rem; }
+  .step-list > li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute; left: 0; top: -0.1rem;
+    width: 2.25rem; height: 2.25rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--slate); color: var(--cyan);
+    border-radius: 9999px;
+    font-family: 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .glass, .glass-dark {
+      background: #fff !important;
+      -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+      box-shadow: none !important; border: 1px solid var(--outline) !important;
+    }
+    .no-print { display: none !important; }
+    section { break-inside: avoid; }
+  }
+</style>
+</head>
+
+<body class="font-body bg-surface-white text-on-surface">
+
+<main class="mx-auto w-full max-w-[1120px] px-6 sm:px-8">
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       01 · DOCUMENT HEADER & HERO  (design.md §5.1)
+       Pill eyebrow · display title · subhead · metadata strip
+       ══════════════════════════════════════════════════════════════════ -->
+  <header class="mt-10 sm:mt-14">
+    <div class="rounded-card bg-slate-foundation px-7 py-12 sm:px-12 sm:py-16 shadow-ambient"
+         style="background:#1E293B;border-radius:1rem;">
+
+      <span class="font-label inline-block rounded-full px-4 py-2 text-[13px]"
+            style="background:#00F0FF;color:#1E293B;">
+        Brace Protocol
+      </span>
+
+      <h1 class="font-display mt-7 text-white text-[2.75rem] sm:text-[4rem]"
+          style="font-weight:800;line-height:1.1;">
+        Document Title Sits Here,<br>Commanding the Page
+      </h1>
+
+      <p class="font-body measure mt-6 text-[1.0625rem]" style="color:rgba(255,255,255,0.78);">
+        One evocative sentence that frames the work — what this protocol restores,
+        for whom, and over what horizon.
+      </p>
+
+      <!-- Metadata strip -->
+      <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8"
+           style="border-top:1px solid rgba(255,255,255,0.16);padding-top:1.75rem;">
+        <div>
+          <p class="font-label text-[11px]" style="color:#00F0FF;">Program Duration</p>
+          <p class="font-body mt-1.5 text-white">8 Weeks</p>
+        </div>
+        <div>
+          <p class="font-label text-[11px]" style="color:#00F0FF;">Intensity Level</p>
+          <p class="font-body mt-1.5 text-white">Progressive · 60–90%</p>
+        </div>
+        <div>
+          <p class="font-label text-[11px]" style="color:#00F0FF;">Target Outcome</p>
+          <p class="font-body mt-1.5 text-white">Strength &amp; Restoration</p>
+        </div>
+        <div>
+          <p class="font-label text-[11px]" style="color:#00F0FF;">Lead Practitioner</p>
+          <p class="font-body mt-1.5 text-white">—</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       02 · METRIC / KEY HIGHLIGHT ROW  (design.md §5.2)
+       3–4 glass blocks. Cyan values sit on slate, never on the light page.
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="mt-8 sm:mt-10" aria-label="Key metrics">
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+
+      <div class="glass px-7 py-8">
+        <p class="font-label text-[11px]" style="color:#475569;">Sessions / Week</p>
+        <p class="font-display mt-3 text-[2.5rem]" style="font-weight:800;line-height:1.1;color:#1E293B;">03</p>
+        <p class="font-body mt-1 text-[0.875rem]" style="color:#475569;">Supervised, progressive</p>
+      </div>
+
+      <div class="glass px-7 py-8">
+        <p class="font-label text-[11px]" style="color:#475569;">Reassessment</p>
+        <p class="font-display mt-3 text-[2.5rem]" style="font-weight:800;line-height:1.1;color:#1E293B;">4 wk</p>
+        <p class="font-body mt-1 text-[0.875rem]" style="color:#475569;">Strength battery re-test</p>
+      </div>
+
+      <!-- Cyan-value variant: the block itself is slate, so cyan clears AA. -->
+      <div class="px-7 py-8" style="background:#1E293B;border-radius:1rem;box-shadow:0 12px 32px rgba(15,23,42,0.08);">
+        <p class="font-label text-[11px]" style="color:rgba(255,255,255,0.62);">Recovery Window</p>
+        <p class="font-display mt-3 text-[2.5rem]" style="font-weight:800;line-height:1.1;color:#00F0FF;">48h</p>
+        <p class="font-body mt-1 text-[0.875rem]" style="color:rgba(255,255,255,0.72);">Between heavy sessions</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       03 · MODULAR SECTION  (design.md §5.3)
+       Numbered tag · editorial body · glass callout · protocol steps
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="mt-20 sm:mt-28">
+    <p class="font-label text-[13px]" style="color:#1E293B;">01. Physiological Foundation</p>
+    <div style="height:3px;width:56px;background:#00F0FF;margin-top:0.75rem;border-radius:9999px;"></div>
+
+    <h2 class="font-display mt-7 text-[1.875rem] sm:text-[2.25rem]"
+        style="font-weight:700;line-height:1.15;color:#1E293B;">
+      The section headline, set with room to breathe
+    </h2>
+
+    <p class="font-body measure mt-5">
+      Editorial body copy runs here at 16px with a 1.6 line height, held to a
+      65–75 character measure so the eye never has to hunt for the start of the
+      next line. Paragraphs stay balanced and unhurried — the whitespace is part
+      of the argument, not a leftover.
+    </p>
+    <p class="font-body measure mt-4">
+      A second paragraph develops the point. Precision over enthusiasm: state what
+      the protocol does, on what evidence, and what the client should feel.
+    </p>
+
+    <!-- Frosted glass callout — cyan left accent -->
+    <aside class="glass mt-9 px-7 py-6" style="border-left:4px solid #00F0FF;">
+      <p class="font-label text-[11px]" style="color:#1E293B;">Coaching Pearl</p>
+      <p class="font-body mt-2.5 measure">
+        Control precedes power. Regress range or load the moment alignment falters —
+        quality movement under tension is the transformation driver, not depth for
+        its own sake.
+      </p>
+    </aside>
+
+    <!-- Protocol steps -->
+    <h3 class="font-body mt-12 text-[1.125rem]" style="font-weight:600;letter-spacing:0.05em;color:#1E293B;">
+      Protocol Sequence
+    </h3>
+    <ol class="step-list measure mt-6">
+      <li>
+        <p class="font-body" style="font-weight:600;color:#1E293B;">Corrective &amp; activation</p>
+        <p class="font-body mt-1">Client-specific work sourced from documented findings — never generic filler.</p>
+      </li>
+      <li>
+        <p class="font-body" style="font-weight:600;color:#1E293B;">Primary compound</p>
+        <p class="font-body mt-1">The day's main lift, carrying the programmed week-to-week progression.</p>
+      </li>
+      <li>
+        <p class="font-body" style="font-weight:600;color:#1E293B;">Accessory &amp; integration</p>
+        <p class="font-body mt-1">Hypertrophy volume, then a closer that pulls the day's patterns together.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Second modular section — shows the rhythm repeating -->
+  <section class="mt-20 sm:mt-28">
+    <p class="font-label text-[13px]" style="color:#1E293B;">02. Restoration Timeline</p>
+    <div style="height:3px;width:56px;background:#00F0FF;margin-top:0.75rem;border-radius:9999px;"></div>
+
+    <h2 class="font-display mt-7 text-[1.875rem] sm:text-[2.25rem]"
+        style="font-weight:700;line-height:1.15;color:#1E293B;">
+      Where the work is absorbed
+    </h2>
+
+    <p class="font-body measure mt-5">
+      Duplicate this section block for each module in the document. Wide content —
+      tables, schedules, comparison grids — belongs inside a scroll container so
+      the page body never moves sideways on a phone.
+    </p>
+
+    <div class="scroll-x glass mt-8">
+      <table class="w-full" style="border-collapse:collapse;min-width:560px;">
+        <thead>
+          <tr style="background:rgba(30,41,59,0.04);">
+            <th class="font-label text-left text-[11px]" style="padding:0.9rem 1.25rem;color:#1E293B;">Phase</th>
+            <th class="font-label text-left text-[11px]" style="padding:0.9rem 1.25rem;color:#1E293B;">Focus</th>
+            <th class="font-label text-left text-[11px]" style="padding:0.9rem 1.25rem;color:#1E293B;">Marker</th>
+          </tr>
+        </thead>
+        <tbody class="font-body text-[0.9375rem]">
+          <tr style="border-top:1px solid #C6C6CD;">
+            <td style="padding:0.9rem 1.25rem;">Weeks 1–4</td>
+            <td style="padding:0.9rem 1.25rem;">Technique &amp; base volume</td>
+            <td style="padding:0.9rem 1.25rem;">Strength battery re-test</td>
+          </tr>
+          <tr style="border-top:1px solid #C6C6CD;">
+            <td style="padding:0.9rem 1.25rem;">Week 5</td>
+            <td style="padding:0.9rem 1.25rem;">Reload — reduced stress</td>
+            <td style="padding:0.9rem 1.25rem;">Session quality restored</td>
+          </tr>
+          <tr style="border-top:1px solid #C6C6CD;">
+            <td style="padding:0.9rem 1.25rem;">Weeks 6–8</td>
+            <td style="padding:0.9rem 1.25rem;">Peak expression</td>
+            <td style="padding:0.9rem 1.25rem;">Composition rescan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       04 · EDITORIAL QUOTE CARD  (design.md §5.4)
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="mt-20 sm:mt-28">
+    <figure class="glass px-8 py-12 sm:px-14 sm:py-16" style="margin:0;">
+      <div style="height:3px;width:40px;background:#00F0FF;border-radius:9999px;"></div>
+      <blockquote class="font-body measure mt-7 text-[1.25rem] sm:text-[1.375rem]"
+                  style="font-style:italic;line-height:1.55;color:#1E293B;margin:0;">
+        “It's not about working out. It's about working in.”
+      </blockquote>
+      <figcaption class="font-label mt-7 text-[11px]" style="color:#475569;">
+        Practitioner Attribution · Role
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       05 · PRIMARY ACTION CALLOUT  (design.md §5.5)
+       Exactly one per document. Solid cyan fill, slate text, ≥56px.
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="mt-20 sm:mt-28">
+    <div class="rounded-card px-7 py-12 sm:px-14 sm:py-16 text-center"
+         style="background:#1E293B;border-radius:1rem;box-shadow:0 12px 32px rgba(15,23,42,0.08);">
+      <h2 class="font-display text-white text-[1.75rem] sm:text-[2.25rem]"
+          style="font-weight:800;line-height:1.15;">
+        Ready to begin the protocol
+      </h2>
+      <p class="font-body mx-auto mt-4 measure" style="color:rgba(255,255,255,0.78);">
+        One clear next step. No competing calls to action.
+      </p>
+      <a href="#"
+         class="font-label mt-9 inline-flex items-center justify-center rounded-lg px-10 text-[14px] no-print"
+         style="min-height:56px;background:#00F0FF;color:#1E293B;border-radius:0.5rem;text-decoration:none;">
+        Schedule Your Assessment
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       06 · FOOTER  (design.md §5.6)
+       ══════════════════════════════════════════════════════════════════ -->
+  <footer class="mb-16 mt-20 sm:mt-28" style="border-top:1px solid #C6C6CD;padding-top:2rem;">
+    <p class="font-body text-[0.875rem]" style="color:#475569;">
+      Brace Life Studios · Certified Document System
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>
