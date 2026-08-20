@@ -3177,7 +3177,24 @@ Fix these before onboarding a partner or generating another partnership briefing
    data.json has everything the legacy version had, delete clients/august_olivia/ and
    scripts/august_olivia_3day_plan.js.
 
-2. DUPLICATE TEMPLATE ENGINE — schema-drift risk.
+2. DUPLICATE TEMPLATE ENGINE — **RESOLVED 8/20/2026. The duplicate is deleted; one engine remains.**
+   `my-agent/engine/icons_template.cjs` no longer exists. `my-agent/engine/render.cjs` — the
+   ONLY thing that ever required it, and only for `buildDocument` — now requires
+   `../../scripts/icons_template.js`, so the automated pipeline and every client build script
+   share one engine. No code was ported: the diff showed the .cjs exported a strict SUBSET of
+   the .js API (its extra internal helpers were the retired boxed-callout implementation, which
+   the house visual language superseded), so there was nothing in it worth keeping.
+   HOW "NOTHING LOST" WAS VERIFIED, not assumed: every `clients/*/data.json` the pipeline owns
+   (_template, august-olivia, johanna-castillo) was rendered through BOTH engines, then compared
+   on DATA COMPLETENESS — each leaf value from the source data.json checked against each render.
+   The canonical .js rendered strictly MORE of every file (3-4 more values each) and lost nothing;
+   the only values absent from both are non-content selectors (`clinicalFlag`, `teal`, booleans).
+   The pipeline was then re-run end-to-end through the rewired wrapper, and the client build
+   scripts re-run, both before and after deletion. The repo is `"type": "commonjs"`, so the .cjs
+   extension was never load-bearing. `my-agent/scripts/icons_pdf.py`'s docstring reference was
+   updated in the same pass. HISTORICAL RECORD OF THE ISSUE FOLLOWS.
+
+   ~~2. DUPLICATE TEMPLATE ENGINE — schema-drift risk.~~
    scripts/icons_template.js (645 lines) is called "canonical" by this file and by
    docs/ICONS_System_Prompt.md. But the automated pipeline (generate.mjs → 
    my-agent/engine/render.cjs) actually renders through a SEPARATE file,

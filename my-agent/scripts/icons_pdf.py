@@ -5,7 +5,8 @@ ICONS canonical PDF engine — Brace Life Studios.
 Layout constants, cue-length rule, and the overflow-audit contract are
 pinned to docs/ICONS_System_Prompt.md — do not change them without
 updating that spec. Consumes the same data schema as the docx engine
-(my-agent/engine/icons_template.cjs) so one client data.json drives both
+(scripts/icons_template.js — the single canonical engine) so one client
+data.json drives both
 deliverables.
 
 CLI:
