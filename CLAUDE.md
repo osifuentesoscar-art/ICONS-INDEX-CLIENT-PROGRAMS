@@ -55,6 +55,28 @@ System prompt     → docs/ICONS_System_Prompt.md (paste-into-Projects reference
 
 ---
 
+## CODE MINIMALISM CHECKLIST
+
+Run this before writing any new code in this repo — engine changes, client build scripts, helpers.
+
+```
+1. Does this need to exist?   → no: skip it (YAGNI)
+2. Already in this codebase?  → reuse it, don't rewrite
+3. Stdlib does it?            → use it
+4. Native platform feature?   → use it
+5. Installed dependency?      → use it
+6. One line?                  → one line
+7. Only then: the minimum that works
+```
+
+Step 2 is the one this repo keeps failing: the duplicate template engine and the
+duplicate August Olivia client record under "KNOWN ISSUES" below are both rewrites of
+something that already existed. Check `icons_template.js`'s exported API (`labeledPara`,
+`sectionTitle`, `exTable`, `epley1RM`, `weakerSide`, the callout wrappers) before adding
+a helper — most "new" formatting needs are already a one-line call.
+
+---
+
 ## GOOGLE DRIVE — MANUAL HANDOFF ONLY (Aug 2026 policy change, supersedes prior auto-upload instruction)
 
 **Do NOT attempt to upload finished deliverables to Google Drive via `mcp__Google_Drive__create_file`.** This was previously a standing "upload automatically every time" instruction, but it was retired after a full session (Aug 8–9, 2026) of diagnosis proved the automated path is fundamentally unreliable, not just occasionally flaky:
