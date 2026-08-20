@@ -112,6 +112,37 @@ const client = {
   alstIndex: 5.52,
 };
 
+// Styku scan block — added 8/20/2026. Identical to the full-gym companion
+// document's block: same client, same 8/13/2026 scan, so the two documents
+// cannot show different body-composition numbers. Previously this document
+// carried only bmr/alstIndex and pointed the reader at the full-gym document
+// for the rest — but that pointer lived in an `audience: 'internal'`
+// baselineNote, so her CLIENT VIEW dropped it and showed no scan data at all
+// and no way to find it. Body-composition values re-verified field by field
+// against her Styku Summary Report PDF (Drive, "STYKU SCANS (AUGUST)").
+// vfa/shapeScore/segmental LST are NOT in that Summary export and are carried
+// over from the full-gym document's dashboard-sourced figures.
+const styku = {
+  scanDate: '8/13/2026',
+  bodyFatPct: 26.6,
+  bodyFatRank: 'Fit',
+  leanMass: 79.9,
+  leanMassPct: 69.4,
+  fatMass: 30.7,
+  boneMass: 4.6,
+  bmi: 18.6,
+  bmr: 1299,
+  vfa: 20.1,
+  shapeScore: 85,
+  shapeScoreLabel: 'Excellent',
+  alstIndex: 5.52,
+  leftArmLST: 5.8,
+  rightArmLST: 6.1,
+  leftLegLST: 13.8,
+  rightLegLST: 14.3,
+  peerComparison: 'Lower body fat than 70% of her peers.',
+};
+
 // Loads shared/consistent with the studio version wherever the exercise is
 // already DB-based (OHP, Incline Press, Single-Leg RDL, Split Squat).
 const ohpRM = epley1RM(10, 5); // 12
@@ -132,9 +163,9 @@ const baselineNotes = [
   },
   {
     type: 'teal',
-    label: 'Styku Summary — Full Scan Detail Lives in the Full-Gym Document',
+    label: 'Styku Summary — Interpretation Notes',
     audience: 'internal',
-    body: 'ALST Index 5.52 kg/m² — within the normal reference range (>=5.5 kg/m²), NOT At-Risk, but only 0.02 kg/m² above the At-Risk cutoff — genuinely borderline and a real monitoring point for her 8-week rescan; ALST is tracked here as a trend metric, not a graded score, and no higher tier exists above the 5.5 kg/m² cutoff for women — the 7.0 kg/m² figure previously used as an upper tier is EWGSOP2\'s separate MALE at-risk threshold, not a female target. VFA (Segmental Analysis) 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md\'s prior absolute VFA risk-band table (which this document previously cited to assign this reading a risk-band label of its own, itself a correction of the band Styku\'s dashboard prints for it) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner\'s own validation limits (the separate raw "Visceral Fat 0.2" figure elsewhere on her scan is a different, non-cm² scale and is not used). BMI 18.6 — technically Normal, only 0.1 above the Underweight cutoff, noted as borderline and not flagged clinically. The complete Styku table (body fat, lean mass, bone mass, Shape Score, full segmental LST) lives in her companion 2-Day Full Gym Training Plan — the clinical facts and asymmetry protocol below apply identically here.',
+    body: 'ALST Index 5.52 kg/m² — within the normal reference range (>=5.5 kg/m²), NOT At-Risk, but only 0.02 kg/m² above the At-Risk cutoff — genuinely borderline and a real monitoring point for her 8-week rescan; ALST is tracked here as a trend metric, not a graded score, and no higher tier exists above the 5.5 kg/m² cutoff for women — the 7.0 kg/m² figure previously used as an upper tier is EWGSOP2\'s separate MALE at-risk threshold, not a female target. VFA (Segmental Analysis) 20.1 cm² — presented as a trend/context figure to track over time rather than a risk-band label; CLAUDE.md\'s prior absolute VFA risk-band table (which this document previously cited to assign this reading a risk-band label of its own, itself a correction of the band Styku\'s dashboard prints for it) was retired 8/17/2026 as unsupported by consensus guidance and by this scanner\'s own validation limits (the separate raw "Visceral Fat 0.2" figure elsewhere on her scan is a different, non-cm² scale and is not used). BMI 18.6 — technically Normal, only 0.1 above the Underweight cutoff, noted as borderline and not flagged clinically. The complete Styku table (body fat, lean mass, bone mass, Shape Score, full segmental LST) now renders in this document as well as in her companion 2-Day Full Gym Training Plan — both are built from the same 8/13/2026 scan, so the two can never disagree.',
   },
   {
     type: 'watch',
@@ -388,6 +419,7 @@ const summary = {
 
 const data = {
   client,
+  styku,
   baselines,
   baselinesTargetHeader: 'AT-HOME EQUIVALENT · 4-WEEK TARGET',
   baselineNotes,

@@ -358,6 +358,58 @@ _Numbered 9 but placed here, ahead of Section 8, deliberately: Section 8's Verif
 
 ---
 
+## 10. STYKU SCAN SOURCE REGISTER (added 8/20/2026)
+
+Xolokan uploaded a batch of Styku exports to a new Drive folder, **"STYKU SCANS (AUGUST)"**
+(`1juFnXikJRIZ4wC2qQbJefdjownzYWV9D`, created 8/20/2026). 11 PDFs, 10 unique clients — Elizabeth
+Poyner's scan appears twice (`..._18876809.pdf` and `..._18876809 2.pdf`, byte-for-byte the same
+scan). Every one was read and reconciled field by field against the matching build script.
+
+| Client | Scan date | Reconciliation |
+|---|---|---|
+| August Olivia | 8/5/2026 | ✅ all fields match |
+| Elizabeth Poyner | 8/7/2026 | ✅ all fields match (duplicate file in Drive) |
+| Johanna Castillo | 8/7/2026 | ✅ all fields match |
+| Rena Paul | 8/8/2026 | ✅ all fields match — filed in Drive under the Styku profile name **"Ren Itch"** (`renitchka@gmail.com`), not "Rena Paul" |
+| Mary Burfete | 8/10/2026 | ✅ all fields match |
+| Moe Shahheidari | 8/11/2026 | ⚠️ **corrected** — repo carried `fatMass: 61`, scan says **60.6** (192 lbs × 31.6% = 60.7, so the scan figure is right). Fixed in the script and in his CLIENTS.md line |
+| Johnna Macarthur | 8/12/2026 | ✅ all fields match |
+| Nicolette Scott | 8/13/2026 | ⚠️ **fixed** — see below |
+| Samantha Swan | 8/17/2026 | ⏸️ scan complete, **still gated** — no strength battery, so no build (Section 1a) |
+| Siobhan Hansen | 7/29/2026 | ✅ all fields match |
+
+### What the Summary Report export does NOT contain — read this before promising a client a full scan write-up
+
+These are Styku **Summary Report** PDFs. They carry body fat %, fat/lean/bone mass (lbs and %),
+BMR, BMI, android/gynoid mass, subcutaneous fat, a body-fat rank and peer-comparison line, and a
+full circumference set. They do **not** carry three fields this system treats as central:
+
+- **ALST Index (kg/m²)** — gates the At-Risk flag, the protein escalation, and the every-page
+  nutrition bar.
+- **VFA in cm²** — the Summary export has a "Visceral Fat" figure in **lbs**, a different scale
+  entirely. Do not substitute one for the other.
+- **Shape Score** — one of the eight boxes in the Assessment Report's Styku grid.
+
+Segmental **lean mass** per limb is also absent; the Summary export gives limb *circumferences*
+only, which are not the same measurement the Asymmetry Protocol runs on.
+
+Every existing client record that carries ALST / VFA-cm² / Shape Score / segmental LST got them
+from the **full Styku dashboard**, not from this export. Practical consequence: this batch can
+confirm and complete body-composition figures for a client who already has a dashboard record, but
+it cannot supply a first ALST or VFA reading for a client who doesn't. If the goal is "no client
+missing Styku data," the dashboard export is the one to pull.
+
+### Nicolette Scott — the one real document defect this batch surfaced
+
+Her **at-home** plan carried only `bmr` and `alstIndex`; her **full-gym** plan carried the complete
+block from the same 8/13/2026 scan. The at-home document pointed the reader to the gym document for
+the rest — but that pointer lived in an `audience: 'internal'` baselineNote, so her **Client View**
+dropped it and showed no scan data at all *and* no way to find it. Fixed 8/20/2026 by giving the
+at-home script the identical `styku` object, so the two documents are built from one scan and
+cannot disagree. Verified rendered in both the trainer and client copies.
+
+---
+
 ## 8. VERIFICATION STATUS
 
 This file was scaffolded 8/17/2026 with the gate/register/ledger structures above. Per-client data is being populated by a verification pass (`icons-operations-analyst`, dispatched 8/17/2026) that checks every specific claim against the actual current state of `CLIENTS.md` and the build scripts — not against the unverified directive that prompted this file's creation. See the Verification Log below for what's been confirmed, corrected, or is still pending.

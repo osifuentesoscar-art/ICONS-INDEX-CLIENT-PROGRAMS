@@ -139,7 +139,7 @@ const styku = {
   bodyFatRank: 'At-Risk',
   leanMass: 125.3,
   leanMassPct: 65.4,
-  fatMass: 61,
+  fatMass: 60.6,
   boneMass: 5.8,
   bmi: 26.7,
   bmr: 1858,
