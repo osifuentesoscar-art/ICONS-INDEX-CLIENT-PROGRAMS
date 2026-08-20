@@ -164,7 +164,7 @@ const baselineNotes = [
   {
     type: 'teal',
     label: 'Evidence Base — Volume, Frequency, RIR, Protein & Tendon Nutrition (Age 25, Male)',
-    body: 'Robinson et al. (2024/2025) — a meta-regression of 67 studies / 2,000+ participants averaging age 25.2, putting Jake at the center of this evidence base rather than requiring extrapolation: ~10–20 hard sets/muscle/week before diminishing returns (this program targets ~12–16 across the 3 days); frequency matters more for strength than hypertrophy once volume is equated, so squat/hinge/press/pull patterns are each hit twice weekly. Grgic et al. (2018): strength gains are largely insensitive to proximity to failure — RPE 6–8 (≈2–4 RIR) is used throughout, no true failure, both per the evidence and to protect the QL. Morton et al. (2018): 1.6–2.2 g/kg/day protein supports hypertrophy with a plateau in benefit around 1.6 g/kg/day — target roughly 130–175g/day, spread across 4–5 meals including a pre-sleep dose (pre-sleep protein improves overnight muscle protein synthesis). Shaw et al. (2017), Bischof et al. (2024), Praet et al. (2019 — specifically in Achilles tendinopathy patients): 15–30g vitamin-C-enriched collagen/gelatin 30–60 min before loading increases collagen synthesis markers and, over months, tendon stiffness — directly relevant given the QL tendinosis. Recommend 15g collagen peptides + ~50mg vitamin C, 30–60 min pre-session, on all 3 training days, alongside Jason Bethea\'s continued care.',
+    body: 'Robinson et al. (2024/2025) — a meta-regression of 67 studies / 2,000+ participants averaging age 25.2, putting Jake at the center of this evidence base rather than requiring extrapolation: ~10–20 hard sets/muscle/week before diminishing returns (this program targets ~12–16 across the 3 days); frequency matters more for strength than hypertrophy once volume is equated, so squat/hinge/press/pull patterns are each hit twice weekly. Grgic et al. (2018): strength gains are largely insensitive to proximity to failure — RPE 6–8 (≈2–4 RIR) is used throughout, no true failure, both per the evidence and to protect the QL. Morton et al. (2018): 1.6–2.2 g/kg/day protein supports hypertrophy with a plateau in benefit around 1.6 g/kg/day — target roughly 130–175g/day, spread across 4–5 meals including a pre-sleep dose (pre-sleep protein improves overnight muscle protein synthesis). Collagen — corrected framing (8/20/2026, current evidence): Shaw et al. (2017) dosed 15g vitamin-C-enriched gelatin one hour pre-loading, so the protocol here is 15g collagen peptides + ~50mg vitamin C taken 45–60 minutes before each session (the earlier \'30–60 min\' window was never actually studied at this 15g dose — the correction moves this program closer to the source protocol, not away from it). What it is honestly for: a chronic, structural connective-tissue support protocol taken consistently on training days across 12+ weeks, not a pre-workout performance aid. A January 2026 umbrella review (16 meta-analyses, 113 RCTs) found a positive effect on tendon MORPHOLOGY at low certainty (4 RCTs, 127 participants) and NO effect on tendon mechanical properties, and a separate meta-analysis of 13 RCTs found collagen does not further improve musculoskeletal performance when added to exercise — so the prior \'increases collagen synthesis markers and, over months, tendon stiffness\' claim overstates what the outcome evidence supports and is retired here. Priority order in this program: protein intake first, then creatine if he chooses to use it, then collagen — collagen is the most speculative of the three and should never displace either. Mechanical loading remains the actual tendon intervention; the collagen protocol supports it and does not substitute for it. Continue alongside Jason Bethea\'s care.',
   },
   {
     type: 'purple',
@@ -191,11 +191,11 @@ const days = [
     descriptor: 'FOUNDATION DAY · REBUILD BILATERAL GLUTE MEDIUS OUTPUT · ISOMETRIC TRUNK BASE',
     intensityLabel: 'Day 1 Priority',
     intensityPara: 'Rebuild consistent bilateral hip abduction force output and give the trunk extensors an isometric strength base, without loading the QL directly. Control precedes power — this day is entirely about reliable activation before anything gets loaded hard. Progression is RPE-based (see Load & Progression note), not the standard ICONS 60/70/80/90 day-intensity framework; the badge color here is for visual variety only.',
-    warmUp: 'Collagen protocol: 15g collagen peptides + ~50mg Vitamin C, 30–60 min before this session. 5 min easy bike — general warm-up before the activation work below.',
+    warmUp: 'Collagen protocol: 15g collagen peptides + ~50mg Vitamin C, 45–60 min before this session. 5 min easy bike — general warm-up before the activation work below.',
     blocks: [
       {
         letter: 'A',
-        title: 'GLUTE MEDIUS + TRUNK ACTIVATION',
+        title: 'CORRECTIVE — GLUTE MEDIUS & TRUNK ACTIVATION',
         color: 'red',
         introLabel: 'Why',
         intro: 'Directly targets the flagged hip abduction unreliability and primes the trunk before any loaded work.',
@@ -207,9 +207,9 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH',
+        title: 'PRIMARY COMPOUND — SINGLE-LEG HIP THRUST & GOBLET SQUAT',
         introLabel: 'Format',
-        intro: 'Single-leg hip thrust and goblet squat build lower-body strength on a stable, symmetric base; Pallof press is the QL-safe anti-rotation core work.',
+        intro: 'Single-leg hip thrust and goblet squat build lower-body strength on a stable, symmetric base; Pallof press is the QL-safe anti-rotation core work. If the day calls for a variation, these stay inside the QL rules — squat options: goblet squat (the version we track), box squat to a fixed height, or a heels-elevated goblet squat if ankle range limits depth; hip-thrust options: single-leg hip thrust (tracked), bilateral hip thrust, or a foot-elevated glute bridge. Every option keeps the rib cage stacked over the pelvis with no lateral shift, and none of them add loaded side-bending or single-arm overhead work — the two positions held back this phase.',
         exercises: [
           { name: 'Single-Leg Hip Thrust (Foot Elevated)', sets: '3', reps: '8–10/side', load: 'Bodyweight → light DB', tempo: '2-1-2', rest: '75s', cue: 'Full glute lockout; even hip height both sides.' },
           { name: 'Goblet Squat', sets: '3', reps: '8', load: 'RPE 7', tempo: '3-1-1', rest: '90s', cue: 'Rib cage stacked over pelvis, no lateral shift.' },
@@ -218,7 +218,7 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'TRUNK EXTENSOR CAPACITY (ISOMETRIC)',
+        title: 'ACCESSORY — TRUNK EXTENSOR CAPACITY (ISOMETRIC)',
         color: 'red',
         introLabel: 'Why Isometric Only This Week',
         intro: 'Trunk extensor work stays isometric this week — building capacity before adding dynamic loading, per the tendon-loading sequencing above.',
@@ -230,9 +230,9 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'STRENGTH DEVELOPMENT',
+        title: 'SECONDARY COMPOUND — SUPPORTED LEG PRESS & BENCH PRESS',
         introLabel: 'Load & Progression',
-        intro: 'See the Load & Progression note above for weekly RPE targets. No axial spinal loading in this block — leg press seat/back fully supported.',
+        intro: 'The day\'s second compound pattern, rotating off the squat and hip work above. See the Load & Progression note for weekly RPE targets. No axial spinal loading in this block — the leg press seat and back stay fully supported, which is the whole reason this variation is here rather than a barbell squat. Options that keep that same fully-supported, non-axial requirement: a Total Gym leg press/squat slide, a machine hack-squat variation where the back is supported, or a supported single-leg press one side at a time. Press options: flat dumbbell bench press (tracked), barbell bench press, or a floor press if the shoulder prefers the shorter range. Every option keeps the trunk supported and the spine out of the load path.',
         exercises: [
           { name: '45° Leg Press', sets: '4', reps: '6–8', load: 'RPE 7', tempo: 'Controlled', rest: '2 min', cue: 'No axial spinal loading — seat/back fully supported. Full but pain-free depth.' },
           { name: 'Flat DB Bench Press', sets: '4', reps: '6–8', load: 'RPE 7', tempo: 'Controlled', rest: '90s', cue: 'Even bar path both arms; control the eccentric.' },
@@ -240,7 +240,7 @@ const days = [
       },
       {
         letter: 'E',
-        title: 'CONDITIONING FINISHER (CHOOSE ONE)',
+        title: 'METABOLIC FINISHER (CHOOSE ONE)',
         color: 'gold',
         introLabel: 'Conditioning Finisher',
         intro: 'A short, low-impact cardio finisher to round out today\'s session — kept easy and QL-safe. Skip or shorten if fatigue from the work above is high.',
@@ -261,11 +261,11 @@ const days = [
     descriptor: 'RIGHT-BIASED UNILATERAL DAY · CLOSE THE FORCE-DEVELOPMENT GAP',
     intensityLabel: 'Day 2 Priority',
     intensityPara: 'Right hip extension and right lat/posterior shoulder were both slow to produce force on testing. This session biases right-side unilateral loading to close the gap. Strength builds confidence — this is the day that directly targets the two clearest asymmetries from the assessment.',
-    warmUp: 'Collagen protocol: 15g collagen peptides + ~50mg Vitamin C, 30–60 min before this session. 5 min easy row or bike.',
+    warmUp: 'Collagen protocol: 15g collagen peptides + ~50mg Vitamin C, 45–60 min before this session. 5 min easy row or bike.',
     blocks: [
       {
         letter: 'A',
-        title: 'ACTIVATION / PREP',
+        title: 'CORRECTIVE — ACTIVATION & RIGHT-SIDE PREP',
         color: 'red',
         introLabel: 'Why',
         intro: 'Checks for right-side lag before it shows up under load.',
@@ -276,9 +276,9 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — RIGHT-BIASED UNILATERAL',
+        title: 'PRIMARY COMPOUND — RIGHT-BIASED UNILATERAL',
         introLabel: 'Format',
-        intro: 'Right side leads every set this block — direct correction for the flagged hip extension and lat/posterior shoulder time-to-peak-force lag.',
+        intro: 'Right side leads every set this block — direct correction for the flagged hip extension and lat/posterior shoulder time-to-peak-force lag. Same-pattern options if the day calls for one, all right-led and all inside the QL rules — single-leg hinge: single-leg Romanian deadlift (the version we track), staggered-stance RDL with the back toe down, or a rack-supported single-leg RDL with a light hand touch for balance; row: single-arm dumbbell row (tracked), chest-supported row, or a single-arm landmine row; split-stance squat: rear-foot-elevated split squat (tracked), reverse lunge, or a box step-up. None of these add loaded lateral flexion or a suitcase carry on the symptomatic side.',
         exercises: [
           { name: 'Single-Leg Romanian Deadlift', sets: '3', reps: '8/side (right first)', load: 'RPE 7', tempo: '3-1-1', rest: '75s', cue: 'Right leg: add a 1-count pause at bottom.' },
           { name: 'Single-Arm DB Row', sets: '3', reps: '10/side (right first)', load: 'RPE 7', tempo: '2-1-2', rest: '60s', cue: 'Right arm: full lat stretch at bottom, no trunk rotation.' },
@@ -287,7 +287,7 @@ const days = [
       },
       {
         letter: 'C',
-        title: 'TRUNK / ANTI-LATERAL FLEXION',
+        title: 'ACCESSORY & INTEGRATION — TRUNK / ANTI-LATERAL FLEXION',
         color: 'red',
         introLabel: 'Held Back This Phase',
         intro: 'No loaded side bends or QL-side carries this phase — revisit once trunk extensor and hip abduction symmetry improve at the 4-week reassessment.',
@@ -299,17 +299,17 @@ const days = [
       },
       {
         letter: 'D',
-        title: 'STRENGTH DEVELOPMENT',
+        title: 'SECONDARY COMPOUND — VERTICAL PULL & OVERHEAD PRESS',
         introLabel: 'Right Side Is Priority',
-        intro: 'Slow lat/posterior chain on testing makes the right side the priority on the pull.',
+        intro: 'The day\'s second compound pattern — vertical pulling and pressing, rotating off the unilateral lower work above. Slow lat/posterior chain on testing makes the right side the priority on the pull. Vertical pull options: weighted pull-up (tracked), the assisted pull-up machine, a Kieser or lat pulldown, or a band-assisted pull-up. Press options: standing barbell overhead press (tracked), seated dumbbell overhead press if standing lets the low back arch, or a landmine press. Note the phase rule that governs every option here — no heavy single-arm overhead work until the 4-week reassessment clears it, so any press alternate stays bilateral or light.',
         exercises: [
-          { name: 'Weighted Pull-Up / Lat Pulldown', sets: '4', reps: '6–8', load: 'RPE 7', tempo: 'Controlled', rest: '90s', cue: 'Right side is priority — slow lat/posterior chain on testing. Full stretch at top.' },
+          { name: 'Weighted Pull-Up / Kieser or Lat Pulldown', sets: '4', reps: '6–8', load: 'RPE 7', tempo: 'Controlled', rest: '90s', cue: 'Right side is priority — slow lat/posterior chain on testing. Full stretch at top.' },
           { name: 'Standing Barbell Overhead Press', sets: '3', reps: '6', load: 'RPE 7', tempo: 'Controlled', rest: '2 min', cue: 'Brace hard; no lumbar arch to compensate for shoulder ROM.' },
         ],
       },
       {
         letter: 'E',
-        title: 'CONDITIONING FINISHER (CHOOSE ONE)',
+        title: 'METABOLIC FINISHER (CHOOSE ONE)',
         color: 'gold',
         introLabel: 'Conditioning Finisher',
         intro: 'Same easy, low-impact finisher as Day 1. Optional given the unilateral work above.',
@@ -330,7 +330,7 @@ const days = [
     descriptor: 'INTEGRATION DAY · FIRST DYNAMIC TRUNK EXTENSOR WORK · POWER/RFD',
     intensityLabel: 'Day 3 Priority',
     intensityPara: 'Begin layering speed/RFD work now that isometric capacity has been built, and integrate both hips and the trunk extensors together in compound patterns. This is the first session introducing dynamic trunk extension and jump-landing force — confirm Days 1–2 were fully pain-free before progressing here. No added conditioning finisher today; the power/RFD block already provides meaningful CNS demand.',
-    warmUp: 'Collagen protocol: 15g collagen peptides + ~50mg Vitamin C, 30–60 min before this session. 5 min easy bike.',
+    warmUp: 'Collagen protocol: 15g collagen peptides + ~50mg Vitamin C, 45–60 min before this session. 5 min easy bike.',
     blocks: [
       {
         letter: 'A',
@@ -351,7 +351,7 @@ const days = [
         exercises: [
           { name: 'Trap Bar Deadlift', sets: '4', reps: '6', load: 'RPE 7–8 (see Load & Progression note)', tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, symmetric setup both feet. This week\'s primary loaded strength lift — apply the Load & Progression prescription to this lift specifically.' },
           { name: 'Single-Leg Box Step-Up', sets: '3', reps: '8/side', load: 'RPE 7', tempo: '2-1-1', rest: '75s', cue: 'Drive through mid-foot; no hip hike at top.' },
-          { name: 'Standing Cable/Band Row (Bilateral)', sets: '3', reps: '10', load: 'RPE 7', tempo: '2-1-2', rest: '60s', cue: 'Full scap retraction; even bar path.' },
+          { name: 'Standing Row (Kieser, Cable or Band)', sets: '3', reps: '10', load: 'RPE 7', tempo: '2-1-2', rest: '60s', cue: 'Full scap retraction; even bar path.' },
         ],
       },
       {
