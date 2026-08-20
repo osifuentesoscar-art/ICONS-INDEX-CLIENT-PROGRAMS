@@ -90,9 +90,24 @@ the client's training history and how the movement actually looked.
 
 ## Benefit cards
 
-`EXERCISE_BENEFIT_LIBRARY` covers all 10 core movements plus Pull-Ups, keyed as
-`Deadlift`, `BackSquat`, `OverheadPress`, `InclineDumbbellPress`, `Push-Ups`,
-`FarmersCarry`, `HipThrust`, `Single-LegRDL`, `Lunges`, `PlankHold`, `Pull-Ups`.
+`EXERCISE_BENEFIT_LIBRARY` covers all 10 core movements plus Pull-Ups. The keys
+contain spaces and must match exactly:
+
+```
+'Deadlift'  'Back Squat'  'Overhead Press'  'Incline Dumbbell Press'
+'Push-Ups'  'Farmers Carry'  'Hip Thrust'  'Single-Leg RDL'
+'Lunges'  'Plank Hold'  'Pull-Ups'
+```
+
+An unrecognized key does not throw — `getExerciseBenefits()` returns
+`{aesthetics:'', health:'', bioAge:''}`, so a typo like `'HipThrust'` renders a
+card with three blank benefit lines and no error anywhere. If a benefit card
+comes out empty, the key is wrong. Read the keys off the engine rather than
+retyping them from memory:
+
+```bash
+node -e "console.log(Object.keys(require('./scripts/icons_template.js').EXERCISE_BENEFIT_LIBRARY))"
+```
 
 ```js
 benefitLinesFromLibrary('HipThrust', {
