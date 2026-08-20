@@ -228,6 +228,22 @@
  *     would require them. Her Styku findings stay in the baseline note the
  *     reference already used rather than being padded out with invented
  *     values.
+*
+ * ANTAGONIST ROTATION — 8/20/2026 resequencing, and one residual stated plainly.
+ * Thursday previously ran Deadlift -> Sumo RDL -> Lateral Lunge -> Single-Leg RDL
+ * -> Hip Thrust: five loaded lower-body lifts back to back, carrying THREE
+ * separate three-in-a-row violations. The Lateral Lunge moved out of the hinge
+ * block to sit with the Single-Leg RDL, and the Farmer Carry moved ahead of that
+ * accessory block, which breaks the run after the first two hinges.
+ *
+ * ONE violation remains and cannot be resequenced away: Lateral Lunge ->
+ * Single-Leg RDL -> Hip Thrust. The day holds five loaded lower-body lifts and
+ * exactly one non-lower movement (the carry), and one break cannot separate five
+ * lifts into groups of two. Clearing it needs either an upper-body movement added
+ * to Thursday or a lift moved to another day - both real programming changes on a
+ * client under coordinated care with Jason Bethea, whose standing rule already
+ * governs exactly these hinge patterns as a low-back-pain trigger. Flagged for
+ * Xolokan rather than decided here.
  */
 
 const fs = require('fs');
@@ -520,7 +536,7 @@ const day3 = {
   intensityPara: 'Thursday is the primary strength day for lower body. Deadlift and hip thrust loads step up from Tuesday’s squat work. 80% effort means the final 1–2 reps of each set are hard but achievable with good form. This is where the majority of lower body strength gains happen.',
   warmUp: 'Glute bridge 2×15, banded clamshell 2×15, hip hinge drill (PVC pipe along spine) 2×10, cat-cow 10 reps, leg swings 10 each direction.',
   blocks: [
-    {
+{
       letter: 'A',
       title: 'INNER THIGH / ADDUCTOR CORRECTIVE CIRCUIT',
       color: 'red',
@@ -532,7 +548,7 @@ const day3 = {
         { name: 'Hip Hinge Drill (Wall or PVC)', sets: '2', reps: '10', load: 'Bodyweight', tempo: 'Slow', rest: '30s', cue: 'PVC along spine, 3 points of contact. Hinge from hips, not lower back. Movement pattern baseline.', flag: 'Unloaded pattern check — if this provokes back pain, skip all loaded hinging today.' },
       ],
     },
-    {
+{
       letter: 'B',
       title: 'PRIMARY COMPOUND — HINGE (80% EFFORT)',
       introLabel: 'Load Target',
@@ -541,31 +557,10 @@ const day3 = {
       exercises: [
         { name: 'Deadlift (Conventional)', sets: '4', reps: '6–8', load: 'Wk1: 55–65 → Wk4: 75+ lbs', tempo: '2-1-1', rest: '90s', cue: 'Bar close to shins. Drive floor away. Neutral spine. Add 5–7 lbs each week. Target 75 lbs by Week 4. At 80% effort — last 2 reps should be challenging.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
         { name: 'Sumo RDL', sets: '3', reps: '8―10', load: '45―55 lbs', tempo: '3-1-1', rest: '75s', cue: 'Wide stance, toes out. Loads adductors more than conventional. Hinge from hip, feel inner thigh lengthen. Complement to Copenhagen plank.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
-        { name: 'Lateral Lunge (Left Lead)', sets: '3', reps: '10 ea', load: '12―17 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'LEFT leg leads. Step wide, sit into the hip. Inner thigh of the standing leg lengthens under load.', rirNote: '2 RIR' },
       ],
     },
-    {
+{
       letter: 'C',
-      title: 'ACCESSORY — UNILATERAL HINGE (LEFT LEAD)',
-      introLabel: 'Why',
-      intro: 'The unilateral hinge accessory behind the primary — balance, hip control, and left-side priority, governed by the same stop-signal as every hinge on this page.',
-      exercises: [
-        { name: 'Single-Leg RDL (Left Lead)', sets: '3', reps: '8 ea', load: '12―17 lbs', tempo: '3-1-1', rest: '60s', cue: 'LEFT leg first, all sets. Hinge from hip, hamstring stretch. Balance and unilateral hip control.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
-      ],
-    },
-    {
-      letter: 'D',
-      title: 'SECONDARY COMPOUND — HIP THRUST',
-      introLabel: 'Load Target',
-      intro: 'The day\'s second compound — hip extension without the hinge\'s spinal lever, which is exactly why it anchors the back half of this session. If the day calls for a variation, rotate between: a B-stance hip thrust, a heavy glute bridge from the floor, or a single-DB hip thrust — all hinge-free patterns. The barbell/DB hip thrust stays the lift we track.',
-      exercises: [
-        { name: 'Hip Thrust (Barbell or DB)', sets: '4', reps: '10―12', load: 'Wk1: 45 → Wk4: 60 lbs', tempo: '2-2-1', rest: '60s', cue: 'Shoulders on bench, drive through heels. Hold squeeze 2 seconds at top. Add 5–10 lbs per week. This drives the glute strength that supports both squat and hinge corrections.', rirNote: '2 RIR' },
-      ],
-    },
-    // ── ADDED 8/19/2026 (Block Method slot 6): light integration closer,
-    // load anchored below her documented 35 lb/hand working carry baseline.
-    {
-      letter: 'E',
       title: 'FULL-BODY INTEGRATION — FARMER CARRY (LIGHT)',
       color: 'gold',
       introLabel: 'Why',
@@ -574,7 +569,26 @@ const day3 = {
         { name: 'Farmer Carry (Light — Integration)', sets: '2', reps: '25–30 yds', load: '25–30 lbs/hand', tempo: 'Controlled', rest: '60s', flag: 'Hinge stop-signal governs the pickup — back pain means STOP.', cue: 'Hinge cleanly to lift, walk tall, hinge cleanly to set down. Quality over load.' },
       ],
     },
-  ],
+{
+      letter: 'D',
+      title: 'ACCESSORY — UNILATERAL LOWER (LEFT LEAD)',
+      introLabel: 'Why',
+      intro: 'The unilateral hinge accessory behind the primary — balance, hip control, and left-side priority, governed by the same stop-signal as every hinge on this page.',
+      exercises: [
+        { name: 'Lateral Lunge (Left Lead)', sets: '3', reps: '10 ea', load: '12―17 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'LEFT leg leads. Step wide, sit into the hip. Inner thigh of the standing leg lengthens under load.', rirNote: '2 RIR' },
+        { name: 'Single-Leg RDL (Left Lead)', sets: '3', reps: '8 ea', load: '12―17 lbs', tempo: '3-1-1', rest: '60s', cue: 'LEFT leg first, all sets. Hinge from hip, hamstring stretch. Balance and unilateral hip control.', flag: 'Hinge stop-signal — back pain means STOP; regress to hinge-free squat patterns.', rirNote: '2 RIR' },
+      ],
+    },
+{
+      letter: 'E',
+      title: 'SECONDARY COMPOUND — HIP THRUST',
+      introLabel: 'Load Target',
+      intro: 'The day\'s second compound — hip extension without the hinge\'s spinal lever, which is exactly why it anchors the back half of this session. If the day calls for a variation, rotate between: a B-stance hip thrust, a heavy glute bridge from the floor, or a single-DB hip thrust — all hinge-free patterns. The barbell/DB hip thrust stays the lift we track.',
+      exercises: [
+        { name: 'Hip Thrust (Barbell or DB)', sets: '4', reps: '10―12', load: 'Wk1: 45 → Wk4: 60 lbs', tempo: '2-2-1', rest: '60s', cue: 'Shoulders on bench, drive through heels. Hold squeeze 2 seconds at top. Add 5–10 lbs per week. This drives the glute strength that supports both squat and hinge corrections.', rirNote: '2 RIR' },
+      ],
+    },
+      ],
   coolDown: 'Pigeon pose 90s each, adductor wide-leg stretch 90s, hamstring stretch 60s each, hip flexor lunge 60s each.',
   // Final sentence added 8/18/2026.
   iconsNote: 'Thursday’s 80% effort means loads are challenging but not maximal. If the deadlift form deteriorates on the last set, reduce load by 5 lbs next session. Hip thrust is the second-most-important strength exercise in this program after the deadlift — load it progressively every week. The hinge stop-signal on this page is not a suggestion: a hinge that produces back pain gets regressed the same session, and Jason Bethea is looped in before it is loaded again.',

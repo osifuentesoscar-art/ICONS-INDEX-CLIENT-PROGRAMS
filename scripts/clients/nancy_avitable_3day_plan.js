@@ -454,7 +454,7 @@ const days = [
     intensityPara: 'Prioritise left-side unloading and glute med activation to correct the 17.5% hip abduction asymmetry flagged above.',
     warmUp: '5–7 min cycle + single-leg glute bridges 2×10 each side',
     blocks: [
-      {
+{
         letter: 'A',
         title: 'Activation / Corrective',
         color: 'red',
@@ -466,7 +466,7 @@ const days = [
           { name: 'Banded Standing Hip Abduction (Left Emphasis)', sets: '3', reps: '10', load: 'band', tempo: '2-0-1', rest: '30s', cue: 'Drive lateral glute; 2s hold; +2 reps left', flag: 'Left corrective' },
         ],
       },
-      {
+{
         letter: 'B',
         title: 'Primary Compound — Goblet Squat',
         introLabel: 'Load Target',
@@ -475,7 +475,7 @@ const days = [
           { name: 'Goblet Squat', sets: '4', reps: '6-8', load: `Wk1: ${wk1.gobletSquat} lbs → Wk4: ${wk4.gobletSquat} lbs`, tempo: '2-0-2', rest: '90s', cue: 'Braced core; track knees; depth to parallel', rirNote: '2 RIR' },
         ],
       },
-      {
+{
         letter: 'C',
         title: 'Accessory — Unilateral Strength (Left-Led)',
         introLabel: 'Why',
@@ -485,17 +485,8 @@ const days = [
           { name: 'Single-Leg Hip Bridge (Left Focus)', sets: '3', reps: '10', load: 'bodyweight', tempo: '2-0-1', rest: '45s', cue: 'Drive left glute; 1s pause top; no knee cave', flag: 'Left corrective' },
         ],
       },
-      {
+{
         letter: 'D',
-        title: 'Secondary Compound — Romanian Deadlift',
-        introLabel: 'Load Target',
-        intro: 'The day\'s second compound pattern — a hip hinge, rotating off the squat and lunge work above. If the day calls for a variation, rotate between: a B-stance RDL (rear foot down for balance, left leg takes the working share) or a barbell RDL from the rack. The Romanian deadlift stays the lift we track — set its Week 1 load at the first session and record it.',
-        exercises: [
-          { name: 'Romanian Deadlift', sets: '3', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-2', rest: '90s', cue: 'Hinge at hips; feel posterior chain tension', rirNote: '2 RIR — use to set Wk1 load' },
-        ],
-      },
-      {
-        letter: 'E',
         title: 'Full-Body Integration — Sled Push (Controlled)',
         color: 'gold',
         introLabel: 'Why',
@@ -504,7 +495,16 @@ const days = [
           { name: 'Sled Push (Controlled)', sets: '3', reps: '20-25 yd', load: 'Wk1: 90 lbs → Wk4: 105 lbs', tempo: 'controlled', rest: '90s', cue: 'Tested 135 lbs. Low hips, long spine, full-foot drive — smooth, not sprinting.', rirNote: 'Distance & quality governed — no RIR target' },
         ],
       },
-    ],
+{
+        letter: 'E',
+        title: 'Secondary Compound — Romanian Deadlift',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound pattern — a hip hinge, rotating off the squat and lunge work above. If the day calls for a variation, rotate between: a B-stance RDL (rear foot down for balance, left leg takes the working share) or a barbell RDL from the rack. The Romanian deadlift stays the lift we track — set its Week 1 load at the first session and record it.',
+        exercises: [
+          { name: 'Romanian Deadlift', sets: '3', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-2', rest: '90s', cue: 'Hinge at hips; feel posterior chain tension', rirNote: '2 RIR — use to set Wk1 load' },
+        ],
+      },
+      ],
     coolDown: '8–10 min mobility and glute release',
     iconsNote: 'Emphasise tempo and control on left side. Use lighter load and perfect technique before progressing. The closing sled push puts the day\'s leg drive to work under gait — smooth and controlled today, never a sprint.',
   },
@@ -581,7 +581,7 @@ const days = [
     intensityPara: 'Higher intensity to drive strength adaptations; include left-volume maintenance.',
     warmUp: 'Hip hinge drill (empty bar or PVC — movement rehearsal), activation band side steps',
     blocks: [
-      {
+{
         letter: 'A',
         title: 'Hinge Priming',
         color: 'gold',
@@ -591,7 +591,7 @@ const days = [
           { name: 'Romanian Deadlift (Light Ramp-Up)', sets: '2', reps: '8', load: '~50% of Day 1 RDL working load', tempo: '2-0-2', rest: '60s', cue: 'Crisp hinge; prime hamstrings — no grind', rirNote: '3+ RIR — technique/submaximal' },
         ],
       },
-      {
+{
         letter: 'B',
         title: 'Primary Compound — Back Squat',
         introLabel: 'Load Target',
@@ -600,7 +600,7 @@ const days = [
           { name: 'Back Squat or Box Squat', sets: '5', reps: '5', load: `Wk1: ${wk1.backSquat} lbs → Wk4: ${wk4.backSquat} lbs`, tempo: '2-0-2', rest: '2m', cue: 'Braced core; safe depth', rirNote: '1-2 RIR' },
         ],
       },
-      {
+{
         letter: 'C',
         title: 'Accessory — Weighted Step-Up',
         introLabel: 'Load Target',
@@ -609,27 +609,8 @@ const days = [
           { name: 'Weighted Step-Up', sets: '3', reps: '6 each', load: `Wk1: ${wk1.splitSquat} lbs/hand → Wk4: ${wk4.splitSquat} lbs/hand`, tempo: '2-0-1', rest: '90s', cue: 'Drive through heel; control descent', flag: 'Load informed by DB Split Squat baseline — see note', flagAudience: 'internal' },
         ],
       },
-      {
+{
         letter: 'D',
-        title: 'Secondary Compound — Hip Thrust & Posterior Chain',
-        introLabel: 'Load Target',
-        intro: 'The day\'s second compound pattern — hip extension, rotating off the knee-dominant work above. Hip thrust was not part of the tested battery: set its Week 1 load at the first session and record it. If the day calls for a variation, rotate between: a glute bridge (floor), a single-leg glute bridge (left leg leads), or a B-stance hip thrust (left leg takes the working share). The hip thrust stays the lift we track.',
-        exercises: [
-          { name: 'Hip Thrust', sets: '4', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-1', rest: '90s', cue: 'Full hip extension; hold 1s top', rirNote: '2 RIR — use to set Wk1 load' },
-          { name: 'Nordic Hamstring (Assisted)', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '2-0-2', rest: '90s', cue: 'Slow eccentric; control' },
-        ],
-      },
-      {
-        letter: 'E',
-        title: 'Left-Side Volume Finishers',
-        color: 'red',
-        exercises: [
-          { name: 'Hip Abduction — Kieser (Left)', sets: '3', reps: '12', load: 'light-moderate', tempo: '2-0-1', rest: '45s', cue: 'Kieser machine (or ankle band). Slow control; add 2 extra reps on L', flag: 'Left corrective' },
-          { name: 'Curtsy Lunge (Left Lead)', sets: '3', reps: '10', load: 'bodyweight', tempo: '2-0-1', rest: '45s', cue: 'Focus on L glute drive' },
-        ],
-      },
-      {
-        letter: 'F',
         title: 'Full-Body Integration — Sled Push (Drive)',
         color: 'gold',
         introLabel: 'Why',
@@ -638,7 +619,26 @@ const days = [
           { name: 'Sled Push (Drive)', sets: '3', reps: '15-20 yd', load: 'Wk1: 105 lbs → Wk4: 135 lbs', tempo: 'strong, controlled drive', rest: '2 min', cue: 'Tested 135 lbs. Low hips, arms long, drive the floor back — full recovery between pushes.', rirNote: 'Distance & quality governed — no RIR target' },
         ],
       },
-    ],
+{
+        letter: 'E',
+        title: 'Secondary Compound — Hip Thrust & Posterior Chain',
+        introLabel: 'Load Target',
+        intro: 'The day\'s second compound pattern — hip extension, rotating off the knee-dominant work above. Hip thrust was not part of the tested battery: set its Week 1 load at the first session and record it. If the day calls for a variation, rotate between: a glute bridge (floor), a single-leg glute bridge (left leg leads), or a B-stance hip thrust (left leg takes the working share). The hip thrust stays the lift we track.',
+        exercises: [
+          { name: 'Hip Thrust', sets: '4', reps: '8', load: 'Establish Wk1 load at first session — record', tempo: '2-0-1', rest: '90s', cue: 'Full hip extension; hold 1s top', rirNote: '2 RIR — use to set Wk1 load' },
+          { name: 'Nordic Hamstring (Assisted)', sets: '3', reps: '6-8', load: 'bodyweight', tempo: '2-0-2', rest: '90s', cue: 'Slow eccentric; control' },
+        ],
+      },
+{
+        letter: 'F',
+        title: 'Left-Side Volume Finishers',
+        color: 'red',
+        exercises: [
+          { name: 'Hip Abduction — Kieser (Left)', sets: '3', reps: '12', load: 'light-moderate', tempo: '2-0-1', rest: '45s', cue: 'Kieser machine (or ankle band). Slow control; add 2 extra reps on L', flag: 'Left corrective' },
+          { name: 'Curtsy Lunge (Left Lead)', sets: '3', reps: '10', load: 'bodyweight', tempo: '2-0-1', rest: '45s', cue: 'Focus on L glute drive' },
+        ],
+      },
+      ],
     coolDown: 'Hamstring and lateral banded mobility',
     iconsNote: 'Push load on bilateral lifts, finish the unilateral sets focused on left quality, then close with the sled drive — the strength built today expressed as one movement. Full recovery between sled pushes.',
   },

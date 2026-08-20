@@ -547,7 +547,7 @@ const days = [
     intensityPara: 'Wednesday establishes the new hip thrust PR baseline (145 lbs × 5, Est 1RM 169 lbs) and continues Split Stance Hex DL loading. 80% intensity means the last 1–2 reps of each work set are hard but achievable with clean form. This is where posterior chain strength grows.',
     warmUp: '5–8 min: glute bridges 2×15, banded clamshells 2×15 each side, hip 90/90 rotations ×10 each, leg swings front/back and lateral ×10 each. Prime the posterior chain before hip-dominant loading.',
     blocks: [
-      {
+{
         letter: 'A',
         title: 'CORRECTIVE — GLUTE MED ACTIVATION',
         introLabel: null,
@@ -556,7 +556,7 @@ const days = [
           { name: 'Lateral Band Walk', sets: '3', reps: '12 ea way', load: 'Light band', tempo: 'Controlled', rest: '30s', cue: 'Band above knees. Proud chest. Steps lateral, maintain tension.' },
         ],
       },
-      {
+{
         letter: 'B',
         title: 'PRIMARY COMPOUND — HIP THRUST (ICONS BATTERY)',
         introLabel: null,
@@ -565,7 +565,7 @@ const days = [
           { name: 'Hip Thrust (Barbell or DB)', insight: 'PR 145 lbs × 5 · Wk1: 135 · Wk2: 145 · Wk4: 155–160 lbs', sets: '4', reps: '6–8', load: 'Wk1: 135 → Wk4: 155–160 lbs', tempo: '2-2-1', rest: '90s', cue: 'Upper back on bench. Drive through heels. 2-sec hold at top. Exhale on drive.', rirNote: '2 RIR' },
         ],
       },
-      {
+{
         letter: 'C',
         title: 'ACCESSORY — GLUTE & HAMSTRING HYPERTROPHY',
         exercises: [
@@ -574,8 +574,17 @@ const days = [
           { name: 'Glute Bridge (Feet Elevated)', sets: '3', reps: '15–20', load: 'Bodyweight', tempo: '2-2-1', rest: '30s', cue: 'Feet on bench. Drive through heels. Adds difficulty without spinal load.' },
         ],
       },
-      {
+{
         letter: 'D',
+        title: 'FULL-BODY INTEGRATION — LOADED CARRY (LIGHT)',
+        introLabel: null,
+        intro: 'The closing compound: a light farmers carry pulls the day\'s hip work into upright, braced gait — deliberately lighter than Thursday and Saturday\'s heavy carries so it integrates without taxing tomorrow\'s 90% session. Distance and carriage quality govern it, not load. A suitcase carry (one hand loaded, log sides) covers the same ground when a variation suits the day.',
+        exercises: [
+          { name: 'Farmers Carry (Light — Integration)', sets: '2', reps: '25–30 yds', load: '30–40 lbs/hand', tempo: 'Controlled', rest: '60s', cue: 'Shoulders packed, ribs stacked, tall posture — the quality of the carry is the exercise, not the load.' },
+        ],
+      },
+{
+        letter: 'E',
         title: 'SECONDARY COMPOUND — SPLIT STANCE HEX DEADLIFT',
         introLabel: null,
         intro: 'Split Stance Hex DL: 165 lbs PR → Wk1 working load 155 lbs — the day\'s second compound, a hinge rotated off the thrust pattern above, with the bilateral Romanian deadlift as its direct volume accessory. If the day calls for a variation, rotate between: a bilateral hex bar deadlift at matched effort, a B-stance RDL, or a conventional DB RDL — every option holds the same neutral-spine standard, no rounding under load. The split-stance hex lift stays the tracked PR lift.',
@@ -584,16 +593,7 @@ const days = [
           { name: 'Romanian Deadlift (Bilateral)', sets: '3', reps: '10–12', load: '80–90 lbs', tempo: '3-1-1', rest: '60s', cue: 'Neutral spine. Push hips back. Bar or DBs close to legs throughout.' },
         ],
       },
-      {
-        letter: 'E',
-        title: 'FULL-BODY INTEGRATION — LOADED CARRY (LIGHT)',
-        introLabel: null,
-        intro: 'The closing compound: a light farmers carry pulls the day\'s hip work into upright, braced gait — deliberately lighter than Thursday and Saturday\'s heavy carries so it integrates without taxing tomorrow\'s 90% session. Distance and carriage quality govern it, not load. A suitcase carry (one hand loaded, log sides) covers the same ground when a variation suits the day.',
-        exercises: [
-          { name: 'Farmers Carry (Light — Integration)', sets: '2', reps: '25–30 yds', load: '30–40 lbs/hand', tempo: 'Controlled', rest: '60s', cue: 'Shoulders packed, ribs stacked, tall posture — the quality of the carry is the exercise, not the load.' },
-        ],
-      },
-      {
+{
         letter: 'F',
         title: 'POSTERIOR CHAIN FINISHER',
         exercises: [
@@ -601,7 +601,7 @@ const days = [
           { name: 'Back Extension (Hyperextension)', sets: '2', reps: '15', load: 'Bodyweight', tempo: '2-0-2', rest: '45s', cue: "Controlled arc — don't hyperextend at top. Spinal health." },
         ],
       },
-    ],
+      ],
     coolDown: '8 min: pigeon pose 90s each side, supine figure-4 hip stretch, standing quad stretch, hamstring doorway stretch 60s each side.',
     iconsNote: 'Hip Thrust NEW PR: 145 lbs × 5 (Est 1RM 169 lbs). 4-week loading: Wk1 135 → Wk2 145 → Wk3 150 → Wk4 155–160 lbs. Split Stance Hex DL: 165 lbs PR → Wk1 155 → Wk2 160 → Wk3 165 → Wk4 175 lbs peak test. Document hip thrust baseline carefully — first heavy session.',
   },
@@ -618,7 +618,7 @@ const days = [
     intensityPara: 'Thursday is the highest-intensity gym session of the week. Hex bar PR is now 195 lbs × 5 (Est 1RM 228 lbs) — a new all-time record. Wk1 working load: 180 lbs. Rest fully between sets. CNS output is the priority. This block builds toward LIFTMOR RCT-level bone-density loading (>85% 1RM), reached directly by Week 3–4.',
     warmUp: '8–10 min: leg swings ×10 each direction, hip circles, box step-ups 2×8 each leg (unweighted). The squat rehearsal and hex-bar ramp open Block A. Prime the CNS for maximal output.',
     blocks: [
-      {
+{
         letter: 'A',
         title: 'PRIMING & RAMP — REHEARSAL TO HEAVY',
         introLabel: null,
@@ -628,7 +628,7 @@ const days = [
           { name: 'Hex Bar Deadlift — Ramp Sets', sets: '3', reps: '5 / 3 / 1', load: '≈90 / 115 / 145 lbs', tempo: '2-1-1', rest: '60–90s', cue: '50% / 65% / 80% of the day\'s 180 lb working load. Crisp, fast reps — the ramp sharpens, never tires.', rirNote: '3+ RIR — ramp' },
         ],
       },
-      {
+{
         letter: 'B',
         title: 'PRIMARY COMPOUND — HEX BAR DEADLIFT (ICONS BATTERY)',
         introLabel: null,
@@ -637,28 +637,37 @@ const days = [
           { name: 'Hex Bar Deadlift', insight: 'PR 195 lbs × 5 · Est 1RM 228 · Wk1: 180 · Wk2: 190 · Wk3: 200 · Wk4: 210–215', sets: '5', reps: '3–5', load: 'Wk1: 180 → Wk4: 210–215 lbs', tempo: '3-1-1', rest: '2 min', cue: 'Neutral spine. Hip-width stance. Drive the floor away. Lock knees and hips at top.', rirNote: '2 RIR on work sets — not to failure' },
         ],
       },
-      {
+{
         letter: 'C',
         title: 'ACCESSORY — UNILATERAL LOWER STRENGTH',
         introLabel: null,
         intro: 'Lunge baseline: 40 lbs × 8 reps (Est 1RM 51 lbs). Work at 40 lbs (80% 1RM). Target 45–50 lbs by Week 4.',
         exercises: [
           { name: 'DB Reverse Lunge', insight: 'Baseline 40 lbs × 8 · Wk4: 45–50 lbs · log L vs R', sets: '3', reps: '10 ea', load: 'Wk1: 40 → Wk4: 45–50 lbs/hand', tempo: '2-1-1', rest: '60s', cue: 'Step back, rear knee hovers 1 inch. Drive through front heel to stand.', rirNote: '2 RIR' },
-          { name: 'Box Step-Up', sets: '3', reps: '10 ea', load: '20–25 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Full hip extension at top. All drive from working leg.' },
           { name: 'Single-Leg Glute Bridge', sets: '3', reps: '12 ea', load: 'Bodyweight', tempo: '2-2-1', rest: '45s', cue: 'Drive through one heel. Pelvis level throughout. Note any L vs R difference.' },
         ],
       },
-      {
+{
         letter: 'D',
+        title: 'FULL-BODY INTEGRATION — SLED DRIVE',
+        introLabel: null,
+        intro: 'The session\'s closing compound: the sled pulls the day\'s hip and leg drive into one full-body movement — full hip extension every stride, braced trunk, no spinal flexion. Add 10 lbs each week toward 140–150 lbs at Week 4. On a day the legs are already well spent, a heavy farmers carry (hex bar past 60 lbs/hand) or a hinge-to-carry finisher covers the same integrated ground at matched effort.',
+        exercises: [
+          { name: 'Sled Push', insight: 'Add 10 lbs each week · Wk4 target: 140–150 lbs', sets: '4', reps: '20 yds', load: 'Wk1: 110–120 → Wk4: 140–150 lbs', tempo: 'Explosive', rest: '90s', cue: "Low drive position. Full hip extension each stride. Don't round lower back." },
+        ],
+      },
+{
+        letter: 'E',
         title: 'SECONDARY COMPOUND — SQUAT (ICONS BATTERY)',
         introLabel: null,
         intro: 'The day\'s second compound — knee-dominant, rotated off the hinge above. If the day calls for a variation, rotate between: a back squat in the rack, a goblet squat (dumbbells run to 60 lbs), or a box squat to bench height. Whichever variant runs, the effort and depth standards are identical.',
         exercises: [
           { name: 'Back Squat or Goblet Squat', sets: '4', reps: '6–8', load: '50–70 lbs', tempo: '3-1-1', rest: '90s', cue: 'Knees track toes. Depth to parallel. Chest tall throughout.', rirNote: '2 RIR' },
+          { name: 'Box Step-Up', sets: '3', reps: '10 ea', load: '20–25 lbs/hand', tempo: '2-1-1', rest: '60s', cue: '18–20 inch box. Full hip extension at top. All drive from working leg.' },
         ],
       },
-      {
-        letter: 'E',
+{
+        letter: 'F',
         title: 'GROUND STABILITY & LATERAL SQUAT',
         introLabel: null,
         intro: 'Light stability and mobility work at depth — joint health, not loading. Quality of position is the whole exercise here.',
@@ -667,16 +676,7 @@ const days = [
           { name: 'Goblet Squat Pulse (Bottom Hold)', sets: '2', reps: '20 pulses', load: 'Light-Mod', tempo: '—', rest: '45s', cue: 'Hold bottom position, small pulses. Knee and hip joint health at depth.' },
         ],
       },
-      {
-        letter: 'F',
-        title: 'FULL-BODY INTEGRATION — SLED DRIVE',
-        introLabel: null,
-        intro: 'The session\'s closing compound: the sled pulls the day\'s hip and leg drive into one full-body movement — full hip extension every stride, braced trunk, no spinal flexion. Add 10 lbs each week toward 140–150 lbs at Week 4. On a day the legs are already well spent, a heavy farmers carry (hex bar past 60 lbs/hand) or a hinge-to-carry finisher covers the same integrated ground at matched effort.',
-        exercises: [
-          { name: 'Sled Push', insight: 'Add 10 lbs each week · Wk4 target: 140–150 lbs', sets: '4', reps: '20 yds', load: 'Wk1: 110–120 → Wk4: 140–150 lbs', tempo: 'Explosive', rest: '90s', cue: "Low drive position. Full hip extension each stride. Don't round lower back." },
-        ],
-      },
-    ],
+      ],
     coolDown: '10 min: supine spinal twist 60s each side, standing hip flexor stretch in lunge 60s each side, seated forward fold, quad stretch. Lower back decompression after heavy deadlifts — non-negotiable.',
     iconsNote: 'Hex Deadlift NEW PR: 195 lbs × 5 (Est 1RM 228 lbs). 4-week loading: Wk1 180 → Wk2 190 → Wk3 200 → Wk4 peak test 210–215 lbs. DB Lunge: 40 lbs baseline. Sled Push: +10 lbs each week from 110–120 lbs. This is the highest-priority bone-density session of the week.',
   },

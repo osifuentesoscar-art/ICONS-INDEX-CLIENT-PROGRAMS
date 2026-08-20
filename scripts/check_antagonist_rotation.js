@@ -35,27 +35,39 @@ const { execSync } = require('child_process');
 
 const PATTERNS = [
   ['knee', /back squat|front squat|goblet squat|box squat|belt squat|split squat|lunge|step-?up|leg press|leg extension/i],
-  ['hinge', /deadlift|rdl|romanian|good morning|swing|hamstring curl|clean|nordic/i],
+  ['hinge', /deadlift|\bdl\b|rdl|romanian|good morning|swing|hamstring curl|clean|nordic|hinge/i],
   ['hipext', /hip thrust|glute bridge|kickback|abduction/i],
-  ['push', /bench press|overhead press|ohp|push press|arnold|shoulder press|dip|landmine press|chest press|push-?up|floor press/i],
-  ['pull', /row|pull-?up|chin-?up|pulldown|lat pull/i],
+  ['push', /\bpress\b|ohp|arnold|\bdip\b|push-?up/i],   // knee/hinge are tested first, so "leg press" lands as knee
+  ['pull', /row|pull-?up|chin-?up|pulldown|lat pull|face pull/i],
   ['carry', /carry|sled|farmer/i],
 ];
 
 /** Blocks whose contents are outside the rule's scope entirely. */
 const NON_COMPOUND_BLOCK =
-  /CORRECTIVE|ACTIVATION|PRIMER|PRIMING|MOBILITY|WARM|ISOLATED|SCAPULAR|CONTROL & ALIGNMENT|CONTROL AND ALIGNMENT|COOL|CORE|STABILITY|REHAB|CONDITIONING|METABOLIC|POWER/i;
+  /CORRECTIVE|ACTIVATION|PRIMER|PRIMING|MOBILITY|WARM|ISOLATED|SCAPULAR|CONTROL & ALIGNMENT|CONTROL AND ALIGNMENT|COOL|CORE|STABILITY|REHAB|CONDITIONING|METABOLIC|POWER|FINISHER/i;
 
 /** Never counts toward a run regardless of block: bodyweight/banded/isometric. */
 // Named activation/isolation movements only. Do NOT filter on the word "band"
 // alone — a "Standing Cable/Band Row" is a real loaded pull, and excluding it
 // invents violations by deleting the very exercise that breaks a leg run.
 const NOT_REAL_LOAD =
-  /drill|dowel|pvc|wall slide|isometric|hold\)|dead ?bug|pallof|bird dog|march\b|clamshell|monster walk|lateral walk|abduction|kickback|scapular|dead hang|pull-?apart|superman|stretch|foam roll|breathing|activation|primer|rock\b/i;
+  /drill|dowel|pvc|wall slide|isometric|hold\)|dead ?bug|pallof|bird dog|march\b|clamshell|monster walk|lateral walk|abduction|kickback|scapular|dead hang|pull-?apart|superman|stretch|foam roll|breathing|activation|primer|rock\b|warm-?up|ramp/i;   // a ramp/warm-up set is preparatory, not a work set
+
+/**
+ * Single-joint isolation and bodyweight/low-load posterior work. The rule's
+ * scope is "multi-joint, real-load exercises" — a machine hamstring curl, an
+ * assisted Nordic curl, a bodyweight glute bridge and a bodyweight back
+ * extension are none of those, and counting them turns a correctly-built
+ * posterior-chain day into a wall of false findings.
+ */
+const ISOLATION =
+  /hamstring curl|leg curl|leg extension|nordic|calf raise|bicep|tricep|lateral raise|\bfly\b|glute bridge|back extension|hyperextension|adduction/i;   // face pull deliberately NOT here: it is a real posterior-shoulder pull and does rotate stress
 
 /** Grip / skill-progression batteries — one movement through difficulty. */
+// Written either as "Assisted Pull-Up (Wide Grip)" or "Assisted Pull-Up — Wide
+// Grip" across the roster; both spellings are the same exempt battery.
 const SKILL_BATTERY =
-  /\((wide|standard|close)[- ]?grip\)|(wide|standard|close)[- ]?grip\s+(assisted\s+)?(pull|chin)-?up|incline push-?up|half push-?up|knee push-?up/i;
+  /[(—–-]\s*(wide|standard|close|neutral)[- ]?grip|(wide|standard|close|neutral)[- ]?grip\s+(assisted\s+)?(pull|chin)-?up|incline push-?up|half push-?up|knee push-?up/i;
 
 /** Rendered artifacts that are headings or summary cells, not exercises. */
 const NOT_AN_EXERCISE = /\+|Baseline Establishment|Primary Strength|Technique Day|^Day\b|From Block [A-Z]/i;
@@ -85,16 +97,25 @@ function extract(docx) {
       blockOk = true;
       continue;
     }
-    // block header: "A — PRIMARY COMPOUND — BACK SQUAT"
-    const bh = text.match(/^([A-Z])\s*[—-]\s*(.+)$/);
-    if (bh && text.length < 110 && text === text.toUpperCase()) {
+    // Block header: "A — PRIMARY COMPOUND — BACK SQUAT". Scripts vary between
+    // ALL CAPS and Title Case titles, so do NOT require uppercase here — doing
+    // so silently fails to detect blocks in Title Case scripts, leaving every
+    // corrective and priming block wrongly in scope.
+    const bh = text.match(/^([A-Z])\s*[—–-]\s*(\S.*)$/);
+    if (bh && text.length < 110) {
       blockOk = !NON_COMPOUND_BLOCK.test(bh[2]);
       continue;
     }
     if (!cur || !blockOk) continue;
+    // An exercise NAME is 9pt bold per the brand spec (docx size = pt x 2, so
+    // w:sz 18) while cue text is 8.5pt regular and insight lines are italic.
+    // Matching on formatting rather than on the shape of the string is what
+    // keeps coaching cues — which contain movement words too — from being read
+    // as extra exercises and inventing runs that do not exist.
+    if (!/<w:b\s*\/>/.test(c) || !/w:sz w:val="18"/.test(c)) continue;
     if (NOT_AN_EXERCISE.test(text)) continue;
-    if (!/^[A-Z][A-Za-z0-9'’\-() ,&]{3,60}$/.test(text)) continue;
-    if (NOT_REAL_LOAD.test(text) || SKILL_BATTERY.test(text)) continue;
+    if (text.includes(' / ')) continue;
+    if (NOT_REAL_LOAD.test(text) || SKILL_BATTERY.test(text) || ISOLATION.test(text)) continue;
     const pat = classify(text);
     if (pat !== 'other') cur.ex.push({ name: text, pat });
   }
@@ -112,6 +133,11 @@ for (const f of process.argv.slice(2).filter((a) => a !== '-v')) {
     const s = d.ex;
     for (let i = 0; i + 2 < s.length; i++) {
       const w = [s[i], s[i + 1], s[i + 2]];
+      // Carries sit on none of the rule's rotation axes (push<->pull,
+      // hip<->knee, upper<->lower) and a carry medley — farmer, suitcase, sled
+      // — varies implement, grip and vector deliberately. Not this rule's
+      // target, which is accumulated compression from heavy compound lifting.
+      if (w[0].pat === 'carry') continue;
       if (w[0].pat === w[1].pat && w[1].pat === w[2].pat) {
         hits.push(`${d.day}: THREE ${w[0].pat.toUpperCase()} IN A ROW — ${w.map((e) => e.name).join(' → ')}`);
       } else if (w.every((e) => LOWER.has(e.pat))) {
