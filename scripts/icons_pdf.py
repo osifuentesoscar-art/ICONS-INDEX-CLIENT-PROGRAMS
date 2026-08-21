@@ -4,9 +4,13 @@ ICONS canonical PDF engine — Brace Life Studios.
 
 Layout constants, cue-length rule, and the overflow-audit contract are
 pinned to docs/ICONS_System_Prompt.md — do not change them without
-updating that spec. Consumes the same data schema as the docx engine
-(my-agent/engine/icons_template.cjs) so one client data.json drives both
-deliverables.
+updating that spec. Consumes the same data object as the docx engine (scripts/icons_template.js).
+
+STATUS (8/21/2026): retained as the sole implementation of the PDF
+deliverable type documented by the `icons-pdf-engine` skill. It has no
+current caller — every live client builds .docx via its own script under
+scripts/. Its CLI takes a JSON file, so driving it from a build script
+means dumping that script's `data` object to JSON first.
 
 CLI:
     python3 icons_pdf.py <data.json> <output.pdf>

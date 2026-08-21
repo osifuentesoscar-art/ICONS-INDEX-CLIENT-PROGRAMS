@@ -1680,46 +1680,54 @@ Niko Heers    — Stretch Therapist (certified)
 - **Trainer education formats** — `trainer_education/README.md` carries the per-format tables.
 - **Subagent team** — the eight `.claude/agents/*.md` definitions describe their own scope in
   frontmatter, which every session receives automatically; route by those descriptions.
-## KNOWN ISSUES — ARCHITECTURE AUDIT (2026-08-18)
+## ARCHITECTURE — SINGLE-PIPELINE STANDARD (resolved 2026-08-21)
 
-Fix these before onboarding a partner or generating another partnership briefing. If you (the agent) are asked to work on any file mentioned below, fix the underlying issue, not just the symptom.
+**There is exactly one document pipeline. Do not reintroduce a second.**
 
 ```
-1. DUPLICATE CLIENT RECORD — August Olivia exists in two places.
-   - clients/august_olivia/  (underscore, LEGACY) — built by scripts/august_olivia_3day_plan.js;
-     the .docx output sits directly in clients/ instead of deliverables/.
-   - clients/august-olivia/  (hyphen, CURRENT) — the real pipeline: intake.md → data.json →
-     deliverables/august-olivia/{.docx,.pdf} via generate.mjs.
-   ACTION: Treat clients/august-olivia/ as the single source of truth. After confirming its
-   data.json has everything the legacy version had, delete clients/august_olivia/ and
-   scripts/august_olivia_3day_plan.js.
-
-2. DUPLICATE TEMPLATE ENGINE — schema-drift risk.
-   scripts/icons_template.js (645 lines) is called "canonical" by this file and by
-   docs/ICONS_System_Prompt.md. But the automated pipeline (generate.mjs → 
-   my-agent/engine/render.cjs) actually renders through a SEPARATE file,
-   my-agent/engine/icons_template.cjs (625 lines). A brand/schema fix applied to one will not
-   propagate to the other.
-   ACTION: Keep my-agent/engine/icons_template.cjs (it's the one actually wired into
-   automation). Deprecate/delete scripts/icons_template.js and update every doc reference
-   (this file, docs/ICONS_System_Prompt.md, CLIENTS.md) to point at the real engine.
-
-3. MISSING SPECIALIST AGENTS — partner-facing claims outrun the code.
-   Partnership materials describe 7 running roles (coordinating ICONS Expert +
-   Clinical Research Analyst, Evidence Curator, Trainer Education, Document Auditor,
-   Intake Monitor, Roster Analyst) operating daily. Only ONE agent is defined
-   (.claude/agents/icons-expert.md), and the only automation
-   (.github/workflows/generate-icons-docs.yml) triggers on push to clients/** or manual
-   dispatch — there is no `schedule:` trigger, so nothing runs autonomously/daily yet.
-   ACTION: Either build the six missing roles as real subagents + a scheduled workflow, or
-   scale back partner-facing claims to match what's actually automated today.
-
-4. REPO HYGIENE — unrelated personal-tool files at repo root.
-   BACKUP, JARVIS, Clsrvis, Preque, hook, "clarvis_config (1).toml" are leftover setup notes
-   for an unrelated third-party tool (a Claude Code TTS status-narrator called "Clarvis") —
-   not part of ICONS.
-   ACTION: Delete these or move them outside the repo before anyone else clones it.
+Build script     scripts/<client>_<n>day_plan.js
+Engine (docx)    scripts/icons_template.js          <- the only docx engine
+Engine (pdf)     scripts/icons_pdf.py               <- ReportLab, no current caller
+Output           clients/<client_name>/<Name>_<Title>.docx
+                 clients/<client_name>/<Name>_<Title>_Client_View.docx
+Raw intake       clients/<client_name>/intake.md    (where one was captured)
 ```
+
+The 2026-08-18 architecture audit that used to live here listed four defects. All four are
+closed; recorded briefly so a future session does not re-derive them or act on the audit's
+now-inverted advice.
+
+```
+1. DUPLICATE CLIENT RECORDS — RESOLVED 8/21/2026.
+   August Olivia and Johanna Castillo each existed as a hyphen dir (my-agent pipeline
+   input) and an underscore dir (live deliverables). The hyphen dirs are deleted; the
+   underscore dirs are the single source of truth. Their intake.md files were moved
+   across first — they carried circumference and force-plate data held nowhere else.
+   NOTE: the 8/18 audit had this BACKWARDS, naming the hyphen dir "CURRENT". It was the
+   abandoned pipeline's input, last written 8/07 and carrying no Client View.
+
+2. DUPLICATE TEMPLATE ENGINE — RESOLVED 8/21/2026 by deleting my-agent/.
+   scripts/icons_template.js (1,881 lines, 33 consumers, current) is the survivor.
+   my-agent/engine/icons_template.cjs was a frozen 8/07 fork, 625 lines, one consumer,
+   missing Client View, buildAssessmentReport(), the corrected pelvic-floor language,
+   and the Block Method work.
+   NOTE: the 8/18 audit advised keeping the .cjs and deleting the .js, on the reasoning
+   that the .cjs was "wired into automation." That automation had produced 2 of 27 client
+   documents and none since 8/07. Deleting the .js would have broken every live script.
+
+3. MISSING SPECIALIST AGENTS — RESOLVED. All eight roles are defined under
+   .claude/agents/. No scheduled workflow exists and none is claimed.
+
+4. REPO HYGIENE — RESOLVED 8/21/2026. The clarvis/ponytail leftovers (BACKUP, JARVIS,
+   Clsrvis, Preque, hook, PONYTAIL, "clarvis_config (1).toml") and the empty
+   bls-expert-agent/ skeleton are deleted.
+```
+
+**Standing rule.** A client document is current when it is the newest build of its script
+under `clients/<client_name>/`. Regenerate in place — never save a second dated or suffixed
+copy alongside it. Git history is the versioning; the working tree carries only what is live.
+Delete a build script only when its client leaves the roster, and delete the client's
+directory with it.
 
 ---
 
@@ -2138,11 +2146,9 @@ or verified the reference material). That file also carries the Coverage Index u
 under-served topic. `icons-research-analyst` owns it.
 ## SCRIPTS QUICK REFERENCE
 
-Run `ls scripts/` for the current list (34 files as of 2026-08-20). The engine is
-`scripts/icons_template.js`; per "KNOWN ISSUES" above, the automated pipeline actually
-renders through `my-agent/engine/icons_template.cjs` — resolve that duplication before
-treating either as canonical. Each client script's header comment states its own purpose,
-data sources, and output path.
+Run `ls scripts/` for the current list (33 files as of 2026-08-21). `scripts/icons_template.js`
+is the engine — the only one, per "ARCHITECTURE — SINGLE-PIPELINE STANDARD" above. Each client
+script's header comment states its own purpose, data sources, and output path.
 
 ---
 

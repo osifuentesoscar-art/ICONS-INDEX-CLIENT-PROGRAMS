@@ -1,52 +1,44 @@
 # Client data convention
 
-This is the input the automated ICONS pipeline watches. Drop a new or
-updated client folder here, push it, and the pipeline (see
-`my-agent/src/generate.mjs` and `.github/workflows/generate-icons-docs.yml`)
-turns it into a `.docx` training plan/report and a luxury PDF in
-`deliverables/<slug>/`.
+One directory per client, holding that client's **current** deliverables and
+raw intake. There is no automated pipeline — documents are built by running
+the client's script under `scripts/` (see the "ARCHITECTURE — SINGLE-PIPELINE
+STANDARD" section of `CLAUDE.md`).
 
 ## Folder layout
 
 ```
 clients/
-  <client-slug>/
-    intake.md     — raw notes: Styku scan dump, PRs, injuries, schedule, goals
-    data.json     — structured ICONS schema (optional — see below)
+  <client_name>/
+    intake.md                              — raw notes: Styku dump, PRs, injuries,
+                                             schedule, goals (where captured)
+    <Name>_<ProgramTitle>.docx             — trainer document
+    <Name>_<ProgramTitle>_Client_View.docx — client-facing copy
+    <Name>_ICONS_Performance_Assessment.docx — initial baseline report, if built
 ```
 
-`<client-slug>` is lowercase-kebab-case, e.g. `siobhan-hansen`.
+`<client_name>` is lowercase snake_case, e.g. `siobhan_hansen`. A client with
+no program built yet carries a `README.md` describing what is still needed
+(usually a Styku scan and/or the strength battery).
 
-## Two ways to add a client
+## Adding or revising a client
 
-**1. Raw notes only (`intake.md`)** — write whatever you have: pasted Styku
-scan values, PR list, injury notes, schedule. On push, the pipeline calls
-Claude (via the Agent SDK) with `docs/ICONS_System_Prompt.md` as the system
-prompt to structure your notes into `data.json`, applying the ICONS science
-layer (ALST flags, protein targets, weaker-side determination, RIR
-language, etc.) automatically. Review the generated `data.json` — it's
-committed alongside the deliverables so you can correct it and let the next
-push regenerate from your edits.
+1. Capture raw intake in `clients/<client_name>/intake.md`.
+2. Write or edit the build script at `scripts/<client_name>_<n>day_plan.js`,
+   importing `scripts/icons_template.js`.
+3. Run it. It writes both the trainer document and the Client View into
+   `clients/<client_name>/`.
+4. Audit before delivery (`icons-doc-auditor`), then deliver via `SendUserFile`.
 
-**2. Structured `data.json` directly** — if you already have the full
-schema (e.g. copied from an existing plan), skip the LLM step entirely.
-The pipeline detects `data.json` and renders straight to `.docx`/`.pdf`.
+## Only current files live here
 
-See `clients/_template/` for a worked example of both files and the full
-schema. The schema is documented in detail in `docs/ICONS_System_Prompt.md`
-under "buildDocument() Full Data Schema".
-
-## What triggers regeneration
-
-The pipeline only reprocesses a client when:
-- `intake.md` changes and is newer than the last-generated `data.json`, or
-- `data.json` changes and is newer than the files in `deliverables/<slug>/`.
-
-State is tracked in `clients/<slug>/.state.json` (auto-generated — do not
-hand-edit).
+Regenerate **in place** — overwrite the existing `.docx`. Never keep a second
+dated or suffixed copy of a program alongside the live one; git history is the
+versioning. Every revision to a client's trainer document regenerates its
+Client View in the same pass, so the pair can never drift.
 
 ## Cue length rule
 
-Any `cue` field longer than ~50 characters will wrap to two lines in the
-PDF exercise table. The engine handles this by growing the row (no
-overflow), but keep cues tight for a clean single-line layout.
+Any `cue` field longer than ~50 characters wraps to two lines in the PDF
+exercise table. The engine grows the row (no overflow), but keep cues tight
+for a clean single-line layout.
