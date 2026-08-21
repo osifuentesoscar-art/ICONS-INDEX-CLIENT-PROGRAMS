@@ -734,10 +734,23 @@ Active women, baseline           : 1.6 g/kg/day
 Energy deficit / heavy training  : 1.6–2.2 g/kg/day (context-driven — see below,
                                     NOT an age escalation)
 ALST At-Risk                     : upper end of the 1.6–2.2 g/kg range
-Per meal                         : ~0.3 g/kg (≈25–40g), 4 meals spaced 3–4h apart
+Per meal                         : daily target ÷ 4 meals, spaced 3–4h apart
+                                   (so 0.40 g/kg at the 1.6 baseline, 0.50–0.55
+                                   g/kg at the 2.0–2.2 tier) — NEVER an
+                                   independent g/kg constant; see the per-meal
+                                   correction below
 Pre-sleep option                 : 30–40g slow-digesting protein (e.g. casein)
 Plant-based clients              : add ~10% to whatever target otherwise applies
-Leucine (approximate, not protocol-grade): ~3g/meal from a complete protein source
+Leucine: NO primary dose-finding source located for the commonly cited
+          ~3g/meal threshold. Two systematic reviews that examined the question
+          directly failed to identify one (Zaromskyte et al., Front Nutr
+          2021;8:685165 — supports a leucine trigger ONLY in older adults
+          ingesting crystalline AAs or isolated protein, NOT whole-food protein
+          in healthy adults; Wilkinson et al., Physiol Rep 2023;11(15):e15775 —
+          no single plasma leucine variable had substantial predictive capacity
+          in either age group). ICONS's use case is real-food meals across mixed
+          ages, which is precisely where the trigger does not hold. Do not
+          prescribe to a leucine number.
 ```
 **Corrected 8/17/2026 — this replaces an age-banded escalation (1.6 →
 1.8–2.0 at 40+ → 2.0–2.2 at 50+) that the external evidence review found is
@@ -773,16 +786,75 @@ and why:
   source (GSSI/Phillips 2025) that directly contradicts the age-escalation
   premise both passes shared. Recorded here rather than silently
   overwritten, per this file's citation-integrity practice.
-- **Per-meal target lowered from ~0.4 g/kg to ~0.3 g/kg** (≈25-40g,
-  4 meals, 3-4h apart) — the old 0.4 g/kg figure exceeded both the ISSN's
+- **Per-meal target: CORRECTED AGAIN 8/20/2026 — the 8/17 change to ~0.3 g/kg
+  was itself an error and has been reverted to a derived value.** The 0.3 g/kg
+  figure was arithmetically incompatible with this section's own 1.6 g/kg/day
+  baseline: 0.3 × 4 meals = 1.2 g/kg/day, 25% short, and for a 65kg client it
+  rendered ~20g/meal — below the "≈25-40g" the same line claimed. Root cause:
+  0.4 and Moore's ~0.31 were treated as competing values on one axis. They are
+  different quantities. **0.4 is a distribution quotient (1.6 ÷ 4 meals); ~0.31
+  is an acute per-BOUT MPS-maximising dose**, which Moore himself notes is
+  BELOW the ≥0.5 g/kg associated with whole-body anabolism. A per-bout optimum
+  cannot substitute for a daily-adequacy building block. `proteinTargets()` now
+  DERIVES per-meal as daily ÷ 4 so it can never drift from the tier again;
+  record ~0.31 g/kg separately if an acute post-exercise dose is ever needed.
+  The original 8/17 reasoning is preserved below for the record:
+  ~~the old 0.4 g/kg figure exceeded both the ISSN's
   0.25 g/kg serving guidance and the ~0.31 g/kg/meal muscle-protein-
-  synthesis-maximizing dose identified in the GSSI review.
+  synthesis-maximizing dose identified in the GSSI review.~~ (struck 8/20/2026)
 - **Added, not previously present:** a pre-sleep 30-40g slow-protein
   option (ISSN-supported, low-friction way to hit daily totals), a +10%
   adjustment for plant-based clients (GSSI), and an explicit "leucine is
   approximate, not protocol-grade" caveat — the commonly cited ~3-4g/meal
   leucine threshold could not be independently verified to a primary
   source in this review.
+
+**THE 8/17 CORRECTION IS CONTESTED — added 8/20/2026, do not present it as
+settled.** A deep-research pass found the strongest available counter-evidence
+to this correction had been mis-reported upstream as *supporting* it. State the
+contest plainly, the same way this file already does for creatine/bone and for
+LIFTMOR's single research line:
+- **A peer-reviewed consensus body says the opposite.** The ISSN female-athlete
+  position stand — the only located consensus guideline explicitly scoping pre-,
+  peri- and post-menopausal women — instructs peri/post-menopausal athletes to
+  target the UPPER END of 1.4–2.2 g/kg/day specifically to overcome anabolic
+  resistance, and separately recommends a ~10g high-EAA bolus around exercise.
+  That is a menopausal-status escalation from a peer-reviewed body. (Sims ST,
+  Kerksick CM, Smith-Ryan AE, et al. "ISSN position stand: nutritional concerns
+  of the female athlete." JISSN 2023;20(1):2204066. PMID 37221858.) It is
+  athlete-scoped and does not settle the question either — which is the point:
+  **the question is open, not closed.**
+- **Single-network concentration.** Moore 2009/2015/2019, Mitchell/West 2012,
+  Witard 2014, Macnaughton 2016, Morton 2018, Zaromskyte 2021, Nunes 2022 and
+  D'Souza & Phillips 2025 share the Phillips/Moore/Witard/Tipton authorship
+  family. An entire age-banded standard was retired on one research network's
+  synthesis of its own data, with no independent replication line identified.
+- **The correction's driver is not peer-reviewed.** GSSI Sports Science Exchange
+  is a Gatorade/PepsiCo publication; no peer-review process was documentable,
+  and its ~0.31 g/kg per-meal figure is imported from Moore 2019's young-adult,
+  male-dominated re-analysis rather than derived from female data. Its host was
+  egress-blocked in every attempt, so no figure quoted from it has been
+  confirmed against the source by anyone in this system.
+- **Citation-completeness defect, fixed here:** this file cited it as "D'Souza &
+  Phillips." The actual byline is **D'Souza AC, Greyvenstein D, Newbold JP,
+  Phillips SM** — two of four authors were silently dropped from the single
+  non-peer-reviewed source governing a roster-wide standard.
+- **Post-publication flags on two load-bearing citations.** Morton et al. 2018
+  (BJSM 52(6):376–384) carries a published **Correction** (PMID 32943392, 2020)
+  — any figure must come from the corrected version. Nunes et al. 2022 (JCSM
+  13:795–810), the source of the 1.6 g/kg baseline for the entire roster,
+  carries a formal published **Comment** (JCSM 2025, doi 10.1002/jcsm.70036)
+  alleging inflated effect sizes from pooling multiple arms and pre-post SMDs,
+  with an authors' rebuttal. Contested, not retracted — but it should carry the
+  flag. No retraction or expression of concern surfaced for any other source in
+  the set; that was a search-only check, so treat it as "nothing surfaced," not
+  "retraction check completed."
+**Net posture: do NOT reverse the 8/17 correction, and do NOT add an
+age-escalation back. Present the peri/postmenopausal escalation question as
+actively contested, and leave the age trigger running and labelled
+known-stale until real intake fields exist.** Provenance: `docs/research/03_protein_trigger_operationalization.md`
+— abstract-level verification only (WebFetch egress-blocked), so re-confirm
+against full text before any client-facing use.
 
 **Engine consequence — flagged, not yet built.** `proteinTargets()` in
 `icons_template.js` currently implements `atRisk || ageYears >= 50` — an
@@ -797,12 +869,21 @@ above: flagged for `icons-expert`/`icons-research-analyst` as real follow-up
 work, and every current client document computed under the old age-banded
 tiers needs individual review once the engine changes, not a blanket
 regeneration under an unchanged formula.
-**Partial resolution 8/19/2026:** the PER-MEAL half of this flag is fixed —
-`proteinTargets()` now computes ~0.3 g/kg/meal (was 0.4) and the rendered
-label states "across 4 meals spaced 3–4 hours apart" with the leucine-
-threshold framing removed, per the corrected standard above; every
-nutrition-block client inherited it via same-day regeneration. The AGE-
-TRIGGER half (`atRisk || ageYears >= 50` and the rendered "50+ tier"/"40+
+**Partial resolution 8/19/2026, ITSELF CORRECTED 8/20/2026:** the 8/19 change
+set `proteinTargets()` to a hardcoded ~0.3 g/kg/meal (from 0.4). That was
+wrong — see the per-meal correction above. As of 8/20/2026 the function
+DERIVES per-meal as `daily target ÷ 4 meals` in both engines
+(`scripts/icons_template.js` and `my-agent/engine/icons_template.cjs`), which
+is structurally immune to the drift that caused this: a hardcoded g/kg
+per-meal constant stops matching the daily tier the moment either moves.
+Verified across all four tiers and in all 11 rendered client documents that
+carry a protein target — per-meal × 4 now reconciles to the daily figure in
+every one. **Client impact was real and worst where it mattered most:**
+Siobhan Hansen (53.5kg, ALST At-Risk, BMI 17.4 underweight) was rendered
+"~16g per meal" against her own stated 107–118g/day target — 64g/day if
+followed literally, ~40% short, on the single client whose record flags
+muscle-preservation as the primary physiological goal. Every affected
+document was regenerated 8/20/2026. The AGE-TRIGGER half (`atRisk || ageYears >= 50` and the rendered "50+ tier"/"40+
 tier" labels) remains open exactly as described — it still needs the new
 intake fields plus per-client review, not a formula edit. Note the male
 framework's `maleProteinTargets()` per-meal figure (0.4 g/kg) was
@@ -3632,7 +3713,8 @@ For age-specific programming emphasis (protein tier, creatine indication, bone l
 | ALST (kg/m², women — corrected 8/17/2026) | < 5.5 | ≥ 5.5 (normal reference range — no graded "Optimal" tier; see ALST Index section above) | — |
 | VFA — corrected 8/17/2026 | *(retired as a risk-band table — see "VFA (Visceral Fat Area)" section above; track change over time per client, use waist circumference against IAS/ICCR thresholds as the primary clinical-facing metric)* |||
 | BMI | < 18.5 or ≥ 30 | 18.5–24.9 | 20–23 |
-| Protein (g/kg/day) — corrected 8/17/2026 | < 1.6 | 1.6 (baseline, active women) | 1.6–2.2 (context-driven: energy deficit or heavy training load, NOT an age-band escalation — see "Protein Targets" section above) |
+| Protein (g/kg/day) — corrected 8/17/2026, contest flagged 8/20/2026 | < 1.6 | 1.6 (baseline, active women) | 1.6–2.2 (context-driven: energy deficit or heavy training load, NOT an age-band escalation — but the peri/postmenopausal escalation question is ACTIVELY CONTESTED, with a peer-reviewed consensus body on the escalation side; see "Protein Targets" above) |
+| Protein per meal — corrected 8/20/2026 | — | daily target ÷ 4 meals | never an independent g/kg constant; a hardcoded per-meal figure silently stops matching the daily tier (see "Protein Targets" above) |
 | Weekly sets/muscle | < 6 | 6–9 | ≥ 10 |
 | Bone load (%1RM) — corrected 8/17/2026 | < 70% | 70–84% (8-12RM formulation, UK consensus default) | > 85%, supervised only, risk-gated (actual LIFTMOR intensity — see "Bone Loading" section above) |
 
@@ -3806,6 +3888,18 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Updated:** Coverage Index — two new rows (Deload / planned recovery weeks; Energy availability / caloric surplus), both Last Verified 8/18/2026, both noting the Siobhan Hansen trigger and the young-male-only scope of the direct deload RCTs.
 - Did not touch any client document or script — Siobhan Hansen's document is being updated separately by `icons-expert` with client-specific versions of both items; these sections are the standing reference that update and all future builds cite. Flag back to the main thread/`icons-expert`: any OTHER current client matching the proactive-deload criteria (active injury sites under continuous progressive loading, 8+ week continuous progression) or the surplus-instruction criteria (BMI <18.5, ALST At-Risk with muscle-building primary) should pick these up at their next revision per the existing "touch it, bring it current" practice — not via a blanket sweep today.
 - Sources: [Bell L, et al., "Deloading Practices in Strength and Physique Sports: A Cross-sectional Survey," Sports Medicine - Open 2024](https://link.springer.com/article/10.1186/s40798-024-00691-y) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/38499934/) and [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10948666/)) · [Bell L, et al., "Integrating Deloading into Strength and Physique Sports Training Programmes: An International Delphi Consensus Approach," Sports Medicine - Open 2023;9:87](https://link.springer.com/article/10.1186/s40798-023-00633-0) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10511399/)) · [Bell L, Nolan D, et al., "'You can't shoot another bullet until you've reloaded the gun': Coaches' perceptions, practices and experiences of deloading in strength and physique sports," Frontiers in Sports and Active Living 2022](https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2022.1073223/full) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/36619355/)) · [Coleman M, et al., "Gaining more from doing less? The effects of a one-week deload period during supervised resistance training on muscular adaptations," PeerJ 2024;12:e16777](https://peerj.com/articles/16777/) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10809978/)) · [Effects of deload periods in resistance training on muscle hypertrophy and strength endurance in untrained young men using a randomized within subject design, Scientific Reports 2026](https://www.nature.com/articles/s41598-026-40612-5) · [Ogasawara R, et al., "Effects of periodic and continued resistance training on muscle CSA and strength in previously untrained men," Clinical Physiology and Functional Imaging 2011](https://onlinelibrary.wiley.com/doi/10.1111/j.1475-097X.2011.01031.x) · [Ogasawara R, et al., "Comparison of muscle hypertrophy following 6-month of continuous and periodic strength training," 2013](https://www.semanticscholar.org/paper/Comparison-of-muscle-hypertrophy-following-6-month-Ogasawara-Yasuda/fa1e518decb3fe6a603573d510dc4ae7b0bed2d3) · [Slater GJ, Dieter BP, Marsh DJ, Helms ER, Shaw G, Iraki J, "Is an Energy Surplus Required to Maximize Skeletal Muscle Hypertrophy Associated With Resistance Training," Frontiers in Nutrition 2019;6:131](https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2019.00131/full) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6710320/)) · [Garthe I, Raastad T, et al., "Effect of nutritional intervention on body composition and performance in elite athletes," European Journal of Sport Science 2013](https://www.tandfonline.com/doi/full/10.1080/17461391.2011.643923) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/23679146/)) · ["Effect of Small and Large Energy Surpluses on Strength, Muscle, and Skinfold Thickness in Resistance-Trained Individuals: A Parallel Groups Design," Sports Medicine - Open 2023](https://link.springer.com/article/10.1186/s40798-023-00651-y) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10620361/)) · [Volkert D, et al., "ESPEN guideline on clinical nutrition and hydration in geriatrics," Clinical Nutrition 2019](https://pubmed.ncbi.nlm.nih.gov/30005900/) (also [ESPEN practical guideline update 2022](https://www.clinicalnutritionjournal.com/article/S0261-5614(22)00034-6/fulltext)) · [The effects of nutritional supplementation on older sarcopenic individuals who engage in resistance training: a meta-analysis, PMC 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10167299/)
+
+**8/20/2026 — eighteenth pass. Deep-research harness on three Coverage-Index gaps (meniscus/patellofemoral, women 20-35 peak bone mass, protein-trigger operationalization) — plus a live arithmetic defect found and fixed in the engine.** Run via the `/deep-research` workflow: 27 agents (15 search across 5 angles x 3 topics, 9 adversarial verifiers on three lenses — citation integrity, population transfer, currency/strength — and 3 synthesizers). Full dossiers at `docs/research/`.
+
+- **INFRASTRUCTURE CONSTRAINT, and it bounds everything below.** `WebFetch` was denied by organizational egress policy (403 at CONNECT) for every scholarly host attempted — pubmed, PMC, Europe PMC, BMJ, JOSPT, NEJM, ScienceDirect, Springer, Wiley, JAMA, Cochrane, doi.org, Crossref, Semantic Scholar, and gssiweb.org. Per `/root/.ccr/README.md` this is reported, not routed around. `WebSearch` works and returns verbatim abstract text, so claims reached **abstract level but never full text** — meaning this file's own rule 2 (a secondhand figure must be fetched and confirmed before use) cannot be satisfied in this environment. **Consequently NOTHING from these dossiers was promoted into the Evidence-Based Science Layer as a new numeric threshold.** Only two categories of change were made: (a) a fully-supported arithmetic fix that requires no citation at all, and (b) confidence-REDUCING caveats, which are epistemically safe in a way new numbers are not. Unblocking those hosts is the prerequisite for a promotion pass. A concrete reason to hold that line: one auditor's own search returned a blended description of the LIFTMOR trial that was not LIFTMOR — the search-summary channel demonstrably conflates sources.
+- **CORRECTED (live defect, no citation required) — the per-meal protein figure was arithmetically incompatible with this file's own daily baseline, and had been since 8/19/2026.** 0.3 g/kg x 4 meals = 1.2 g/kg/day against a stated 1.6 g/kg/day baseline; at 65kg it rendered ~20g/meal, below the "≈25-40g" printed in the same line. Root cause: the 8/19 change treated 0.4 and Moore 2019's ~0.31 as competing values on one axis when they are different quantities — 0.4 is a distribution quotient (1.6 ÷ 4 meals), ~0.31 is an acute per-BOUT MPS-maximising dose that Moore notes is itself below the ≥0.5 g/kg for whole-body anabolism. **Fixed structurally rather than by swapping the constant back:** `proteinTargets()` now DERIVES per-meal as daily ÷ 4 in BOTH engines, so it cannot drift from the tier again. **Client impact was real and concentrated where it mattered most** — Siobhan Hansen (53.5kg, ALST At-Risk, BMI 17.4 underweight) was rendered "~16g per meal" against her own 107-118g/day target, ~40% short if followed literally, on the one client whose record names muscle preservation as the primary physiological goal. All 31 build scripts regenerated; verified that per-meal x 4 reconciles to the daily figure in all 11 documents carrying a protein target.
+- **Also corrected: the two engines had already drifted, exactly as Known Issue #2 predicts.** `my-agent/engine/icons_template.cjs` (the engine actually wired into automation) never received the 8/19 change at all and was still on 0.4. Both are now on the derived form. This is empirical confirmation that the duplicate-engine issue is causing real divergence, not a theoretical risk.
+- **FLAGGED, not reversed — the 8/17/2026 protein correction is contested.** The peer-reviewed ISSN female-athlete position stand (Sims ST, Kerksick CM, Smith-Ryan AE, et al., JISSN 2023;20(1):2204066, PMID 37221858) instructs peri/post-menopausal athletes to target the UPPER END of 1.4-2.2 g/kg/day to overcome anabolic resistance — a menopausal-status escalation from a consensus body, i.e. the reverse of the premise the 8/17 correction rests on. **The upstream research initially reported this source as CORROBORATING the no-escalation position; two independent auditors established it says the opposite.** Reporting the strongest counter-evidence to a shipped standard as agreement with it is the most serious analytical defect this pass produced, and it is exactly why the adversarial layer exists. Also recorded: the correction's evidence base is concentrated in one authorship network (Phillips/Moore/Witard/Tipton); its driving source (GSSI SSE) is non-peer-reviewed industry content whose byline this file cited incompletely (actual: D'Souza AC, Greyvenstein D, Newbold JP, Phillips SM); Morton et al. 2018 carries a published Correction (PMID 32943392); and Nunes et al. 2022 — the source of the 1.6 g/kg baseline for the whole roster — carries a formal published Comment alleging inflated effect sizes (JCSM 2025, doi 10.1002/jcsm.70036), with authors' rebuttal. **Net posture: do not reverse the correction, do not restore an age escalation, present the question as open.** This is the same transparency practice this file already applies to creatine/bone and LIFTMOR's single research line.
+- **HARDENED — the ~3g/meal leucine threshold has no locatable primary source.** The existing "approximate, not protocol-grade" caveat understated the position. Two systematic reviews that examined the question directly both failed to identify a threshold: Zaromskyte et al. (Front Nutr 2021;8:685165) supports a leucine trigger only in older adults ingesting crystalline amino acids or isolated protein, NOT whole-food protein in healthy adults; Wilkinson et al. (Physiol Rep 2023;11(15):e15775) found no single plasma leucine variable with substantial predictive capacity in either age group. ICONS's use case — real-food meals, mixed ages — is precisely where it does not hold.
+- **The commissioned protein question was NOT answered, and that is the honest outcome.** Four of five angles on operationalizing "energy deficit" and "heavy training load" returned zero claims. Three adversarial auditors converged independently on the same recommendation: **do not change `proteinTargets()`'s age trigger** — leave it running, label it known-stale in both the engine and this file, and do not add an intake field, because no evidence-based operational definition was produced and an unsourced context rule would carry the appearance of evidence without the substance. The engine comment now says exactly this, including "do not 'fix' this by inventing a threshold."
+- **Findings recorded in the dossiers but deliberately NOT promoted into this file** (abstract-level only; they need a fetching session first): for the knee gap — the OA section's "heavier loading is core management" half does NOT transfer to meniscal tear (no trial in that literature prescribed load as %1RM) and neither half transfers to patellofemoral pain (its evidence base carries an explicit age ceiling of 44-45, below this roster); VMO-selective training is not supported as a target; medial meniscus posterior ROOT tears are a biomechanically distinct entity that must be separated from body tears before applying the reassuring exercise-vs-surgery literature; and START (n=377) found no pain benefit for 75-90% over 30-40% 1RM in knee OA with MORE nonserious adverse events in the heavy arm, which complicates "heavier is core management" even within OA. For the bone gap — the lumbar spine is the least loading-responsive site in premenopausal women, and no located modality reliably moves lumbar spine BMD in this bracket at all, which resolves the Scoliosis section's open axial-substitution question NEGATIVELY rather than hopefully; and adolescent idiopathic scoliosis is associated with persistent generalized low BMD into adulthood, which raises the value of a baseline DXA for a scoliosis client. Two engine-adjacent cautions also recorded: a knee carrying an effusion has quadriceps under reflex inhibition, so the Styku L/R comparison is confounded for that client the same way it already is for lymphedema-related extracellular water; and all six knee clients meet the Deload section's existing "active injury sites under progressive loading" criterion for a proactively scheduled deload.
+- **PROPOSED STANDING RULE, from the knee dossier's methodological finding.** Two auditors independently caught upstream agents promoting a `secondary-unverified` claim into a headline conclusion within the same document. That is structurally the ALST sex-conflation failure — a weak or mismatched input laundered into a confident output. Proposed: **a claim's headline framing may never carry more confidence than its own source tier, and any claim whose corroboration search failed twice is quarantined rather than summarised.** Not yet adopted as policy; flagged for Xolokan's decision.
+- Sources: `docs/research/01_meniscus_and_patellofemoral_pain.md`, `docs/research/02_women_20_35_peak_bone_mass.md`, `docs/research/03_protein_trigger_operationalization.md` — each carries its own full source list with per-claim provenance tiers. Honour the tiers; none is full-text-verified.
 
 ---
 

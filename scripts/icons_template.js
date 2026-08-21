@@ -453,6 +453,15 @@ function weakerSide(leftLST, rightLST) {
 // Active women general: ≥1.6 g/kg/day. Per meal: ~0.4 g/kg (leucine threshold).
 // Source: Morton 2018 meta-analysis + anabolic resistance research.
 function proteinTargets(client) {
+  // KNOWN-STALE TRIGGER (flagged 8/17/2026, re-affirmed 8/20/2026): the
+  // `atRisk || is50Plus` gate below implements the RETIRED age-banded
+  // standard. The corrected standard is context-based (energy deficit OR
+  // heavy training load) OR ALST At-Risk — but neither context field exists
+  // as structured intake data, and a deep-research pass (8/20/2026) found no
+  // evidence-based operational definition to build them from. Deliberately
+  // left running rather than replaced with an unsourced rule that would
+  // carry the appearance of evidence without the substance. Do not "fix"
+  // this by inventing a threshold; see CLAUDE.md "Protein Targets".
   const atRisk = client.alstIndex !== undefined && client.alstIndex < 5.5;
   const is50Plus = client.ageYears >= 50;
   const is40Plus = client.ageYears >= 40;
@@ -466,19 +475,44 @@ function proteinTargets(client) {
 
   const proteinLow = Math.round(client.weightKg * low);
   const proteinHigh = Math.round(client.weightKg * high);
-  // Corrected 8/17/2026 (applied to the engine 8/19/2026): ~0.3 g/kg/meal
-  // (≈25-40g, 4 meals spaced 3-4h) per the ISSN serving guidance and the
-  // ~0.31 g/kg MPS-maximizing dose — the old 0.4 g/kg figure exceeded both.
-  // Leucine framing downgraded to approximate, per the same correction.
-  const perMeal = Math.round(client.weightKg * 0.3);
 
-  return { atRisk, low, high, tier, proteinLow, proteinHigh, perMeal };
+  // Per-meal is the daily target DIVIDED BY the meal count — never an
+  // independent constant. Corrected 8/20/2026.
+  //
+  // The prior hardcoded 0.3 g/kg was decoupled from the tier computed above
+  // and broke the daily arithmetic: 0.3 x 4 meals = 1.2 g/kg/day against a
+  // stated 1.6 g/kg/day baseline (25% short), and for a 65kg client it
+  // rendered ~20g/meal — below the "≈25-40g" the same rendered line claimed.
+  // Root cause: the 8/19/2026 change treated 0.4 and Moore 2019's ~0.31 as
+  // competing values on one axis. They are different quantities. 0.4 is a
+  // distribution quotient (1.6 / 4 meals); ~0.31 is an acute per-BOUT
+  // MPS-maximising dose, which Moore notes is itself BELOW the ≥0.5 g/kg
+  // associated with whole-body anabolism. Substituting a per-bout optimum
+  // for a daily-adequacy building block cannot preserve the daily total.
+  //
+  // Deriving it here means the per-meal figure tracks whatever tier applies
+  // and can never silently drift from it again.
+  const MEALS_PER_DAY = 4;
+  const perMealLow = Math.round(proteinLow / MEALS_PER_DAY);
+  const perMealHigh = Math.round(proteinHigh / MEALS_PER_DAY);
+  const perMealGkgLow = low / MEALS_PER_DAY;
+  const perMealGkgHigh = high / MEALS_PER_DAY;
+  const perMeal = perMealLow; // retained for backward compatibility
+
+  return {
+    atRisk, low, high, tier, proteinLow, proteinHigh,
+    mealsPerDay: MEALS_PER_DAY,
+    perMeal, perMealLow, perMealHigh, perMealGkgLow, perMealGkgHigh,
+  };
 }
 
 // ── NUTRITION BLOCK ───────────────────────────────────────────────────
 function nutritionBlock(client) {
   const els = [sectionTitle('Evidence-Based Nutrition Targets', C.gold)];
-  const { atRisk, low, high, tier, proteinLow, proteinHigh, perMeal } = proteinTargets(client);
+  const {
+    atRisk, low, high, tier, proteinLow, proteinHigh,
+    mealsPerDay, perMealLow, perMealHigh, perMealGkgLow, perMealGkgHigh,
+  } = proteinTargets(client);
 
   // When a tier's endpoints coincide (e.g. the 1.6 g/kg active-women
   // baseline), render a single value — "110–110g/day (1.6–1.6 g/kg)" was a
@@ -486,12 +520,20 @@ function nutritionBlock(client) {
   // travel-plan audit). Range tiers render exactly as before.
   const gramsText = proteinLow === proteinHigh ? `${proteinLow}g/day` : `${proteinLow}–${proteinHigh}g/day`;
   const gkgText = low === high ? `${low.toFixed(1)} g/kg` : `${low.toFixed(1)}–${high.toFixed(1)} g/kg`;
+  // Same coincident-endpoint collapse the daily figures above already apply,
+  // so a flat tier renders "~44g per meal (0.40 g/kg)" not "~44–44g".
+  const perMealText = perMealLow === perMealHigh
+    ? `~${perMealLow}g`
+    : `~${perMealLow}–${perMealHigh}g`;
+  const perMealGkgText = perMealGkgLow === perMealGkgHigh
+    ? `${perMealGkgLow.toFixed(2)} g/kg`
+    : `${perMealGkgLow.toFixed(2)}–${perMealGkgHigh.toFixed(2)} g/kg`;
   els.push(...goldCallout(
     'Daily Protein Target',
     [
       txt(gramsText, { bold: true, size: 20, color: C.dark }),
       txt(`  (${gkgText} — ${tier})  `, { size: 15, color: C.mid }),
-      txt(`~${perMeal}g per meal (≈0.3 g/kg), across 4 meals spaced 3–4 hours apart.`, { size: 17, color: C.dark }),
+      txt(`${perMealText} per meal (${perMealGkgText}), across ${mealsPerDay} meals spaced 3–4 hours apart.`, { size: 17, color: C.dark }),
     ]
   ));
 

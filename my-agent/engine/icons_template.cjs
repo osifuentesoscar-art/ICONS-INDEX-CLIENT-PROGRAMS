@@ -337,10 +337,19 @@ function nutritionBlock(client) {
   const weightKg = client.weightKg;
   const proteinLo = Math.round(weightKg * lo);
   const proteinHi = Math.round(weightKg * hi);
-  const perMeal = Math.round(weightKg * 0.4);
+  // Per-meal is the daily target DIVIDED BY the meal count, never an
+  // independent constant — see scripts/icons_template.js proteinTargets()
+  // for the full rationale (corrected 8/20/2026). A hardcoded g/kg per-meal
+  // figure silently stops matching the daily tier the moment either moves;
+  // that is exactly how the sibling engine's 0.3 g/kg came to imply a
+  // 1.2 g/kg/day total against a 1.6 g/kg/day baseline.
+  const MEALS_PER_DAY = 4;
+  const perMealLo = Math.round(proteinLo / MEALS_PER_DAY);
+  const perMealHi = Math.round(proteinHi / MEALS_PER_DAY);
+  const perMealText = perMealLo === perMealHi ? `~${perMealLo}g` : `~${perMealLo}–${perMealHi}g`;
   const creatineIndicated = client.ageYears >= 40 || (client.alstIndex ?? 99) < 5.5 || client.isPostmenopausal;
 
-  const body = `Protein target: ${proteinLo}–${proteinHi}g/day (~${perMeal}g per meal, 4+ meals/day). `
+  const body = `Protein target: ${proteinLo}–${proteinHi}g/day (${perMealText} per meal, across ${MEALS_PER_DAY} meals). `
     + `Creatine monohydrate 3–5g/day with food — ${creatineIndicated ? 'strongly indicated' : 'indicated'} for this client. `
     + `Collagen: 15g + 50mg Vitamin C, 30–60 min before loading sessions.`;
 
