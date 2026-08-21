@@ -806,10 +806,17 @@ TRIGGER half (`atRisk || ageYears >= 50` and the rendered "50+ tier"/"40+
 tier" labels) remains open exactly as described — it still needs the new
 intake fields plus per-client review, not a formula edit. Note the male
 framework's `maleProteinTargets()` per-meal figure (0.4 g/kg) was
-deliberately NOT changed — the Male Framework's own prose still states 0.4,
-and whether the women's correction transfers is an open
+deliberately NOT changed — the Male Framework's own prose still stated 0.4,
+and whether the women's correction transfers was an open
 `icons-research-analyst` question (flagged 8/19), not an assumption to make
-silently.
+silently. **RESOLVED 8/21/2026** — see "Protein Targets — Men" in the Male
+Client Programming Framework below. Short version: the divergence was never
+a sex difference, it was a source divergence; the male prose is now
+corrected to ~0.3 g/kg baseline with ~0.4 g/kg at 60+ (an AGE axis), and
+the corresponding `maleProteinTargets()` edit is flagged there as unbuilt.
+The women's ~0.3 g/kg above is unaffected and stands as written — the
+older-adult evidence behind the 60+ male figure was measured in men only
+and was deliberately not extended to women's brackets.
 
 ### Energy Availability & Caloric Surplus for Lean-Mass Gain (2013-2023 evidence — new section, 8/18/2026)
 ```
@@ -2199,9 +2206,14 @@ ACL/injury risk by phase: remains genuinely unresolved, not settled either
   "inconclusive whether a particular cycle phase predisposes women to
   greater non-contact ACL injury risk," at very-low certainty. Do NOT add
   phase-based ACL precautions on this basis. The real, phase-INDEPENDENT
-  elevated ACL risk in women (~5x incidence) is already addressed through
-  the universal neuromuscular circuit — see the corrected "ACL / Knee
-  Valgus / Neuromuscular Injury-Prevention Circuit" section above.
+  elevated ACL risk in women (~2.8x pooled incidence in team ball sports —
+  CORRECTED 8/21/2026 from "~5x," which contradicted the 2.8x figure this
+  file states in two other places; see the Incidence note in the ACL
+  section below for the sourced figure and why the higher ratios are
+  subset-scoped) is already addressed through the universal neuromuscular
+  circuit — see the corrected "ACL / Knee Valgus / Neuromuscular
+  Injury-Prevention Circuit" section below (also corrected 8/21/2026 from
+  "above" — that section sits later in this file, not earlier).
 Menstrual-health red-flag referral (added 8/17/2026): absent, irregular,
   or newly-lost periods should prompt medical referral, not a programming
   adjustment. Note that resumption of menses alone does not confirm
@@ -2579,6 +2591,37 @@ Fix: lateral band walks, terminal knee extensions, Spanish squat,
      separately-evidenced addition, not a Copenhagen substitute)
 Banded squats: band above knees creates proprioceptive cue to push OUT
 
+INCIDENCE — the sex ratio, sourced (added 8/21/2026 to resolve an internal
+  inconsistency: two places in this file said 2.8x, one said "~5x," and
+  NONE of the three carried a citation). **Use ~2.8x as this file's
+  standing figure.** Chia L, Oliveira Silva D, Whalan M, McKay MJ,
+  Sullivan J, Fuller CW, Pappas E, "Non-contact Anterior Cruciate Ligament
+  Injury Epidemiology in Team-Ball Sports: A Systematic Review with
+  Meta-analysis by Sex, Age, Sport, Participation Level, and Exposure
+  Type," Sports Medicine 2022;52:2447-2467 (45 studies, 13 team-ball
+  sports) found non-contact ACL incidence of 0.14 per 1000 player-hours
+  (95% CI 0.10-0.19) in female vs 0.05 (95% CI 0.03-0.07) in male athletes
+  — a pooled ratio of roughly 2.8x, and a statistically significant
+  difference.
+  The frequently-quoted "4-6x" is not fabricated — it is differently
+  SCOPED. It reflects specific high-risk sport subsets rather than a
+  pooled figure: Montalvo AM, et al., "Anterior Cruciate Ligament Injury
+  Risk in Sport: A Systematic Review and Meta-Analysis of Injury Incidence
+  by Sex and Sport Classification," Journal of Athletic Training
+  2019;54(5):472-482 reports an incidence rate ratio of 5.51 for
+  fixed-object high-impact rotational landing sports specifically (4.80 vs
+  1.75 per 10,000 athlete-exposures) and 3.00 for contact sports (1.88 vs
+  0.87). Practical rule: cite ~2.8x by default; cite a subset ratio only
+  when the client actually competes in that sport category, and say which
+  category it describes.
+  Scope caveat that applies to BOTH figures: these are competitive
+  sport-participation statistics (incidence per player-hour or per
+  athlete-exposure). None of these cohorts are recreational women 40-65,
+  this file's core population. The figure justifies why the neuromuscular
+  circuit is prioritized for athletic/field-and-court clients in the 20-35
+  bracket; it should not be quoted to a 55-year-old recreational client as
+  though it describes her personal risk.
+
 CORRECTED TRIGGER — do not screen-gate the circuit. Prior guidance
   conditioned the corrective circuit on visually observing knee valgus on a
   single-leg-squat or drop-landing screen. This is not supported: a
@@ -2703,7 +2746,7 @@ Built 8/11/2026 in response to Xolokan's explicit request, after Jake Poyner's a
 **20–39 — Foundation**
 - No unique physiological trigger in this window; apply standard resistance-training protocol (ACSM 2026 RIR model, ≥10 sets/muscle/week hypertrophy target, sex-neutral) at full intensity.
 - Protein/creatine/ALST: see thresholds below — no age-based escalation needed yet.
-- The women's ACL/knee-valgus corrective-priority emphasis in this file (2.8× female incidence, a universal neuromuscular circuit per the corrected trigger above) is a *female-elevated-risk* finding specific to the cited meta-analysis — do not apply that same weighting/priority to a male client by default. General movement-quality coaching (correcting an obvious fault observed during training) still applies to anyone; the elevated-risk/mandatory-circuit emphasis does not transfer.
+- The women's ACL/knee-valgus corrective-priority emphasis in this file (2.8× female incidence — Chia et al., Sports Medicine 2022; see the sourced INCIDENCE block in the ACL section above, added 8/21/2026, including why the commonly-quoted "4-6x" is subset-scoped rather than pooled — plus a universal neuromuscular circuit per the corrected trigger above) is a *female-elevated-risk* finding specific to that meta-analysis — do not apply that same weighting/priority to a male client by default. General movement-quality coaching (correcting an obvious fault observed during training) still applies to anyone; the elevated-risk/mandatory-circuit emphasis does not transfer.
 - Copenhagen plank / adductor injury prevention is sex-neutral (Harøy et al. 2019 cluster-RCT, BJSM 53:150, studied male and female athletes) and remains highest-yield for athletic/team-sport clients in this bracket regardless of sex.
 
 **40–59 — Midlife Androgen Decline & Sarcopenia Onset**
@@ -2728,7 +2771,7 @@ EWGSOP2 sets the low-muscle-mass cutoff at ASM/height² < 7.0 kg/m² for men and
 
 **Genuine gap — no three-tier subdivision found for men.** The women's ALST table above splits into three tiers (At-Risk / Normal-monitor / Optimal ≥7.0). The literature search for this pass did not turn up a comparably-cited three-tier subdivision for men — EWGSOP2 gives a single binary threshold (<7.0 at-risk / ≥7.0 not-at-risk), used alongside grip strength (<27 kg = low) and physical-performance testing to stage probable vs. confirmed vs. severe sarcopenia, not to sub-divide the "not at-risk" range the way this file does for women. Do not invent an "optimal" male ALST number. Treat a value close to the 7.0 line with the same clinical judgment used for any borderline finding, not a numbered tier.
 
-### Protein Targets — Men (ISSN 2017 position stand + Morton 2018 meta-analysis)
+### Protein Targets — Men (ISSN 2017 position stand + Morton 2018 meta-analysis) — per-meal figure corrected 8/21/2026
 ```
 General resistance-trained men     : 1.6–2.2 g/kg/day
   (ISSN 2017: 1.4–2.0 g/kg/day sufficient for most exercising individuals;
@@ -2739,10 +2782,90 @@ General resistance-trained men     : 1.6–2.2 g/kg/day
 Caloric restriction / cutting      : 2.3–3.1 g/kg/day to maximize lean-mass
   retention (ISSN 2017) — higher than maintenance, mirrors the logic (not
   the exact number) behind the women's ALST At-Risk escalation
-Per meal                            : ~0.4 g/kg (leucine threshold — mechanism
-  is not sex-specific)
+Per meal                            : ~0.3 g/kg baseline (same as women);
+  ~0.4 g/kg for clients in the 60+ bracket — CORRECTED 8/21/2026 from a
+  flat ~0.4 g/kg, which was never a male-specific figure. See the note
+  immediately below before applying this.
 Distribution                        : 4+ meals/day
 ```
+
+**Per-meal figure corrected 8/21/2026 — the 0.4 g/kg this line previously
+carried was never sex-derived, and its divergence from the women's
+corrected ~0.3 g/kg was a SOURCE divergence, not a sex difference.** This
+was flagged 8/19/2026 as an open question when the women's per-meal target
+was lowered (see "Protein Targets" above, engine-consequence paragraph) and
+is resolved here. What the check found:
+- **Neither figure was ever sex-specific.** The male 0.4 g/kg traces to
+  Schoenfeld BJ & Aragon AA, "How much protein can the body use in a single
+  meal for muscle-building? Implications for daily protein distribution,"
+  Journal of the International Society of Sports Nutrition 2018;15:10 — a
+  general (not male-specific) pragmatic recommendation of ~0.4 g/kg/meal
+  across at least four meals as a route to reaching ≥1.6 g/kg/day, not a
+  measured per-meal anabolic threshold. The women's ~0.3 g/kg traces to
+  ISSN 2017's 0.25 g/kg serving guidance plus the ~0.31 g/kg
+  MPS-maximizing dose in the GSSI/Phillips female-athlete review. Two
+  different sources, both defensible, neither keyed to sex. The old line's
+  own parenthetical ("mechanism is not sex-specific") was correct — it just
+  didn't follow that observation through to the number.
+- **The axis the evidence actually supports is AGE, not sex.** Moore DR,
+  Churchward-Venne TA, Witard O, et al., "Protein Ingestion to Stimulate
+  Myofibrillar Protein Synthesis Requires Greater Relative Protein Intakes
+  in Healthy Older Versus Younger Men," Journals of Gerontology Series A
+  2015;70(1):57-62 measured the MPS plateau by breakpoint analysis at
+  0.40 ± 0.19 g/kg body mass in older men (~71 yr) vs 0.24 ± 0.06 g/kg in
+  younger men (~22 yr) — 0.60 vs 0.25 g/kg when normalized to lean body
+  mass. Note precisely what this does and does not establish: BOTH cohorts
+  were men, so this is an age finding measured entirely within one sex, not
+  a sex finding. Anabolic-resistance literature around PROT-AGE describes
+  the same rightward shift in general terms (roughly 20-25 g/meal in
+  younger adults vs 35-40 g in older adults to reach comparable MPS rates).
+- **Sex differences in the MPS response do exist, are small, and do not run
+  in the direction that would justify a higher male per-meal dose.** Smith
+  GI, Reeds DN, Okunade AL, Patterson BW, Mittendorfer B, "The Muscle
+  Protein Synthetic Response to Whey Protein Ingestion Is Greater in
+  Middle-Aged Women Compared With Men," Journal of Clinical Endocrinology &
+  Metabolism 2019;104(4):994-1004 found the myofibrillar synthetic response
+  to 25 g whey was GREATER in middle-aged women than in men. In 65-80-year
+  -olds, basal fractional synthetic rate was higher in women while the
+  meal-induced increase was higher in men. Mixed, small, and not a basis
+  for splitting the per-meal number by sex in either direction.
+Corrected standard: **~0.3 g/kg/meal as the baseline for men, same as
+  women**, moving toward ~0.4 g/kg/meal in the 60+ bracket where Moore
+  2015's older-adult breakpoint applies directly. Treat 40-59 as an
+  INTERPOLATION, not a cited tier — Moore's older cohort was ~71, so
+  nudging a 50-year-old upward within the 0.3-0.4 band is reasonable
+  practice, not a citation-backed threshold. This is exactly the posture
+  this framework already takes toward its daily 1.6-2.2 g/kg range at 40+
+  ("a soft trend, not a hard tier change"), so it is consistent rather
+  than a new kind of claim.
+Deliberately NOT applied to the women's numbers, per the Demographic Scope
+  Rule: the older-adult upward shift above was measured in MEN only.
+  Extending it into the women's 65+ bracket would be the mirror image of
+  the ALST sex-conflation error corrected 8/17/2026 (a male-derived number
+  applied to women as though it were general). The women's ~0.3 g/kg
+  stands as written — it came from a female-specific synthesis. Whether an
+  age-based per-meal escalation is warranted for older WOMEN is a genuine
+  open question requiring female or mixed-sex older-adult breakpoint data;
+  none was located in this pass. Flagged, not answered.
+**Engine consequence — flagged, NOT built (deliberately).**
+  `maleProteinTargets()` in `scripts/icons_template.js` computes
+  `perMeal = Math.round(client.weightKg * 0.4)` with no age branch. Under
+  the corrected standard that should be 0.3 with a 60+ branch to 0.4.
+  Unlike the women's still-open age-trigger fix (which needs new intake
+  fields that don't exist yet), this one is a small self-contained change —
+  age is already on the client object. Not edited here because another
+  agent is actively building against that file; flagged to the main thread
+  for `icons-expert`. Scale of the live discrepancy: for an 80 kg male
+  client the rendered per-meal figure moves from 32 g to 24 g. Note Vinz
+  Feller (50) sits in the 40-59 interpolation band, so his corrected
+  guidance is the 0.3-0.4 band rather than a flat 0.4 — the engine's
+  current output is at the top of his correct band, not outside it, which
+  makes this a framing fix for him rather than a wrong number.
+  Also stale and out of scope for this pass: `docs/ICONS_System_Prompt.md`
+  still carries the WOMEN'S per-meal figure as "~0.4 g/kg (hits leucine
+  threshold)" alongside the retired age-banded daily tiers — that
+  paste-into-Projects reference copy never received the 8/17/2026 women's
+  protein correction at all. Flagged for whoever owns that file.
 No single age-based tier escalation (unlike the women's 1.6 → 1.8–2.0 → 2.0–2.2 progression tied to the 40/postmenopausal thresholds) is cited in the literature for men specifically — trend a 40–59+ client toward the upper end of the 1.6–2.2 g/kg range as a matter of sound practice given general anabolic-resistance-with-age findings, but do not present it as a cited hard tier the way the women's brackets are.
 
 ### Creatine — Men
@@ -3704,6 +3827,8 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 | Women 20-35 bracket (as a whole) | never dedicated | Women 20-35 | Thin — Samantha Swan (28) is the clearest current case; peak-bone-mass window content has never had a dedicated pass |
 | Pelvic Floor Protocol (bracing model, PFM co-activation vs. strengthening) | 8/17/2026 | Women, postmenopausal/heavy-loading | Well-represented (5 clients carry the callout) |
 | Deload / planned recovery weeks | 8/18/2026 | All (direct RCTs are young-male only — no women/older-adult deload RCT exists) | Roster-wide — every client on continuous progressive loading; flagged via the Block Method pilot review (Siobhan Hansen: two active injury sites, 8 weeks, no lighter week) |
+| ACL incidence sex ratio (the numeric figure only — not the corrected screening trigger, which was verified 8/17) | 8/21/2026 | Women vs. men, competitive sport cohorts | Thin as a *risk* statistic — no roster client is a competitive team-sport athlete; the figure's operative use is prioritizing the 20-35 bracket's neuromuscular circuit |
+| Male per-meal protein dose (0.4 vs 0.3 g/kg) | 8/21/2026 | Men, all brackets; resolved on an AGE axis, not a sex axis | Thin (Jake Poyner, Vinz Feller, Nick) — Vinz Feller's rebuild is the live case |
 | Energy availability / caloric surplus for lean-mass gain | 8/18/2026 | All; underweight/ALST At-Risk focus | Directly live — Siobhan Hansen (BMI 17.4, ALST At-Risk) is the triggering case; complements (does not duplicate) the RED-S bullet and GLP-1 section |
 
 **Note on the OA row (8/18/2026):** none of the six clients above has a documented OA diagnosis, and the section must not be applied to them as though they do — a meniscus tear, a VMO-insufficiency pattern, and an acutely inflamed knee are three different clinical problems, and only the first is closely OA-adjacent (degenerative meniscal pathology and knee OA overlap substantially in a 61-year-old). What the roster shift actually means is narrower and worth stating precisely: the OA section's single most transferable finding — that reflexively unloading a painful knee joint is the outdated default, and that progressive resistance training including heavier loading is core management rather than a risk to train around — now has real clients it bears on, so a future pass should verify it against *these* presentations (meniscus tear specifically, and patellofemoral/VMO-pattern anterior knee pain specifically) rather than assuming knee-OA evidence covers them. Neither meniscus tear nor patellofemoral pain has its own coverage in this file. That is the highest-value next research pass in this domain — flagged, not run today.
@@ -3846,6 +3971,14 @@ Standing practice (started 8/11/2026, at Xolokan's request): periodically re-res
 - **Updated:** Coverage Index — two new rows (Deload / planned recovery weeks; Energy availability / caloric surplus), both Last Verified 8/18/2026, both noting the Siobhan Hansen trigger and the young-male-only scope of the direct deload RCTs.
 - Did not touch any client document or script — Siobhan Hansen's document is being updated separately by `icons-expert` with client-specific versions of both items; these sections are the standing reference that update and all future builds cite. Flag back to the main thread/`icons-expert`: any OTHER current client matching the proactive-deload criteria (active injury sites under continuous progressive loading, 8+ week continuous progression) or the surplus-instruction criteria (BMI <18.5, ALST At-Risk with muscle-building primary) should pick these up at their next revision per the existing "touch it, bring it current" practice — not via a blanket sweep today.
 - Sources: [Bell L, et al., "Deloading Practices in Strength and Physique Sports: A Cross-sectional Survey," Sports Medicine - Open 2024](https://link.springer.com/article/10.1186/s40798-024-00691-y) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/38499934/) and [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10948666/)) · [Bell L, et al., "Integrating Deloading into Strength and Physique Sports Training Programmes: An International Delphi Consensus Approach," Sports Medicine - Open 2023;9:87](https://link.springer.com/article/10.1186/s40798-023-00633-0) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10511399/)) · [Bell L, Nolan D, et al., "'You can't shoot another bullet until you've reloaded the gun': Coaches' perceptions, practices and experiences of deloading in strength and physique sports," Frontiers in Sports and Active Living 2022](https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2022.1073223/full) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/36619355/)) · [Coleman M, et al., "Gaining more from doing less? The effects of a one-week deload period during supervised resistance training on muscular adaptations," PeerJ 2024;12:e16777](https://peerj.com/articles/16777/) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10809978/)) · [Effects of deload periods in resistance training on muscle hypertrophy and strength endurance in untrained young men using a randomized within subject design, Scientific Reports 2026](https://www.nature.com/articles/s41598-026-40612-5) · [Ogasawara R, et al., "Effects of periodic and continued resistance training on muscle CSA and strength in previously untrained men," Clinical Physiology and Functional Imaging 2011](https://onlinelibrary.wiley.com/doi/10.1111/j.1475-097X.2011.01031.x) · [Ogasawara R, et al., "Comparison of muscle hypertrophy following 6-month of continuous and periodic strength training," 2013](https://www.semanticscholar.org/paper/Comparison-of-muscle-hypertrophy-following-6-month-Ogasawara-Yasuda/fa1e518decb3fe6a603573d510dc4ae7b0bed2d3) · [Slater GJ, Dieter BP, Marsh DJ, Helms ER, Shaw G, Iraki J, "Is an Energy Surplus Required to Maximize Skeletal Muscle Hypertrophy Associated With Resistance Training," Frontiers in Nutrition 2019;6:131](https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2019.00131/full) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6710320/)) · [Garthe I, Raastad T, et al., "Effect of nutritional intervention on body composition and performance in elite athletes," European Journal of Sport Science 2013](https://www.tandfonline.com/doi/full/10.1080/17461391.2011.643923) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/23679146/)) · ["Effect of Small and Large Energy Surpluses on Strength, Muscle, and Skinfold Thickness in Resistance-Trained Individuals: A Parallel Groups Design," Sports Medicine - Open 2023](https://link.springer.com/article/10.1186/s40798-023-00651-y) (also [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10620361/)) · [Volkert D, et al., "ESPEN guideline on clinical nutrition and hydration in geriatrics," Clinical Nutrition 2019](https://pubmed.ncbi.nlm.nih.gov/30005900/) (also [ESPEN practical guideline update 2022](https://www.clinicalnutritionjournal.com/article/S0261-5614(22)00034-6/fulltext)) · [The effects of nutritional supplementation on older sarcopenic individuals who engage in resistance training: a meta-analysis, PMC 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10167299/)
+
+**8/21/2026 — eighteenth pass. Two targeted verifications, no new topic research: (a) the ACL incidence sex ratio this file contradicted itself on, and (b) whether the women's 8/17 per-meal protein correction transfers to men.** Deliberately narrow — the Block Method rollout is finishing and other agents are editing adjacent files, so this pass touched only the Evidence-Based Science Layer and the Male Client Programming Framework. Both items were routed here as unresolved discrepancies from the 8/20 check-in.
+- **(a) Corrected — ACL incidence sex ratio, and the figure now has a citation for the first time.** The 20-35 bracket bullet and the Male Framework's 20-39 bullet both stated 2.8x female ACL incidence; the Menstrual Cycle Training section stated "~5x." A self-contradiction inside the operative file, and — confirmed by grep before editing — **none of the three locations carried a citation at all**, which is why the drift was never caught. Verified the pooled figure directly: Chia L, Oliveira Silva D, Whalan M, McKay MJ, Sullivan J, Fuller CW, Pappas E, Sports Medicine 2022;52:2447-2467 (45 studies, 13 team-ball sports) reports non-contact ACL incidence 0.14 per 1000 player-hours (95% CI 0.10-0.19) in female vs 0.05 (95% CI 0.03-0.07) in male athletes — ~2.8x, significant. This confirms the deep-reference doc's existing reconciliation (`docs/Evidence_Based_Science_Womens_Strength_Training.md`, section 5 and the limitations list), so the two documents now agree rather than quietly differing. Also verified the "4-6x" figure's provenance rather than dismissing it: it is real but subset-scoped — Montalvo AM et al., Journal of Athletic Training 2019;54(5):472-482 reports IRR 5.51 for fixed-object high-impact rotational landing sports specifically (4.80 vs 1.75 per 10,000 athlete-exposures) and IRR 3.00 for contact sports. Changed "~5x" to ~2.8x, and added a new sourced INCIDENCE block to the ACL section giving both figures, the rule for which to cite when, and a scope caveat that applies to both: these are competitive sport-participation statistics, and none of the cohorts are recreational women 40-65, so the ratio justifies prioritizing the neuromuscular circuit for athletic clients in the 20-35 bracket but should not be quoted to a 55-year-old recreational client as her personal risk. Fixed an incidental cross-reference error found in the same sentence ("section above" → below; the ACL section sits later in the file, not earlier).
+- **(b) Corrected — male per-meal protein figure, resolved on an AGE axis rather than the sex axis the question was framed on.** The Male Framework prose and `maleProteinTargets()` both retained ~0.4 g/kg/meal after the women's figure was corrected to ~0.3 g/kg on 8/17 (engine updated 8/19), flagged 8/19 as an open question. Finding: **the divergence was never a sex difference — it was a source divergence.** The male 0.4 traces to Schoenfeld & Aragon, JISSN 2018;15:10, a general (not male-specific) pragmatic recommendation of ~0.4 g/kg across ≥4 meals as a route to hitting ≥1.6 g/kg/day, not a measured threshold; the women's ~0.3 traces to ISSN 2017's 0.25 g/kg serving guidance plus GSSI/Phillips's ~0.31 g/kg MPS-maximizing dose. The axis the evidence does support is age: Moore DR et al., Journals of Gerontology Series A 2015;70(1):57-62 found the MPS plateau at 0.40 ± 0.19 g/kg body mass in older men (~71 yr) vs 0.24 ± 0.06 g/kg in younger men (~22 yr) — and both cohorts were men, making it an age finding measured within one sex, not a sex finding. Checked the sex question directly rather than assuming: sex differences in the MPS response are real but small and do not favor a higher male dose — Smith GI et al., JCEM 2019;104(4):994-1004 found the myofibrillar response to 25 g whey was GREATER in middle-aged women than men. Corrected the Male Framework to ~0.3 g/kg/meal baseline (same as women) with ~0.4 g/kg in the 60+ bracket, and 40-59 explicitly labeled an interpolation rather than a cited tier — consistent with the posture this framework already takes toward its daily 1.6-2.2 g/kg range at 40+.
+- **Deliberately NOT done in (b), and recorded as a decision rather than an omission:** did not extend Moore 2015's older-adult upward shift into the women's 65+ bracket. That would apply a male-derived number to women as though it were general — the mirror image of the ALST sex-conflation error corrected 8/17/2026. The women's ~0.3 g/kg came from a female-specific synthesis and stands. Whether an age-based per-meal escalation is warranted for older women is a genuine open question needing female or mixed-sex older-adult breakpoint data; none was located in this pass, so it is flagged rather than answered.
+- **Engine change flagged, not made, per today's task scope.** `maleProteinTargets()` computes `perMeal = weightKg * 0.4` with no age branch; under the corrected standard it should be 0.3 with a 60+ branch. Small and self-contained (age is already on the client object), unlike the women's still-open age-trigger fix which needs new intake fields. Not edited because another agent is building against `scripts/icons_template.js` today. Live discrepancy scale: 32 g vs 24 g per meal for an 80 kg client. Vinz Feller (50, rebuilt today) falls in the 40-59 interpolation band, so the engine's current output sits at the TOP of his correct band rather than outside it — a framing fix for him, not a wrong number. Separately flagged: `docs/ICONS_System_Prompt.md` still carries the WOMEN'S retired age-banded tiers and ~0.4 g/kg per-meal figure, having never received the 8/17 protein correction at all.
+- **Noted for the record, no action:** the two template engines were consolidated 8/20 (`my-agent/engine/icons_template.cjs` deleted), so a science correction now has exactly one place to land in code — the engine flag above is a single-file change, not the dual-file half-fix the Known Issues section warned about.
+- Sources: [Chia L, Oliveira Silva D, Whalan M, McKay MJ, Sullivan J, Fuller CW, Pappas E, "Non-contact Anterior Cruciate Ligament Injury Epidemiology in Team-Ball Sports: A Systematic Review with Meta-analysis by Sex, Age, Sport, Participation Level, and Exposure Type," Sports Medicine 2022;52:2447-2467](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9136558/) · [Montalvo AM, et al., "Anterior Cruciate Ligament Injury Risk in Sport: A Systematic Review and Meta-Analysis of Injury Incidence by Sex and Sport Classification," Journal of Athletic Training 2019;54(5):472-482](https://pubmed.ncbi.nlm.nih.gov/31009238/) (also [journal listing](https://nata.kglmeridian.com/view/journals/attr/54/5/article-p472.xml)) · [Schoenfeld BJ, Aragon AA, "How much protein can the body use in a single meal for muscle-building? Implications for daily protein distribution," Journal of the International Society of Sports Nutrition 2018;15:10](https://link.springer.com/article/10.1186/s12970-018-0215-1) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/29497353/)) · [Moore DR, Churchward-Venne TA, Witard O, et al., "Protein Ingestion to Stimulate Myofibrillar Protein Synthesis Requires Greater Relative Protein Intakes in Healthy Older Versus Younger Men," Journals of Gerontology Series A 2015;70(1):57-62](https://academic.oup.com/biomedgerontology/article/70/1/57/2947642) · [Smith GI, Reeds DN, Okunade AL, Patterson BW, Mittendorfer B, "The Muscle Protein Synthetic Response to Whey Protein Ingestion Is Greater in Middle-Aged Women Compared With Men," Journal of Clinical Endocrinology & Metabolism 2019;104(4):994-1004](https://academic.oup.com/jcem/article/104/4/994/5172264) (also [PubMed](https://pubmed.ncbi.nlm.nih.gov/30423113/)) · [Sex-Based Differences in Muscle Protein Turnover and Metabolism in Aging, Gatorade Sports Science Institute](https://www.gssiweb.org/sports-science-exchange/article/sse-121-sex-based-differences-in-muscle-protein-turnover-and-metabolism-in-aging-feeding-and-exercise-responses) · [Bauer J, et al., PROT-AGE Study Group position paper, JAMDA 2013 — reviewed for per-meal guidance](https://www.jamda.com/article/s1525-8610(13)00326-5/fulltext)
 
 ---
 
