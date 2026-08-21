@@ -375,6 +375,11 @@ const baselines = [
 
 const baselineNotes = [
   {
+    type: 'green',
+    label: 'Creatine — Indicated',
+    body: 'Creatine monohydrate is worth adding and needs no bodyweight figure to prescribe, unlike the protein target: 3\u20135g daily, with food, no loading phase, saturating over about four weeks. Insist on plain monohydrate \u2014 the other forms are not superior. Well-supported for strength, power and sleep quality in women in strength training, and it works paired with the training rather than on its own.',
+  },
+  {
     type: 'teal',
     label: 'Styku Finding — Hip Abduction Asymmetry',
     body: 'Isolated hip abduction test: left peak force 126N (weaker side), right peak force 153N. Asymmetry 17.5%, right-dominant. Recommends left-side emphasis and a unilateral corrective pathway.',
