@@ -115,7 +115,10 @@ nutritionBlock(client)     // ← evidence-based protein/creatine/collagen targe
 proteinTargets(client)     // ← shared calc behind nutritionBlock + proteinBar
 proteinBar(client)         // ← compact per-page reminder, auto-inserted for ALST At-Risk clients
 pelvicFloorCallout()       // ← auto-inserted for postmenopausal clients on heavy-loading days
-weakerSide(leftLST, rightLST)  // ← 'left'|'right'|'even' — lower LST is weaker, leads unilateral work
+weakerSide(leftLST, rightLST)  // ← 'left'|'right'|'even' — lower LST is weaker, leads unilateral work. DIRECTION ONLY: a non-'even' result is NOT confirmation the Asymmetry Protocol applies
+asymmetryGapPct(leftLST, rightLST)          // ← gap as a % of the larger side; null on unusable input
+asymmetryReport(leftLST, rightLST, opts?)   // ← {gapAbs, gapPct, weaker, thresholdPct, triggered} against CLAUDE.md's corrected ≥10% relative trigger (opts.thresholdPct raises it to fold in a scan region's own test-retest CV). Added 8/21/2026 — before this, the percentage was computed by hand per client
+resolveAudience(isClientView, value, clientValue, audience)  // ← the general Client View field filter behind introAudience/introClient and the summary milestone fields
 maleProteinTargets(client)     // ← Male Client Programming Framework equivalent of proteinTargets()
 maleNutritionNote(client)      // ← goldCallout-equivalent protein/creatine note built from maleProteinTargets()
 testosteroneNote(client)       // ← teal, informational-only testosterone/andropause note; returns [] under age 40
@@ -208,6 +211,8 @@ clearFlag(label, body)
       color?: "teal"|"green"|"gold"|"red"|"blue"|"purple",  // omit → day's own accent color (see Callout Color rules)
       introLabel?: string,           // e.g. "Why", "Load Target", "Format" — default "Note"; pass the literal value null (not omitted) to render intro as a plain unlabeled paragraph instead
       intro?: string,
+      introAudience?: 'internal',    // Client View only (added 8/21/2026): drops `intro` entirely when viewMode:'client' is set. Mark internal when a block intro is written to the trainer — quoted trainer instruction, build rationale, a gate/criteria explanation, an audit-trail reference to another note.
+      introClient?: string,          // Client View only (added 8/21/2026): renders INSTEAD of `intro` when viewMode:'client' is set. Use when the block genuinely needs a client-facing explanation and the trainer version can't simply be dropped. Wins over introAudience, so a field may carry both. Until 8/21/2026 neither field existed and the documented workaround was rewording the shared string until it read acceptably for both audiences — which costs the trainer document its precision. Prefer these fields over that reword now.
       exercises: [{
         name: string,
         sets: string,
@@ -245,9 +250,21 @@ clearFlag(label, body)
     milestones4wk: string,
     milestones8wk: string,
     rescanNote: string,
+    // Client View filtering for the three fields above (added 8/21/2026) —
+    // same two-shape mechanism as a block's introAudience/introClient:
+    milestones4wkAudience?: 'internal',   milestones4wkClient?: string,
+    milestones8wkAudience?: 'internal',   milestones8wkClient?: string,
+    rescanNoteAudience?:    'internal',   rescanNoteClient?:    string,
+    // rescanNote is the most frequent offender: it is normally written as
+    // trainer instruction ("Rebook Styku scan at 8 weeks — track ALST
+    // trend, L/R LST gaps...") and shipped verbatim to the client.
+    // A dropped field renders nothing at all — milestoneTracker() skips a
+    // falsy field rather than emitting an empty labelled callout.
   }
 }
 ```
+
+**Still unfiltered, and honestly so.** `summary.subtitle`, `day.intensityPara`, `day.iconsNote`, `day.warmUp`/`coolDown` and a block's `introLabel` have no audience mechanism. A leak in one of those still needs the reword workaround. Extend `resolveAudience()` the same way if an audit finds one.
 
 ### Brace Life Improvement Report — `buildImprovementDoc()`
 
