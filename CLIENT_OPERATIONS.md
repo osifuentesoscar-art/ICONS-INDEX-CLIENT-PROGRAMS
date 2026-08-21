@@ -358,6 +358,34 @@ _Numbered 9 but placed here, ahead of Section 8, deliberately: Section 8's Verif
 
 ---
 
+## 10. DEFERRED RETROACTIVE TOUCH QUEUE (added 8/21/2026)
+
+**Why this section exists.** `CLAUDE.md` repeatedly parks retroactive work with wording like *"Retroactive scope — deliberately not done in this pass"* or *"resolved as each document is next touched."* That posture is correct — those fixes need per-client judgment, not a blanket rewrite. But nothing in the system ever forces a next touch, so the deferred items simply never happen. This section is the queue that makes them happen, one client at a time, through the normal build → audit → fix → commit pipeline. `icons-operations-analyst` owns it; the daily check-in Routine advances it.
+
+**Discipline for anyone extending this queue: verify the defect in the RENDERED document before adding a row.** The 8/21/2026 pass that built this section started from raw greps and found them wildly unreliable — a case-insensitive `cable` search matched "appli**cable**" and inflated a 4-file problem into a 23-file one, and 14 of 15 files matching `0.5 lb` turned out to be *correctly documenting the threshold as retired*, not citing it as live. Two further candidates (VFA risk-band labels; the Client View parity backfill) were investigated and **dropped as non-defects** — the VFA hits are body-fat percentile bands explicitly attributed to Styku's own dashboard, and Client View parity is already clean at 19/19. Count what is actually broken, not what a grep matches.
+
+### 10a. Open queue
+
+| # | Item | Scope (verified 8/21/2026) | Source rule | Status |
+|---|---|---|---|---|
+| A | **ACL / neuromuscular circuit — universalize, dose, track adherence** | 13 active client plan scripts. **0 of 13** carry any adherence tracking; only 3 mention the evidenced 20–30 min, 1–2×/week dose. The circuit is still effectively screen-gated or undosed roster-wide. | `CLAUDE.md` → "ACL / Knee Valgus / Neuromuscular Injury-Prevention Circuit — trigger corrected 8/17/2026" (retroactive scope explicitly deferred) | **Open — largest item.** Per-client: needs a standing weekly time allocation, which may not fit every client's day count without displacing something. Judgment call per client, not a blanket insert. |
+| B | **Intensity framework — training-status tiering + Red-day rationale** | **0 of 13** scripts record whether the client is novice (<~6 months) or trained, so nobody is on the prescribed simplified 2-day Gold/Green rotation. **11 scripts** carry 90% Red days with no documented testing/competition rationale. | `CLAUDE.md` → "ICONS INTENSITY FRAMEWORK — status and rollout corrected 8/17/2026" (retroactive scope explicitly deferred) | **Open.** Requires a training-status determination per client — an intake fact this repo does not currently capture. May need Xolokan's input per client rather than inference. |
+| C | **Elizabeth Poyner — retired 0.5 lb threshold cited as live** | `scripts/elizabeth_poyner_5day_plan.js` `rescanNote` renders *"below the 0.5 lb asymmetry threshold"* as current standard. This is a **client-facing rendered field**, so it reaches her trainer document AND her Client View. Also present in the file's header comment (line ~88). | `CLAUDE.md` → "Asymmetry Protocol (Styku segmental data) — trigger corrected 8/17/2026" | **Open — smallest and highest-confidence.** Wording fix only; her actual conclusion (gap below threshold, no unilateral-lead protocol) is correct under both the old and corrected standards. Good first item. |
+| D | **Cable → Kieser naming cleanup** | Genuine rendered exercise-name hits only: `jake_poyner_3day_plan.js` ("Standing Cable/Band Row"), `kayma_liburd_2day_plan.js` ("Face Pull (Band or Cable)"), `vinz_feller_3day_plan.js` (load field "Light band/cable"), `icons_baseline_sheets.js` ("Heavier DB or cable row"), plus 3 trainer-education scripts. | `CLAUDE.md` → "STUDIO EQUIPMENT", implication 1 (Kieser is the studio's cable machine) | **Open, low priority.** Per the Kieser-equivalence clarification these are **executable as written** — this is a naming accuracy fix, not a programming conflict. Petra and Sarah are exempt (virtual / own equipment). |
+
+### 10b. Explicitly NOT in this queue
+
+- **Full-Spectrum Progression Standard retroactive audit** — `CLAUDE.md` states it is gated on Xolokan's explicit go-ahead ("do not sweep existing 40–55-bracket client documents against this standard without authorization"). Do not start it from this queue.
+- **The 10 intake-pending clients** — blocked on a data gate (Styku + strength battery), not a work gate. Nothing to advance.
+- **`proteinTargets()` age-trigger and the `weakerSide()` %-threshold helper** — both are engine changes needing new intake fields, not per-client document touches. They belong to `icons-expert`/`icons-research-analyst` as engine work.
+- **Engine consolidation** (`scripts/icons_template.js` vs `my-agent/engine/icons_template.cjs`) — architectural, tracked in `CLAUDE.md`'s KNOWN ISSUES item 2, not a per-client touch.
+
+### 10c. How to advance one item
+
+One client per pass, never a batch. Recompute or re-verify against that client's real data → edit the build script → re-run it → regenerate **both** the trainer document and the Client View (the standing same-touch mirror rule) → run `icons-doc-auditor` including the Client View audience-leak sweep → fix findings → commit → update the row above with the date and what changed. While a client's document is open, apply the standing "touch it, bring it current" pass rather than the single queue item alone.
+
+---
+
 ## 8. VERIFICATION STATUS
 
 This file was scaffolded 8/17/2026 with the gate/register/ledger structures above. Per-client data is being populated by a verification pass (`icons-operations-analyst`, dispatched 8/17/2026) that checks every specific claim against the actual current state of `CLIENTS.md` and the build scripts — not against the unverified directive that prompted this file's creation. See the Verification Log below for what's been confirmed, corrected, or is still pending.

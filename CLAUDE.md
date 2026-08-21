@@ -1680,7 +1680,7 @@ Niko Heers    — Stretch Therapist (certified)
 - **Trainer education formats** — `trainer_education/README.md` carries the per-format tables.
 - **Subagent team** — the eight `.claude/agents/*.md` definitions describe their own scope in
   frontmatter, which every session receives automatically; route by those descriptions.
-## KNOWN ISSUES — ARCHITECTURE AUDIT (2026-08-18)
+## KNOWN ISSUES — ARCHITECTURE AUDIT (2026-08-18; items 2–3 re-verified and corrected 2026-08-21)
 
 Fix these before onboarding a partner or generating another partnership briefing. If you (the agent) are asked to work on any file mentioned below, fix the underlying issue, not just the symptom.
 
@@ -1694,25 +1694,49 @@ Fix these before onboarding a partner or generating another partnership briefing
    data.json has everything the legacy version had, delete clients/august_olivia/ and
    scripts/august_olivia_3day_plan.js.
 
-2. DUPLICATE TEMPLATE ENGINE — schema-drift risk.
-   scripts/icons_template.js (645 lines) is called "canonical" by this file and by
-   docs/ICONS_System_Prompt.md. But the automated pipeline (generate.mjs → 
-   my-agent/engine/render.cjs) actually renders through a SEPARATE file,
-   my-agent/engine/icons_template.cjs (625 lines). A brand/schema fix applied to one will not
-   propagate to the other.
-   ACTION: Keep my-agent/engine/icons_template.cjs (it's the one actually wired into
-   automation). Deprecate/delete scripts/icons_template.js and update every doc reference
-   (this file, docs/ICONS_System_Prompt.md, CLIENTS.md) to point at the real engine.
+2. DUPLICATE TEMPLATE ENGINE — schema-drift risk. STILL OPEN, but the recommended
+   direction below was REVERSED 8/21/2026 after re-measuring both files.
+   scripts/icons_template.js is called "canonical" by this file and by
+   docs/ICONS_System_Prompt.md. The automated pipeline (generate.mjs →
+   my-agent/engine/render.cjs) renders through a SEPARATE file,
+   my-agent/engine/icons_template.cjs. A brand/schema fix applied to one does not
+   propagate to the other — the core risk is unchanged and real.
+   WHAT CHANGED: the 8/18 audit recorded both files at ~equal size (645 vs 625 lines) and
+   concluded the automation-wired .cjs should win. As of 8/21/2026 the actual counts are
+   scripts/icons_template.js = 1881 lines vs my-agent/engine/icons_template.cjs = 625 —
+   the drift has tripled, and it is entirely one-directional: every science-layer and
+   feature change since (buildAssessmentReport(), viewMode:'client', the corrected
+   pelvicFloorCallout() language, the 0.3 g/kg proteinTargets() fix, EXERCISE_BENEFIT_LIBRARY,
+   DEFAULT_ASSESSMENT_FOOTNOTES) landed in the scripts/ version ONLY. The .cjs file is not
+   a co-equal fork; it is a stale 8/18-era snapshot.
+   CORRECTED ACTION: consolidate ONTO scripts/icons_template.js, not away from it — it is
+   the file carrying all current behavior, and every client deliverable on the roster is
+   built through it. Rewire my-agent/engine/render.cjs to consume it (or generate the .cjs
+   from it) rather than deleting the larger, live engine to preserve the smaller, dead one.
+   Deleting scripts/icons_template.js as the 8/18 action text instructed would silently
+   revert ~1,250 lines of current, audited engine behavior — do not do it.
 
-3. MISSING SPECIALIST AGENTS — partner-facing claims outrun the code.
-   Partnership materials describe 7 running roles (coordinating ICONS Expert +
-   Clinical Research Analyst, Evidence Curator, Trainer Education, Document Auditor,
-   Intake Monitor, Roster Analyst) operating daily. Only ONE agent is defined
-   (.claude/agents/icons-expert.md), and the only automation
-   (.github/workflows/generate-icons-docs.yml) triggers on push to clients/** or manual
-   dispatch — there is no `schedule:` trigger, so nothing runs autonomously/daily yet.
-   ACTION: Either build the six missing roles as real subagents + a scheduled workflow, or
-   scale back partner-facing claims to match what's actually automated today.
+3. MISSING SPECIALIST AGENTS — RESOLVED 8/21/2026. This item's facts were stale and
+   understated the system's own automation; kept here (corrected, not deleted) because the
+   8/18 text was being read as current.
+   The 8/18 audit stated "Only ONE agent is defined" and "there is no `schedule:` trigger,
+   so nothing runs autonomously/daily yet." Both are false as of 8/21/2026:
+     - EIGHT agents are defined in .claude/agents/ — icons-expert, icons-research-analyst,
+       icons-evidence-curator, icons-trainer-education, icons-doc-auditor,
+       icons-intake-monitor, icons-roster-analyst, and icons-operations-analyst (the last
+       postdates the 8/18 audit, which is why the audit's own count said seven roles).
+     - Autonomous scheduling exists, just NOT in GitHub Actions — it runs as Claude Code
+       Routines, not a workflow `schedule:` block, which is why grepping the workflow file
+       for `schedule:` finds nothing and reads as "nothing is automated." Two ICONS
+       Routines are live: "ICONS Daily Subagent Team Check-In" (daily 15:00 UTC) and
+       "ICONS Drive Intake Sweep" (weekly, Wednesdays 15:00 UTC).
+   The partner-facing claim of a standing multi-agent team is therefore accurate today; it
+   was accurate-in-advance when the audit was written, not false.
+   REMAINING ACTION: none for agent count or scheduling. Note for whoever next reads the
+   workflow file: .github/workflows/generate-icons-docs.yml genuinely has no `schedule:`
+   trigger and still fires only on push to clients/** or manual dispatch — that is correct
+   and intended, since the recurring work is Routine-driven, not Actions-driven. Do not
+   "fix" it by adding a cron to the workflow; that would duplicate the Routines.
 
 4. REPO HYGIENE — unrelated personal-tool files at repo root.
    BACKUP, JARVIS, Clsrvis, Preque, hook, "clarvis_config (1).toml" are leftover setup notes
@@ -2139,9 +2163,11 @@ under-served topic. `icons-research-analyst` owns it.
 ## SCRIPTS QUICK REFERENCE
 
 Run `ls scripts/` for the current list (34 files as of 2026-08-20). The engine is
-`scripts/icons_template.js`; per "KNOWN ISSUES" above, the automated pipeline actually
-renders through `my-agent/engine/icons_template.cjs` — resolve that duplication before
-treating either as canonical. Each client script's header comment states its own purpose,
+`scripts/icons_template.js` — and per the corrected item 2 under "KNOWN ISSUES" above, that
+IS the live engine (1881 lines, carrying every change since 8/18). The separate
+`my-agent/engine/icons_template.cjs` (625 lines) that the `generate.mjs` automation renders
+through is a stale snapshot, not a co-equal fork; consolidate onto the scripts/ engine rather
+than the other way around. Each client script's header comment states its own purpose,
 data sources, and output path.
 
 ---
