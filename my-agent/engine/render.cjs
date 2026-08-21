@@ -7,7 +7,14 @@
 
 const fs = require('fs');
 const path = require('path');
-const { buildDocument } = require('./icons_template.cjs');
+// Repointed 2026-08-20 from ./icons_template.cjs to the live engine.
+// The .cjs fork was last updated 8/7 and hardcodes alstStatus()/vfaStatus(),
+// which stamp retired clinical tiers ("OPTIMAL", "MODERATE RISK") onto every
+// document rendered through it -- including a female client scored against
+// the male 7.0 ALST cutoff. The live engine prints raw values with no
+// interpretation, and additionally carries buildAssessmentReport() and the
+// Client View viewMode the fork never had.
+const { buildDocument } = require('../../scripts/icons_template.js');
 
 async function main() {
   const [, , dataPath, outPath] = process.argv;
