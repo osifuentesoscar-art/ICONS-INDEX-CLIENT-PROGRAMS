@@ -3,6 +3,12 @@
 
 Established 8/17/2026, at Xolokan's direct request (a 9-point operational directive). This file is distinct from `CLAUDE.md` (engine mechanics + clinical science reference) and `CLIENTS.md` (per-client program facts/changelog) — it tracks **process and governance state**: whether a client's program has cleared the gates it's supposed to clear, who owns which clinical constraint, and whether a standing checklist has actually been run, not just documented as a rule somewhere else.
 
+> **Note on `CLIENTS.md` references below (added 2026-08-21).** Individual client records were
+> split out of `CLIENTS.md` into `clients/<client_name>/README.md` — verbatim, nothing rewritten.
+> `CLIENTS.md` is now the roster index. Where a row or log entry below says "confirmed against
+> `CLIENTS.md`", read that as the client's record, now at `clients/<client_name>/README.md`. Any
+> `CLIENTS.md line N` citation refers to the pre-split file and is resolvable through git history.
+
 **Owner:** `icons-operations-analyst` (new subagent, see `.claude/agents/icons-operations-analyst.md`). Read this file's own header in that agent's definition for how it stays current — this file is meant to be re-verified against the real roster on a standing cadence, not written once and left stale.
 
 **Honest scope limitation (stated once here, applies to every section below):** this repo has no calendar, email, SMS, or task-queue integration. Nothing in this file can literally "notify the MA/coach" or "prevent a new block from being released" — there is no release mechanism to gate. What this file CAN do: make the required state visible and auditable (a weekly glance shows exactly what's due, what's missing, and what's overdue), and make it the standing practice of every subagent that touches a client's document to check this file before proceeding. That is a real operational improvement over the status quo (nothing tracked centrally), but it is a documentation/discipline layer, not automation — do not describe it to Xolokan as automated notification, because it isn't.

@@ -10,6 +10,9 @@ STANDARD" section of `CLAUDE.md`).
 ```
 clients/
   <client_name>/
+    README.md                              — THE CLIENT'S FULL RECORD: profile, Styku
+                                             data, clinical flags, baselines, program
+                                             structure, revision history
     intake.md                              — raw notes: Styku dump, PRs, injuries,
                                              schedule, goals (where captured)
     <Name>_<ProgramTitle>.docx             — trainer document
@@ -17,9 +20,12 @@ clients/
     <Name>_ICONS_Performance_Assessment.docx — initial baseline report, if built
 ```
 
-`<client_name>` is lowercase snake_case, e.g. `siobhan_hansen`. A client with
-no program built yet carries a `README.md` describing what is still needed
+`<client_name>` is lowercase snake_case, e.g. `siobhan_hansen`. Every client has a
+`README.md`; for a client with no program built yet it records what is still needed
 (usually a Styku scan and/or the strength battery).
+
+`CLIENTS.md` at the repo root is the roster **index** over these records — use it to
+enumerate who exists or to answer cross-roster questions, not for per-client detail.
 
 ## Adding or revising a client
 

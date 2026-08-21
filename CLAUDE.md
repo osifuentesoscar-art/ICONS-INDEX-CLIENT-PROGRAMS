@@ -1671,8 +1671,11 @@ Niko Heers    — Stretch Therapist (certified)
 
 ## CLIENT ROSTER & DOCUMENT MAP
 
-- **Individual client records — `CLIENTS.md`** is the maintained source of truth: profile,
-  Styku data, clinical flags, baselines, program structure, and revision history per client.
+- **Individual client records — `clients/<client_name>/README.md`** is the maintained source
+  of truth per client: profile, Styku data, clinical flags, baselines, program structure, and
+  revision history. Read only the client you are working on. (Split out of a single
+  `CLIENTS.md` on 2026-08-21, verbatim — that file is now the roster INDEX over these records,
+  not the records themselves.)
 - **Operational/process state — `CLIENT_OPERATIONS.md`**: assessment gate, reassessment ledger,
   clinical constraint register, asymmetry execution log, watchlists.
 - **Roster map, system-document index, trainer-education format history —
