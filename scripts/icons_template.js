@@ -457,9 +457,14 @@ function weakerSide(leftLST, rightLST) {
 }
 
 // ── NUTRITION TARGETS (shared calc) ─────────────────────────────────────
-// Women 50+ or ALST At-Risk: 2.0–2.2 g/kg/day. Women 40+: 1.8–2.0 g/kg/day.
-// Active women general: ≥1.6 g/kg/day. Per meal: ~0.4 g/kg (leucine threshold).
-// Source: Morton 2018 meta-analysis + anabolic resistance research.
+// Active women: 1.6 g/kg/day baseline; up toward 2.2 for a genuine energy
+// deficit, heavy training load, or ALST At-Risk — NOT an age escalation
+// (corrected 8/17/2026). Per meal ~0.3 g/kg (ISSN serving guidance + the
+// ~0.31 g/kg MPS-maximizing dose); leucine is approximate, not protocol-grade.
+// NOTE the age-based tier TRIGGER below is still the retired one — see
+// CLAUDE.md's Protein Targets engine-consequence paragraph; it needs new
+// intake fields, not a formula edit.
+// Source: Nunes 2022 meta-analysis + ISSN 2017 + GSSI/Phillips 2025.
 function proteinTargets(client) {
   const atRisk = client.alstIndex !== undefined && client.alstIndex < 5.5;
   const is50Plus = client.ageYears >= 50;
@@ -604,7 +609,7 @@ function maleNutritionNote(client) {
   } else if (t.trendUpper) {
     trendClause = ` trending toward the upper end of that range is reasonable given his age (40+), landing around ${t.workingLow}–${t.workingHigh}g/day as a working target,`;
   }
-  const body = `General resistance-trained-male range is ${t.low.toFixed(1)}–${t.high.toFixed(1)} g/kg/day (ISSN 2017 position stand; Morton et al. 2018 meta-analysis — the same source already cited for the women's 1.6 g/kg tier in this system, and its trial pool was not sex-restricted). At ${client.weightKg} kg that's roughly ${t.proteinLow}–${t.proteinHigh}g/day;${trendClause} at ~${t.perMeal}g per meal minimum (leucine threshold), distributed across 4+ meals/day. Creatine: 3–5g monohydrate daily with food, no loading phase — same protocol as any resistance-trained adult, saturates in 3–4 weeks.`;
+  const body = `General resistance-trained-male range is ${t.low.toFixed(1)}–${t.high.toFixed(1)} g/kg/day (ISSN 2017 position stand; Morton et al. 2018 meta-analysis — the same source already cited for the women's 1.6 g/kg tier in this system, and its trial pool was not sex-restricted). At ${client.weightKg} kg that's roughly ${t.proteinLow}–${t.proteinHigh}g/day;${trendClause} at roughly ${t.perMeal}g per meal as a practical distribution target (a pragmatic route to the daily total, not a measured per-meal anabolic threshold), which needs 5 or more meals to reach the working range above. Creatine: 3–5g monohydrate daily with food, no loading phase — same protocol as any resistance-trained adult, saturates in 3–4 weeks.`;
   return labeledPara('Protein & Creatine Targets — Male Client Programming Framework', body, C.gold);
 }
 
