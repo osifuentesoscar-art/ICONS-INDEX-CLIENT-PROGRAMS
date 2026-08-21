@@ -149,6 +149,94 @@
  *     Moderate/High Risk) in favor of trend-tracking language. Vinz's VFA
  *     70.0 cm² note reworded accordingly — no longer labeled against a
  *     risk band.
+ *
+ * REVISION (8/21/2026) — ICONS BLOCK METHOD RESTRUCTURE + STANDING
+ * TOUCH-RULE PASS. Full existing record read first (his CLIENTS.md entry in
+ * full and this script in full) before anything was changed; every prior
+ * clinical decision, tested baseline, audit fix, and internal note was
+ * re-confirmed against the source rather than re-derived.
+ *
+ * 1. SIX-SLOT ARCHITECTURE. All three days rebuilt onto Corrective ->
+ *    Primary Compound -> Accessory -> Jason's exercise -> Secondary Compound
+ *    -> Third Compound (Integration), with block titles naming the slot each
+ *    block occupies. SLOT 4 IS OMITTED ENTIRELY ON ALL THREE DAYS, honestly:
+ *    Vinz has no Jason Bethea SOAP-note record and no coordinated-care
+ *    relationship — no filler was inserted in its place. Day 3 mapped 1:1
+ *    onto existing content with no exercise reordered at all (its old
+ *    combined unilateral block simply split into Accessory + Secondary
+ *    Compound, preserving the split-squat-before-SL-RDL order). Days 1 and 2
+ *    each gained one genuinely new block to fill the accessory slot with
+ *    real content rather than filler — Day 1 machine leg work (leg extension
+ *    + hamstring curl, both confirmed studio inventory, no invented loads:
+ *    self-select at 1 RIR), Day 2 a Push-Up Protocol built off his TESTED
+ *    26-rep baseline, which had a documented 8-week target (32-35) but was
+ *    never actually programmed anywhere in the document.
+ *
+ * 2. ANTAGONIST ROTATION re-walked on the FULL RENDERED ORDER across block
+ *    boundaries, not per block. Two ordering consequences: (a) Day 1's
+ *    accessory runs Leg Extension BEFORE Hamstring Curl — the reverse order
+ *    would have produced Glute Bridge -> Hex Deadlift -> Hamstring Curl,
+ *    three consecutive posterior-chain exercises across the A->B->C
+ *    boundaries; (b) Day 2's corrective block swapped Scap Push-Up and Face
+ *    Pull, so the block no longer ends on a push directly ahead of the
+ *    Incline Press and the new Push-Up Protocol (which would have been three
+ *    consecutive pushes). The 8/15/2026 audit fix's requirement — that the
+ *    close/standard/wide pull-up grip battery is never adjacent to the
+ *    single-arm row — is PRESERVED and re-verified: the row now sits in the
+ *    integration closer with the overhead press between it and the battery.
+ *
+ * 3. SINGLE-ARM ROW EXITS THE STUDIO'S DUMBBELL INVENTORY (implement fix).
+ *    His prescription ran Wk1 70 lbs -> Wk4 72.5-75 lbs per hand against a
+ *    confirmed 60 lbs/hand dumbbell ceiling — i.e. it was outside inventory
+ *    from Week 1, not just at the Week 4 target. Renamed to Single-Arm
+ *    Landmine Row (Kieser row stated as the equivalent machine option); the
+ *    TESTED baseline stays recorded as what it actually was (60 lbs x 15/side
+ *    on dumbbells) and the target numbers are unchanged — only the implement
+ *    carrying them changed. Stated in the block intro and the baselines row,
+ *    not just in code.
+ *
+ * 4. RIR CORRECTED ON BOTH PRIMARY LIFTS. Hex Bar Deadlift and Incline
+ *    Dumbbell Bench Press both carried "1 RIR top set," which is the
+ *    hypertrophy-priority ACCESSORY target, not the primary-lift default —
+ *    both now run at 2 RIR, matching the corrected standard. 1 RIR is now
+ *    used only where it belongs: the new hypertrophy accessories (push-ups,
+ *    leg extension, hamstring curl, Bulgarian split squat). The overhead
+ *    press's "1-2 RIR" and the baselines table's "1-2 RIR" line were
+ *    tightened to 2 RIR the same way.
+ *
+ * 5. DAY 2 RE-ANCHORED FROM 90% (RED) TO 80% (GOLD). Red/90% days are now
+ *    reserved for clients with an actual testing or competition rationale;
+ *    Vinz has neither documented. Compounding this, his incline-press "90%"
+ *    was 90% of an ESTIMATED 1RM (57) derived from a 45 x 8 test — the
+ *    weakest possible basis for a near-maximal prescription. The re-anchor
+ *    is a LABEL and RIR change, not a load cut: the prescribed Week 1 load
+ *    stays 50 lbs and now builds to 55 by Week 4, with the top set at 2 RIR
+ *    instead of 1. Weekly intensity variation is preserved (80 / 80 / 70
+ *    plus the deload week), and near-maximal work now appears where it has a
+ *    real rationale — the Week 4 strength check.
+ *
+ * 6. PROACTIVE WEEK 5 DELOAD ADDED. He meets the 8+ week continuous-
+ *    progression criterion, so the deload is scheduled into the program
+ *    rather than left to autoregulation: same exercises, sets roughly
+ *    halved, loads held at 50-70% of working weights, everything in the 3+
+ *    RIR technique band, framed as a "reload." Placed immediately after the
+ *    Week 4 strength check per the house pattern. Milestones and the rescan
+ *    note were reconciled to it.
+ *
+ * 7. TOUCH-RULE PASS: Face Pull's "Light band/cable" renamed (there is no
+ *    standalone cable stack — the Kieser is the studio's cable machine);
+ *    every progressing lift's `load` field converted to the Wk1 -> Wk4
+ *    convention; dumbbell ceiling (60 lbs/hand) and kettlebell ceiling (25
+ *    lbs) stated where a progression approaches them, with the hex bar named
+ *    as the vehicle for carries past 60 lbs/hand; warm-up strings checked for
+ *    drift (clean — all three are unloaded mobility/movement rehearsal, no
+ *    loaded prescriptions hiding in prose); reassessment language updated to
+ *    the 4-week strength / 8-12 week Styku two-clock split. Male Client
+ *    Programming Framework content is UNTOUCHED — ALST 7.55 Not At-Risk,
+ *    maleProteinTargets()/maleNutritionNote() (including its 0.4 g/kg
+ *    per-meal figure, which is deliberately NOT changed to the women's
+ *    corrected 0.3), and testosteroneNote() at age 50 all render exactly as
+ *    before.
  */
 
 const fs = require('fs');
@@ -173,6 +261,21 @@ const wk1 = {
   hipThrust: workingLoad(oneRM.hipThrust, 0.70),   // 120
   inclineBench: workingLoad(oneRM.inclineBench, 0.90), // 50
   row: workingLoad(oneRM.row, 0.75),               // 70
+};
+
+// Week 4 targets — the top of the four-week progression, feeding the Week 4
+// strength check (ICONS reassesses strength every 4 weeks; the Styku body-
+// composition rescan runs on its own separate 8-12 week clock). Stepped up
+// roughly one intensity band from Week 1 off the same estimated 1RMs
+// (deadlift 80% -> 86%, squat/hip thrust 70% -> 78%), with the pressing and
+// rowing lifts stepped by the smallest increment the studio's implements
+// allow. No invented numbers — every figure derives from a tested baseline.
+const wk4 = {
+  deadlift: workingLoad(oneRM.deadlift, 0.86),      // 200
+  squat: workingLoad(oneRM.squat, 0.78),            // 135
+  hipThrust: workingLoad(oneRM.hipThrust, 0.78),    // 135
+  inclineBench: wk1.inclineBench + 5,               // 55
+  row: wk1.row + 5,                                 // 75
 };
 
 const client = {
@@ -228,8 +331,8 @@ const baselines = [
   ['Back Squat', '145 x 6 (est. 1RM 174)', '8/11/2026', '155–160 lbs x 6'],
   ['Hip Thrust', '145 x 6 (est. 1RM 174)', '8/11/2026', '155–165 lbs x 6'],
   ['Incline Bench Press', '45 x 8 (est. 1RM 57)', '8/11/2026', '55–60 lbs x 8'],
-  ['Single-Arm DB Row', '60 x 15/side (approx. est. 1RM 90)', '8/11/2026', '70–75 lbs x 10–12/side'],
-  ['Overhead Press', '35 lbs (reference load, reps not recorded)', '8/11/2026', 'Build progressively via 1–2 RIR — no fixed numeric target'],
+  ['Single-Arm Row (DB tested / landmine programmed)', '60 x 15/side, DB (approx. est. 1RM 90)', '8/11/2026', '70–75 lbs x 10–12/side — on the landmine or Kieser, which carry load past the 60 lbs/hand dumbbell ceiling'],
+  ['Overhead Press', '35 lbs (reference load, reps not recorded)', '8/11/2026', 'Build progressively at 2 RIR — no fixed numeric target'],
   ['Farmers Carry', '40 lbs/hand', '8/11/2026', '50–55 lbs/hand for 30–40m'],
   ['Weighted Plank', '10 lb plate x 1:35', '8/11/2026', '15–20 lb plate x 2:00+'],
   ['Push-Ups', '26 reps (bodyweight, full)', '8/11/2026', '32–35 reps'],
@@ -273,9 +376,31 @@ const baselineNotes = [
   { render: maleNutritionNote(client) },
   ...testosteroneNote(client).length ? [{ render: testosteroneNote(client) }] : [],
   {
+    type: 'blue',
+    label: 'Planned Deload — Week 5, Directly After the Week 4 Strength Check',
+    body: "This program deliberately includes one lighter week, and it is planned rather than a reaction to anything going wrong. Week 5 — immediately after the Week 4 strength check — is a structured reload: the same three days, the same exercises, the same movement patterns, with working sets cut roughly in half, loads dropped to about 50-70% of the weights being used in Week 4, and every set held comfortably in the technique band with three or more reps left in reserve. No top sets, no personal bests, no max-effort tests that week. This is what makes eight straight weeks of climbing loads sustainable at 50: the fatigue and joint stress that accumulate through a hard four-week block get cleared while the strength built in Weeks 1-4 consolidates. One light week costs nothing that matters — muscle built over a month is not lost in a single reduced-volume week, and the small edge of peak strength that dips returns within days of resuming. Weeks 6-8 then rebuild from the Week 4 loads toward the eight-week targets.",
+  },
+  {
+    type: 'gold',
+    label: 'How This Program Is Reassessed',
+    body: "Two separate clocks, and they are not the same measurement. Strength is rechecked every four weeks — the Week 4 numbers in each lift's load line are the checkpoint, and they set the loads for the block that follows. Body composition is rescanned on its own longer cycle, at roughly eight weeks, because composition changes on a slower timeline than strength does and reading it more often mostly reads noise. The Week 4 strength check is also the only place near-maximal work belongs; normal training weeks stop with two reps in reserve.",
+  },
+  {
+    type: 'teal',
+    audience: 'internal',
+    label: 'Session Architecture — Restructure Record (8/21/2026)',
+    body: "All three days rebuilt onto the standing six-slot session architecture: Corrective -> Primary Compound -> Accessory -> Jason's exercise -> Secondary Compound -> Third Compound (Integration). Slot 4 omitted entirely on all three days — Vinz has no Jason Bethea SOAP-note record and no coordinated-care relationship on file, so the honest action is omission, not filler. Day 3 required no exercise reordering (its combined unilateral block split into Accessory + Secondary Compound, preserving split-squat-before-SL-RDL). Days 1 and 2 each gained one new accessory block built from real content rather than filler: Day 1 machine leg work (leg extension + hamstring curl, both confirmed studio inventory, self-select at 1 RIR — no invented loads), Day 2 a Push-Up Protocol built off his tested 26-rep baseline, which carried an 8-week target in the baselines table but had never been programmed in any day. Antagonist rotation re-walked on the full rendered order across block boundaries: Day 1's accessory deliberately runs leg extension before hamstring curl (the reverse would make Glute Bridge -> Hex Deadlift -> Hamstring Curl three consecutive posterior-chain), and Day 2's corrective block swapped scap push-up and face pull so it no longer ends on a push directly ahead of the incline press and push-up protocol. The 8/15/2026 audit fix (pull-up grip battery must never be adjacent to the single-arm row) is preserved — the overhead press now sits between them in the Day 2 closer.",
+  },
+  {
+    type: 'teal',
+    audience: 'internal',
+    label: 'Compound-Slot Options & Intensity Decisions — Selection Record (8/21/2026)',
+    body: "Every compound slot carries a same-pattern options menu in its block intro, with the tested movement named as the progression anchor. Vinz carries no clinical flags, so the filtering constraint on his menus is the confirmed studio inventory rather than a clinical restriction: dumbbells cap at 60 lbs/hand and kettlebells at 25 lbs, so the barbell is named as the destination once his incline press outgrows the dumbbells, the hex bar is named as the carry vehicle past 60 lbs/hand, and the landmine/Kieser carry the single-arm row (whose prescription already exceeded the dumbbell ceiling in Week 1 — corrected in this pass). No option was listed that the inventory does not contain. INTENSITY RE-ANCHOR: Day 2 moved from 90% (Red) to 80% (Gold). Red days are reserved for a documented testing or competition rationale, which he does not have, and the specific 90% figure was 90% of an estimated 1RM (57) derived from a 45 x 8 rep test — the weakest possible basis for a near-maximal prescription. This is a label and RIR change, not a load cut: Week 1 stays 50 lbs and builds to 55 by Week 4, at 2 RIR rather than 1. Week now runs 80/80/70 plus the planned Week 5 deload; near-maximal work is confined to the Week 4 strength check, where it has a real rationale.",
+  },
+  {
     type: 'gold',
     label: 'Purpose of This Program',
-    body: "General strength and conditioning development — no injury or clinical flag reported at intake. This 3-day build applies the ICONS three-zone philosophy (Isolated activation/corrective work → Compound strength → Metabolic conditioning finisher) across a Lower Body / Upper Body / Full-Body split, with weekly intensity deliberately varied (80% / 90% / 70%) rather than held flat, and every primary and secondary lift autoregulated on RIR rather than a fixed percentage grind.",
+    body: "General strength and conditioning development — no injury or clinical flag reported at intake. This 3-day build applies the ICONS three-zone philosophy (Isolated activation/corrective work → Compound strength → Metabolic conditioning finisher) across a Lower Body / Upper Body / Full-Body split. Every session runs the same architecture: a corrective opener, a primary compound lift, muscle-building accessory work, a second compound lift in a different pattern, and a closing compound movement that pulls the day together — carries, anti-rotation work, or a standing press-and-row couplet. Every compound lift lists alternates the coach can rotate to on the day without losing the thread, with the tested lift staying the one that gets tracked. Weekly intensity is deliberately varied (80% / 80% / 70%, plus a planned lighter week at Week 5) rather than held flat, and every lift is autoregulated on reps in reserve rather than a fixed percentage grind.",
   },
 ];
 
@@ -284,7 +409,7 @@ const weekOverview = [
   { day: 'MON', intensity: 'Off', focus: 'Rest' },
   { day: 'TUE', intensity: 80, focus: 'Lower Body & Posterior Chain' },
   { day: 'WED', intensity: 'Off', focus: 'Rest' },
-  { day: 'THU', intensity: 90, focus: 'Upper Body Push/Pull' },
+  { day: 'THU', intensity: 80, focus: 'Upper Body Push/Pull' },
   { day: 'FRI', intensity: 'Off', focus: 'Rest' },
   { day: 'SAT', intensity: 70, focus: 'Full-Body Unilateral & Carries' },
 ];
@@ -296,12 +421,12 @@ const days = [
     subtitle: 'Lower Body & Posterior Chain (Primary)',
     descriptor: 'PRIMARY STRENGTH DAY · HEX BAR DEADLIFT & BACK SQUAT',
     intensityLabel: '80% Day',
-    intensityPara: 'Primary strength day for the week — the last 1–2 reps on the deadlift should be hard but clean. Control precedes power: the corrective block below earns full-depth, braced positions before any load goes on the bar.',
+    intensityPara: 'Primary strength day for the week — the deadlift should finish with two clean reps still in reserve: hard, but never a grind. Control precedes power: the corrective block below earns full-depth, braced positions before any load goes on the bar.',
     warmUp: 'General warm-up: 5 min easy bike, hip circles, bodyweight squats x10, glute bridges x10 before the corrective block below.',
     blocks: [
       {
         letter: 'A',
-        title: 'HIP & KNEE ACTIVATION',
+        title: 'CORRECTIVE — HIP & KNEE ACTIVATION',
         color: 'red',
         introLabel: 'Why',
         intro: 'General joint-health activation for the hip/knee complex ahead of heavy hip-hinge and squat loading — no specific flag reported, applied as standard practice.',
@@ -313,31 +438,42 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — HEX BAR DEADLIFT',
+        title: 'PRIMARY COMPOUND — HEX BAR DEADLIFT',
         introLabel: 'Load Target',
-        intro: `Week 1 working load ${wk1.deadlift} lbs (80% of est. 1RM ${oneRM.deadlift}) — 1 RIR on top sets. Add load only at the top of the rep range with clean form.`,
+        intro: `Week 1 working load ${wk1.deadlift} lbs (80% of est. 1RM ${oneRM.deadlift}), building toward roughly ${wk4.deadlift} lbs by Week 4 — two reps in reserve on the top set, which is the working standard for a primary lift. Add load only at the top of the rep range with clean form. If the day calls for a variation, rotate between: a conventional barbell deadlift (longer lever, a more demanding brace), a barbell Romanian deadlift (same hinge, longer hamstring range, lighter load), or a rack/block pull (a shortened range for a day the floor position isn't clean). Every option is the same hinge pattern, and the hex bar deadlift stays the lift that gets tracked and retested.`,
         exercises: [
-          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `${wk1.deadlift} lbs (Wk1)`, tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, brace hard. 1 RIR on top set.', rirNote: '1 RIR top set' },
+          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `Wk1: ${wk1.deadlift} → Wk4: ${wk4.deadlift} lbs`, tempo: '2-0-1', rest: '2 min', cue: 'Neutral spine, brace hard. Stop with 2 reps left.', rirNote: '2 RIR top set' },
         ],
       },
       {
         letter: 'C',
-        title: 'SECONDARY COMPOUND — BACK SQUAT',
-        introLabel: 'Load Target',
-        intro: `Week 1 working load ${wk1.squat} lbs (70% of est. 1RM ${oneRM.squat}) — 2 RIR working sets, technique-first after the deadlift.`,
+        title: 'ACCESSORY — QUAD & HAMSTRING HYPERTROPHY',
+        color: 'gold',
+        introLabel: 'Format',
+        intro: 'Direct muscle-building work for the legs, machine-based so it can be pushed hard without adding any more spinal load after the deadlift. The leg extension primes the knee-dominant pattern for the squat that follows; the hamstring curl trains knee flexion, which the hinge above never reaches. Both are hypertrophy-priority sets, taken to one rep in reserve. There is no tested baseline on either machine yet, so load is self-selected to hit that target and logged every week.',
         exercises: [
-          { name: 'Back Squat', sets: '3', reps: '6', load: `${wk1.squat} lbs (Wk1)`, tempo: '3-1-1', rest: '90s', cue: 'Ribs stacked over pelvis; full depth, 2 RIR.' },
+          { name: 'Leg Extension', sets: '3', reps: '10–12', load: 'Self-select at 1 RIR', tempo: '2-1-2', rest: '60s', cue: 'Full lockout, controlled lower. Log the setting weekly.', rirNote: '1 RIR' },
+          { name: 'Lying/Seated Hamstring Curl', sets: '3', reps: '10–12', load: 'Self-select at 1 RIR', tempo: '2-1-2', rest: '60s', cue: 'Hips stay down; slow return, no snapping back.', rirNote: '1 RIR' },
         ],
       },
       {
         letter: 'D',
-        title: 'CORE / CARRY-PREP ACCESSORY',
+        title: 'SECONDARY COMPOUND — BACK SQUAT',
+        introLabel: 'Load Target',
+        intro: `Week 1 working load ${wk1.squat} lbs (70% of est. 1RM ${oneRM.squat}), building toward ${wk4.squat} lbs by Week 4 — two reps in reserve, technique-first after the deadlift. This is the day's second compound pattern: knee-dominant, rotating off the hinge above. If the day calls for a variation, rotate between: a goblet squat (lighter, upright torso, useful when depth is the limiter), a front squat (same depth demand, more upright), or a box squat (a fixed depth that keeps the pattern honest on a tired day). The back squat stays the lift that gets tracked and retested.`,
+        exercises: [
+          { name: 'Back Squat', sets: '3', reps: '6', load: `Wk1: ${wk1.squat} → Wk4: ${wk4.squat} lbs`, tempo: '3-1-1', rest: '90s', cue: 'Ribs stacked over pelvis; full depth, 2 reps left.', rirNote: '2 RIR' },
+        ],
+      },
+      {
+        letter: 'E',
+        title: 'THIRD COMPOUND (INTEGRATION) — ANTI-ROTATION & LOADED CARRY',
         color: 'gold',
-        introLabel: 'Format',
-        intro: "Anti-rotation core work plus an isometric carry-prep hold — sets up Saturday's loaded Farmers Carry work.",
+        introLabel: 'Why',
+        intro: `The session's closer — one block that puts the whole day together: the braced trunk from the deadlift, the leg drive from the squat, and grip, all held at once while walking. The isometric suitcase hold this block used to finish on is now a loaded carry — the same pattern moving instead of standing still — with the left hand holding the load per the asymmetry note. Load starts at 30 lbs/hand, deliberately below the 40 lbs/hand already carried on Saturday, because this version is one-sided and lands at the end of the heaviest day of the week. Distance and posture govern this work, not a rep target. Variations: a bilateral farmer's carry (both hands loaded) or a front-rack kettlebell carry (kettlebells run to 25 lbs per bell); any time the carry is one-sided, the left hand holds the load.`,
         exercises: [
           { name: 'Half-Kneeling Pallof Press', sets: '3', reps: '10/side', load: 'Mod band', tempo: '2s hold', rest: '45s', cue: 'Resist rotation; ribs stacked over hips.' },
-          { name: 'Suitcase Hold (Isometric)', sets: '2', reps: '20s/side', load: 'Mod DB', tempo: 'Hold', rest: '30s', cue: 'Left hand leads — weaker side per asymmetry note.' },
+          { name: 'Suitcase Carry (Left-Led)', sets: '2', reps: '20–25 yd/side', load: '30 lbs/hand', tempo: 'Steady', rest: '60s', flag: 'Left hand holds the load — weaker side per the asymmetry note', cue: 'Tall, level shoulders; resist the lean the whole way.', rirNote: 'Distance & posture governed — no RIR target' },
         ],
       },
     ],
@@ -345,84 +481,71 @@ const days = [
     iconsNote: 'Control precedes power — earn full-depth, braced positions on the corrective block before adding load. No PRs today; an 80% day is a hard, honest working session, not a max-effort test.',
   },
   {
-    intensity: 90,
+    intensity: 80,
     title: 'DAY 2 — THURSDAY',
-    subtitle: 'Upper Body Push/Pull (Peak)',
-    descriptor: 'PEAK INTENSITY DAY · NEAR-MAXIMAL PRESSING, FULL RECOVERY BETWEEN SETS',
-    intensityLabel: '90% Day',
-    intensityPara: "Peak intensity for the week — near-maximal on the incline press. Rest fully between top sets; this is not the day to rush for the sake of session length. Strength builds confidence, and this is where it's earned.",
+    subtitle: 'Upper Body Push/Pull (Primary)',
+    descriptor: 'PRIMARY UPPER-BODY DAY · INCLINE PRESS · PULL-UP PROGRESSION · PRESS & ROW CLOSER',
+    intensityLabel: '80% Day',
+    intensityPara: "The week's primary upper-body session. Every working set finishes with two clean reps left in reserve rather than at a near-maximal grind — the last rep should be hard and still look like the first. Rest fully between top sets on the press; this is not the day to rush for the sake of session length. Strength builds confidence, and this is where it's earned.",
     warmUp: 'General warm-up: 5 min row or bike, arm circles, band pull-aparts x10 before the corrective block below.',
     blocks: [
       {
         letter: 'A',
-        title: 'SHOULDER & SCAPULAR PREP',
+        title: 'CORRECTIVE — SHOULDER & SCAPULAR PREP',
         color: 'red',
         introLabel: 'Why',
-        intro: 'Primes the scapular stabilizers ahead of heavy pressing and pulling — standard shoulder-health practice for a peak upper-body day.',
+        intro: 'Primes the scapular stabilizers ahead of heavy pressing and pulling — standard shoulder-health practice before a primary upper-body day.',
         exercises: [
           { name: 'Band Pull-Apart', sets: '2', reps: '15', load: 'Light band', tempo: 'Controlled', rest: '30s', cue: 'Squeeze shoulder blades; ribs down.' },
-          { name: 'Face Pull', sets: '2', reps: '12', load: 'Light band/cable', tempo: 'Controlled', rest: '30s', cue: 'Elbows high; external rotation at end range.' },
           { name: 'Scap Push-Up', sets: '2', reps: '10', load: 'Bodyweight', tempo: 'Slow', rest: '30s', cue: 'Protract/retract only; arms stay straight.' },
+          { name: 'Face Pull', sets: '2', reps: '12', load: 'Light band or Kieser', tempo: 'Controlled', rest: '30s', cue: 'Elbows high; external rotation at end range.' },
         ],
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — INCLINE BENCH PRESS',
+        title: 'PRIMARY COMPOUND — INCLINE DUMBBELL BENCH PRESS',
         introLabel: 'Load Target',
-        intro: `Week 1 working load ${wk1.inclineBench} lbs (90% of est. 1RM ${oneRM.inclineBench}) — 1 RIR, peak-intensity day. Rest fully between sets.`,
+        intro: `Week 1 working load ${wk1.inclineBench} lbs, building toward ${wk4.inclineBench} lbs by Week 4 — two reps in reserve on the top set. Dumbbells in the studio run to 60 lbs per hand, so any progression past that point moves to the barbell rather than a heavier dumbbell. If the day calls for a variation, rotate between: a flat dumbbell bench press, a barbell bench press (the natural home once the load outgrows the dumbbells), a landmine press (the most shoulder-friendly arc of the group), or a dumbbell floor press (a shortened range that is easy on the shoulder). The incline dumbbell press stays the lift that gets tracked and retested.`,
         exercises: [
-          { name: 'Incline Dumbbell Bench Press', sets: '4', reps: '5', load: `${wk1.inclineBench} lbs (Wk1)`, tempo: '2-0-1', rest: '2 min', cue: 'Even bar path both arms. 1 RIR top set.', rirNote: '1 RIR top set' },
+          { name: 'Incline Dumbbell Bench Press', sets: '4', reps: '5–6', load: `Wk1: ${wk1.inclineBench} → Wk4: ${wk4.inclineBench} lbs`, tempo: '2-0-1', rest: '2 min', cue: 'Even path both arms. Stop with 2 reps left.', rirNote: '2 RIR top set' },
         ],
       },
       {
-        // Antagonist Rotation Rule fix (8/15/2026 rotating audit): this block
-        // (pull-up progression) was originally lettered D and sequenced after
-        // the OHP block, putting two pull-up grip variants directly ahead of
-        // Block E's Single-Arm DB Row — a distinct, separately-loaded compound
-        // pull exercise, not a grip variant of the same pull-up movement, so
-        // the grip/skill-progression exemption (which covers a single movement
-        // progressing through grip width, e.g. this Wide->Standard sequence
-        // itself) does not extend to cover the Row stacking on top of it. That
-        // produced 3 consecutive pull-pattern exercises across the D->E block
-        // boundary (Pull-Up Wide, Pull-Up Standard, Single-Arm DB Row). Fixed
-        // by resequencing this block ahead of the OHP block (now lettered D,
-        // below) rather than dropping or altering any exercise — the OHP
-        // (push) block now sits between the pull-up progression and the row,
-        // breaking the run: Incline Bench(B, push) -> Pull-Up Wide/Standard(C,
-        // pull, pull) -> OHP(D, push) -> Single-Arm DB Row(E, pull). No 3
-        // same-pattern exercises in a row anywhere in the day.
         letter: 'C',
-        title: 'PULL — PULL-UP PROGRESSION',
-        color: 'purple',
+        title: 'ACCESSORY — PUSH-UP PROTOCOL',
+        color: 'green',
         introLabel: 'Load Target',
-        intro: 'Progress by reducing assistance from the tested 15-rep/grip assisted baseline (wide, standard, close) — track assistance level, not just reps.',
+        intro: 'Baseline 26 full push-ups, tested 8/11/2026 — this is the muscle-building accessory behind the pressing work above, and the block that moves that number. Worked hard: a hypertrophy-priority set taken to one rep in reserve, stopping short of failure every time. Eight-week target is 32–35 reps in a single set.',
         exercises: [
-          { name: 'Assisted Pull-Up (Wide Grip)', sets: '3', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Full hang to chin-over-bar; reduce assist vs test.' },
-          { name: 'Assisted Pull-Up (Standard Grip)', sets: '2', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Full stretch at bottom; controlled descent.' },
-          { name: 'Assisted Pull-Up (Close Grip)', sets: '2', reps: '8–10', load: 'Reduced assist', tempo: 'Controlled', rest: '90s', cue: 'Hands inside shoulder width; reduce assist vs test.' },
+          { name: 'Push-Up (Full)', sets: '3', reps: '12–15', load: 'Bodyweight', tempo: '2-1-1', rest: '60s', cue: 'Straight line head to heels; chest to fist height.', rirNote: '1 RIR' },
         ],
       },
       {
         letter: 'D',
-        title: 'SECONDARY — OVERHEAD PRESS',
+        title: 'SECONDARY COMPOUND — PULL-UP PROGRESSION',
+        color: 'purple',
         introLabel: 'Load Target',
-        intro: 'No percentage prescription — self-select load off the tested 35 lb reference at 1–2 RIR; establish a true Week 1 working weight here.',
+        intro: 'The day’s second compound pattern — vertical pulling, rotating off the pressing work above. Progress by reducing assistance from the tested 15-rep/grip assisted baseline (wide, standard, close): track assistance level, not just reps. The three grips are one movement progressing through hand position, so they are deliberately run back to back. If the day calls for a variation, rotate between: a band-assisted pull-up (a different assistance feel, useful for checking real strength), a Kieser pulldown (a machine-loaded version of the same vertical pull), or a slow eccentric-only pull-up from the top. The assisted pull-up on the machine stays the movement that gets tracked and retested.',
         exercises: [
-          { name: 'Standing Overhead Press', sets: '3', reps: '6', load: 'Self-select ~35 lbs', tempo: 'Controlled', rest: '2 min', cue: 'Brace hard; no lumbar arch. 1–2 RIR.' },
+          { name: 'Assisted Pull-Up (Wide Grip)', sets: '3', reps: '8–10', load: 'Reduced assist vs. test', tempo: 'Controlled', rest: '90s', cue: 'Full hang to chin-over-bar; reduce assist vs test.', rirNote: '2 RIR' },
+          { name: 'Assisted Pull-Up (Standard Grip)', sets: '2', reps: '8–10', load: 'Reduced assist vs. test', tempo: 'Controlled', rest: '90s', cue: 'Full stretch at bottom; controlled descent.', rirNote: '2 RIR' },
+          { name: 'Assisted Pull-Up (Close Grip)', sets: '2', reps: '8–10', load: 'Reduced assist vs. test', tempo: 'Controlled', rest: '90s', cue: 'Hands inside shoulder width; reduce assist vs test.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'E',
-        title: 'ACCESSORY — SINGLE-ARM DB ROW',
-        introLabel: 'Load Target',
-        intro: `Week 1 working load ${wk1.row} lbs (from an approximate estimate off a 15-rep test) for 10–12 reps — left arm leads per the asymmetry note; log left vs. right separately.`,
+        title: 'THIRD COMPOUND (INTEGRATION) — STANDING PRESS & ROW COUPLET',
+        color: 'gold',
+        introLabel: 'Why',
+        intro: `The session's closer — the day's press and pull patterns brought together standing, alternating, with the trunk holding position under both. Neither load here is a new number: the overhead press self-selects off the tested 35 lb reference, and the row carries its own Week 1 → Week 4 line off the tested 60 lbs × 15/side. The row runs on the landmine because the studio's dumbbells stop at 60 lbs per hand and this progression passes that ceiling in Week 1 — a Kieser row is the equally good machine version. Left arm leads every row set; log left and right separately. If the day calls for a variation, rotate between: a landmine press-to-row couplet on the same bar, a half-kneeling single-arm press paired with a chest-supported row, or a seated Kieser press and row pairing.`,
         exercises: [
-          { name: 'Single-Arm DB Row', sets: '3', reps: '10–12/side', load: `${wk1.row} lbs (Wk1)`, tempo: '2-1-2', rest: '60s', cue: 'Left arm leads — weaker side. Log L vs R reps.' },
+          { name: 'Standing Overhead Press', sets: '3', reps: '6', load: 'Self-select ~35 lbs, build weekly', tempo: 'Controlled', rest: '2 min', cue: 'Brace hard; no lumbar arch. Stop with 2 reps left.', rirNote: '2 RIR' },
+          { name: 'Single-Arm Landmine Row (Left-Led)', sets: '3', reps: '10–12/side', load: `Wk1: ${wk1.row} → Wk4: ${wk4.row} lbs`, tempo: '2-1-2', rest: '60s', flag: 'Left arm leads — weaker side per the asymmetry note', cue: 'Left arm first. Flat back, pull to hip. Log L vs R.', rirNote: '2 RIR' },
         ],
       },
     ],
     coolDown: 'Lat stretch 30s/side. Chest doorway stretch 30s/side. Thoracic extension over foam roller 60s.',
-    iconsNote: 'Peak intensity day — near-maximal, 1 RIR on primary lifts. Full rest between top sets; this is not the day to rush between sets for the sake of session length.',
+    iconsNote: 'A primary strength day, not a max-effort test — two reps in reserve on the press and the row, and full rest between top sets. Near-maximal work belongs at the Week 4 strength check, not in a normal training week.',
   },
   {
     intensity: 70,
@@ -430,12 +553,12 @@ const days = [
     subtitle: 'Full-Body Unilateral, Carries & Conditioning',
     descriptor: 'MODERATE ACCUMULATION DAY · UNILATERAL LEG WORK · CARRIES · METABOLIC FINISH',
     intensityLabel: '70% Day',
-    intensityPara: "Moderate accumulation day — build clean volume at 2 RIR, not a max-effort test. Left leads every unilateral set this week per the asymmetry note. The session closes with a short conditioning finisher — the metabolic third of the ICONS three-zone build.",
+    intensityPara: "Moderate accumulation day — build clean volume at two reps in reserve, not a max-effort test. Left leads every unilateral set this week per the asymmetry note. The session closes with a short conditioning finisher — the metabolic third of the ICONS three-zone build.",
     warmUp: 'General warm-up: 5 min easy bike, leg swings, bodyweight glute bridges x10 before the corrective block below.',
     blocks: [
       {
         letter: 'A',
-        title: 'HIP & ANKLE MOBILITY PREP',
+        title: 'CORRECTIVE — HIP & ANKLE MOBILITY PREP',
         color: 'red',
         introLabel: 'Why',
         intro: 'General mobility prep ahead of unilateral leg work and loaded carries — no specific flag reported, applied as standard practice.',
@@ -446,45 +569,46 @@ const days = [
       },
       {
         letter: 'B',
-        title: 'PRIMARY STRENGTH — HIP THRUST',
+        title: 'PRIMARY COMPOUND — BARBELL HIP THRUST',
         introLabel: 'Load Target',
-        intro: `Week 1 working load ${wk1.hipThrust} lbs (70% of est. 1RM ${oneRM.hipThrust}) — 2 RIR, moderate accumulation day.`,
+        intro: `Week 1 working load ${wk1.hipThrust} lbs (70% of est. 1RM ${oneRM.hipThrust}), building toward ${wk4.hipThrust} lbs by Week 4 — two reps in reserve on a moderate accumulation day. If the day calls for a variation, rotate between: a single-leg hip thrust (left leg leads, far lighter), a barbell or bodyweight glute bridge (a shorter range, easy on the shoulders against the bench), or a hyperextension to tolerance (the same hip extension standing up). The barbell hip thrust stays the lift that gets tracked and retested.`,
         exercises: [
-          { name: 'Barbell Hip Thrust', sets: '3', reps: '8', load: `${wk1.hipThrust} lbs (Wk1)`, tempo: '2-1-2', rest: '90s', cue: 'Full lockout, ribs down. 2 RIR working sets.' },
+          { name: 'Barbell Hip Thrust', sets: '3', reps: '8', load: `Wk1: ${wk1.hipThrust} → Wk4: ${wk4.hipThrust} lbs`, tempo: '2-1-2', rest: '90s', cue: 'Full lockout, ribs down. Stop with 2 reps left.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'C',
-        title: 'UNILATERAL LEG WORK',
+        title: 'ACCESSORY — BULGARIAN SPLIT SQUAT (LEFT-LED)',
+        color: 'gold',
         introLabel: 'Format',
-        intro: 'Left leg leads every set — direct application of the standard asymmetry protocol (lower LST = weaker = leads unilateral work).',
+        intro: 'Left leg leads every set — direct application of the asymmetry protocol (the lower-lean-mass side leads unilateral work). A hypertrophy-priority accessory, taken to one rep in reserve, and the knee-dominant pattern that rotates off the hip thrust above. Dumbbells run to 60 lbs per hand; if the load outgrows that, the same set runs holding a single heavier implement or with the barbell in a front-rack position.',
         exercises: [
-          { name: 'Bulgarian Split Squat', sets: '3', reps: '8/side', load: 'Mod DB', tempo: '2-1-1', rest: '75s', cue: 'Left leg leads — weaker side. Even depth both sides.' },
-          { name: 'Single-Leg Romanian Deadlift', sets: '2', reps: '8/side', load: 'Light-Mod DB', tempo: '3-1-1', rest: '60s', cue: 'Left leg leads. Hips square, soft knee.' },
+          { name: 'Bulgarian Split Squat', sets: '3', reps: '8/side', load: 'Mod DB (to 60 lbs/hand)', tempo: '2-1-1', rest: '75s', flag: 'Left leg leads — weaker side per the asymmetry note', cue: 'Left leg leads. Even depth both sides.', rirNote: '1 RIR' },
         ],
       },
       {
         letter: 'D',
-        title: 'LOADED CARRIES',
-        color: 'gold',
+        title: 'SECONDARY COMPOUND — SINGLE-LEG ROMANIAN DEADLIFT (LEFT-LED)',
         introLabel: 'Load Target',
-        intro: 'Tested at 40 lbs/hand — hold there this week and build from it as grip and trunk control allow.',
+        intro: 'The day’s second compound pattern — a hinge, rotating off the knee-dominant work above, and one of the ten tested ICONS Index movements. Left leg leads every set. Load stays light-to-moderate: balance and hip control are the limiter here, not strength. If the day calls for a variation, rotate between: a two-hand dumbbell single-leg RDL (easier to balance, more load), a rack- or rail-supported single-leg RDL (a hand on the upright removes the balance demand entirely), or a b-stance RDL (back toe down for support, still one hip doing the work).',
         exercises: [
-          { name: 'Farmers Carry', sets: '3', reps: '30–40m', load: '40 lbs/hand', tempo: 'Steady', rest: '60s', cue: 'Tall posture, no shrug; even stride both sides.' },
+          { name: 'Single-Leg Romanian Deadlift', sets: '3', reps: '8/side', load: 'Light-Mod DB', tempo: '3-1-1', rest: '60s', flag: 'Left leg leads — weaker side per the asymmetry note', cue: 'Left leg leads. Hips square, soft knee.', rirNote: '2 RIR' },
         ],
       },
       {
         letter: 'E',
-        title: 'CORE',
+        title: 'THIRD COMPOUND (INTEGRATION) — LOADED CARRY & CORE UNDER LOAD',
+        color: 'gold',
         introLabel: 'Load Target',
-        intro: 'Progression from the tested 10 lb plate / 1:35 weighted plank baseline — build hold time and/or load week to week.',
+        intro: `The session's closer — the day's hip work, grip, and trunk position held together under load. Carry tested at 40 lbs/hand on 8/11/2026: hold there in Week 1 and build toward 45 lbs/hand by Week 4 as grip and trunk control allow. Plank progresses from the tested 10 lb plate × 1:35 baseline. If the day calls for a variation, rotate between: a suitcase carry (one-sided, left hand holds the load), a hex bar carry (the vehicle once load passes the 60 lbs/hand dumbbell ceiling), or a front-rack kettlebell carry (to 25 lbs per bell — lighter, with an upright-posture bias). Distance and posture govern the carry, not a rep target.`,
         exercises: [
-          { name: 'Weighted Plank', sets: '3', reps: '45–60s', load: '10 lb plate (Wk1)', tempo: 'Hold', rest: '45s', cue: 'Ribs down, no lumbar sag. Build past 1:35 baseline.' },
+          { name: 'Farmers Carry', sets: '3', reps: '30–40m', load: `Wk1: 40 → Wk4: 45 lbs/hand`, tempo: 'Steady', rest: '60s', cue: 'Tall posture, no shrug; even stride both sides.', rirNote: 'Distance & posture governed — no RIR target' },
+          { name: 'Weighted Plank', sets: '3', reps: '45–60s', load: 'Wk1: 10 → Wk4: 15 lb plate', tempo: 'Hold', rest: '45s', cue: 'Ribs down, no lumbar sag. Build past the 1:35 baseline.' },
         ],
       },
       {
         letter: 'F',
-        title: 'CONDITIONING FINISHER',
+        title: 'METABOLIC FINISHER',
         color: 'gold',
         introLabel: 'Format',
         intro: "The ICONS three-zone build closes every session with a metabolic component — this stays low-impact on a moderate day.",
@@ -494,20 +618,20 @@ const days = [
       },
     ],
     coolDown: "Hip flexor stretch 60s/side. Quad stretch 60s/side. Child's pose 60s.",
-    iconsNote: 'Moderate accumulation day — build clean volume at 2 RIR, not a max-effort test. Left leads every unilateral set this week per the asymmetry note.',
+    iconsNote: 'Moderate accumulation day — build clean volume at two reps in reserve, not a max-effort test. Left leads every unilateral set this week per the asymmetry note.',
   },
 ];
 
 const summary = {
   subtitle: 'Vinz Feller  ·  ICONS Index  ·  3-Day Full-Body Build  ·  Week 1',
   rows: [
-    ['Day 1', '80%', 'Lower Body & Posterior Chain', 'Hex Bar Deadlift · Back Squat', 'Add load at top of rep range + 2 RIR + clean form.'],
-    ['Day 2', '90%', 'Upper Body Push/Pull', 'Incline Bench · OHP · Pull-Up · SA Row', 'Reduce pull-up assistance; add load on press/row at 2 RIR.'],
-    ['Day 3', '70%', 'Full-Body Unilateral & Carries', 'Hip Thrust · Split Squat · Farmers Carry', 'Build carry distance/load; extend weighted plank hold time.'],
+    ['Day 1', '80%', 'Lower Body & Posterior Chain', 'Hex Bar Deadlift · Back Squat · Suitcase Carry', `Hex DL ${wk1.deadlift} → ${wk4.deadlift} lbs, Squat ${wk1.squat} → ${wk4.squat} lbs by Wk 4, all at 2 RIR.`],
+    ['Day 2', '80%', 'Upper Body Push/Pull', 'Incline Press · Push-Ups · Pull-Ups · OHP + Row', `Incline ${wk1.inclineBench} → ${wk4.inclineBench} lbs, row ${wk1.row} → ${wk4.row} lbs; reduce pull-up assist each grip.`],
+    ['Day 3', '70%', 'Full-Body Unilateral & Carries', 'Hip Thrust · Split Squat · SL RDL · Carries', `Hip Thrust ${wk1.hipThrust} → ${wk4.hipThrust} lbs; carry 40 → 45 lbs/hand; plank 10 → 15 lb plate.`],
   ],
-  milestones4wk: 'Confirm all primary/secondary lifts are progressing cleanly at their prescribed RIR (add load only at top of rep range with clean form). Reduce pull-up assistance by at least one increment per grip. Left-leads unilateral work should show improving control and even tempo both sides.',
-  milestones8wk: 'Target Hex Bar Deadlift 205–210 x 5, Back Squat/Hip Thrust 155–165 x 6, Incline Bench 55–60 x 8, Single-Arm Row 70–75 x 10–12/side, Farmers Carry 50–55 lbs/hand, Weighted Plank 15–20 lb plate x 2:00+, Push-Ups 32–35 reps. Pull-up assistance meaningfully reduced across all three grips.',
-  rescanNote: '8-week Styku re-scan — track ALST Index, VFA trend, Shape Score, and left/right arm & leg LST gap reduction (currently ~7% relative for arms, ~5% relative for legs), alongside the strength baselines table above.',
+  milestones4wk: `Week 4 is the strength check, and these are the numbers it checks against: Hex Bar Deadlift ${wk4.deadlift} lbs x 5, Back Squat ${wk4.squat} lbs x 6, Hip Thrust ${wk4.hipThrust} lbs x 8, Incline Dumbbell Press ${wk4.inclineBench} lbs x 5-6, Single-Arm Landmine Row ${wk4.row} lbs x 10-12/side, Farmers Carry 45 lbs/hand, Weighted Plank 15 lb plate — every one of them reached at two reps in reserve with clean form, not by grinding. Pull-up assistance reduced by at least one increment on each of the three grips. Push-ups moving off the 26-rep baseline. Left-led unilateral work showing improving control and even tempo on both sides. Week 5, immediately after this check, is the planned deload week — same exercises, sets roughly halved, loads dropped to 50-70%, everything at 3+ reps in reserve — before Weeks 6-8 rebuild.`,
+  milestones8wk: 'Target Hex Bar Deadlift 205–210 x 5, Back Squat 155–160 x 6, Hip Thrust 155–165 x 6, Incline Dumbbell Press 55–60 x 8 (the barbell takes over past the 60 lbs/hand dumbbell ceiling), Single-Arm Landmine Row 70–75 x 10–12/side, Farmers Carry 50–55 lbs/hand, Weighted Plank 15–20 lb plate x 2:00+, Push-Ups 32–35 reps in a single set. Pull-up assistance meaningfully reduced across all three grips. These are eight-week targets measured after the Week 5 deload and the Weeks 6-8 rebuild — not numbers to chase through the lighter week.',
+  rescanNote: 'Two clocks, deliberately separate. Strength is rechecked every four weeks against the Week 4 numbers above. Body composition gets a Styku re-scan at eight weeks — landing at the end of the Weeks 6-8 rebuild rather than mid-deload, so it reads a consolidated block. Track at that scan: ALST Index (currently 7.55 kg/m², above the male at-risk line), VFA trend (currently 70.0 cm², read directionally rather than against a fixed risk band), body fat % against the composition note above, Shape Score, and left/right arm and leg lean-mass gaps (currently ~7% relative for arms, ~5% for legs — both below the threshold that would make the left-leads assignment a corrective priority rather than a coaching convention), alongside the strength baselines table.',
 };
 
 const data = {
