@@ -477,8 +477,23 @@ const summary = {
   rescanNote: 'Force plate / dynamometer retest at 4 weeks is the primary reassessment tool for this client — not a Styku scan. Track hip abduction symmetry %, hip extension time-to-peak-force (L vs R), and trunk extension peak force + RFD as the three key metrics.',
 };
 
+// Week strip — added 8/21/2026. Jake was the only 3-day program on the roster
+// rendering no at-a-glance week view (his weekly summary is repurposed to
+// Wk 1-4 rows, so the document previously gave a reader no view of the 3-day
+// week at all). His days carry intensity 60/70/80 purely as COLOUR keys — his
+// day-header `badge` overrides already exist to stop those printing as
+// percentages he does not train to — so each entry here carries an explicit
+// `label` for the same reason, matching his badge subs rather than inventing
+// a %-graded model.
+const weekOverview = [
+  { day: 'DAY 1', intensity: 60, label: 'RPE\n6-8', focus: 'Glute Medius Reliability & Trunk Extensor Foundation' },
+  { day: 'DAY 2', intensity: 70, label: 'RPE\n6-8', focus: 'Right-Side Posterior Chain & Unilateral Symmetry' },
+  { day: 'DAY 3', intensity: 80, label: 'RPE\n6-8', focus: 'Integration, Rate of Force Development & Progression' },
+];
+
 const data = {
   client,
+  weekOverview,
   baselineNotes,
   includeNutritionBlock: false,
   includeProgressionBlock: true,

@@ -313,16 +313,24 @@ function sectionTitle(title, color = C.gold) {
 }
 
 // ── WEEK OVERVIEW (single-row day strip, up to 7 columns) ───────────────
+// A day entry may carry `label` to override the rendered intensity text —
+// the strip-level counterpart to dayHeader's `badge` override (added
+// 8/21/2026). Needed for non-%-graded programs: a day whose `intensity`
+// is only a COLOUR key (e.g. an RPE-based program using 60/70/80 to pick
+// teal/green/gold) would otherwise print "60%" and misstate the model,
+// which is the exact misstatement `badge` was introduced to prevent at the
+// day-header level. Omit it and rendering is unchanged.
 function weekOverview(days) {
   const colWidths = evenWidths(days.length);
   const cells = days.map((d, i) => {
     const iv = ivOf(d.intensity);
     const isOff = d.intensity === 'Off' || d.intensity === undefined;
     const accent = isOff ? C.mid : iv.accent;
+    const intensityText = d.label !== undefined ? d.label : iv.label;
     return cell(
       [
         para(txtLines(d.day, { bold: true, size: 17, color: accent }), { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
-        para(txtLines(iv.label, { bold: true, size: 22, color: accent }), { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
+        para(txtLines(intensityText, { bold: true, size: 22, color: accent }), { alignment: AlignmentType.CENTER, spacing: { after: 20 } }),
         para(txtLines(d.focus, { size: 12, color: C.dark }), { alignment: AlignmentType.CENTER }),
       ],
       { fill: isOff ? C.offGray : 'FFFFFF', width: colWidths[i], margins: { top: 60, bottom: 60, left: 40, right: 40 } }
