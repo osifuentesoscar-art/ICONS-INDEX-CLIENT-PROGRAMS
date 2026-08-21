@@ -87,7 +87,25 @@ Everything else — page setup, color system, exercise tables, warm-up/cool-down
 
 **Standing rule going forward (confirmed permanent 8/17/2026 — "keep this as constant standard that needs to improve every client doc it creates as well"):** generate the client view alongside every new trainer document, and regenerate it alongside every later revision to an existing one — not a one-time rollout. The same build→audit→commit→deliver pipeline applies to both, every time, including `icons-doc-auditor`'s standing "Client View audience-leak check" (see that agent's file for the full checklist — cross-client names, dangling "see note" references, and the fact that block `intro` text and `summary.milestones4wk`/`milestones8wk`/`rescanNote` strings have no `audience` filter mechanism, so internal-sounding language written there always leaks) — a note, block intro, or summary field added in a later revision needs the same internal/client-facing judgment call applied to it that the original build got. See `icons-expert.md` for the corresponding standing instruction.
 
-**Known engine gap (as of 8/17/2026, not yet fixed):** the `audience: 'internal'` mechanism exists on `baselineNotes` and (as `insightAudience`/`flagAudience`) on individual exercises — but NOT on block `intro`/`introLabel` or on `summary.milestones4wk`/`milestones8wk`/`rescanNote`, which are plain strings with no per-field filtering. The rollout's first audit round found real leaks in exactly these unfiltered fields (a dangling note reference in a block intro, an age-placeholder admission in `milestones8wk`) — current workaround is rewording the shared string so it reads correctly for both audiences, since the content is identical in both documents either way. A cleaner long-term fix (e.g. an internal-only variant string, or splitting these fields the way `baselineNotes` supports) is a real future engine improvement, not yet built.
+**Engine gap CLOSED 8/21/2026 — the reword workaround is no longer the answer.** The `audience: 'internal'` mechanism previously existed only on `baselineNotes` and (as `insightAudience`/`flagAudience`) on individual exercises; block `intro` and `summary.milestones4wk`/`milestones8wk`/`rescanNote` were plain strings with no per-field filtering, so internal-sounding language written there always leaked verbatim into the Client View. The rollout's first audit round found real leaks in exactly those fields (a dangling note reference in a block intro, an age-placeholder admission in `milestones8wk`), and the documented workaround was rewording the shared string until it read acceptably for both audiences — which quietly costs the trainer document its precision.
+
+Both shapes the old note proposed are now built, via `resolveAudience()` in `icons_template.js`:
+
+```javascript
+// drop the field entirely in the Client View
+{ intro: '...', introAudience: 'internal' }
+{ rescanNote: '...', rescanNoteAudience: 'internal' }
+
+// render a client-facing rewrite instead (wins over an 'internal' marking)
+{ intro: '...', introClient: '...' }
+{ milestones8wk: '...', milestones8wkClient: '...' }
+```
+
+Available on a block's `intro` and on all three `summary` milestone fields. Trainer documents are unaffected — every one of the 33 consumer scripts renders byte-identically until it opts in (verified by regenerating all 42 tracked deliverables and diffing their text). **Prefer these fields over the reword workaround going forward**, and reach for them when an audit finds a leak rather than blunting the trainer copy.
+
+`rescanNote` is the field most often needing it: it is normally written as trainer instruction ("Rebook Styku scan at 8 weeks — track ALST trend, L/R LST gaps…") and ships verbatim to the client today.
+
+**Still unfiltered, and honestly so:** `summary.subtitle`, `day.intensityPara`, `day.iconsNote`, `day.warmUp`/`coolDown`, and a block's `introLabel`. A leak in one of those still needs the reword workaround — extend `resolveAudience()` to it the same way if an audit finds one. **Retroactive scope deliberately not done:** no existing client document was re-marked in this pass. Applying the new fields to documents whose block intros and rescanNotes currently leak is real per-client judgment work (which language is genuinely internal), tracked as follow-up, not a blanket sweep.
 
 ---
 
@@ -1264,7 +1282,22 @@ Menstrual-health red-flag referral (added 8/17/2026): absent, irregular,
    corrective unilateral work at 1-2 sessions/week reduced measured asymmetry in
    the meta-analyzed RCTs this review cites.
 ```
-`weakerSide(leftLST, rightLST)` (exported from `icons_template.js`) still does the "lower LST = weaker" direction comparison — that logic is unaffected by this fix — but the function does not yet compute or gate on a %-relative threshold; it returns `'left'|'right'|'even'` off the raw values passed to it. **Known gap, not yet built:** the engine has no %-based trigger helper today. Until one exists, computing whether a gap actually clears the new ≥10% relative threshold is a manual step for whoever builds a client's document — do not treat `weakerSide()` returning a non-`'even'` result as confirmation the corrected trigger is met; check the percentage yourself.
+`weakerSide(leftLST, rightLST)` (exported from `icons_template.js`) still does the "lower LST = weaker" direction comparison — that logic is unaffected by this fix — and it answers DIRECTION only: a non-`'even'` result is still not confirmation that the corrected trigger is met.
+
+**Engine gap CLOSED 8/21/2026 — the percentage is no longer a manual step.** `asymmetryReport()` computes the magnitude question `weakerSide()` deliberately doesn't:
+
+```javascript
+asymmetryReport(12.7, 13.1)
+// { gapAbs: 0.4, gapPct: 3.1, weaker: 'left', thresholdPct: 10, triggered: false }
+//   ^ Elizabeth Poyner's post-rescan legs: a real direction, not a real asymmetry
+
+asymmetryReport(9, 10)              // → triggered: true  (exactly 10%)
+asymmetryReport(9, 10, { thresholdPct: 15 })   // → triggered: false
+```
+
+`asymmetryGapPct()` is exported separately for the raw percentage. The gap is expressed against the LARGER side, so it reads as "the weaker side is N% below the stronger." `opts.thresholdPct` raises the bar to fold in the studio's own measured test-retest CV for that scan region, which this protocol requires the gap to also exceed where that data exists. `gapPct` is rounded to 1dp and `triggered` is evaluated on the rounded value, so a document's printed number and its stated verdict can never disagree at the boundary. Unusable input returns `null`/`triggered: false` rather than `NaN` or a misleading `0`.
+
+Use `asymmetryReport().triggered` — not `weakerSide() !== 'even'` — whenever the question is whether the protocol applies at all.
 
 **Retroactive scope — deliberately not done in this pass.** Every current client document was built against the OLD 0.5 lb absolute trigger; a full recalculation of whose asymmetry protocol should actually still be active under the new ≥10% relative standard is a real, separate body of work (some clients' documented gaps may no longer clear 10%; some may still clear it easily) that needs careful per-client verification against real data, not a blanket rewrite tonight. This is `icons-roster-analyst`'s or `icons-operations-analyst`'s natural next assignment — see CLIENT_OPERATIONS.md's Asymmetry Execution Log Standard, which should get a "trigger recomputed under corrected threshold" column added when that pass runs.
 
@@ -1691,6 +1724,7 @@ Niko Heers    — Stretch Therapist (certified)
 Build script     scripts/<client>_<n>day_plan.js
 Engine (docx)    scripts/icons_template.js          <- the only docx engine
 Engine (pdf)     scripts/icons_pdf.py               <- ReportLab, no current caller
+Tests            tests/engine.test.js               <- npm test; run after any engine edit
 Output           clients/<client_name>/<Name>_<Title>.docx
                  clients/<client_name>/<Name>_<Title>_Client_View.docx
 Raw intake       clients/<client_name>/intake.md    (where one was captured)
@@ -2102,6 +2136,27 @@ When a new client joins, build IN THIS ORDER:
 ---
 
 ## VALIDATION CHECKLIST (run before every delivery)
+
+### Engine — `npm test`
+
+Run this after ANY edit to `scripts/icons_template.js`, before running a client build. Added
+8/21/2026; `node --test`, no framework, ~0.5s. 23 tests over the engine's decision logic —
+the 1RM/load math, the ALST and protein calcs, the asymmetry trigger, and the Client View
+audience filters that decide what a client is allowed to read. Deliberately NOT a layout
+check: page fit and visual correctness stay a human/`icons-doc-auditor` audit, because that
+is where automation is weak and judgment is the actual tool. These cover the opposite case —
+where a silent wrong answer ships as clinical-sounding text in a real client document.
+
+```bash
+npm install   # first run only — the repo ships no node_modules
+npm test
+```
+
+A full regression sweep, for a change that could plausibly alter rendered output: regenerate
+every build script and diff the extracted text against the committed deliverables (the
+`docxText()` helper in `tests/helpers/docx-text.js` reads a .docx with no dependencies).
+Restore afterwards with `git checkout -- clients/ trainer_education/ system_documents/` —
+regenerating rewrites zip timestamps, so identical documents still show as modified.
 
 ### PDF
 ```python

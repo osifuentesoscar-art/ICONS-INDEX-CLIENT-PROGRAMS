@@ -439,19 +439,93 @@ function stykuBlock(styku) {
 // Protocol and Common Mistakes sections — getting this backwards is a
 // documented real bug, not a hypothetical one). Returns 'left'|'right'|
 // 'even'. A gap under ~0.1 lbs is treated as noise-level "even" to avoid
-// false precision on scan data — this is a small, separate comparison
-// threshold, not the 0.5 lb gap CLAUDE.md's Asymmetry Protocol uses to
-// decide whether the full protocol applies at all.
+// false precision on scan data.
+//
+// This answers DIRECTION only ("which side is lower"), never MAGNITUDE
+// ("is the gap big enough for the protocol to apply"). A non-'even'
+// result is NOT confirmation that the Asymmetry Protocol is triggered —
+// use asymmetryReport() for that. CLAUDE.md is explicit on this point,
+// because the two questions used to be conflated under the retired
+// 0.5 lb absolute trigger.
 function weakerSide(leftLST, rightLST) {
   const gap = leftLST - rightLST;
   if (Math.abs(gap) < 0.1) return 'even';
   return gap < 0 ? 'left' : 'right';
 }
 
+// ── ASYMMETRY — RELATIVE-GAP TRIGGER ───────────────────────────────────
+// CLAUDE.md's Asymmetry Protocol was corrected 8/17/2026: the trigger is
+// a RELATIVE gap >= 10% between limbs, not the retired 0.5 lb absolute
+// figure (which fired on measurement noise — the Shape Up! Adults study
+// puts 3D-optical-vs-DXA error at 0.27 kg RMSE for female arm FFM and
+// 0.61-0.69 kg for leg FFM, i.e. at or above the entire old trigger).
+// 10% matches the injury literature's convention: 27 of 30 studies in
+// Bishop et al.'s review used a 10-15% threshold.
+//
+// Until now the engine had no helper for this, so whoever built a client
+// document had to compute the percentage by hand — the gap this closes.
+//
+// Percentage is expressed against the LARGER side, so it reads as "the
+// weaker side is N% below the stronger" — the direction a coach thinks
+// in. Returns null for missing/non-positive input rather than NaN or a
+// misleading 0.
+function asymmetryGapPct(leftLST, rightLST) {
+  const larger = Math.max(leftLST, rightLST);
+  if (!Number.isFinite(larger) || larger <= 0) return null;
+  if (!Number.isFinite(leftLST) || !Number.isFinite(rightLST)) return null;
+  return (Math.abs(leftLST - rightLST) / larger) * 100;
+}
+
+// Full trigger verdict for one limb pair. opts.thresholdPct defaults to
+// the 10% standard; raise it to fold in the studio's own measured
+// test-retest CV for that scan region, which CLAUDE.md requires the gap
+// to also exceed where that data exists.
+//
+// gapPct is rounded to 1dp and `triggered` is evaluated on the ROUNDED
+// value, so the number a document prints and the verdict it states can
+// never disagree at the boundary.
+function asymmetryReport(leftLST, rightLST, opts = {}) {
+  const thresholdPct = opts.thresholdPct === undefined ? 10 : opts.thresholdPct;
+  const raw = asymmetryGapPct(leftLST, rightLST);
+  if (raw === null) {
+    return { gapAbs: null, gapPct: null, weaker: 'even', thresholdPct, triggered: false };
+  }
+  const gapPct = Math.round(raw * 10) / 10;
+  const weaker = weakerSide(leftLST, rightLST);
+  return {
+    gapAbs: Math.round(Math.abs(leftLST - rightLST) * 100) / 100,
+    gapPct,
+    weaker,
+    thresholdPct,
+    triggered: weaker !== 'even' && gapPct >= thresholdPct,
+  };
+}
+
 // ── NUTRITION TARGETS (shared calc) ─────────────────────────────────────
-// Women 50+ or ALST At-Risk: 2.0–2.2 g/kg/day. Women 40+: 1.8–2.0 g/kg/day.
-// Active women general: ≥1.6 g/kg/day. Per meal: ~0.4 g/kg (leucine threshold).
-// Source: Morton 2018 meta-analysis + anabolic resistance research.
+// WHAT THIS FUNCTION ACTUALLY DOES TODAY (the header comment here used to
+// describe the retired standard, which the code below already contradicts
+// — corrected 8/21/2026):
+//   Daily g/kg  : ALST At-Risk OR age 50+ -> 2.0-2.2; age 40+ -> 1.8-2.0;
+//                 otherwise 1.6. This is the OLD age-banded escalation.
+//   Per meal    : 0.3 g/kg. This IS current — corrected 8/17/2026, applied
+//                 to the engine 8/19/2026, per ISSN serving guidance and
+//                 the ~0.31 g/kg MPS-maximizing dose. The old 0.4 g/kg
+//                 figure and its leucine-threshold framing are retired.
+//
+// KNOWN OPEN GAP — the daily-tier half. CLAUDE.md's Protein Targets
+// section retired the age-banded escalation on 8/17/2026: the corrected
+// standard is 1.6 g/kg/day baseline for active women, moving up within
+// 1.6-2.2 only for a genuine energy deficit, heavy training load, or ALST
+// At-Risk — NOT for turning 40 or 50 (GSSI/Phillips 2025 states peri- and
+// postmenopausal athletes likely need no different target than
+// premenopausal athletes). This is deliberately NOT fixed here: "energy
+// deficit" and "heavy training load" are not captured as client-data
+// fields anywhere in this system, so the correct fix is an intake/schema
+// change plus per-client review of every document computed under the old
+// tiers — not a one-line formula edit. Do not silently flip the thresholds
+// without that review.
+//
+// Source for what remains: ISSN 2017 position stand; Nunes et al. 2022.
 function proteinTargets(client) {
   const atRisk = client.alstIndex !== undefined && client.alstIndex < 5.5;
   const is50Plus = client.ageYears >= 50;
@@ -689,6 +763,38 @@ function intensityPara(label, text, color) {
 const EX_COLS = { EXERCISE: 2400, SETS: 380, REPS: 420, LOAD: 680, TEMPO: 540, REST: 440, CUE: 5580 };
 const EX_COL_WIDTHS = [EX_COLS.EXERCISE, EX_COLS.SETS, EX_COLS.REPS, EX_COLS.LOAD, EX_COLS.TEMPO, EX_COLS.REST, EX_COLS.CUE];
 
+// ── AUDIENCE FILTERING (Client View) ───────────────────────────────────
+// The general form of the `audience: 'internal'` mechanism that already
+// existed on baselineNotes items and, as insightAudience/flagAudience, on
+// individual exercises. Added 8/21/2026 to close the gap CLAUDE.md
+// records under "Known engine gap": block `intro` and the three
+// summary milestone fields are plain strings with no per-field filter, so
+// internal-sounding language written into them ALWAYS leaked verbatim
+// into the Client View. The documented workaround was to reword the
+// shared string until it read acceptably for both audiences — which
+// silently costs the trainer document its precision.
+//
+// Two ways to mark a field, matching the two shapes CLAUDE.md proposed:
+//   <field>Audience: 'internal'  -> drop the field entirely in Client View
+//   <field>Client: 'text'        -> render this instead in Client View
+// A client variant wins over an 'internal' marking, so a field can carry
+// both (drop-by-default overridden by a real client-facing rewrite).
+// Trainer documents are never affected: with isClientView false this
+// returns the original value untouched, so all 33 consumer scripts keep
+// rendering exactly as before until they opt in.
+//
+// Still unfiltered by design, and honestly so: summary.subtitle,
+// day.intensityPara, day.iconsNote, day.warmUp/coolDown and block
+// introLabel. Those are not covered by this pass — a leak in one of them
+// still needs the reword workaround. Extend this helper to them the same
+// way if an audit finds one.
+function resolveAudience(isClientView, value, clientValue, audience) {
+  if (!isClientView) return value;
+  if (clientValue !== undefined && clientValue !== null) return clientValue;
+  if (audience === 'internal') return null;
+  return value;
+}
+
 // introLabel: null (explicit) renders intro as a plain unlabeled paragraph —
 // for trainer-education-style content where the intro reads as continuous
 // prose rather than a labeled callout. Omitted/undefined keeps the default
@@ -794,13 +900,15 @@ function progressionBlock() {
   );
 }
 
+// Each field is skipped when falsy rather than rendered as an empty
+// callout — required now that resolveAudience() can drop one of these in
+// Client View, and a latent fix regardless (a caller omitting
+// milestones8wk previously got a labelled callout with no body).
 function milestoneTracker(m4wk, m8wk, rescanNote) {
   const els = [];
-  els.push(...goldCallout('4-Week Milestones', m4wk));
-  els.push(...goldCallout('8-Week Milestones', m8wk));
-  if (rescanNote) {
-    els.push(...goldCallout('Week 8 Re-Scan', rescanNote));
-  }
+  if (m4wk) els.push(...goldCallout('4-Week Milestones', m4wk));
+  if (m8wk) els.push(...goldCallout('8-Week Milestones', m8wk));
+  if (rescanNote) els.push(...goldCallout('Week 8 Re-Scan', rescanNote));
   return els;
 }
 
@@ -844,7 +952,12 @@ function buildDayContent(day, client, isClientView = false) {
   }
 
   (day.blocks || []).forEach((block) => {
-    els.push(...blockLabel(block.letter, block.title, block.color, day, block.introLabel, block.intro));
+    // block.introAudience: 'internal' drops the intro in Client View;
+    // block.introClient supplies a client-facing rewrite instead. See
+    // resolveAudience(). blockLabel() already no-ops on a falsy intro, so
+    // a dropped intro renders as just the block heading.
+    const intro = resolveAudience(isClientView, block.intro, block.introClient, block.introAudience);
+    els.push(...blockLabel(block.letter, block.title, block.color, day, block.introLabel, intro));
     els.push(...exTable(block.exercises, block.color || iv.hue, isClientView));
   });
 
@@ -862,11 +975,17 @@ async function buildDocument(data) {
   // program instead of the full trainer/audit-trail document — so the
   // actual workout content (days/blocks/exercises/loads/Styku/baselines)
   // can never drift between the two. Set `data.viewMode = 'client'` to
-  // activate. Only two things differ: (1) any baselineNotes item with
-  // `audience: 'internal'` is dropped (judgment-call/methodology/
-  // audit-trail notes meant for the trainer, not the client), and (2) an
-  // optional `data.clientHighlight: {label, body}` (a real PR/progress
-  // milestone) renders first, in the "milestone achieved" clearFlag style.
+  // activate. What differs:
+  //   1. A welcome line on the cover (clientWelcomeLine()).
+  //   2. `data.clientHighlight: {label, body}` — a real, documented PR or
+  //      progress milestone — renders first in the clearFlag style. Never
+  //      fabricate one; omit it for a first-build client.
+  //   3. Any baselineNotes item with `audience: 'internal'` is dropped.
+  //   4. An exercise's flag/insight sub-line is dropped when it carries
+  //      flagAudience/insightAudience: 'internal' (see exTable()).
+  //   5. Block intros and the summary milestone fields are filtered
+  //      through resolveAudience() — added 8/21/2026, see that function.
+  // Everything else renders identically to the trainer document.
   const isClientView = data.viewMode === 'client';
 
   children.push(...coverHeader(client.name, client.programTitle, client.subtitle));
@@ -928,7 +1047,17 @@ async function buildDocument(data) {
       }));
     }
     if (data.summary.rows) children.push(...weeklySummary(data.summary.rows));
-    children.push(...milestoneTracker(data.summary.milestones4wk, data.summary.milestones8wk, data.summary.rescanNote));
+    // Each milestone field supports <field>Audience: 'internal' (drop in
+    // Client View) and <field>Client (client-facing rewrite) — see
+    // resolveAudience(). rescanNote is the most frequent offender: it is
+    // usually written as trainer instruction ("Rebook Styku scan at 8
+    // weeks — track ALST trend...") and shipped verbatim to the client.
+    const sm = data.summary;
+    children.push(...milestoneTracker(
+      resolveAudience(isClientView, sm.milestones4wk, sm.milestones4wkClient, sm.milestones4wkAudience),
+      resolveAudience(isClientView, sm.milestones8wk, sm.milestones8wkClient, sm.milestones8wkAudience),
+      resolveAudience(isClientView, sm.rescanNote, sm.rescanNoteClient, sm.rescanNoteAudience),
+    ));
 
     children.push(spacer(160));
     children.push(para([txt(`BRACE LIFE STUDIOS  ·  ICONS INDEX  ·  bracelifestudios.com`, { bold: true, size: 18, color: C.gold })], {
@@ -1868,7 +1997,8 @@ module.exports = {
   buildHeader, buildFooter,
   coverHeader, clientStats, clientWelcomeLine, weekOverview, baselinesTable, stykuBlock,
   nutritionBlock, proteinTargets, proteinBar, pelvicFloorCallout,
-  weakerSide,
+  weakerSide, asymmetryGapPct, asymmetryReport,
+  resolveAudience,
   maleProteinTargets, maleNutritionNote, testosteroneNote,
   dayHeader, exTable, weeklySummary, progressionBlock, milestoneTracker,
   labeledPara,
