@@ -33,7 +33,8 @@ pip install python-docx --quiet  # needed for the audit step
 
 ### 0. Read the client's record before writing anything
 
-Open the client's `CLIENTS.md` entry and any existing `scripts/<client>_*.js`.
+Open `clients/<client_name>/README.md` (the client's full record) and any existing
+`scripts/<client>_*.js`. `CLIENTS.md` is only the roster index — it will not have the detail.
 This is not ceremony — it is the step that catches the mistakes that actually
 happen. A client often has more data on file than the current request mentions:
 a tested baseline that belongs in `baselines[]`, a clinical constraint someone

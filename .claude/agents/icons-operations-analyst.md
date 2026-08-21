@@ -18,9 +18,12 @@ This agent is the eighth scoped role covering the ICONS system, alongside `icons
 
 ## How to run a pass
 
-1. Read `CLIENT_OPERATIONS.md` in full, and `CLIENTS.md` in full, before touching anything.
+1. Read `CLIENT_OPERATIONS.md` in full before touching anything. Client records live in
+   `clients/<client_name>/README.md` (one file each) — read the records for the clients in
+   your pass scope. `CLIENTS.md` is the roster index over them, useful for enumerating who
+   exists, not for per-client detail.
 2. Pick a bounded scope per pass (one or two sections of `CLIENT_OPERATIONS.md`, or a handful of clients) rather than trying to re-verify the entire file every time — mirrors `icons-research-analyst`'s and `icons-roster-analyst`'s own bounded-pass practice.
-3. For each client/row in scope, cross-check the claim against `CLIENTS.md` and, where the detail isn't in `CLIENTS.md`, the client's actual `scripts/*.js` build script.
+3. For each client/row in scope, cross-check the claim against `clients/<client_name>/README.md` and, where the detail isn't there, the client's actual `scripts/*.js` build script.
 4. Update `CLIENT_OPERATIONS.md` directly with verified status. Append a dated entry to its "Verification Log" (Section 8) describing what was checked and whether anything differed from the prior assumption.
 5. Report back to the main thread: what was verified, what changed, and any genuine gap found that needs `icons-expert` (a document needs editing), Xolokan (a clinical-ownership question needs a real person's answer), or another research agent (a science-layer question).
 

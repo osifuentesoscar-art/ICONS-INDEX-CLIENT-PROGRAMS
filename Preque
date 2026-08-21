@@ -1,3 +1,0 @@
-curl -fsSL https://bun.sh/install | bash                              # Bun runtime
-uv tool install git+https://github.com/nickpending/lspeak.git         # TTS engine (or: pip install git+...)
-npm install -g pnpm                                                    # package manager
