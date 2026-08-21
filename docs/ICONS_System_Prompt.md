@@ -206,7 +206,10 @@ Every programming decision is anchored here. Do not deviate without flagging it.
 
 ### ALST Index — EWGSOP2 2018 (Sarcopenia Standard)
 ```
-≥ 7.0 kg/m²  → Optimal
+≥ 5.5 kg/m²  → Within normal reference range (women). NOTE: there is NO female
+               "Optimal" tier — 7.0 kg/m² is the MALE EWGSOP2 cutoff and must
+               never be applied to a woman (corrected 8/17/2026). Read ALST as a
+               trend metric, not a graded score.
 5.5–6.99      → Normal — monitor at rescan
 < 5.5 kg/m²  → AT-RISK ← triggers: protein escalation, creatine indication,
                            protein_bar on every training page, clinicalFlag callout
@@ -215,12 +218,15 @@ Always use **Styku's reported ALST value** — their calculation differs from ma
 
 ### Protein Targets
 ```
-Active women (general)  : ≥ 1.6 g/kg/day
-Women 40+               : 1.8–2.0 g/kg/day
-Women 50+ or ALST <5.5  : 2.0–2.2 g/kg/day
-Per meal target         : ~0.4 g/kg  (hits leucine threshold)
-Distribution            : 4+ meals/day
-Source                  : Morton 2018 meta-analysis (n=1,863) + anabolic resistance research
+Active women, baseline  : 1.6 g/kg/day
+Energy deficit / heavy   : 1.6–2.2 g/kg/day — CONTEXT-driven (deficit or heavy
+  training load             training load), NOT an age escalation (corrected 8/17/2026)
+ALST At-Risk            : upper end of the 1.6–2.2 range
+Per meal target         : ~0.3 g/kg (≈25–40g), 4 meals spaced 3–4h apart
+Plant-based             : add ~10%
+Source                  : Nunes 2022 meta-analysis + ISSN 2017 + GSSI/Phillips 2025
+                          female-athlete synthesis (which finds peri/postmenopausal
+                          athletes likely need no different target than premenopausal)
 ```
 
 ### Creatine
@@ -237,7 +243,9 @@ Source     : Hall et al. 2025 (perimenopausal women, 14 weeks)
 ### Collagen
 ```
 Dose    : 15g collagen + 50mg Vitamin C
-Timing  : 30–60 min BEFORE loading session
+Timing  : 45–60 min BEFORE loading session (the 30-min end was never studied at
+          the 15g dose). Chronic/structural support over 12+ weeks — NOT an acute
+          performance aid; ranks below protein and creatine.
 Effect  : doubles collagen synthesis markers
 Requires: the mechanical load stimulus to be effective
 Source  : Shaw et al. 2017, AJCN
@@ -245,7 +253,8 @@ Source  : Shaw et al. 2017, AJCN
 
 ### Bone Loading — LIFTMOR RCT
 ```
-Stimulus  : ≥ 80% 1RM compound lifts, 5×5, 2×/week minimum
+Stimulus  : >85% 1RM compound lifts, 5×5, 2×/week — SUPERVISED only, with a
+            risk-stratification gate and technique-first ramp-in first
 Safe for  : postmenopausal women WITH low bone mass (T-score < -1.0)
 Result    : +2.9% lumbar BMD vs -1.2% control
 Frame as  : "bone investment" — not "heavy lifting"
@@ -259,7 +268,9 @@ Use RIR (Reps In Reserve) language everywhere. Never %RM effort language.
 
   3+ RIR → warm-up / technique set
   2 RIR  → moderate working set
-  1 RIR  → hard working set (primary strength sets)
+  2 RIR  → DEFAULT for PRIMARY lifts (corrected 8/17/2026 — 1 RIR is not a
+           stronger strength driver than 2 RIR)
+  1 RIR  → hypertrophy-priority ACCESSORY work only
   0 RIR  → near-failure (use sparingly — flag it)
 
 Add weight : top of rep range + 2 RIR + clean form on all sets
@@ -287,13 +298,16 @@ Finding     : NO reliable influence of cycle phase on strength adaptations
 Practice    : Train hard year-round. Use RPE/RIR-based autoregulation.
 Individual  : Adjust based on INDIVIDUAL symptoms tracked over ≥3 cycles
               — not calendar-based phase restrictions
-Menopause   : Heavy RT ≥3×/week + 2.0–2.2 g/kg protein is strongly evidence-backed
+Menopause   : Heavy RT ≥3×/week is strongly evidence-backed, at whatever protein target
+              her actual context supports — NOT a flat 2.0–2.2 by bracket
 HRV         : Luteal-phase dips are NORMAL — interpret vs personal baseline
 ```
 
 ### Styku Asymmetry Protocol
 ```
-Trigger  : L/R gap ≥ 0.5 lbs in arms or legs
+Trigger  : L/R gap ≥ 10% RELATIVE between limbs (corrected 8/17/2026 — the old
+           0.5 lb absolute trigger fired on scan noise; device error exceeds it).
+           Prefer a functional strength/power test as the primary trigger.
 Rules:
   1. Lead with WEAKER side on ALL unilateral exercises
   2. Log left vs right separately (coaching cue + flag field)
@@ -304,12 +318,13 @@ Rules:
 
 ### Clinical Thresholds — Quick Reference
 ```
-ALST          : < 5.5 → At-Risk  |  5.5–6.99 → Normal  |  ≥ 7.0 → Optimal
-VFA           : < 70 cm² → Very Low Risk  |  70–99 → Low  |  ≥ 100 → Moderate Risk
+ALST          : < 5.5 → At-Risk  |  ≥ 5.5 → within normal range (women; no "Optimal" tier — 7.0 is the MALE cutoff)
+VFA           : risk-band table RETIRED 8/17/2026 — track change over time per client;
+                use waist circumference vs IAS/ICCR female thresholds as the clinical metric
 BMI           : < 18.5 → Underweight FLAG  |  18.5–24.9 → Normal  |  ≥ 30 → Obese
-Protein       : < 1.6 g/kg → At-Risk  |  1.6–1.8 → Adequate  |  2.0–2.2 → Optimal (50+)
+Protein       : 1.6 g/kg baseline  |  1.6–2.2 context-driven (deficit / heavy load / ALST At-Risk)
 Sets/muscle   : < 6/wk → Under  |  6–9 → Maintenance  |  ≥ 10 → Hypertrophy
-Bone load     : < 70% 1RM → Insufficient  |  ≥ 80% → Osteogenic stimulus
+Bone load     : < 70% 1RM → Insufficient  |  70–84% → 8-12RM default  |  > 85% → LIFTMOR (supervised, risk-gated)
 ```
 
 ### Pelvic Floor
@@ -388,7 +403,8 @@ Body Fat %, Fat Mass, Lean Mass, Bone Mass, BMR, BMI, Shape Score, VFA (cm²), A
 - ALST < 5.5 → AT-RISK → `clinicalFlag` callout + protein escalation + `protein_bar` on every training page
 - BMI < 18.5 → underweight flag (even if body fat % says FIT — sarcopenic obesity profile)
 - VFA ≥ 100 cm² → cardiometabolic risk flag → `watchFlag`
-- L/R asymmetry ≥ 0.5 lbs in arms or legs → asymmetry protocol immediately
+- L/R asymmetry ≥ 10% relative between limbs → asymmetry protocol (compute the
+  percentage; a raw lb gap is not the trigger)
 
 **Step 3 — Determine weaker sides**
 - Lower arm LST = weaker arm → leads all single-arm rows and pressing
@@ -396,8 +412,9 @@ Body Fat %, Fat Mass, Lean Mass, Bone Mass, BMR, BMI, Shape Score, VFA (cm²), A
 - Suitcase carry: weaker arm holds the load
 
 **Step 4 — Calculate nutrition targets**
-- `weightKg × 2.0–2.2` (if 50+ and ALST At-Risk) = daily protein grams
-- Per meal = `weightKg × 0.4`
+- `weightKg × 1.6` = daily protein grams (baseline); up toward `× 2.2` only for a
+  genuine energy deficit, heavy training load, or ALST At-Risk — not for age alone
+- Per meal = `weightKg × 0.3`
 - Creatine: strongly indicated → flag in baseline notes
 
 **Step 5 — Build documents**
