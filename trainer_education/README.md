@@ -69,6 +69,22 @@ All 5 apply the Antagonist Rotation Rule at build time (not as a retrofit) and w
 
 Build scripts: `scripts/becca_3day_plan.js`, `scripts/brodie_3day_plan.js`, `scripts/oscar_3day_plan.js`, `scripts/jah_3day_plan.js`, `scripts/nick_3day_plan.js`.
 
+## Format 4 — Pre-hire interview gameplan (`.docx`, internal)
+
+| File | Purpose | Structure |
+|---|---|---|
+| `ICONS_Trainer_Interview_Gameplan.docx` | Interviewing a **candidate**, before any hire decision | 105 min, 5 stages: verbal screen (Q1-Q14), live coaching practical with two planted problems, candidate's own lifting, whiteboard build, scored decision. |
+
+Added 8/22/2026 at Xolokan's request. Formats 1-3 all assume the trainer is already hired; this is the step before that, and it is the only document in this folder that is **internal-only — never handed to the candidate**.
+
+Three things about it are deliberate and should survive any edit:
+
+- **ICONS-specific numbers are explicitly not pass/fail.** A candidate cannot be expected to know the ALST cutoff, the Block Method slot order, or the intensity colour system — Formats 1-3 exist to teach exactly that after hire. What the document does test for is a candidate who *bluffs* a number instead of saying "I don't know that one," since this system's whole documentation practice depends on people who flag the edge of their own knowledge out loud.
+- **Safety & Scope is a gate, not a weighted line.** The Stage 3 symptom plant (a client reporting pelvic-floor pressure mid-set) is scored PASS/FAIL and overrides every other score. Pass is: stop, don't name a condition, don't minimise, keep her training on something she tolerates, document, refer out. The candidate is never expected to name Jason Bethea or know that pelvic floor stays an *external* referral — only to refer rather than treat.
+- **Every physical exercise comes from the confirmed in-studio inventory**, inside the 60 lb/hand DB and 25 lb KB ceilings, with the Kieser named as the cable machine. The candidate is tested in the room they would actually work in, and a candidate who programs equipment we don't own is itself a scored signal.
+
+Build script: `scripts/icons_trainer_interview_gameplan.js`. Composed from `icons_template.js` primitives rather than through `buildDocument()` — an interview is not a training week, and the days/blocks schema would have mislabeled the verbal stages with EXERCISE/SETS/REPS/LOAD table headers. Page setup, running header/footer, colour system, `dayHeader`, `exTable`, `baselinesTable`, `weeklySummary` and every callout are the engine's, unchanged.
+
 ## Where a new trainer should start
 
 1. `ICONS_Trainer_Learning_Module.html` (repo root) — ungated foundation, 5 modules, ~100 min total.
@@ -76,6 +92,8 @@ Build scripts: `scripts/becca_3day_plan.js`, `scripts/brodie_3day_plan.js`, `scr
 3. `ICONS_Trainer_Development_Program.docx` (or a variant, at the lead coach's discretion) — physical, felt experience of the client-facing method.
 
 `ICONS_Trainer_Update_Aug2026_What_Changed.html` is also deliberately not part of this path — a new trainer starting today learns the corrected standards first time through A/B/C and has nothing to unlearn. Hand it only to a trainer who certified before 8/17/2026.
+
+Format 4 is not part of this path either — it is the hiring document that runs *before* step 1, not a step in it.
 
 Format 3 is deliberately not part of this path — it's not a generic teaching step handed to any new trainer, it's an individualized program for a specific named trainer/athlete once their own baseline testing is on file (see "Format 3" above). Don't hand a new trainer one of the 5 named athlete programs as an onboarding step.
 
