@@ -29,6 +29,7 @@ const { buildDocument } = require('./icons_template');
 const base = require('./icons_trainer_development_program');
 
 const clone = (x) => JSON.parse(JSON.stringify(x));
+const { renumberDayReferences } = base;
 
 const client = {
   ...base.client,
@@ -56,6 +57,7 @@ const baselineNotes = [
   base.baselineNotes[2],
   base.baselineNotes[3],
   base.baselineNotes[4],
+  base.baselineNotes[5], // Deload Week — scheduled, not optional
 ];
 
 // Day 1 — ISOLATED ZONE (new): single-joint control work only, all day.
@@ -75,7 +77,7 @@ const day1Isolated = {
       intro: 'Every pressing and pulling pattern you load heavy this week depends on scapular control established here, in complete isolation, first.',
       exercises: [
         { name: 'Band Pull-Apart (Horizontal)', insight: 'Trainer Insight: rear delt weakness = forward shoulder = impingement under load', sets: '3', reps: '20', load: 'Light–medium band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight. Full retraction at end. Rear delt and mid-trap.' },
-        { name: 'Face Pull (Cable or Band)', insight: 'Trainer Insight: this is the posture corrective you give every client every session', sets: '3', reps: '15–20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face. Elbows at ear height. External rotation at end. Rear delt.' },
+        { name: 'Face Pull (Kieser or Band)', insight: 'Trainer Insight: this is the posture corrective you give every client every session', sets: '3', reps: '15–20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face. Elbows at ear height. External rotation at end. Rear delt.' },
         { name: 'Wall Slide (Scapular Control)', sets: '3', reps: '12', load: 'Bodyweight', tempo: '2-1-2', rest: '30s', cue: 'Low back and wrists flat on wall throughout. Slide up without losing contact.' },
       ],
     },
@@ -93,7 +95,7 @@ const day1Isolated = {
       intro: 'Every carry and every compound lift you load heavy this week depends on the anti-extension and anti-rotation control established here, in complete isolation, first.',
       exercises: [
         { name: 'Dead Bug (Controlled)', insight: 'Trainer Insight: this pattern fires the anterior core that stabilizes the spine under deadlift and squat', sets: '3', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-3', rest: '30s', cue: 'Low back into floor throughout. Opposite arm + leg. 3 sec each way.' },
-        { name: 'Pallof Press (Cable)', insight: 'Trainer Insight: this fires the same core pattern as a heavy carry — pre-teaches it', sets: '3', reps: '12 ea side', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Press straight out against band tension. Resist the twist. Anti-rotation.' },
+        { name: 'Pallof Press (Kieser or Band)', insight: 'Trainer Insight: this fires the same core pattern as a heavy carry — pre-teaches it', sets: '3', reps: '12 ea side', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Press straight out against band tension. Resist the twist. Anti-rotation.' },
       ],
     },
   ],
@@ -136,11 +138,17 @@ const day5Integrated = {
   ],
 };
 
+// Base-day -> this-variant's-day map. Base runs 80/90/70/70/90 across Days 1-5;
+// this variant pulls the zones apart, so the reused days land elsewhere.
+//   base Day 1 (80%) -> Day 2   ·   base Day 2 (90%) -> Day 3   ·   base Day 5 (fast-twitch) -> Day 4
+// (base Day 3 and Day 4 are not reused here.)
+const DAY_MAP = { 1: '2', 2: '3', 5: '4' };
+
 const days = [
   day1Isolated,
-  clone(base.days[0]), // Compound — 80%
-  clone(base.days[1]), // Compound — 90%
-  clone(base.days[4]), // Metabolic — 90% fast-twitch
+  renumberDayReferences(clone(base.days[0]), DAY_MAP), // Compound — 80% -> Day 2
+  renumberDayReferences(clone(base.days[1]), DAY_MAP), // Compound — 90% -> Day 3
+  renumberDayReferences(clone(base.days[4]), DAY_MAP), // Metabolic — fast-twitch -> Day 4
   day5Integrated,
 ];
 
@@ -150,6 +158,16 @@ days[2].title = 'DAY 3 — COMPOUND ZONE · POWER';
 days[2].descriptor = '90% INTENSITY · COMPOUND ZONE · MAXIMUM LOADING · BONE DENSITY';
 days[3].title = 'DAY 4 — METABOLIC ZONE';
 days[3].descriptor = '90% INTENSITY · METABOLIC ZONE · BURN, ENERGY & ENDURANCE';
+
+// ── DIRECTION overrides (added 8/22/2026) ────────────────────────────────
+// renumberDayReferences() fixes day NUMBERS, not DIRECTION. In the base
+// program the fast-twitch session is the LAST day of the week and its prose
+// says so twice. Here it is Day 4 — the Integrated capstone still follows it —
+// so both passages had to be rewritten rather than renumbered. Before this
+// fix the rendered document claimed "Day 5 closes the week at 90%" on its own
+// Day 4 page and printed "DAY 5 DEBRIEF" twice in one document.
+days[3].intensityPara = "Day 4 is the Metabolic Zone, run at 90% — but this session tests a completely different quality than Day 3's heavy hinge. Today is about how fast you can produce force, not how much you can move. This is the session where the athletic capacity most clients believe they've lost — power, speed, explosiveness — gets tested and rebuilt. Every rep is maximal intent, even when the load is light. This is also the last day you will feel a zone on its own: tomorrow puts all three back together.";
+days[3].iconsNote = "DAY 4 DEBRIEF — What to log and reflect on: (1) What was your best interval score on the finisher? Write it down — this is your Week 1 benchmark. (2) Did the depth jump or broad jump feel more natural? Why might that matter for a client's individual programming? (3) How does 90% fast-twitch fatigue feel compared to Day 3's 90% heavy-hinge fatigue — same number, completely different experience? (4) You have now felt all three zones in isolation: Isolated on Day 1, Compound on Days 2–3, Metabolic today. Before tomorrow's Integrated session, write down which zone you would defend hardest if a client asked you to cut one for time — then check that answer again after Day 5.";
 
 const summary = {
   subtitle: `${client.programTitle} · ICONS Index · Week 1`,

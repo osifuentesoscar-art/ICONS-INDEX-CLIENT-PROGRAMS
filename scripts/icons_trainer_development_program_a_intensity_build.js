@@ -22,6 +22,7 @@ const { buildDocument } = require('./icons_template');
 const base = require('./icons_trainer_development_program');
 
 const clone = (x) => JSON.parse(JSON.stringify(x));
+const { renumberDayReferences } = base;
 
 const client = {
   ...base.client,
@@ -49,6 +50,7 @@ const baselineNotes = [
   base.baselineNotes[2],
   base.baselineNotes[3],
   base.baselineNotes[4],
+  base.baselineNotes[5], // Deload Week — scheduled, not optional
 ];
 
 // Day 1 — 60% Teal — Technique Day (new: base program has no 60% day)
@@ -77,7 +79,7 @@ const day1Technique = {
       exercises: [
         { name: 'Incline Push-Up (Bench or Rack)', insight: 'Trainer Insight: incline angle lets you coach the exact same bar path a client will use at full bench press later', sets: '3', reps: '10–12', load: 'Bodyweight', tempo: '3-1-1', rest: '45s', cue: 'Elbows at 45°. Full lockout at top. Straight line head to heels.' },
         { name: 'Band Pull-Apart (Horizontal)', insight: 'Trainer Insight: rear delt weakness = forward shoulder = impingement under load', sets: '3', reps: '20', load: 'Light–medium band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight. Full retraction at end. Rear delt and mid-trap.' },
-        { name: 'Seated Cable Row (Light)', sets: '3', reps: '12', load: 'Light-moderate', tempo: '2-1-2', rest: '45s', cue: 'Chest up, no lean-back. Drive elbows to hips. 1-sec squeeze.' },
+        { name: 'Seated Kieser Row (Light)', sets: '3', reps: '12', load: 'Light-moderate', tempo: '2-1-2', rest: '45s', cue: 'Chest up, no lean-back. Drive elbows to hips. 1-sec squeeze.' },
       ],
     },
     {
@@ -130,19 +132,36 @@ const day5ActiveRecovery = {
   ],
 };
 
+// Base-day -> this-variant's-day map. The base program runs 80/90/70/70/90;
+// this variant runs 60/70/80/90/AR, so every reused day lands on a different
+// day number than the one its own prose was written for.
+//   base Day 1 (80%) -> Day 3   ·   base Day 2 (90%) -> Day 4   ·   base Day 3 (70%) -> Day 2
+const DAY_MAP = { 1: '3', 2: '4', 3: '2' };
+
 const days = [
   day1Technique,
-  clone(base.days[2]), // 70%
-  clone(base.days[0]), // 80%
-  clone(base.days[1]), // 90%
+  renumberDayReferences(clone(base.days[2]), DAY_MAP), // 70% -> Day 2
+  renumberDayReferences(clone(base.days[0]), DAY_MAP), // 80% -> Day 3
+  renumberDayReferences(clone(base.days[1]), DAY_MAP), // 90% -> Day 4
   day5ActiveRecovery,
 ];
 
-// Re-title day headers to match the new Day N position in this sequence
-// (source content referenced "Day 3"/"Day 1"/"Day 2" internally by name).
+// Re-title day headers to match the new Day N position in this sequence.
 days[1].title = 'DAY 2 — BOTH LEGS + UPPER BODY';
 days[2].title = 'DAY 3 — PRIMARY STRENGTH';
 days[3].title = 'DAY 4 — PEAK OUTPUT';
+
+// ── DIRECTION overrides (added 8/22/2026) ────────────────────────────────
+// renumberDayReferences() fixes day NUMBERS, not DIRECTION. The base's 70%
+// day is written as a step DOWN from the 90% day that precedes it in the base
+// sequence. In this linear build the 70% day comes SECOND — the 90% day is
+// still ahead — so four passages that look backwards had to be rewritten
+// forwards. Renumbering alone would have produced a debrief question asking
+// the trainer to reflect on a session two days in the future.
+days[1].intensityPara = "Day 2 is 70% — the green intensity day, and the first real load of this week. Day 1 rehearsed every one of these patterns unloaded; today they carry bilateral leg work at moderate load plus upper body hypertrophy volume. The goal is accumulation, not peak effort — the 80% primary day and the 90% peak day are both still ahead of you, and this session exists to build the volume base they get spent from. You will feel the contrast the other way around on Day 4. That contrast is deliberate, and you will program it for your clients.";
+days[1].iconsNote = "DAY 2 DEBRIEF — What to log and reflect on: (1) How did the bilateral squat feel carrying real load, after Day 1 rehearsed the same pattern unloaded? Did the drill actually transfer? (2) Did your knee tracking hold under bilateral load at 75%? What did the corrective primer change? (3) In the upper body superset — which side fatigued first on the row? (4) Write down now, before Day 4, how you feel walking out of a 70% session. You will compare it to a 90% session later this week, and a memory two days old is not a comparison. This week-over-week difference is what you will manage for your clients.";
+days[1].blocks[1].intro = "Day 2's bilateral squat follows Day 1's unloaded pattern work — the first time this week the squat carries real weight. The bilateral pattern at 70% load teaches you how to coach the squat as a skill, not a max effort test. At this intensity the client can hear your cues, process them, and apply them. This is the teaching window. Your clients' squat technique improves most on 70% days, not 90% days.";
+days[1].blocks[2].intro = "Hip thrust at 70% is the moderate volume day for the posterior chain — and in this linear build it comes BEFORE the heavy hinge rather than after it. Bilateral hip thrust at this load is laying the posterior chain base that Day 4's near-maximal deadlift will draw on, which is the whole argument for building a week in a straight line. Notice the tempo: 2-second hold at the top is non-negotiable. This is where the glute contraction occurs — allowing the weight to crash down eliminates the stimulus.";
 
 const summary = {
   subtitle: `${client.programTitle} · ICONS Index · Week 1`,

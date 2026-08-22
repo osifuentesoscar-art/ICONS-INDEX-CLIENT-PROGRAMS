@@ -61,17 +61,32 @@
  *     referencing the Back Squat baseline as its load anchor per the coach
  *     note, rather than treated as an untested/skipped movement.
  *
- * ANTAGONIST ROTATION RULE — self-check performed while building (see
- * CLAUDE.md's "Compound Block Sequencing — Antagonist Rotation Rule"): every
- * Compound-zone block below was sequenced so no 3 consecutive exercises load
- * the same primary pattern (knee-dominant/squat, hip-hinge, horizontal push,
- * horizontal pull, vertical push, vertical pull, loaded carry). Two in a row
- * (a primary lift + its close accessory in the same pattern, e.g. Back Squat
- * -> Split Squat) is used deliberately in a few places and is compliant per
- * the rule — the third exercise in every such block switches pattern.
- * Isolated-zone Block A and the Metabolic-zone carry/core blocks are exempt
- * per the rule's own scope (corrective/conditioning work, not stacked
- * compound loading).
+ * ANTAGONIST ROTATION RULE — FULL-DAY WALK (re-done 8/22/2026; the previous
+ * note here was a PER-BLOCK self-check, which CLAUDE.md's rollout convention
+ * #4 explicitly says is not evidence — the rule is walked on the full
+ * rendered day, across block boundaries). Walked on rendered table order:
+ *   Day 1: Goblet(squat, Isolated) | Back Squat(squat) -> Split Squat(squat)
+ *          | Row(horiz pull) -> Pull-Up(vert pull) | Conv DL(hinge)
+ *          | Carry -> Plank.
+ *   Day 2: Push-Up(horiz push) -> Row(horiz pull) | Pull-Up(vert pull) ->
+ *          Split Squat(squat) | Plank -> interval.
+ *   Day 3: Glute Bridge/Ankle rock(corrective) | Hex DL(hinge) | Split
+ *          Squat(squat) -> Row(pull) | Pull-Up(vert pull) | Carry -> Plank.
+ * Days 2 and 3 are clean outright. DAY 1 IS A BORDERLINE CASE, FLAGGED
+ * RATHER THAN SILENTLY RESOLVED: read across the A/B boundary, Goblet Squat
+ * -> Back Squat -> Split Squat is three knee-dominant movements in a row.
+ * It is treated as compliant here on the same basis the base Train-the-
+ * Trainer program's Day 3 corrective primer is (a Banded Squat immediately
+ * precedes a Back Squat + Goblet Squat there): the Isolated-zone opener is a
+ * technique/activation exposure at 40 lbs against a 150x5 Back Squat
+ * baseline — roughly 27% of it — which sits inside the rule's own carve-out
+ * for "Isolated-zone/corrective blocks (lower load, different injury-risk
+ * profile)." The counter-argument is real and worth a ruling: unlike Becca's
+ * and Brodie's, Jah's goblet squat is labelled a NEW TRACKED BASELINE rather
+ * than a held corrective load, so it is arguably a programmed compound lift
+ * rather than a primer. If Xolokan rules it in scope, the fix is a swap, not
+ * a deletion — move Split Squat behind the Block C pull work.
+ * Metabolic-zone carry/core blocks are exempt per the rule's own scope.
  */
 
 const fs = require('fs');
@@ -117,12 +132,12 @@ const weekOverview = [
 const baselines = [
   ['Plank (Elbow)', '3:00', 'Baseline Intake', '2:30 loaded (15 lb plate)'],
   ['Push-Up', '60 reps (max)', 'Baseline Intake', 'Weighted — 35+ reps'],
-  ['Pull-Up (Full)', '25 reps (max)', 'Baseline Intake', 'Weighted +15 lbs — 8+ reps'],
-  ['Single-Arm Row', '60 lbs x 5 (5RM)', 'Baseline Intake', '72.5 lbs'],
-  ['Farmer Carry', '60 lbs / hand (working)', 'Baseline Intake', '75 lbs / hand'],
+  ['Pull-Up (Full)', '25 reps (max)', 'Baseline Intake', 'Weighted +15 lbs (DB between feet or plate) — 8+ reps'],
+  ['Single-Arm Row', '60 lbs x 5 (5RM)', 'Baseline Intake', '72.5 lbs — landmine or Kieser above the 60 lb DB ceiling'],
+  ['Farmer Carry', '60 lbs / hand (working)', 'Baseline Intake', '75 lbs / hand — trap bar above the 60 lb DB ceiling'],
   ['Back Squat', '150 lbs x 5 (5RM)', 'Baseline Intake', '170–180 lbs'],
   ['Deadlift (Conventional)', '200 lbs x 5 (5RM)', 'Baseline Intake', '225–235 lbs'],
-  ['Split Squat (BSS)', '60 lbs x 5 (5RM)', 'Baseline Intake', '72.5–75 lbs'],
+  ['Split Squat (BSS)', '60 lbs x 5 (5RM)', 'Baseline Intake', '72.5–75 lbs — barbell/landmine above the 60 lb/hand DB ceiling'],
 ];
 
 const baselineNotes = [
@@ -150,7 +165,7 @@ const days = [
     subtitle: 'Technique Day + Goblet Squat Baseline Establishment',
     descriptor: 'CONTROL PRECEDES POWER · NEW BASELINE: GOBLET SQUAT',
     intensityLabel: '60% Day',
-    intensityPara: 'Technique day — form over load. Back Squat, Split Squat, Single-Arm Row, and Deadlift all run at their Week 1 working loads (60% of estimated 1RM off Jah\'s tested 5RMs). No PRs today; the goal is clean patterns at 3 RIR before the week\'s intensity climbs.',
+    intensityPara: 'Technique day — form over load. Back Squat, Split Squat, Single-Arm Row, and Deadlift all run at their Week 1 working loads (60% of estimated 1RM off Jah\'s tested 5RMs). No PRs today; the goal is clean patterns in the technique/submaximal band (3+ RIR) before the week\'s intensity climbs. Per CLAUDE.md\'s corrected RIR Model (8/17/2026), everything above 2 RIR is one band, not a graduated 3-vs-4-vs-5 target — RIR accuracy degrades the farther a set sits from failure, so naming a precise number up here would be false precision.',
     warmUp: 'General dynamic warm-up: 5 min bike or row, hip circles, bodyweight squats x10, walking lunges x8/side, band pull-aparts x12, deep squat hold 3x20s.',
     blocks: [
       {
@@ -168,9 +183,9 @@ const days = [
         letter: 'B',
         title: 'COMPOUND — PRIMARY SQUAT',
         introLabel: 'Load Target',
-        intro: `Week 1 working load ${wk1.squat60} lbs (60% of est. 1RM ${oneRM.squat}, off the tested 150 lbs x 5 baseline) — 3 RIR, technique-first.`,
+        intro: `Week 1 working load ${wk1.squat60} lbs (60% of est. 1RM ${oneRM.squat}, off the tested 150 lbs x 5 baseline) — technique/submaximal band (3+ RIR), technique-first.`,
         exercises: [
-          { name: 'Back Squat', sets: '4', reps: '6', load: `${wk1.squat60} lbs (Wk1)`, tempo: '3-1-1', rest: '90s', cue: 'Ribs stacked over pelvis; full depth. Film side-on — depth check priority.', rirNote: '3 RIR' },
+          { name: 'Back Squat', sets: '4', reps: '6', load: `${wk1.squat60} lbs (Wk1)`, tempo: '3-1-1', rest: '90s', cue: 'Ribs stacked over pelvis; full depth. Film side-on — depth check priority.', rirNote: 'Technique/submaximal band (3+ RIR)' },
           { name: 'Split Squat (BSS)', sets: '3', reps: '8 ea', load: `${wk1.splitSquat60} lbs/hand (Wk1)`, tempo: '2-1-1', rest: '75s', cue: 'Left leg leads. Rear foot elevated, front knee tracks toe.' },
         ],
       },
@@ -181,7 +196,7 @@ const days = [
         intro: `Row Week 1 working load ${wk1.row60} lbs (60% of est. 1RM ${oneRM.row}, off the tested 60 lbs x 5 baseline). Pull-Up: add load immediately per coach note.`,
         exercises: [
           { name: 'Single-Arm Row', sets: '4', reps: '8 ea', load: `${wk1.row60} lbs (Wk1)`, tempo: '3-1-2', rest: '60s', cue: 'Full stretch at bottom every rep. Tied with Nick for heaviest row in the group.' },
-          { name: 'Pull-Up (Full) — Weighted + Volume', sets: '3 + 2', reps: '5 / max', load: '+15 lbs → Bodyweight', tempo: 'Controlled', rest: '90s', cue: 'Weighted set: +15 lbs, chin over bar, 2 RIR. Volume set: max unweighted, track reps.' },
+          { name: 'Pull-Up (Full) — Weighted + Volume', sets: '3 + 2', reps: '5 / max', load: '+15 lbs (DB or plate) → Bodyweight', tempo: 'Controlled', rest: '90s', cue: 'Weighted set: +15 lbs, chin over bar, 2 RIR. Volume set: max unweighted, track reps.' },
         ],
       },
       {
@@ -200,13 +215,13 @@ const days = [
         introLabel: 'Load Target',
         intro: 'Farmer Carry holds its established working baseline this week; Plank runs loaded per the coach note\'s Week 1 instruction.',
         exercises: [
-          { name: 'Farmer Carry', sets: '4', reps: '30–35 yds', load: '60 lbs/hand (established baseline)', tempo: 'Controlled', rest: '90s', cue: 'Shoulder packing cue — chest tall throughout the carry.' },
+          { name: 'Farmer Carry', sets: '4', reps: '30–35 yds', load: '60 lbs/hand (established baseline — DB or trap bar)', tempo: 'Controlled', rest: '90s', insight: 'His established 60 lbs/hand sits exactly on the studio\u2019s dumbbell ceiling, so every progression from here \u2014 including the 75 lb/hand 4-week target \u2014 runs on the trap bar or plate-loaded implements.', cue: 'Shoulder packing cue — chest tall throughout the carry.' },
           { name: 'Plank (Elbow, Loaded)', sets: '3', reps: '2:30', load: '10 lb plate (Wk1)', tempo: 'Hold', rest: '60s', cue: 'Full brace — squeeze glutes, ribs down. Progress plate every 2 sessions.' },
         ],
       },
     ],
     coolDown: 'Hip flexor lunge stretch 60s/side. Hamstring stretch 60s/side. Lat stretch 30s/side. Thoracic extension 60s.',
-    iconsNote: 'Technique day — every rep at 3 RIR minimum. Goblet Squat is Jah\'s first exposure this week; coach should confirm depth and knee tracking before Week 2 loads increase. Film side-on for Back Squat and Deadlift.',
+    iconsNote: 'Technique day — every rep in the technique/submaximal band, 3+ RIR, nothing near failure. Goblet Squat is Jah\'s first exposure this week; coach should confirm depth and knee tracking before Week 2 loads increase. Film side-on for Back Squat and Deadlift.',
   },
   {
     intensity: 70,
@@ -244,7 +259,7 @@ const days = [
         introLabel: 'Load Target',
         intro: `Pull-Up: weighted + volume, every session per coach note. Split Squat Week 1 working load ${wk1.splitSquat70} lbs/hand (70% of est. 1RM ${oneRM.splitSquat}).`,
         exercises: [
-          { name: 'Pull-Up (Full) — Weighted + Volume', sets: '3 + 2', reps: '5 / max', load: '+15 lbs → Bodyweight', tempo: 'Controlled', rest: '90s', cue: 'Weighted set: +15 lbs, 2 RIR. Volume set: max unweighted, both every session.' },
+          { name: 'Pull-Up (Full) — Weighted + Volume', sets: '3 + 2', reps: '5 / max', load: '+15 lbs (DB or plate) → Bodyweight', tempo: 'Controlled', rest: '90s', cue: 'Weighted set: +15 lbs, 2 RIR. Volume set: max unweighted, both every session.' },
           { name: 'Split Squat (BSS)', sets: '3', reps: '8 ea', load: `${wk1.splitSquat70} lbs/hand (Wk1)`, tempo: '2-1-1', rest: '75s', cue: 'Left leg leads. Progress to 65 lbs Wk2 per coach note.' },
         ],
       },
@@ -256,7 +271,7 @@ const days = [
         intro: 'Loaded plank plus a short interval finisher — the metabolic third of the ICONS three-zone build.',
         exercises: [
           { name: 'Plank (Elbow, Loaded)', sets: '3', reps: '2:30', load: '10–12.5 lb plate', tempo: 'Hold', rest: '60s', cue: 'Progress plate weight every 2 sessions per coach note.' },
-          { name: 'Kettlebell Swing / Battle Rope Interval', sets: '1', reps: '6 x 30s hard / 30s easy', load: 'Moderate', tempo: 'Intervals', rest: '—', cue: 'Energy becomes identity — hold form to the last round.' },
+          { name: 'Kettlebell Swing / Assault Bike Interval', sets: '1', reps: '6 x 30s hard / 30s easy', load: '25 lb KB (studio ceiling) or bike', tempo: 'Intervals', rest: '—', cue: 'Energy becomes identity — hold form to the last round. Bike if the 25 lb bell is too light to drive intervals.' },
         ],
       },
     ],
@@ -318,7 +333,7 @@ const days = [
         introLabel: 'Load Target',
         intro: 'Farmer Carry progresses this week toward the 75 lbs/hand Wk4 target; Plank pushes plate weight.',
         exercises: [
-          { name: 'Farmer Carry', sets: '4', reps: '30–40 yds', load: '65 lbs/hand (Wk1 — progressing toward 75 lb Wk4 target)', tempo: 'Controlled', rest: '90s', cue: 'Chest tall, no shrug. Shoulder packing cue.' },
+          { name: 'Farmer Carry', sets: '4', reps: '30–40 yds', load: '65 lbs/hand, trap bar (Wk1 — progressing toward 75 lb Wk4 target)', tempo: 'Controlled', rest: '90s', cue: 'Chest tall, no shrug. Shoulder packing cue.' },
           { name: 'Plank (Elbow, Loaded)', sets: '3', reps: '2:30+', load: '12.5–15 lb plate', tempo: 'Hold', rest: '60s', cue: 'Push plate weight — Wk4 target 2:30 @ 15 lb plate.' },
         ],
       },
@@ -335,7 +350,7 @@ const summary = {
     ['Day 2', '70%', 'Push/Pull Strength — Push-Up Progression', 'Push-Up (Weighted) / Single-Arm Row', `Push-Up goes weighted (20 lb) from Wk1. Row Wk1 ${wk1.row70} lbs, toward 65 lbs Wk2.`],
     ['Day 3', '80%', 'Full-Body Peak — Hex Bar DL Substitution', 'Hex Bar Deadlift (Sub) / Split Squat', `Hex Bar DL Wk1 ${wk1.deadlift80} lbs (conv. DL reference). Split Squat/Row at week's heaviest loads.`],
   ],
-  milestones4wk: 'Plank: 2:30 loaded (15 lb plate). Push-Up: Weighted — 35+ reps. Pull-Up: Weighted +15 lbs — 8+ reps. Back Squat: 170–180 lbs. Deadlift: 225–235 lbs. Single-Arm Row: 72.5 lbs. Split Squat: 72.5–75 lbs. Farmer Carry: 75 lbs/hand. All figures per coach note — add load only at top of rep range with clean form (RIR model), never a grind to failure.',
+  milestones4wk: 'Plank: 2:30 loaded (15 lb plate). Push-Up: Weighted — 35+ reps. Pull-Up: Weighted +15 lbs (DB between feet or plate) — 8+ reps. Back Squat: 170–180 lbs. Deadlift: 225–235 lbs. Single-Arm Row: 72.5 lbs. Split Squat: 72.5–75 lbs. Farmer Carry: 75 lbs/hand. (Implement note: the row, split squat and carry 4-week targets all cross the studio’s 60 lb/hand dumbbell ceiling — run them on the landmine/Kieser, barbell, and trap bar respectively. The loads are achievable in-studio; the dumbbells simply stop at 60.) All figures per coach note — add load only at top of rep range with clean form (RIR model), never a grind to failure.',
   milestones8wk: 'Continue linear progression off the 4-week targets above at the same RIR-autoregulated rate. Re-test Goblet Squat and Hex Bar Deadlift on their own merits once enough exposure has accumulated to move off the substituted reference loads — both should have real, independently tested numbers by the 8-week mark rather than continuing to borrow Back Squat/Deadlift figures.',
 };
 

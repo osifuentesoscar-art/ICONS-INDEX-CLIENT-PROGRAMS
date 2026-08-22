@@ -86,11 +86,11 @@ const baselines = [
   ['Hex Bar Deadlift', '205 lbs × 5', 'Baseline Intake', '225–235 lbs'],
   ['Back Squat', '155 lbs × 5', 'Baseline Intake', '175–185 lbs'],
   ['Split Stance', '45 lbs × 5', 'Baseline Intake', 'Depth/tempo priority — lighter than group by design'],
-  ['Goblet Squat', '45 lbs × 5', 'Baseline Intake', 'Corrective load — maintained for pattern quality'],
+  ['Goblet Squat', '45 lb DB × 5', 'Baseline Intake', 'Corrective load — maintained for pattern quality'],
   ['Single-Arm Row', '40 lbs × 5', 'Baseline Intake', 'Progress +5 lbs every 2 sessions'],
-  ['Pull-Up (Full)', '16 reps max', 'Baseline Intake', 'Weighted +10 lbs — 6+ reps'],
-  ['Farmer Carry', '60 lbs / hand', 'Baseline Intake', '75 lbs / hand'],
-  ['Push-Up', '37 reps', 'Baseline Intake', 'Weighted vest — 20+ reps'],
+  ['Pull-Up (Full)', '16 reps max', 'Baseline Intake', 'Weighted +10 lbs (DB between feet or plate) — 6+ reps'],
+  ['Farmer Carry', '60 lbs / hand', 'Baseline Intake', '75 lbs / hand — trap bar above the 60 lb DB ceiling'],
+  ['Push-Up', '37 reps', 'Baseline Intake', 'Weighted (10–15 lb plate on upper back) — 20+ reps'],
   ['Plank (Elbow)', '3:00', 'Baseline Intake', '2:30 loaded (15 lb plate)'],
 ];
 
@@ -129,7 +129,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Grooves squat depth/tempo with the tested corrective load before the new-baseline hinge work and heavier squat below.',
         exercises: [
-          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '45 lbs', tempo: '3-1-1', rest: '60s', cue: 'Full depth, 3-sec descent every rep. Corrective pattern per coach note — hold this load steady across the week.' },
+          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '45 lb DB', tempo: '3-1-1', rest: '60s', cue: 'Full depth, 3-sec descent every rep. Corrective pattern per coach note — hold this load steady across the week.' },
           { name: 'Band Pull-Apart', sets: '2', reps: '15', load: 'Band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight, squeeze shoulder blades. Preps today’s row and pull-up volume.' },
         ],
       },
@@ -139,9 +139,9 @@ const days = [
         introLabel: 'Load Target',
         intro: 'New-baseline hinge → bilateral squat → horizontal pull — three different patterns in sequence, per the Antagonist Rotation Rule.',
         exercises: [
-          { name: 'Deadlift (Conventional)', sets: '3', reps: '5', load: '175 lbs', tempo: '2-1-1', rest: '90s', insight: 'New baseline — conservative technique-focus estimate relative to his 205 lb tested Hex Bar Deadlift, not yet tested at this bar path. Becomes the real baseline this week.', cue: 'Longer bar path than hex bar — hips hinge back to grip, neutral spine, drive floor away.' },
-          { name: 'Back Squat', sets: '4', reps: '5', load: `${d1BackSquat} lbs`, tempo: '2-1-2', rest: '90s', cue: '60% Week-1 load off his 155×5 tested baseline. Film side-on every session per coach note.' },
-          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d1SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Drive elbow to hip, 2-sec hold at top. +5 lbs every 2 sessions per coach note.' },
+          { name: 'Deadlift (Conventional)', sets: '3', reps: '5', load: '175 lbs', tempo: '2-1-1', rest: '90s', rirNote: 'Technique/submaximal band (3+ RIR) — first exposure, no near-failure sets', insight: 'New baseline — conservative technique-focus estimate relative to his 205 lb tested Hex Bar Deadlift, not yet tested at this bar path. Becomes the real baseline this week.', cue: 'Longer bar path than hex bar — hips hinge back to grip, neutral spine, drive floor away.' },
+          { name: 'Back Squat', sets: '4', reps: '5', load: `${d1BackSquat} lbs`, tempo: '2-1-2', rest: '90s', rirNote: 'Technique/submaximal band (3+ RIR) — 60% technique day', cue: '60% Week-1 load off his 155×5 tested baseline. Film side-on every session per coach note.' },
+          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d1SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', rirNote: 'Technique/submaximal band (3+ RIR)', cue: 'Drive elbow to hip, 2-sec hold at top. +5 lbs every 2 sessions per coach note.' },
         ],
       },
       {
@@ -151,8 +151,8 @@ const days = [
         introLabel: 'Finisher Format',
         intro: 'Push-Up, Farmer Carry, Plank, and full-rep Pull-Up volume all track directly against Brodie’s exceptional tested baselines.',
         exercises: [
-          { name: 'Push-Up', sets: '3', reps: '26–28', load: 'Bodyweight', tempo: '3-0-1', rest: '75s', cue: 'Technique day — 26–28 reps (roughly 70–75% of his 37-rep max) to hold clean form. Weighted vest introduced from Week 2.' },
-          { name: 'Farmer Carry', sets: '3', reps: '35 yds', load: '60 lbs / hand', tempo: 'Controlled', rest: '90s', cue: 'Tested baseline load. +5 lbs every 2 sessions toward 75 lbs/hand.' },
+          { name: 'Push-Up', sets: '3', reps: '26–28', load: 'Bodyweight', tempo: '3-0-1', rest: '75s', cue: 'Technique day — 26–28 reps (roughly 70–75% of his 37-rep max) to hold clean form. Plate loading (10–15 lbs across the upper back) introduced from Week 2 — no weight vest in the studio inventory.' },
+          { name: 'Farmer Carry', sets: '3', reps: '35 yds', load: '60 lbs / hand (DB or trap bar)', tempo: 'Controlled', rest: '90s', insight: 'His tested 60 lbs/hand sits exactly on the studio\u2019s 60 lb dumbbell ceiling, so every progression from here runs on the trap bar (or plate-loaded implements) \u2014 the load is achievable in-studio, the dumbbells simply stop here.', cue: 'Tested baseline load. +5 lbs every 2 sessions toward 75 lbs/hand.' },
           { name: 'Plank Hold (Elbow)', sets: '3', reps: '2:30', load: 'Bodyweight', tempo: '—', rest: '60s', cue: 'Strong 3:00 baseline — trains at 2:30 loaded per coach note. Bodyweight this session; plate loading added Week 2.' },
           { name: 'Pull-Up (Full)', sets: '3', reps: '8', load: 'Bodyweight', tempo: 'Controlled', rest: '75s', cue: 'Technique-day volume, well under his 16-rep max. Weighted strength sets begin Day 2.' },
         ],
@@ -177,7 +177,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Same corrective squat groove as Day 1, plus scapular prep for weighted pull-up work.',
         exercises: [
-          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '45 lbs', tempo: '3-1-1', rest: '60s', cue: 'Same corrective load and cues as Day 1 — full depth, 3-sec descent.' },
+          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '45 lb DB', tempo: '3-1-1', rest: '60s', cue: 'Same corrective load and cues as Day 1 — full depth, 3-sec descent.' },
           { name: 'Bird Dog', sets: '2', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-2', rest: '30s', cue: 'Core brace before today’s heaviest hinge load.' },
         ],
       },
@@ -187,9 +187,9 @@ const days = [
         introLabel: 'Load Target',
         intro: 'Established hinge → unilateral squat pattern → horizontal pull — three different patterns, per the Antagonist Rotation Rule.',
         exercises: [
-          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `${d2HexDL} lbs`, tempo: '2-1-1', rest: '90s', cue: '70% Week-1 load off his 205×5 tested baseline. Hip hinge drill mandatory before every set.' },
-          { name: 'Split Stance', sets: '3', reps: '5 ea leg', load: `${d2SplitStance} lbs`, tempo: '3-1-1', rest: '75s', cue: 'Lighter than Oscar/Nick by design — prioritize depth and tempo first per coach note.' },
-          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d2SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', cue: '+5 lbs from Day 1 per the weekly undulation. 2-sec hold at top.' },
+          { name: 'Hex Bar Deadlift', sets: '4', reps: '5', load: `${d2HexDL} lbs`, tempo: '2-1-1', rest: '90s', rirNote: '2 RIR on the last set', cue: '70% Week-1 load off his 205×5 tested baseline. Hip hinge drill mandatory before every set.' },
+          { name: 'Split Stance', sets: '3', reps: '5 ea leg', load: `${d2SplitStance} lbs`, tempo: '3-1-1', rest: '75s', rirNote: '2 RIR — depth/tempo before load', cue: 'Lighter than Oscar/Nick by design — prioritize depth and tempo first per coach note.' },
+          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d2SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', rirNote: '2 RIR on the last set', cue: '+5 lbs from Day 1 per the weekly undulation. 2-sec hold at top.' },
         ],
       },
       {
@@ -199,10 +199,10 @@ const days = [
         introLabel: 'Finisher Format',
         intro: 'Weighted Pull-Up strength sets begin here per coach note ("Add load +10 lbs for strength sets") alongside progressing carry and plank.',
         exercises: [
-          { name: 'Push-Up', sets: '3', reps: '30', load: 'Bodyweight', tempo: '3-0-1', rest: '75s', cue: 'Up to 30 reps (≈80% of max) as strength work builds. Weighted vest optional from this session.' },
-          { name: 'Farmer Carry', sets: '3', reps: '35 yds', load: '65 lbs / hand', tempo: 'Controlled', rest: '90s', cue: '+5 lbs/hand — this is session 2. Wk4 target: 75 lbs/hand.' },
+          { name: 'Push-Up', sets: '3', reps: '30', load: 'Bodyweight', tempo: '3-0-1', rest: '75s', cue: 'Up to 30 reps (≈80% of max) as strength work builds. Plate loading optional from this session.' },
+          { name: 'Farmer Carry', sets: '3', reps: '35 yds', load: '65 lbs / hand (trap bar)', tempo: 'Controlled', rest: '90s', cue: '+5 lbs/hand — this is session 2. Wk4 target: 75 lbs/hand.' },
           { name: 'Plank Hold (Elbow)', sets: '3', reps: '2:30', load: '10 lb plate', tempo: '—', rest: '60s', cue: 'Plate loading begins here, building toward the 15 lb Week-4 target. Progress plate weight, not duration, per coach note.' },
-          { name: 'Pull-Up (Full — Weighted)', sets: '3', reps: '5', load: '+10 lbs', tempo: 'Controlled', rest: '90s', cue: 'Weighted strength sets begin per coach note. Toward the 4-week target: +10 lbs, 6+ reps.' },
+          { name: 'Pull-Up (Full — Weighted)', sets: '3', reps: '5', load: '+10 lbs (DB or plate)', tempo: 'Controlled', rest: '90s', cue: 'Weighted strength sets begin per coach note. Toward the 4-week target: +10 lbs, 6+ reps.' },
         ],
       },
     ],
@@ -225,7 +225,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Final corrective-squat exposure of the week before the heaviest compound loads.',
         exercises: [
-          { name: 'Goblet Squat (Corrective Load)', sets: '2', reps: '8', load: '45 lbs', tempo: '3-1-1', rest: '60s', cue: 'Quick priming set — pattern check before Back Squat goes heavier below.' },
+          { name: 'Goblet Squat (Corrective Load)', sets: '2', reps: '8', load: '45 lb DB', tempo: '3-1-1', rest: '60s', cue: 'Quick priming set — pattern check before Back Squat goes heavier below.' },
           { name: 'Bird Dog', sets: '2', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-2', rest: '30s', cue: 'Core brace before the heaviest hinge and squat loads of the week.' },
         ],
       },
@@ -233,11 +233,11 @@ const days = [
         letter: 'B',
         title: 'Compound — Primary Strength',
         introLabel: 'Load Target',
-        intro: 'Heaviest weekly loads — bilateral squat → hinge → horizontal pull. 1–2 RIR on the last set of each; never to failure.',
+        intro: 'Heaviest weekly loads — bilateral squat → hinge → horizontal pull. 2 RIR on the last set of each; never to failure. (Corrected 8/22/2026: 2 RIR is the default proximity for a PRIMARY lift — a 2024 dose-response meta-regression found strength gains largely unrelated to estimated RIR, so 1 RIR is not a stronger stimulus here, just a costlier one. 1 RIR is reserved for hypertrophy-priority accessory work, and this is an 80% day, not a 90% peak-test day, so no near-maximal exception applies.)',
         exercises: [
-          { name: 'Back Squat', sets: '4', reps: '5', load: `${d3BackSquat} lbs`, tempo: '2-1-2', rest: '90s', cue: 'Progress to 165 lbs Week 2 — 4-week target 175–185 lbs. Film side-on every session.' },
-          { name: 'Hex Bar Deadlift', sets: '3', reps: '5', load: `${d3HexDL} lbs`, tempo: '2-1-1', rest: '90s', cue: 'Approaching his tested 205×5 baseline — appropriate for the heaviest day. Progress to 215 lbs Week 2.' },
-          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d3SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', cue: 'Heaviest row of the week. Drive elbow to hip, 2-sec hold at top.' },
+          { name: 'Back Squat', sets: '4', reps: '5', load: `${d3BackSquat} lbs`, tempo: '2-1-2', rest: '90s', rirNote: '2 RIR on the last set — never to failure', cue: 'Progress to 165 lbs Week 2 — 4-week target 175–185 lbs. Film side-on every session.' },
+          { name: 'Hex Bar Deadlift', sets: '3', reps: '5', load: `${d3HexDL} lbs`, tempo: '2-1-1', rest: '90s', rirNote: '2 RIR on the last set — never to failure', cue: 'Approaching his tested 205×5 baseline — appropriate for the heaviest day. Progress to 215 lbs Week 2.' },
+          { name: 'Single-Arm Row', sets: '3', reps: '5', load: `${d3SingleArmRow} lbs`, tempo: '3-1-2', rest: '60s', rirNote: '2 RIR on the last set', cue: 'Heaviest row of the week. Drive elbow to hip, 2-sec hold at top.' },
         ],
       },
       {
@@ -247,15 +247,15 @@ const days = [
         introLabel: 'Finisher Format',
         intro: 'Heaviest weekly carry, longest plank load, and the week’s heaviest weighted Pull-Up sets.',
         exercises: [
-          { name: 'Push-Up', sets: '3', reps: '32', load: 'Weighted Vest (Optional)', tempo: '3-0-1', rest: '75s', cue: 'Highest volume of the week (≈85% of max) — add the vest here if bodyweight reps stay clean. Building toward 20+ weighted by Week 4.' },
-          { name: 'Farmer Carry', sets: '3', reps: '35 yds', load: '70 lbs / hand', tempo: 'Controlled', rest: '90s', cue: 'Heaviest carry of the week — closing in on the 75 lb Week-4 target.' },
+          { name: 'Push-Up', sets: '3', reps: '32', load: '10–15 lb plate (optional)', tempo: '3-0-1', rest: '75s', cue: 'Highest volume of the week (≈85% of max) — add the plate here if bodyweight reps stay clean. Building toward 20+ weighted by Week 4.' },
+          { name: 'Farmer Carry', sets: '3', reps: '35 yds', load: '70 lbs / hand (trap bar)', tempo: 'Controlled', rest: '90s', cue: 'Heaviest carry of the week — closing in on the 75 lb Week-4 target.' },
           { name: 'Plank Hold (Elbow)', sets: '3', reps: '2:30', load: '15 lb plate', tempo: '—', rest: '60s', cue: 'Hits the Week-4 plate target early — hold here and let duration build from Week 2 forward.' },
-          { name: 'Pull-Up (Full — Weighted)', sets: '3', reps: '6', load: '+10 lbs', tempo: 'Controlled', rest: '90s', cue: 'Meets the 4-week target rep count (6+) at Week-1 load — a strong early signal. Progress load next week if this stays clean.' },
+          { name: 'Pull-Up (Full — Weighted)', sets: '3', reps: '6', load: '+10 lbs (DB or plate)', tempo: 'Controlled', rest: '90s', cue: 'Meets the 4-week target rep count (6+) at Week-1 load — a strong early signal. Progress load next week if this stays clean.' },
         ],
       },
     ],
     coolDown: 'Pigeon pose 90s each, doorway chest stretch 30s each, hamstring stretch 60s each, diaphragmatic breathing 2 min.',
-    iconsNote: 'Heaviest day of the week on both compound lifts — 1–2 RIR on the last set, never to failure. Filming Back Squat side-on is mandatory per coach note every session, not just this one.',
+    iconsNote: 'Heaviest day of the week on both compound lifts — 2 RIR on the last set, never to failure. Filming Back Squat side-on is mandatory per coach note every session, not just this one.',
   },
 ];
 
@@ -266,7 +266,7 @@ const summary = {
     ['2', '70%', 'Hex Bar Deadlift + Unilateral — Weighted Pull-Up Begins', 'Hex Bar Deadlift / Split Stance', `Hex Bar Deadlift ${d2HexDL} lbs Wk1 → 4-wk target 225–235 lbs. Weighted Pull-Up (+10 lbs) begins.`],
     ['3', '80%', 'Primary Strength — Heaviest Weekly Loads', 'Back Squat / Hex Bar Deadlift / Single-Arm Row', `Back Squat ${d3BackSquat} lbs, Hex Bar Deadlift ${d3HexDL} lbs Wk1. Weighted Pull-Up hits 4-wk rep target (6+) at Week-1 load.`],
   ],
-  milestones4wk: 'Plank: 2:30 loaded (15 lb plate). Push-Up: Weighted vest — 20+ reps. Hex Bar Deadlift: 225–235 lbs. Back Squat: 175–185 lbs. Pull-Up: Weighted +10 lbs — 6+ reps. Farmer Carry: 75 lbs/hand. (Verbatim from Brodie’s baseline sheet 4-week targets.)',
+  milestones4wk: 'Plank: 2:30 loaded (15 lb plate). Push-Up: Weighted — 20+ reps (his sheet says "weighted vest"; the studio has no vest, so run it as a 10–15 lb plate across the upper back). Hex Bar Deadlift: 225–235 lbs. Back Squat: 175–185 lbs. Pull-Up: Weighted +10 lbs — 6+ reps. Farmer Carry: 75 lbs/hand (trap bar — above the studio’s 60 lb/hand dumbbell ceiling). (Targets verbatim from Brodie’s baseline sheet; the push-up implement is the one substitution, made against the confirmed studio inventory.)',
   milestones8wk: 'No 8-week target is documented on Brodie’s baseline sheet — the 4-week targets above are the sole confirmed benchmark on file. Recommend a full baseline retest at Week 8 (mirroring the ICONS Baseline Testing Protocol, including a first real number for Conventional Deadlift) to set real 8-week targets rather than projecting unconfirmed numbers forward.',
 };
 

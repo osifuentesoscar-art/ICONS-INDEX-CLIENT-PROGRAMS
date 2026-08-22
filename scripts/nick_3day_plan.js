@@ -351,9 +351,9 @@ const days = [
         letter: 'B',
         title: 'COMPOUND — PRIMARY SQUAT & PULL',
         introLabel: 'Load Target',
-        intro: `Week 1 working load ${wk1.squat80} lbs (~80% of est. 1RM ${oneRM.squat}, off the tested 275 lbs x 5 baseline) — 1-2 RIR, film every work set.`,
+        intro: `Week 1 working load ${wk1.squat80} lbs (~80% of est. 1RM ${oneRM.squat}, off the tested 275 lbs x 5 baseline) — 2 RIR on the last set of each, film every work set. Advanced training level is not a waiver here: the corrected model reserves 1 RIR for hypertrophy-priority accessory work, and strength gains track load rather than proximity to failure.`,
         exercises: [
-          { name: 'Back Squat', sets: '5', reps: '4', load: `${wk1.squat80} lbs (Wk1)`, tempo: '3-1-X', rest: '150s', cue: 'Elite baseline — film every work set. 1–2 RIR.' },
+          { name: 'Back Squat', sets: '5', reps: '4', load: `${wk1.squat80} lbs (Wk1)`, tempo: '3-1-X', rest: '150s', cue: 'Elite baseline — film every work set.', rirNote: '2 RIR' },
           { name: 'Split Stance (Progression Load)', sets: '3', reps: '6 ea', load: '45 lbs/hand (building off Wk1 new baseline)', tempo: '2-1-1', rest: '75s', cue: 'Building off Week 1 new baseline. Left leg leads — weaker per Styku data. Depth and control priority.' },
           { name: 'Single-Arm Row', sets: '4', reps: '4 ea', load: `${wk1.row80} lbs (Wk1)`, tempo: '3-1-2', rest: '90s', cue: 'Progress toward 72.5–75 lb Wk4 target.' },
         ],

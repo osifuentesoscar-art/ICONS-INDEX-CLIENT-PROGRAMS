@@ -61,12 +61,12 @@ const baselines = [
   ['Bench Press (DB/BB)', 'Your 5RM', 'Self-test', 'Est 1RM × 0.80 = Wk1 working load'],
   ['Overhead Press', 'Your 3–5RM', 'Self-test', 'Working load: ~80% of 3RM'],
   ['Single-Arm DB Row', 'Your 8RM', 'Self-test', 'Wk4 target: +10–15 lbs'],
-  ['Farmers Carry', 'BW/hand', 'Self-test', 'Carry your bodyweight/hand by Wk4'],
-  ['Push-Ups', 'Max reps', 'Self-test', 'Weighted vest Wk3'],
+  ['Farmers Carry', 'BW/hand', 'Self-test', 'BW/hand by Wk4 — trap bar above the 60 lb/hand DB ceiling'],
+  ['Push-Ups', 'Max reps', 'Self-test', 'Add a 10–25 lb plate across the upper back, Wk3'],
   ['Plank Hold', 'Max seconds', 'Self-test', 'Loaded (10–25 lb plate) from session 1'],
-  ['Pull-Ups', 'Max reps', 'Self-test', 'Weighted pull-ups by Wk4'],
-  ['Back Squat (Bilateral)', 'Your 5RM', 'Self-test', 'Both legs · Est 1RM × 0.75 = Day 3 working load'],
-  ['Hip Thrust (Bilateral)', 'Your 5RM', 'Self-test', 'Both legs · Est 1RM × 0.80 = Day 3 working load'],
+  ['Pull-Ups', 'Max reps', 'Self-test', 'Weighted by Wk4 — DB between feet or plate'],
+  ['Back Squat (Bilateral)', 'Your 5RM', 'Self-test', 'Both legs · Est 1RM × 0.75 = bilateral (70%) day working load'],
+  ['Hip Thrust (Bilateral)', 'Your 5RM', 'Self-test', 'Both legs · Est 1RM × 0.80 = bilateral (70%) day working load'],
 ];
 
 const baselineNotes = [
@@ -93,10 +93,94 @@ const baselineNotes = [
   {
     type: 'blue',
     label: 'The RIR Standard — Non-Negotiable',
-    body: 'Every work set in this program uses RIR (Reps In Reserve). 2 RIR — two reps left with clean form — is the DEFAULT proximity for PRIMARY lifts in this program (corrected 8/17/2026: a 2024 dose-response meta-regression found strength gains largely unrelated to estimated RIR, so 1 RIR is not a stronger stimulus than 2 RIR for a primary lift). 1 RIR is reserved for hypertrophy-priority ACCESSORY work, or for a deliberate near-maximal set on a peak-intensity day (Day 2\'s hex bar deadlift and heavy hip thrust are the only primary lifts in this program that sit there, and only because Day 2 is a 90% day) — it is never the default on a primary strength set. Anything above 2 RIR — warm-ups, technique sets, sub-maximal work — is treated as one collapsed "technique/submaximal" band, not a graduated 3-vs-4-vs-5 RIR target, since RIR accuracy degrades the farther a set sits from failure. This is how ACSM 2026 recommends loading — training to failure does not consistently outperform RIR-based loading and increases injury and recovery cost. When you enforce this with clients, you will do so knowing exactly how 2 RIR feels on your own primary lifts.',
+    body: 'Every work set in this program uses RIR (Reps In Reserve). 2 RIR — two reps left with clean form — is the DEFAULT proximity for PRIMARY lifts in this program (corrected 8/17/2026: a 2024 dose-response meta-regression found strength gains largely unrelated to estimated RIR, so 1 RIR is not a stronger stimulus than 2 RIR for a primary lift). 1 RIR is reserved for hypertrophy-priority ACCESSORY work, or for a deliberate near-maximal set on a peak-intensity day (the peak-output day\'s hex bar deadlift and heavy hip thrust are the only primary lifts in this program that sit there, and only because that day is a 90% day) — it is never the default on a primary strength set. Anything above 2 RIR — warm-ups, technique sets, sub-maximal work — is treated as one collapsed "technique/submaximal" band, not a graduated 3-vs-4-vs-5 RIR target, since RIR accuracy degrades the farther a set sits from failure. This is how ACSM 2026 recommends loading — training to failure does not consistently outperform RIR-based loading and increases injury and recovery cost. When you enforce this with clients, you will do so knowing exactly how 2 RIR feels on your own primary lifts.',
+  },
+  {
+    type: 'gold',
+    label: 'Deload Week — Scheduled, Not Optional',
+    body: "This program runs an 8-week arc at 5 days/week with two 90% days inside every week — enough continuous progressive loading that CLAUDE.md's Deload standard (added 8/18/2026) schedules a lighter week proactively rather than waiting for a stall. House pattern: take the deload the week immediately AFTER the Week 4 retest, so it absorbs the testing fatigue and starts the second block fresh. Content: the same five days, the same movements, the same block order — cut working sets roughly in half, drop loads to 50–70% of your normal working weights, and keep every set inside the 3+ RIR technique/submaximal band. No PRs, no AMRAP scoring, no near-failure work. Frame it to yourself exactly the way you will frame it to a client: this is a reload, not a lost week. The line to use on a client who resists it — a light week costs no measurable muscle and only briefly-recoverable peak strength, while unbroken hard loading is where soreness, joint stress and stalls actually accumulate.",
   },
 ];
 
+/**
+ * ANTAGONIST ROTATION — FULL-DAY WALK (recorded 8/22/2026)
+ * ═══════════════════════════════════════════════════════════════════════════
+ * CLAUDE.md's Antagonist Rotation Rule is walked on the FULL RENDERED DAY,
+ * across block boundaries — not per block. Per-block compliance is not
+ * evidence. Recorded here so a future resequence can be re-checked against a
+ * stated baseline instead of re-derived. "Not waived for Advanced/Elite"
+ * applies to this document in particular: it is an Advanced-level program.
+ *
+ * DAY 1 (80%) — A corrective primer (out of scope: light, single-joint).
+ *   B: Bench(horizontal push) → DB OHP(vertical push) → Incline DB Press
+ *      (incline push). FLAGGED FOR A RULING, NOT SILENTLY RESOLVED — three
+ *      pushes under a coarse push<->pull taxonomy; clean under the finer
+ *      horizontal/vertical/incline reading this file's own 8/12/2026 audit
+ *      used when it treated vertical pull as distinct from horizontal pull
+ *      (Block C below). Left as-is pending Xolokan's ruling; see
+ *      trainer_education/README.md.
+ *   C: Weighted Pull-Up(vertical pull) → BB Row(horizontal) → SA Row
+ *      (horizontal) → Hanging Knee Tuck(core). Run of 2 horizontal pulls
+ *      under the finer reading; this is the 8/12/2026 fix (Face Pull was
+ *      moved out to Block D and the knee tuck pulled in) and it stands.
+ *   D: core / light isolation. Clean.
+ *
+ * DAY 2 (90%) — RESEQUENCED 8/22/2026. Rendered order and pattern per item:
+ *   A1 Hex Bar Deadlift        hip-hinge     run 1
+ *   A2 Romanian Deadlift       hip-hinge     run 2  (primary + close accessory,
+ *                                                    explicitly allowed)
+ *   A3 Lateral Band Walk       corrective    does NOT break the run (light,
+ *                                                    single-joint)
+ *   B1 Medicine Ball Slam      full-body power expression  -> BREAKS the run
+ *   B2 Barbell Hip Thrust      hip-dominant  run 1
+ *   B3 Weighted Reverse Lunge  knee-dominant -> breaks
+ *   B4 Single-Leg RDL          hip-hinge     run 1
+ *   C1 Farmers Carry           loaded carry  carry run 1
+ *   C2 Suitcase Carry          loaded carry  carry run 2
+ *   C3 Trap Bar Jump           hinge triple extension -> breaks the carry run
+ *                                            hip run 1
+ *   D1 Sled Push               horizontal drive; hip run 2 at worst
+ *   D2 Farmer Carry Sprint     loaded carry  carry run 1 (reset by D1)
+ *   D3 AMRAP                   mixed circuit
+ *   No pattern reaches three consecutive anywhere in the day.
+ *
+ *   WHAT WAS WRONG AND WHY: the 8/12/2026 fix resolved Hex DL -> RDL ->
+ *   Single-Leg RDL by moving the SL RDL out to Block B and pulling the
+ *   Lateral Band Walk into Block A. That left the heavy Barbell Hip Thrust
+ *   as the effective THIRD consecutive hip-dominant compound (the band walk
+ *   is a light corrective and does not break a run; the Trap Bar Jump is
+ *   hinge triple extension, so counting it made the run longer, not shorter).
+ *   THE FIX: a single swap, the house technique — Trap Bar Jump (was B1)
+ *   traded places with Medicine Ball Slam (was C3). This is deliberately
+ *   robust under BOTH readings of the trap bar jump (counted as a hinge
+ *   pattern, or exempt as full-recovery power work), and it preserves the
+ *   other 8/12/2026 fix on this day: the Med Ball Slam had been moved into
+ *   Block C to break up Farmers -> Suitcase -> Farmer Carry Sprint, and the
+ *   Trap Bar Jump now performs that same breaker role in the same slot.
+ *
+ * DAY 3 (70%) — A corrective primer (out of scope).
+ *   B: Back Squat -> Goblet Squat (run 2) -> Hamstring Curl (knee flexion,
+ *      breaks). 8/12/2026 fix, stands.
+ *   C: Hip Thrust(hip) -> RDL(hip) (run 2) -> Total Gym Squat Press
+ *      (knee-dominant, BREAKS) -> Glute Bridge(hip). NOTE: the Total Gym
+ *      press replaced a Leg Press on 8/22/2026 for equipment reasons — the
+ *      substitute was deliberately chosen to be knee-dominant and
+ *      multi-joint so it keeps performing this breaker role. Do not swap it
+ *      for a posterior-chain machine (back extension, hamstring curl)
+ *      without re-walking this block: that would create a run of four.
+ *   D: antagonist supersets throughout. E: carry/core/rotation. Clean.
+ *
+ * DAY 4 (70%) — B push/pull/isolation, C knee/hip/isolation, D rotation/
+ *   core/carry. No run reaches three. Clean.
+ *
+ * DAY 5 (90%) — A is bodyweight plyometrics (Depth Jump / Broad Jump /
+ *   Lateral Bound), confirmed EXEMPT by the 8/12/2026 audit: bodyweight,
+ *   full-recovery power/velocity work, outside the rule's stated scope of
+ *   "multi-joint, real-load exercises." B is speed/sled work, C is two
+ *   explosive upper-body pushes, D is a single conditioning interval.
+ *   Clean.
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
 const days = [
   // ═══════════ DAY 1 — 80% GOLD — PRIMARY STRENGTH ═══════════
   {
@@ -132,7 +216,7 @@ const days = [
         letter: 'C', title: 'PRIMARY COMPOUND PULL — PULL-UPS + ROW', introLabel: null,
         intro: 'Primary pull strength. The pulling volume in an ICONS program is always equal to or greater than the pressing volume. This is non-negotiable. Most clients arrive with underdeveloped pulling strength relative to their press — this imbalance drives shoulder impingement and postural collapse. Experience the feeling of matching your push with your pull. You will coach this balance in every program you write.',
         exercises: [
-          { name: 'Weighted Pull-Up (or Lat Pulldown)', insight: 'Trainer Insight: pull-up is the best single indicator of relative pulling strength', sets: '4', reps: '4–6', load: 'BW +10–20 lbs', tempo: '3-1-2', rest: '2 min', cue: 'Full dead hang. Chin over bar. 3-sec descent. Log weight + reps.', rirNote: '2 RIR — default proximity for a primary lift' },
+          { name: 'Weighted Pull-Up (or Lat Pulldown)', insight: 'Trainer Insight: pull-up is the best single indicator of relative pulling strength', sets: '4', reps: '4–6', load: 'BW +10–20 lbs (DB between feet or plate)', tempo: '3-1-2', rest: '2 min', cue: 'Full dead hang. Chin over bar. 3-sec descent. Log weight + reps.', rirNote: '2 RIR — default proximity for a primary lift' },
           { name: 'Barbell or DB Bent-Over Row', sets: '4', reps: '5–7', load: '80% Est 1RM', tempo: '3-1-2', rest: '90s', cue: '45° hinge. Drive elbows to hips. 2-sec hold at top. Full stretch at bottom.', rirNote: '2 RIR' },
           { name: 'Single-Arm DB Row (Heavy)', insight: 'Trainer Insight: log left vs right separately — you may find your own asymmetry', sets: '3', reps: '8–10', load: 'Heavy — 8RM', tempo: '3-1-2', rest: '60s', cue: 'Chest on bench. Full stretch at bottom — blade opens. Note L vs R.', rirNote: '2 RIR' },
           { name: 'Hanging Knee Tuck', sets: '3', reps: '10–12', load: 'Bodyweight', tempo: '2-0-2', rest: '45s', cue: 'Hang from bar. Pull knees to chest. Lower controlled. No swinging.' },
@@ -143,8 +227,8 @@ const days = [
         intro: 'Loaded core work always closes the strength session. Notice the plank is loaded — a 2:00 bodyweight plank is a mobility test, not a strength stimulus. Once a client can hold 60 seconds, weight is added. This applies to you too. The anti-rotation work trains the core in the same pattern it fires during carries and heavy pulls.',
         exercises: [
           { name: 'Elbow Plank (Loaded)', insight: 'Trainer Insight: if a client can hold 60s BW easily — load it. Same principle applies here.', sets: '3', reps: '60–90s', load: '25 lb plate', tempo: 'Hold', rest: '90s', cue: 'Plate on mid-back. Full brace. Exhale to set. Glutes squeezed.' },
-          { name: 'Pallof Press (Cable)', insight: 'Trainer Insight: this fires the same core pattern as a heavy carry — pre-teaches it', sets: '3', reps: '12 ea side', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Press straight out against band tension. Resist the twist. Anti-rotation.' },
-          { name: 'Face Pull (Cable or Band)', insight: 'Trainer Insight: this is the posture corrective you give every client every session', sets: '3', reps: '15–20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face. Elbows at ear height. External rotation at end. Rear delt.' },
+          { name: 'Pallof Press (Kieser or Band)', insight: 'Trainer Insight: this fires the same core pattern as a heavy carry — pre-teaches it', sets: '3', reps: '12 ea side', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Press straight out against band tension. Resist the twist. Anti-rotation.' },
+          { name: 'Face Pull (Kieser or Band)', insight: 'Trainer Insight: this is the posture corrective you give every client every session', sets: '3', reps: '15–20', load: 'Light-Mod', tempo: '2-1-2', rest: '30s', cue: 'Pull to face. Elbows at ear height. External rotation at end. Rear delt.' },
         ],
       },
     ],
@@ -172,9 +256,9 @@ const days = [
       },
       {
         letter: 'B', title: 'LOWER POWER + UNILATERAL STRENGTH', introLabel: null,
-        intro: 'Power development at 90% intensity requires sub-maximal loads moved with maximal intent. The trap bar jump and box step-up jump build rate of force development — the same quality that protects clients from falls, drives athletic output, and deteriorates fastest with age. Every postmenopausal client you work with needs this in their program. Today you experience why.',
+        intro: 'Power development at 90% intensity requires sub-maximal loads moved with maximal intent. This block opens on the medicine ball slam — a full-body power expression that is deliberately NOT another hip-dominant lift stacked on top of the hex bar deadlift and RDL you just finished in Block A (see the full-day sequencing note in the build script). Rate of force development is the quality that protects clients from falls, drives athletic output, and deteriorates fastest with age. Every postmenopausal client you work with needs this in their program. Today you experience why.',
         exercises: [
-          { name: 'Trap Bar Jump (or Box Jump)', insight: "Trainer Insight: rate of force development declines fastest with age. This is why it's programmed. Not optional.", sets: '4', reps: '4–5', load: '30–40% 1RM (fast)', tempo: 'Explosive', rest: '90s', cue: 'Fast intent. Triple extension: ankle, knee, hip. Land soft — absorb and reset.' },
+          { name: 'Medicine Ball Slam', insight: 'Trainer Insight: this is how you develop RFD safely across all ages and fitness levels', sets: '3', reps: '8–10', load: '12–16 lbs', tempo: 'Max intent', rest: '60s', cue: 'Full overhead raise. Slam with max force. Full-body power expression.' },
           { name: 'Barbell Hip Thrust (Heavy)', insight: 'Trainer Insight: hip thrust at this load is the primary glute strength stimulus — not squats', sets: '4', reps: '5–6', load: '90% of your baseline', tempo: '2-2-1', rest: '90s', cue: 'Upper back on bench. Drive through heels. 2-sec hold. Exhale on drive.', rirNote: '1 RIR on last set' },
           { name: 'Weighted Reverse Lunge', insight: 'Trainer Insight: log L vs R. Your weaker leg will reveal itself here.', sets: '3', reps: '8–10 ea', load: 'Heavy — challenging', tempo: '2-1-1', rest: '60s', cue: 'Step back, hover rear knee. Drive through front heel. Full hip extension.', rirNote: '2 RIR' },
           { name: 'Single-Leg RDL (Heavy DB)', insight: 'Trainer Insight: log left vs right — find your own asymmetry before coaching others on theirs', sets: '3', reps: '6–8 ea', load: 'Heavy — challenging', tempo: '3-1-1', rest: '75s', cue: 'Soft knee. Hips square. DB tracks the standing leg. Control the balance.', rirNote: '2 RIR' },
@@ -182,11 +266,11 @@ const days = [
       },
       {
         letter: 'C', title: 'LOADED CARRY — ICONS BATTERY MOVEMENT', introLabel: null,
-        intro: 'Loaded carries are non-negotiable in the ICONS system. They train grip strength, shoulder packing, spinal stiffness, loaded gait, and metabolic conditioning simultaneously. Carry strength is one of the highest predictors of longevity outcomes in women over 50. Target: bodyweight / hand for the farmers carry. If you weigh 80 kg, carry 80 kg/hand. This is the advanced standard.',
+        intro: 'Loaded carries are non-negotiable in the ICONS system. They train grip strength, shoulder packing, spinal stiffness, loaded gait, and metabolic conditioning simultaneously. Carry strength is one of the highest predictors of longevity outcomes in women over 50. Target: bodyweight / hand for the farmers carry. If you weigh 80 kg, carry 80 kg/hand. This is the advanced standard. The trap bar jump closes this block rather than opening Block B: it is a hinge-pattern triple extension, and placing it here keeps it from becoming a third consecutive hip-dominant movement earlier in the day — while also breaking up what would otherwise be three loaded carries in a row across Blocks C and D.',
         exercises: [
-          { name: 'Farmers Carry (Trap Bar or DB) — Heavy', insight: 'Trainer Insight: if a 64-year-old client can carry 50 lbs/hand for 30 yards, you must carry more.', sets: '5', reps: '35–40 yds', load: 'BW per hand (target)', tempo: 'Controlled', rest: '90s', cue: 'Shoulders packed. Chest tall. Neutral neck. Grip is the limiter — that is the point.' },
+          { name: 'Farmers Carry (Trap Bar) — Heavy', insight: 'Trainer Insight: if a 64-year-old client can carry 50 lbs/hand for 30 yards, you must carry more. Load this on the trap bar — studio dumbbells stop at 60 lbs/hand, which is below the bodyweight-per-hand target for most trainers.', sets: '5', reps: '35–40 yds', load: 'BW per hand (target) — trap bar', tempo: 'Controlled', rest: '90s', cue: 'Shoulders packed. Chest tall. Neutral neck. Grip is the limiter — that is the point.' },
           { name: 'Suitcase Carry — Single Arm (Heavy)', insight: 'Trainer Insight: the lateral lean reveals hip and core asymmetry. Your clients’ asymmetries live here.', sets: '3', reps: '30 yds ea', load: 'Heavy — reveals asymmetry', tempo: 'Controlled', rest: '60s', cue: 'One arm. Spine vertical. Resist the lateral lean. Log left vs right.' },
-          { name: 'Medicine Ball Slam', insight: 'Trainer Insight: this is how you develop RFD safely across all ages and fitness levels', sets: '3', reps: '8–10', load: '12–16 lbs', tempo: 'Max intent', rest: '60s', cue: 'Full overhead raise. Slam with max force. Full-body power expression.' },
+          { name: 'Trap Bar Jump (or Box Jump)', insight: "Trainer Insight: rate of force development declines fastest with age. This is why it's programmed. Not optional.", sets: '4', reps: '4–5', load: '30–40% 1RM (fast)', tempo: 'Explosive', rest: '90s', cue: 'Fast intent. Triple extension: ankle, knee, hip. Land soft — absorb and reset.' },
         ],
       },
       {
@@ -195,7 +279,7 @@ const days = [
         exercises: [
           { name: 'Sled Push (Speed Focus)', insight: 'Trainer Insight: speed-load sled vs max-load sled = different stimulus. This is velocity training.', sets: '5', reps: '20 yds', load: '60–80% of max sled', tempo: 'Explosive', rest: '90s', cue: 'Low drive angle. Full hip extension each stride. Drive through the floor.' },
           { name: 'Farmer Carry — Sprint (Light, Fast)', insight: 'Trainer Insight: velocity training at sub-maximal loads builds fast-twitch output', sets: '3', reps: '20 yds', load: '50% of heavy carry', tempo: 'Fast walk / sprint', rest: '60s', cue: 'Same posture, faster pace. Power and speed variant of the carry pattern.' },
-          { name: 'AMRAP — 10 Minutes (Record Rounds)', insight: 'Trainer Insight: record rounds completed. This is your Week 1 benchmark. Beat it every week. You will teach clients to track this same way.', sets: '10 min', reps: 'Max rounds', load: 'See cue', tempo: '—', rest: '—', cue: '5 pull-ups + 10 KB swings (32 kg) + 15 yd sprint. Count and record total rounds.' },
+          { name: 'AMRAP — 10 Minutes (Record Rounds)', insight: 'Trainer Insight: record rounds completed — your Week 1 benchmark. Swings run on a dumbbell, not a kettlebell: the studio kettlebells top out at 25 lbs, which is not a conditioning load for an advanced trainer. Beat your score every week; teach clients to track theirs the same way.', sets: '10 min', reps: 'Max rounds', load: 'See cue', tempo: '—', rest: '—', cue: '5 pull-ups + 10 two-hand DB swings (50–60 lbs) + 15 yd sprint. Count and record total rounds.' },
         ],
       },
     ],
@@ -227,7 +311,7 @@ const days = [
         intro: "Day 3 bilateral squat follows Day 2's unilateral hinge. The bilateral pattern at 70% load teaches you how to coach the squat as a skill — not a max effort test. At this intensity the client can hear your cues, process them, and apply them. This is the teaching window. Your clients' squat technique improves most on 70% days, not 90% days.",
         exercises: [
           { name: 'Back Squat (Bilateral)', insight: 'Trainer Insight: 75% at 8–10 reps is the volume-accumulation standard. Notice how different this feels from 90% × 3–5.', sets: '4', reps: '8–10', load: '75% Est 1RM', tempo: '3-1-1', rest: '90s', cue: 'Brace before descent. Sit between knees — not down. Drive through full foot.', rirNote: '2 RIR on all sets' },
-          { name: 'Goblet Squat (Technique + Depth)', insight: 'Trainer Insight: goblet squat teaches clients to sit into the bottom position. Use this as a teaching tool.', sets: '3', reps: '12–15', load: 'Moderate — technique focus', tempo: '3-2-1', rest: '60s', cue: '2-sec pause at bottom. Knees out. Heels down. Chest tall. Elbows push knees.', rirNote: '3 RIR — technique priority' },
+          { name: 'Goblet Squat (Technique + Depth)', insight: 'Trainer Insight: goblet squat teaches clients to sit into the bottom position. Use this as a teaching tool.', sets: '3', reps: '12–15', load: 'Moderate — technique focus', tempo: '3-2-1', rest: '60s', cue: '2-sec pause at bottom. Knees out. Heels down. Chest tall. Elbows push knees.', rirNote: 'Technique/submaximal band (3+ RIR) — no near-failure sets' },
           { name: 'Lying or Seated Hamstring Curl (Machine)', insight: "Trainer Insight: 3-sec eccentric on the curl is highest mechanical tension point. Don't let clients rush this.", sets: '3', reps: '12–15', load: 'Light-Moderate', tempo: '2-1-3', rest: '45s', cue: '3-sec eccentric. Hips flat on pad. Full extension between reps. Hamstring isolation.' },
         ],
       },
@@ -235,9 +319,9 @@ const days = [
         letter: 'C', title: 'HIP THRUST + POSTERIOR CHAIN — BILATERAL GLUTE & HAMSTRING', introLabel: null,
         intro: "Hip thrust at 70% is the moderate volume day for the posterior chain. After Day 2's heavy unilateral hinge, bilateral hip thrust at this load completes the posterior chain volume for the week. Notice the tempo: 2-second hold at the top is non-negotiable. This is where the glute contraction occurs — allowing the weight to crash down eliminates the stimulus.",
         exercises: [
-          { name: 'Barbell Hip Thrust (Bilateral)', insight: 'Trainer Insight: hip thrust at this load is the primary glute hypertrophy stimulus for the week. The 2-sec hold is the contraction — not a pause.', sets: '4', reps: '10–12', load: '80% of Day 2 hip thrust load', tempo: '2-2-1', rest: '75s', cue: 'Upper back on bench. Drive through heels. 2-sec hold. Exhale on the drive.', rirNote: '2 RIR on all sets' },
+          { name: 'Barbell Hip Thrust (Bilateral)', insight: 'Trainer Insight: hip thrust at this load is the primary glute hypertrophy stimulus for the week. The 2-sec hold is the contraction — not a pause.', sets: '4', reps: '10–12', load: '~72% of hip thrust baseline (80% of heavy-day load)', tempo: '2-2-1', rest: '75s', cue: 'Upper back on bench. Drive through heels. 2-sec hold. Exhale on the drive.', rirNote: '2 RIR on all sets' },
           { name: 'Romanian Deadlift (Bilateral — Both Legs)', insight: 'Trainer Insight: bilateral RDL after hip thrust = full posterior chain volume. This is the pairing.', sets: '3', reps: '10–12', load: '70% 1RM', tempo: '3-1-1', rest: '60s', cue: 'Hips back. Hamstring loaded to full stretch. Bar or DBs close to legs throughout.', rirNote: '2 RIR' },
-          { name: 'Leg Press (Bilateral — Foot Width Variation)', insight: 'Trainer Insight: foot position variation teaches clients that stance is individual — not universal.', sets: '3', reps: '12–15', load: 'Moderate', tempo: '3-1-1', rest: '60s', cue: 'Try two foot positions: shoulder-width and wide-stance. Note which feels stronger.', rirNote: '2 RIR' },
+          { name: 'Total Gym Squat Press (Bilateral — Foot Width Variation)', insight: 'Trainer Insight: foot position variation teaches clients that stance is individual — not universal. There is no leg press in the studio; the Total Gym platform is the confirmed bilateral press vehicle, and the foot-position lesson is identical on it.', sets: '3', reps: '12–15', load: 'Moderate incline setting', tempo: '3-1-1', rest: '60s', cue: 'Try two foot positions: shoulder-width and wide-stance. Note which feels stronger.', rirNote: '2 RIR' },
           { name: 'Glute Bridge — Feet Elevated (Bodyweight Volume)', insight: 'Trainer Insight: this high-rep glute bridge volume at session end is exactly what you give clients as a finisher when they need glute activation without spinal load.', sets: '2', reps: '20–25', load: 'Bodyweight', tempo: '2-2-1', rest: '30s', cue: 'Heels on bench. 2-sec hold at top. Max squeeze. High-rep glute finisher.' },
         ],
       },
@@ -253,11 +337,11 @@ const days = [
       },
       {
         letter: 'E', title: 'BILATERAL CORE — LOADED CARRY PRIMER + STABILITY', introLabel: null,
-        intro: 'Day 3 core closes with loaded carries at moderate weight — not the bodyweight-per-hand Day 2 standard, but a purposeful volume day for the carry pattern. Paired with rotational and anti-extension work, this block reinforces the core stability that makes every bilateral compound lift safer and more powerful.',
+        intro: 'Day 3 core closes with loaded carries at moderate weight — not the bodyweight-per-hand heavy-day standard, but a purposeful volume day for the carry pattern. Paired with rotational and anti-extension work, this block reinforces the core stability that makes every bilateral compound lift safer and more powerful.',
         exercises: [
-          { name: 'Farmers Carry (Moderate — Bilateral)', insight: "Trainer Insight: compare how this feels vs Day 2's BW/hand carry. The contrast teaches clients why carry load matters.", sets: '3', reps: '30–35 yds', load: '60–65% of Day 2 carry', tempo: 'Controlled', rest: '60s', cue: 'Same posture as Day 2. Shoulders packed. Chest tall. Grip the implement hard.' },
-          { name: 'Elbow Plank (Loaded — Moderate)', insight: "Trainer Insight: 15 lb plate vs Day 1's 25 lb plate. 70% day = 70% of core challenge too.", sets: '3', reps: '60s', load: '15 lb plate', tempo: 'Hold', rest: '75s', cue: 'Plate on mid-back. Exhale to brace. Glutes squeezed. Neutral neck.' },
-          { name: 'Rotational Med Ball Throw (Wall) or Cable Rotation', insight: "Trainer Insight: rotational power training is the missing link in most women's programs. This is how you add it safely.", sets: '3', reps: '10 ea side', load: '8–12 lb ball or moderate cable', tempo: 'Explosive', rest: '45s', cue: 'Drive from the hips and core — not the arms. Rotate fully. Catch or resist.' },
+          { name: 'Farmers Carry (Moderate — Bilateral)', insight: "Trainer Insight: compare how this feels vs a full bodyweight-per-hand carry. The contrast teaches clients why carry load matters.", sets: '3', reps: '30–35 yds', load: '60–65% of bodyweight per hand', tempo: 'Controlled', rest: '60s', cue: 'Same posture as the heavy carry day. Shoulders packed. Chest tall. Grip the implement hard.' },
+          { name: 'Elbow Plank (Loaded — Moderate)', insight: "Trainer Insight: 15 lb plate vs the 25 lb plate on your 80% primary-strength day. 70% day = 70% of core challenge too.", sets: '3', reps: '60s', load: '15 lb plate', tempo: 'Hold', rest: '75s', cue: 'Plate on mid-back. Exhale to brace. Glutes squeezed. Neutral neck.' },
+          { name: 'Rotational Med Ball Throw (Wall) or Kieser Rotation', insight: "Trainer Insight: rotational power training is the missing link in most women's programs. This is how you add it safely.", sets: '3', reps: '10 ea side', load: '8–12 lb ball or moderate Kieser setting', tempo: 'Explosive', rest: '45s', cue: 'Drive from the hips and core — not the arms. Rotate fully. Catch or resist.' },
         ],
       },
     ],
@@ -305,9 +389,9 @@ const days = [
         letter: 'D', title: 'CORE & COACHING PRACTICE — FILM TODAY', introLabel: null,
         intro: "This block closes every volume day. Pair up if you can, or set up a phone camera: deliver the coaching cue for each exercise out loud, exactly as written, before the working set begins. Review the footage tonight — this is the single fastest way to close the gap between knowing a cue and delivering it fluently.",
         exercises: [
-          { name: 'Cable Woodchop (High to Low)', sets: '3', reps: '12 ea side', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Rotate from the hips and core. Arms stay long. Control the return.' },
+          { name: 'Kieser or Band Woodchop (High to Low)', sets: '3', reps: '12 ea side', load: 'Moderate', tempo: '2-1-2', rest: '45s', cue: 'Rotate from the hips and core. Arms stay long. Control the return.' },
           { name: 'Weighted Sit-Up (Plate)', sets: '3', reps: '15', load: '10–15 lb plate', tempo: '2-0-2', rest: '45s', cue: 'Plate at chest. Exhale to curl up. Control the descent — no momentum.' },
-          { name: 'Farmer Carry (Moderate — Coaching Cue Practice)', insight: 'Trainer Insight: say the cue before the client picks up the weight, not after — this block is about that timing habit', sets: '3', reps: '30 yds', load: "60% of your Day 2 carry", tempo: 'Controlled', rest: '60s', cue: 'Shoulders packed, chest tall. Say the cue out loud before you lift, not during.' },
+          { name: 'Farmer Carry (Moderate — Coaching Cue Practice)', insight: 'Trainer Insight: say the cue before the client picks up the weight, not after — this block is about that timing habit', sets: '3', reps: '30 yds', load: "60% of bodyweight per hand", tempo: 'Controlled', rest: '60s', cue: 'Shoulders packed, chest tall. Say the cue out loud before you lift, not during.' },
         ],
       },
     ],
@@ -365,12 +449,12 @@ const summary = {
   rows: [
     ['DAY 1', '80% — Gold', 'Primary Strength', 'Bench · OHP · Weighted Pull-Up · Heavy Row · Loaded Plank', 'Push = Pull volume · 4 sets at 80% 1RM · 2 RIR discipline'],
     ['DAY 2', '90% — Red', 'Peak Output', 'Hex DL · Hip Thrust · Weighted Carry · AMRAP Finisher', 'Deadlift 87–92% 1RM · Carry BW/hand · Record AMRAP score'],
-    ['DAY 3', '70% — Green', 'Both Legs + Upper', 'Back Squat · Hip Thrust · Bench + Row Superset · Carries', 'Squat 75% at 8–10 reps · Hip thrust 80% Day 2 load · Pull = Push volume'],
+    ['DAY 3', '70% — Green', 'Both Legs + Upper', 'Back Squat · Hip Thrust · Bench + Row Superset · Carries', 'Squat 75% at 8–10 reps · Hip thrust 80% of heavy-day load · Pull = Push volume'],
     ['DAY 4', '70% — Green', 'Volume + Skill', 'Sub-maximal loads · High volume · Corrective focus', '10+ sets/muscle group · Film client scenarios · Practice cues'],
     ['DAY 5', '90% — Red', 'Fast-Twitch', 'Power · Speed sled · Jump training · Conditioning', 'Rate of force development · Plyometrics · Max output'],
   ],
-  milestones4wk: 'Week 1: establish all ICONS battery baselines on yourself. Document every number. Week 2: increase loads 5–10%. Begin filming your own sessions for form review. Week 3: add weighted vest to push-ups, increase carry load to 110% BW/hand, attempt a heavier pull-up. Week 4: retest all baselines. Compare to Week 1. You now know what a client experiences at their 4-week reassessment.',
-  milestones8wk: 'By Week 8: you will have completed 2 full ICONS training cycles on yourself. You will have experienced: the corrective primer protocol, the RIR loading system, the asymmetry discovery, the carry progression, the AMRAP competitive framework, the loaded plank progression, and the 8-week reassessment. You are now qualified to coach this system because you have lived it.',
+  milestones4wk: 'Week 1: establish all ICONS battery baselines on yourself. Document every number. Week 2: increase loads 5–10%. Begin filming your own sessions for form review. Week 3: add a 10–25 lb plate across the upper back on push-ups, increase carry load to 110% BW/hand, attempt a heavier pull-up. Week 4: retest all baselines. Compare to Week 1. You now know what a client experiences at their 4-week reassessment. Week 5 is a scheduled DELOAD — same five days, same movements, roughly half the working sets, loads at 50–70%, everything in the 3+ RIR band. It is programmed here, not left to how you feel, because 8+ weeks of continuous progressive loading is exactly the case CLAUDE.md tells you to deload proactively.',
+  milestones8wk: 'By Week 8: you will have completed 2 full ICONS training cycles on yourself. You will have experienced: the corrective primer protocol, the RIR loading system, the asymmetry discovery, the carry progression, the AMRAP competitive framework, the loaded plank progression, and the 8-week reassessment. You are now qualified to coach this system because you have lived it — including the scheduled deload after Week 4, which is the part most trainers skip on themselves and then fail to sell convincingly to a client.',
   rescanNote: 'Self-assessment: retest all baseline movements using the same protocol from Week 1. Calculate the percentage increase on each ICONS battery lift. This is what your clients experience when they see their 8-week results. The emotion they feel — the proof of progress — is what you are delivering as a Brace Life Studios trainer. Know that moment from the inside.',
 };
 
@@ -394,10 +478,50 @@ async function main() {
   console.log('Wrote', outPath);
 }
 
+/**
+ * Rewrites in-text day-number references inside a CLONED day object.
+ *
+ * Why this exists (added 8/22/2026): every variant resequences the base
+ * program's days, but each variant previously overrode only `title` /
+ * `subtitle` / `descriptor`. `intensityPara`, `iconsNote` and block `intro`
+ * text all hardcode the BASE day number, so six day-pages across Variants A
+ * and B shipped saying things like "Day 3 is 70%..." on their own Day 2, and
+ * "DAY 5 DEBRIEF" twice in one document. Overriding those fields by hand per
+ * variant is exactly the maintenance burden that produced the bug, so the
+ * remap is mechanical instead.
+ *
+ * `map` is base-day-number -> this-variant's-day-number, applied
+ * SIMULTANEOUSLY (single left-to-right regex pass), so a rotation like
+ * {1:3, 2:4, 3:2} cannot chain through itself. Matches both "Day N" and
+ * "DAY N" and preserves the case, so "DAY 3 DEBRIEF" and "Day 3's" both
+ * rewrite correctly. Day numbers not in the map (e.g. Variant C's "Day 0")
+ * are left untouched.
+ *
+ * IMPORTANT: this fixes NUMBERS, not DIRECTION. A sentence like "After Day
+ * 2's near-maximal hinge..." becomes factually wrong when the resequence
+ * moves that session LATER in the week — the number renumbers fine and the
+ * prose still lies. Those sentences need an explicit per-variant override
+ * after this runs; Variant A does exactly that and says so.
+ */
+function renumberDayReferences(day, map) {
+  const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+  const re = new RegExp(`\\b(Day|DAY) (${keys.join('|')})\\b`, 'g');
+  const rewrite = (str) => str.replace(re, (_m, word, n) => `${word} ${map[n]}`);
+  const walk = (node) => {
+    if (typeof node === 'string') return rewrite(node);
+    if (Array.isArray(node)) return node.map(walk);
+    if (node && typeof node === 'object') {
+      return Object.fromEntries(Object.entries(node).map(([k, v]) => [k, walk(v)]));
+    }
+    return node;
+  };
+  return walk(day);
+}
+
 // Exercise/day content reused by the 3 build-up variants (see
 // icons_trainer_development_program_{a,b,c}.js) — only runs main() when
 // executed directly, so requiring this module for its data has no side effect.
-module.exports = { client, weekOverview, baselines, baselineNotes, days, summary, data };
+module.exports = { client, weekOverview, baselines, baselineNotes, days, summary, data, renumberDayReferences };
 
 if (require.main === module) {
   main().catch((err) => {

@@ -89,7 +89,7 @@ const weekOverview = [
 const baselines = [
   ['Deadlift (Conventional)', '125 lbs × 5', 'Baseline Intake', '145–150 lbs'],
   ['Split Stance', '50 lbs × 5', 'Baseline Intake', '65 lbs'],
-  ['Goblet Squat', '50 lbs × 5', 'Baseline Intake', 'Corrective load — maintained for pattern quality'],
+  ['Goblet Squat', '50 lb DB × 5', 'Baseline Intake', 'Corrective load — maintained for pattern quality'],
   ['Single-Arm Row', '30 lbs × 5', 'Baseline Intake', '42.5 lbs'],
   ['Pull-Up (Assisted, 3-Grip)', 'CG / Std / Wide — 5 each', 'Baseline Intake', 'Reduce assist across all 3 grips'],
   ['Farmer Carry', '40 lbs / hand', 'Baseline Intake', '52.5 lbs / hand'],
@@ -132,7 +132,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Wakes up the hip hinge and scapular pull patterns before loading, and grooves squat depth/tempo with the tested corrective-load Goblet Squat.',
         exercises: [
-          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '50 lbs', tempo: '3-1-1', rest: '60s', cue: 'DB at chest, full depth, 3-sec descent. Primary squat corrective load — hold steady across the week.' },
+          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '50 lb DB', tempo: '3-1-1', rest: '60s', cue: 'DB at chest, full depth, 3-sec descent. Primary squat corrective load — hold steady across the week.' },
           { name: 'Bird Dog', sets: '2', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-2', rest: '30s', cue: 'Flat back, opposite arm/leg extend slow. Core/hip stability before loaded hinge work.' },
         ],
       },
@@ -180,7 +180,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Same corrective squat groove as Day 1, plus scapular prep for today’s pull volume.',
         exercises: [
-          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '50 lbs', tempo: '3-1-1', rest: '60s', cue: 'Same corrective load and cues as Day 1 — pattern quality over progression here.' },
+          { name: 'Goblet Squat (Corrective Load)', sets: '3', reps: '8', load: '50 lb DB', tempo: '3-1-1', rest: '60s', cue: 'Same corrective load and cues as Day 1 — pattern quality over progression here.' },
           { name: 'Band Pull-Apart', sets: '2', reps: '15', load: 'Band', tempo: '2-1-2', rest: '30s', cue: 'Arms straight, squeeze shoulder blades. Preps the row and pull-up work below.' },
         ],
       },
@@ -228,7 +228,7 @@ const days = [
         introLabel: 'Why',
         intro: 'Final corrective-squat exposure of the week before the heaviest compound loads.',
         exercises: [
-          { name: 'Goblet Squat (Corrective Load)', sets: '2', reps: '8', load: '50 lbs', tempo: '3-1-1', rest: '60s', cue: 'Quick priming set — pattern check before Split Stance goes heavier below.' },
+          { name: 'Goblet Squat (Corrective Load)', sets: '2', reps: '8', load: '50 lb DB', tempo: '3-1-1', rest: '60s', cue: 'Quick priming set — pattern check before Split Stance goes heavier below.' },
           { name: 'Bird Dog', sets: '2', reps: '8 ea side', load: 'Bodyweight', tempo: '3-0-2', rest: '30s', cue: 'Core brace before the heaviest deadlift of the week.' },
         ],
       },
@@ -236,7 +236,7 @@ const days = [
         letter: 'B',
         title: 'Compound — Primary Strength',
         introLabel: 'Load Target',
-        intro: 'Heaviest weekly loads — hinge → unilateral squat → horizontal pull, matching Becca’s tested 5RM territory. 1–2 RIR on the last set of each.',
+        intro: 'Heaviest weekly loads — hinge → unilateral squat → horizontal pull, matching Becca’s tested 5RM territory. 2 RIR on the last set of each; never to failure. (Corrected 8/22/2026: 2 RIR is the default proximity for a PRIMARY lift — a 2024 dose-response meta-regression found strength gains largely unrelated to estimated RIR, so 1 RIR is not a stronger stimulus here, just a costlier one. 1 RIR is reserved for hypertrophy-priority accessory work, and this is an 80% day, not a 90% peak-test day, so no near-maximal exception applies.)',
         exercises: [
           { name: 'Deadlift (Conventional)', sets: '4', reps: '5', load: `${d3Deadlift} lbs`, tempo: '2-1-1', rest: '90s', cue: 'Progress to 135 lbs once all 5 reps are clean at 2 RIR — 4-week target is 145–150 lbs. Hip hinge corrective before every set.' },
           { name: 'Split Stance', sets: '3', reps: '5 ea leg', load: `${d3SplitStance} lbs`, tempo: '3-1-1', rest: '75s', cue: '80% Week-1 load, close to her tested 50×5 baseline. Progress +5 lbs when all reps are clean at 2 RIR.' },
@@ -259,7 +259,7 @@ const days = [
       },
     ],
     coolDown: 'Pigeon pose 90s each, supine hamstring stretch 60s each, lat stretch 30s each, diaphragmatic breathing 2 min.',
-    iconsNote: 'Heaviest day of the week on both compound lifts — 1–2 RIR on the last set, never to failure. The Full Pull-Up test at the end of Block C is informational, not a max-effort grind: one clean attempt, logged either way.',
+    iconsNote: 'Heaviest day of the week on both compound lifts — 2 RIR on the last set, never to failure. The Full Pull-Up test at the end of Block C is informational, not a max-effort grind: one clean attempt, logged either way.',
   },
 ];
 
