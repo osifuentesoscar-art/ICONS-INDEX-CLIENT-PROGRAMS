@@ -587,9 +587,25 @@ function maleProteinTargets(client) {
   const proteinHigh = Math.round(client.weightKg * high);
   const workingLow = Math.round(client.weightKg * workLow);
   const workingHigh = Math.round(client.weightKg * workHigh);
-  const perMeal = Math.round(client.weightKg * 0.4);
+  // Per-meal g/kg — corrected 8/22/2026 to the male standard recorded in
+  // CLAUDE.md's "Protein Targets — Men" (8/21): ~0.3 g/kg baseline, ~0.4 g/kg
+  // from 60+ (Moore et al. 2015 measured the MPS breakpoint at 0.40 g/kg in
+  // ~71yo men vs 0.24 in ~22yo men — an AGE finding measured within one sex,
+  // not a sex finding), with 40-59 an interpolation rather than a cited tier.
+  // The flat 0.4 this replaced was never male-specific: it traced to
+  // Schoenfeld & Aragon 2018 as pragmatic distribution guidance for reaching
+  // a daily total. A prior check cleared the flat figure by looking only at
+  // clients aged 46 and 50, where 0.4 is the TOP of the correct band — it is
+  // wrong below 40, where no interpolation applies.
+  const age = client.ageYears;
+  const perMealPerKg =
+    age === undefined ? 0.3
+    : age >= 60 ? 0.4
+    : age >= 40 ? 0.3 + 0.1 * ((age - 40) / 20)
+    : 0.3;
+  const perMeal = Math.round(client.weightKg * perMealPerKg);
 
-  return { low, high, proteinLow, proteinHigh, trendUpper, bodyFatConcern, workingLow, workingHigh, perMeal };
+  return { low, high, proteinLow, proteinHigh, trendUpper, bodyFatConcern, workingLow, workingHigh, perMeal, perMealPerKg };
 }
 
 // ── MALE NUTRITION NOTE — protein + creatine callout ────────────────────
